@@ -1,7 +1,5 @@
 import App from './App'
-uni.$ai = {
-	demo:'你好'
-}
+import aView from '@/uni_modules/a-view-ui'
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false

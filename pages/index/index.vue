@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<ai-loading-icon></ai-loading-icon>
+		<a-loading-icon></a-loading-icon>
 	</view>
 </template>
 
@@ -12,7 +12,10 @@
 			}
 		},
 		onLoad() {
-
+		    console.log('进来1')
+		},
+		created() {
+		    console.log('进来2')
 		},
 		methods: {
 

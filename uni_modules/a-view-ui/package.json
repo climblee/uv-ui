@@ -1,10 +1,10 @@
 {
-  "id": "ai-loading-icon",
-  "displayName": "ai-loading-icon",
+  "id": "a-view-ui",
+  "displayName": "a-view-ui",
   "version": "1.0.0",
-  "description": "ai-loading-icon",
+  "description": "a-view-ui",
   "keywords": [
-    "ai-loading-icon"
+    "a-view-ui"
 ],
   "repository": "",
   "engines": {
