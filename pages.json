@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "aiView"
+				"navigationBarTitleText": "home"
 			}
 		}
 	],
@@ -11,6 +11,10 @@
 		{
 			"root": "pages/componentsA",
 			"pages": [
+				{
+					"path": "icon/icon",
+					"navigationBarTitleText": "图标"
+				},
 				{
 					"path": "loading-icon/loading-icon",
 					"navigationBarTitleText": "加载中图标"
@@ -20,7 +24,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "aiView",
+		"navigationBarTitleText": "aView",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

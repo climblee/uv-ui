@@ -58,6 +58,7 @@
 </template>
 
 <script>
+	import aViewUITools from '@/uni_modules/a-view-ui-tools'
 	import props from './props.js';
 	import mpMixin from '@/uni_modules/a-view-ui-tools/libs/mixin/mpMixin.js'	import mixin from '@/uni_modules/a-view-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE

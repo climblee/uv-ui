@@ -12,7 +12,9 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import '@/uni_modules/a-view-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/a-view-ui-tools/theme.scss';
 	/*每个页面公共css */
 	.a-page {
 		padding: 15px 15px 40px;
