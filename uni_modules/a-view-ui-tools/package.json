@@ -1,10 +1,10 @@
 {
-  "id": "a-view-ui",
-  "displayName": "a-view-ui",
+  "id": "a-view-ui-tools",
+  "displayName": "a-view-ui-tools",
   "version": "1.0.0",
-  "description": "a-view-ui",
+  "description": "a-view-ui-tools",
   "keywords": [
-    "a-view-ui"
+    "a-view-ui-tools"
 ],
   "repository": "",
   "engines": {

@@ -1,0 +1,79 @@
+<template>
+	<view class="a-page">
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">基本案列</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon></a-loading-icon>
+				</view>
+			</view>
+		</view>
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">半圆loading</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon mode="semicircle"></a-loading-icon>
+				</view>
+			</view>
+		</view>
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">圆形loading</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon mode="circle"></a-loading-icon>
+				</view>
+			</view>
+		</view>
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">自定义动画</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon mode="circle" timingFunction="ease-in-out"></a-loading-icon>
+				</view>
+			</view>
+		</view>
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">自定义颜色</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon color="#3c9cff"></a-loading-icon>
+				</view>
+			</view>
+		</view>
+		<view class="a-demo-block">
+			<text class="a-demo-block__title">自定义文字</text>
+			<view class="a-demo-block__content">
+				<view class="a-page__loading-item">
+					<a-loading-icon
+					    :vertical="true"
+					    text="加载中"
+					></a-loading-icon>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.a-page {
+		&__loading-item {
+			margin-top: 5px;
+		}
+	}
+
+	.a-demo-block__content {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+</style>

@@ -1,6 +1,7 @@
 <template>
 	<view class="content">
-		<a-loading-icon></a-loading-icon>
+		<navigator style="padding: 30rpx;background-color: pink;" url="/pages/index-nvue/index-nvue">跳转nvue页面</navigator>
+		<a-loading-icon color="#2878ff" text="加载中" vertical="false"></a-loading-icon>
 	</view>
 </template>
 
@@ -10,12 +11,6 @@
 			return {
 				title: 'Hello'
 			}
-		},
-		onLoad() {
-		    console.log('进来1')
-		},
-		created() {
-		    console.log('进来2')
 		},
 		methods: {
 

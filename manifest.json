@@ -1,5 +1,5 @@
 {
-    "name" : "ai-view",
+    "name" : "a-view",
     "appid" : "__UNI__AF70401",
     "description" : "",
     "versionName" : "1.0.0",
@@ -50,9 +50,12 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx5e84059516ef77fa",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
         "usingComponents" : true
     },
@@ -68,5 +71,5 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3"
+    "vueVersion" : "2"
 }

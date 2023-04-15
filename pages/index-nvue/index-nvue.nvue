@@ -1,0 +1,22 @@
+<template>
+	<view>
+		<a-loading-icon color="#2878ff"></a-loading-icon>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+
+</style>
