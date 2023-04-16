@@ -1,10 +1,10 @@
 {
-  "id": "uv-view-ui-tools",
-  "displayName": "uv-view-ui-tools",
+  "id": "uv-load-more",
+  "displayName": "uv-load-more",
   "version": "1.0.0",
-  "description": "uv-view-ui-tools",
+  "description": "uv-load-more",
   "keywords": [
-    "uv-view-ui-tools"
+    "uv-load-more"
 ],
   "repository": "",
   "engines": {
@@ -31,7 +31,10 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": [
+			"uv-line",
+			"uv-loading-icon"
+		],
     "encrypt": [],
     "platforms": {
       "cloud": {

@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import '@/uni_modules/uv-view-ui-tools'
-import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+import '@/uni_modules/uv-ui-tools'
+import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from "./props.js";
 /**
  * loadingPage 加载动画
@@ -79,8 +79,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
-@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+@import '@/uni_modules/uv-ui-tools/theme.scss';
 
 $text-color: rgb(200, 200, 200) !default;
 $text-size: 19px !default;

@@ -1,0 +1,95 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础使用</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					status="loading"
+					:isDot="true"
+					:iconSize="17"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">无更多数据</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					:line="true"
+					status="nomore"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">加载更多(点击触发事件)</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					:line="true"
+					status="loadmore"
+					@loadmore="loadmore"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义图标</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					status="loading"
+					loadingIcon="circle"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">显示点</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					status="nomore"
+					:isDot="true"
+					:line="true"
+					color="#909399"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义提示语</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					status="loading"
+					loadingText="努力加载中,先喝杯茶"
+					color="#909399"
+				></uv-load-more>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义线条颜色</text>
+			<view class="uv-demo-block__content">
+				<uv-load-more
+					loadmoreText="看,我和别人不一样"
+					color="#1CD29B"
+					lineColor="#1CD29B"
+					dashed
+					:line="true"
+				></uv-load-more>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			loadmore() {
+				console.log('loadmore');
+				uni.$uv.toast('加载更多')
+			}
+		},
+	}
+</script>
+
+<style lang="scss">
+
+</style>

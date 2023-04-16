@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import '@/uni_modules/uv-view-ui-tools'
-import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+import '@/uni_modules/uv-ui-tools'
+import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from './props.js';
 // 组件的methods方法，由于内容较长，写在外部文件中通过mixin引入
 import transition from "./transition.js";
@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+@import '@/uni_modules/uv-ui-tools/theme.scss';
 /* #ifndef APP-NVUE */
 // vue版本动画相关的样式抽离在外部文件
 @import './vue.ani-style.scss';

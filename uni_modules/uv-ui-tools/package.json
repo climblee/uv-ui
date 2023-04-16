@@ -1,10 +1,10 @@
 {
-  "id": "uv-loading-page",
-  "displayName": "uv-loading-page",
+  "id": "uv-ui-tools",
+  "displayName": "uv-ui-tools",
   "version": "1.0.0",
-  "description": "uv-loading-page",
+  "description": "uv-ui-tools",
   "keywords": [
-    "uv-loading-page"
+    "uv-ui-tools"
 ],
   "repository": "",
   "engines": {
@@ -31,10 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [
-			"uv-transition",
-			"uv-loading-icon"
-		],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {

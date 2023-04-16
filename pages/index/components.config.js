@@ -56,6 +56,11 @@ export default [{
         icon: 'loading-page',
         title: 'Loading page 加载页',
         title_en: 'Loading Page'
+    },{
+        path: '/pages/componentsA/loadmore/loadmore',
+        icon: 'loadmore',
+        title: 'Loadmore 加载更多',
+        title_en: 'Loadmore'
     }]
 },
 {
@@ -376,12 +381,7 @@ export default [{
     // 	title: 'AvatarCropper 头像裁剪（暂无）',
     // 	title_en: 'AvatarCropper',
     // },
-    {
-        path: '/pages/componentsC/loadmore/loadmore',
-        icon: 'loadmore',
-        title: 'Loadmore 加载更多',
-        title_en: 'Loadmore'
-    }, {
+     {
         path: '/pages/componentsC/readMore/readMore',
         icon: 'readMore',
         title: 'ReadMore 展开阅读更多',

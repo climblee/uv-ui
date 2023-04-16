@@ -13,9 +13,9 @@
 </template>
 
 <script>
-	import '@/uni_modules/uv-view-ui-tools'
-	import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-	import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+	import '@/uni_modules/uv-ui-tools'
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	/**
 	 * cellGroup  单元格
@@ -36,8 +36,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/theme.scss';
 	
 	$uv-cell-group-title-padding: 16px 16px 8px !default;
 	$uv-cell-group-title-font-size: 15px !default;

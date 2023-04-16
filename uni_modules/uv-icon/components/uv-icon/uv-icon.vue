@@ -35,9 +35,9 @@
 </template>
 
 <script>
-	import '@/uni_modules/uv-view-ui-tools'
-	import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-	import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+	import '@/uni_modules/uv-ui-tools'
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE
 	// nvue通过weex的dom模块引入字体，相关文档地址如下：
 	// https://weex.apache.org/zh/docs/modules/dom.html#addrule
@@ -149,8 +149,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/theme.scss';
 
 	// 变量定义
 	$uv-icon-primary: $uv-primary !default;

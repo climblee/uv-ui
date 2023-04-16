@@ -8,9 +8,9 @@
 </template>
 
 <script>
-	import '@/uni_modules/uv-view-ui-tools'
-	import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-	import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+	import '@/uni_modules/uv-ui-tools'
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	/**
 	 * line 线条
@@ -55,7 +55,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
 
 	.uv-line {
 		/* #ifndef APP-NVUE */
