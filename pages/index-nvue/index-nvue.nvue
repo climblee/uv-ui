@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<a-loading-icon color="#2878ff"></a-loading-icon>
+		<uv-loading-icon color="#2878ff"></uv-loading-icon>
 	</view>
 </template>
 

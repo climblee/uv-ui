@@ -1,20 +1,20 @@
 <template>
-	<view class="a-page">
-		<view class="a-border-left a-border-top a-page__grid">
+	<view class="uv-page">
+		<view class="uv-border-left uv-border-top uv-page__grid">
 			<view
 			    @tap="selectIcon(item.name)"
-			    class="a-page__grid__item a-border-bottom a-border-right"
+			    class="uv-page__grid__item uv-border-bottom uv-border-right"
 			    v-for="(item, index) in iconList"
 			    :key="index"
 			>
-				<view class="a-page__grid__item__icon">
-					<a-icon
+				<view class="uv-page__grid__item__icon">
+					<uv-icon
 					    :name="item.name"
 					    size="30"
 					    color="#909399"
-					></a-icon>
+					></uv-icon>
 				</view>
-				<text class="a-page__grid__item__text">{{item.name}}</text>
+				<text class="uv-page__grid__item__text">{{item.name}}</text>
 			</view>
 		</view>
 	</view>
@@ -439,7 +439,7 @@
 						name: 'coupon-fill'
 					},
 					{
-						name: 'kefa-ermai'
+						name: 'kefuv-ermai'
 					},
 					{
 						name: 'server-fill'
@@ -487,7 +487,7 @@
 						name: 'camera'
 					},
 					{
-						name: 'camera-fill'
+						name: 'cameruv-fill'
 					},
 					{
 						name: 'pushpin'
@@ -532,7 +532,7 @@
 						name: 'zhihu'
 					},
 					{
-						name: 'zhiha-circle-fill'
+						name: 'zhihuv-circle-fill'
 					},
 					{
 						name: 'gift'
@@ -598,7 +598,7 @@
 						name: 'baidu'
 					},
 					{
-						name: 'baida-circle-fill'
+						name: 'baiduv-circle-fill'
 					},
 					{
 						name: 'share-square'
@@ -609,7 +609,7 @@
 		methods: {
 			selectIcon(name) {
 				// #ifdef H5
-				return uni.$a.toast('H5暂不支持复制');
+				return uni.$uv.toast('H5暂不支持复制');
 				// #endif
 				uni.setClipboardData({
 					data: name,
@@ -618,16 +618,16 @@
 					}
 				});
 				uni.hideToast()
-				uni.$a.toast('图标名称已复制');
+				uni.$uv.toast('图标名称已复制');
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/a-view-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/a-view-ui-tools/theme.scss';
-	.a-page {
+	@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+	.uv-page {
 		padding: 14rpx;
 
 		&__grid {
@@ -652,7 +652,7 @@
 				}
 				
 				&__text {
-					color: $a-tips-color;
+					color: $uv-tips-color;
 					/* #ifndef APP-NVUE */
 					word-wrap: break-word;
 					word-break: break-all;

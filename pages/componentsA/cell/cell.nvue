@@ -1,0 +1,203 @@
+<template>
+	<view class="cell-page">
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">基础功能</text>
+			<uv-cell-group>
+				<uv-cell
+				    title="UV UI"
+				    value="内容"
+				    :isLink="true"
+				></uv-cell>
+				<uv-cell
+				    title="利剑出鞘,一统江湖"
+				    value="内容"
+				    label="挣脱束缚,向往自由"
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义图标/图片</text>
+			<uv-cell-group>
+				<uv-cell
+				    title="单元格"
+				    icon="lock-fill"
+				></uv-cell>
+				<uv-cell
+				    title="单元格"
+				    icon="https://cdn.uviewui.com/uview/example/tag.png"
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义大小</text>
+			<uv-cell-group>
+				<uv-cell
+				    size="large"
+				    title="单元格"
+				    value="内容"
+					isLink
+				></uv-cell>
+				<uv-cell
+				    size="large"
+				    title="单元格"
+				    value="内容"
+				    label="描述信息"
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">显示右箭头</text>
+			<uv-cell-group>
+				<uv-cell
+				    title="单元格"
+				    value="组件"
+				    isLink
+				></uv-cell>
+				<uv-cell
+				    title="单元格"
+				    value="工具"
+				    arrow-direction="up"
+				    isLink
+				></uv-cell>
+				<uv-cell
+				    title="单元格"
+				    value="模板"
+				    arrow-direction="down"
+				    isLink
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">跳转页面</text>
+			<uv-cell-group>
+				<uv-cell
+				    title="打开标签页"
+				    isLink
+				    url="/pages/componentsB/tag/tag"
+				></uv-cell>
+				<uv-cell
+				    title="打开徽标页"
+				    isLink
+				    url="/pages/componentsB/badge/badge"
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">右侧内容垂直居中</text>
+			<uv-cell-group>
+				<uv-cell
+				    title="单元格"
+				    value="内容"
+				    label="描述信息"
+				    center
+				></uv-cell>
+			</uv-cell-group>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义插槽</text>
+			<uv-cell-group>
+				<uv-cell value="内容">
+					<view
+					    slot="title"
+					    class="uv-slot-title"
+					>
+						<text class="uv-cell-text">单元格</text>
+						<uv-tag
+						    text="标签"
+						    plain
+						    size="mini"
+						    type="warning"
+						>
+						</uv-tag>
+					</view>
+				</uv-cell>
+				<uv-cell
+				    title="单元格"
+					isLink
+				>
+					<text
+					    slot="value"
+					    class="uv-slot-value"
+					>99</text>
+				</uv-cell>
+			</uv-cell-group>
+		</view>
+		<uv-gap height="30"></uv-gap>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {}
+		},
+		methods: {
+			click() {
+				console.log('Cell is clicked.');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/uni_modules/uv-view-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+	.cell-page {
+		padding-bottom: 20px;
+	}
+
+	.cell-box {
+		&__title {
+			font-size: 14px;
+			color: rgb(143, 156, 162);
+			margin: 20px 0px 0px 15px;
+		}
+
+		&__block {
+			// background-color: #fff;
+			margin-top: 20px;
+		}
+	}
+
+	.uv-page {
+		padding: 0;
+
+		&__item {
+
+			&__title {
+				color: $uv-tips-color;
+				background-color: $uv-bg-color;
+				padding: 15px;
+				font-size: 15px;
+
+				&__slot-title {
+					color: $uv-primary;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	.uv-slot-title {
+		@include flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.uv-cell-text {
+		font-size: 15px;
+		line-height: 22px;
+		color: #303133;
+		margin-right: 5px;
+	}
+
+	.uv-slot-value {
+		line-height: 17px;
+		text-align: center;
+		font-size: 10px;
+		padding: 0 5px;
+		height: 17px;
+		color: #FFFFFF;
+		border-radius: 100px;
+		background-color: #f56c6c;
+	}
+</style>

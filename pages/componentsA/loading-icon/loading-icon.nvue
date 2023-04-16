@@ -1,53 +1,53 @@
 <template>
-	<view class="a-page">
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">基本案列</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon></a-loading-icon>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本案列</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon></uv-loading-icon>
 				</view>
 			</view>
 		</view>
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">半圆loading</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon mode="semicircle"></a-loading-icon>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">半圆loading</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon mode="semicircle"></uv-loading-icon>
 				</view>
 			</view>
 		</view>
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">圆形loading</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon mode="circle"></a-loading-icon>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">圆形loading</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon mode="circle"></uv-loading-icon>
 				</view>
 			</view>
 		</view>
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">自定义动画</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon mode="circle" timingFunction="ease-in-out"></a-loading-icon>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义动画</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon mode="circle" timingFunction="ease-in-out"></uv-loading-icon>
 				</view>
 			</view>
 		</view>
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">自定义颜色</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon color="#3c9cff"></a-loading-icon>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义颜色</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon color="#3c9cff"></uv-loading-icon>
 				</view>
 			</view>
 		</view>
-		<view class="a-demo-block">
-			<text class="a-demo-block__title">自定义文字</text>
-			<view class="a-demo-block__content">
-				<view class="a-page__loading-item">
-					<a-loading-icon
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义文字</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__loading-item">
+					<uv-loading-icon
 					    :vertical="true"
 					    text="加载中"
-					></a-loading-icon>
+					></uv-loading-icon>
 				</view>
 			</view>
 		</view>
@@ -65,13 +65,13 @@
 </script>
 
 <style lang="scss">
-	.a-page {
+	.uv-page {
 		&__loading-item {
 			margin-top: 5px;
 		}
 	}
 
-	.a-demo-block__content {
+	.uv-demo-block__content {
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: center;
