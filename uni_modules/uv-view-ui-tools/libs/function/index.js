@@ -28,7 +28,7 @@ function getPx(value, unit = false) {
 }
 
 /**
- * @description 进行延时，以达到可以简写代码的目的 比如: await uni.$u.sleep(20)将会阻塞20ms
+ * @description 进行延时，以达到可以简写代码的目的 比如: await uni.$uv.sleep(20)将会阻塞20ms
  * @param {number} value 堵塞时间 单位ms 毫秒
  * @returns {Promise} 返回promise
  */
@@ -568,14 +568,14 @@ function padZero(value) {
 }
 
 /**
- * @description 在u-form的子组件内容发生变化，或者失去焦点时，尝试通知u-form执行校验方法
+ * @description 在uv-form的子组件内容发生变化，或者失去焦点时，尝试通知uv-form执行校验方法
  * @param {*} instance
  * @param {*} event
  */
 function formValidate(instance, event) {
-	const formItem = uni.$u.$parent.call(instance, 'u-form-item')
-	const form = uni.$u.$parent.call(instance, 'u-form')
-	// 如果发生变化的input或者textarea等，其父组件中有u-form-item或者u-form等，就执行form的validate方法
+	const formItem = uni.$uv.$parent.call(instance, 'uv-form-item')
+	const form = uni.$uv.$parent.call(instance, 'uv-form')
+	// 如果发生变化的input或者textarea等，其父组件中有uv-form-item或者uv-form等，就执行form的validate方法
 	// 同时将form-item的pros传递给form，让其进行精确对象验证
 	if (formItem && form) {
 		form.validateField(formItem.prop, () => {}, event)
@@ -691,10 +691,10 @@ function setConfig({
 	const {
 		deepMerge,
 	} = uni.$u
-	uni.$u.config = deepMerge(uni.$u.config, config)
-	uni.$u.props = deepMerge(uni.$u.props, props)
-	uni.$u.color = deepMerge(uni.$u.color, color)
-	uni.$u.zIndex = deepMerge(uni.$u.zIndex, zIndex)
+	uni.$uv.config = deepMerge(uni.$uv.config, config)
+	uni.$uv.props = deepMerge(uni.$uv.props, props)
+	uni.$uv.color = deepMerge(uni.$uv.color, color)
+	uni.$uv.zIndex = deepMerge(uni.$uv.zIndex, zIndex)
 }
 
 export default {

@@ -19,15 +19,15 @@ export default {
     ],
     // 颜色部分，本来可以通过scss的:export导出供js使用，但是奈何nvue不支持
     color: {
-        'u-primary': '#2979ff',
-        'u-warning': '#ff9900',
-        'u-success': '#19be6b',
-        'u-error': '#fa3534',
-        'u-info': '#909399',
-        'u-main-color': '#303133',
-        'u-content-color': '#606266',
-        'u-tips-color': '#909399',
-        'u-light-color': '#c0c4cc'
+        'uv-primary': '#2979ff',
+        'uv-warning': '#ff9900',
+        'uv-success': '#19be6b',
+        'uv-error': '#fa3534',
+        'uv-info': '#909399',
+        'uv-main-color': '#303133',
+        'uv-content-color': '#606266',
+        'uv-tips-color': '#909399',
+        'uv-light-color': '#c0c4cc'
     },
 	// 默认单位，可以通过配置为rpx，那么在用于传入组件大小参数为数值时，就默认为rpx
 	unit: 'px'

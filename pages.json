@@ -20,8 +20,16 @@
 					"navigationBarTitleText": "加载中图标"
 				},
 				{
+					"path": "loading-page/loading-page",
+					"navigationBarTitleText": "加载页"
+				},
+				{
 					"path": "cell/cell",
 					"navigationBarTitleText": "单元格"
+				},
+				{
+					"path": "transition/transition",
+					"navigationBarTitleText": "动画"
 				}
 			]
 		}

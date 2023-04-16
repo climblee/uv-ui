@@ -1,0 +1,113 @@
+/**
+ * vue版本动画内置的动画模式有如下：
+ * fade：淡入
+ * zoom：缩放
+ * fade-zoom：缩放淡入
+ * fade-up：上滑淡入
+ * fade-down：下滑淡入
+ * fade-left：左滑淡入
+ * fade-right：右滑淡入
+ * slide-up：上滑进入
+ * slide-down：下滑进入
+ * slide-left：左滑进入
+ * slide-right：右滑进入
+ */
+
+$uv-zoom-scale: scale(0.95);
+
+.uv-fade-enter-active,
+.uv-fade-leave-active {
+	transition-property: opacity;
+}
+
+.uv-fade-enter,
+.uv-fade-leave-to {
+	opacity: 0
+}
+
+.uv-fade-zoom-enter,
+.uv-fade-zoom-leave-to {
+	transform: $uv-zoom-scale;
+	opacity: 0;
+}
+
+.uv-fade-zoom-enter-active,
+.uv-fade-zoom-leave-active {
+	transition-property: transform, opacity;
+}
+
+.uv-fade-down-enter-active,
+.uv-fade-down-leave-active,
+.uv-fade-left-enter-active,
+.uv-fade-left-leave-active,
+.uv-fade-right-enter-active,
+.uv-fade-right-leave-active,
+.uv-fade-up-enter-active,
+.uv-fade-up-leave-active {
+	transition-property: opacity, transform;
+}
+
+.uv-fade-up-enter,
+.uv-fade-up-leave-to {
+	transform: translate3d(0, 100%, 0);
+	opacity: 0
+}
+
+.uv-fade-down-enter,
+.uv-fade-down-leave-to {
+	transform: translate3d(0, -100%, 0);
+	opacity: 0
+}
+
+.uv-fade-left-enter,
+.uv-fade-left-leave-to {
+	transform: translate3d(-100%, 0, 0);
+	opacity: 0
+}
+
+.uv-fade-right-enter,
+.uv-fade-right-leave-to {
+	transform: translate3d(100%, 0, 0);
+	opacity: 0
+}
+
+.uv-slide-down-enter-active,
+.uv-slide-down-leave-active,
+.uv-slide-left-enter-active,
+.uv-slide-left-leave-active,
+.uv-slide-right-enter-active,
+.uv-slide-right-leave-active,
+.uv-slide-up-enter-active,
+.uv-slide-up-leave-active {
+	transition-property: transform;
+}
+
+.uv-slide-up-enter,
+.uv-slide-up-leave-to {
+	transform: translate3d(0, 100%, 0)
+}
+
+.uv-slide-down-enter,
+.uv-slide-down-leave-to {
+	transform: translate3d(0, -100%, 0)
+}
+
+.uv-slide-left-enter,
+.uv-slide-left-leave-to {
+	transform: translate3d(-100%, 0, 0)
+}
+
+.uv-slide-right-enter,
+.uv-slide-right-leave-to {
+	transform: translate3d(100%, 0, 0)
+}
+
+.uv-zoom-enter-active,
+.uv-zoom-leave-active {
+	transition-property: transform
+}
+
+.uv-zoom-enter,
+.uv-zoom-leave-to {
+	transform: $uv-zoom-scale
+}

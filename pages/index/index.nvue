@@ -1,0 +1,77 @@
+<template>
+	<view class="wrap">
+		<page-nav :desc="desc"></page-nav>
+		<view class="list-wrap">
+			<uv-cell-group title-bg-color="rgb(243, 244, 246)" :title="item.groupName" v-for="(item, index) in list" :key="index">
+				<uv-cell :titleStyle="{fontWeight: 500}" :title="item1.title"
+				 v-for="(item1, index1) in item.list" :key="index1" isLink @click="openPage" :name="item1.path">
+				 <template v-slot:icon>
+				 	<image
+				 	    class="uv-cell-icon"
+				 	    :src="getIcon(item1.icon)"
+				 	    mode="widthFix"
+				 	></image>
+				 </template>
+				</uv-cell>
+			</uv-cell-group>
+		</view>
+		<uv-gap height="30" bgColor="#fff"></uv-gap>
+	</view>
+</template>
+
+<script>
+	import list from "./components.config.js";
+	export default {
+		data() {
+			return {
+				list: list,
+				desc: 'uv UI，是全面兼容nvue的uni-app生态框架，支持单独导入项目，无需自己做任何配置，导入即可使用，全面的组件和便捷的工具会让您信手拈来，如鱼得水。',
+			}
+		},
+		computed: {
+			getIcon() {
+				return path => {
+					return 'https://cdn.uviewui.com/uview/example/' + path + '.png';
+				}
+			},
+		},
+		methods: {
+			openPage(detail) {
+				const path = detail.name
+				// #ifdef APP-NVUE
+				// 目前安卓nvue下，由于overflow只能为hidden，所以布局上的原因，暂不支持steps和tooltip等组件
+				if(uni.$uv.os() === 'android') {
+					const noSupportForAndroid = ['steps']
+					for(let i = 0; i < noSupportForAndroid.length; i ++) {
+						if(path.indexOf(noSupportForAndroid[i]) > -1) {
+							return uni.$uv.toast('安卓nvue下暂不支持此组件')
+						}
+					}
+				}
+				// #endif
+				uni.$uv.route({
+					url: path
+				})
+			},
+		}
+	}
+</script>
+
+<style>
+	/* page {
+		background-color: rgb(240, 242, 244);
+	} */
+</style>
+
+<style lang="scss" >
+	
+	.uv-cell-icon1 {
+		width: 36rpx;
+		height: 36rpx;
+		margin-right: 8rpx;
+	}
+	
+	.uv-cell-group__title__text {
+		font-weight: bold;
+	}
+</style>

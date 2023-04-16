@@ -60,7 +60,6 @@
 <script>
 	import '@/uni_modules/uv-view-ui-tools'
 	import mpMixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mpMixin.js'
-	
 	import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	// #ifdef APP-NVUE

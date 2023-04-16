@@ -1,5 +1,6 @@
 // import存在重复引用js问题么? https://blog.csdn.net/snans/article/details/123808010
-
+// 路由封装
+import route from './libs/util/route.js'
 // 公共工具函数
 import index from './libs/function/index.js'
 // 规则检验
@@ -12,6 +13,7 @@ import colorGradient from './libs/function/colorGradient.js'
 import config from './libs/config/config.js'
 
 const $uv = {
+	route,
 	config,
 	test,
 	...index,

@@ -1,0 +1,166 @@
+<template>
+    <view class="uv-page">
+        <uv-gap height="20" bgColor="#fff"></uv-gap>
+        <uv-cell-group border>
+            <uv-cell
+                :titleStyle="{ fontWeight: 500 }"
+                @click="openTransition(item.mode)"
+                :title="item.title"
+                v-for="(item, index) in list"
+                :key="index"
+                clickable
+            >
+                <image
+                    slot="icon"
+                    class="uv-cell-icon"
+                    :src="item.iconUrl"
+                    mode="widthFix"
+                ></image>
+            </uv-cell>
+            <uv-transition
+                :mode="mode"
+                :show="show"
+                :custom-style="style"
+                @click="click"
+                @beforeEnter="beforeEnter"
+                @enter="enter"
+                @afterEnter="afterEnter"
+                @beforeLeave="beforeLeave"
+                @leave="leave"
+                @afterLeave="afterLeave"
+            >
+                <view class="transition"></view>
+            </uv-transition>
+        </uv-cell-group>
+    </view>
+</template>
+
+<script>
+import mixin from '@/uni_modules/uv-view-ui-tools/libs/mixin/mixin.js'
+export default {
+    data() {
+        return {
+            mode: "",
+            show: false,
+            style: {
+                position: "fixed",
+                top: `${uni.$uv.sys().windowHeight / 2 - 50}px`,
+                left: `${uni.$uv.sys().windowWidth / 2 - 50}px`,
+                width: "120px",
+                height: "120px",
+                backgroundColor: "#1989fa",
+            },
+            list: [
+                {
+                    mode: "fade",
+                    title: "淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fade.png",
+                },
+                {
+                    mode: "fade-up",
+                    title: "上滑淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fadeUp.png",
+                },
+                {
+                    mode: "zoom",
+                    title: "缩放",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/zoom.png",
+                },
+                {
+                    mode: "fade-zoom",
+                    title: "缩放淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fadeZoom.png",
+                },
+                {
+                    mode: "fade-down",
+                    title: "下滑淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fadeDown.png",
+                },
+                {
+                    mode: "fade-left",
+                    title: "左滑淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fadeLeft.png",
+                },
+                {
+                    mode: "fade-right",
+                    title: "右滑淡入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/fadeRight.png",
+                },
+                {
+                    mode: "slide-up",
+                    title: "上滑进入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/slideUp.png",
+                },
+                {
+                    mode: "slide-down",
+                    title: "下滑进入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/slideDown.png",
+                },
+                {
+                    mode: "slide-left",
+                    title: "左滑进入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/slideLeft.png",
+                },
+                {
+                    mode: "slide-right",
+                    title: "右滑进入",
+                    iconUrl:
+                        "https://cdn.uviewui.com/uview/demo/transition/slideRight.png",
+                },
+            ],
+        };
+    },
+    mixins: [mixin],
+    methods: {
+        openTransition(mode) {
+            this.mode = mode;
+            this.show = true;
+            setTimeout(() => {
+                this.show = false;
+            }, 1500);
+        },
+        click() {
+            // console.log("click");
+        },
+        beforeEnter() {
+            // console.log("beforeEnter");
+        },
+        enter() {
+            // console.log("enter");
+        },
+        afterEnter() {
+            // console.log("afterEnter");
+        },
+        beforeLeave() {
+            // console.log("beforeLeave");
+        },
+        leave() {
+            // console.log("leave");
+        },
+        afterLeave() {
+            // console.log("afterLeave");
+        },
+    },
+};
+</script>
+
+<style lang="scss">
+@import '@/uni_modules/uv-view-ui-tools/theme.scss';
+.uv-page {
+    padding: 0;
+}
+
+.transition {
+    background-color: $uv-primary;
+}
+</style>
