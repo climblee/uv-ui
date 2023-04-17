@@ -36,6 +36,10 @@
 				"navigationBarTitleText": "单元格"
 			},
 			{
+				"path": "tag/tag",
+				"navigationBarTitleText": "tag标签"
+			},
+			{
 				"path": "transition/transition",
 				"navigationBarTitleText": "动画"
 			}

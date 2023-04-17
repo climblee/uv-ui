@@ -42,7 +42,7 @@ export default [{
         title: 'Badge 徽标数',
         title_en: 'Badge'
     }, {
-        path: '/pages/componentsB/tag/tag',
+        path: '/pages/componentsA/tag/tag',
         icon: 'tag',
         title: 'Tag 标签',
         title_en: 'Tag'

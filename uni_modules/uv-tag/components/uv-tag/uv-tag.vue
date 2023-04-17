@@ -1,60 +1,76 @@
 <template>
-	<u-transition
+	<uv-transition
 		mode="fade"
 		:show="show"
 	>
-		<view class="u-tag-wrapper">
+		<view class="uv-tag-wrapper">
 			<view
-				class="u-tag"
-				:class="[`u-tag--${shape}`, !plain && `u-tag--${type}`, plain && `u-tag--${type}--plain`, `u-tag--${size}`, plain && plainFill && `u-tag--${type}--plain--fill`]"
+				class="uv-tag"
+				:class="[`uv-tag--${shape}`, !plain && `uv-tag--${type}`, plain && `uv-tag--${type}--plain`, `uv-tag--${size}`,`uv-tag--${size}--${closePlace}`, plain && plainFill && `uv-tag--${type}--plain--fill`]"
 				@tap.stop="clickHandler"
 				:style="[{
-					marginRight: closable ? '10px' : 0,
-					marginTop: closable ? '10px' : 0,
+					marginRight: closable&& closePlace=='right-top' ? '10px' : 0,
+					marginTop: closable && closePlace=='right-top' ? '10px' : 0,
 				}, style]"
 			>
 				<slot name="icon">
 					<view
-						class="u-tag__icon"
+						class="uv-tag__icon"
 						v-if="icon"
 					>
 						<image
-							v-if="$u.test.image(icon)"
+							v-if="$uv.test.image(icon)"
 							:src="icon"
 							:style="[imgStyle]"
 						></image>
-						<u-icon
+						<uv-icon
 							v-else
 							:color="elIconColor"
 							:name="icon"
 							:size="iconSize"
-						></u-icon>
+						></uv-icon>
 					</view>
 				</slot>
 				<text
-					class="u-tag__text"
+					class="uv-tag__text"
 					:style="[textColor]"
-					:class="[`u-tag__text--${type}`, plain && `u-tag__text--${type}--plain`, `u-tag__text--${size}`]"
+					:class="[`uv-tag__text--${type}`, plain && `uv-tag__text--${type}--plain`, `uv-tag__text--${size}`]"
 				>{{ text }}</text>
+				<view
+					class="uv-tag__close"
+					:class="[`uv-tag__close--${size}`,`uv-tag__close--${closePlace}`]"
+					v-if="closable && closePlace=='right'"
+					@tap.stop="closeHandler"
+					:style="{backgroundColor: closeColor}"
+				>
+					<uv-icon
+						name="close"
+						:size="closeSize"
+						color="#ffffff"
+					></uv-icon>
+				</view>
 			</view>
 			<view
-				class="u-tag__close"
-				:class="[`u-tag__close--${size}`]"
-				v-if="closable"
+				class="uv-tag__close"
+				:class="[`uv-tag__close--${size}`,`uv-tag__close--${closePlace}`]"
+				v-if="closable && closePlace=='right-top'"
 				@tap.stop="closeHandler"
 				:style="{backgroundColor: closeColor}"
 			>
-				<u-icon
+				<uv-icon
 					name="close"
 					:size="closeSize"
 					color="#ffffff"
-				></u-icon>
+				></uv-icon>
 			</view>
 		</view>
-	</u-transition>
+	</uv-transition>
 </template>
 
 <script>
+	import '@/uni_modules/uv-ui-tools'
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	/**
 	 * Tag 标签
@@ -77,11 +93,11 @@
 	 * @property {String}			icon		内置图标，或绝对路径的图片
 	 * @event {Function(index)} click 点击标签时触发 index: 传递的index参数值
 	 * @event {Function(index)} close closable为true时，点击标签关闭按钮触发 index: 传递的index参数值	
-	 * @example <u-tag text="标签" type="error" plain plainFill></u-tag>
+	 * @example <uv-tag text="标签" type="error" plain plainFill></uv-tag>
 	 */
 	export default {
-		name: 'u-tag',
-		mixins: [uni.$u.mpMixin, uni.$u.mixin, props],
+		name: 'uv-tag',
+		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
 
@@ -144,17 +160,15 @@
 	}
 </script>
 
-<style
-	lang="scss"
-	scoped
->
-	@import "../../libs/css/components.scss";
+<style lang="scss" scoped >
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/theme.scss';
 
-	.u-tag-wrapper {
+	.uv-tag-wrapper {
 		position: relative;
 	}
 
-	.u-tag {
+	.uv-tag {
 		@include flex;
 		align-items: center;
 		border-style: solid;
@@ -192,29 +206,38 @@
 			height: 22px;
 			line-height: 22px;
 			padding: 0 5px;
+			&--right {
+				padding-right: 2px;
+			}
 		}
 
 		&--medium {
 			height: 26px;
 			line-height: 22px;
 			padding: 0 10px;
+			&--right {
+				padding: 0 4px 0 8px;
+			}
 		}
 
 		&--large {
 			height: 32px;
 			line-height: 32px;
 			padding: 0 15px;
+			&--right {
+				padding: 0 4px 0 8px;
+			}
 		}
 
 		&--primary {
-			background-color: $u-primary;
+			background-color: $uv-primary;
 			border-width: 1px;
-			border-color: $u-primary;
+			border-color: $uv-primary;
 		}
 
 		&--primary--plain {
 			border-width: 1px;
-			border-color: $u-primary;
+			border-color: $uv-primary;
 		}
 
 		&--primary--plain--fill {
@@ -226,18 +249,18 @@
 		}
 
 		&__text--primary--plain {
-			color: $u-primary;
+			color: $uv-primary;
 		}
 
 		&--error {
-			background-color: $u-error;
+			background-color: $uv-error;
 			border-width: 1px;
-			border-color: $u-error;
+			border-color: $uv-error;
 		}
 
 		&--error--plain {
 			border-width: 1px;
-			border-color: $u-error;
+			border-color: $uv-error;
 		}
 
 		&--error--plain--fill {
@@ -249,18 +272,18 @@
 		}
 
 		&__text--error--plain {
-			color: $u-error;
+			color: $uv-error;
 		}
 
 		&--warning {
-			background-color: $u-warning;
+			background-color: $uv-warning;
 			border-width: 1px;
-			border-color: $u-warning;
+			border-color: $uv-warning;
 		}
 
 		&--warning--plain {
 			border-width: 1px;
-			border-color: $u-warning;
+			border-color: $uv-warning;
 		}
 
 		&--warning--plain--fill {
@@ -272,18 +295,18 @@
 		}
 
 		&__text--warning--plain {
-			color: $u-warning;
+			color: $uv-warning;
 		}
 
 		&--success {
-			background-color: $u-success;
+			background-color: $uv-success;
 			border-width: 1px;
-			border-color: $u-success;
+			border-color: $uv-success;
 		}
 
 		&--success--plain {
 			border-width: 1px;
-			border-color: $u-success;
+			border-color: $uv-success;
 		}
 
 		&--success--plain--fill {
@@ -295,18 +318,18 @@
 		}
 
 		&__text--success--plain {
-			color: $u-success;
+			color: $uv-success;
 		}
 
 		&--info {
-			background-color: $u-info;
+			background-color: $uv-info;
 			border-width: 1px;
-			border-color: $u-info;
+			border-color: $uv-info;
 		}
 
 		&--info--plain {
 			border-width: 1px;
-			border-color: $u-info;
+			border-color: $uv-info;
 		}
 
 		&--info--plain--fill {
@@ -318,26 +341,28 @@
 		}
 
 		&__text--info--plain {
-			color: $u-info;
+			color: $uv-info;
 		}
 
 		&__close {
-			position: absolute;
-			z-index: 999;
-			top: 10px;
-			right: 10px;
 			border-radius: 100px;
 			background-color: #C6C7CB;
 			@include flex(row);
 			align-items: center;
 			justify-content: center;
-			/* #ifndef APP-NVUE */
-			transform: scale(0.6) translate(80%, -80%);
-			/* #endif */
-			/* #ifdef APP-NVUE */
-			transform: scale(0.6) translate(50%, -50%);
-			/* #endif */
-
+			transform: scale(0.6);
+			&--right-top {
+				position: absolute;
+				z-index: 999;
+				top: 10px;
+				right: 10px;
+				/* #ifndef APP-NVUE */
+				transform: scale(0.6) translate(80%,-80%);
+				/* #endif */
+				/* #ifdef APP-NVUE */
+				transform: scale(0.6) translate(50%, -50%);
+				/* #endif */
+			}
 			&--mini {
 				width: 18px;
 				height: 18px;
