@@ -22,7 +22,7 @@ export default [{
         title: 'Button 按钮',
         title_en: 'Button'
     }, {
-        path: '/pages/componentsC/text/text',
+        path: '/pages/componentsA/text/text',
         icon: 'text',
         title: 'Text 文本',
         title_en: 'Text'

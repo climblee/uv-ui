@@ -16,6 +16,9 @@
 	"subPackages": [{
 		"root": "pages/componentsA",
 		"pages": [{
+				"path": "text/text",
+				"navigationBarTitleText": "文本"
+			},{
 				"path": "icon/icon",
 				"navigationBarTitleText": "图标"
 			},
