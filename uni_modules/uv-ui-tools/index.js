@@ -3,6 +3,8 @@
 import route from './libs/util/route.js'
 // 公共工具函数
 import index from './libs/function/index.js'
+// 节流方法
+import throttle from './libs/function/throttle.js'
 // 规则检验
 import test from './libs/function/test.js'
 
@@ -16,6 +18,7 @@ const $uv = {
 	route,
 	config,
 	test,
+	throttle,
 	...index,
 	colorGradient: colorGradient.colorGradient,
 	hexToRgb: colorGradient.hexToRgb,

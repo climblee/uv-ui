@@ -28,7 +28,9 @@
 }
 
 .uv-demo-block {
+	// #ifndef APP-NVUE
 	flex: 1;
+	// #endif
 	margin-bottom: 23px;
 	
 	&__content {

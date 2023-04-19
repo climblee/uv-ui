@@ -16,6 +16,12 @@
 	"subPackages": [{
 		"root": "pages/componentsA",
 		"pages": [{
+				"path": "color/color",
+				"navigationBarTitleText": "Color 主题色"
+			},{
+				"path": "button/button",
+				"navigationBarTitleText": "按钮"
+			},{
 				"path": "text/text",
 				"navigationBarTitleText": "文本"
 			},{
