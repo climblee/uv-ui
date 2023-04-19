@@ -17,7 +17,7 @@
 		"root": "pages/componentsA",
 		"pages": [{
 				"path": "color/color",
-				"navigationBarTitleText": "Color 主题色"
+				"navigationBarTitleText": "Color 色彩"
 			},{
 				"path": "button/button",
 				"navigationBarTitleText": "按钮"
