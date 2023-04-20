@@ -1,0 +1,202 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础使用</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="surround"
+					v-model="value"
+					@change="change"
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">可清空内容</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="surround"
+					clearable
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">数字键盘</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="surround"
+					type="number"
+					clearable
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">密码类型</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="surround"
+					password
+					clearable
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">显示下划线</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="bottom"
+					clearable
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">禁用状态</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="禁用状态"
+					border="surround"
+					disabled
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">圆形</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="请输入内容"
+					border="surround"
+					shape="circle"
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">前后图标</text>
+			<view class="uv-demo-block__content">
+				<uv-input
+					placeholder="前置图标"
+					prefixIcon="search"
+					prefixIconStyle="font-size: 22px;color: #909399"
+				></uv-input>
+			</view>
+			<view
+				class="uv-demo-block__content"
+				style="margin-top: 15px;"
+			>
+				<uv-input
+					placeholder="后置图标"
+					suffixIcon="map-fill"
+					suffixIconStyle="color: #909399"
+				></uv-input>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">前后插槽</text>
+			<view class="uv-demo-block__content">
+				<!-- 注意：由于兼容性差异，如果需要使用前后插槽，nvue下需使用uv-input，非nvue下需使用uv-input -->
+				<!-- #ifndef APP-NVUE -->
+				<uv-input placeholder="前置插槽">
+					<!-- #endif -->
+					<!-- #ifdef APP-NVUE -->
+					<uv-input placeholder="前置插槽">
+						<!-- #endif -->
+						<uv-text
+							text="http://"
+							slot="prefix"
+							margin="0 3px 0 0"
+							type="tips"
+						></uv-text>
+						<!-- #ifndef APP-NVUE -->
+				</uv-input>
+				<!-- #endif -->
+				<!-- #ifdef APP-NVUE -->
+				</uv-input>
+				<!-- #endif -->
+			</view>
+			<view
+				class="uv-demo-block__content"
+				style="margin-top: 15px;"
+			>
+				<!-- 注意：由于兼容性差异，如果需要使用前后插槽，nvue下需使用uv-input，非nvue下需使用uv-input -->
+				<!-- #ifndef APP-NVUE -->
+				<uv-input placeholder="后置插槽">
+					<!-- #endif -->
+					<!-- #ifdef APP-NVUE -->
+					<uv-input placeholder="后置插槽">
+						<!-- #endif -->
+						<template slot="suffix">
+							<uv-code
+								ref="uCode"
+								@change="codeChange"
+								seconds="20"
+								changeText="X秒重新获取哈哈哈"
+							></uv-code>
+							<uv-button
+								@tap="getCode"
+								:text="tips"
+								type="success"
+								size="mini"
+							></uv-button>
+						</template>
+						<!-- #ifndef APP-NVUE -->
+				</uv-input>
+				<!-- #endif -->
+				<!-- #ifdef APP-NVUE -->
+				</uv-input>
+				<!-- #endif -->
+			</view>
+		</view>
+		<uv-gap
+			bgColor="#fff"
+			height="50"
+		></uv-gap>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tips: '',
+				value: ''
+			}
+		},
+		watch: {
+			value(newValue, oldValue) {
+				// console.log('v-model', newValue);
+			}
+		},
+		methods: {
+			codeChange(text) {
+				this.tips = text;
+			},
+			getCode() {
+				if (this.$refs.uCode.canGetCode) {
+					// 模拟向后端请求验证码
+					uni.showLoading({
+						title: '正在获取验证码'
+					})
+					setTimeout(() => {
+						uni.hideLoading();
+						// 这里此提示会被this.start()方法中的提示覆盖
+						uni.$uv.toast('验证码已发送');
+						// 通知验证码组件内部开始倒计时
+						this.$refs.uCode.start();
+					}, 2000);
+				} else {
+					uni.$uv.toast('倒计时结束后再发送');
+				}
+			},
+			change(e) {
+				console.log('change', e);
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+
+</style>

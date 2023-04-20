@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<uv-load-more status="loading"></uv-load-more>
+		<uv-input type="password" placeholder="输入文字" :clearable="true"></uv-input>
 	</view>
 </template>
 

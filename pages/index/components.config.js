@@ -117,7 +117,7 @@ export default [{
         title: 'Code 验证码倒计时',
         title_en: 'VerificationCode'
     }, {
-        path: '/pages/componentsC/input/input',
+        path: '/pages/componentsB/input/input',
         icon: 'field',
         title: 'Input 输入框',
         title_en: 'Input'

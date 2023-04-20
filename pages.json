@@ -16,43 +16,42 @@
 	"subPackages": [{
 		"root": "pages/componentsA",
 		"pages": [{
-				"path": "color/color",
-				"navigationBarTitleText": "Color 色彩"
-			},{
-				"path": "button/button",
-				"navigationBarTitleText": "按钮"
-			},{
-				"path": "text/text",
-				"navigationBarTitleText": "文本"
-			},{
-				"path": "icon/icon",
-				"navigationBarTitleText": "图标"
-			},
-			{
-				"path": "loading-icon/loading-icon",
-				"navigationBarTitleText": "加载中图标"
-			},
-			{
-				"path": "loading-page/loading-page",
-				"navigationBarTitleText": "加载页"
-			},
-			{
-				"path": "loadmore/loadmore",
-				"navigationBarTitleText": "加载更多"
-			},
-			{
-				"path": "cell/cell",
-				"navigationBarTitleText": "单元格"
-			},
-			{
-				"path": "tag/tag",
-				"navigationBarTitleText": "tag标签"
-			},
-			{
-				"path": "transition/transition",
-				"navigationBarTitleText": "动画"
-			}
-		]
+			"path": "color/color",
+			"navigationBarTitleText": "Color 色彩"
+		}, {
+			"path": "button/button",
+			"navigationBarTitleText": "按钮"
+		}, {
+			"path": "text/text",
+			"navigationBarTitleText": "文本"
+		}, {
+			"path": "icon/icon",
+			"navigationBarTitleText": "图标"
+		}, {
+			"path": "loading-icon/loading-icon",
+			"navigationBarTitleText": "加载中图标"
+		}, {
+			"path": "loading-page/loading-page",
+			"navigationBarTitleText": "加载页"
+		}, {
+			"path": "loadmore/loadmore",
+			"navigationBarTitleText": "加载更多"
+		}, {
+			"path": "cell/cell",
+			"navigationBarTitleText": "单元格"
+		}, {
+			"path": "tag/tag",
+			"navigationBarTitleText": "tag标签"
+		}, {
+			"path": "transition/transition",
+			"navigationBarTitleText": "动画"
+		}]
+	},{
+		"root": "pages/componentsB",
+		"pages": [{
+			"path": "input/input",
+			"navigationBarTitleText": "文本框"
+		}]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
