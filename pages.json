@@ -57,6 +57,9 @@
 		},{
 			"path": "checkbox/checkbox",
 			"navigationBarTitleText": "Checkbox 复选框"
+		},{
+			"path": "radio/radio",
+			"navigationBarTitleText": "Radio 单选框"
 		}]
 	}],
 	"globalStyle": {

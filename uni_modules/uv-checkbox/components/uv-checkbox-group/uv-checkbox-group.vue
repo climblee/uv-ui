@@ -69,6 +69,9 @@
 			}
 		},
 		created() {
+			// #ifdef VUE3
+			this.value = this.modelValue;
+			// #endif
 			this.children = []
 		},
 		methods: {

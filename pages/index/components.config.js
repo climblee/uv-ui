@@ -81,6 +81,11 @@ export default [{
         icon: 'checkbox',
         title: 'Checkbox 复选框',
         title_en: 'Checkbox'
+    }, {
+        path: '/pages/componentsB/radio/radio',
+        icon: 'radio',
+        title: 'Radio 单选框',
+        title_en: 'Radio'
     },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
@@ -131,11 +136,6 @@ export default [{
         icon: 'code',
         title: 'Code 验证码倒计时',
         title_en: 'VerificationCode'
-    }, {
-        path: '/pages/componentsA/radio/radio',
-        icon: 'radio',
-        title: 'Radio 单选框',
-        title_en: 'Radio'
     }, {
         path: '/pages/componentsB/switch/switch',
         icon: 'switch',

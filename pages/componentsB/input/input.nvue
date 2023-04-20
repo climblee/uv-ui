@@ -96,57 +96,39 @@
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">前后插槽</text>
 			<view class="uv-demo-block__content">
-				<!-- 注意：由于兼容性差异，如果需要使用前后插槽，nvue下需使用uv-input，非nvue下需使用uv-input -->
-				<!-- #ifndef APP-NVUE -->
-				<uv-input placeholder="前置插槽">
-					<!-- #endif -->
-					<!-- #ifdef APP-NVUE -->
 					<uv-input placeholder="前置插槽">
-						<!-- #endif -->
-						<uv-text
-							text="http://"
-							slot="prefix"
-							margin="0 3px 0 0"
-							type="tips"
-						></uv-text>
-						<!-- #ifndef APP-NVUE -->
-				</uv-input>
-				<!-- #endif -->
-				<!-- #ifdef APP-NVUE -->
-				</uv-input>
-				<!-- #endif -->
+						<!-- vue3模式下必须使用v-slot:prefix -->
+						<template v-slot:prefix>
+							<uv-text
+								text="http://"
+								slot="prefix"
+								margin="0 3px 0 0"
+								type="tips"
+							></uv-text>
+						</template>
+					</uv-input>
 			</view>
 			<view
 				class="uv-demo-block__content"
 				style="margin-top: 15px;"
 			>
-				<!-- 注意：由于兼容性差异，如果需要使用前后插槽，nvue下需使用uv-input，非nvue下需使用uv-input -->
-				<!-- #ifndef APP-NVUE -->
 				<uv-input placeholder="后置插槽">
-					<!-- #endif -->
-					<!-- #ifdef APP-NVUE -->
-					<uv-input placeholder="后置插槽">
-						<!-- #endif -->
-						<template slot="suffix">
-							<uv-code
-								ref="uCode"
-								@change="codeChange"
-								seconds="20"
-								changeText="X秒重新获取哈哈哈"
-							></uv-code>
-							<uv-button
-								@tap="getCode"
-								:text="tips"
-								type="success"
-								size="mini"
-							></uv-button>
-						</template>
-						<!-- #ifndef APP-NVUE -->
+					<!-- vue3模式下必须使用v-slot:suffix -->
+					<template v-slot:suffix>
+						<uv-code
+							ref="uCode"
+							@change="codeChange"
+							seconds="20"
+							changeText="X秒重新获取哈哈哈"
+						></uv-code>
+						<uv-button
+							@tap="getCode"
+							:text="tips"
+							type="success"
+							size="mini"
+						></uv-button>
+					</template>
 				</uv-input>
-				<!-- #endif -->
-				<!-- #ifdef APP-NVUE -->
-				</uv-input>
-				<!-- #endif -->
 			</view>
 		</view>
 		<uv-gap
@@ -161,7 +143,7 @@
 		data() {
 			return {
 				tips: '',
-				value: ''
+				value: '内容'
 			}
 		},
 		watch: {

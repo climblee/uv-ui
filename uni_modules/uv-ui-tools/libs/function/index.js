@@ -170,7 +170,7 @@ function addStyle(customStyle, target = 'object') {
  * @param {string|number} value 需要添加单位的值
  * @param {string} unit 添加的单位名 比如px
  */
-function addUnit(value = 'auto', unit = uni?.$u?.config?.unit ?? 'px') {
+function addUnit(value = 'auto', unit = uni?.$uv?.config?.unit ?? 'px') {
 	value = String(value)
 	// 用uView内置验证规则中的number判断是否为数值
 	return test.number(value) ? `${value}${unit}` : value
@@ -690,7 +690,7 @@ function setConfig({
 }) {
 	const {
 		deepMerge,
-	} = uni.$u
+	} = uni.$uv
 	uni.$uv.config = deepMerge(uni.$uv.config, config)
 	uni.$uv.props = deepMerge(uni.$uv.props, props)
 	uni.$uv.color = deepMerge(uni.$uv.color, color)
