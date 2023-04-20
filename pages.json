@@ -50,7 +50,13 @@
 		"root": "pages/componentsB",
 		"pages": [{
 			"path": "input/input",
-			"navigationBarTitleText": "文本框"
+			"navigationBarTitleText": "Input 输入框"
+		},{
+			"path": "textarea/textarea",
+			"navigationBarTitleText": "Textarea 文本域"
+		},{
+			"path": "checkbox/checkbox",
+			"navigationBarTitleText": "Checkbox 复选框"
 		}]
 	}],
 	"globalStyle": {

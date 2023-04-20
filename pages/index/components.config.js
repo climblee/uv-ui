@@ -67,6 +67,21 @@ export default [{
     groupName: '表单组件',
     groupName_en: 'Form components',
     list: [{
+        path: '/pages/componentsB/input/input',
+        icon: 'field',
+        title: 'Input 输入框',
+        title_en: 'Input'
+    }, {
+        path: '/pages/componentsB/textarea/textarea',
+        icon: 'textarea',
+        title: 'Textarea 文本域',
+        title_en: 'Textarea'
+    }, {
+        path: '/pages/componentsB/checkbox/checkbox',
+        icon: 'checkbox',
+        title: 'Checkbox 复选框',
+        title_en: 'Checkbox'
+    },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
         title: 'Form 表单',
@@ -116,21 +131,6 @@ export default [{
         icon: 'code',
         title: 'Code 验证码倒计时',
         title_en: 'VerificationCode'
-    }, {
-        path: '/pages/componentsB/input/input',
-        icon: 'field',
-        title: 'Input 输入框',
-        title_en: 'Input'
-    }, {
-        path: '/pages/componentsC/textarea/textarea',
-        icon: 'textarea',
-        title: 'Textarea 文本域',
-        title_en: 'Textarea'
-    }, {
-        path: '/pages/componentsA/checkbox/checkbox',
-        icon: 'checkbox',
-        title: 'Checkbox 复选框',
-        title_en: 'Checkbox'
     }, {
         path: '/pages/componentsA/radio/radio',
         icon: 'radio',

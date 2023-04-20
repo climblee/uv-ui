@@ -1,0 +1,78 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础使用</text>
+			<view class="uv-demo-block__content">
+				<uv-textarea
+					v-model="value1"
+					placeholder="请输入内容"
+				></uv-textarea>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">字数统计</text>
+			<view class="uv-demo-block__content">
+				<uv-textarea
+					v-model="value2"
+					placeholder="请输入内容"
+					:maxlength="200"
+					count
+				></uv-textarea>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自动增高</text>
+			<view class="uv-demo-block__content">
+				<uv-textarea
+					v-model="value3"
+					placeholder="请输入内容"
+					autoHeight
+				></uv-textarea>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">禁用状态</text>
+			<view class="uv-demo-block__content">
+				<uv-textarea
+					v-model="value4"
+					placeholder="文本域已被禁用"
+					disabled
+					count
+				></uv-textarea>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">下划线模式</text>
+			<view class="uv-demo-block__content">
+				<uv-textarea
+					v-model="value5"
+					placeholder="请输入内容"
+					border="bottom"
+				></uv-textarea>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				value1: '',
+				value2: '统计字数',
+				value3: '',
+				value4: '',
+				value5: ''
+			}
+		},
+		methods: {
+			formatter(value) {
+				return value.replace(/[^0-9]/ig,"")
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+
+</style>

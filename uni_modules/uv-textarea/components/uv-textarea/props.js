@@ -98,7 +98,7 @@ export default {
 		// 最大输入长度，设置为 -1 的时候不限制最大长度
 		maxlength: {
 			type: [String, Number],
-			default: -1
+			default: 140
 		},
 		// 边框类型，surround-四周边框，bottom-底部边框
 		border: {
