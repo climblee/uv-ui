@@ -6,7 +6,7 @@
 				"navigationBarTitleText": "home"
 			}
 		}, {
-			"path": "pages/example/example",
+			"path": "pages/demo/demo",
 			"style": {
 				"navigationBarTitleText": "测试",
 				"enablePullDownRefresh": false
@@ -63,6 +63,12 @@
 		},{
 			"path": "switch/switch",
 			"navigationBarTitleText": "Switch 开关选择器"
+		}]
+	},{
+		"root": "pages/componentsC",
+		"pages": [{
+			"path": "popup/popup",
+			"navigationBarTitleText": "Popup 弹出层"
 		}]
 	}],
 	"globalStyle": {

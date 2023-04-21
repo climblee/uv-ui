@@ -227,7 +227,7 @@ export default [{
         title: 'Collapse 折叠面板',
         title_en: 'Collapse'
     }, {
-        path: '/pages/componentsA/popup/popup',
+        path: '/pages/componentsC/popup/popup',
         icon: 'popup',
         title: 'Popup 弹出层',
         title_en: 'Popup'

@@ -1,4 +1,6 @@
 export default {
+		// VUE3为了避免组件注册click事件$emit('click')，@click触发两次BUG
+		emits:['click'],
     // 定义每个组件都可能需要用到的外部样式以及类名
     props: {
         // 每个组件都有的父组件传递的样式，可以为字符串或者对象形式

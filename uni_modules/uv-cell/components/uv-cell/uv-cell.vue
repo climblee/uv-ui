@@ -1,7 +1,7 @@
 <template>
 	<view class="uv-cell" :class="[customClass]" :style="[$uv.addStyle(customStyle)]"
 		:hover-class="(!disabled && (clickable || isLink)) ? 'uv-cell--clickable' : ''" :hover-stay-time="250"
-		@tap="clickHandler">
+		@click="clickHandler">
 		<view class="uv-cell__body" :class="[ center && 'uv-cell--center', size === 'large' && 'uv-cell__body--large']">
 			<view class="uv-cell__body__content">
 				<view class="uv-cell__left-icon-wrap" v-if="$slots.icon || icon">

@@ -22,6 +22,7 @@ const getStyle = (name) => animationMap[name]
 // #endif
 
 export default {
+		emits:['click','beforeEnter','enter','afterEnter','beforeLeave','leave','afterLeave'],
     methods: {
         // 组件被点击发出事件
         clickHandler() {

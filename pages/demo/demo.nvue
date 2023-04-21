@@ -2,6 +2,10 @@
 	<view>
 		<uv-load-more status="loading"></uv-load-more>
 		<uv-input type="password" placeholder="输入文字" :clearable="true"></uv-input>
+		<slider @change="" style="transform: rotate(90deg);"/>
+		<!-- <uv-icon name="photo" color="#2979ff" size="28" @click="clickIcon"></uv-icon> -->
+		<uv-demo @click="clickIcon"></uv-demo>
+		
 	</view>
 </template>
 
@@ -13,7 +17,9 @@
 			}
 		},
 		methods: {
-			
+			clickIcon(e){
+				console.log(e)
+			}
 		}
 	}
 </script>

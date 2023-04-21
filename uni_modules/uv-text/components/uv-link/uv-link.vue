@@ -29,6 +29,7 @@
 	 */
 	export default {
 		name: "uv-link",
+		emits:['click'],
 		mixins: [mpMixin, mixin, props],
 		computed: {
 			linkStyle() {
