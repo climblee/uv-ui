@@ -71,7 +71,7 @@ import uvHeader from './header.vue'
 import uvMonth from './month.vue'
 import props from './props.js'
 import util from './util.js'
-import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.js'
+import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.min.js'
 import Calendar from './calendar.js'
 /**
  * Calendar 日历
