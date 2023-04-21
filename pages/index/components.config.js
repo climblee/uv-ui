@@ -91,16 +91,16 @@ export default [{
         icon: 'switch',
         title: 'Switch 开关选择器',
         title_en: 'Switch'
+    }, {
+        path: '/pages/componentsB/calendar/calendar',
+        icon: 'calendar',
+        title: 'Calendar 日历',
+        title_en: 'Calendar'
     },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
         title: 'Form 表单',
         title_en: 'Form'
-    }, {
-        path: '/pages/componentsC/calendar/calendar',
-        icon: 'calendar',
-        title: 'Calendar 日历',
-        title_en: 'Calendar'
     }, {
         path: '/pages/componentsB/keyboard/keyboard',
         icon: 'keyboard',

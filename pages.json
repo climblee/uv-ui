@@ -63,6 +63,9 @@
 		},{
 			"path": "switch/switch",
 			"navigationBarTitleText": "Switch 开关选择器"
+		},{
+			"path": "calendar/calendar",
+			"navigationBarTitleText": "Calendar 日历"
 		}]
 	},{
 		"root": "pages/componentsC",
