@@ -60,6 +60,9 @@
 		},{
 			"path": "radio/radio",
 			"navigationBarTitleText": "Radio 单选框"
+		},{
+			"path": "switch/switch",
+			"navigationBarTitleText": "Switch 开关选择器"
 		}]
 	}],
 	"globalStyle": {

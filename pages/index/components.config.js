@@ -86,6 +86,11 @@ export default [{
         icon: 'radio',
         title: 'Radio 单选框',
         title_en: 'Radio'
+    }, {
+        path: '/pages/componentsB/switch/switch',
+        icon: 'switch',
+        title: 'Switch 开关选择器',
+        title_en: 'Switch'
     },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
@@ -136,11 +141,6 @@ export default [{
         icon: 'code',
         title: 'Code 验证码倒计时',
         title_en: 'VerificationCode'
-    }, {
-        path: '/pages/componentsB/switch/switch',
-        icon: 'switch',
-        title: 'Switch 开关选择器',
-        title_en: 'Switch'
     }, {
         path: '/pages/componentsB/slider/slider',
         icon: 'slider',
