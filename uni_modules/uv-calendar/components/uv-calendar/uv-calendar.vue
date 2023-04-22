@@ -70,8 +70,7 @@ import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import uvHeader from './header.vue'
 import uvMonth from './month.vue'
 import props from './props.js'
-import util from './util.js'
-import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.min.js'
+import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.js'
 import Calendar from './calendar.js'
 /**
  * Calendar 日历
@@ -113,6 +112,7 @@ import Calendar from './calendar.js'
  * */
 export default {
 	name: 'uv-calendar',
+	emits:['confirm','close'],
 	mixins: [mpMixin, mixin, props],
 	components: {
 		uvHeader,

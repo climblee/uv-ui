@@ -21,9 +21,11 @@
 </template>
 
 <script>
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	export default {
 		name: 'uv-calendar-header',
-		mixins: [uni.$uv.mpMixin, uni.$uv.mixin],
+		mixins: [mpMixin, mixin],
 		props: {
 			// 标题
 			title: {
@@ -32,7 +34,7 @@
 			},
 			// 副标题
 			subtitle: {
-				type: String,
+				type: [String,null],
 				default: ''
 			},
 			// 是否显示标题

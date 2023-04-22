@@ -7,7 +7,7 @@ export default {
         },
         // 使用的动画模式
         mode: {
-            type: String,
+            type: [String,null],
             default: 'fade'
         },
         // 动画的执行时间，单位ms
