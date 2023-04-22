@@ -107,6 +107,7 @@ import props from './props.js'
  */
 export default {
     name: 'uv--text',
+		emits: ['click'],
     // #ifdef MP
     mixins: [mpMixin, mixin, value, button, openType, props],
     // #endif

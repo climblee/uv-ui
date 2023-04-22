@@ -72,6 +72,7 @@
 	 */
 	export default {
 		name: 'uv-cell',
+		emits: ['click'],
 		data() {
 			return {
 

@@ -30,6 +30,7 @@
 	 */
 	export default {
 		name: "uv-overlay",
+		emits: ['click'],
 		mixins: [mpMixin, mixin, props],
 		computed: {
 			overlayStyle() {

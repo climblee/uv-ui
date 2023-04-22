@@ -96,6 +96,16 @@ export default [{
         icon: 'calendar',
         title: 'Calendar 日历',
         title_en: 'Calendar'
+    }, {
+        path: '/pages/componentsB/picker/picker',
+        icon: 'picker',
+        title: 'Picker 选择器',
+        title_en: 'Picker'
+    }, {
+        path: '/pages/componentsB/datetimePicker/datetimePicker',
+        icon: 'datetimePicker',
+        title: 'DatetimePicker 时间选择器',
+        title_en: 'Picker'
     },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
@@ -106,16 +116,6 @@ export default [{
         icon: 'keyboard',
         title: 'Keyboard 键盘',
         title_en: 'Keyboard'
-    }, {
-        path: '/pages/componentsC/picker/picker',
-        icon: 'picker',
-        title: 'Picker 选择器',
-        title_en: 'Picker'
-    }, {
-        path: '/pages/componentsC/datetimePicker/datetimePicker',
-        icon: 'datetimePicker',
-        title: 'DatetimePicker 时间选择器',
-        title_en: 'Picker'
     }, {
         path: '/pages/componentsA/rate/rate',
         icon: 'rate',

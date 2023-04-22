@@ -82,6 +82,7 @@
 	 */
 	export default {
 		name: 'uv-icon',
+		emits: ['click'],
 		data() {
 			return {
 

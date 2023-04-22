@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "home"
+				"navigationBarTitleText": "uv-ui"
 			}
 		}, {
 			"path": "pages/demo/demo",
@@ -17,61 +17,105 @@
 		"root": "pages/componentsA",
 		"pages": [{
 			"path": "color/color",
-			"navigationBarTitleText": "Color 色彩"
+			"style": {
+				"navigationBarTitleText": "Color 色彩"
+			}
 		}, {
 			"path": "button/button",
-			"navigationBarTitleText": "按钮"
+			"style": {
+				"navigationBarTitleText": "按钮"
+			}
 		}, {
 			"path": "text/text",
-			"navigationBarTitleText": "文本"
+			"style": {
+				"navigationBarTitleText": "文本"
+			}
 		}, {
 			"path": "icon/icon",
-			"navigationBarTitleText": "图标"
+			"style": {
+				"navigationBarTitleText": "图标"
+			}
 		}, {
 			"path": "loading-icon/loading-icon",
-			"navigationBarTitleText": "加载中图标"
+			"style": {
+				"navigationBarTitleText": "加载中图标"
+			}
 		}, {
 			"path": "loading-page/loading-page",
-			"navigationBarTitleText": "加载页"
+			"style": {
+				"navigationBarTitleText": "加载页"
+			}
 		}, {
 			"path": "loadmore/loadmore",
-			"navigationBarTitleText": "加载更多"
+			"style": {
+				"navigationBarTitleText": "加载更多"
+			}
 		}, {
 			"path": "cell/cell",
-			"navigationBarTitleText": "单元格"
+			"style": {
+				"navigationBarTitleText": "单元格"
+			}
 		}, {
 			"path": "tag/tag",
-			"navigationBarTitleText": "tag标签"
+			"style": {
+				"navigationBarTitleText": "tag标签"
+			}
 		}, {
 			"path": "transition/transition",
-			"navigationBarTitleText": "动画"
+			"style": {
+				"navigationBarTitleText": "动画"
+			}
 		}]
-	},{
+	}, {
 		"root": "pages/componentsB",
 		"pages": [{
 			"path": "input/input",
-			"navigationBarTitleText": "Input 输入框"
-		},{
+			"style": {
+				"navigationBarTitleText": "Input 输入框"
+			}
+		}, {
 			"path": "textarea/textarea",
-			"navigationBarTitleText": "Textarea 文本域"
-		},{
+			"style": {
+				"navigationBarTitleText": "Textarea 文本域"
+			}
+		}, {
 			"path": "checkbox/checkbox",
-			"navigationBarTitleText": "Checkbox 复选框"
-		},{
+			"style": {
+				"navigationBarTitleText": "Checkbox 复选框"
+			}
+		}, {
 			"path": "radio/radio",
-			"navigationBarTitleText": "Radio 单选框"
-		},{
+			"style": {
+				"navigationBarTitleText": "Radio 单选框"
+			}
+		}, {
 			"path": "switch/switch",
-			"navigationBarTitleText": "Switch 开关选择器"
-		},{
+			"style": {
+				"navigationBarTitleText": "Switch 开关选择器"
+			}
+		}, {
 			"path": "calendar/calendar",
-			"navigationBarTitleText": "Calendar 日历"
+			"style": {
+				"navigationBarTitleText": "Calendar 日历"
+			}
+		}, {
+			"path": "picker/picker",
+			"style": {
+				"navigationBarTitleText": "Picker 选择器"
+			}
+		}, {
+			"path": "datetimePicker/datetimePicker",
+			"style": {
+				"navigationBarTitleText": "DatetimePicker 时间选择器"
+			}
 		}]
-	},{
+	}, {
 		"root": "pages/componentsC",
 		"pages": [{
 			"path": "popup/popup",
-			"navigationBarTitleText": "Popup 弹出层"
+			"style": {
+				"navigationBarTitleText": "Popup 弹出层"
+			}
 		}]
 	}],
 	"globalStyle": {

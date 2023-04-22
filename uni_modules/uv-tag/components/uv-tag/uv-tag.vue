@@ -97,6 +97,7 @@
 	 */
 	export default {
 		name: 'uv-tag',
+		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
