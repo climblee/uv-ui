@@ -71,7 +71,6 @@
 
 <script>
 import value from './value.js'
-import '@/uni_modules/uv-ui-tools'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import button from '@/uni_modules/uv-ui-tools/libs/mixin/button.js'

@@ -1,4 +1,5 @@
 import App from './App'
+import uvUI from '@/uni_modules/uv-ui-tools'
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false

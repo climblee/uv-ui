@@ -3,7 +3,6 @@
 </template>
 
 <script>
-	import '@/uni_modules/uv-ui-tools'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -26,11 +25,11 @@
 			gapStyle() {
 				const style = {
 					backgroundColor: this.bgColor,
-					height: uni.$uv.addUnit(this.height),
-					marginTop: uni.$uv.addUnit(this.marginTop),
-					marginBottom: uni.$uv.addUnit(this.marginBottom),
+					height: uni.$uv?.addUnit(this.height),
+					marginTop: uni.$uv?.addUnit(this.marginTop),
+					marginBottom: uni.$uv?.addUnit(this.marginBottom),
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return uni.$uv?.deepMerge(style, uni.$uv?.addStyle(this.customStyle))
 			}
 		}
 	};

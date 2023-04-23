@@ -1,4 +1,3 @@
-// import存在重复引用js问题么? https://blog.csdn.net/snans/article/details/123808010
 // 路由封装
 import route from './libs/util/route.js'
 // 公共工具函数

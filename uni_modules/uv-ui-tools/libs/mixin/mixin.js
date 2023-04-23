@@ -1,3 +1,4 @@
+if(!uni.$uv) console.log(`\n %c 请在main.js中添加代码：import uvUI from '@/uni_modules/uv-ui-tools' \n\n`, 'color: #ffffff; background: #f9ae3d; padding:5px 0; border-radius: 5px;');
 export default {
     // 定义每个组件都可能需要用到的外部样式以及类名
     props: {

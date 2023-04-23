@@ -76,7 +76,6 @@
  * @event {Function} change		当选择值变化时触发
  * @event {Function} confirm	点击确定按钮，返回当前选择的值
  */
-import '@/uni_modules/uv-ui-tools'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from './props.js';
