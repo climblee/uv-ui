@@ -108,6 +108,11 @@
 			"style": {
 				"navigationBarTitleText": "DatetimePicker 时间选择器"
 			}
+		}, {
+			"path": "code/code",
+			"style": {
+				"navigationBarTitleText": "Code 验证码倒计时"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

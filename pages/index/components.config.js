@@ -111,6 +111,11 @@ export default [{
         icon: 'datetimePicker',
         title: 'DatetimePicker 时间选择器',
         title_en: 'Picker'
+    }, {
+        path: '/pages/componentsB/code/code',
+        icon: 'code',
+        title: 'Code 验证码倒计时',
+        title_en: 'VerificationCode'
     },{
         path: '/pages/componentsC/form/form',
         icon: 'form',
@@ -141,11 +146,6 @@ export default [{
         icon: 'upload',
         title: 'Upload 上传',
         title_en: 'Upload'
-    }, {
-        path: '/pages/componentsB/code/code',
-        icon: 'code',
-        title: 'Code 验证码倒计时',
-        title_en: 'VerificationCode'
     }, {
         path: '/pages/componentsB/slider/slider',
         icon: 'slider',
