@@ -35,10 +35,9 @@
 			<slot>
 				<uv-line v-if="description"></uv-line>
 				<view class="uv-action-sheet__item-wrap">
-					<template v-for="(item, index) in actions">
+					<template v-for="(item, index) in actions" :key="index">
 						<!-- #ifdef MP -->
 						<button
-						    :key="index"
 						    class="uv-reset-button"
 						    :openType="item.openType"
 						    @getuserinfo="onGetUserInfo"

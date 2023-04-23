@@ -1,12 +1,14 @@
 <template>
-	<view class="u-form">
+	<view class="uv-form">
 		<slot />
 	</view>
 </template>
 
 <script>
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from "./props.js";
-	import Schema from "../../libs/util/async-validator";
+	import Schema from "./valid.js";
 	// 去除警告信息
 	Schema.warning = function() {};
 	/**
@@ -21,11 +23,11 @@
 	 * @property {String | Number}				labelWidth		提示文字的宽度，单位px  ( 默认 45 ）
 	 * @property {String}						labelAlign		lable字体的对齐方式   ( 默认 ‘left' ）
 	 * @property {Object}						labelStyle		lable的样式，对象形式
-	 * @example <u--formlabelPosition="left" :model="model1" :rules="rules" ref="form1"></u--form>
+	 * @example <uv--formlabelPosition="left" :model="model1" :rules="rules" ref="form1"></uv--form>
 	 */
 	export default {
-		name: "u-form",
-		mixins: [uni.$u.mpMixin, uni.$u.mixin, props],
+		name: "uv-form",
+		mixins: [mpMixin, mixin, props],
 		provide() {
 			return {
 				uForm: this,
@@ -48,11 +50,11 @@
 					this.setRules(n);
 				},
 			},
-			// 监听属性的变化，通知子组件u-form-item重新获取信息
+			// 监听属性的变化，通知子组件uv-form-item重新获取信息
 			propsChange(n) {
 				if (this.children?.length) {
 					this.children.map((child) => {
-						// 判断子组件(u-form-item)如果有updateParentData方法的话，就就执行(执行的结果是子组件重新从父组件拉取了最新的值)
+						// 判断子组件(uv-form-item)如果有updateParentData方法的话，就就执行(执行的结果是子组件重新从父组件拉取了最新的值)
 						typeof child.updateParentData == "function" &&
 							child.updateParentData();
 					});
@@ -63,7 +65,7 @@
 				immediate: true,
 				handler(n) {
 					if (!this.originalModel) {
-						this.originalModel = uni.$u.deepClone(n);
+						this.originalModel = uni.$uv.deepClone(n);
 					}
 				},
 			},
@@ -81,7 +83,7 @@
 			},
 		},
 		created() {
-			// 存储当前form下的所有u-form-item的实例
+			// 存储当前form下的所有uv-form-item的实例
 			// 不能定义在data中，否则微信小程序会造成循环引用而报错
 			this.children = [];
 		},
@@ -91,31 +93,31 @@
 				// 判断是否有规则
 				if (Object.keys(rules).length === 0) return;
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.model).length === 0) {
-					uni.$u.error('设置rules，model必须设置！如果已经设置，请刷新页面。');
+					uni.$uv.error('设置rules，model必须设置！如果已经设置，请刷新页面。');
 					return;
 				};
 				this.formRules = rules;
 				// 重新将规则赋予Validator
 				this.validator = new Schema(rules);
 			},
-			// 清空所有u-form-item组件的内容，本质上是调用了u-form-item组件中的resetField()方法
+			// 清空所有uv-form-item组件的内容，本质上是调用了uv-form-item组件中的resetField()方法
 			resetFields() {
 				this.resetModel();
 			},
 			// 重置model为初始值的快照
 			resetModel(obj) {
-				// 历遍所有u-form-item，根据其prop属性，还原model的原始快照
+				// 历遍所有uv-form-item，根据其prop属性，还原model的原始快照
 				this.children.map((child) => {
 					const prop = child?.prop;
-					const value = uni.$u.getProperty(this.originalModel, prop);
-					uni.$u.setProperty(this.model, prop, value);
+					const value = uni.$uv.getProperty(this.originalModel, prop);
+					uni.$uv.setProperty(this.model, prop, value);
 				});
 			},
 			// 清空校验结果
 			clearValidate(props) {
 				props = [].concat(props);
 				this.children.map((child) => {
-					// 如果u-form-item的prop在props数组中，则清除对应的校验结果信息
+					// 如果uv-form-item的prop在props数组中，则清除对应的校验结果信息
 					if (props[0] === undefined || props.includes(child.prop)) {
 						child.message = null;
 					}
@@ -135,7 +137,7 @@
 						const childErrors = [];
 						if (value.includes(child.prop)) {
 							// 获取对应的属性，通过类似'a.b.c'的形式
-							const propertyVal = uni.$u.getProperty(
+							const propertyVal = uni.$uv.getProperty(
 								this.model,
 								child.prop
 							);
@@ -153,7 +155,7 @@
 							// 对rules数组进行校验
 							for (let i = 0; i < rules.length; i++) {
 								const ruleItem = rules[i];
-								// 将u-form-item的触发器转为数组形式
+								// 将uv-form-item的触发器转为数组形式
 								const trigger = [].concat(ruleItem?.trigger);
 								// 如果是有传入触发事件，但是此form-item却没有配置此触发器的话，不执行校验操作
 								if (event && !trigger.includes(event)) continue;
@@ -165,7 +167,7 @@
 										[propertyName]: propertyVal,
 									},
 									(errors, fields) => {
-										if (uni.$u.test.array(errors)) {
+										if (uni.$uv.test.array(errors)) {
 											errorsRes.push(...errors);
 											childErrors.push(...errors);
 										}
@@ -184,7 +186,7 @@
 			validate(callback) {
 				// 开发环境才提示，生产环境不会提示
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.formRules).length === 0) {
-					uni.$u.error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
+					uni.$uv.error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
 					return;
 				}
 				return new Promise((resolve, reject) => {
@@ -197,7 +199,7 @@
 						this.validateField(formItemProps, (errors) => {
 							if(errors.length) {
 								// 如果错误提示方式为toast，则进行提示
-								this.errorType === 'toast' && uni.$u.toast(errors[0].message)
+								this.errorType === 'toast' && uni.$uv.toast(errors[0].message)
 								reject(errors)
 							} else {
 								resolve(true)
@@ -209,6 +211,3 @@
 		},
 	};
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -69,6 +69,11 @@
 	}, {
 		"root": "pages/componentsB",
 		"pages": [{
+			"path": "form/form",
+			"style": {
+				"navigationBarTitleText": "Form 表单"
+			}
+		},{
 			"path": "input/input",
 			"style": {
 				"navigationBarTitleText": "Input 输入框"
