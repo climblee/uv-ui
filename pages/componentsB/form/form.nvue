@@ -1,5 +1,5 @@
 <template>
-	<view class="uv-page">
+	<view class="uv-page" style="background-color: #fff;">
 		<!-- <uv-navbar
 			title="表单"
 			@leftClick="navigateBack"

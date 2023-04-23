@@ -35,7 +35,7 @@
 			<slot>
 				<uv-line v-if="description"></uv-line>
 				<view class="uv-action-sheet__item-wrap">
-					<template v-for="(item, index) in actions" :key="index">
+					<view v-for="(item, index) in actions" :key="index">
 						<!-- #ifdef MP -->
 						<button
 						    class="uv-reset-button"
@@ -84,7 +84,7 @@
 						</button>
 						<!-- #endif -->
 						<uv-line v-if="index !== actions.length - 1"></uv-line>
-					</template>
+					</view>
 				</view>
 			</slot>
 			<uv-gap
