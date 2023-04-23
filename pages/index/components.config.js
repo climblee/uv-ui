@@ -197,7 +197,7 @@ export default [{
         title: 'Tooltip 长按提示',
         title_en: 'ActionSheet'
     }, {
-        path: '/pages/componentsB/actionSheet/actionSheet',
+        path: '/pages/componentsC/actionSheet/actionSheet',
         icon: 'actionSheet',
         title: 'ActionSheet 上拉菜单',
         title_en: 'ActionSheet'

@@ -121,6 +121,11 @@
 			"style": {
 				"navigationBarTitleText": "Popup 弹出层"
 			}
+		},{
+			"path": "actionSheet/actionSheet",
+			"style": {
+				"navigationBarTitleText": "ActionSheet 上拉菜单"
+			}
 		}]
 	}],
 	"globalStyle": {
