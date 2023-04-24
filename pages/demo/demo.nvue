@@ -80,7 +80,5 @@
 </script>
 
 <style>
-.my-demo view {
-	margin: 0 0 10px 0;
-}
+
 </style>

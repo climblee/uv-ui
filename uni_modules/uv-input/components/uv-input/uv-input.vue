@@ -13,7 +13,7 @@
                     ></uv-icon>
                 </slot>
             </view>
-            <view class="uv-input__content__field-wrapper" @tap="clickHandler">
+            <view class="uv-input__content__field-wrapper" @click="clickHandler">
 				<!-- 根据uni-app的input组件文档，H5和APP中只要声明了password参数(无论true还是false)，type均失效，此时
 					为了防止type=number时，又存在password属性，type无效，此时需要设置password为undefined
 				 -->
@@ -44,6 +44,7 @@
             	    @focus="onFocus"
             	    @confirm="onConfirm"
             	    @keyboardheightchange="onkeyboardheightchange"
+									@click="()=>{}"
             	/>
             </view>
             <view
