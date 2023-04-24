@@ -58,13 +58,6 @@
 
 <script>
 	
-	async function importModule() {
-		const module = await import('@/uni_modules/uv-ui-tools');
-		console.log('module',module)
-	}
-	if(true){
-		importModule();
-	}
 	export default {
 		data() {
 			return {
