@@ -140,3 +140,7 @@
 		},
 	}
 </script>
+<style lang="scss" scoped>
+	.uv-page {
+	}
+</style>

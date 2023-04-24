@@ -15,7 +15,7 @@
 <style lang="scss">
 	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
 	@import '@/uni_modules/uv-ui-tools/theme.scss';
-	@import "common/demo.scss";
+	@import "@/common/demo.scss";
 	/*每个页面公共css */
 	.uv-page {
 		padding: 15px 15px 40px;

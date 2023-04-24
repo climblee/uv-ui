@@ -1,80 +1,65 @@
 <template>
-    <view
-        class="uv-rate"
-        :id="elId"
-        ref="uv-rate"
-        :style="[$uv.addStyle(customStyle)]"
-    >
-        <view
-            class="uv-rate__content"
-            @touchmove.stop="touchMove"
-            @touchend.stop="touchEnd"
-        >
-            <view
-                class="uv-rate__content__item"
-                v-for="(item, index) in Number(count)"
-                :key="index"
-                :class="[elClass]"
-            >
-                <view
-                    class="uv-rate__content__item__icon-wrap"
-                    ref="uv-rate__content__item__icon-wrap"
-                    @tap.stop="clickHandler($event, index + 1)"
-                >
-                    <uv-icon
-                        :name="
+	<view class="uv-rate"
+		:id="elId"
+		ref="uv-rate"
+		:style="[$uv.addStyle(customStyle)]">
+		<view class="uv-rate__content"
+			@touchmove.stop="touchMove"
+			@touchend.stop="touchEnd">
+			<view class="uv-rate__content__item"
+				v-for="(item, index) in Number(count)"
+				:key="index"
+				:class="[elClass]">
+				<view class="uv-rate__content__item__icon-wrap"
+					ref="uv-rate__content__item__icon-wrap"
+					@tap.stop="clickHandler($event, index + 1)">
+					<uv-icon :name="
                             Math.floor(activeIndex) > index
                                 ? activeIcon
                                 : inactiveIcon
                         "
-                        :color="
+						:color="
                             disabled
                                 ? '#c8c9cc'
                                 : Math.floor(activeIndex) > index
                                 ? activeColor
                                 : inactiveColor
                         "
-                        :custom-style="{
+						:custom-style="{
                             'padding-left': $uv.addUnit(gutter / 2),
 							'padding-right': $uv.addUnit(gutter / 2)
                         }"
-                        :size="size"
-                    ></uv-icon>
-                </view>
-                <view
-                    v-if="allowHalf"
-                    @tap.stop="clickHandler($event, index + 1)"
-                    class="uv-rate__content__item__icon-wrap uv-rate__content__item__icon-wrap--half"
-                    :style="[{
+						:size="size"></uv-icon>
+				</view>
+				<view v-if="allowHalf"
+					@tap.stop="clickHandler($event, index + 1)"
+					class="uv-rate__content__item__icon-wrap uv-rate__content__item__icon-wrap--half"
+					:style="[{
                         width: $uv.addUnit(rateWidth / 2),
                     }]"
-                    ref="uv-rate__content__item__icon-wrap"
-                >
-                    <uv-icon
-                        :name="
+					ref="uv-rate__content__item__icon-wrap">
+					<uv-icon :name="
                             Math.ceil(activeIndex) > index
                                 ? activeIcon
                                 : inactiveIcon
                         "
-                        :color="
+						:color="
                             disabled
                                 ? '#c8c9cc'
                                 : Math.ceil(activeIndex) > index
                                 ? activeColor
                                 : inactiveColor
                         "
-                        :custom-style="{
+						:custom-style="{
 							'padding-left': $uv.addUnit(gutter / 2),
 							'padding-right': $uv.addUnit(gutter / 2)
                         }"
-                        :size="size"
-                    ></uv-icon>
-                </view>
-            </view>
-        </view>
-    </view>
+						:size="size"></uv-icon>
+				</view>
+			</view>
+		</view>
+	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -112,7 +97,7 @@
 				elId: uni.$uv.guid(),
 				elClass: uni.$uv.guid(),
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
-				activeIndex: this.value,
+				activeIndex: this.modelValue,
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
 				moving: false,
@@ -136,7 +121,7 @@
 				await uni.$uv.sleep();
 				// uView封装的获取节点的方法，详见文档
 				// #ifndef APP-NVUE
-				this.$uGetRect("#" + this.elId).then((res) => {
+				this.$uvGetRect("#" + this.elId).then((res) => {
 					this.rateBoxLeft = res.left;
 				});
 				// #endif
@@ -150,17 +135,15 @@
 			getRateIconWrapRect() {
 				// uView封装的获取节点的方法，详见文档
 				// #ifndef APP-NVUE
-				this.$uGetRect("." + this.elClass).then((res) => {
+				this.$uvGetRect("." + this.elClass).then((res) => {
 					this.rateWidth = res.width;
 				});
 				// #endif
 				// #ifdef APP-NVUE
-				dom.getComponentRect(
-					this.$refs["uv-rate__content__item__icon-wrap"][0],
+				dom.getComponentRect(this.$refs["uv-rate__content__item__icon-wrap"][0],
 					(res) => {
 						this.rateWidth = res.size.width;
-					}
-				);
+					});
 				// #endif
 			},
 			// 手指滑动
@@ -199,7 +182,7 @@
 				// nvue下，无法通过点击获得坐标信息，这里通过元素的位置尺寸值模拟坐标
 				x = index * this.rateWidth + this.rateBoxLeft;
 				// #endif
-				this.getActiveIndex(x,true);
+				this.getActiveIndex(x, true);
 			},
 			// 发出事件
 			emitEvent() {
@@ -209,7 +192,7 @@
 				this.$emit("input", this.activeIndex);
 			},
 			// 获取当前激活的评分图标
-			getActiveIndex(x,isClick = false) {
+			getActiveIndex(x, isClick = false) {
 				if (this.disabled || this.readonly) {
 					return;
 				}
@@ -236,19 +219,17 @@
 					// 取余，判断小数的区间范围
 					const decimal = distance % this.rateWidth;
 					// 非半星时，只有超过了图标的一半距离，才认为是选择了这颗星
-					if (isClick){
+					if (isClick) {
 						if (decimal > 0) index++;
 					} else {
 						if (decimal > this.rateWidth / 2) index++;
 					}
-
 				}
 				this.activeIndex = Math.min(index, this.count);
 				// 对最少颗星星的限制
 				if (this.activeIndex < this.minCount) {
 					this.activeIndex = this.minCount;
 				}
-
 				// 设置延时为了让click事件在touchmove之前触发
 				setTimeout(() => {
 					this.moving = true;
@@ -264,44 +245,39 @@
 		},
 	};
 </script>
-
-<style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-$uv-rate-margin: 0 !default;
-$uv-rate-padding: 0 !default;
-$uv-rate-item-icon-wrap-half-top: 0 !default;
-$uv-rate-item-icon-wrap-half-left: 0 !default;
-
-.uv-rate {
-    @include flex;
-    align-items: center;
-    margin: $uv-rate-margin;
-    padding: $uv-rate-padding;
-    /* #ifndef APP-NVUE */
-    touch-action: none;
-    /* #endif */
-
-    &__content {
-        @include flex;
-
-		&__item {
-		    position: relative;
-
-		    &__icon-wrap {
-		        &--half {
-		            position: absolute;
-		            overflow: hidden;
-		            top: $uv-rate-item-icon-wrap-half-top;
-		            left: $uv-rate-item-icon-wrap-half-left;
-		        }
-		    }
+<style lang="scss"
+	scoped>
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	$uv-rate-margin: 0 !default;
+	$uv-rate-padding: 0 !default;
+	$uv-rate-item-icon-wrap-half-top: 0 !default;
+	$uv-rate-item-icon-wrap-half-left: 0 !default;
+	.uv-rate {
+		@include flex;
+		align-items: center;
+		margin: $uv-rate-margin;
+		padding: $uv-rate-padding;
+		/* #ifndef APP-NVUE */
+		touch-action: none;
+		/* #endif */
+		&__content {
+			@include flex;
+			&__item {
+				position: relative;
+				&__icon-wrap {
+					&--half {
+						position: absolute;
+						overflow: hidden;
+						top: $uv-rate-item-icon-wrap-half-top;
+						left: $uv-rate-item-icon-wrap-half-left;
+					}
+				}
+			}
 		}
-    }
-}
-
-.uv-icon {
-    /* #ifndef APP-NVUE */
-    box-sizing: border-box;
-    /* #endif */
-}
+	}
+	.uv-icon {
+		/* #ifndef APP-NVUE */
+		box-sizing: border-box;
+		/* #endif */
+	}
 </style>
