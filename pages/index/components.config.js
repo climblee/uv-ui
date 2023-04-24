@@ -127,7 +127,7 @@ export default [{
 			title: 'Keyboard 键盘',
 			title_en: 'Keyboard'
 		}, {
-			path: '/pages/componentsA/rate/rate',
+			path: '/pages/componentsB/rate/rate',
 			icon: 'rate',
 			title: 'Rate 评分',
 			title_en: 'Rate'

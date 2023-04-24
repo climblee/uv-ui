@@ -123,6 +123,11 @@
 			"style": {
 				"navigationBarTitleText": "Keyboard 键盘"
 			}
+		}, {
+			"path": "rate/rate",
+			"style": {
+				"navigationBarTitleText": "Rate 评分"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
