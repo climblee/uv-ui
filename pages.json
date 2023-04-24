@@ -118,6 +118,11 @@
 			"style": {
 				"navigationBarTitleText": "Code 验证码倒计时"
 			}
+		}, {
+			"path": "keyboard/keyboard",
+			"style": {
+				"navigationBarTitleText": "Keyboard 键盘"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

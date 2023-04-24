@@ -25,6 +25,7 @@
 			</template>
 			</uv-cell>
 		</uv-cell-group>
+		<view>
 		<uv-datetime-picker
 			:show="show1"
 			v-model="value1"
@@ -99,6 +100,7 @@
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
+		</view>
 	</view>
 </template>
 <script>

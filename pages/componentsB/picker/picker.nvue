@@ -25,6 +25,7 @@
 				</template>
 			</uv-cell>
 		</uv-cell-group>
+		<view>
 		<uv-picker
 			:show="show1"
 			:columns="columns1"
@@ -74,6 +75,7 @@
 			@close="close"
 			@change="change"
 		></uv-picker>
+		</view>
 	</view>
 </template>
 
