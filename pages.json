@@ -128,6 +128,11 @@
 			"style": {
 				"navigationBarTitleText": "Rate 评分"
 			}
+		}, {
+			"path": "numberBox/numberBox",
+			"style": {
+				"navigationBarTitleText": "NumberBox 步进器"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
