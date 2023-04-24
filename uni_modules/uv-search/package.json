@@ -1,10 +1,10 @@
 {
-  "id": "uv-upload",
-  "displayName": "uv-upload",
+  "id": "uv-search",
+  "displayName": "uv-search",
   "version": "1.0.0",
-  "description": "uv-upload",
+  "description": "uv-search",
   "keywords": [
-    "uv-upload"
+    "uv-search"
 ],
   "repository": "",
   "engines": {
