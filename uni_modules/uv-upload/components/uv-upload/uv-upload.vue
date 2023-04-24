@@ -43,7 +43,6 @@
 							<uv-loading-icon
 							    size="22"
 							    mode="circle"
-							    color="#ffffff"
 							    v-else
 							/>
 						</view>
