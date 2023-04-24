@@ -133,6 +133,11 @@
 			"style": {
 				"navigationBarTitleText": "NumberBox 步进器"
 			}
+		}, {
+			"path": "upload/upload",
+			"style": {
+				"navigationBarTitleText": "Upload 上传"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

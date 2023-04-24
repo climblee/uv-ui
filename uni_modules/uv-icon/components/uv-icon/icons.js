@@ -69,7 +69,7 @@ export default {
     'uvicon-heart': '\ue7df',
     'uvicon-heart-fill': '\ue851',
     'uvicon-camera': '\ue7d7',
-    'uvicon-cameruv-fill': '\ue870',
+    'uvicon-camera-fill': '\ue870',
     'uvicon-more-circle': '\ue63e',
     'uvicon-more-circle-fill': '\ue645',
     'uvicon-chat': '\ue620',

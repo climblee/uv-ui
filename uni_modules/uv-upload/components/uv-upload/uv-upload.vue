@@ -128,7 +128,7 @@
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import { chooseFile } from './utils';
-	import mixin2 from './mixin.js';
+	import mixin_accept from './mixin.js';
 	import props from './props.js';
 	/**
 	 * upload 上传
@@ -165,7 +165,10 @@
 	 */
 	export default {
 		name: "uv-upload",
-		mixins: [mpMixin, mixin, mixin2, props],
+		// #ifdef VUE3
+		emits: ['error', 'beforeRead', 'oversize', 'afterRead', 'delete', 'clickPreview'],
+		// #endif
+		mixins: [mpMixin, mixin, mixin_accept, props],
 		data() {
 			return {
 				// #ifdef APP-NVUE
@@ -354,7 +357,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../../libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/theme.scss';
 	$uv-upload-preview-border-radius: 2px !default;
 	$uv-upload-preview-margin: 0 8px 8px 0 !default;
 	$uv-upload-image-width:80px !default;
