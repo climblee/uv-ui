@@ -1,10 +1,10 @@
 {
-  "id": "uv-list",
-  "displayName": "uv-list",
+  "id": "uv-avatar",
+  "displayName": "uv-avatar",
   "version": "1.0.0",
-  "description": "uv-list",
+  "description": "uv-avatar",
   "keywords": [
-    "uv-list"
+    "uv-avatar"
 ],
   "repository": "",
   "engines": {
@@ -32,7 +32,8 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools"
+			"uv-ui-tools",
+			"u-icon"
 		],
     "encrypt": [],
     "platforms": {

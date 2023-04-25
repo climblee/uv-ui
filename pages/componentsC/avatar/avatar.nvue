@@ -1,0 +1,183 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础演示</text>
+			<view class="uv-demo-block__content">
+				<uv-avatar :src="src1"></uv-avatar>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">头像形状</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-avatar-item">
+					<uv-avatar
+						:src="src2"
+						shape="circle"
+						@click="click"
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						:src="src3"
+						shape="square"
+					></uv-avatar>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">头像尺寸</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-avatar-item">
+					<uv-avatar
+						:src="src4"
+						size="30"
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						:src="src5"
+						size="40"
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						:src="src6"
+						size="50"
+					></uv-avatar>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">图标头像</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-avatar-item">
+					<uv-avatar
+						icon="red-packet-fill"
+						fontSize="22"
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						icon="star-fill"
+						fontSize="22"
+					></uv-avatar>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">文字头像(自动背景色)</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-avatar-item">
+					<uv-avatar
+						text="U"
+						fontSize="20"
+						randomBgColor
+						:colorIndex="0"
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						text="邓"
+						fontSize="18"
+						randomBgColor
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						text="张"
+						fontSize="18"
+						randomBgColor
+					></uv-avatar>
+				</view>
+				<view class="uv-avatar-item">
+					<uv-avatar
+						text="王"
+						fontSize="18"
+						randomBgColor
+					></uv-avatar>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">图片加载失败(显示默认头像)</text>
+			<view class="uv-demo-block__content">
+				<uv-avatar :src="src7"></uv-avatar>
+			</view>
+		</view>
+		<!-- #ifdef MP-WEIXIN || MP-QQ || MP-BAIDU -->
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">小程序开放能力</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-avatar-item">
+					<uv-avatar
+						mpAvatar
+						size="60"
+					></uv-avatar>
+				</view>
+			</view>
+		</view>
+		<!-- #endif -->
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">头像组</text>
+			<view class="uv-demo-block__content">
+				<uv-avatar-group
+					:urls="urls"
+					size="35"
+					gap="0.4"
+				></uv-avatar-group>
+			</view>
+			<view class="uv-demo-block__content" style="margin-top: 20px">
+				<uv-avatar-group
+					:urls="urls"
+					size="35"
+					gap="0.6"
+				></uv-avatar-group>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				src1: 'https://cdn.uviewui.com/uview/album/1.jpg',
+				src2: 'https://cdn.uviewui.com/uview/album/2.jpg',
+				src3: 'https://cdn.uviewui.com/uview/album/3.jpg',
+				src4: 'https://cdn.uviewui.com/uview/album/4.jpg',
+				src5: 'https://cdn.uviewui.com/uview/album/5.jpg',
+				src6: 'https://cdn.uviewui.com/uview/album/6.jpg',
+				src7: 'https://cdn.uviewui.com/uview/album/noExist.jpg',
+				urls: [
+					'https://cdn.uviewui.com/uview/album/1.jpg',
+					'https://cdn.uviewui.com/uview/album/2.jpg',
+					'https://cdn.uviewui.com/uview/album/3.jpg',
+					'https://cdn.uviewui.com/uview/album/4.jpg',
+					'https://cdn.uviewui.com/uview/album/7.jpg',
+					'https://cdn.uviewui.com/uview/album/6.jpg',
+					'https://cdn.uviewui.com/uview/album/5.jpg'
+				]
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+			click(name) {
+				console.log('click', name);
+			}
+		},
+	}
+</script>
+
+<style lang="scss">
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	.uv-demo-block__content {
+		@include flex;
+		align-items: center;
+	}
+
+	.uv-avatar-item {
+		margin-right: 30px;
+	}
+</style>

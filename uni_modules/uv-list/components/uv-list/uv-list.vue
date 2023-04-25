@@ -1,7 +1,7 @@
 <template>
 	<!-- #ifdef APP-NVUE -->
 	<list
-		class="u-list"
+		class="uv-list"
 		:enableBackToTop="enableBackToTop"
 		:loadmoreoffset="lowerThreshold"
 		:showScrollbar="showScrollbar"
@@ -15,7 +15,7 @@
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
 	<scroll-view
-		class="u-list"
+		class="uv-list"
 		:scroll-into-view="scrollIntoView"
 		:style="[listStyle]"
 		scroll-y
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	// #ifdef APP-NVUE
 	const dom = uni.requireNativePlugin('dom')
@@ -61,11 +63,11 @@
 	 * @property {String ｜ Number}	preLoadScreen		列表前后预渲染的屏数，1代表一个屏幕的高度，1.5代表1个半屏幕高度  （默认 1 ）
 	 * @property {Object}			customStyle			定义需要用到的外部样式
 	 *
-	 * @example <u-list @scrolltolower="scrolltolower"></u-list>
+	 * @example <uv-list @scrolltolower="scrolltolower"></uv-list>
 	 */
 	export default {
-		name: 'u-list',
-		mixins: [uni.$u.mpMixin, uni.$u.mixin,props],
+		name: 'uv-list',
+		mixins: [mpMixin, mixin, props],
 		watch: {
 			scrollIntoView(n) {
 				this.scrollIntoViewById(n)
@@ -77,23 +79,23 @@
 				innerScrollTop: 0,
 				// vue下，scroll-view在上拉加载时的偏移值
 				offset: 0,
-				sys: uni.$u.sys()
+				sys: uni.$uv.sys()
 			}
 		},
 		computed: {
 			listStyle() {
 				const style = {},
-					addUnit = uni.$u.addUnit
+					addUnit = uni.$uv.addUnit
 				if (this.width != 0) style.width = addUnit(this.width)
 				if (this.height != 0) style.height = addUnit(this.height)
 				// 如果没有定义列表高度，则默认使用屏幕高度
 				if (!style.height) style.height = addUnit(this.sys.windowHeight, 'px')
-				return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle))
+				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
 			}
 		},
 		provide() {
 			return {
-				uList: this
+				uvList: this
 			}
 		},
 		created() {
@@ -119,7 +121,7 @@
 			},
 			scrollIntoViewById(id) {
 				// #ifdef APP-NVUE
-				// 根据id参数，找到所有u-list-item中匹配的节点，再通过dom模块滚动到对应的位置
+				// 根据id参数，找到所有uv-list-item中匹配的节点，再通过dom模块滚动到对应的位置
 				const item = this.refs.find(item => item.$refs[id] ? true : false)
 				dom.scrollToElement(item.$refs[id], {
 					// 是否需要滚动动画
@@ -129,14 +131,14 @@
 			},
 			// 滚动到底部触发事件
 			scrolltolower(e) {
-				uni.$u.sleep(30).then(() => {
+				uni.$uv.sleep(30).then(() => {
 					this.$emit('scrolltolower')
 				})
 			},
 			// #ifndef APP-NVUE
 			// 滚动到底部时触发，非nvue有效
 			scrolltoupper(e) {
-				uni.$u.sleep(30).then(() => {
+				uni.$uv.sleep(30).then(() => {
 					this.$emit('scrolltoupper')
 					// 这一句很重要，能绝对保证在性功能障碍的webview，滚动条到顶时，取消偏移值，让页面置顶
 					this.offset = 0
@@ -148,10 +150,9 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "../../libs/css/components.scss";
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
 
-	.u-list {
+	.uv-list {
 		@include flex(column);
-
 	}
 </style>

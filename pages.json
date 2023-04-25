@@ -156,6 +156,16 @@
 			"style": {
 				"navigationBarTitleText": "ActionSheet 上拉菜单"
 			}
+		}, {
+			"path": "list/list",
+			"style": {
+				"navigationBarTitleText": "List 列表"
+			}
+		}, {
+			"path": "avatar/avatar",
+			"style": {
+				"navigationBarTitleText": "Avatar 头像"
+			}
 		}]
 	}],
 	"globalStyle": {

@@ -3,10 +3,10 @@
 	<cell>
 		<!-- #endif -->
 		<view
-			class="u-list-item"
-			:ref="`u-list-item-${anchor}`"
-			:anchor="`u-list-item-${anchor}`"
-			:class="[`u-list-item-${anchor}`]"
+			class="uv-list-item"
+			:ref="`uv-list-item-${anchor}`"
+			:anchor="`uv-list-item-${anchor}`"
+			:class="[`uv-list-item-${anchor}`]"
 		>
 			<slot />
 		</view>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	// #ifdef APP-NVUE
 	const dom = uni.requireNativePlugin('dom')
@@ -25,28 +27,28 @@
 	 * @description 该组件为高性能列表组件
 	 * @tutorial https://www.uviewui.com/components/list.html
 	 * @property {String | Number}	anchor	用于滚动到指定item
-	 * @example <u-list-ite v-for="(item, index) in indexList" :key="index" ></u-list-item>
+	 * @example <uv-list-ite v-for="(item, index) in indexList" :key="index" ></uv-list-item>
 	 */
 	export default {
-		name: 'u-list-item',
-		mixins: [uni.$u.mpMixin, uni.$u.mixin,props],
+		name: 'uv-list-item',
+		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
 				// 节点信息
 				rect: {},
 				index: 0,
 				show: true,
-				sys: uni.$u.sys()
+				sys: uni.$uv.sys()
 			}
 		},
 		computed: {
 
 		},
-		inject: ['uList'],
+		inject: ['uvList'],
 		watch: {
 			// #ifndef APP-NVUE
-			'uList.innerScrollTop'(n) {
-				const preLoadScreen = this.uList.preLoadScreen
+			'uvList.innerScrollTop'(n) {
+				const preLoadScreen = this.uvList.preLoadScreen
 				const windowHeight = this.sys.windowHeight
 				if(n <= windowHeight * preLoadScreen) {
 					this.parent.updateOffsetFromChild(0)
@@ -71,19 +73,19 @@
 			},
 			updateParentData() {
 				// 此方法在mixin中
-				this.getParentData('u-list')
+				this.getParentData('uv-list')
 			},
 			resize() {
-				this.queryRect(`u-list-item-${this.anchor}`).then(size => {
+				this.queryRect(`uv-list-item-${this.anchor}`).then(size => {
 					const lastChild = this.parent.children[this.index - 1]
 					this.rect = size
-					const preLoadScreen = this.uList.preLoadScreen
+					const preLoadScreen = this.uvList.preLoadScreen
 					const windowHeight = this.sys.windowHeight
 					// #ifndef APP-NVUE
 					if (lastChild) {
 						this.rect.top = lastChild.rect.top + lastChild.rect.height
 					}
-					if (size.top >= this.uList.innerScrollTop + (1 + preLoadScreen) * windowHeight) this.show =
+					if (size.top >= this.uvList.innerScrollTop + (1 + preLoadScreen) * windowHeight) this.show =
 						false
 					// #endif
 				})
@@ -92,7 +94,7 @@
 			queryRect(el) {
 				return new Promise(resolve => {
 					// #ifndef APP-NVUE
-					this.$uGetRect(`.${el}`).then(size => {
+					this.$uvGetRect(`.${el}`).then(size => {
 						resolve(size)
 					})
 					// #endif
@@ -108,9 +110,3 @@
 		}
 	}
 </script>
-
-<style lang="scss" scoped>
-	@import "../../libs/css/components.scss";
-
-	.u-list-item {}
-</style>
