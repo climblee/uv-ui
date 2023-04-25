@@ -158,6 +158,11 @@
 			"style": {
 				"navigationBarTitleText": "Sticky 吸顶"
 			}
+		}, {
+			"path": "countDown/countDown",
+			"style": {
+				"navigationBarTitleText": "CountDown 倒计时"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

@@ -1,0 +1,205 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础用法</text>
+			<view class="uv-demo-block__content">
+				<uv-count-down :time="30 * 60 * 60 * 1000"
+					format="HH:mm:ss"
+					autoStart
+					millisecond
+					@finish="finish">
+				</uv-count-down>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义格式</text>
+			<view class="uv-demo-block__content">
+				<uv-count-down :time="30 * 60 * 60 * 1000"
+					format="DD:HH:mm:ss"
+					autoStart
+					millisecond
+					@change="onChange">
+					<view class="time">
+						<text class="time__item">{{ timeData.days }}&nbsp;天</text>
+						<text class="time__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}&nbsp;时</text>
+						<text class="time__item">{{ timeData.minutes }}&nbsp;分</text>
+						<text class="time__item">{{ timeData.seconds }}&nbsp;秒</text>
+					</view>
+				</uv-count-down>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">毫秒级渲染</text>
+			<view class="uv-demo-block__content">
+				<uv-count-down :time="30 * 60 * 60 * 1000"
+					format="HH:mm:ss:SSS"
+					autoStart
+					millisecond>
+				</uv-count-down>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义样式</text>
+			<view class="uv-demo-block__content">
+				<uv-count-down :time="30 * 60 * 60 * 1000"
+					format="HH:mm:ss"
+					autoStart
+					millisecond
+					@change="onChange">
+					<view class="time">
+						<view class="time__custom">
+							<text class="time__custom__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}</text>
+						</view>
+						<text class="time__doc">:</text>
+						<view class="time__custom">
+							<text class="time__custom__item">{{ timeData.minutes }}</text>
+						</view>
+						<text class="time__doc">:</text>
+						<view class="time__custom">
+							<text class="time__custom__item">{{ timeData.seconds }}</text>
+						</view>
+					</view>
+				</uv-count-down>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">手动控制</text>
+			<view class="uv-demo-block__content">
+				<uv-count-down ref="countDown"
+					:time="3* 1000"
+					format="ss:SSS"
+					:autoStart="false"
+					millisecond>
+				</uv-count-down>
+			</view>
+			<uv-grid :border="true"
+				:customStyle="{marginTop:10+'px'}">
+				<uv-grid-item @click="reset">
+					<view class="count-down__grid-item">
+						<uv-icon name="reload"
+							:size="22"></uv-icon>
+						<text class="count-down__grid-item__grid-text">重置</text>
+					</view>
+				</uv-grid-item>
+				<uv-grid-item @click="start">
+					<view class="count-down__grid-item">
+						<view class="count-down__grid-item__circle">
+							<uv-icon color="#fff"
+								name="play-right-fill"
+								:size="22"></uv-icon>
+						</view>
+						<text class="count-down__grid-item__grid-text">开始</text>
+					</view>
+				</uv-grid-item>
+				<uv-grid-item @click="pause">
+					<view class="count-down__grid-item">
+						<uv-icon name="pause-circle"
+							:size="22"></uv-icon>
+						<text class="count-down__grid-item__grid-text">暂停</text>
+					</view>
+				</uv-grid-item>
+			</uv-grid>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				timeData: {},
+			}
+		},
+		onLoad() {},
+		methods: {
+			//开始
+			start() {
+				this.$refs.countDown.start();
+			},
+			// 暂停
+			pause() {
+				this.$refs.countDown.pause();
+			},
+			// 重置
+			reset() {
+				this.$refs.countDown.reset();
+			},
+			onChange(e) {
+				this.timeData = e
+			},
+			finish() {
+				console.log('finish');
+			}
+		}
+	}
+</script>
+<style lang="scss">
+	.uv-page {}
+	.time {
+		@include flex;
+		align-items: center;
+		&__custom {
+			margin-top: 4px;
+			width: 22px;
+			height: 22px;
+			background-color: $uv-primary;
+			border-radius: 4px;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			/* #endif */
+			justify-content: center;
+			align-items: center;
+			&__item {
+				color: #fff;
+				font-size: 12px;
+				text-align: center;
+			}
+		}
+		&__doc {
+			color: $uv-primary;
+			padding: 0px 4px;
+		}
+		&__item {
+			color: #606266;
+			font-size: 15px;
+			margin-right: 4px;
+		}
+	}
+	.uv-view {
+		padding: 40px 20px 0px 20px;
+		&__title {
+			font-size: 14px;
+			color: rgb(143, 156, 162);
+			margin-bottom: 10px;
+		}
+	}
+	// 手动控制的btn样式
+	.count-down {
+		&__grid-item {
+			width: 70px;
+			height: 70px;
+			@include flex;
+			justify-content: center;
+			align-items: center;
+			&__circle {
+				width: 32px;
+				height: 32px;
+				border-radius: 32px;
+				background-color: $uv-primary;
+				/* #ifndef APP-NVUE */
+				display: flex;
+				/* #endif */
+				justify-content: center;
+				align-items: center;
+				box-shadow: 1px 1px 4px rgba(155, 191, 255, .7);
+			}
+			&__grid-text {
+				font-size: 14px;
+				color: #909399;
+				/* #ifndef APP-PLUS */
+				box-sizing: border-box;
+				/* #endif */
+				margin-left: 6px;
+			}
+		}
+	}
+</style>
