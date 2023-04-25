@@ -184,6 +184,11 @@
 			"style": {
 				"navigationBarTitleText": "Tabbar 底部导航栏"
 			}
+		}, {
+			"path": "navbar/navbar",
+			"style": {
+				"navigationBarTitleText": "Navbar 导航栏"
+			}
 		}]
 	}],
 	"globalStyle": {

@@ -1,0 +1,131 @@
+<template>
+	<view class="uv-page">
+		<!-- 2.0.19支持autoBack，默认为false -->
+		<uv-navbar
+			title="导航栏"
+			safeAreaInsetTop
+			fixed
+			placeholder
+			:autoBack="true"
+		>
+		</uv-navbar>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">基础功能</text>
+			<uv-navbar
+				title="个人中心"
+				:safeAreaInsetTop="false"
+				:fixed="false"
+				@rightClick="rightClick"
+				@leftClick="leftClick"
+			>
+			</uv-navbar>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义文本</text>
+			<uv-navbar
+				:safeAreaInsetTop="false"
+				title="个人中心"
+				:fixed="false"
+				left-text="返回"
+				rightIcon="map"
+			>
+			</uv-navbar>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义插槽</text>
+			<uv-navbar
+				leftText="返回"
+				:fixed="false"
+				title="个人中心"
+				:safeAreaInsetTop="false"
+			>
+			<template v-slot:left>
+					<view
+						class="uv-nav-slot"
+					>
+						<uv-icon
+							name="arrow-left"
+							size="19"
+						></uv-icon>
+						<uv-line
+							direction="column"
+							:hairline="false"
+							length="16"
+							margin="0 8px"
+						></uv-line>
+						<uv-icon
+							name="home"
+							size="20"
+						></uv-icon>
+					</view>
+				</template>
+			</uv-navbar>
+		</view>
+		<uv-gap height="50"></uv-gap>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			navigateBack() {
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+			rightClick() {
+				console.log('rightClick');
+			},
+			leftClick() {
+				console.log('leftClick');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	/* #ifndef APP-NVUE */
+	page {
+		background-color: $uv-bg-color;
+	}
+	/* #endif */
+	
+	.uv-page {
+		padding: 0;
+		flex: 1;
+		background-color: $uv-bg-color;
+
+		&__item {
+
+			&__title {
+				color: $uv-tips-color;
+				background-color: $uv-bg-color;
+				padding: 15px;
+				font-size: 15px;
+
+				&__slot-title {
+					color: $uv-primary;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	.uv-nav-slot {
+		@include flex;
+		align-items: center;
+		justify-content: space-between;
+		border-width: 0.5px;
+		border-radius: 100px;
+		border-color: $uv-border-color;
+		padding: 3px 7px;
+		opacity: 0.8;
+	}
+</style>
