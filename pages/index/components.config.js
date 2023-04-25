@@ -293,7 +293,7 @@ export default [{
 				title: 'Skeleton 骨架屏',
 				title_en: 'Skeleton'
 			}, {
-				path: '/pages/componentsA/sticky/sticky',
+				path: '/pages/componentsB/sticky/sticky',
 				icon: 'sticky',
 				title: 'Sticky 吸顶',
 				title_en: 'Sticky'

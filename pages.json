@@ -148,6 +148,11 @@
 			"style": {
 				"navigationBarTitleText": "Search 搜索"
 			}
+		}, {
+			"path": "sticky/sticky",
+			"style": {
+				"navigationBarTitleText": "Sticky 吸顶"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
