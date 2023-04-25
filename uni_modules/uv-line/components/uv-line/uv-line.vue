@@ -54,7 +54,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 
 	.uv-line {
 		/* #ifndef APP-NVUE */

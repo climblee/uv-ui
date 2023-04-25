@@ -113,8 +113,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 
 	.uv-tabbar-item {
 		@include flex(column);

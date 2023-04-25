@@ -228,8 +228,8 @@
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-@import '@/uni_modules/uv-ui-tools/theme.scss';
+
+@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 $uv-search-content-padding: 0 10px !default;
 $uv-search-label-color: $uv-main-color !default;
 $uv-search-label-font-size: 14px !default;

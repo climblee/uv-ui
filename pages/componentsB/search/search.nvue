@@ -207,7 +207,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.uv-page__tag-item {
 		@include flex(column);
 		flex: 1

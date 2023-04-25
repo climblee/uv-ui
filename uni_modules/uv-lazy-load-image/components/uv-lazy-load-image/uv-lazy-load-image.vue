@@ -255,7 +255,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	$uv-bg-gray-color: #f3f4f6;
 	.uv-lazy-load {
 		&__item {

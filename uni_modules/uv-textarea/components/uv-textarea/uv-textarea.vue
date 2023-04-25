@@ -1,15 +1,41 @@
 <template>
-	<view class="uv-textarea" :class="textareaClass" :style="[textareaStyle]">
-		<textarea class="uv-textarea__field" :value="innerValue" :style="{ height: $uv.addUnit(height) }" :placeholder="placeholder" :placeholder-style="$uv.addStyle(placeholderStyle, 'string')" :placeholder-class="placeholderClass"
-			:disabled="disabled" :focus="focus" :autoHeight="autoHeight" :fixed="fixed" :cursorSpacing="cursorSpacing" :cursor="cursor" :showConfirmBar="showConfirmBar" :selectionStart="selectionStart" :selectionEnd="selectionEnd"
-			:adjustPosition="adjustPosition" :disableDefaultPadding="disableDefaultPadding" :holdKeyboard="holdKeyboard" :maxlength="maxlen" :confirmType="confirmType" :ignoreCompositionEvent="ignoreCompositionEvent" @focus="onFocus"
-			@blur="onBlur" @linechange="onLinechange" @input="onInput" @confirm="onConfirm" @keyboardheightchange="onKeyboardheightchange"></textarea>
-		<text class="uv-textarea__count" :style="{
+	<view class="uv-textarea"
+		:class="textareaClass"
+		:style="[textareaStyle]">
+		<textarea class="uv-textarea__field"
+			:value="innerValue"
+			:style="{ height: $uv.addUnit(height) }"
+			:placeholder="placeholder"
+			:placeholder-style="$uv.addStyle(placeholderStyle, 'string')"
+			:placeholder-class="placeholderClass"
+			:disabled="disabled"
+			:focus="focus"
+			:autoHeight="autoHeight"
+			:fixed="fixed"
+			:cursorSpacing="cursorSpacing"
+			:cursor="cursor"
+			:showConfirmBar="showConfirmBar"
+			:selectionStart="selectionStart"
+			:selectionEnd="selectionEnd"
+			:adjustPosition="adjustPosition"
+			:disableDefaultPadding="disableDefaultPadding"
+			:holdKeyboard="holdKeyboard"
+			:maxlength="maxlen"
+			:confirmType="confirmType"
+			:ignoreCompositionEvent="ignoreCompositionEvent"
+			@focus="onFocus"
+			@blur="onBlur"
+			@linechange="onLinechange"
+			@input="onInput"
+			@confirm="onConfirm"
+			@keyboardheightchange="onKeyboardheightchange"></textarea>
+		<text class="uv-textarea__count"
+			:style="{
                 'background-color': disabled ? 'transparent' : '#fff',
-            }" v-if="count">{{ innerValue.length }}/{{ maxlen }}</text>
+            }"
+			v-if="count">{{ innerValue.length }}/{{ maxlen }}</text>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -76,10 +102,7 @@
 					this.innerValue = newVal;
 					/* #ifdef H5 */
 					// 在H5中，外部value变化后，修改input中的值，不会触发@input事件，此时手动调用值变化方法
-					if (
-						this.firstChange === false &&
-						this.changeFromInner === false
-					) {
+					if (this.firstChange === false && this.changeFromInner === false) {
 						this.valueChange();
 					}
 					/* #endif */
@@ -96,10 +119,7 @@
 					this.innerValue = newVal;
 					/* #ifdef H5 */
 					// 在H5中，外部value变化后，修改input中的值，不会触发@input事件，此时手动调用值变化方法
-					if (
-						this.firstChange === false &&
-						this.changeFromInner === false
-					) {
+					if (this.firstChange === false && this.changeFromInner === false) {
 						this.valueChange();
 					}
 					/* #endif */
@@ -115,13 +135,8 @@
 			textareaClass() {
 				let classes = [],
 					{ border, disabled } = this;
-				border === "surround" &&
-					(classes = classes.concat(["uv-border", "uv-textarea--radius"]));
-				border === "bottom" &&
-					(classes = classes.concat([
-						"uv-border-bottom",
-						"uv-textarea--no-radius",
-					]));
+				border === "surround" && (classes = classes.concat(["uv-border", "uv-textarea--radius"]));
+				border === "bottom" && (classes = classes.concat(["uv-border-bottom", "uv-textarea--no-radius", ]));
 				disabled && classes.push("uv-textarea--disabled");
 				return classes.join(" ");
 			},
@@ -192,10 +207,8 @@
 		},
 	};
 </script>
-
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	.uv-textarea {
 		border-radius: 4px;
 		background-color: #fff;

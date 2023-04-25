@@ -1,19 +1,3 @@
-	@import '../../theme.scss';
-/* #ifndef APP-NVUE */
-// 由于uView是基于nvue环境进行开发的，此环境中普通元素默认为flex-direction: column;
-// 所以在非nvue中，需要对元素进行重置为flex-direction: column; 否则可能会表现异常
-view, scroll-view, swiper-item {
-	/* #ifdef APP-NVUE */
-	display: flex;
-	/* #endif */
-	flex-direction: column;
-	flex-shrink: 0;
-	flex-grow: 0;
-	flex-basis: auto;
-	align-items: stretch;
-	align-content: flex-start;
-}
-/* #endif */
 // 超出行数，自动显示行尾省略号，最多5行
 // 来自uView的温馨提示：当您在控制台看到此报错，说明需要在App.vue的style标签加上【lang="scss"】
 @for $i from 1 through 5 {
@@ -43,6 +27,7 @@ view, scroll-view, swiper-item {
 		/* #endif */
 	}
 }
+
 
 // 此处加上!important并非随意乱用，而是因为目前*.nvue页面编译到H5时，
 // App.vue的样式会被uni-app的view元素的自带border属性覆盖，导致无效
@@ -109,3 +94,4 @@ view, scroll-view, swiper-item {
 .uv-hover-class {
 	opacity: 0.7;
 }
+

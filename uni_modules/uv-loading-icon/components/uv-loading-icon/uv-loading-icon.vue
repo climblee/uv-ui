@@ -189,8 +189,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$uv-loading-icon-color: #c8c9cc !default;
 	$uv-loading-icon-text-margin-left:4px !default;
 	$uv-loading-icon-text-color:$uv-content-color !default;

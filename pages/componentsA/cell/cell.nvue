@@ -139,8 +139,8 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	.cell-page {
 		padding-bottom: 20px;
 	}

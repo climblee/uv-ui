@@ -233,7 +233,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.minus {
 		width: 22px;
 		height: 22px;

@@ -189,6 +189,11 @@
 			"style": {
 				"navigationBarTitleText": "Navbar 导航栏"
 			}
+		}, {
+			"path": "tabs/tabs",
+			"style": {
+				"navigationBarTitleText": "Tabs 标签"
+			}
 		}]
 	}],
 	"globalStyle": {

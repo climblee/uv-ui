@@ -171,7 +171,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.uv-demo-block__content {
 		@include flex;
 		align-items: center;

@@ -136,7 +136,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.box {
 		justify-content: space-between;
 	}

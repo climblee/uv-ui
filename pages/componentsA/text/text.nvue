@@ -159,7 +159,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.uv-page__text-item {
 		margin-right: 10px;
 		flex: 1;

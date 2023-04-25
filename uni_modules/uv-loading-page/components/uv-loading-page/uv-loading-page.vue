@@ -78,8 +78,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-@import '@/uni_modules/uv-ui-tools/theme.scss';
+
+@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 
 $text-color: rgb(200, 200, 200) !default;
 $text-size: 19px !default;

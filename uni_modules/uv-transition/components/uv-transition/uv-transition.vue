@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/theme.scss';
+@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 /* #ifndef APP-NVUE */
 // vue版本动画相关的样式抽离在外部文件
 @import './vue.ani-style.scss';

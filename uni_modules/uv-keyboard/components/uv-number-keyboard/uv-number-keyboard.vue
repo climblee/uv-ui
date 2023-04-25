@@ -132,8 +132,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
-	@import '@/uni_modules/uv-ui-tools/theme.scss';
+	
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$uv-number-keyboard-background-color:rgb(224, 228, 230) !default;
 	$uv-number-keyboard-padding:8px 10rpx 8px 10rpx !default;
 	$uv-number-keyboard-button-width:222rpx !default;

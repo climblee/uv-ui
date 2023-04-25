@@ -1,4 +1,4 @@
-// 此文件为uView的主题变量，这些变量目前只能通过uni.scss引入才有效，另外由于
+// 此文件为uvUI的主题变量，这些变量目前只能通过uni.scss引入才有效，另外由于
 // uni.scss中引入的样式会同时混入到全局样式文件和单独每一个页面的样式中，造成微信程序包太大，
 // 故uni.scss只建议放scss变量名相关样式，其他的样式可以通过main.js或者App.vue引入
 
@@ -35,7 +35,6 @@ $uv-info-dark: #767a82;
 $uv-info-disabled: #c4c6c9;
 $uv-info-light: #f4f4f5;
 
-// scss混入，为了少写几行#ifndef
 @mixin flex($direction: row) {
 	/* #ifndef APP-NVUE */
 	display: flex;

@@ -52,7 +52,7 @@
 				<uv-button
 					type="success"
 					text="点我关闭"
-					customStyle="width: 200rpx;color:#3c9cff;"
+					customStyle="width: 200rpx;color:#fff;"
 					@click="show = !show"
 				></uv-button>
 			</view>
@@ -173,7 +173,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	
 	.uv-popup-slot {
 		width: 200px;
 		height: 150px;
