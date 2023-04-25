@@ -356,7 +356,6 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$uv-upload-preview-border-radius: 2px !default;
 	$uv-upload-preview-margin: 0 8px 8px 0 !default;

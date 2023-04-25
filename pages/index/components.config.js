@@ -2,7 +2,7 @@ export default [{
 		groupName: '基础组件',
 		groupName_en: 'Basic components',
 		list: [{
-			path: '/pages/demo/demo',
+			path: '/pages/componentsC/waterfall/waterfall',
 			icon: 'color',
 			title: 'demo',
 			title_en: 'Color'

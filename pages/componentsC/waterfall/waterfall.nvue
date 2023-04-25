@@ -1,0 +1,86 @@
+<template>
+	<view>
+		<uv-waterfall-flow v-model="list" @finish="handleWaterFallFinish">
+		  <template v-slot:left="{ leftList }">
+				<view v-for="(item, index) in leftList" :key="item.id" class="product__item">
+				  <view class="item__image">
+						<image :src="item.image" mode="widthFix" :style="{'width':item.width+'px'}"></image>
+				    <!-- <tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id" imgMode="widthFix"></tn-lazy-load> -->
+				  </view>
+				</view>
+			</template>
+			<template v-slot:right="{ rightList }">
+					<view v-for="(item, index) in rightList" :key="item.id" class="product__item">
+					  <view class="item__image">
+							<image :src="item.image" mode="widthFix" :style="{'width':item.width+'px'}"></image>
+					    <!-- <tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id" imgMode="widthFix"></tn-lazy-load> -->
+					  </view>
+					</view>
+			</template>
+		</uv-waterfall-flow>
+	</view>
+</template>
+
+<script>
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+	export default {
+		mixins: [mixin],
+		data(){
+			return {
+				randoms: [
+					{ size: '200x500', color: 'ff0000' }, 
+					{ size: '200x200', color: '2878ff' }, 
+					{ size: '200x100', color: 'FFB6C1' }, 
+					{ size: '200x300', color: '9400D3' }, 
+					{ size: '100x240', color: 'B0E0E6' }, 
+					{ size: '140x280', color: '7FFFAA' }, 
+					{ size: '40x60', color: 'EEE8AA' }, 
+					{ size: '58x100', color: 'FF7F50' }, 
+					{ size: '59x100', color: 'C0C0C0' }, 
+					{ size: '60x100', color: 'FAEBD7' },
+				],
+				list: []
+			}
+		}
+		,onLoad() {
+		  this.getRandomData()
+		},
+		onReachBottom() {
+		  this.getRandomData()
+		},
+		methods:{
+			/* 瀑布流*/
+			// 获取随机数据
+			getRandomData() {
+			  this.loadStatus = 'loading'
+				for (let i = 0; i < 10; i++) {
+					this.list.push({
+						id:uni.$uv.guid(), 
+						image: this.getImage(), 
+						showChar: true, 
+						title: '标题文字' + (this.list.length + 1),
+						desc: '描述文字' + (this.list.length + 1) 
+					});
+				}
+			  // for (let i = 0; i < 10; i++) {
+			  //   let index = uni.$uv.random(0, this.data.length - 1)
+			  //   let item = JSON.parse(JSON.stringify(this.data[index]))
+			  //   item.id = uni.$uv.guid()
+			  //   this.list.push(item)
+			  // }
+			},
+			// 瀑布流加载完毕事件
+			handleWaterFallFinish() {
+			  this.loadStatus = 'loadmore'
+			},
+			getImage() {
+				const index = Math.floor(Math.random() * this.randoms.length);
+				return `https://via.placeholder.com/${this.randoms[index].size}.png/${this.randoms[index].color}`;
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

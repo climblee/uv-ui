@@ -186,6 +186,11 @@
 			"style": {
 				"navigationBarTitleText": "Avatar 头像"
 			}
+		}, {
+			"path": "waterfall/waterfall",
+			"style": {
+				"navigationBarTitleText": "Aaterfall 瀑布流"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",
