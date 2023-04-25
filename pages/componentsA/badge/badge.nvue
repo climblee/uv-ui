@@ -1,0 +1,164 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">直角边形状</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="1500"
+						shape="horn"
+					></uv-badge>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">徽标数显示方式</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="5132"
+						numberType="ellipsis"
+					></uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="1011"
+						numberType="overflow"
+					></uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="1500"
+						numberType="limit"
+					></uv-badge>
+				</view>
+
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="45187"
+						numberType="limit"
+					></uv-badge>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">显示圆点</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="1011"
+						numberType="overflow"
+						isDot
+					>
+					</uv-badge>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义主题</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="9"
+						type="error"
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="9"
+						type="warning"
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="9"
+						type="success"
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="9"
+						type="primary"
+					>
+					</uv-badge>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">反转色</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="9"
+						type="error"
+						inverted
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="1532"
+						inverted
+						type="warning"
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="12"
+						inverted
+						type="success"
+					>
+					</uv-badge>
+				</view>
+				<view class="uv-page__tag-item">
+					<uv-badge
+						:value="999"
+						inverted
+						type="primary"
+					>
+					</uv-badge>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/uni_modules/uv-ui-tools/libs/css/common.scss';
+	.box {
+		justify-content: space-between;
+	}
+
+	.uv-page__tag-item {
+		margin-right: 40px;
+		margin-top: 10px;
+	}
+
+	.badge-box {
+		width: 45px;
+		height: 45px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		background-color: #E6E6E6;
+	}
+
+	.uv-demo-block__content {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+</style>

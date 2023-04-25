@@ -36,6 +36,11 @@
 				"navigationBarTitleText": "图标"
 			}
 		}, {
+			"path": "badge/badge",
+			"style": {
+				"navigationBarTitleText": "Badge 徽标数"
+			}
+		}, {
 			"path": "loading-icon/loading-icon",
 			"style": {
 				"navigationBarTitleText": "加载中图标"
@@ -173,6 +178,11 @@
 			"path": "backtop/backtop",
 			"style": {
 				"navigationBarTitleText": "BackTop 返回顶部"
+			}
+		},{
+			"path": "tabbar/tabbar",
+			"style": {
+				"navigationBarTitleText": "Tabbar 底部导航栏"
 			}
 		}]
 	}],

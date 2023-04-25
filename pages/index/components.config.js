@@ -42,7 +42,7 @@ export default [{
 			title: 'Cell 单元格',
 			title_en: 'Cell'
 		}, {
-			path: '/pages/componentsB/badge/badge',
+			path: '/pages/componentsA/badge/badge',
 			icon: 'badge',
 			title: 'Badge 徽标数',
 			title_en: 'Badge'
@@ -317,7 +317,7 @@ export default [{
 			// 	title_en: 'Dropdown',
 			// },
 			{
-				path: '/pages/componentsB/tabbar/tabbar',
+				path: '/pages/componentsD/tabbar/tabbar',
 				icon: 'tabbar',
 				title: 'Tabbar 底部导航栏',
 				title_en: 'Tabbar'
