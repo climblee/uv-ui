@@ -1,5 +1,6 @@
 <template>
-	<view class="uv-lazy-load-class uv-lazy-load">
+	<view class="uv-lazy-load-class uv-lazy-load"
+		:style="[$uv.addStyle(customStyle)]">
 		<view class="uv-lazy-load__item"
 			:class="[`uv-lazy-load__item--${elIndex}`]"
 			:style="[lazyLoadItemStyle]">
@@ -16,8 +17,8 @@
 				<image v-if="!error"
 					class="uv-lazy-load__item__image"
 					:style="[imageStyle]"
-					:src="show?image:load"
-					:mode="imgMode"
+					:src="show?src:load"
+					:mode="mode"
 					@load="handleImgLoaded"
 					@error="handleImgError"
 					@tap="handleImgClick"></image>
@@ -25,13 +26,13 @@
 					class="uv-lazy-load__item__image uv-lazy-load__item__image--error"
 					:style="[imageStyle,errorImageStyle]"
 					:src="load"
-					:mode="imgMode"
+					:mode="mode"
 					@load="handleErrorImgLoaded"
 					@tap="handleImgClick"></image>
 			</view>
 			<!-- #endif -->
 			<!-- #ifdef APP-NVUE -->
-			<text class="tip">nvue中请使用image</text>
+			<text class="tip">nvue中不支持此组件</text>
 			<!-- #endif -->
 		</view>
 	</view>
@@ -39,69 +40,11 @@
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+	import props from './props.js'
 	export default {
 		name: 'uv-lazy-load-image',
 		emits: ['click', 'loaded', 'error'],
-		mixins: [mpMixin, mixin],
-		props: {
-			// 组件标识
-			index: {
-				type: [String, Number],
-				default: ''
-			},
-			// 待显示的图片地址
-			image: {
-				type: String,
-				default: ''
-			},
-			// 图片裁剪模式
-			imgMode: {
-				type: String,
-				default: 'scaleToFill'
-			},
-			// 占位图片路径
-			loadingImg: {
-				type: String,
-				default: ''
-			},
-			// 加载失败的错误占位图
-			errorImg: {
-				type: String,
-				default: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAiAQMAAAAatXkPAAAABlBMVEUAAADMzMzIT8AyAAAAAXRSTlMAQObYZgAAAIZJREFUCNdlzjEKwkAUBNAfEGyCuYBkLyLuxRYW2SKlV1JSeA2tUiZg4YrLjv9PGsHqNTPMSAQuyAJgRDHSyvBPwtZoSJXakeJI9iuRLGDygdl6V0yKDtyMAeMPZySj8yfD+UapvRPj2JOwkyAooSV5IwdDjPdCPspe8LyTl9IKJvDETKKRv6vnlUasgg0fAAAAAElFTkSuQmCC'
-			},
-			// 图片进入可见区域前多少像素前，单位rpx，开始加载图片
-			// 负数为图片超出屏幕底部多少像素后触发懒加载，正数为图片顶部距离屏幕底部多少距离时触发（图片还没出现在屏幕上）
-			threshold: {
-				type: [Number, String],
-				default: 100
-			},
-			// 是否开启过渡效果
-			isEffect: {
-				type: Boolean,
-				default: true
-			},
-			// 动画过渡时间
-			duration: {
-				type: [String, Number],
-				default: 500
-			},
-			// 渡效果的速度曲线，各个之间差别不大，因为这是淡入淡出，且时间很短，不是那些变形或者移动的情况，会明显
-			// linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
-			effect: {
-				type: String,
-				default: 'ease-in-out'
-			},
-			// 图片高度，单位px
-			height: {
-				type: [String, Number],
-				default: 300
-			},
-			// 图片圆角
-			borderRadius: {
-				type: String,
-				default: ''
-			}
-		},
+		mixins: [mpMixin, mixin, props],
 		computed: {
 			thresholdValue() {
 				// 先取绝对值，因为threshold可能是负数，最后根据this.threshold是正数或者负数，重新还原
@@ -116,7 +59,7 @@
 				}
 				// 因为time值需要改变,所以不直接用duration值(不能改变父组件prop传过来的值)
 				style.transition = `opacity ${this.time / 1000}s ${this.effect}`
-				style.height = uni.$uv.addUnit(this.height)
+				style.height = uni.$uv.addUnit(this.height);
 				return uni.$uv.addStyle(style)
 			},
 			imageStyle() {
@@ -125,11 +68,10 @@
 				}
 				return uni.$uv.addStyle(style)
 			},
-			errorImageStyle(){
+			errorImageStyle() {
 				let style = {
 					background: `url(${this.errorImg}) no-repeat center center`
 				}
-				console.log(style)
 				return uni.$uv.addStyle(style)
 			}
 		},
@@ -145,7 +87,7 @@
 					this.opacity = 1
 				}, 30)
 			},
-			image(val) {
+			src(val) {
 				// 修改图片后重置部分变量
 				if (!val) {
 					// 如果传入null或者''，或者undefined，标记为错误状态
@@ -223,7 +165,7 @@
 				// 点击了正常的图片
 				else whichImg = 'realImg'
 				this.$emit('click', {
-					index: this.index,
+					index: this.name,
 					whichImg: whichImg
 				})
 			},
@@ -235,13 +177,13 @@
 				} else if (this.loadStatus == 'loading') {
 					// 真正的图片加载完成
 					this.loadStatus = 'loaded'
-					this.$emit('loaded', this.index)
+					this.$emit('loaded', this.name)
 				}
 			},
 			// 处理错误图片加载完成
 			handleErrorImgLoaded() {
 				this.loadStatus = 'loaded'
-				this.$emit('error', this.index)
+				this.$emit('error', this.name)
 			},
 			// 处理图片加载失败
 			handleImgError() {
@@ -254,17 +196,14 @@
 		}
 	}
 </script>
-<style lang="scss" scoped>
-	
+<style lang="scss"
+	scoped>
 	$uv-bg-gray-color: #f3f4f6;
 	.uv-lazy-load {
 		&__item {
 			background-color: $uv-bg-gray-color;
 			overflow: hidden;
 			&__content {
-				/* #ifndef APP-NVUE */
-				flex: 1;
-				/* #endif */
 				align-items: center;
 				justify-content: center;
 			}

@@ -1,19 +1,18 @@
 <template>
 	<view>
+		<!-- <uv-lazy-load-image :customStyle="{borderRadius:'100px',overflow:'hidden'}" src="https://via.placeholder.com/100x240.png/B0E0E6" mode="aspectFill" height="100px"></uv-lazy-load-image> -->
 		<uv-waterfall-flow v-model="list" @finish="handleWaterFallFinish">
 		  <template v-slot:left="{ leftList }">
 				<view v-for="(item, index) in leftList" :key="item.id" class="product__item">
 				  <view class="item__image">
-						<image :src="item.image" mode="widthFix" :style="{'width':item.width+'px'}"></image>
-				    <!-- <tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id" imgMode="widthFix"></tn-lazy-load> -->
+						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 				  </view>
 				</view>
 			</template>
 			<template v-slot:right="{ rightList }">
 					<view v-for="(item, index) in rightList" :key="item.id" class="product__item">
 					  <view class="item__image">
-							<image :src="item.image" mode="widthFix" :style="{'width':item.width+'px'}"></image>
-					    <!-- <tn-lazy-load :threshold="6000" height="100%" :image="item.mainImage" :index="item.id" imgMode="widthFix"></tn-lazy-load> -->
+							<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 					  </view>
 					</view>
 			</template>

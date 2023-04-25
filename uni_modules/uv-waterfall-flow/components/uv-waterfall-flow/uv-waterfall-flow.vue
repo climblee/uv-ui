@@ -2,7 +2,7 @@
 	<view class="uv-waterfall-flow-class uv-waterfall-flow">
 		<view id="uv-waterfall-flow-left"
 			class="uv-waterfall-flow__column">
-			<slot name="left"
+			<slot :name="name1"
 				:leftList="leftList"></slot>
 		</view>
 		<view id="uv-waterfall-flow-right"
@@ -41,6 +41,7 @@
 		},
 		data() {
 			return {
+				name1: 'left',
 				// 左列表
 				leftList: [],
 				// 右列表
@@ -128,6 +129,7 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	.uv-waterfall-flow {
 		@include flex(row);
+		align-items: flex-start;
 		&__column {
 			@include flex(column);
 			flex: 1;
