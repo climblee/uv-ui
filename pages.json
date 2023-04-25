@@ -167,6 +167,14 @@
 				"navigationBarTitleText": "Avatar 头像"
 			}
 		}]
+	}, {
+		"root": "pages/componentsD",
+		"pages": [{
+			"path": "backtop/backtop",
+			"style": {
+				"navigationBarTitleText": "BackTop 返回顶部"
+			}
+		}]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

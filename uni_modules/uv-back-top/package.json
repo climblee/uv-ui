@@ -1,10 +1,10 @@
 {
-  "id": "uv-avatar",
-  "displayName": "uv-avatar",
+  "id": "uv-back-top",
+  "displayName": "uv-back-top",
   "version": "1.0.0",
-  "description": "uv-avatar",
+  "description": "uv-back-top",
   "keywords": [
-    "uv-avatar"
+    "uv-back-top"
 ],
   "repository": "",
   "engines": {
@@ -31,11 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [
-			"uv-ui-tools",
-			"u-icon",
-			"u-text"
-		],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {
