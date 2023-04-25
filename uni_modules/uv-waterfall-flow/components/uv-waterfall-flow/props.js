@@ -23,6 +23,31 @@ export default {
 		addTime: {
 			type: Number,
 			default: 200
+		},
+		// 瀑布流的列数，默认2
+		columnCount: {
+			type: [Number, String],
+			default: 2
+		},
+		// 瀑布流的列宽
+		columnWidth: {
+			type: [Number, String],
+			default: ''
+		},
+		// 列与列的间隙，默认20
+		columnGap: {
+			type: [Number, String],
+			default: 20
+		},
+		// 左边和列表的间隙
+		leftGap: {
+			type: [Number, String],
+			default: 0
+		},
+		// 右边和列表的间隙
+		rightGap: {
+			type: [Number, String],
+			default: 0
 		}
 	}
 }

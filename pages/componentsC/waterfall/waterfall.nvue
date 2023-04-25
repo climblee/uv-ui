@@ -1,16 +1,23 @@
 <template>
 	<view>
 		<!-- <uv-lazy-load-image :customStyle="{borderRadius:'100px',overflow:'hidden'}" src="https://via.placeholder.com/100x240.png/B0E0E6" mode="aspectFill" height="100px"></uv-lazy-load-image> -->
-		<uv-waterfall-flow v-model="list" @finish="handleWaterFallFinish">
-		  <template v-slot:left="{ leftList }">
-				<view v-for="(item, index) in leftList" :key="item.id" class="product__item">
+		<uv-waterfall-flow v-model="list" @finish="handleWaterFallFinish" column-count="2">
+		  <template v-slot:list1="{ list1 }">
+				<view v-for="(item, index) in list1" :key="item.id" class="product__item">
 				  <view class="item__image">
 						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 				  </view>
 				</view>
 			</template>
-			<template v-slot:right="{ rightList }">
-					<view v-for="(item, index) in rightList" :key="item.id" class="product__item">
+			<template v-slot:list2="{ list2 }">
+					<view v-for="(item, index) in list2" :key="item.id" class="product__item">
+					  <view class="item__image">
+							<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+					  </view>
+					</view>
+			</template>
+			<template v-slot:list3="{ list3 }">
+					<view v-for="(item, index) in list3" :key="item.id" class="product__item">
 					  <view class="item__image">
 							<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 					  </view>
@@ -55,7 +62,7 @@
 				for (let i = 0; i < 10; i++) {
 					this.list.push({
 						id:uni.$uv.guid(), 
-						image: this.getImage(), 
+						image: i==2?'1112':this.getImage(), 
 						showChar: true, 
 						title: '标题文字' + (this.list.length + 1),
 						desc: '描述文字' + (this.list.length + 1) 

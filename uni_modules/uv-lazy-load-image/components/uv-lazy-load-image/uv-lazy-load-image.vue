@@ -63,6 +63,7 @@
 				return uni.$uv.addStyle(style)
 			},
 			imageStyle() {
+				if(!this.height) return null;
 				let style = {
 					height: uni.$uv.addUnit(this.height)
 				}
