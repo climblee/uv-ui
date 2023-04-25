@@ -1,0 +1,64 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本案例</text>
+			<view>
+				<uv-divider text="分割线"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否虚线</text>
+			<view>
+				<uv-divider text="分割线"
+					:dashed="true"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否细线</text>
+			<view>
+				<uv-divider text="分割线"
+					:hairline="true"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否以点代替文字</text>
+			<view>
+				<uv-divider text="分割线"
+					:dot="true"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">文本内容靠左</text>
+			<view>
+				<uv-divider text="分割线"
+					textPosition="left"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">文本内容靠右</text>
+			<view>
+				<uv-divider text="分割线"
+					textPosition="right"></uv-divider>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义文本颜色</text>
+			<view>
+				<uv-divider text="分割线"
+					textColor="#2979ff"
+					lineColor="#2979ff"></uv-divider>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {}
+		},
+		methods: {}
+	}
+</script>
+<style lang="scss">
+	.uv-divider {}
+</style>

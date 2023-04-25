@@ -1,10 +1,10 @@
 {
-  "id": "uv-checkbox",
-  "displayName": "uv-checkbox",
+  "id": "uv-divider",
+  "displayName": "uv-divider",
   "version": "1.0.0",
-  "description": "uv-checkbox",
+  "description": "uv-divider",
   "keywords": [
-    "uv-checkbox"
+    "uv-divider"
 ],
   "repository": "",
   "engines": {
@@ -32,7 +32,8 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools"
+			"uv-ui-tools",
+			"uv-line"
 		],
     "encrypt": [],
     "platforms": {

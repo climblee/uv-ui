@@ -70,6 +70,11 @@
 			"style": {
 				"navigationBarTitleText": "动画"
 			}
+		}, {
+			"path": "divider/divider",
+			"style": {
+				"navigationBarTitleText": "Divider 分割线"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",
