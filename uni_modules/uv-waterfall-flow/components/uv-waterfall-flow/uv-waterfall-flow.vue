@@ -86,7 +86,7 @@
 	 * @property {String ｜ Number}		height	 瀑布流的高度，nvue生效 （默认 屏幕高 ）
 	 * @property {Object}	customStyle		定义需要用到的外部样式
 	 *
-	 * @example <uv-waterfall-flow @scrolltolower="scrolltolower"></uv-waterfall-flow>
+	 * @example <uv-waterfall-flow v-model="list"></uv-waterfall-flow>
 	 */
 	export default {
 		name: 'uv-waterfall-flow',
