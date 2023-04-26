@@ -189,7 +189,8 @@
 		}, {
 			"path": "waterfall/waterfall",
 			"style": {
-				"navigationBarTitleText": "Aaterfall 瀑布流"
+				"navigationBarTitleText": "Waterfall 瀑布流",
+				"enablePullDownRefresh": true
 			}
 		}]
 	}, {

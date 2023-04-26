@@ -52,6 +52,11 @@ export default {
 			type: [String, Number],
 			default: ''
 		},
+		// 图片最大高度，单位px
+		maxHeight: {
+			type: [String, Number],
+			default: ''
+		},
 		// 图片圆角
 		borderRadius: {
 			type: String,

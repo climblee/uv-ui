@@ -144,7 +144,7 @@
 					}
 				})
 				this[this.observerName] = contentObserver
-			}, 50)
+			}, 20)
 			// #endif
 			// #ifdef APP-NVUE
 			this.show = true;
@@ -219,8 +219,6 @@
 				justify-content: center;
 			}
 			&__image {
-				// 解决父容器会多出3px的问题
-				border: 1rpx solid #F8F7F8;
 				border-radius: 10rpx;
 				overflow: hidden;
 				/* #ifndef APP-NVUE */

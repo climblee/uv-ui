@@ -24,15 +24,10 @@ export default {
 			type: Number,
 			default: 200
 		},
-		// 瀑布流的列数，默认2
+		// 瀑布流的列数，默认2，最高为5
 		columnCount: {
 			type: [Number, String],
 			default: 2
-		},
-		// 瀑布流的列宽
-		columnWidth: {
-			type: [Number, String],
-			default: ''
 		},
 		// 列与列的间隙，默认20
 		columnGap: {

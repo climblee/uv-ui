@@ -1,35 +1,52 @@
 <template>
-	<view class="uv-waterfall-flow-class uv-waterfall-flow">
-		<view id="uv-waterfall-flow-1"
-			class="uv-waterfall-flow__column"
-			v-if="columnCount>=1">
-			<slot name="list1"
-				:list1="list1"></slot>
-		</view>
-		<view id="uv-waterfall-flow-2"
-			class="uv-waterfall-flow__column"
-			v-if="columnCount>=2">
-			<slot name="list2"
-				:list2="list2"></slot>
-		</view>
-		<view id="uv-waterfall-flow-3"
-			class="uv-waterfall-flow__column"
-			v-if="columnCount>=3">
-			<slot name="list3"
-				:list3="list3"></slot>
-		</view>
-		<view id="uv-waterfall-flow-4"
-			class="uv-waterfall-flow__column"
-			v-if="columnCount>=4">
-			<slot name="list4"
-				:list4="list4"></slot>
-		</view>
-		<view id="uv-waterfall-flow-5"
-			class="uv-waterfall-flow__column"
-			v-if="columnCount>=5">
-			<slot name="list5"
-				:list5="list5"></slot>
-		</view>
+	<view class="uv-waterfall-flow">
+		<view class="uv-waterfall-flow__gap_left"
+			:style="[gapLeftStyle]"></view>
+		<template v-if="columnNum>=1">
+			<view id="uv-waterfall-flow-1"
+				class="uv-waterfall-flow__column">
+				<slot name="list1"
+					:list1="list1"></slot>
+			</view>
+		</template>
+		<template v-if="columnNum>=2">
+			<view class="uv-waterfall-flow__gap_center"
+				:style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-flow-2"
+				class="uv-waterfall-flow__column">
+				<slot name="list2"
+					:list2="list2"></slot>
+			</view>
+		</template>
+		<template v-if="columnNum>=3">
+			<view class="uv-waterfall-flow__gap_center"
+				:style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-flow-3"
+				class="uv-waterfall-flow__column">
+				<slot name="list3"
+					:list3="list3"></slot>
+			</view>
+		</template>
+		<template v-if="columnNum>=4">
+			<view class="uv-waterfall-flow__gap_center"
+				:style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-flow-4"
+				class="uv-waterfall-flow__column">
+				<slot name="list4"
+					:list4="list4"></slot>
+			</view>
+		</template>
+		<template v-if="columnNum>=5">
+			<view class="uv-waterfall-flow__gap_center"
+				:style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-flow-5"
+				class="uv-waterfall-flow__column">
+				<slot name="list5"
+					:list5="list5"></slot>
+			</view>
+		</template>
+		<view class="uv-waterfall-flow__gap_right"
+			:style="[gapRightStyle]"></view>
 	</view>
 </template>
 <script>
@@ -48,6 +65,24 @@
 				// #ifdef VUE3
 				return uni.$uv.deepClone(this.modelValue)
 				// #endif
+			},
+			columnNum() {
+				return this.columnCount <= 0 ? 0 : this.columnCount >= 5 ? 5 : this.columnCount;
+			},
+			gapLeftStyle() {
+				const style = {}
+				style.width = uni.$uv.addUnit(this.leftGap)
+				return style;
+			},
+			gapRightStyle() {
+				const style = {}
+				style.width = uni.$uv.addUnit(this.rightGap)
+				return style;
+			},
+			gapCenterStyle() {
+				const style = {}
+				style.width = uni.$uv.addUnit(this.columnGap)
+				return style;
 			}
 		},
 		watch: {
@@ -79,7 +114,7 @@
 			async splitData() {
 				let rectArr = [];
 				if (!this.tempList.length) return
-				for (let i = 1; i <= this.columnCount; i++) {
+				for (let i = 1; i <= this.columnNum; i++) {
 					const rect = await this.$uvGetRect(`#uv-waterfall-flow-${i}`);
 					rectArr.push({ ...rect, name: i });
 				}
@@ -88,7 +123,8 @@
 				// 解决多次快速滚动会导致数据乱的问题
 				if (!item) return
 				const minCol = this.getMin(rectArr);
-				// item.width = minCol.width;
+				// 列宽可能使用的到
+				item.width = minCol.width;
 				this[`list${minCol.name}`].push(item);
 				// 移除临时数组中已处理的数据
 				this.tempList.splice(0, 1)
@@ -118,28 +154,22 @@
 			},
 			// 清除指定的某一条数据，根据id来实现
 			remove(id) {
-				// 如果查找不到就返回-1
 				let index = -1
+				// 删除组件数据
 				for (let i = 1; i <= this.columnCount; i++) {
-					this[`list${i}`] = [];
-				}
-				index = this.leftList.findIndex(val => val[this.idKey] == id)
-				if (index != -1) {
-					// 如果index不等于-1，说明已经找到了指定的数据
-					this.leftList.splice(index, 1)
-				} else {
-					// 同理于上面的方法
-					index = this.rightList.findIndex(val => val[this.idKey] == id)
-					if (index != -1) this.rightList.splice(index, 1)
+					index = this[`list${i}`].findIndex(item => item[this.idKey] == id)
+					if (index != -1) {
+						this[`list${i}`].splice(index, 1)
+					}
 				}
 				// 同时删除父组件对应的数据
 				// #ifdef VUE2
-				index = this.value.findIndex(val => val[this.idKey] == id)
+				index = this.value.findIndex(item => item[this.idKey] == id)
 				if (index != -1) this.$emit('input', this.value.splice(index, 1))
 				// #endif
 				// #ifdef VUE3
-				index = this.modelValue.findIndex(val => val[this.idKey] == id)
-				if (index != -1) this.$emit('input', this.modelValue.splice(index, 1))
+				index = this.modelValue.findIndex(item => item[this.idKey] == id)
+				if (index != -1) this.$emit('update:modelValue', this.modelValue.splice(index, 1))
 				// #endif
 			}
 		}

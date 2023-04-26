@@ -1,83 +1,147 @@
 <template>
 	<view>
 		<!-- <uv-lazy-load-image :customStyle="{borderRadius:'100px',overflow:'hidden'}" src="https://via.placeholder.com/100x240.png/B0E0E6" mode="aspectFill" height="100px"></uv-lazy-load-image> -->
-		<uv-waterfall-flow v-model="list" @finish="handleWaterFallFinish" column-count="2">
-		  <template v-slot:list1="{ list1 }">
-				<view v-for="(item, index) in list1" :key="item.id" class="product__item">
-				  <view class="item__image">
+		<uv-waterfall-flow 
+			ref="waterfall"
+			v-model="list"
+			column-count="2"
+			left-gap="10"
+			right-gap="10"
+			column-gap="8"
+			column-width="40"
+			@finish="handleWaterFallFinish"
+			>
+			<template v-slot:list1="{ list1 }">
+				<view v-for="(item, index) in list1" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
+					<view class="waterfall-item__image">
 						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
-				  </view>
+					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text>{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc">
+							<text>{{item.desc}}</text>
+						</view>
+						<view class="waterfall-item__ft__btn" v-if="index==0">
+							<uv-button type="primary" size="mini" @click="edit(item)">异步修改</uv-button>
+						</view>
+					</view>
 				</view>
 			</template>
 			<template v-slot:list2="{ list2 }">
-					<view v-for="(item, index) in list2" :key="item.id" class="product__item">
-					  <view class="item__image">
-							<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
-					  </view>
+				<view v-for="(item, index) in list2" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
+					<view class="waterfall-item__image">
+						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text>{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc">
+							<text>{{item.desc}}</text>
+						</view>
+					</view>
+				</view>
 			</template>
 			<template v-slot:list3="{ list3 }">
-					<view v-for="(item, index) in list3" :key="item.id" class="product__item">
-					  <view class="item__image">
-							<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
-					  </view>
+				<view v-for="(item, index) in list3" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
+					<view class="waterfall-item__image">
+						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
 					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text>{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc">
+							<text>{{item.desc}}</text>
+						</view>
+					</view>
+				</view>
 			</template>
 		</uv-waterfall-flow>
 	</view>
 </template>
-
 <script>
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	export default {
 		mixins: [mixin],
-		data(){
+		data() {
 			return {
 				randoms: [
-					{ size: '200x500', color: 'ff0000' }, 
-					{ size: '200x200', color: '2878ff' }, 
-					{ size: '200x100', color: 'FFB6C1' }, 
+					{ size: '200x200', color: 'ff0000' }, 
+					{ size: '200x210', color: '2878ff' },
+					{ size: '200x190', color: 'FFB6C1' },
 					{ size: '200x300', color: '9400D3' }, 
-					{ size: '100x240', color: 'B0E0E6' }, 
-					{ size: '140x280', color: '7FFFAA' }, 
+					{ size: '100x140', color: 'B0E0E6' }, 
+					{ size: '140x180', color: '7FFFAA' }, 
 					{ size: '40x60', color: 'EEE8AA' }, 
-					{ size: '58x100', color: 'FF7F50' }, 
-					{ size: '59x100', color: 'C0C0C0' }, 
-					{ size: '60x100', color: 'FAEBD7' },
+					{ size: '88x100', color: 'FF7F50' }, 
+					{ size: '60x100', color: 'C0C0C0' }, 
+					{ size: '90x100', color: 'FAEBD7' }
 				],
 				list: []
 			}
-		}
-		,onLoad() {
-		  this.getRandomData()
+		},
+		onLoad() {
+			this.getRandomData()
+		},
+		onPullDownRefresh() {
+			this.list = [];
+			this.$refs.waterfall.clear();
+			this.getRandomData();
+			uni.showToast({
+				icon: 'success',
+				title: '刷新成功'
+			})
+			uni.stopPullDownRefresh();
 		},
 		onReachBottom() {
-		  this.getRandomData()
+			this.getRandomData()
 		},
-		methods:{
+		methods: {
+			longHandle(item){
+				let that = this;
+				uni.showModal({
+					title:'提示',
+					content:'你确定删除该项？',
+					success(res) {
+						if(res.confirm){
+							that.$refs.waterfall.remove(item.id);
+						}
+					}
+				})
+			},
+			edit(item){
+				uni.showLoading({
+					title:'修改中'
+				})
+				setTimeout(()=>{
+					item.title = 'uv-ui1.0';
+					item.desc = '修改后的文本';
+					uni.hideLoading();
+				},1000)
+			},
 			/* 瀑布流*/
 			// 获取随机数据
 			getRandomData() {
-			  this.loadStatus = 'loading'
-				for (let i = 0; i < 10; i++) {
-					this.list.push({
-						id:uni.$uv.guid(), 
-						image: i==2?'1112':this.getImage(), 
-						showChar: true, 
-						title: '标题文字' + (this.list.length + 1),
-						desc: '描述文字' + (this.list.length + 1) 
-					});
-				}
-			  // for (let i = 0; i < 10; i++) {
-			  //   let index = uni.$uv.random(0, this.data.length - 1)
-			  //   let item = JSON.parse(JSON.stringify(this.data[index]))
-			  //   item.id = uni.$uv.guid()
-			  //   this.list.push(item)
-			  // }
+				this.loadStatus = 'loading'
+				// 模拟异步
+				setTimeout(()=>{
+					for (let i = 0; i < 10; i++) {
+						this.list.push({
+							id: uni.$uv.guid(),
+							image: this.getImage(),
+							showChar: true,
+							title: i % 2 == 0 ? '体验xx-ui框架-' +(this.list.length+1) : 'xx-ui支持多平台-'+(this.list.length+1),
+							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-'+(this.list.length+1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-'+(this.list.length+1)
+						});
+					}
+				},200)
 			},
 			// 瀑布流加载完毕事件
 			handleWaterFallFinish() {
-			  this.loadStatus = 'loadmore'
+				this.loadStatus = 'loadmore'
 			},
 			getImage() {
 				const index = Math.floor(Math.random() * this.randoms.length);
@@ -86,7 +150,27 @@
 		}
 	}
 </script>
-
-<style>
-
+<style scoped lang="scss">
+	.waterfall-item {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		margin-top: 10px;
+	}
+	.waterfall-item__ft {
+		padding: 20rpx;
+		background: #fff;
+		&__title {
+			margin-bottom: 10px;
+			line-height: 48rpx;
+			font-size: 32rpx;
+			font-weight: 700;
+			color: #111;
+		}
+		&__desc {
+			font-size: 28rpx;
+			color: #666;
+		}
+		&__btn {
+			padding: 10px 0;
+		}
+	}
 </style>
