@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<!-- <uv-lazy-load-image :customStyle="{borderRadius:'100px',overflow:'hidden'}" src="https://via.placeholder.com/100x240.png/B0E0E6" mode="aspectFill" height="100px"></uv-lazy-load-image> -->
-		<uv-waterfall-flow 
+		<!-- #ifndef APP-NVUE -->
+		<uv-waterfall-flow
 			ref="waterfall"
 			v-model="list"
 			column-count="2"
@@ -47,7 +47,7 @@
 			<template v-slot:list3="{ list3 }">
 				<view v-for="(item, index) in list3" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix" radius="10"></uv-lazy-load-image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
@@ -60,6 +60,31 @@
 				</view>
 			</template>
 		</uv-waterfall-flow>
+		<!-- #endif -->
+		<!-- #ifdef APP-NVUE -->
+		<uv-waterfall-flow
+			ref="waterfall"
+			column-count="2"
+			left-gap="10"
+			right-gap="10"
+			column-gap="8"
+			@scrolltolower="getRandomData"
+			>
+			<cell v-for="(item,index) in list" class="waterfall-item">
+				<view class="waterfall-item__image">
+					<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+				</view>
+				<view class="waterfall-item__ft">
+					<view class="waterfall-item__ft__title">
+						<text>{{item.title}}</text>
+					</view>
+					<view class="waterfall-item__ft__desc">
+						<text>{{item.desc}}</text>
+					</view>
+				</view>
+			</cell>
+		</uv-waterfall-flow>
+		<!-- #endif -->
 	</view>
 </template>
 <script>
@@ -145,7 +170,9 @@
 </script>
 <style scoped lang="scss">
 	.waterfall-item {
+		/* #ifndef APP-NVUE */
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		/* #endif */
 		margin-top: 10px;
 	}
 	.waterfall-item__ft {

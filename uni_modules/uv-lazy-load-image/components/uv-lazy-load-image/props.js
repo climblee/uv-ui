@@ -76,6 +76,11 @@ export default {
 		radius: {
 			type: String,
 			default: ''
+		},
+		// 背景颜色，用于深色页面加载图片时，为了和背景色融合
+		bgColor: {
+			type: String,
+			default: '#f3f4f6'
 		}
 	}
 }

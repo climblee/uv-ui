@@ -43,6 +43,26 @@ export default {
 		rightGap: {
 			type: [Number, String],
 			default: 0
+		},
+		// 是否显示滚动条，仅nvue生效
+		showScrollbar: {
+			type: [Boolean],
+			default: false
+		},
+		// 列宽，nvue生效
+		columnWidth: {
+			type: [Number, String],
+			default: 'auto'
+		},
+		// 瀑布流的宽度，nvue生效
+		width: {
+			type: [Number, String],
+			default: ''
+		},
+		// 瀑布流的高度，nvue生效
+		height: {
+			type: [Number, String],
+			default: ''
 		}
 	}
 }

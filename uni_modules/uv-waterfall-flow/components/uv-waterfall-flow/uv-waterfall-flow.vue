@@ -1,5 +1,6 @@
 <template>
 	<view class="uv-waterfall-flow">
+		<!-- #ifndef APP-NVUE -->
 		<view class="uv-waterfall-flow__gap_left"
 			:style="[gapLeftStyle]"></view>
 		<template v-if="columnNum>=1">
@@ -47,15 +48,61 @@
 		</template>
 		<view class="uv-waterfall-flow__gap_right"
 			:style="[gapRightStyle]"></view>
+		<!-- #endif -->
+		<!-- #ifdef APP-NVUE -->
+		<waterfall
+			:column-count="columnNum"
+			:show-scrollbar="false"
+			column-width="auto"
+			:column-gap="columnGap"
+			:left-gap="leftGap"
+			:right-gap="rightGap"
+			:always-scrollable-vertical="true"
+			:style="[nvueWaterfallStyle]"
+			@loadmore="scrolltolower">
+			<slot></slot>
+		</waterfall>
+		<!-- #endif -->
 	</view>
 </template>
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
+	/**
+	 * 瀑布流
+	 * @description 该组件兼容所有端，nvue参考https://uniapp.dcloud.net.cn/component/waterfall.html
+	 * @tutorial https://www.uviewui.com/components/list.html
+	 * @property {Array}	value/modelValue	瀑布流数组数据，非nvue生效 （默认 [] ）
+	 * @property {String}	idKey	  数据的id值，根据id值对数据执行删除操作，如数据为：{id: 1, name: 'uv-ui'}，那么该值设置为id，非nvue有效 （默认 '' ）
+	 * @property {String ｜ Number}	addTime		每次插入数据的事件间隔，间隔越长能保证两列高度相近，但是用户体验不好，单位ms，非nvue生效（默认 200 ）
+	 * @property {String ｜ Number}	columnCount		瀑布流的列数（默认 2 ）
+	 * @property {String ｜ Number}			columnGap		列与列的间隙（默认 0 ）
+	 * @property {String ｜ Number}			leftGap		左边和列表的间隙（默认 0 ）
+	 * @property {String ｜ Number}			rightGap	右边和列表的间隙（默认 0 ）
+	 * @property {Boolean}	showScrollbar		控制是否出现滚动条，仅nvue有效 （默认 false ）
+	 * @property {String ｜ Number}		columnWidth		描述瀑布流每一列的列宽，nvue生效 （默认 auto）
+	 * @property {String ｜ Number}	  width	  瀑布流的宽度，nvue生效 （默认 屏幕宽 ）
+	 * @property {String ｜ Number}		height	 瀑布流的高度，nvue生效 （默认 屏幕高 ）
+	 * @property {Object}	customStyle		定义需要用到的外部样式
+	 *
+	 * @example <uv-waterfall-flow @scrolltolower="scrolltolower"></uv-waterfall-flow>
+	 */
 	export default {
 		name: 'uv-waterfall-flow',
 		mixins: [mpMixin, mixin, props],
+		data() {
+			return {
+				list1: [],
+				list2: [],
+				list3: [],
+				list4: [],
+				list5: [],
+				// 临时列表
+				tempList: [],
+				sys: uni.$uv.sys()
+			}
+		},
 		computed: {
 			// 破坏value变量引用，否则数据会保持不变
 			copyValue() {
@@ -83,33 +130,42 @@
 				const style = {}
 				style.width = uni.$uv.addUnit(this.columnGap)
 				return style;
+			},
+			nvueWaterfallStyle(){
+				const style = {},
+				addUnit = uni.$uv.addUnit
+				if (this.width != 0) style.width = addUnit(this.width)
+				if (this.height != 0) style.height = addUnit(this.height)
+				// 如果没有定义列表高度，则默认使用屏幕高度
+				if (!style.width) style.width = addUnit(this.sys.windowWidth, 'px')
+				if (!style.height) style.height = addUnit(this.sys.windowHeight, 'px')
+				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
 			}
 		},
 		watch: {
 			copyValue(nVal, oVal) {
+				// #ifndef APP-NVUE
 				// 取出数组发生变化的部分
 				let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
 				// 拼接原有数据
 				this.tempList = this.tempList.concat(uni.$uv.deepClone(nVal.slice(startIndex)))
 				this.splitData()
-			}
-		},
-		data() {
-			return {
-				list1: [],
-				list2: [],
-				list3: [],
-				list4: [],
-				list5: [],
-				// 临时列表
-				tempList: []
+				// #endif
 			}
 		},
 		mounted() {
+			// #ifndef APP-NVUE
 			this.tempList = uni.$uv.deepClone(this.copyValue)
 			this.splitData()
+			// #endif
 		},
 		methods: {
+			// 滚动到底部触发事件
+			scrolltolower(e) {
+				uni.$uv.sleep(30).then(() => {
+					this.$emit('scrolltolower')
+				})
+			},
 			// 拆分数据
 			async splitData() {
 				let rectArr = [];
