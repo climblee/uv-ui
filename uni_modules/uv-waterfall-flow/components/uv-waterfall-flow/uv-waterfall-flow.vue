@@ -184,7 +184,9 @@
 		&__column {
 			@include flex(column);
 			flex: 1;
+			// #ifndef APP-NVUE
 			height: auto;
+			// #endif
 		}
 	}
 </style>

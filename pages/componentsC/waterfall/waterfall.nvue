@@ -24,7 +24,7 @@
 							<text>{{item.desc}}</text>
 						</view>
 						<view class="waterfall-item__ft__btn" v-if="index==0">
-							<uv-button type="primary" size="mini" @click="edit(item)">异步修改</uv-button>
+							<uv-button type="primary" size="mini" text="异步修改" @click="edit(item)"></uv-button>
 						</view>
 					</view>
 				</view>

@@ -4,7 +4,6 @@
 		<view class="uv-lazy-load__item"
 			:class="[`uv-lazy-load__item--${elIndex}`]"
 			:style="[lazyLoadItemStyle]">
-			<!-- #ifndef APP-NVUE -->
 			<view class="uv-lazy-load__item__content">
 				<view class="uv-lazy-load__item__loading"
 					v-if="loadStatus!='loaded'">
@@ -30,10 +29,6 @@
 					@load="handleErrorImgLoaded"
 					@tap="handleImgClick"></image>
 			</view>
-			<!-- #endif -->
-			<!-- #ifdef APP-NVUE -->
-			<text class="tip">nvue中不支持此组件</text>
-			<!-- #endif -->
 		</view>
 	</view>
 </template>
@@ -122,7 +117,6 @@
 			this.observerName = 'lazyLoadContentObserver'
 		},
 		mounted() {
-			// #ifndef APP-NVUE
 			// 在需要用到懒加载的页面，在触发底部的时候触发tOnLazyLoadReachBottom事件，保证所有图片进行加载
 			this.$nextTick(() => {
 				uni.$once('tOnLazyLoadReachBottom', () => {
@@ -131,6 +125,7 @@
 			})
 			// mounted的时候，不一定挂载了这个元素，延时30ms，否则会报错或者不报错，但是也没有效果
 			setTimeout(() => {
+				// #ifndef APP-NVUE
 				this.disconnectObserver(this.observerName)
 				const contentObserver = uni.createIntersectionObserver(this)
 				contentObserver.relativeToViewport({
@@ -144,11 +139,11 @@
 					}
 				})
 				this[this.observerName] = contentObserver
+				// #endif
+				// #ifdef APP-NVUE
+				this.show = true;
+				// #endif
 			}, 20)
-			// #endif
-			// #ifdef APP-NVUE
-			this.show = true;
-			// #endif
 		},
 		methods: {
 			// 初始化
