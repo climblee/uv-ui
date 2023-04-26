@@ -439,7 +439,7 @@
 						name: 'coupon-fill'
 					},
 					{
-						name: 'kefuv-ermai'
+						name: 'kefu-ermai'
 					},
 					{
 						name: 'server-fill'
@@ -487,7 +487,7 @@
 						name: 'camera'
 					},
 					{
-						name: 'cameruv-fill'
+						name: 'camera-fill'
 					},
 					{
 						name: 'pushpin'
@@ -532,7 +532,7 @@
 						name: 'zhihu'
 					},
 					{
-						name: 'zhihuv-circle-fill'
+						name: 'zhihu-circle-fill'
 					},
 					{
 						name: 'gift'
@@ -598,7 +598,7 @@
 						name: 'baidu'
 					},
 					{
-						name: 'baiduv-circle-fill'
+						name: 'baidu-circle-fill'
 					},
 					{
 						name: 'share-square'

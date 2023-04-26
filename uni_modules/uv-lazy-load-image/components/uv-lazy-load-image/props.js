@@ -1,6 +1,6 @@
 export default {
 	props: {
-		// 组件标识
+		// 组件标识，点击图片返回
 		name: {
 			type: [String, Number],
 			default: ''
@@ -13,7 +13,17 @@ export default {
 		// 图片裁剪模式
 		mode: {
 			type: String,
-			default: 'scaleToFill'
+			default: 'aspectFill'
+		},
+		// 是否显示加载状态
+		showLoading: {
+			type: Boolean,
+			default: true
+		},
+		// 是否显示错误的图片
+		showError: {
+			type: Boolean,
+			default: true
 		},
 		// 占位图片路径
 		loadingImg: {
@@ -47,6 +57,11 @@ export default {
 			type: String,
 			default: 'ease-in-out'
 		},
+		// 图片宽度，单位px
+		width: {
+			type: [String, Number],
+			default: ''
+		},
 		// 图片高度，单位px
 		height: {
 			type: [String, Number],
@@ -58,7 +73,7 @@ export default {
 			default: ''
 		},
 		// 图片圆角
-		borderRadius: {
+		radius: {
 			type: String,
 			default: ''
 		}

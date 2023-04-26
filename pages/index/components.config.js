@@ -22,6 +22,11 @@ export default [{
 		title: 'Image 图片',
 		title_en: 'Image'
 	}, {
+		path: '/pages/componentsA/lazy-load-image/lazy-load-image',
+		icon: 'image',
+		title: 'LazyLoadImage 图片懒加载',
+		title_en: 'Image'
+	}, {
 		path: '/pages/componentsA/button/button',
 		icon: 'button',
 		title: 'Button 按钮',

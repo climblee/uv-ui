@@ -1,13 +1,18 @@
 <template>
-	<view class="uv-lazy-load-class uv-lazy-load"
-		:style="[$uv.addStyle(customStyle)]">
+	<view class="uv-lazy-load"
+		:style="[lazyLoadStyle,$uv.addStyle(customStyle)]">
 		<view class="uv-lazy-load__item"
-			:class="[`uv-lazy-load__item--${elIndex}`]"
-			:style="[lazyLoadItemStyle]">
-			<view class="uv-lazy-load__item__content">
+			:class="[`uv-lazy-load__item--${elIndex}`,{'uv-lazy-load__item--error':error}]"
+			:style="[lazyLoadItemStyle]"
+			@click="handleImgClick">
+			<view :class="['uv-lazy-load__item__content']">
 				<view class="uv-lazy-load__item__loading"
 					v-if="loadStatus!='loaded'">
-					<uv-loading-icon v-if="!loadingImg"></uv-loading-icon>
+					<template v-if="!loadingImg">
+						<slot name="loading">
+							<uv-loading-icon v-if="showLoading"></uv-loading-icon>
+						</slot>
+					</template>
 					<image class="uv-lazy-load__item__loading__custom"
 						:src="loadingImg"
 						mode="aspectFit"
@@ -20,14 +25,18 @@
 					:mode="mode"
 					@load="handleImgLoaded"
 					@error="handleImgError"
-					@tap="handleImgClick"></image>
-				<image v-else
-					class="uv-lazy-load__item__image uv-lazy-load__item__image--error"
-					:style="[imageStyle,errorImageStyle]"
-					:src="load"
-					:mode="mode"
-					@load="handleErrorImgLoaded"
-					@tap="handleImgClick"></image>
+					@click.stop="handleImgClick"></image>
+				<template v-else>
+					<slot name="error">
+						<image class="uv-lazy-load__item__image uv-lazy-load__item__image--error"
+							:style="[imageStyle,errorImageStyle]"
+							:src="load"
+							:mode="mode"
+							@load="handleErrorImgLoaded"
+							@click.stop="handleImgClick"
+							v-if="showError"></image>
+					</slot>
+				</template>
 			</view>
 		</view>
 	</view>
@@ -46,29 +55,33 @@
 				let threshold = uni.upx2px(Math.abs(this.threshold))
 				return this.threshold < 0 ? -threshold : threshold
 			},
+			lazyLoadStyle(){
+				let style = {}
+				style.width = uni.$uv.addUnit(this.width);
+				style.height = uni.$uv.addUnit(this.height);
+				return style
+			},
 			lazyLoadItemStyle() {
 				let style = {}
 				style.opacity = Number(this.opacity)
-				if (this.borderRadius) {
-					style.borderRadius = this.borderRadius
-				}
+				style.borderRadius = this.radius
 				// 因为time值需要改变,所以不直接用duration值(不能改变父组件prop传过来的值)
 				style.transition = `opacity ${this.time / 1000}s ${this.effect}`
+				style.width = uni.$uv.addUnit(this.width);
 				style.height = uni.$uv.addUnit(this.height);
-				return uni.$uv.addStyle(style)
+				style.background = this.bgColor;
+				return style
 			},
 			imageStyle() {
-				if(!this.height) return null;
-				let style = {
-					height: uni.$uv.addUnit(this.height)
-				}
-				return uni.$uv.addStyle(style)
+				let style = {}
+				style.width = uni.$uv.addUnit(this.width);
+				style.height = uni.$uv.addUnit(this.height);
+				return style
 			},
 			errorImageStyle() {
-				let style = {
-					background: `url(${this.errorImg}) no-repeat center center`
-				}
-				return uni.$uv.addStyle(style)
+				let style = {}
+				style.background = `url(${this.errorImg}) no-repeat center center`
+				return style
 			}
 		},
 		watch: {
@@ -143,7 +156,7 @@
 				// #ifdef APP-NVUE
 				this.show = true;
 				// #endif
-			}, 20)
+			}, 50)
 		},
 		methods: {
 			// 初始化
@@ -161,7 +174,7 @@
 				// 点击了正常的图片
 				else whichImg = 'realImg'
 				this.$emit('click', {
-					index: this.name,
+					name: this.name,
 					whichImg: whichImg
 				})
 			},
@@ -184,6 +197,7 @@
 			// 处理图片加载失败
 			handleImgError() {
 				this.error = true
+				this.loadStatus = 'loaded'
 			},
 			disconnectObserver(observerName) {
 				const observer = this[observerName]
@@ -192,14 +206,19 @@
 		}
 	}
 </script>
-<style lang="scss"
-	scoped>
+<style lang="scss" scoped>
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$uv-bg-gray-color: #f3f4f6;
 	.uv-lazy-load {
 		&__item {
 			background-color: $uv-bg-gray-color;
 			overflow: hidden;
+			&--error {
+				align-items: center;
+				justify-content: center;
+			}
 			&__content {
+				position: relative;
 				align-items: center;
 				justify-content: center;
 			}
@@ -214,7 +233,6 @@
 				justify-content: center;
 			}
 			&__image {
-				border-radius: 10rpx;
 				overflow: hidden;
 				/* #ifndef APP-NVUE */
 				display: block;

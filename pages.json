@@ -75,6 +75,11 @@
 			"style": {
 				"navigationBarTitleText": "Divider 分割线"
 			}
+		}, {
+			"path": "lazy-load-image/lazy-load-image",
+			"style": {
+				"navigationBarTitleText": "LazyLoadImage 图片懒加载"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",
