@@ -23,18 +23,27 @@
 					:style="[imageStyle]"
 					:src="show?src:load"
 					:mode="mode"
+					:fade-show="true"
 					@load="handleImgLoaded"
-					@error="handleImgError"
-					@click.stop="handleImgClick"></image>
+					@error="handleImgError"></image>
 				<template v-else>
 					<slot name="error">
+						<!-- #ifndef APP-NVUE -->
 						<image class="uv-lazy-load__item__image uv-lazy-load__item__image--error"
 							:style="[imageStyle,errorImageStyle]"
 							:src="load"
 							:mode="mode"
 							@load="handleErrorImgLoaded"
-							@click.stop="handleImgClick"
 							v-if="showError"></image>
+						<!-- #endif -->
+						<!-- #ifdef APP-NVUE -->
+						<uv-icon
+						  :name="errorImg"
+							size="40"
+							img-mode="aspectFit"
+							v-if="showError">
+						</uv-icon>
+						<!-- #endif -->
 					</slot>
 				</template>
 			</view>
@@ -74,6 +83,7 @@
 			},
 			imageStyle() {
 				let style = {}
+				style.borderRadius = this.radius
 				style.width = uni.$uv.addUnit(this.width);
 				style.height = uni.$uv.addUnit(this.height);
 				return style

@@ -1,0 +1,90 @@
+<template>
+	<view class="uv-page">
+		<uv-list>
+			<uv-list-item>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">基本案例</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item" style="width: 700rpx;">
+							<uv-lazy-load-image src="/static/1.jpg" name="1" @click="clickHandle"></uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">自定义尺寸</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="/static/1.jpg" name="2" width="100px" height="100px" mode="aspectFill"></uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">自定义圆角</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="/static/1.jpg" name="3" width="100px" height="100px" radius="20px" mode="aspectFill"></uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">图片模式（widthFix）</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="/static/1.jpg" name="4" width="100px" mode="widthFix"></uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">默认/自定义错误图片</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="/static/no.jpg" name="5" width="100px" height="100px" mode="widthFix" @click="clickHandle"></uv-lazy-load-image>
+						</view>
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="/static/no.jpg" name="6" width="100px" height="100px" mode="widthFix" @click="clickHandle">
+								<template v-slot:error>
+									<uv-icon name="photo" size="40" color="#999"></uv-icon>
+								</template>
+							</uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+				<view class="uv-demo-block">
+					<text class="uv-demo-block__title">默认/自定义加载</text>
+					<view class="uv-demo-block__content">
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="https://via.placeholder.com/100x100.png/3c9cff" name="7" width="100px" height="100px" mode="aspectFill" @click="clickHandle"></uv-lazy-load-image>
+						</view>
+						<view class="uv-page__image-item">
+							<uv-lazy-load-image src="https://via.placeholder.com/100x100.png/3c9cff" name="7" width="100px" height="100px" mode="aspectFill" :showLoading="false" @click="clickHandle">
+								<template v-slot:loading>
+									<uv-loading-icon color="red"></uv-loading-icon>
+								</template>
+							</uv-lazy-load-image>
+						</view>
+					</view>
+				</view>
+			</uv-list-item>
+		</uv-list>
+		
+	</view>
+</template>
+<script>
+	export default {
+		methods: {
+			clickHandle(e){
+				console.log('点击了图片',e)
+			}
+		}
+	}
+</script>
+<style scoped lang="scss">
+	.uv-demo-block__content {
+		width: 710rpx;
+		flex-direction: row;
+		margin: 0 -10rpx;
+		.uv-page__image-item {
+			margin: 0 10rpx;
+		}
+	}
+</style>
