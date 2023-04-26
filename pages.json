@@ -80,6 +80,16 @@
 			"style": {
 				"navigationBarTitleText": "LazyLoadImage 图片懒加载"
 			}
+		}, {
+			"path": "gap/gap",
+			"style": {
+				"navigationBarTitleText": "Gap 间隔槽"
+			}
+		}, {
+			"path": "line/line",
+			"style": {
+				"navigationBarTitleText": "Line 线条"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",
@@ -196,6 +206,11 @@
 			"style": {
 				"navigationBarTitleText": "Waterfall 瀑布流",
 				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "overlay/overlay",
+			"style": {
+				"navigationBarTitleText": "Overlay 遮罩层"
 			}
 		}]
 	}, {

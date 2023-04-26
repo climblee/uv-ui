@@ -1,0 +1,74 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本案例</text>
+				<view class="uv-page__line-item">
+					<uv-line></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义颜色</text>
+				<view class="uv-page__line-item">
+					<uv-line color="#2979ff"></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义长度</text>
+				<view class="uv-page__line-item">
+					<uv-line length="200"></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义方向</text>
+				<view class="uv-page__line-item">
+					<uv-line
+					    length="30"
+					    color="#2979ff"
+					    direction="col"
+					></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否显示1px粗线条</text>
+				<view class="uv-page__line-item">
+					<uv-line :hairline="false"></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">线条与上下左右元素的间距</text>
+				<view class="uv-page__line-item">
+						<uv-line margin="20"></uv-line>
+				</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否虚线</text>
+				<view class="uv-page__line-item">
+					<uv-line
+					    color="#2979ff"
+					    :dashed="true"
+					></uv-line>
+				</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style lang="scss">
+.uv-page{
+	&__line-item{
+		 margin-top:5px;
+	}
+}
+</style>

@@ -1,0 +1,42 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本案列</text>
+			<view class="uv-page__gap-item">
+				<uv-gap bgColor="#f3f4f6"></uv-gap>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义颜色</text>
+			<view class="uv-page__gap-item">
+				<uv-gap bgColor="#2979ff"></uv-gap>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义高度</text>
+			<view class="uv-page__gap-item">
+				<uv-gap bgColor="#f3f4f6" height="40"></uv-gap>
+			</view>
+		</view>	
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义上下边距</text>
+			<view class="uv-page__gap-item">
+			<uv-gap
+				bgColor="#f3f4f6"
+			    marginTop="20"
+			    marginBottom="20"
+			></uv-gap>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+
+	}
+</script>
+
+<style lang="scss">
+
+</style>

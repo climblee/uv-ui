@@ -273,7 +273,7 @@ export default [{
 			title: 'Line 线条',
 			title_en: 'Line'
 		}, {
-			path: '/pages/componentsA/overlay/overlay',
+			path: '/pages/componentsC/overlay/overlay',
 			icon: 'mask',
 			title: 'Overlay 遮罩层',
 			title_en: 'Overlay'
