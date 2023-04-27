@@ -147,6 +147,7 @@ export default {
 		color: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.button
 	}
 }

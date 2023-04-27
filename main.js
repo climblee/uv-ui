@@ -1,5 +1,22 @@
 import App from './App'
 import uvUI from '@/uni_modules/uv-ui-tools'
+
+// uni.$uv.setConfig({
+// 	config: {
+// 			// 修改默认单位为rpx，相当于执行 uni.$u.config.unit = 'rpx'
+// 			unit: 'px'
+// 	},
+// 	props: {
+// 		button: {
+// 			size: {
+// 				default: 'large'
+// 			},
+// 			color: {
+// 				default: 'red'
+// 			}
+// 		}
+// 	}
+// })
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false

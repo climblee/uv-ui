@@ -695,6 +695,7 @@ function setConfig({
 	uni.$uv.props = deepMerge(uni.$uv.props, props)
 	uni.$uv.color = deepMerge(uni.$uv.color, color)
 	uni.$uv.zIndex = deepMerge(uni.$uv.zIndex, zIndex)
+	console.log(uni.$uv.config,uni.$uv.props)
 }
 
 export default {
