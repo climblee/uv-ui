@@ -210,12 +210,17 @@
 		}, {
 			"path": "swiper/swiper",
 			"style": {
-				"navigationBarTitleText": "Overlay 遮罩层"
+				"navigationBarTitleText": "Swiper 轮播图"
 			}
 		}, {
 			"path": "overlay/overlay",
 			"style": {
-				"navigationBarTitleText": "Swiper 轮播图"
+				"navigationBarTitleText": "Overlay 遮罩层"
+			}
+		}, {
+			"path": "indexList/indexList",
+			"style": {
+				"navigationBarTitleText": "IndexList 索引列表"
 			}
 		}]
 	}, {
