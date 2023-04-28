@@ -11,10 +11,18 @@ export default {
 			default: true
 		},
 		// 绑定值
+		// #ifdef VUE2
 		value: {
 			type: [String, Number],
 			default: ''
 		},
+		// #endif
+		// #ifdef VUE3
+		modelValue: {
+			type: [String, Number],
+			default: ''
+		},
+		// #endif
 		// 顶部标题
 		title: {
 			type: String,

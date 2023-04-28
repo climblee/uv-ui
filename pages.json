@@ -222,6 +222,11 @@
 			"style": {
 				"navigationBarTitleText": "IndexList 索引列表"
 			}
+		}, {
+			"path": "codeInput/codeInput",
+			"style": {
+				"navigationBarTitleText": "CodeInput 验证码输入"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",
