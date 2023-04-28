@@ -90,6 +90,11 @@
 			"style": {
 				"navigationBarTitleText": "Line 线条"
 			}
+		}, {
+			"path": "swipeAction/swipeAction",
+			"style": {
+				"navigationBarTitleText": "SwipeAction 滑动单元格"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",
