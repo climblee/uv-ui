@@ -208,9 +208,14 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
-			"path": "overlay/overlay",
+			"path": "swiper/swiper",
 			"style": {
 				"navigationBarTitleText": "Overlay 遮罩层"
+			}
+		}, {
+			"path": "overlay/overlay",
+			"style": {
+				"navigationBarTitleText": "Swiper 轮播图"
 			}
 		}]
 	}, {
