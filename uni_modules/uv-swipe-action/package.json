@@ -1,10 +1,10 @@
 {
-  "id": "uv-textarea",
-  "displayName": "uv-textarea",
+  "id": "uv-swipe-action",
+  "displayName": "uv-swipe-action",
   "version": "1.0.0",
-  "description": "uv-textarea",
+  "description": "uv-swipe-action",
   "keywords": [
-    "uv-textarea"
+    "uv-swipe-action"
 ],
   "repository": "",
   "engines": {
@@ -32,7 +32,9 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools"
+			"uv-ui-tools",
+			"uv-icon",
+			"uv-swipe-action-item"
 		],
     "encrypt": [],
     "platforms": {

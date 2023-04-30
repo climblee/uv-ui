@@ -1,10 +1,10 @@
 {
-  "id": "uv-textarea",
-  "displayName": "uv-textarea",
+  "id": "uv-code-input",
+  "displayName": "uv-code-input",
   "version": "1.0.0",
-  "description": "uv-textarea",
+  "description": "uv-code-input",
   "keywords": [
-    "uv-textarea"
+    "uv-code-input"
 ],
   "repository": "",
   "engines": {

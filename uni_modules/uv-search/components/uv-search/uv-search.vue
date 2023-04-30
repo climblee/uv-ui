@@ -128,7 +128,12 @@
 		watch: {
 			keyword(nVal) {
 				// 双向绑定值，让v-model绑定的值双向变化
-				this.$emit('input', nVal);
+				// #ifdef VUE2
+				this.$emit('input', nVal)
+				// #endif
+				// #ifdef VUE3
+				this.$emit('update:modelValue',nVal)
+				// #endif
 				// 触发change事件，事件效果和v-model双向绑定的效果一样，让用户多一个选择
 				this.$emit('change', nVal);
 			},

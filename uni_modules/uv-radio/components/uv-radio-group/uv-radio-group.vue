@@ -88,7 +88,12 @@
 					name
 				} = childInstance
 				// 通过emit事件，设置父组件通过v-model双向绑定的值
+				// #ifdef VUE2
 				this.$emit('input', name)
+				// #endif
+				// #ifdef VUE3
+				this.$emit('update:modelValue',name)
+				// #endif
 				// 发出事件
 				this.$emit('change', name)
 			},

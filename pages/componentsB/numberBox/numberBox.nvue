@@ -224,7 +224,7 @@
 				})
 				setTimeout(() => {
 					uni.hideLoading()
-					this.value9 = e
+					this.value9 = e.value
 					this.asyncChange = true
 				}, 3000)
 			}
