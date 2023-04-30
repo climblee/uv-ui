@@ -97,16 +97,28 @@
 				elId: uni.$uv.guid(),
 				elClass: uni.$uv.guid(),
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
+				// #ifdef VUE2
+				activeIndex: this.value,
+				// #endif
+				// #ifdef VUE3
 				activeIndex: this.modelValue,
+				// #endif
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
 				moving: false,
 			};
 		},
 		watch: {
+			// #ifdef VUE2
 			value(val) {
 				this.activeIndex = val;
 			},
+			// #endif
+			// #ifdef VUE3
+			modelValue(val) {
+				this.activeIndex = val;
+			},
+			// #endif
 			activeIndex: 'emitEvent'
 		},
 		methods: {

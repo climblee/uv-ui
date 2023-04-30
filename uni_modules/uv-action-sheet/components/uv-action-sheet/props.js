@@ -49,6 +49,7 @@ export default {
 		round: {
 			type: [Boolean, String, Number],
 			default: 0
-		}
+		},
+		...uni.$uv.props?.actionSheet
 	}
 }

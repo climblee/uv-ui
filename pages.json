@@ -178,6 +178,11 @@
 			"style": {
 				"navigationBarTitleText": "CountDown 倒计时"
 			}
+		}, {
+			"path": "countTo/countTo",
+			"style": {
+				"navigationBarTitleText": "CountTo 数字滚动"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
