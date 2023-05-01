@@ -1,0 +1,195 @@
+<template>
+	<view class="uv-page">
+		<uv-navbar
+			title="模态框"
+			@leftClick="navigateBack"
+			safeAreaInsetTop
+			fixed
+			placeholder
+		></uv-navbar>
+		<uv-gap
+			height="20"
+			bgColor="#fff"
+		></uv-gap>
+		<uv-cell-group>
+			<uv-cell
+				@click="showModal(index)"
+				:title="item.title"
+				v-for="(item, index) in list"
+				:key="index"
+				isLink
+			>
+				<image
+					slot="icon"
+					class="uv-cell-icon"
+					:src="item.iconUrl"
+					mode="widthFix"
+				></image>
+			</uv-cell>
+		</uv-cell-group>
+		<uv-modal
+			:content="content"
+			title="标题"
+			:show="show1"
+			@confirm="() => show1 = false"
+		></uv-modal>
+		<uv-modal
+			:content="content"
+			:show="show2"
+			@confirm="() => show2 = false"
+		></uv-modal>
+		<uv-modal
+			:content="content"
+			:show="show3"
+			showCancelButton
+			closeOnClickOverlay
+			@confirm="confirm"
+			@cancel="cancel"
+			@close="close"
+		></uv-modal>
+		<uv-modal
+			:content="content"
+			:show="show4"
+			showCancelButton
+			asyncClose
+			@confirm="confirm4"
+			@cancel="() => show4 = false"
+		></uv-modal>
+		<uv-modal
+			:content="content"
+			:show="show5"
+			showCancelButton
+			buttonReverse
+			@confirm="() => show5 = false"
+			@cancel="() => show5 = false"
+		></uv-modal>
+		<uv-modal
+			:content="content"
+			title="标题"
+			:show="show6"
+			closeOnClickOverlay
+			@confirm="() => show6 = false"
+			@close="() => show6 = false"
+		></uv-modal>
+		<uv-modal
+			title="利剑出鞘,一统江湖"
+			:show="show7"
+			closeOnClickOverlay
+			@confirm="() => show7 = false"
+		>
+			<image
+				style="width: 80px;height: 80px;"
+				src="/static/uview/common/logo.png"
+			></image>
+		</uv-modal>
+		<uv-modal
+			title="标题"
+			:show="show8"
+			:content="content"
+			closeOnClickOverlay
+			showCancelButton
+		>
+			<uv-button
+				slot="confirmButton"
+				text="确定"
+				type="success"
+				shape="circle"
+				@click="show8 = false"
+			></uv-button>
+		</uv-modal>
+		<uv-modal
+			:content="content"
+			title="标题"
+			:show="show9"
+			:zoom="false"
+			@confirm="() => show9 = false"
+		></uv-modal>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				content: '模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作',
+				show1: false,
+				show2: false,
+				show3: false,
+				show4: false,
+				show5: false,
+				show6: false,
+				show7: false,
+				show8: false,
+				show9: false,
+				list: [{
+						title: '基础使用',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/4.png'
+					},
+					{
+						title: '无标题',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/5.png'
+					},
+					{
+						title: '带取消按钮',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/2.png'
+					},
+					{
+						title: '异步关闭',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/6.png'
+					},
+					{
+						title: '对调取消和确认按钮',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/3.png'
+					},
+					{
+						title: '允许点击遮罩关闭',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/7.png'
+					},
+					{
+						title: '传入slot',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/1.png'
+					},
+					{
+						title: '自定义按钮',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/8.png'
+					},
+					{
+						title: '淡入淡出动画',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/modal/9.png'
+					}
+				]
+			}
+		},
+		methods: {
+			showModal(index) {
+				this[`show${index + 1}`] = true
+			},
+			navigateBack() {
+				uni.navigateBack()
+			},
+			confirm4() {
+				setTimeout(() => {
+					this.show4 = false
+				}, 2000)
+			},
+			confirm() {
+				this.show3 = false
+				console.log('confirm');
+			},
+			cancel() {
+				this.show3 = false
+				console.log('cancel');
+			},
+			close() {
+				this.show3 = false
+				console.log('close');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.uv-page {
+		padding: 0;
+	}
+</style>

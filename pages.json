@@ -247,6 +247,11 @@
 			"style": {
 				"navigationBarTitleText": "Steps 步骤条"
 			}
+		}, {
+			"path": "modal/modal",
+			"style": {
+				"navigationBarTitleText": "Modal 模态框"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",
