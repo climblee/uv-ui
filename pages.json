@@ -198,6 +198,16 @@
 			"style": {
 				"navigationBarTitleText": "NoticeBar 滚动通知"
 			}
+		}, {
+			"path": "alert/alert",
+			"style": {
+				"navigationBarTitleText": "Alert 警告提示"
+			}
+		}, {
+			"path": "toast/toast",
+			"style": {
+				"navigationBarTitleText": "AToast 消息提示"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
