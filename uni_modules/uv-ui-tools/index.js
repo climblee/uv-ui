@@ -22,7 +22,7 @@ const $uv = {
 	colorGradient: colorGradient.colorGradient,
 	hexToRgb: colorGradient.hexToRgb,
 	rgbToHex: colorGradient.rgbToHex,
-	colorToRgba: colorGradient.colorToRgba,
+	colorToRgba: colorGradient.colorToRgba
 }
 uni.$uv = $uv;
 console.log('uni.$uv',uni.$uv)
