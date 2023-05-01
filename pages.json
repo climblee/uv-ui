@@ -193,6 +193,11 @@
 			"style": {
 				"navigationBarTitleText": "CountTo 数字滚动"
 			}
+		}, {
+			"path": "noticeBar/noticeBar",
+			"style": {
+				"navigationBarTitleText": "NoticeBar 滚动通知"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
