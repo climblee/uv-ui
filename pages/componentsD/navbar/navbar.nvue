@@ -90,7 +90,6 @@
 
 <style lang="scss">
 	
-	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	/* #ifndef APP-NVUE */
 	page {
 		background-color: $uv-bg-color;
