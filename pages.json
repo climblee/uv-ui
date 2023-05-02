@@ -332,6 +332,16 @@
 			"style": {
 				"navigationBarTitleText": "Layout 布局"
 			}
+		}, {
+			"path": "noNetwork/noNetwork",
+			"style": {
+				"navigationBarTitleText": "NoNetwork 无网络提示"
+			}
+		}, {
+			"path": "readMore/readMore",
+			"style": {
+				"navigationBarTitleText": "ReadMore 展开阅读更多"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",
