@@ -100,6 +100,16 @@
 			"style": {
 				"navigationBarTitleText": "Empty 内容为空"
 			}
+		}, {
+			"path": "grid/grid",
+			"style": {
+				"navigationBarTitleText": "Grid 宫格布局"
+			}
+		}, {
+			"path": "link/link",
+			"style": {
+				"navigationBarTitleText": "Link 超链接"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",

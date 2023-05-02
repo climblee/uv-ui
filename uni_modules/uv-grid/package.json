@@ -1,10 +1,10 @@
 {
-  "id": "uv-text",
-  "displayName": "uv-text",
+  "id": "uv-grid",
+  "displayName": "uv-grid",
   "version": "1.0.0",
-  "description": "uv-text",
+  "description": "uv-grid",
   "keywords": [
-    "uv-text"
+    "uv-grid"
 ],
   "repository": "",
   "engines": {
@@ -32,8 +32,7 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools",
-			"uv-icon"
+			"uv-ui-tools"
 		],
     "encrypt": [],
     "platforms": {
