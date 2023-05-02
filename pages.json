@@ -297,6 +297,11 @@
 			"style": {
 				"navigationBarTitleText": "Subsection 分段器"
 			}
+		}, {
+			"path": "skeleton/skeleton",
+			"style": {
+				"navigationBarTitleText": "Skeleton 骨架屏"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",
