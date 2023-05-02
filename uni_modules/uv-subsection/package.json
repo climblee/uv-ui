@@ -1,10 +1,10 @@
 {
-  "id": "uv-status-bar",
-  "displayName": "uv-status-bar",
+  "id": "uv-subsection",
+  "displayName": "uv-subsection",
   "version": "1.0.0",
-  "description": "uv-status-bar",
+  "description": "uv-subsection",
   "keywords": [
-    "uv-status-bar"
+    "uv-subsection"
 ],
   "repository": "",
   "engines": {

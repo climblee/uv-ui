@@ -223,6 +223,11 @@
 			"style": {
 				"navigationBarTitleText": "Progress 进度条"
 			}
+		}, {
+			"path": "slider/slider",
+			"style": {
+				"navigationBarTitleText": "Slider 滑动选择器"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
@@ -286,6 +291,11 @@
 			"path": "tooltip/tooltip",
 			"style": {
 				"navigationBarTitleText": "Tooltip 长按提示"
+			}
+		}, {
+			"path": "subsection/subsection",
+			"style": {
+				"navigationBarTitleText": "Subsection 分段器"
 			}
 		}]
 	}, {
