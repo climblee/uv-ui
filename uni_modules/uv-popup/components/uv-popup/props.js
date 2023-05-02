@@ -38,7 +38,7 @@ export default {
 		// 层级
 		zIndex: {
 			type: [String, Number],
-			default: 202304
+			default: 10075
 		},
 		// 是否为iPhoneX留出底部安全距离
 		safeAreaInsetBottom: {

@@ -208,6 +208,11 @@
 			"style": {
 				"navigationBarTitleText": "AToast 消息提示"
 			}
+		}, {
+			"path": "notify/notify",
+			"style": {
+				"navigationBarTitleText": "Notify 消息提示"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
@@ -266,6 +271,11 @@
 			"path": "modal/modal",
 			"style": {
 				"navigationBarTitleText": "Modal 模态框"
+			}
+		}, {
+			"path": "tooltip/tooltip",
+			"style": {
+				"navigationBarTitleText": "Tooltip 长按提示"
 			}
 		}]
 	}, {

@@ -8,7 +8,7 @@ export default {
 		// 层级z-index
 		zIndex: {
 			type: [String, Number],
-			default: 202303
+			default: 10070
 		},
 		// 遮罩的过渡时间，单位为ms
 		duration: {
