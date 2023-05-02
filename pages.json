@@ -218,6 +218,11 @@
 			"style": {
 				"navigationBarTitleText": "Collapse 折叠面板"
 			}
+		}, {
+			"path": "progress/progress",
+			"style": {
+				"navigationBarTitleText": "Progress 进度条"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
