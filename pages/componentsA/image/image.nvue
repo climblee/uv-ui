@@ -1,0 +1,99 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本案例</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					 <uv-image
+					     :showLoading="true"
+					     :src="src"
+					     width="80px"
+					     height="80px"
+						 @click="click"
+					 ></uv-image>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义形状</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					<uv-image
+					    shape="circle"
+					    :src="src"
+					    width="80px"
+					    height="80px"
+					></uv-image>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义圆角</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					<uv-image
+					    radius="4"
+					    :src="src"
+					    width="80px"
+					    height="80px"
+					></uv-image>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">图片模式(widthFit)</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					<uv-image
+					    :src="src"
+					    width="80px"
+					    height="80px"
+						mode="widthFit"
+					></uv-image>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义图片加载插槽</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					<uv-image
+					    :src="src1"
+					    width="80px"
+					    height="80px"
+						mode="widthFit"
+					>
+						<template v-slot:loading>
+							<uv-loading-icon color="red"></uv-loading-icon>
+						</template>
+					</uv-image>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				src: 'https://cdn.uviewui.com/uview/album/1.jpg',
+				src1:''
+			}
+		},
+		onLoad() {
+			setTimeout(()=>{
+				this.src1 = this.src
+			},3000)
+		},
+		methods: {
+			click() {
+				console.log('click');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	 
+</style>

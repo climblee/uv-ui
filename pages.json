@@ -110,6 +110,11 @@
 			"style": {
 				"navigationBarTitleText": "Link 超链接"
 			}
+		}, {
+			"path": "image/image",
+			"style": {
+				"navigationBarTitleText": "Image 图片"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",
