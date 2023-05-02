@@ -1,10 +1,10 @@
 {
-  "id": "uv-toast",
-  "displayName": "uv-toast",
+  "id": "uv-collapse",
+  "displayName": "uv-collapse",
   "version": "1.0.0",
-  "description": "uv-toast",
+  "description": "uv-collapse",
   "keywords": [
-    "uv-toast"
+    "uv-collapse"
 ],
   "repository": "",
   "engines": {
@@ -33,9 +33,8 @@
   "uni_modules": {
     "dependencies": [
 			"uv-ui-tools",
-			"uv-overlay",
-			"uv-loading-icon",
-			"uv-gap"
+			"uv-line",
+			"uv-cell"
 		],
     "encrypt": [],
     "platforms": {

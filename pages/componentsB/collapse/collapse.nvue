@@ -1,0 +1,180 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">基础功能</text>
+			<uv-collapse
+				@change="change"
+				@close="close"
+				@open="open"
+			>
+				<uv-collapse-item
+				    title="文档指南"
+					name="Docs guide"
+				>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="组件全面"
+					name="Variety components"
+				>
+					<text class="uv-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="众多利器"
+					name="Numerous tools"
+				>
+					<text class="uv-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+				</uv-collapse-item>
+			</uv-collapse>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">展开和禁用</text>
+			<uv-collapse
+				:value="['2']"
+			>
+				<uv-collapse-item
+				    title="文档指南"
+				>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+					disabled
+				    title="组件全面"
+				>
+					<text class="uv-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+					name="2"
+				    title="众多利器"
+				>
+					<text class="uv-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+				</uv-collapse-item>
+			</uv-collapse>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">手风琴模式</text>
+			<uv-collapse
+				accordion
+			>
+				<uv-collapse-item
+				    title="文档指南"
+				>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="组件全面"
+				>
+					<text class="uv-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="众多利器"
+				>
+					<text class="uv-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+				</uv-collapse-item>
+			</uv-collapse>
+		</view>
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">移除下划线</text>
+			<uv-collapse
+				accordion
+				:border="false"
+			>
+				<uv-collapse-item
+				    title="文档指南"
+				>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="组件全面"
+				>
+					<text class="uv-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="众多利器"
+				>
+					<text class="uv-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+				</uv-collapse-item>
+			</uv-collapse>
+		</view>
+		<!-- 微信小程序不支持，因为微信中不支持 <slot name="title" slot="title" />的写法 -->
+		<!-- #ifndef MP-WEIXIN -->
+		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义标题和内容</text>
+			<uv-collapse
+				accordion
+			>
+				<uv-collapse-item
+				>
+					<text slot="title" class="uv-page__item__title__slot-title">文档指南</text>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item>
+				<!-- <uv-collapse-item
+					:isLink="false"
+				>
+					<text slot="title" class="uv-page__item__title__slot-title">文档指南</text>
+					<text class="uv-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+				</uv-collapse-item> -->
+				<uv-collapse-item
+				    title="组件全面"
+				>
+					<uv-icon name="tags-fill" size="20" slot="icon"></uv-icon>
+					<text class="uv-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+				</uv-collapse-item>
+				<uv-collapse-item
+				    title="众多利器"
+				>
+					<text slot="value" class="uv-page__item__title__slot-title">自定义内容</text>
+					<text class="uv-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+				</uv-collapse-item>
+			</uv-collapse>
+		</view>
+		<!-- #endif -->
+		<uv-gap height="50"></uv-gap>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+			}
+		},
+		methods: {
+			open(e) {
+				// console.log('open', e)
+			},
+			close(e) {
+				// console.log('close', e)
+			},
+			change(e) {
+				// console.log('change', e)
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.uv-page {
+		padding: 0;
+		
+		&__item {
+			
+			&__title {
+				color: $uv-tips-color;
+				background-color: $uv-bg-color;
+				padding: 15px;
+				font-size: 15px;
+				
+				&__slot-title {
+					color: $uv-primary;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	.uv-collapse-content {
+		color: $uv-tips-color;
+		font-size: 14px;
+	}
+</style>

@@ -213,6 +213,11 @@
 			"style": {
 				"navigationBarTitleText": "Notify 消息提示"
 			}
+		}, {
+			"path": "collapse/collapse",
+			"style": {
+				"navigationBarTitleText": "Collapse 折叠面板"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

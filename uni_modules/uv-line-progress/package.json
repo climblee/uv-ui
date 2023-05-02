@@ -1,10 +1,10 @@
 {
-  "id": "uv-toast",
-  "displayName": "uv-toast",
+  "id": "uv-line-progress",
+  "displayName": "uv-line-progress",
   "version": "1.0.0",
-  "description": "uv-toast",
+  "description": "uv-line-progress",
   "keywords": [
-    "uv-toast"
+    "uv-line-progress"
 ],
   "repository": "",
   "engines": {
@@ -31,12 +31,7 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [
-			"uv-ui-tools",
-			"uv-overlay",
-			"uv-loading-icon",
-			"uv-gap"
-		],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {
