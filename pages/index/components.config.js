@@ -266,12 +266,14 @@ export default [{
 			icon: 'scrollList',
 			title: 'Waterfall 瀑布流布局',
 			title_en: 'scrollList'
-		}, {
-			path: '/pages/componentsC/scrollList/scrollList',
-			icon: 'scrollList',
-			title: 'ScrollList 横向滚动列表',
-			title_en: 'ScrollList'
-		}, {
+		}, 
+		// {
+		// 	path: '/pages/componentsC/scrollList/scrollList',
+		// 	icon: 'scrollList',
+		// 	title: 'ScrollList 横向滚动列表',
+		// 	title_en: 'ScrollList'
+		// }, 
+		{
 			path: '/pages/componentsA/line/line',
 			icon: 'line',
 			title: 'Line 线条',
