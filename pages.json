@@ -327,6 +327,11 @@
 			"style": {
 				"navigationBarTitleText": "Skeleton 骨架屏"
 			}
+		}, {
+			"path": "layout/layout",
+			"style": {
+				"navigationBarTitleText": "Layout 布局"
+			}
 		}]
 	}, {
 		"root": "pages/componentsD",

@@ -1,12 +1,14 @@
 export default [{
 	groupName: '基础组件',
 	groupName_en: 'Basic components',
-	list: [{
-		path: '/pages/demo/demo',
-		icon: 'color',
-		title: 'demo',
-		title_en: 'Color'
-	}, {
+	list: [
+	// 	{
+	// 	path: '/pages/demo/demo',
+	// 	icon: 'color',
+	// 	title: 'demo',
+	// 	title_en: 'Color'
+	// }, 
+	{
 		path: '/pages/componentsA/color/color',
 		icon: 'color',
 		title: 'Color 色彩',
@@ -155,12 +157,14 @@ export default [{
 		icon: 'slider',
 		title: 'Slider 滑动选择器',
 		title_en: 'Slider'
-	}, {
-		path: '/pages/componentsC/album/album',
-		icon: 'album',
-		title: 'Album 相册',
-		title_en: 'Album'
-	}]
+	}
+	// , {
+	// 	path: '/pages/componentsC/album/album',
+	// 	icon: 'album',
+	// 	title: 'Album 相册',
+	// 	title_en: 'Album'
+	// },
+	]
 }, {
 	groupName: '数据组件',
 	groupName_en: 'Data components',
