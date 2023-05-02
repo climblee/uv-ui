@@ -238,6 +238,16 @@
 			"style": {
 				"navigationBarTitleText": "Slider 滑动选择器"
 			}
+		}, {
+			"path": "parse/parse",
+			"style": {
+				"navigationBarTitleText": "Parse 富文本解析器"
+			}
+		}, {
+			"path": "parse/jump",
+			"style": {
+				"navigationBarTitleText": "测试页面"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
