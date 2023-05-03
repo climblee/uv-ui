@@ -1,58 +1,6 @@
 <template>
-	<view class="my-demo" style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: space-around;">
-		<!-- <uv-load-more status="loading"></uv-load-more>
-		<uv-input type="password" placeholder="输入文字" :clearable="true"></uv-input>
-		<slider @change="" style="transform: rotate(90deg);"/>
-		<uv-icon name="photo" color="#2979ff" size="28" @click="clickIcon"></uv-icon>
-		<uv-demo @click="clickIcon"></uv-demo> -->
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/ff0000" loading-img=""></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder1.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff" height="100%" imgMode="widthFix"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder2.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
-		<view class="" style="width: 32%;">
-			<uv-lazy-load-image image="https://via.placeholder.com/200x300.png/2878ff"></uv-lazy-load-image>
-		</view>
+	<view class="">
+		测试页面
 	</view>
 </template>
 
