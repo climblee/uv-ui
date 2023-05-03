@@ -1,12 +1,12 @@
 <template>
 	<view class="uv-page">
-		<uv-navbar
+		<!-- <uv-navbar
 			title="模态框"
 			@leftClick="navigateBack"
 			safeAreaInsetTop
 			fixed
 			placeholder
-		></uv-navbar>
+		></uv-navbar> -->
 		<uv-gap
 			height="20"
 			bgColor="#fff"

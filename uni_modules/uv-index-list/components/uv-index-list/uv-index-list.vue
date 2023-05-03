@@ -9,7 +9,7 @@
 				maxHeight: $uv.addUnit(scrollViewHeight)
 			}"
 			@scroll="scrollHandler"
-			ref="uList"
+			ref="uvList"
 		>
 			<cell
 				v-if="$slots.header"
@@ -33,7 +33,7 @@
 			}"
 			scroll-y
 			@scroll="scrollHandler"
-			ref="uList"
+			ref="uvList"
 		>
 			<view v-if="$slots.header">
 				<slot name="header" />
@@ -72,20 +72,22 @@
 			:show="touching"
 			:customStyle="{
 				position: 'fixed',
-				right: '50px',
+				right: '40px',
 				top: $uv.addUnit(indicatorTop),
 				zIndex: 2
 			}"
 		>
-			<view
-				class="uv-index-list__indicator"
-				:class="['uv-index-list__indicator--show']"
-				:style="{
-					height: $uv.addUnit(indicatorHeight),
-					width: $uv.addUnit(indicatorHeight)
-				}"
-			>
-				<text class="uv-index-list__indicator__text">{{ uIndexList[activeIndex] }}</text>
+			<view class="uv-index-list__indicator__box">
+				<view
+					class="uv-index-list__indicator"
+					:class="['uv-index-list__indicator--show']"
+					:style="{
+						height: $uv.addUnit(indicatorHeight),
+						width: $uv.addUnit(indicatorHeight)
+					}"
+				>
+					<text class="uv-index-list__indicator__text">{{ uIndexList[activeIndex] }}</text>
+				</view>
 			</view>
 		</uv-transition>
 	</view>
@@ -151,6 +153,7 @@
 				sys: uni.$uv.sys(),
 				scrolling: false,
 				scrollIntoView: '',
+				hasHeight: 0
 			}
 		},
 		computed: {
@@ -164,7 +167,7 @@
 					top,
 					itemHeight
 				} = this.letterInfo
-				return Math.floor(top + itemHeight * this.activeIndex + itemHeight / 2 - this.indicatorHeight / 2)
+				return Math.floor(top + itemHeight * this.activeIndex + itemHeight / 2 - this.indicatorHeight / 2) - 8
 			}
 		},
 		watch: {
@@ -295,6 +298,9 @@
 					return this.uIndexList.length - 1
 				} else {
 					// 将触摸点的Y轴偏移值，减去索引字母的top值，除以每个字母的高度，即可得到当前触摸点落在哪个字母上
+					// #ifdef APP-NVUE && VUE3
+					return Math.floor(pageY / itemHeight);
+					// #endif
 					return Math.floor((pageY - top) / itemHeight);
 				}
 			},
@@ -333,7 +339,7 @@
 				if (this.touching || this.scrolling) return
 				// 每过一定时间取样一次，减少资源损耗以及可能带来的卡顿
 				this.scrolling = true
-				uni.$uv.sleep(10).then(() => {
+				uni.$uv.sleep(30).then(() => {
 					this.scrolling = false
 				})
 				let scrollTop = 0
@@ -349,6 +355,8 @@
 				let top = header.height
 				// 由于list组件无法获取cell的top值，这里通过header slot和各个item之间的height，模拟出类似非nvue下的位置信息
 				children = this.children.map((item, index) => {
+					if(item.height>0) this.hasHeight = item.height;
+					item.height = item.height>0?item.height:this.hasHeight;
 					const child = {
 						height: item.height,
 						top
@@ -416,7 +424,12 @@
 				}
 			}
 		}
-
+		&__indicator__box {
+			width: 65px;
+			height: 65px;
+			padding: 6px;
+			transform: rotate(-45deg);
+		}
 		&__indicator {
 			width: 50px;
 			height: 50px;
@@ -424,7 +437,6 @@
 			text-align: center;
 			color: #ffffff;
 			background-color: #c9c9c9;
-			transform: rotate(-45deg);
 			@include flex;
 			justify-content: center;
 			align-items: center;

@@ -1,28 +1,30 @@
 <template>
 	<uv-index-list :indexList="indexList">
-		<view slot="header" class="list">
-			<view class="list__item">
-				<uv-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></uv-avatar>
-				<text class="list__item__user-name">新的朋友</text>
+		<template v-slot:header>
+			<view class="list">
+				<view class="list__item">
+					<uv-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></uv-avatar>
+					<text class="list__item__user-name">新的朋友</text>
+				</view>
+				<uv-line></uv-line>
+				<view class="list__item">
+					<uv-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></uv-avatar>
+					<text class="list__item__user-name">标签</text>
+				</view>
+				<uv-line></uv-line>
+				<view class="list__item">
+					<uv-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></uv-avatar>
+					<text class="list__item__user-name">朋友圈</text>
+				</view>
+				<uv-line></uv-line>
+				<view class="list__item">
+					<uv-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></uv-avatar>
+					<text class="list__item__user-name">QQ</text>
+				</view>
+				<uv-line></uv-line>
 			</view>
-			<uv-line></uv-line>
-			<view class="list__item">
-				<uv-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></uv-avatar>
-				<text class="list__item__user-name">标签</text>
-			</view>
-			<uv-line></uv-line>
-			<view class="list__item">
-				<uv-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></uv-avatar>
-				<text class="list__item__user-name">朋友圈</text>
-			</view>
-			<uv-line></uv-line>
-			<view class="list__item">
-				<uv-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></uv-avatar>
-				<text class="list__item__user-name">QQ</text>
-			</view>
-			<uv-line></uv-line>
-		</view>
-		<view v-for="(item, index) in itemArr" :key="index">
+		</template>
+		<template v-for="(item, index) in itemArr">
 			<!-- #ifdef APP-NVUE -->
 			<uv-index-anchor :text="indexList[index]"></uv-index-anchor>
 			<!-- #endif -->
@@ -38,10 +40,12 @@
 					<uv-line></uv-line>
 				</view>
 			</uv-index-item>
-		</view>
-		<view slot="footer" class="uv-safe-area-inset--bottom">
-			<text class="list__footer">共305位好友</text>
-		</view>
+		</template>
+		<template v-slot:footer>
+			<view class="uv-safe-area-inset--bottom">
+				<text class="list__footer">共305位好友</text>
+			</view>
+		</template>
 	</uv-index-list>
 </template>
 
