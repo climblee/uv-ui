@@ -51,7 +51,7 @@
 	 * @property {Object}			customStyle			组件的样式，对象形式
 	 * @event {Function}	open	开启组件时调用的函数
 	 * @event {Function}	close	关闭组件式调用的函数
-	 * @example <uv-notify message="Hi uView"></uv-notify>
+	 * @example <uv-notify message="Hi uvui"></uv-notify>
 	 */
 	export default {
 		name: 'uv-notify',

@@ -172,7 +172,7 @@ function addStyle(customStyle, target = 'object') {
  */
 function addUnit(value = 'auto', unit = uni?.$uv?.config?.unit ?? 'px') {
 	value = String(value)
-	// 用uView内置验证规则中的number判断是否为数值
+	// 用uvui内置验证规则中的number判断是否为数值
 	return test.number(value) ? `${value}${unit}` : value
 }
 
@@ -247,7 +247,7 @@ function deepMerge(target = {}, source = {}) {
 function error(err) {
 	// 开发环境才提示，生产环境不会提示
 	if (process.env.NODE_ENV === 'development') {
-		console.error(`uView提示：${err}`)
+		console.error(`uvui提示：${err}`)
 	}
 }
 
@@ -676,7 +676,7 @@ function getHistoryPage(back = 0) {
 }
 
 /**
- * @description 修改uView内置属性值
+ * @description 修改uvui内置属性值
  * @param {object} props 修改内置props属性
  * @param {object} config 修改内置config属性
  * @param {object} color 修改内置color属性

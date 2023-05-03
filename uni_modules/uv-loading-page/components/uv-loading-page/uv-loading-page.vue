@@ -53,7 +53,7 @@ import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from "./props.js";
 /**
  * loadingPage 加载动画
- * @description 警此组件为一个小动画，目前用在uView的loadmore加载更多和switch开关等组件的正在加载状态场景。
+ * @description 警此组件为一个小动画，目前用在uvui的loadmore加载更多和switch开关等组件的正在加载状态场景。
  * @tutorial https://www.uvui.com/components/loading.html
  * @property {String | Number}	loadingText		提示内容  (默认 '正在加载' )
  * @property {String}			image			文字上方用于替换loading动画的图片

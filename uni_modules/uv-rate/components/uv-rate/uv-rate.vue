@@ -81,8 +81,8 @@
 	 * @property {String | Number}	gutter			星星之间的距离 （默认 4 ）
 	 * @property {String | Number}	minCount		最少选中星星的个数 （默认 1 ）
 	 * @property {Boolean}			allowHalf		是否允许半星选择 （默认 false ）
-	 * @property {String}			activeIcon		选中时的图标名，只能为uView的内置图标 （默认 'star-fill' ）
-	 * @property {String}			inactiveIcon	未选中时的图标名，只能为uView的内置图标 （默认 'star' ）
+	 * @property {String}			activeIcon		选中时的图标名，只能为uvui的内置图标 （默认 'star-fill' ）
+	 * @property {String}			inactiveIcon	未选中时的图标名，只能为uvui的内置图标 （默认 'star' ）
 	 * @property {Boolean}			touchable		是否可以通过滑动手势选择评分 （默认 'true' ）
 	 * @property {Object}			customStyle		组件的样式，对象形式
 	 * @event {Function} change 选中的星星发生变化时触发
@@ -131,7 +131,7 @@
 			// 获取评分组件盒子的布局信息
 			async getRateItemRect() {
 				await uni.$uv.sleep();
-				// uView封装的获取节点的方法，详见文档
+				// uvui封装的获取节点的方法，详见文档
 				// #ifndef APP-NVUE
 				this.$uvGetRect("#" + this.elId).then((res) => {
 					this.rateBoxLeft = res.left;
@@ -145,7 +145,7 @@
 			},
 			// 获取单个星星的尺寸
 			getRateIconWrapRect() {
-				// uView封装的获取节点的方法，详见文档
+				// uvui封装的获取节点的方法，详见文档
 				// #ifndef APP-NVUE
 				this.$uvGetRect("." + this.elClass).then((res) => {
 					this.rateWidth = res.width;

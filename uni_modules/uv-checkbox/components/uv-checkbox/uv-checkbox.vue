@@ -38,7 +38,7 @@
 	/**
 	 * checkbox  复选框
 	 * @description 复选框组件一般用于需要多个选择的场景，该组件功能完整，使用方便
-	 * @tutorial https://uviewui.com/components/checkbox.html
+	 * @tutorial https://uvui.com/components/checkbox.html
 	 * @property {String | Number | Boolean}	name			checkbox组件的标示符
 	 * @property {String}						shape			形状，square为方形，circle为圆型
 	 * @property {String | Number}				size			整体的大小

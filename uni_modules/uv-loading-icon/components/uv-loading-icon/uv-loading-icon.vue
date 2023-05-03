@@ -66,7 +66,7 @@
 	// #endif
 	/**
 	 * loading 加载动画
-	 * @description 警此组件为一个小动画，目前用在uView的loadmore加载更多和switch开关等组件的正在加载状态场景。
+	 * @description 警此组件为一个小动画，目前用在uvui的loadmore加载更多和switch开关等组件的正在加载状态场景。
 	 * @tutorial https://www.uvui.com/components/loading.html
 	 * @property {Boolean}			show			是否显示组件  (默认 true)
 	 * @property {String}			color			动画活动区域的颜色，只对 mode = flower 模式有效（默认color['uv-tips-color']）

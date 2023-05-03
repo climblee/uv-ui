@@ -44,7 +44,7 @@
 	/**
 	 * cell  单元格
 	 * @description cell单元格一般用于一组列表的情况，比如个人中心页，设置页等。
-	 * @tutorial https://uviewui.com/components/cell.html
+	 * @tutorial https://uvui.com/components/cell.html
 	 * @property {String | Number}	title			标题
 	 * @property {String | Number}	label			标题下方的描述信息
 	 * @property {String | Number}	value			右侧的内容
@@ -53,7 +53,7 @@
 	 * @property {Boolean}			border			是否显示下边框 (默认 true )
 	 * @property {Boolean}			center			内容是否垂直居中(主要是针对右侧的value部分) (默认 false )
 	 * @property {String}			url				点击后跳转的URL地址
-	 * @property {String}			linkType		链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作 (默认 'navigateTo' )
+	 * @property {String}			linkType		链接跳转的方式，内部使用的是uvui封装的route方法，可能会进行拦截操作 (默认 'navigateTo' )
 	 * @property {Boolean}			clickable		是否开启点击反馈(表现为点击时加上灰色背景) （默认 false ） 
 	 * @property {Boolean}			isLink			是否展示右侧箭头并开启点击反馈 （默认 false ）
 	 * @property {Boolean}			required		是否显示表单状态下的必填星号(此组件可能会内嵌入input组件) （默认 false ）

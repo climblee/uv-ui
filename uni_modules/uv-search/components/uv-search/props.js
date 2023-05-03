@@ -75,7 +75,7 @@ export default {
 			type: String,
 			default: '#909399'
 		},
-		// 左边输入框的图标，可以为uView图标名称或图片路径
+		// 左边输入框的图标，可以为uvui图标名称或图片路径
 		searchIcon: {
 			type: String,
 			default: 'search'

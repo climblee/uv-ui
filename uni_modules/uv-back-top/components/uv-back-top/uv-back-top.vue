@@ -33,7 +33,7 @@
 	/**
 	 * backTop 返回顶部
 	 * @description 本组件一个用于长页面，滑动一定距离后，出现返回顶部按钮，方便快速返回顶部的场景。
-	 * @tutorial https://uviewui.com/components/backTop.html
+	 * @tutorial https://uvui.com/components/backTop.html
 	 * 
 	 * @property {String}			mode  		返回顶部的形状，circle-圆形，square-方形 （默认 'circle' ）
 	 * @property {String} 			icon 		自定义图标 （默认 'arrow-upward' ） 见官方文档示例

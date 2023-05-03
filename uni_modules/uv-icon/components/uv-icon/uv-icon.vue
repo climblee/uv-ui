@@ -92,7 +92,7 @@
 			uClasses() {
 				let classes = []
 				classes.push(this.customPrefix + '-' + this.name)
-				// // uView的自定义图标类名为uv-iconfont
+				// // uvui的自定义图标类名为uv-iconfont
 				// if (this.customPrefix == 'uicon') {
 				// 	classes.push('uv-iconfont')
 				// } else {

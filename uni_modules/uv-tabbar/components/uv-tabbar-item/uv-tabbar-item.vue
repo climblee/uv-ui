@@ -51,7 +51,7 @@
 	 * @description 此组件提供了自定义tabbar的能力。
 	 * @tutorial https://www.uvui.com/components/tabbar.html
 	 * @property {String | Number}	name		item标签的名称，作为与uv-tabbar的value参数匹配的标识符
-	 * @property {String}			icon		uView内置图标或者绝对路径的图片
+	 * @property {String}			icon		uvui内置图标或者绝对路径的图片
 	 * @property {String | Number}	badge		右上角的角标提示信息
 	 * @property {Boolean}			dot			是否显示圆点，将会覆盖badge参数（默认 false ）
 	 * @property {String}			text		描述文本

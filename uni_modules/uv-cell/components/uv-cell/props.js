@@ -40,7 +40,7 @@ export default {
 			type: String,
 			default: ''
 		},
-		// 链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作
+		// 链接跳转的方式，内部使用的是uvui封装的route方法，可能会进行拦截操作
 		linkType: {
 			type: String,
 			default: 'navigateTo'

@@ -95,7 +95,7 @@
 	 * @property {Number | String}	searchIconSize 搜索图标的字体，默认22
 	 * @property {String}			color				输入框字体颜色（默认 '#606266' ）
 	 * @property {String}			placeholderColor	placeholder的颜色（默认 '#909399' ）
-	 * @property {String}			searchIcon			输入框左边的图标，可以为uView图标名称或图片路径  (默认 'search' )
+	 * @property {String}			searchIcon			输入框左边的图标，可以为uvui图标名称或图片路径  (默认 'search' )
 	 * @property {String}			margin				组件与其他上下左右元素之间的距离，带单位的字符串形式，如"30px"   (默认 '0' )
 	 * @property {Boolean} 			animation			是否开启动画，见上方说明（默认 false ）
 	 * @property {String}			value				输入框初始值

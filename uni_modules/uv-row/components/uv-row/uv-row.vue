@@ -69,7 +69,7 @@
 				// 延时一定时间，以确保节点渲染完成
 				await uni.$uv.sleep()
 				return new Promise(resolve => {
-					// uView封装的获取节点的方法，详见文档
+					// uvui封装的获取节点的方法，详见文档
 					// #ifndef APP-NVUE
 					this.$uvGetRect('.uv-row').then(res => {
 						resolve(res.width)
