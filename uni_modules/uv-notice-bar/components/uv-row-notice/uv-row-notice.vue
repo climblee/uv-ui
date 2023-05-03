@@ -77,6 +77,7 @@
 	 */
 	export default {
 		name: 'uv-row-notice',
+		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {

@@ -22,6 +22,7 @@
 			:interval="duration"
 			:autoplay="true"
 			class="uv-notice__swiper"
+			:style="[swiperStyle]"
 			@change="noticeChange"
 		>
 			<swiper-item
@@ -77,6 +78,7 @@
 	 * @example 
 	 */
 	export default {
+		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
 		watch: {
 			text: {
@@ -101,6 +103,15 @@
 				if (this.mode == 'horizontal') return false
 				else return true
 			},
+			// NVUE中的swiper在css中样式不生效
+			swiperStyle(){
+				const style = {};
+				// #ifdef APP-NVUE
+				style.flex = 1;
+				style.height = '16px';
+				// #endif
+				return style;
+			}
 		},
 		data() {
 			return {

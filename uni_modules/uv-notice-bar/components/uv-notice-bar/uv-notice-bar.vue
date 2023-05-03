@@ -68,6 +68,7 @@
 	 */
 	export default {
 		name: "uv-notice-bar",
+		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
