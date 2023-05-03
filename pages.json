@@ -297,22 +297,30 @@
 			"style": {
 				"navigationBarTitleText": "CodeInput 验证码输入"
 			}
-		}, {
+		}, 
+		// #ifndef APP-NVUE
+		{
 			"path": "steps/steps",
 			"style": {
 				"navigationBarTitleText": "Steps 步骤条"
 			}
-		}, {
+		},
+		// #endif
+		{
 			"path": "modal/modal",
 			"style": {
 				"navigationBarTitleText": "Modal 模态框"
 			}
-		}, {
+		}, 
+		// #ifndef APP-NVUE
+		{
 			"path": "tooltip/tooltip",
 			"style": {
 				"navigationBarTitleText": "Tooltip 长按提示"
 			}
-		}, {
+		},
+		// #endif
+		 {
 			"path": "subsection/subsection",
 			"style": {
 				"navigationBarTitleText": "Subsection 分段器"
