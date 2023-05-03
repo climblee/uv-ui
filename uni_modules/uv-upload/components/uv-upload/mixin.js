@@ -7,12 +7,12 @@ export default {
             handler(val) {
                 // #ifndef MP-WEIXIN
                 if (val === 'all' || val === 'media') {
-                    uni.$u.error('只有微信小程序才支持把accept配置为all、media之一')
+                    uni.$uv.error('只有微信小程序才支持把accept配置为all、media之一')
                 }
                 // #endif
                 // #ifndef H5 || MP-WEIXIN
                 if (val === 'file') {
-                    uni.$u.error('只有微信小程序和H5(HX2.9.9)才支持把accept配置为file')
+                    uni.$uv.error('只有微信小程序和H5(HX2.9.9)才支持把accept配置为file')
                 }
                 // #endif
             }

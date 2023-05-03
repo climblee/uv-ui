@@ -35,7 +35,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.initialize()
+		setTimeout(()=>{
+			this.initialize()
+		},200)
 	},
 	methods: {
 		initialize() {
@@ -78,7 +80,6 @@ export default {
 			let expression = `min(max(${-this.buttonsWidth}, x), 0)`
 			// 尝试关闭其他打开的单元格
 			this.parent && this.parent.closeOther(this)
-			
 			// 阿里为了KPI而开源的BindingX
 			this.panEvent = bindingX.bind({
 				anchor: content,
@@ -99,7 +100,7 @@ export default {
 						this.$nextTick(() => {
 							this.status = deltaX <= -this.buttonsWidth ? 'open' : 'close'
 						})
-					} else if(Math.abs(deltaX) > uni.$u.getPx(this.threshold)) {
+					} else if(Math.abs(deltaX) > uni.$uv.getPx(this.threshold)) {
 						// 在移动大于阈值、并且小于总按钮宽度时，进行自动打开或者关闭
 						// 移动距离大于0时，意味着需要关闭状态
 						if(Math.abs(deltaX) < this.buttonsWidth) {
@@ -126,8 +127,8 @@ export default {
 		// 查询按钮节点信息
 		queryRect() {
 			// 历遍所有按钮数组，通过getRectByDom返回一个promise
-			const promiseAll = this.options.map((item, index) => {
-				return this.getRectByDom(this.$refs[`u-swipe-action-item__right__button-${index}`][0])
+			const promiseAll = this.options.map(async(item, index) => {
+				return await this.getRectByDom(this.$refs[`uv-swipe-action-item__right__button-${index}`][0])
 			})
 			// 通过promise.all方法，让所有按钮的查询结果返回一个数组的形式
 			Promise.all(promiseAll).then(sizes => {
@@ -155,7 +156,7 @@ export default {
 				styles: {
 					transform: `translateX(${x}px)`,
 				},
-				duration: uni.$u.getDuration(this.duration, false),
+				duration: uni.$uv.getDuration(this.duration, false),
 				timingFunction: 'ease-in-out'
 			}, () => {
 				this.moving = false
@@ -165,7 +166,7 @@ export default {
 		},
 		// 获取元素ref
 		getContentRef() {
-			return this.$refs['u-swipe-action-item__content'].ref
+			return this.$refs['uv-swipe-action-item__content'].ref
 		},
 		beforeDestroy() {
 			this.unbindBindingX()

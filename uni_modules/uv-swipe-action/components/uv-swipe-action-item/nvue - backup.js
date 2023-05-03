@@ -41,7 +41,7 @@ export default {
             immediate: true,
             handler(n) {
                 // if(n === true) {
-                // 	uni.$u.sleep(50).then(() => {
+                // 	uni.$uv.sleep(50).then(() => {
                 // 		this.openSwipeAction()
                 // 	})
                 // } else {
@@ -51,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        uni.$u.sleep(20).then(() => {
+        uni.$uv.sleep(20).then(() => {
             this.queryRect()
         })
     },
@@ -151,7 +151,7 @@ export default {
 
             let previewButtonsMoveX = 0
             const len = this.buttons.length
-            animation.transition(this.$refs['u-swipe-action-item__content'].ref, {
+            animation.transition(this.$refs['uv-swipe-action-item__content'].ref, {
                 styles: {
                     transform: `translateX(${moveX}px)`
                 },
@@ -161,7 +161,7 @@ export default {
             })
             // 按钮的组的长度
             for (let i = len - 1; i >= 0; i--) {
-                const buttonRef = this.$refs[`u-swipe-action-item__right__button-${i}`][0].ref
+                const buttonRef = this.$refs[`uv-swipe-action-item__right__button-${i}`][0].ref
                 // 通过比例，得出元素自身该移动的距离
                 const translateX = this.buttons[i].width / this.buttonsWidth * moveX
                 // 最终移动的距离，是通过自身比例算出的距离，再加上在它之前所有按钮移动的距离之和
@@ -183,7 +183,7 @@ export default {
             if (this.status === 'close') return
             this.moving = true
             const { buttonsWidth } = this
-            animation.transition(this.$refs['u-swipe-action-item__content'].ref, {
+            animation.transition(this.$refs['uv-swipe-action-item__content'].ref, {
                 styles: {
                     transform: 'translateX(0px)'
                 },
@@ -197,7 +197,7 @@ export default {
             // 按钮的组的长度
             const len = this.buttons.length
             for (let i = len - 1; i >= 0; i--) {
-                const buttonRef = this.$refs[`u-swipe-action-item__right__button-${i}`][0].ref
+                const buttonRef = this.$refs[`uv-swipe-action-item__right__button-${i}`][0].ref
                 // 如果不满足边界条件，返回
                 if (this.buttons.length === 0 || !this.buttons[i] || !this.buttons[i].width) return
 
@@ -216,7 +216,7 @@ export default {
             this.moving = true
             const buttonsWidth = -this.buttonsWidth
             let previewButtonsMoveX = 0
-            animation.transition(this.$refs['u-swipe-action-item__content'].ref, {
+            animation.transition(this.$refs['uv-swipe-action-item__content'].ref, {
                 styles: {
                     transform: `translateX(${buttonsWidth}px)`
                 },
@@ -230,7 +230,7 @@ export default {
             // 按钮的组的长度
             const len = this.buttons.length
             for (let i = len - 1; i >= 0; i--) {
-                const buttonRef = this.$refs[`u-swipe-action-item__right__button-${i}`][0].ref
+                const buttonRef = this.$refs[`uv-swipe-action-item__right__button-${i}`][0].ref
                 // 如果不满足边界条件，返回
                 if (this.buttons.length === 0 || !this.buttons[i] || !this.buttons[i].width) return
                 // 通过比例，得出元素自身该移动的距离
@@ -250,7 +250,7 @@ export default {
         // 查询按钮节点信息
         queryRect() {
             // 历遍所有按钮数组，通过getRectByDom返回一个promise
-            const promiseAll = this.rightOptions.map((item, index) => this.getRectByDom(this.$refs[`u-swipe-action-item__right__button-${index}`][0]))
+            const promiseAll = this.rightOptions.map((item, index) => this.getRectByDom(this.$refs[`uv-swipe-action-item__right__button-${index}`][0]))
             // 通过promise.all方法，让所有按钮的查询结果返回一个数组的形式
             Promise.all(promiseAll).then((sizes) => {
                 this.buttons = sizes

@@ -72,9 +72,11 @@
 	export default {
 		name: 'uv-swipe-action-item',
 		emits: ['click'],
+		// #ifndef APP-NVUE
 		mixins: [mpMixin, mixin, props, touch],
+		// #endif
 		// #ifdef APP-NVUE
-		mixins: [mpMixin, mixin, props, nvue, touch],
+		mixins: [mpMixin, mixin, props, nvue , touch],
 		// #endif
 		// #ifdef APP-VUE || MP-WEIXIN || H5 || MP-QQ
 		mixins: [mpMixin, mixin, props, touch, wxs],

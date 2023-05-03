@@ -319,7 +319,7 @@
 		}
 
 	}
-
+	/* #ifndef APP-NVUE */
 	@keyframes uv-loop-animation {
 		0% {
 			transform: translate3d(0, 0, 0);
@@ -329,4 +329,5 @@
 			transform: translate3d(-100%, 0, 0);
 		}
 	}
+	/* #endif */
 </style>

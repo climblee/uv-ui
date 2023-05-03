@@ -115,7 +115,7 @@ function getMoveDirection(instance, ownerInstance) {
 function moveSwipeAction(moveX, instance, ownerInstance) {
 	var state = instance.getState()
 	// 获取所有按钮的实例，需要通过它去设置按钮的位移
-	var buttons = ownerInstance.selectAllComponents('.u-swipe-action-item__right__button')
+	var buttons = ownerInstance.selectAllComponents('.uv-swipe-action-item__right__button')
 	var len = buttons.length
 	var previewButtonsMoveX = 0
 
@@ -149,7 +149,7 @@ function moveSwipeAction(moveX, instance, ownerInstance) {
 function openSwipeAction(instance, ownerInstance) {
 	var state = instance.getState()
 	// 获取所有按钮的实例，需要通过它去设置按钮的位移
-	var buttons = ownerInstance.selectAllComponents('.u-swipe-action-item__right__button')
+	var buttons = ownerInstance.selectAllComponents('.uv-swipe-action-item__right__button')
 	var len = buttons.length
 	// 处理duration单位问题
 	const duration = getDuration(state.duration)
@@ -192,7 +192,7 @@ function setStatus(status, instance) {
 function closeSwipeAction(instance, ownerInstance) {
 	var state = instance.getState()
 	// 获取所有按钮的实例，需要通过它去设置按钮的位移
-	var buttons = ownerInstance.selectAllComponents('.u-swipe-action-item__right__button')
+	var buttons = ownerInstance.selectAllComponents('.uv-swipe-action-item__right__button')
 	var len = buttons.length
 	// 处理duration单位问题
 	const duration = getDuration(state.duration)

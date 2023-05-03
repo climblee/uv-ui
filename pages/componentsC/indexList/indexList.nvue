@@ -22,9 +22,9 @@
 			</view>
 			<uv-line></uv-line>
 		</view>
-		<template v-for="(item, index) in itemArr">
+		<view v-for="(item, index) in itemArr" :key="index">
 			<!-- #ifdef APP-NVUE -->
-			<uv-index-anchor :text="indexList[index]" :key="index"></uv-index-anchor>
+			<uv-index-anchor :text="indexList[index]"></uv-index-anchor>
 			<!-- #endif -->
 			<uv-index-item>
 				<!-- #ifndef APP-NVUE -->
@@ -38,7 +38,7 @@
 					<uv-line></uv-line>
 				</view>
 			</uv-index-item>
-		</template>
+		</view>
 		<view slot="footer" class="uv-safe-area-inset--bottom">
 			<text class="list__footer">共305位好友</text>
 		</view>
