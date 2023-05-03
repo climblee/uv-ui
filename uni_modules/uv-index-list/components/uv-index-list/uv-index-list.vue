@@ -266,7 +266,8 @@
 						// #endif
 						// #ifndef H5
 						// 在非H5中，为原生导航栏，其高度不算在windowHeight内，这里设置为负值，后面相加时变成减去其高度的一半
-						customNavHeight = -(sys.statusBarHeight + 44)
+						// customNavHeight = -(sys.statusBarHeight + 44)
+						customNavHeight = 0
 						// #endif
 					} else {
 						customNavHeight = uni.$uv.getPx(this.customNavHeight)

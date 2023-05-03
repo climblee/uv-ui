@@ -24,7 +24,12 @@
 				<uv-line></uv-line>
 			</view>
 		</template>
+		<!-- #ifdef VUE2 -->
 		<template v-for="(item, index) in itemArr">
+		<!-- #endif -->
+		<!-- #ifdef VUE3 -->
+		<template v-for="(item, index) in itemArr" :key="index">
+		<!-- #endif -->
 			<!-- #ifdef APP-NVUE -->
 			<uv-index-anchor :text="indexList[index]"></uv-index-anchor>
 			<!-- #endif -->
