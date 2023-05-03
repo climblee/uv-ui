@@ -78,7 +78,7 @@
 	/**
 	 * search 搜索框
 	 * @description 搜索组件，集成了常见搜索框所需功能，用户可以一键引入，开箱即用。
-	 * @tutorial https://www.uviewui.com/components/search.html
+	 * @tutorial https://www.uvui.com/components/search.html
 	 * @property {String}			shape				搜索框形状，round-圆形，square-方形（默认 'round' ）
 	 * @property {String}			bgColor				搜索框背景颜色（默认 '#f2f2f2' ）
 	 * @property {String}			placeholder			占位文字内容（默认 '请输入关键字' ）

@@ -38,7 +38,7 @@
 	/**
 	 * AvatarGroup  头像组
 	 * @description 本组件一般用于展示头像的地方，如个人中心，或者评论列表页的用户头像展示等场所。
-	 * @tutorial https://www.uviewui.com/components/avatar.html
+	 * @tutorial https://www.uvui.com/components/avatar.html
 	 * 
 	 * @property {Array}           urls     头像图片组 （默认 [] ）
 	 * @property {String | Number} maxCount 最多展示的头像数量 （ 默认 5 ）

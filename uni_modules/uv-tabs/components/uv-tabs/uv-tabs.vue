@@ -91,7 +91,7 @@
 	/**
 	 * Tabs 标签
 	 * @description tabs标签组件，在标签多的时候，可以配置为左右滑动，标签少的时候，可以禁止滑动。 该组件的一个特点是配置为滚动模式时，激活的tab会自动移动到组件的中间位置。
-	 * @tutorial https://www.uviewui.com/components/tabs.html
+	 * @tutorial https://www.uvui.com/components/tabs.html
 	 * @property {String | Number}	duration			滑块移动一次所需的时间，单位秒（默认 200 ）
 	 * @property {String | Number}	swierWidth			swiper的宽度（默认 '750rpx' ）
 	 * @property {String}	keyName	 从`list`元素对象中读取的键名（默认 'name' ）

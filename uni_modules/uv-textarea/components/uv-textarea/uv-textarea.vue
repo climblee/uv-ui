@@ -43,7 +43,7 @@
 	/**
 	 * Textarea 文本域
 	 * @description 文本域此组件满足了可能出现的表单信息补充，编辑等实际逻辑的功能，内置了字数校验等
-	 * @tutorial https://www.uviewui.com/components/textarea.html
+	 * @tutorial https://www.uvui.com/components/textarea.html
 	 *
 	 * @property {String | Number} 		value					输入框的内容
 	 * @property {String | Number}		placeholder				输入框为空时占位符

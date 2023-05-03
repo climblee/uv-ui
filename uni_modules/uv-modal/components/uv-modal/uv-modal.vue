@@ -96,7 +96,7 @@
 	/**
 	 * Modal 模态框
 	 * @description 弹出模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作。
-	 * @tutorial https://www.uviewui.com/components/modul.html
+	 * @tutorial https://www.uvui.com/components/modul.html
 	 * @property {Boolean}			show				是否显示模态框，请赋值给show （默认 false ）
 	 * @property {String}			title				标题内容
 	 * @property {String}			content				模态框内容，如传入slot内容，则此参数无效

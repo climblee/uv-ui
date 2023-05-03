@@ -41,7 +41,7 @@
 	/**
 	 * radio 单选框
 	 * @description 单选框用于有一个选择，用户只能选择其中一个的场景。搭配uv-radio-group使用
-	 * @tutorial https://www.uviewui.com/components/radio.html
+	 * @tutorial https://www.uvui.com/components/radio.html
 	 * @property {String | Number}	name			radio的名称
 	 * @property {String}			shape			形状，square为方形，circle为圆型
 	 * @property {Boolean}			disabled		是否禁用

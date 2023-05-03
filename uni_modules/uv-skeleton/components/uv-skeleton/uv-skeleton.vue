@@ -60,7 +60,7 @@
 	/**
 	 * Skeleton 骨架屏
 	 * @description 骨架屏一般用于页面在请求远程数据尚未完成时，页面用灰色块预显示本来的页面结构，给用户更好的体验。
-	 * @tutorial https://www.uviewui.com/components/skeleton.html
+	 * @tutorial https://www.uvui.com/components/skeleton.html
 	 * @property {Boolean}					loading		是否显示骨架占位图，设置为false将会展示子组件内容 (默认 true )
 	 * @property {Boolean}					animate		是否开启动画效果 (默认 true )
 	 * @property {String | Number}			rows		段落占位图行数 (默认 0 )

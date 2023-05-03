@@ -52,7 +52,7 @@
 	/**
 	 * popup 弹窗
 	 * @description 弹出层容器，用于展示弹窗、信息提示等内容，支持上、下、左、右和中部弹出。组件只提供容器，内部内容由用户自定义
-	 * @tutorial https://www.uviewui.com/components/popup.html
+	 * @tutorial https://www.uvui.com/components/popup.html
 	 * @property {Boolean}			show				是否展示弹窗 (默认 false )
 	 * @property {Boolean}			overlay				是否显示遮罩 （默认 true ）
 	 * @property {String}			mode				弹出方向（默认 'bottom' ）

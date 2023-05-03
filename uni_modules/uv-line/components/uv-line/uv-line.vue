@@ -14,7 +14,7 @@
 	/**
 	 * line 线条
 	 * @description 此组件一般用于显示一根线条，用于分隔内容块，有横向和竖向两种模式，且能设置0.5px线条，使用也很简单
-	 * @tutorial https://www.uviewui.com/components/line.html
+	 * @tutorial https://www.uvui.com/components/line.html
 	 * @property {String}			color		线条的颜色 ( 默认 '#d6d7d9' )
 	 * @property {String | Number}	length		长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等 ( 默认 '100%' )
 	 * @property {String}			direction	线条的方向，row-横向，col-竖向 (默认 'row' )

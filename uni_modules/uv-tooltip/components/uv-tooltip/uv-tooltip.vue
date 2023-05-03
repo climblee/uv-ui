@@ -102,7 +102,7 @@
 	/**
 	 * Tooltip 
 	 * @description 
-	 * @tutorial https://www.uviewui.com/components/tooltip.html
+	 * @tutorial https://www.uvui.com/components/tooltip.html
 	 * @property {String | Number}	text		需要显示的提示文字
 	 * @property {String | Number}	copyText	点击复制按钮时，复制的文本，为空则使用text值
 	 * @property {String | Number}	size		文本大小（默认 14 ）

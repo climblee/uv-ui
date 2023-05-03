@@ -19,7 +19,7 @@
 	/**
 	 * CodeInput 栅格系统的列 
 	 * @description 该组件一般用于Layout 布局 通过基础的 12 分栏，迅速简便地创建布局
-	 * @tutorial https://www.uviewui.com/components/Layout.html
+	 * @tutorial https://www.uvui.com/components/Layout.html
 	 * @property {String | Number}	span		栅格占据的列数，总12等份 (默认 12 ) 
 	 * @property {String | Number}	offset		分栏左边偏移，计算方式与span相同 (默认 0 ) 
 	 * @property {String}			justify		水平排列方式，可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)  (默认 'start' ) 
