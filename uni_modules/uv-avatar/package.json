@@ -34,7 +34,8 @@
     "dependencies": [
 			"uv-ui-tools",
 			"u-icon",
-			"u-text"
+			"u-text",
+			"uv-avatar"
 		],
     "encrypt": [],
     "platforms": {

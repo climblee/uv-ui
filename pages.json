@@ -298,7 +298,7 @@
 				"navigationBarTitleText": "CodeInput 验证码输入"
 			}
 		}, 
-		// #ifndef APP-NVUE
+		// #ifndef APP-PLUS-NVUE
 		{
 			"path": "steps/steps",
 			"style": {
@@ -312,7 +312,7 @@
 				"navigationBarTitleText": "Modal 模态框"
 			}
 		}, 
-		// #ifndef APP-NVUE
+		// #ifndef APP-PLUS-NVUE
 		{
 			"path": "tooltip/tooltip",
 			"style": {

@@ -33,7 +33,8 @@
   "uni_modules": {
     "dependencies": [
 			"uv-ui-tools",
-			"uv-popup"
+			"uv-popup",
+			"uv-icon"
 		],
     "encrypt": [],
     "platforms": {

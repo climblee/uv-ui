@@ -34,7 +34,8 @@
     "dependencies": [
 			"uv-ui-tools",
 			"uv-icon",
-			"uv-line"
+			"uv-line",
+			"uv-transition"
 		],
     "encrypt": [],
     "platforms": {

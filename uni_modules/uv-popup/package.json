@@ -32,12 +32,12 @@
   },
   "uni_modules": {
     "dependencies": [
+			"uv-ui-tools",
 			"uv-overlay",
 			"uv-transition",
 			"uv-icon",
 			"uv-status-bar",
-			"uv-safe-bottom",
-			"uv-ui-tools"
+			"uv-safe-bottom"
 		],
     "encrypt": [],
     "platforms": {

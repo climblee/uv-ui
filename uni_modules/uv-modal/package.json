@@ -31,7 +31,12 @@
     "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": [
+			"uv-ui-tools",
+			"uv-popup",
+			"uv-line",
+			"uv-loading-icon"
+		],
     "encrypt": [],
     "platforms": {
       "cloud": {

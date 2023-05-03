@@ -32,6 +32,7 @@
   },
   "uni_modules": {
     "dependencies": [
+			"uv-ui-tools",
 			"uv-transition",
 			"uv-icon"
 		],
