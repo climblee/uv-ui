@@ -37,7 +37,7 @@ export default {
 	mounted() {
 		setTimeout(()=>{
 			this.initialize()
-		},200)
+		},20)
 	},
 	methods: {
 		initialize() {

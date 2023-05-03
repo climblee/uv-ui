@@ -18,6 +18,7 @@
 			class="uv-swiper__wrapper"
 			:style="{
 				height: $uv.addUnit(height),
+				flex: 1
 			}"
 			@change="change"
 			:circular="circular"
