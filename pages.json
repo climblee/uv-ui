@@ -36,36 +36,6 @@
 				"navigationBarTitleText": "图标"
 			}
 		}, {
-			"path": "badge/badge",
-			"style": {
-				"navigationBarTitleText": "Badge 徽标数"
-			}
-		}, {
-			"path": "loading-icon/loading-icon",
-			"style": {
-				"navigationBarTitleText": "加载中图标"
-			}
-		}, {
-			"path": "loading-page/loading-page",
-			"style": {
-				"navigationBarTitleText": "加载页"
-			}
-		}, {
-			"path": "loadmore/loadmore",
-			"style": {
-				"navigationBarTitleText": "加载更多"
-			}
-		}, {
-			"path": "cell/cell",
-			"style": {
-				"navigationBarTitleText": "单元格"
-			}
-		}, {
-			"path": "tag/tag",
-			"style": {
-				"navigationBarTitleText": "tag标签"
-			}
-		}, {
 			"path": "transition/transition",
 			"style": {
 				"navigationBarTitleText": "动画"
@@ -91,21 +61,6 @@
 				"navigationBarTitleText": "Line 线条"
 			}
 		}, {
-			"path": "swipeAction/swipeAction",
-			"style": {
-				"navigationBarTitleText": "SwipeAction 滑动单元格"
-			}
-		}, {
-			"path": "empty/empty",
-			"style": {
-				"navigationBarTitleText": "Empty 内容为空"
-			}
-		}, {
-			"path": "grid/grid",
-			"style": {
-				"navigationBarTitleText": "Grid 宫格布局"
-			}
-		}, {
 			"path": "link/link",
 			"style": {
 				"navigationBarTitleText": "Link 超链接"
@@ -114,6 +69,11 @@
 			"path": "image/image",
 			"style": {
 				"navigationBarTitleText": "Image 图片"
+			}
+		}, {
+			"path": "layout/layout",
+			"style": {
+				"navigationBarTitleText": "Layout 布局"
 			}
 		}]
 	}, {
@@ -194,51 +154,6 @@
 				"navigationBarTitleText": "Search 搜索"
 			}
 		}, {
-			"path": "sticky/sticky",
-			"style": {
-				"navigationBarTitleText": "Sticky 吸顶"
-			}
-		}, {
-			"path": "countDown/countDown",
-			"style": {
-				"navigationBarTitleText": "CountDown 倒计时"
-			}
-		}, {
-			"path": "countTo/countTo",
-			"style": {
-				"navigationBarTitleText": "CountTo 数字滚动"
-			}
-		}, {
-			"path": "noticeBar/noticeBar",
-			"style": {
-				"navigationBarTitleText": "NoticeBar 滚动通知"
-			}
-		}, {
-			"path": "alert/alert",
-			"style": {
-				"navigationBarTitleText": "Alert 警告提示"
-			}
-		}, {
-			"path": "toast/toast",
-			"style": {
-				"navigationBarTitleText": "AToast 消息提示"
-			}
-		}, {
-			"path": "notify/notify",
-			"style": {
-				"navigationBarTitleText": "Notify 消息提示"
-			}
-		}, {
-			"path": "collapse/collapse",
-			"style": {
-				"navigationBarTitleText": "Collapse 折叠面板"
-			}
-		}, {
-			"path": "progress/progress",
-			"style": {
-				"navigationBarTitleText": "Progress 进度条"
-			}
-		}, {
 			"path": "slider/slider",
 			"style": {
 				"navigationBarTitleText": "Slider 滑动选择器"
@@ -252,19 +167,143 @@
 	}, {
 		"root": "pages/componentsC",
 		"pages": [{
-			"path": "popup/popup",
+				"path": "popup/popup",
+				"style": {
+					"navigationBarTitleText": "Popup 弹出层"
+				}
+			}, {
+				"path": "list/list",
+				"style": {
+					"navigationBarTitleText": "List 列表"
+				}
+			}, {
+				"path": "waterfall/waterfall",
+				"style": {
+					"navigationBarTitleText": "Waterfall 瀑布流",
+					"enablePullDownRefresh": true
+				}
+			}, {
+				"path": "swiper/swiper",
+				"style": {
+					"navigationBarTitleText": "Swiper 轮播图"
+				}
+			}, {
+				"path": "overlay/overlay",
+				"style": {
+					"navigationBarTitleText": "Overlay 遮罩层"
+				}
+			}, {
+				"path": "codeInput/codeInput",
+				"style": {
+					"navigationBarTitleText": "CodeInput 验证码输入"
+				}
+			}, {
+				"path": "modal/modal",
+				"style": {
+					"navigationBarTitleText": "Modal 模态框"
+				}
+			},
+			// #ifndef APP-PLUS-NVUE
+			{
+				"path": "tooltip/tooltip",
+				"style": {
+					"navigationBarTitleText": "Tooltip 长按提示"
+				}
+			},
+			// #endif
+			{
+				"path": "noNetwork/noNetwork",
+				"style": {
+					"navigationBarTitleText": "NoNetwork 无网络提示"
+				}
+			}, {
+				"path": "readMore/readMore",
+				"style": {
+					"navigationBarTitleText": "ReadMore 展开阅读更多"
+				}
+			}, {
+				"path": "noticeBar/noticeBar",
+				"style": {
+					"navigationBarTitleText": "NoticeBar 滚动通知"
+				}
+			}, {
+				"path": "alert/alert",
+				"style": {
+					"navigationBarTitleText": "Alert 警告提示"
+				}
+			}, {
+				"path": "toast/toast",
+				"style": {
+					"navigationBarTitleText": "AToast 消息提示"
+				}
+			}, {
+				"path": "notify/notify",
+				"style": {
+					"navigationBarTitleText": "Notify 消息提示"
+				}
+			}, {
+				"path": "cell/cell",
+				"style": {
+					"navigationBarTitleText": "单元格"
+				}
+			}, {
+				"path": "swipeAction/swipeAction",
+				"style": {
+					"navigationBarTitleText": "SwipeAction 滑动单元格"
+				}
+			}, {
+				"path": "collapse/collapse",
+				"style": {
+					"navigationBarTitleText": "Collapse 折叠面板"
+				}
+			}, {
+				"path": "grid/grid",
+				"style": {
+					"navigationBarTitleText": "Grid 宫格布局"
+				}
+			}
+		]
+	}, {
+		"root": "pages/componentsD",
+		"pages": [{
+			"path": "loading-icon/loading-icon",
 			"style": {
-				"navigationBarTitleText": "Popup 弹出层"
+				"navigationBarTitleText": "加载中图标"
 			}
 		}, {
-			"path": "actionSheet/actionSheet",
+			"path": "loading-page/loading-page",
 			"style": {
-				"navigationBarTitleText": "ActionSheet 上拉菜单"
+				"navigationBarTitleText": "加载页"
 			}
 		}, {
-			"path": "list/list",
+			"path": "loadmore/loadmore",
 			"style": {
-				"navigationBarTitleText": "List 列表"
+				"navigationBarTitleText": "加载更多"
+			}
+		}, {
+			"path": "tag/tag",
+			"style": {
+				"navigationBarTitleText": "tag标签"
+			}
+		}, {
+			"path": "progress/progress",
+			"style": {
+				"navigationBarTitleText": "Progress 进度条"
+			}
+		}, {
+			"path": "badge/badge",
+			"style": {
+				"navigationBarTitleText": "Badge 徽标数"
+			}
+		}, {
+			"path": "countDown/countDown",
+			"style": {
+				"navigationBarTitleText": "CountDown 倒计时"
+			}
+		}, {
+			"path": "countTo/countTo",
+			"style": {
+				"navigationBarTitleText": "CountTo 数字滚动"
 			}
 		}, {
 			"path": "avatar/avatar",
@@ -272,20 +311,9 @@
 				"navigationBarTitleText": "Avatar 头像"
 			}
 		}, {
-			"path": "waterfall/waterfall",
+			"path": "skeleton/skeleton",
 			"style": {
-				"navigationBarTitleText": "Waterfall 瀑布流",
-				"enablePullDownRefresh": true
-			}
-		}, {
-			"path": "swiper/swiper",
-			"style": {
-				"navigationBarTitleText": "Swiper 轮播图"
-			}
-		}, {
-			"path": "overlay/overlay",
-			"style": {
-				"navigationBarTitleText": "Overlay 遮罩层"
+				"navigationBarTitleText": "Skeleton 骨架屏"
 			}
 		}, {
 			"path": "indexList/indexList",
@@ -293,67 +321,16 @@
 				"navigationBarTitleText": "IndexList 索引列表"
 			}
 		}, {
-			"path": "codeInput/codeInput",
+			"path": "empty/empty",
 			"style": {
-				"navigationBarTitleText": "CodeInput 验证码输入"
-			}
-		}, 
-		// #ifndef APP-PLUS-NVUE
-		{
-			"path": "steps/steps",
-			"style": {
-				"navigationBarTitleText": "Steps 步骤条"
-			}
-		},
-		// #endif
-		{
-			"path": "modal/modal",
-			"style": {
-				"navigationBarTitleText": "Modal 模态框"
-			}
-		}, 
-		// #ifndef APP-PLUS-NVUE
-		{
-			"path": "tooltip/tooltip",
-			"style": {
-				"navigationBarTitleText": "Tooltip 长按提示"
-			}
-		},
-		// #endif
-		 {
-			"path": "subsection/subsection",
-			"style": {
-				"navigationBarTitleText": "Subsection 分段器"
+				"navigationBarTitleText": "Empty 内容为空"
 			}
 		}, {
-			"path": "skeleton/skeleton",
-			"style": {
-				"navigationBarTitleText": "Skeleton 骨架屏"
-			}
-		}, {
-			"path": "layout/layout",
-			"style": {
-				"navigationBarTitleText": "Layout 布局"
-			}
-		}, {
-			"path": "noNetwork/noNetwork",
-			"style": {
-				"navigationBarTitleText": "NoNetwork 无网络提示"
-			}
-		}, {
-			"path": "readMore/readMore",
-			"style": {
-				"navigationBarTitleText": "ReadMore 展开阅读更多"
-			}
-		}]
-	}, {
-		"root": "pages/componentsD",
-		"pages": [{
 			"path": "backtop/backtop",
 			"style": {
 				"navigationBarTitleText": "BackTop 返回顶部"
 			}
-		},{
+		}, {
 			"path": "tabbar/tabbar",
 			"style": {
 				"navigationBarTitleText": "Tabbar 底部导航栏"
@@ -367,6 +344,26 @@
 			"path": "tabs/tabs",
 			"style": {
 				"navigationBarTitleText": "Tabs 标签"
+			}
+		}, {
+			"path": "actionSheet/actionSheet",
+			"style": {
+				"navigationBarTitleText": "ActionSheet 上拉菜单"
+			}
+		}, {
+			"path": "subsection/subsection",
+			"style": {
+				"navigationBarTitleText": "Subsection 分段器"
+			}
+		}, {
+			"path": "sticky/sticky",
+			"style": {
+				"navigationBarTitleText": "Sticky 吸顶"
+			}
+		}, {
+			"path": "steps/steps",
+			"style": {
+				"navigationBarTitleText": "Steps 步骤条"
 			}
 		}]
 	}],
