@@ -23,22 +23,22 @@
 		}, {
 			"path": "button/button",
 			"style": {
-				"navigationBarTitleText": "按钮"
+				"navigationBarTitleText": "Button 按钮"
 			}
 		}, {
 			"path": "text/text",
 			"style": {
-				"navigationBarTitleText": "文本"
+				"navigationBarTitleText": "Text 文本"
 			}
 		}, {
 			"path": "icon/icon",
 			"style": {
-				"navigationBarTitleText": "图标"
+				"navigationBarTitleText": "Icon 图标"
 			}
 		}, {
 			"path": "transition/transition",
 			"style": {
-				"navigationBarTitleText": "动画"
+				"navigationBarTitleText": "Transition 动画"
 			}
 		}, {
 			"path": "divider/divider",
@@ -244,7 +244,7 @@
 			}, {
 				"path": "cell/cell",
 				"style": {
-					"navigationBarTitleText": "单元格"
+					"navigationBarTitleText": "Cell 单元格"
 				}
 			}, {
 				"path": "swipeAction/swipeAction",
@@ -268,22 +268,22 @@
 		"pages": [{
 			"path": "loading-icon/loading-icon",
 			"style": {
-				"navigationBarTitleText": "加载中图标"
+				"navigationBarTitleText": "LoadingIcon 加载中图标"
 			}
 		}, {
 			"path": "loading-page/loading-page",
 			"style": {
-				"navigationBarTitleText": "加载页"
+				"navigationBarTitleText": "LoadingPage 加载页"
 			}
 		}, {
 			"path": "loadmore/loadmore",
 			"style": {
-				"navigationBarTitleText": "加载更多"
+				"navigationBarTitleText": "Loadmore 加载更多"
 			}
 		}, {
 			"path": "tag/tag",
 			"style": {
-				"navigationBarTitleText": "tag标签"
+				"navigationBarTitleText": "Tags 标签"
 			}
 		}, {
 			"path": "progress/progress",

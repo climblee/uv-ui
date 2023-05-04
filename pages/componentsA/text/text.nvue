@@ -83,7 +83,7 @@
 				<view class="uv-page__text-item">
 					<uv-text
 					    mode="link"
-					    text="Go to uView docs"
+					    text="Go to uv docs"
 					    href="https://www.uviewui.com"
 					></uv-text>
 				</view>
@@ -127,7 +127,7 @@
 			<view class="uv-demo-block__content">
 				<uv-text
 				    :lines="2"
-				    text="关于uView的取名来由，首字母u来自于uni-app首字母，uni-app是基于Vue.js，Vue和View(延伸为UI、视图之意)同音，同时view组件uni-app中 最基础，最重要的组件，故取名uView，表达源于uni-app和Vue之意，同时在此也对它们表示感谢。"
+				    text="关于uv-ui的取名来由，首字母`u`来自于`uni-app`首字母，`uni-app`是基于`Vue.js`，`Vue`和`View`(延伸为UI、视图之意)同音，故取名uv-ui，表达源于`uni-app`和`Vue`和`uView`之意，同时在此也对它们表示感谢。"
 				></uv-text>
 			</view>
 		</view>

@@ -6,7 +6,7 @@
 				<view class="uv-page__link-item">
 					<uv-link
 					    href="https://uviewui.com/"
-					    text="打开uView UI文档"
+					    text="打开uv UI文档"
 						@click="click"
 					></uv-link>
 				</view>
@@ -19,7 +19,7 @@
 					<uv-link
 					    href="https://uviewui.com/"
 					    :underLine="true"
-					    text="Go to uView doc"
+					    text="Go to uv doc"
 					></uv-link>
 				</view>
 			</view>
@@ -32,7 +32,7 @@
 					    href="https://uviewui.com/"
 					    lineColor="#19be6b"
 					    color="#19be6b"
-					    text="打开uView UI文档"
+					    text="打开uv UI文档"
 					></uv-link>
 				</view>
 			</view>
