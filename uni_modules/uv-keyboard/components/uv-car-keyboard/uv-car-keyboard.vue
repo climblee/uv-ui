@@ -74,7 +74,7 @@
 	/**
 	 * keyboard 键盘组件
 	 * @description 此为uvui自定义的键盘面板，内含了数字键盘，车牌号键，身份证号键盘3种模式，都有可以打乱按键顺序的选项。
-	 * @tutorial https://uvui.com/components/keyboard.html
+	 * @tutorial https://www.uvui.com/components/keyboard.html
 	 * @property {Boolean} random 是否打乱键盘的顺序
 	 * @event {Function} change 点击键盘触发
 	 * @event {Function} backspace 点击退格键触发

@@ -119,6 +119,7 @@ export default {
 		previewImage: {
 			type: Boolean,
 			default: true
-		}
+		},
+		...uni.$uv.props?.upload
 	}
 }

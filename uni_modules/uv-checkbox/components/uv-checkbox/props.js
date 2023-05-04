@@ -64,6 +64,7 @@ export default {
 		labelDisabled: {
 			type: [String, Boolean],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.checkbox
 	}
 }

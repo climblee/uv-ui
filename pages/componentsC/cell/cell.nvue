@@ -102,13 +102,13 @@
 					    class="uv-slot-title"
 					>
 						<text class="uv-cell-text">单元格</text>
-						<uv-tag
+						<uv-tags
 						    text="标签"
 						    plain
 						    size="mini"
 						    type="warning"
 						>
-						</uv-tag>
+						</uv-tags>
 					</view>
 				</uv-cell>
 				<uv-cell

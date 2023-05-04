@@ -89,6 +89,7 @@ export default {
 		dashed: {
 			type: Boolean,
 			default: false
-		}
+		},
+		...uni.$uv.props?.loadmore
 	}
 }

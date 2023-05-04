@@ -81,6 +81,7 @@ export default {
 		bgColor: {
 			type: String,
 			default: '#f3f4f6'
-		}
+		},
+		...uni.$uv.props?.lazyLoadImage
 	}
 }

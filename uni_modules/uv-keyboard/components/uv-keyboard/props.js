@@ -79,6 +79,7 @@ export default {
 		autoChange: {
 			type: Boolean,
 			default: false
-		}
+		},
+		...uni.$uv.props?.keyboard
 	}
 }

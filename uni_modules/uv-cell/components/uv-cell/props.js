@@ -105,6 +105,7 @@ export default {
 		name: {
 			type: [Number, String],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.cell
 	}
 }

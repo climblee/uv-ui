@@ -25,5 +25,4 @@ const $uv = {
 	colorToRgba: colorGradient.colorToRgba
 }
 uni.$uv = $uv;
-console.log('uni.$uv',uni.$uv)
 export default {}

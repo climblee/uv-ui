@@ -33,7 +33,7 @@
 	/**
 	 * IndexAnchor 列表锚点
 	 * @description 
-	 * @tutorial https://uvui.com/components/indexList.html
+	 * @tutorial https://www.uvui.com/components/indexList.html
 	 * @property {String | Number}	text	列表锚点文本内容
 	 * @property {String}			color	列表锚点文字颜色 ( 默认 '#606266' )
 	 * @property {String | Number}	size	列表锚点文字大小，单位默认px ( 默认 14 )

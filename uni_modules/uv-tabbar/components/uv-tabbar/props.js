@@ -39,6 +39,7 @@ export default {
 		placeholder: {
 			type: Boolean,
 			default: true
-		}
+		},
+		...uni.$uv.props?.tabbar
 	}
 }

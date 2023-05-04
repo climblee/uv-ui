@@ -3,7 +3,7 @@ const version = '1.0.0'
 
 // 开发环境才提示，生产环境不会提示
 if (process.env.NODE_ENV === 'development') {
-	console.log(`\n %c uvui V${version} %c https://uvuiui.com/ \n\n`, 'color: #ffffff; background: #3c9cff; padding:5px 0; border-radius: 5px;');
+	console.log(`\n %c uvui V${version} %c https://www.uvui.com/ \n\n`, 'color: #ffffff; background: #3c9cff; padding:5px 0; border-radius: 5px;');
 }
 
 export default {

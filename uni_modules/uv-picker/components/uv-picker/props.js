@@ -74,6 +74,7 @@ export default {
 		immediateChange: {
 			type: Boolean,
 			default: false
-		}
+		},
+		...uni.$uv.props?.picker
 	}
 }

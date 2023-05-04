@@ -63,6 +63,7 @@ export default {
 		height: {
 			type: [Number, String],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.waterfall
 	}
 }

@@ -139,6 +139,7 @@ export default {
 		monthNum: {
 			type: [Number, String],
 			default: 3
-		}
+		},
+		...uni.$uv.props?.calendar
 	}
 }

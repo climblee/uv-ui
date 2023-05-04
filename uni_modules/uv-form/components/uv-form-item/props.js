@@ -43,6 +43,7 @@ export default {
 		leftIconStyle: {
 			type: [String, Object],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.formItem
 	}
 }

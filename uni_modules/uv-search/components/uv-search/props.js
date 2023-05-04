@@ -121,6 +121,7 @@ export default {
 		label: {
 			type: [String, Number, null],
 			default: null
-		}
+		},
+		...uni.$uv.props?.search
 	}
 }

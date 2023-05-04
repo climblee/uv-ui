@@ -79,6 +79,7 @@ export default {
 		titleStyle: {
 			type: [String, Object],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.navbar
 	}
 }

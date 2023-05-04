@@ -122,6 +122,7 @@ export default {
 		ignoreCompositionEvent: {
 			type: Boolean,
 			default: true
-		}
+		},
+		...uni.$uv.props?.textarea
 	}
 }

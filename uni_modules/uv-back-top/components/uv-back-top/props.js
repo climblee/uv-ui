@@ -52,6 +52,7 @@ export default {
 				color: '#909399',
 				fontSize: '19px'
 			})
-		}
+		},
+		...uni.$uv.props?.backtop
 	}
 }

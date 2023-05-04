@@ -69,6 +69,7 @@ export default {
 		preLoadScreen: {
 			type: [String, Number],
 			default: 1
-		}
+		},
+		...uni.$uv.props?.list
 	}
 }

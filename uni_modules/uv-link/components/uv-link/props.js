@@ -34,6 +34,7 @@ export default {
 		text: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.link
 	}
 }

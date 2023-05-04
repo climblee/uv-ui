@@ -107,6 +107,7 @@ export default {
 		wordWrap: {
 			type: String,
 			default: 'normal'
-		}
+		},
+		...uni.$uv.props?.text
 	}
 }

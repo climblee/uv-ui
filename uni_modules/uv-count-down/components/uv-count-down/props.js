@@ -19,6 +19,7 @@ export default {
 		millisecond: {
 			type: Boolean,
 			default: false
-		}
+		},
+		...uni.$uv.props?.countDown
 	}
 }

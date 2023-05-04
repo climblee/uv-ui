@@ -47,6 +47,7 @@ export default {
 		extraValue: {
 			type: [Number, String],
 			default: 0
-		}
+		},
+		...uni.$uv.props?.avatarGroup
 	}
 }

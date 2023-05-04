@@ -19,6 +19,7 @@ export default {
 		opacity: {
 			type: [String, Number],
 			default: 0.5
-		}
+		},
+		...uni.$uv.props?.overlay
 	}
 }

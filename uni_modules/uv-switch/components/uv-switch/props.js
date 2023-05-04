@@ -57,6 +57,7 @@ export default {
 		space: {
 			type: [String, Number],
 			default: 0
-		}
+		},
+		...uni.$uv.props?.switch
 	}
 }

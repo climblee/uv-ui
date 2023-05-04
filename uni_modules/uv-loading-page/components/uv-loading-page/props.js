@@ -44,6 +44,7 @@ export default {
 		loadingColor: {
 			type: String,
 			default: '#C8C8C8'
-		}
+		},
+		...uni.$uv.props?.loadingPage
 	}
 }

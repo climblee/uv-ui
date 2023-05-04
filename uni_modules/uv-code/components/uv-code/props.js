@@ -29,6 +29,7 @@ export default {
 		uniqueKey: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.code
 	}
 }

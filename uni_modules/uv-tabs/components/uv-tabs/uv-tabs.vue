@@ -272,7 +272,7 @@
 			// 获取各个标签的尺寸
 			queryRect(el, item) {
 				// #ifndef APP-NVUE
-				// $uvGetRect为uni-ui自带的节点查询简化方法，详见文档介绍：https://www.uvuiui.com/js/getRect.html
+				// $uvGetRect为uni-ui自带的节点查询简化方法，详见文档介绍：https://www.uvui.com/js/getRect.html
 				// 组件内部一般用this.$uvGetRect，对外的为uni.$uv.getRect，二者功能一致，名称不同
 				return new Promise(resolve => {
 					this.$uvGetRect(`.${el}`).then(size => {

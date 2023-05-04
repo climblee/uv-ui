@@ -84,7 +84,7 @@ export default {
 		borderBottom: {
 			type: Boolean,
 			default: false
-		}
-
+		},
+		...uni.$uv.props?.checkboxGroup
 	}
 }

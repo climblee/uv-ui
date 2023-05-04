@@ -119,6 +119,7 @@ export default {
 		defaultIndex: {
 			type: Array,
 			default: () => []
-		}
+		},
+		...uni.$uv.props?.datetimePicker
 	}
 }

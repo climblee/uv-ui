@@ -65,6 +65,7 @@ export default {
 		keyName: {
 			type: String,
 			default: 'name'
-		}
+		},
+		...uni.$uv.props?.tabs
 	}
 }

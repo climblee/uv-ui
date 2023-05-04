@@ -3,10 +3,10 @@
 		mode="fade"
 		:show="show"
 	>
-		<view class="uv-tag-wrapper">
+		<view class="uv-tags-wrapper">
 			<view
-				class="uv-tag"
-				:class="[`uv-tag--${shape}`, !plain && `uv-tag--${type}`, plain && `uv-tag--${type}--plain`, `uv-tag--${size}`,`uv-tag--${size}--${closePlace}`, plain && plainFill && `uv-tag--${type}--plain--fill`]"
+				class="uv-tags"
+				:class="[`uv-tags--${shape}`, !plain && `uv-tags--${type}`, plain && `uv-tags--${type}--plain`, `uv-tags--${size}`,`uv-tags--${size}--${closePlace}`, plain && plainFill && `uv-tags--${type}--plain--fill`]"
 				@tap.stop="clickHandler"
 				:style="[{
 					marginRight: closable&& closePlace=='right-top' ? '10px' : 0,
@@ -15,7 +15,7 @@
 			>
 				<slot name="icon">
 					<view
-						class="uv-tag__icon"
+						class="uv-tags__icon"
 						v-if="icon"
 					>
 						<image
@@ -32,13 +32,13 @@
 					</view>
 				</slot>
 				<text
-					class="uv-tag__text"
+					class="uv-tags__text"
 					:style="[textColor]"
-					:class="[`uv-tag__text--${type}`, plain && `uv-tag__text--${type}--plain`, `uv-tag__text--${size}`]"
+					:class="[`uv-tags__text--${type}`, plain && `uv-tags__text--${type}--plain`, `uv-tags__text--${size}`]"
 				>{{ text }}</text>
 				<view
-					class="uv-tag__close"
-					:class="[`uv-tag__close--${size}`,`uv-tag__close--${closePlace}`]"
+					class="uv-tags__close"
+					:class="[`uv-tags__close--${size}`,`uv-tags__close--${closePlace}`]"
 					v-if="closable && closePlace=='right'"
 					@tap.stop="closeHandler"
 					:style="{backgroundColor: closeColor}"
@@ -51,8 +51,8 @@
 				</view>
 			</view>
 			<view
-				class="uv-tag__close"
-				:class="[`uv-tag__close--${size}`,`uv-tag__close--${closePlace}`]"
+				class="uv-tags__close"
+				:class="[`uv-tags__close--${size}`,`uv-tags__close--${closePlace}`]"
 				v-if="closable && closePlace=='right-top'"
 				@tap.stop="closeHandler"
 				:style="{backgroundColor: closeColor}"
@@ -92,10 +92,10 @@
 	 * @property {String}			icon		内置图标，或绝对路径的图片
 	 * @event {Function(index)} click 点击标签时触发 index: 传递的index参数值
 	 * @event {Function(index)} close closable为true时，点击标签关闭按钮触发 index: 传递的index参数值	
-	 * @example <uv-tag text="标签" type="error" plain plainFill></uv-tag>
+	 * @example <uv-tags text="标签" type="error" plain plainFill></uv-tags>
 	 */
 	export default {
-		name: 'uv-tag',
+		name: 'uv-tags',
 		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
 		data() {
@@ -164,11 +164,11 @@
 	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 
-	.uv-tag-wrapper {
+	.uv-tags-wrapper {
 		position: relative;
 	}
 
-	.uv-tag {
+	.uv-tags {
 		@include flex;
 		align-items: center;
 		border-style: solid;

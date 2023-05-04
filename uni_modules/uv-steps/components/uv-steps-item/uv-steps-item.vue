@@ -56,7 +56,7 @@
 	/**
 	 * StepsItem 步骤条的子组件
 	 * @description 本组件需要和uv-steps配合使用
-	 * @tutorial https://uvui.com/components/steps.html
+	 * @tutorial https://www.uvui.com/components/steps.html
 	 * @property {String}			title			标题文字
 	 * @property {String}			current			描述文本
 	 * @property {String | Number}	iconSize		图标大小  (默认 17 )

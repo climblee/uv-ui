@@ -112,6 +112,7 @@ export default {
 		iconStyle: {
 			type: [Object, String],
 			default: ''
-		}
+		},
+		...uni.$uv.props?.numberBox
 	}
 }

@@ -59,6 +59,7 @@ export default {
 		labelColor: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.radio
 	}
 }

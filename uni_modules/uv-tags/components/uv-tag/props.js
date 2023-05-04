@@ -84,6 +84,7 @@ export default {
 		iconColor: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.tags
 	}
 }

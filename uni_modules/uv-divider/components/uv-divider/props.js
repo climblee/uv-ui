@@ -39,6 +39,7 @@ export default {
 		lineColor: {
 			type: String,
 			default: '#dcdfe6'
-		}
+		},
+		...uni.$uv.props?.divider
 	}
 }

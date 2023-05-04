@@ -40,6 +40,7 @@ export default {
 		labelStyle: {
 			type: Object,
 			default: () => ({})
-		}
+		},
+		...uni.$uv.props?.form
 	}
 }

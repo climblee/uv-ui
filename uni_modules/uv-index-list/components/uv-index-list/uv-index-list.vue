@@ -112,7 +112,7 @@
 	/**
 	 * IndexList 索引列表
 	 * @description  通过折叠面板收纳内容区域
-	 * @tutorial https://uvui.com/components/indexList.html
+	 * @tutorial https://www.uvui.com/components/indexList.html
 	 * @property {String}			inactiveColor	右边锚点非激活的颜色 ( 默认 '#606266' )
 	 * @property {String}			activeColor		右边锚点激活的颜色 ( 默认 '#5677fc' )
 	 * @property {Array}			indexList		索引字符列表，数组形式

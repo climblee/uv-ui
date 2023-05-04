@@ -4,13 +4,13 @@
 			<text class="uv-demo-block__title">基础功能</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    plain
 					    size="mini"
 					    type="warning"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -18,29 +18,29 @@
 			<text class="uv-demo-block__title">自定义主题</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag text="标签">
-					</uv-tag>
+					<uv-tags text="标签">
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="error"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -48,20 +48,20 @@
 			<text class="uv-demo-block__title">圆形标签</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    plain
 						shape="circle"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 						shape="circle"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -69,35 +69,35 @@
 			<text class="uv-demo-block__title">镂空标签</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    plain
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					    plain
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					    plain
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="error"
 					    plain
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -105,39 +105,39 @@
 			<text class="uv-demo-block__title">镂空带背景色</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    plain
 					    plainFill
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					    plain
 					    plainFill
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					    plain
 					    plainFill
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="error"
 					    plain
 					    plainFill
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -145,28 +145,28 @@
 			<text class="uv-demo-block__title">自定义尺寸</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    plain
 					    size="mini"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					    plain
 					    size="large"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -174,27 +174,27 @@
 			<text class="uv-demo-block__title">可关闭标签</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    size="mini"
 					    closable
 					    :show="close1"
 					    @close="close1 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					    closable
 						:show="close2"
 					    @close="close2 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					    plain
@@ -203,7 +203,7 @@
 						:show="close3"
 					    @close="close3 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -211,7 +211,7 @@
 			<text class="uv-demo-block__title">关闭按钮的位置</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 							size="mini"
 					    closable
@@ -219,10 +219,10 @@
 							closePlace="right"
 					    @close="close4 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					    closable
@@ -230,10 +230,10 @@
 						:show="close5"
 					    @close="close5 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 							size="large"
 					    type="warning"
@@ -242,7 +242,7 @@
 						:show="close6"
 					    @close="close6 = false"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -250,31 +250,31 @@
 			<text class="uv-demo-block__title">带图片和图标</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    size="mini"
 					    icon="map"
 					    plain
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="warning"
 					    icon="tags-fill"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 				<view class="uv-page__tag-item">
-					<uv-tag
+					<uv-tags
 					    text="标签"
 					    type="success"
 					    plain
 					    size="large"
 					    icon="https://cdn.uviewui.com/uview/example/tag.png"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -286,14 +286,14 @@
 				    v-for="(item, index) in radios"
 				    :key="index"
 				>
-					<uv-tag
+					<uv-tags
 					    :text="`选项${index + 1}`"
 					    :plain="!item.checked"
 					    type="warning"
 					    :name="index"
 					    @click="radioClick"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>
@@ -305,14 +305,14 @@
 				    v-for="(item, index) in checkboxs"
 				    :key="index"
 				>
-					<uv-tag
+					<uv-tags
 					    :text="`选项${index + 1}`"
 					    :plain="!item.checked"
 					    type="warning"
 					    :name="index"
 					    @click="checkboxClick"
 					>
-					</uv-tag>
+					</uv-tags>
 				</view>
 			</view>
 		</view>

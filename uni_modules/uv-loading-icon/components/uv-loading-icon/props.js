@@ -54,6 +54,7 @@ export default {
 		inactiveColor: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.loadingIcon
 	}
 }

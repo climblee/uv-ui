@@ -1,10 +1,10 @@
 {
-  "id": "uv-tag",
-  "displayName": "uv-tag",
+  "id": "uv-tags",
+  "displayName": "uv-tags",
   "version": "1.0.0",
-  "description": "uv-tag",
+  "description": "uv-tags",
   "keywords": [
-    "uv-tag"
+    "uv-tags"
 ],
   "repository": "",
   "engines": {

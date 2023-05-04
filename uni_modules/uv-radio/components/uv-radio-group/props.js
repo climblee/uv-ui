@@ -87,6 +87,7 @@ export default {
 		iconPlacement: {
 			type: String,
 			default: 'left'
-		}
+		},
+		...uni.$uv.props?.radioGroup
 	}
 }

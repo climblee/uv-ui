@@ -73,6 +73,7 @@ export default {
 		name: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv.props?.avatar
 	}
 }

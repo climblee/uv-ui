@@ -72,6 +72,7 @@ export default {
 		touchable: {
 			type: Boolean,
 			default: true
-		}
+		},
+		...uni.$uv.props?.rate
 	}
 }

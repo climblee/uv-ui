@@ -24,7 +24,7 @@
 	/**
 	 * IndexItem 
 	 * @description 
-	 * @tutorial https://uvui.com/components/indexList.html
+	 * @tutorial https://www.uvui.com/components/indexList.html
 	 * @property {String}
 	 * @event {Function}
 	 * @example

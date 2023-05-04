@@ -74,6 +74,7 @@ export default {
 		overlayOpacity: {
 			type: [Number, String],
 			default: 0.5
-		}
+		},
+		...uni.$uv.props?.popup
 	}
 }

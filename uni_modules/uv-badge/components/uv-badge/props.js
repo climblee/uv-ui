@@ -67,6 +67,7 @@ export default {
 		absolute: {
 			type: Boolean,
 			default: false
-		}
+		},
+		...uni.$uv.props?.badge
 	}
 }
