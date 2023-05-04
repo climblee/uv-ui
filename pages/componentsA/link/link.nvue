@@ -5,7 +5,7 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__link-item">
 					<uv-link
-					    href="https://uviewui.com/"
+					    href="https://www.uvui.com/"
 					    text="打开uv UI文档"
 						@click="click"
 					></uv-link>
@@ -17,7 +17,7 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__link-item">
 					<uv-link
-					    href="https://uviewui.com/"
+					    href="https://www.uvui.com/"
 					    :underLine="true"
 					    text="Go to uv doc"
 					></uv-link>
@@ -29,7 +29,7 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__link-item">
 					<uv-link
-					    href="https://uviewui.com/"
+					    href="https://www.uvui.com/"
 					    lineColor="#19be6b"
 					    color="#19be6b"
 					    text="打开uv UI文档"

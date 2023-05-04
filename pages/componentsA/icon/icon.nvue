@@ -608,9 +608,6 @@
 		},
 		methods: {
 			selectIcon(name) {
-				// #ifdef H5
-				return uni.$uv.toast('H5暂不支持复制');
-				// #endif
 				uni.setClipboardData({
 					data: name,
 					success: () => {
