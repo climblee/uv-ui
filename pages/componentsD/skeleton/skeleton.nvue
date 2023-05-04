@@ -102,7 +102,7 @@
 					<view>
 						<view class="uv-skeleton-slot">
 							<image
-								src="/static/uview/common/logo.png"
+								src="/static/uvui/common/logo.png"
 								class="uv-skeleton-slot__image"
 							></image>
 							<view class="uv-skeleton-slot__content">

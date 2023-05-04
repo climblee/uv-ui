@@ -80,7 +80,7 @@
 		>
 			<image
 				style="width: 80px;height: 80px;"
-				src="/static/uview/common/logo.png"
+				src="/static/uvui/common/logo.png"
 			></image>
 		</uv-modal>
 		<uv-modal

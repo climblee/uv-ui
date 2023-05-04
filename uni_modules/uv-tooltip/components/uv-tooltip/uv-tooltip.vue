@@ -96,9 +96,6 @@
 	// #ifdef APP-NVUE 
 	const dom = uni.requireNativePlugin('dom')
 	// #endif
-	// #ifdef H5
-	import ClipboardJS from "./clipboard.min.js"
-	// #endif
 	/**
 	 * Tooltip 
 	 * @description 
@@ -265,7 +262,6 @@
 				// 关闭组件
 				this.showTooltip = false
 				this.$emit('click', 0)
-				// #ifndef H5
 				uni.setClipboardData({
 					// 优先使用copyText字段，如果没有，则默认使用text字段当做复制的内容
 					data: this.copyText || this.text,
@@ -279,29 +275,6 @@
 						this.showTooltip = false
 					}
 				})
-				// #endif
-
-				// #ifdef H5
-				let event = window.event || e || {}
-				let clipboard = new ClipboardJS('', {
-					text: () => this.copyText || this.text
-				})
-				clipboard.on('success', (e) => {
-					this.showToast && uni.$uv.toast('复制成功')
-					clipboard.off('success')
-					clipboard.off('error')
-					// 在单页应用中，需要销毁DOM的监听
-					clipboard.destroy()
-				})
-				clipboard.on('error', (e) => {
-					this.showToast && uni.$uv.toast('复制失败')
-					clipboard.off('success')
-					clipboard.off('error')
-					// 在单页应用中，需要销毁DOM的监听
-					clipboard.destroy()
-				})
-				clipboard.onClick(event)
-				// #endif
 			}
 		}
 	}

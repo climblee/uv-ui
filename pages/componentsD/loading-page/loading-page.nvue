@@ -98,7 +98,7 @@
 					this.loadingPageData.loadingColor = '#C8C8C8'
 				} else if (indexNum == 1) {
 					// 自定义图片
-					this.loadingPageData.image = "/static/uview/common/logo.png"
+					this.loadingPageData.image = "/static/uvui/common/logo.png"
 					this.loadingPageData.loadingText = "uv UI"
 					this.loadingPageData.iconSize = 40
 					this.loadingPageData.color = '#C8C8C8'
