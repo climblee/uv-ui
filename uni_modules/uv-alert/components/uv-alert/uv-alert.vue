@@ -66,7 +66,7 @@
 	/**
 	 * Alert  警告提示
 	 * @description 警告提示，展现需要关注的信息。
-	 * @tutorial https://www.uvui.com/components/alertTips.html
+	 * @tutorial https://www.uvui.cn/components/alertTips.html
 	 * 
 	 * @property {String}			title       显示的文字 
 	 * @property {String}			type        使用预设的颜色  （默认 'warning' ）

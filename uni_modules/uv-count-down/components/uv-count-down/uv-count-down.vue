@@ -17,7 +17,7 @@
 	/**
 	 * uv-count-down 倒计时
 	 * @description 该组件一般使用于某个活动的截止时间上，通过数字的变化，给用户明确的时间感受，提示用户进行某一个行为操作。
-	 * @tutorial https://www.uvui.com/components/countDown.html
+	 * @tutorial https://www.uvui.cn/components/countDown.html
 	 * @property {String | Number}	time		倒计时时长，单位ms （默认 0 ）
 	 * @property {String}			format		时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒  （默认 'HH:mm:ss' ）
 	 * @property {Boolean}			autoStart	是否自动开始倒计时 （默认 true ）

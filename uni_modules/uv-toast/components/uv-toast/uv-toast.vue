@@ -44,7 +44,7 @@
 	/**
 	 * toast 消息提示
 	 * @description 此组件表现形式类似uni的uni.showToastAPI，但也有不同的地方。
-	 * @tutorial https://www.uvui.com/components/toast.html
+	 * @tutorial https://www.uvui.cn/components/toast.html
 	 * @property {String | Number}	zIndex		toast展示时的zIndex值 (默认 10090 )
 	 * @property {Boolean}			loading		是否加载中 （默认 false ）
 	 * @property {String | Number}	message		显示的文字内容

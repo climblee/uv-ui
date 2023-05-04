@@ -55,7 +55,7 @@
 	/**
 	 * readMore 阅读更多
 	 * @description 该组件一般用于内容较长，预先收起一部分，点击展开全部内容的场景。
-	 * @tutorial https://www.uvui.com/components/readMore.html
+	 * @tutorial https://www.uvui.cn/components/readMore.html
 	 * @property {String | Number}	showHeight	内容超出此高度才会显示展开全文按钮，单位px（默认 400 ）
 	 * @property {Boolean}			toggle		展开后是否显示收起按钮（默认 false ）
 	 * @property {String}			closeText	关闭时的提示文字（默认 '展开阅读全文' ）

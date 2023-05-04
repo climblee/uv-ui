@@ -49,7 +49,7 @@
 	/**
 	 * Subsection 分段器
 	 * @description 该分段器一般用于用户从几个选项中选择某一个的场景
-	 * @tutorial https://www.uvui.com/components/subsection.html
+	 * @tutorial https://www.uvui.cn/components/subsection.html
 	 * @property {Array}			list			tab的数据
 	 * @property {String ｜ Number}	current			当前活动的tab的index（默认 0 ）
 	 * @property {String}			activeColor		激活时的颜色（默认 '#3c9cff' ）

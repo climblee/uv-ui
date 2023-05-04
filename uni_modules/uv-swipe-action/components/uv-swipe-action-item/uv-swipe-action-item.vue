@@ -57,7 +57,7 @@
 	/**
 	 * SwipeActionItem 滑动单元格子组件
 	 * @description 该组件一般用于左滑唤出操作菜单的场景，用的最多的是左滑删除操作
-	 * @tutorial https://www.uvui.com/components/swipeAction.html
+	 * @tutorial https://www.uvui.cn/components/swipeAction.html
 	 * @property {Boolean}			show			控制打开或者关闭（默认 false ）
 	 * @property {String | Number}	index			标识符，如果是v-for，可用index索引
 	 * @property {Boolean}			disabled		是否禁用（默认 false ）

@@ -117,7 +117,7 @@ import props from "./props.js";
 /**
  * button 按钮
  * @description Button 按钮
- * @tutorial https://www.uvui.com/components/button.html
+ * @tutorial https://www.uvui.cn/components/button.html
  *
  * @property {Boolean}			hairline				是否显示按钮的细边框 (默认 true )
  * @property {String}			type					按钮的预置样式，info，primary，error，warning，success (默认 'info' )

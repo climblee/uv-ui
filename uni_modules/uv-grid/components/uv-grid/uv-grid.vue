@@ -15,7 +15,7 @@
 	/**
 	 * grid 宫格布局
 	 * @description 宫格组件一般用于同时展示多个同类项目的场景，可以给宫格的项目设置徽标组件(badge)，或者图标等，也可以扩展为左右滑动的轮播形式。
-	 * @tutorial https://www.uvui.com/components/grid.html
+	 * @tutorial https://www.uvui.cn/components/grid.html
 	 * @property {String | Number}	col			宫格的列数（默认 3 ）
 	 * @property {Boolean}			border		是否显示宫格的边框（默认 false ）
 	 * @property {String}			align		宫格对齐方式，表现为数量少的时候，靠左，居中，还是靠右 （默认 'left' ）

@@ -12,7 +12,7 @@
 	/**
 	 * collapse 折叠面板 
 	 * @description 通过折叠面板收纳内容区域
-	 * @tutorial https://www.uvui.com/components/collapse.html
+	 * @tutorial https://www.uvui.cn/components/collapse.html
 	 * @property {String | Number | Array}	value		当前展开面板的name，非手风琴模式：[<string | number>]，手风琴模式：string | number
 	 * @property {Boolean}					accordion	是否手风琴模式（ 默认 false ）
 	 * @property {Boolean}					border		是否显示外边框 ( 默认 true ）

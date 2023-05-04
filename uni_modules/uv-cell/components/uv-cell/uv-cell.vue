@@ -44,7 +44,7 @@
 	/**
 	 * cell  单元格
 	 * @description cell单元格一般用于一组列表的情况，比如个人中心页，设置页等。
-	 * @tutorial https://www.uvui.com/components/cell.html
+	 * @tutorial https://www.uvui.cn/components/cell.html
 	 * @property {String | Number}	title			标题
 	 * @property {String | Number}	label			标题下方的描述信息
 	 * @property {String | Number}	value			右侧的内容

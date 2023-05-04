@@ -72,7 +72,7 @@
 	/**
 	 * 瀑布流
 	 * @description 该组件兼容所有端，nvue参考https://uniapp.dcloud.net.cn/component/waterfall.html
-	 * @tutorial https://www.uvui.com/components/list.html
+	 * @tutorial https://www.uvui.cn/components/list.html
 	 * @property {Array}	value/modelValue	瀑布流数组数据，非nvue生效 （默认 [] ）
 	 * @property {String}	idKey	  数据的id值，根据id值对数据执行删除操作，如数据为：{id: 1, name: 'uv-ui'}，那么该值设置为id，非nvue有效 （默认 '' ）
 	 * @property {String ｜ Number}	addTime		每次插入数据的事件间隔，间隔越长能保证两列高度相近，但是用户体验不好，单位ms，非nvue生效（默认 200 ）

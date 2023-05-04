@@ -52,7 +52,7 @@
 	/**
 	 * CodeInput 验证码输入
 	 * @description 该组件一般用于验证用户短信验证码的场景，也可以结合uvui的键盘组件使用
-	 * @tutorial https://www.uvui.com/components/codeInput.html
+	 * @tutorial https://www.uvui.cn/components/codeInput.html
 	 * @property {String | Number}	maxlength			最大输入长度 （默认 6 ）
 	 * @property {Boolean}			dot					是否用圆点填充 （默认 false ）
 	 * @property {String}			mode				显示模式，box-盒子模式，line-底部横线模式 （默认 'box' ）

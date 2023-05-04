@@ -25,7 +25,7 @@
 	/**
 	 * List 列表
 	 * @description 该组件为高性能列表组件
-	 * @tutorial https://www.uvui.com/components/list.html
+	 * @tutorial https://www.uvui.cn/components/list.html
 	 * @property {String | Number}	anchor	用于滚动到指定item
 	 * @example <uv-list-ite v-for="(item, index) in indexList" :key="index" ></uv-list-item>
 	 */

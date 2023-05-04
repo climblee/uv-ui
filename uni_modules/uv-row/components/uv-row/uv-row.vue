@@ -19,7 +19,7 @@
 	/**
 	 * Row 栅格系统中的行
 	 * @description 通过基础的 12 分栏，迅速简便地创建布局 
-	 * @tutorial https://www.uvui.com/components/layout.html
+	 * @tutorial https://www.uvui.cn/components/layout.html
 	 * @property {String | Number}	gutter		栅格间隔，左右各为此值的一半，单位px  (默认 0 )
 	 * @property {String}			justify		水平排列方式(微信小程序暂不支持) 可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)  (默认 'start' )
 	 * @property {String}			align		垂直排列方式 (默认 'center' )

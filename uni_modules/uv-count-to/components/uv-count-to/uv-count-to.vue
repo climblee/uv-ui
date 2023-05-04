@@ -16,7 +16,7 @@
 /**
  * countTo 数字滚动
  * @description 该组件一般用于需要滚动数字到某一个值的场景，目标要求是一个递增的值。
- * @tutorial https://www.uvui.com/components/countTo.html
+ * @tutorial https://www.uvui.cn/components/countTo.html
  * @property {String | Number}	startVal	开始的数值，默认从0增长到某一个数（默认 0 ）
  * @property {String | Number}	endVal		要滚动的目标数值，必须 （默认 0 ）
  * @property {String | Number}	duration	滚动到目标数值的动画持续时间，单位为毫秒（ms） （默认 2000 ）

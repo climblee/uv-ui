@@ -83,7 +83,7 @@
 	/**
 	 * Form 表单
 	 * @description 此组件一般用于表单场景，可以配置Input输入框，Select弹出框，进行表单验证等。
-	 * @tutorial https://www.uvui.com/components/form.html
+	 * @tutorial https://www.uvui.cn/components/form.html
 	 * @property {String}			label			input的label提示语
 	 * @property {String}			prop			绑定的值
 	 * @property {String | Boolean}	borderBottom	是否显示表单域的下划线边框

@@ -49,7 +49,7 @@
 	/**
 	 * TabbarItem 底部导航栏子组件
 	 * @description 此组件提供了自定义tabbar的能力。
-	 * @tutorial https://www.uvui.com/components/tabbar.html
+	 * @tutorial https://www.uvui.cn/components/tabbar.html
 	 * @property {String | Number}	name		item标签的名称，作为与uv-tabbar的value参数匹配的标识符
 	 * @property {String}			icon		uvui内置图标或者绝对路径的图片
 	 * @property {String | Number}	badge		右上角的角标提示信息

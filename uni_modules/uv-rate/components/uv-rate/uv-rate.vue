@@ -70,7 +70,7 @@
 	/**
 	 * rate 评分
 	 * @description 该组件一般用于满意度调查，星型评分的场景
-	 * @tutorial https://www.uvui.com/components/rate.html
+	 * @tutorial https://www.uvui.cn/components/rate.html
 	 * @property {String | Number}	value			用于v-model双向绑定选中的星星数量 (默认 1 )
 	 * @property {String | Number}	count			最多可选的星星数量 （默认 5 ）
 	 * @property {Boolean}			disabled		是否禁止用户操作 （默认 false ）

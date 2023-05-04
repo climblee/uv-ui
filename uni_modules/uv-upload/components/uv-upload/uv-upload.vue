@@ -132,7 +132,7 @@
 	/**
 	 * upload 上传
 	 * @description 该组件用于上传图片场景
-	 * @tutorial https://www.uvui.com/components/upload.html
+	 * @tutorial https://www.uvui.cn/components/upload.html
 	 * @property {String}			accept				接受的文件类型, 可选值为all media image file video （默认 'image' ）
 	 * @property {String | Array}	capture				图片或视频拾取模式，当accept为image类型时设置capture可选额外camera可以直接调起摄像头（默认 ['album', 'camera'] ）
 	 * @property {Boolean}			compressed			当accept为video时生效，是否压缩视频，默认为true（默认 true ）

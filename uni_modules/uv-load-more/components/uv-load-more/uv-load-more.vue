@@ -59,7 +59,7 @@
 	/**
 	 * loadmore 加载更多
 	 * @description 此组件一般用于标识页面底部加载数据时的状态。
-	 * @tutorial https://www.uvui.com/components/loadMore.html
+	 * @tutorial https://www.uvui.cn/components/loadMore.html
 	 * @property {String}			status			组件状态（默认 'loadmore' ）
 	 * @property {String}			bgColor			组件背景颜色，在页面是非白色时会用到（默认 'transparent' ）
 	 * @property {Boolean}			icon			加载中时是否显示图标（默认 true ）

@@ -14,7 +14,7 @@
 	/**
 	 * Steps 步骤条
 	 * @description 该组件一般用于完成一个任务要分几个步骤，标识目前处于第几步的场景。
-	 * @tutorial https://www.uvui.com/components/steps.html
+	 * @tutorial https://www.uvui.cn/components/steps.html
 	 * @property {String}			direction		row-横向，column-竖向 (默认 'row' )
 	 * @property {String | Number}	current			设置当前处于第几步 (默认 0 )
 	 * @property {String}			activeColor		激活状态颜色 (默认 '#3c9cff' )

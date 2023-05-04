@@ -56,7 +56,7 @@
 	/**
 	 * icon 图标
 	 * @description 基于字体的图标集，包含了大多数常见场景的图标。
-	 * @tutorial https://www.uvui.com/components/icon.html
+	 * @tutorial https://www.uvui.cn/components/icon.html
 	 * @property {String}			name			图标名称，见示例图标集
 	 * @property {String}			color			图标颜色,可接受主题色 （默认 color['uv-content-color'] ）
 	 * @property {String | Number}	size			图标字体大小，单位px （默认 '16px' ）

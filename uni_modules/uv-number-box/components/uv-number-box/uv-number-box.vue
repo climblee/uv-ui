@@ -81,7 +81,7 @@
 	/**
 	 * numberBox 步进器
 	 * @description 该组件一般用于商城购物选择物品数量的场景。
-	 * @tutorial https://www.uvui.com/components/numberBox.html
+	 * @tutorial https://www.uvui.cn/components/numberBox.html
 	 * @property {String | Number}	name			步进器标识符，在change回调返回
 	 * @property {String | Number}	value			用于双向绑定的值，初始化时设置设为默认min值(最小值)  （默认 0 ）
 	 * @property {String | Number}	min				最小值 （默认 1 ）

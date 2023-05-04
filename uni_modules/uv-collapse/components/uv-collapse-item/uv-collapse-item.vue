@@ -54,7 +54,7 @@
 	/**
 	 * collapseItem 折叠面板Item
 	 * @description 通过折叠面板收纳内容区域（搭配uv-collapse使用）
-	 * @tutorial https://www.uvui.com/components/collapse.html
+	 * @tutorial https://www.uvui.cn/components/collapse.html
 	 * @property {String}			title 		标题
 	 * @property {String}			value 		标题右侧内容
 	 * @property {String}			label 		标题下方的描述信息

@@ -32,7 +32,7 @@
 	/**
 	 * Tabbar 底部导航栏
 	 * @description 此组件提供了自定义tabbar的能力。
-	 * @tutorial https://www.uvui.com/components/tabbar.html
+	 * @tutorial https://www.uvui.cn/components/tabbar.html
 	 * @property {String | Number}	value				当前匹配项的name
 	 * @property {Boolean}			safeAreaInsetBottom	是否为iPhoneX留出底部安全距离（默认 true ）
 	 * @property {Boolean}			border				是否显示上方边框（默认 true ）
