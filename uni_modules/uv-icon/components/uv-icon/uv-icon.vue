@@ -40,7 +40,7 @@
 	// #ifdef APP-NVUE
 	// nvue通过weex的dom模块引入字体，相关文档地址如下：
 	// https://weex.apache.org/zh/docs/modules/dom.html#addrule
-	const fontUrl = 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+	import fontUrl from './uvicons.ttf'
 	const domModule = weex.requireModule('dom')
 	domModule.addRule('fontFace', {
 		'fontFamily': "uicon-iconfont",
@@ -91,13 +91,8 @@
 		computed: {
 			uClasses() {
 				let classes = []
+				classes.push(this.customPrefix)
 				classes.push(this.customPrefix + '-' + this.name)
-				// // uvui的自定义图标类名为uv-iconfont
-				// if (this.customPrefix == 'uicon') {
-				// 	classes.push('uv-iconfont')
-				// } else {
-				// 	classes.push(this.customPrefix)
-				// }
 				// 主题色，通过类配置
 				if (this.color && uni.$uv.config.type.includes(this.color)) classes.push('uv-icon__icon--' + this.color)
 				// 阿里，头条，百度小程序通过数组绑定类名时，无法直接使用[a, b, c]的形式，否则无法识别
@@ -135,7 +130,7 @@
 			// 通过图标名，查找对应的图标
 			icon() {
 				// 如果内置的图标中找不到对应的图标，就直接返回name值，因为用户可能传入的是unicode代码
-				return icons['uvicon-' + this.name] || this.name
+				return icons['uvicon-' + this.name] || ''
 			}
 		},
 		methods: {
@@ -164,7 +159,7 @@
 	// 非nvue下加载字体
 	@font-face {
 		font-family: 'uicon-iconfont';
-		src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+		src: url('./uvicons.ttf') format('truetype');
 	}
 
 	/* #endif */

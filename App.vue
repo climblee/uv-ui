@@ -13,6 +13,7 @@
 </script>
 
 <style lang="scss">
+	@import "@/static/iconfont.css";
 	@import '@/uni_modules/uv-ui-tools/index.scss';
 	@import "@/common/demo.scss";
 	/*每个页面公共css */

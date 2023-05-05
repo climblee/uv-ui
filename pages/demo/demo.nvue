@@ -1,6 +1,7 @@
 <template>
 	<view class="">
 		测试页面
+		<uv-icon custom-prefix="custom-icon" name="huangguan" color="red	"></uv-icon>
 	</view>
 </template>
 
