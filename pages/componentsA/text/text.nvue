@@ -51,6 +51,11 @@
 					    mode="phone"
 					    text="15019479320"
 					></uv-text>
+					<uv-text
+					    mode="phone"
+					    text="15019479320"
+							format="encrypt"
+					></uv-text>
 				</view>
 			</view>
 		</view>
@@ -108,14 +113,14 @@
 				    style="margin-right: 50px;"
 				>
 					<uv-text
-					    prefixIcon="wifi"
+					    prefixIcon="baidu"
 					    iconStyle="font-size: 19px"
 					    text="百度一下"
 					></uv-text>
 				</view>
 				<view class="uv-page__text-item">
 					<uv-text
-					    suffixIcon="arrow-rightward"
+					    suffixIcon="arrow-leftward"
 					    iconStyle="font-size: 18px"
 					    text="查看更多"
 					></uv-text>
@@ -127,7 +132,7 @@
 			<view class="uv-demo-block__content">
 				<uv-text
 				    :lines="2"
-				    text="关于uv-ui的取名来由，首字母`u`来自于`uni-app`首字母，`uni-app`是基于`Vue.js`，`Vue`和`View`(延伸为UI、视图之意)同音，故取名uv-ui，表达源于`uni-app`和`Vue`和`uView`之意，同时在此也对它们表示感谢。"
+				    text="关于uv-ui的取名来由，首字母u来自于uni-app首字母，uni-app是基于Vue.js，Vue和View(延伸为UI、视图之意)同音，故取名uv-ui，表达源于uni-app和Vue和uView之意，同时在此也对它们表示感谢。"
 				></uv-text>
 			</view>
 		</view>

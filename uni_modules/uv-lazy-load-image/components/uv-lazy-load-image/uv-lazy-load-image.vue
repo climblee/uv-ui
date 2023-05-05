@@ -196,7 +196,7 @@
 				} else if (this.loadStatus == 'loading') {
 					// 真正的图片加载完成
 					this.loadStatus = 'loaded'
-					this.$emit('loaded', this.name)
+					this.$emit('load', this.name)
 				}
 			},
 			// 处理错误图片加载完成
