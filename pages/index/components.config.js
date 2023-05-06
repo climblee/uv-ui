@@ -247,8 +247,19 @@ export default [{
 			icon: 'noNetwork',
 			title: 'NoNetwork 无网络提示',
 			title_en: 'NoNetwork'
-		}
+		},
 		// #endif
+		{
+			path: '/pages/componentsC/popup/popup',
+			icon: 'popup',
+			title: 'Popup 弹出层',
+			title_en: 'Popup'
+		}, {
+			path: '/pages/componentsC/modal/modal',
+			icon: 'modal',
+			title: 'Modal 模态框',
+			title_en: 'Modal'
+		}
 	]
 }, {
 	groupName: '布局组件',
@@ -332,16 +343,6 @@ export default [{
 	groupName: '其他组件',
 	groupName_en: 'Other components',
 	list: [{
-			path: '/pages/componentsC/popup/popup',
-			icon: 'popup',
-			title: 'Popup 弹出层',
-			title_en: 'Popup'
-		}, {
-			path: '/pages/componentsC/modal/modal',
-			icon: 'modal',
-			title: 'Modal 模态框',
-			title_en: 'Modal'
-		}, {
 			path: '/pages/componentsB/parse/parse',
 			icon: 'parse',
 			title: 'Parse 富文本解析器',

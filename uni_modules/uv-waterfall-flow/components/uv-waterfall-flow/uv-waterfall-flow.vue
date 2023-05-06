@@ -205,7 +205,12 @@
 				for (let i = 1; i <= this.columnCount; i++) {
 					this[`list${i}`] = [];
 				}
+				// #ifdef VUE2
 				this.$emit('input', [])
+				// #endif
+				// #ifdef VUE3
+				this.$emit('update:modelValue', [])
+				// #endif
 				this.tempList = []
 			},
 			// 清除指定的某一条数据，根据id来实现
