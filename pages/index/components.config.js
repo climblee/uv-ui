@@ -6,7 +6,7 @@ export default [{
 		icon: 'color',
 		title: 'demo',
 		title_en: 'Color'
-	},{
+	}, {
 		path: '/pages/componentsA/color/color',
 		icon: 'color',
 		title: 'Color 色彩',
@@ -147,20 +147,10 @@ export default [{
 	groupName: '数据组件',
 	groupName_en: 'Data components',
 	list: [{
-		path: '/pages/componentsD/loading-icon/loading-icon',
-		icon: 'loading',
-		title: 'Loading 加载动画',
-		title_en: 'loading Icon'
-	}, {
-		path: '/pages/componentsD/loading-page/loading-page',
-		icon: 'loading-page',
-		title: 'Loading page 加载页',
-		title_en: 'Loading Page'
-	}, {
-		path: '/pages/componentsD/loadmore/loadmore',
-		icon: 'loadmore',
-		title: 'Loadmore 加载更多',
-		title_en: 'Loadmore'
+		path: '/pages/componentsC/list/list',
+		icon: 'list',
+		title: 'List 列表',
+		title_en: 'List'
 	}, {
 		path: '/pages/componentsD/tag/tag',
 		icon: 'tag',
@@ -192,15 +182,30 @@ export default [{
 		title: 'Avatar 头像',
 		title_en: 'Avatar'
 	}, {
+		path: '/pages/componentsD/indexList/indexList',
+		icon: 'indexList',
+		title: 'IndexList 索引列表',
+		title_en: 'IndexList'
+	}, {
 		path: '/pages/componentsD/skeleton/skeleton',
 		icon: 'skeleton',
 		title: 'Skeleton 骨架屏',
 		title_en: 'Skeleton'
 	}, {
-		path: '/pages/componentsD/indexList/indexList',
-		icon: 'indexList',
-		title: 'IndexList 索引列表',
-		title_en: 'IndexList'
+		path: '/pages/componentsD/loading-icon/loading-icon',
+		icon: 'loading',
+		title: 'Loading 加载动画',
+		title_en: 'loading Icon'
+	}, {
+		path: '/pages/componentsD/loading-page/loading-page',
+		icon: 'loading-page',
+		title: 'Loading page 加载页',
+		title_en: 'Loading Page'
+	}, {
+		path: '/pages/componentsD/loadmore/loadmore',
+		icon: 'loadmore',
+		title: 'Loadmore 加载更多',
+		title_en: 'Loadmore'
 	}, {
 		path: '/pages/componentsD/empty/empty',
 		icon: 'empty',
@@ -249,11 +254,6 @@ export default [{
 	groupName: '布局组件',
 	groupName_en: 'Layout components',
 	list: [{
-		path: '/pages/componentsC/list/list',
-		icon: 'list',
-		title: 'List 列表',
-		title_en: 'List'
-	}, {
 		path: '/pages/componentsC/cell/cell',
 		icon: 'cell',
 		title: 'Cell 单元格',
