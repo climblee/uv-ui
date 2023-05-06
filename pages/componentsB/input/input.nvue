@@ -101,7 +101,6 @@
 						<template v-slot:prefix>
 							<uv-text
 								text="http://"
-								slot="prefix"
 								margin="0 3px 0 0"
 								type="tips"
 							></uv-text>
