@@ -1,7 +1,11 @@
 <template>
 	<view class="">
 		测试页面
-		<uv-icon custom-prefix="custom-icon" name="huangguan" color="red	"></uv-icon>
+		<!-- <uv-icon custom-prefix="custom-icon" name="huangguan" color="red	"></uv-icon> -->
+		<uv-tooltip
+		  text="测试"
+			direction="bottom"
+		></uv-tooltip>
 	</view>
 </template>
 
