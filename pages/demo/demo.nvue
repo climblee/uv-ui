@@ -6,6 +6,7 @@
 		  text="测试"
 			direction="bottom"
 		></uv-tooltip>
+		<uni-icons type="contact" size="30">1</uni-icons>
 	</view>
 </template>
 
