@@ -152,6 +152,11 @@ export default [{
 		title: 'List 列表',
 		title_en: 'List'
 	}, {
+		path: '/pages/componentsD/indexList/indexList',
+		icon: 'indexList',
+		title: 'IndexList 索引列表',
+		title_en: 'IndexList'
+	}, {
 		path: '/pages/componentsD/tag/tag',
 		icon: 'tag',
 		title: 'Tag 标签',
@@ -181,11 +186,6 @@ export default [{
 		icon: 'avatar',
 		title: 'Avatar 头像',
 		title_en: 'Avatar'
-	}, {
-		path: '/pages/componentsD/indexList/indexList',
-		icon: 'indexList',
-		title: 'IndexList 索引列表',
-		title_en: 'IndexList'
 	}, {
 		path: '/pages/componentsD/skeleton/skeleton',
 		icon: 'skeleton',
