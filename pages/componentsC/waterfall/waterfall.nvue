@@ -9,13 +9,14 @@
 			column-gap="8"
 			column-width="40"
 			@finish="handleWaterFallFinish">
+			<!-- 第一列数据 -->
 			<template v-slot:list1="{ list1 }">
 				<view v-for="(item, index) in list1"
 					:key="item.id"
 					class="waterfall-item"
 					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
 							<template v-slot:loading>
 								<uv-loading-icon color="#999"></uv-loading-icon>
 							</template>
@@ -38,13 +39,14 @@
 					</view>
 				</view>
 			</template>
+			<!-- 第二列数据 -->
 			<template v-slot:list2="{ list2 }">
 				<view v-for="(item, index) in list2"
 					:key="item.id"
 					class="waterfall-item"
 					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
 							<template v-slot:loading>
 								<uv-loading-icon color="red"></uv-loading-icon>
 							</template>
@@ -72,9 +74,11 @@
 			<cell v-for="(item,index) in list"
 				class="waterfall-item">
 				<view class="waterfall-item__image">
-					<uv-lazy-load-image :name="item.id"
-						:src="item.image"
-						mode="widthFix"></uv-lazy-load-image>
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="red"></uv-loading-icon>
+							</template>
+						</uv-image>
 				</view>
 				<view class="waterfall-item__ft">
 					<view class="waterfall-item__ft__title">
@@ -111,7 +115,7 @@
 			}
 		},
 		onLoad() {
-			this.getRandomData()
+			// this.getRandomData()
 		},
 		onPullDownRefresh() {
 			this.list = [];
@@ -159,7 +163,6 @@
 						this.list.push({
 							id: uni.$uv.guid(),
 							image: this.getImage(),
-							showChar: true,
 							title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
 							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
 						});

@@ -35,7 +35,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 是否开启强制懒加载，nvue不生效
+		// 是否开启observer懒加载，nvue不生效
 		observeLazyLoad: {
 			type: Boolean,
 			default: false
