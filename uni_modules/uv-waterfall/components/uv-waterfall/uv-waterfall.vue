@@ -1,52 +1,52 @@
 <template>
-	<view class="uv-waterfall-flow">
+	<view class="uv-waterfall">
 		<!-- #ifndef APP-NVUE -->
-		<view class="uv-waterfall-flow__gap_left"
+		<view class="uv-waterfall__gap_left"
 			:style="[gapLeftStyle]"></view>
 		<template v-if="columnNum>=1">
-			<view id="uv-waterfall-flow-1"
-				class="uv-waterfall-flow__column">
+			<view id="uv-waterfall-1"
+				class="uv-waterfall__column">
 				<slot name="list1"
 					:list1="list1"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=2">
-			<view class="uv-waterfall-flow__gap_center"
+			<view class="uv-waterfall__gap_center"
 				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-flow-2"
-				class="uv-waterfall-flow__column">
+			<view id="uv-waterfall-2"
+				class="uv-waterfall__column">
 				<slot name="list2"
 					:list2="list2"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=3">
-			<view class="uv-waterfall-flow__gap_center"
+			<view class="uv-waterfall__gap_center"
 				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-flow-3"
-				class="uv-waterfall-flow__column">
+			<view id="uv-waterfall-3"
+				class="uv-waterfall__column">
 				<slot name="list3"
 					:list3="list3"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=4">
-			<view class="uv-waterfall-flow__gap_center"
+			<view class="uv-waterfall__gap_center"
 				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-flow-4"
-				class="uv-waterfall-flow__column">
+			<view id="uv-waterfall-4"
+				class="uv-waterfall__column">
 				<slot name="list4"
 					:list4="list4"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=5">
-			<view class="uv-waterfall-flow__gap_center"
+			<view class="uv-waterfall__gap_center"
 				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-flow-5"
-				class="uv-waterfall-flow__column">
+			<view id="uv-waterfall-5"
+				class="uv-waterfall__column">
 				<slot name="list5"
 					:list5="list5"></slot>
 			</view>
 		</template>
-		<view class="uv-waterfall-flow__gap_right"
+		<view class="uv-waterfall__gap_right"
 			:style="[gapRightStyle]"></view>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
@@ -86,10 +86,10 @@
 	 * @property {String ｜ Number}		height	 瀑布流的高度，nvue生效 （默认 屏幕高 ）
 	 * @property {Object}	customStyle		定义需要用到的外部样式
 	 *
-	 * @example <uv-waterfall-flow v-model="list"></uv-waterfall-flow>
+	 * @example <uv-waterfall v-model="list"></uv-waterfall>
 	 */
 	export default {
-		name: 'uv-waterfall-flow',
+		name: 'uv-waterfall',
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
@@ -171,7 +171,7 @@
 				let rectArr = [];
 				if (!this.tempList.length) return
 				for (let i = 1; i <= this.columnNum; i++) {
-					const rect = await this.$uvGetRect(`#uv-waterfall-flow-${i}`);
+					const rect = await this.$uvGetRect(`#uv-waterfall-${i}`);
 					rectArr.push({ ...rect, name: i });
 				}
 				let item = this.tempList[0]
@@ -239,7 +239,7 @@
 <style lang="scss"
 	scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-	.uv-waterfall-flow {
+	.uv-waterfall {
 		@include flex(row);
 		align-items: flex-start;
 		&__column {

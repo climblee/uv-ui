@@ -1,20 +1,25 @@
 <template>
 	<view>
 		<!-- #ifndef APP-NVUE -->
-		<uv-waterfall-flow
-			ref="waterfall"
+		<uv-waterfall ref="waterfall"
 			v-model="list"
 			column-count="2"
 			left-gap="10"
 			right-gap="10"
 			column-gap="8"
 			column-width="40"
-			@finish="handleWaterFallFinish"
-			>
+			@finish="handleWaterFallFinish">
 			<template v-slot:list1="{ list1 }">
-				<view v-for="(item, index) in list1" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
+				<view v-for="(item, index) in list1"
+					:key="item.id"
+					class="waterfall-item"
+					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="#999"></uv-loading-icon>
+							</template>
+						</uv-image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
@@ -23,16 +28,27 @@
 						<view class="waterfall-item__ft__desc">
 							<text>{{item.desc}}</text>
 						</view>
-						<view class="waterfall-item__ft__btn" v-if="index==0">
-							<uv-button type="primary" size="mini" text="异步修改" @click="edit(item)"></uv-button>
+						<view class="waterfall-item__ft__btn"
+							v-if="index==0">
+							<uv-button type="primary"
+								size="mini"
+								text="异步修改"
+								@click="edit(item)"></uv-button>
 						</view>
 					</view>
 				</view>
 			</template>
 			<template v-slot:list2="{ list2 }">
-				<view v-for="(item, index) in list2" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
+				<view v-for="(item, index) in list2"
+					:key="item.id"
+					class="waterfall-item"
+					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="red"></uv-loading-icon>
+							</template>
+						</uv-image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
@@ -44,35 +60,21 @@
 					</view>
 				</view>
 			</template>
-			<template v-slot:list3="{ list3 }">
-				<view v-for="(item, index) in list3" :key="item.id" class="waterfall-item" @longpress="longHandle(item)">
-					<view class="waterfall-item__image">
-						<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix" radius="10"></uv-lazy-load-image>
-					</view>
-					<view class="waterfall-item__ft">
-						<view class="waterfall-item__ft__title">
-							<text>{{item.title}}</text>
-						</view>
-						<view class="waterfall-item__ft__desc">
-							<text>{{item.desc}}</text>
-						</view>
-					</view>
-				</view>
-			</template>
-		</uv-waterfall-flow>
+		</uv-waterfall>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
-		<uv-waterfall-flow
-			ref="waterfall"
+		<uv-waterfall ref="waterfall"
 			column-count="2"
 			left-gap="10"
 			right-gap="10"
 			column-gap="8"
-			@scrolltolower="getRandomData"
-			>
-			<cell v-for="(item,index) in list" class="waterfall-item">
+			@scrolltolower="getRandomData">
+			<cell v-for="(item,index) in list"
+				class="waterfall-item">
 				<view class="waterfall-item__image">
-					<uv-lazy-load-image :name="item.id" :src="item.image" mode="widthFix"></uv-lazy-load-image>
+					<uv-lazy-load-image :name="item.id"
+						:src="item.image"
+						mode="widthFix"></uv-lazy-load-image>
 				</view>
 				<view class="waterfall-item__ft">
 					<view class="waterfall-item__ft__title">
@@ -83,17 +85,24 @@
 					</view>
 				</view>
 			</cell>
-		</uv-waterfall-flow>
+		</uv-waterfall>
 		<!-- #endif -->
 	</view>
 </template>
 <script>
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	const imgs = [
-		'/static/1.jpg',
-		'/static/2.jpg',
-		'/static/3.jpg'
-		]
+		'https://cdn.uviewui.com/uview/album/1.jpg',
+		'https://cdn.uviewui.com/uview/album/2.jpg',
+		'https://cdn.uviewui.com/uview/album/3.jpg',
+		'https://cdn.uviewui.com/uview/album/4.jpg',
+		'https://cdn.uviewui.com/uview/album/5.jpg',
+		'https://cdn.uviewui.com/uview/album/6.jpg',
+		'https://cdn.uviewui.com/uview/album/7.jpg',
+		'https://cdn.uviewui.com/uview/album/8.jpg',
+		'https://cdn.uviewui.com/uview/album/9.jpg',
+		'https://cdn.uviewui.com/uview/album/10.jpg',
+	]
 	export default {
 		mixins: [mixin],
 		data() {
@@ -118,57 +127,58 @@
 			this.getRandomData()
 		},
 		methods: {
-			longHandle(item){
+			longHandle(item) {
 				let that = this;
 				uni.showModal({
-					title:'提示',
-					content:'你确定删除该项？',
+					title: '提示',
+					content: '你确定删除该项？',
 					success(res) {
-						if(res.confirm){
+						if (res.confirm) {
 							that.$refs.waterfall.remove(item.id);
 						}
 					}
 				})
 			},
-			edit(item){
+			edit(item) {
 				uni.showLoading({
-					title:'修改中'
+					title: '修改中'
 				})
-				setTimeout(()=>{
+				setTimeout(() => {
 					item.title = 'uv-ui1.0';
 					item.desc = '修改后的文本';
 					uni.hideLoading();
-				},1000)
+				}, 1000)
 			},
 			/* 瀑布流*/
 			// 获取随机数据
 			getRandomData() {
 				this.loadStatus = 'loading'
 				// 模拟异步
-				setTimeout(()=>{
+				setTimeout(() => {
 					for (let i = 0; i < 10; i++) {
 						this.list.push({
 							id: uni.$uv.guid(),
 							image: this.getImage(),
 							showChar: true,
-							title: i % 2 == 0 ? '体验xx-ui框架-' +(this.list.length+1) : 'xx-ui支持多平台-'+(this.list.length+1),
-							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-'+(this.list.length+1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-'+(this.list.length+1)
+							title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
+							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
 						});
 					}
-				},200)
+				}, 200)
 			},
 			// 瀑布流加载完毕事件
 			handleWaterFallFinish() {
 				this.loadStatus = 'loadmore'
 			},
 			getImage() {
-				const index = Math.floor(Math.random() * 3);
+				const index = Math.floor(Math.random() * 10);
 				return imgs[index];
 			}
 		}
 	}
 </script>
-<style scoped lang="scss">
+<style scoped
+	lang="scss">
 	.waterfall-item {
 		/* #ifndef APP-NVUE */
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

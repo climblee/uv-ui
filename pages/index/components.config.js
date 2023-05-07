@@ -42,11 +42,6 @@ export default [{
 		title: 'Image 图片',
 		title_en: 'Image'
 	}, {
-		path: '/pages/componentsA/lazy-load-image/lazy-load-image',
-		icon: 'image',
-		title: 'LazyLoadImage 图片懒加载',
-		title_en: 'Image'
-	}, {
 		path: '/pages/componentsA/transition/transition',
 		icon: 'transition',
 		title: 'transition 动画',

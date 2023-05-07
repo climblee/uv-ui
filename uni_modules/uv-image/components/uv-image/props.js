@@ -35,6 +35,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 是否开启强制懒加载，nvue不生效
+		observeLazyLoad: {
+			type: Boolean,
+			default: false
+		},
 		// 开启长按图片显示识别微信小程序码菜单
 		showMenuByLongpress: {
 			type: Boolean,

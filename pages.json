@@ -46,11 +46,6 @@
 				"navigationBarTitleText": "Divider 分割线"
 			}
 		}, {
-			"path": "lazy-load-image/lazy-load-image",
-			"style": {
-				"navigationBarTitleText": "LazyLoadImage 图片懒加载"
-			}
-		}, {
 			"path": "gap/gap",
 			"style": {
 				"navigationBarTitleText": "Gap 间隔槽"

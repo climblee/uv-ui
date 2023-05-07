@@ -1,10 +1,10 @@
 {
-  "id": "uv-lazy-load-image",
-  "displayName": "uv-lazy-load-image",
+  "id": "uv-waterfall",
+  "displayName": "uv-waterfall",
   "version": "1.0.0",
-  "description": "uv-lazy-load-image",
+  "description": "uv-waterfall",
   "keywords": [
-    "uv-lazy-load-image"
+    "uv-waterfall"
 ],
   "repository": "",
   "engines": {
@@ -33,6 +33,7 @@
   "uni_modules": {
     "dependencies": [
 			"uv-ui-tools",
+			"uv-image",
 			"uv-loading-icon"
 		],
     "encrypt": [],

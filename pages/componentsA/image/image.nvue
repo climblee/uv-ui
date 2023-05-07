@@ -70,6 +70,24 @@
 				</view>
 			</view>
 		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">observer懒加载，滑动到可视范围才会请求图片哟，nvue不生效</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__image-item">
+					<uv-image
+					    src="https://via.placeholder.com/200x200.png/2878ff"
+					    width="80px"
+					    height="80px"
+						mode="widthFit"
+						:observeLazyLoad="true"
+					>
+						<template v-slot:loading>
+							<uv-loading-icon color="red"></uv-loading-icon>
+						</template>
+					</uv-image>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 

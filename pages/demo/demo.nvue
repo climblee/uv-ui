@@ -1,12 +1,69 @@
 <template>
 	<view class="">
-		测试页面
 		<!-- <uv-icon custom-prefix="custom-icon" name="huangguan" color="red	"></uv-icon> -->
-		<uv-tooltip
+	<!-- 	<uv-tooltip
 		  text="测试"
 			direction="bottom"
-		></uv-tooltip>
-		<uni-icons type="contact" size="30">1</uni-icons>
+		></uv-tooltip> -->
+		<!-- <uni-icons type="contact" size="30">1</uni-icons> -->
+		<!-- <image src="../../static/1.jpg" style="width: 300px;height: 500px;" mode="aspectFit"></image> -->
+		<!-- <image src="https://cdn.uviewui.com/uview/album/2.jpg" mode="widthFix" style="width: 100px;"></image> -->
+		<!-- <uv-image width="100px" mode="widthFix" src="https://cdn.uviewui.com/uview/album/2.jpg"></uv-image> -->
+		<uv-image width="200px" mode="widthFix" :observeLazyLoad="false" src="">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image width="200px" mode="widthFix" :observeLazyLoad="false" src="https://cdn.uviewui.com/uview/album/2.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<!-- <uv-image width="200px" mode="widthFix" :observeLazyLoad="true" src="https://cdn.uviewui.com/uview/album/3.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image width="200px" mode="widthFix" :observeLazyLoad="true" src="https://cdn.uviewui.com/uview/album/4.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image width="200px" mode="widthFix" :observeLazyLoad="true" src="https://cdn.uviewui.com/uview/album/1.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image> -->
+		<!-- <uv-image src="https://cdn.uviewui.com/uview/album/2.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image src="https://cdn.uviewui.com/uview/album/3.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image src="https://cdn.uviewui.com/uview/album/4.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image src="https://cdn.uviewui.com/uview/album/5.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image src="https://cdn.uviewui.com/uview/album/6.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image>
+		<uv-image src="https://cdn.uviewui.com/uview/album/7.jpg">
+			<template v-slot:loading>
+				<uv-loading-icon color="#999"></uv-loading-icon>
+			</template>
+		</uv-image> -->
 	</view>
 </template>
 
