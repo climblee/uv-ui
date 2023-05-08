@@ -97,28 +97,30 @@
 			<text class="uv-page__item__title">自定义插槽</text>
 			<uv-cell-group>
 				<uv-cell value="内容">
-					<view
-					    slot="title"
-					    class="uv-slot-title"
-					>
-						<text class="uv-cell-text">单元格</text>
-						<uv-tags
-						    text="标签"
-						    plain
-						    size="mini"
-						    type="warning"
+					<template v-slot:title>
+						<view
+							class="uv-slot-title"
 						>
-						</uv-tags>
-					</view>
+							<text class="uv-cell-text">单元格</text>
+							<uv-tags
+								text="标签"
+								plain
+								size="mini"
+								type="warning"
+							>
+							</uv-tags>
+						</view>
+					</template>
 				</uv-cell>
 				<uv-cell
-				    title="单元格"
+				  title="单元格"
 					isLink
 				>
-					<text
-					    slot="value"
-					    class="uv-slot-value"
-					>99</text>
+					<template v-slot:value>
+						<text
+							class="uv-slot-value"
+						>99</text>
+					</template>
 				</uv-cell>
 			</uv-cell-group>
 		</view>

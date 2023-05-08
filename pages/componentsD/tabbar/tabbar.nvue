@@ -102,16 +102,18 @@
 			    :safeAreaInsetBottom="false"
 			>
 				<uv-tabbar-item text="首页">
-					<image
-					    class="uv-page__item__slot-icon"
-					    slot="active-icon"
-					    src="https://cdn.uviewui.com/uview/common/bell-selected.png"
-					></image>
-					<image
-					    class="uv-page__item__slot-icon"
-					    slot="inactive-icon"
-					    src="https://cdn.uviewui.com/uview/common/bell.png"
-					></image>
+					<template v-slot:active-icon>
+						<image
+								class="uv-page__item__slot-icon"
+								src="https://cdn.uviewui.com/uview/common/bell-selected.png"
+						></image>
+					</template>
+					<template v-slot:inactive-icon>
+						<image
+								class="uv-page__item__slot-icon"
+								src="https://cdn.uviewui.com/uview/common/bell.png"
+						></image>
+					</template>
 				</uv-tabbar-item>
 				<uv-tabbar-item
 				    text="放映厅"

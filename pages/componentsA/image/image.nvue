@@ -58,9 +58,9 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__image-item">
 					<uv-image
-					    :src="src1"
-					    width="80px"
-					    height="80px"
+					  :src="src1"
+					  width="80px"
+					  height="80px"
 						mode="widthFit"
 					>
 						<template v-slot:loading>

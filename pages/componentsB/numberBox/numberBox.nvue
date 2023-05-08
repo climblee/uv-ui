@@ -1,194 +1,147 @@
 <template>
 	<view class="">
 		<uv-cell-group :border="true">
-			<uv-cell
-			    :border="true"
-			    title="基础用法"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value1"
-				    step="1"
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="步长设置"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value2"
-				    :step="step1"
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="限制输入范围"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value3"
-				    step="1"
-				    :min="min1"
-				    :max="max1"
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="限制输入整数"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    slot="right-icon"
-				    v-model="value4"
-				    step="1"
-				    integer
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="禁用状态"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value5"
-				    step="1"
-				    :disabled="true"
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="禁用输入框"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value6"
-				    step="1"
-				    :disabledInput="true"
-				    @change="change"
-				>
-				</uv-number-box>
+			<uv-cell :border="true"
+				title="基础用法">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value1"
+						step="1"
+						@change="change">
+					</uv-number-box>
 				</template>
 			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="禁用长按"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value7"
-				    step="1"
-				    :longPress="false"
-				    @change="change"
-				>
-				</uv-number-box>
+			<uv-cell :border="true"
+				title="步长设置">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value2"
+						:step="step1"
+						@change="change">
+					</uv-number-box>
 				</template>
 			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="固定小数位数"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value8"
-				    step="0.2"
-				    decimalLength="1"
-				    @change="change"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="异步变更"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value9"
-				    step="1"
-				    :asyncChange="asyncChange"
-				    @change="myAsyncChange"
-				>
-				</uv-number-box>
-			</template>
-			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="自定义大小颜色样式"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value10"
-				    step="1"
-				    :color="color"
-				    :buttonSize="buttonSize"
-				    :bgColor="bgColor"
-				    @change="change"
-				    iconStyle="color: #fff"
-				>
-				</uv-number-box>
+			<uv-cell :border="true"
+				title="限制输入范围">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value3"
+						step="1"
+						:min="min1"
+						:max="max1"
+						@change="change">
+					</uv-number-box>
 				</template>
 			</uv-cell>
-			<uv-cell
-			    :border="true"
-			    title="自定义(为0时减少按钮会消失)"
-			>
-			<template v-slot:right-icon>
-				<uv-number-box
-				    v-model="value11"
-				    step="1"
-				    :min="0"
-				    :showMinus="value11 > 0"
-				>
-				<template v-slot:minus>
-					<view
-					    class="minus"
-					>
-						<uv-icon
-						    name="minus"
-						    size="12"
-						></uv-icon>
-					</view>
-					</template>
-					<template v-slot:input>
-					<text
-					    style="width: 50px;text-align: center;"
-					    class="input"
-					>{{value11}}</text>
-					</template>
-					<template v-slot:plus>
-					<view
-					    class="plus"
-					>
-						<uv-icon
-						    name="plus"
-						    color="#FFFFFF"
-						    size="12"
-						></uv-icon>
-					</view>
-					</template>
-				</uv-number-box>
+			<uv-cell :border="true"
+				title="限制输入整数">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value4"
+						step="1"
+						integer
+						@change="change">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="禁用状态">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value5"
+						step="1"
+						:disabled="true"
+						@change="change">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="禁用输入框">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value6"
+						step="1"
+						:disabledInput="true"
+						@change="change">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="禁用长按">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value7"
+						step="1"
+						:longPress="false"
+						@change="change">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="固定小数位数">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value8"
+						step="0.2"
+						decimalLength="1"
+						@change="change">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="异步变更">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value9"
+						step="1"
+						:asyncChange="asyncChange"
+						@change="myAsyncChange">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="自定义大小颜色样式">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value10"
+						step="1"
+						:color="color"
+						:buttonSize="buttonSize"
+						:bgColor="bgColor"
+						@change="change"
+						iconStyle="color: #fff">
+					</uv-number-box>
+				</template>
+			</uv-cell>
+			<uv-cell :border="true"
+				title="自定义(为0时减少按钮会消失)">
+				<template v-slot:right-icon>
+					<uv-number-box v-model="value11"
+						step="1"
+						:min="0"
+						:showMinus="value11 > 0">
+						<template v-slot:minus>
+							<view class="minus">
+								<uv-icon 
+									name="minus"
+									size="12">
+								</uv-icon>
+							</view>
+						</template>
+						<template v-slot:input>
+							<text 
+								style="width: 50px;text-align: center;"
+								class="input"
+							>
+								{{value11}}
+							</text>
+						</template>
+						<template v-slot:plus>
+							<view class="plus">
+								<uv-icon 
+									name="plus"
+									color="#FFFFFF"
+									size="12"
+									>
+								</uv-icon>
+							</view>
+						</template>
+					</uv-number-box>
 				</template>
 			</uv-cell>
 		</uv-cell-group>
 	</view>
 </template>
-
 <script>
 	export default {
 		data() {
@@ -231,9 +184,7 @@
 		}
 	}
 </script>
-
 <style lang="scss">
-	
 	.minus {
 		width: 22px;
 		height: 22px;
@@ -247,11 +198,9 @@
 		justify-content: center;
 		align-items: center;
 	}
-
 	.input {
 		padding: 0 10px;
 	}
-
 	.plus {
 		width: 22px;
 		height: 22px;
