@@ -1,1 +1,13 @@
-# uv-back-top
+## BackTop 返回顶部
+
+> **组件名：uv-back-top**
+
+该组件一个用于长页面，滑动一定距离后，出现返回顶部按钮，方便快速返回顶部的场景。
+
+### [查看文档](https://www.uvui.cn/components/backTop.html)
+
+### <a href="https://www.uvui.cn/components/quickstart.html" target="_blank">首次使用，如何配置?</a>
+
+#### 如使用过程中有任何问题，或者您对uv-ui有一些好的建议，欢迎加入 uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>
+
+#### 备用文档地址：[查看](https://uvui.ppiyy.cn/components/backTop.html)

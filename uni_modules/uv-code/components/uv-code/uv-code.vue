@@ -8,8 +8,8 @@
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
 	/**
-	 * Code 验证码输入框
-	 * @description 考虑到用户实际发送验证码的场景，可能是一个按钮，也可能是一段文字，提示语各有不同，所以本组件 不提供界面显示，只提供提示语，由用户将提示语嵌入到具体的场景
+	 * Code 验证码倒计时
+	 * @description 考虑到用户实际发送验证码的场景，可能是一个按钮，也可能是一段文字，提示语各有不同，所以本组件不提供界面显示，只提供倒计时文本，由用户将文本嵌入到具体的场景
 	 * @tutorial https://www.uvui.cn/components/code.html
 	 * @property {String | Number}	seconds			倒计时所需的秒数（默认 60 ）
 	 * @property {String}			startText		开始前的提示语，见官网说明（默认 '获取验证码' ）
