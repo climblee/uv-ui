@@ -1,3 +1,3 @@
-module.exports = {
-    baseUrl: 'https://api.youzixy.com'
+export default {
+    baseUrl: 'https://api.book118.com'
 }

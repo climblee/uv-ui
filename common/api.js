@@ -1,3 +1,3 @@
-const { http } = uni.$u
+const { http } = uni.$uv
 // 获取菜单
-export const fetchMenu = (params, config = {}) => http.post('/ebapi/public_api/index', params, config)
+export const fetchMenu = (params, config = {}) => http.get('/applet/index/getRecommendDocs', params, config)
