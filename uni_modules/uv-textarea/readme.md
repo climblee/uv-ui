@@ -1,1 +1,13 @@
-# uv-textarea
+## Textarea 文本域
+
+> **组件名：uv-textarea**
+
+文本域此组件满足了可能出现的表单信息补充，编辑等实际逻辑的功能，内置了字数校验等。
+
+### [查看文档](https://www.uvui.cn/components/textarea.html)
+
+### <a href="https://www.uvui.cn/components/quickstart.html" target="_blank">首次使用，如何配置?</a>
+
+#### 如使用过程中有任何问题，或者您对uv-ui有一些好的建议，欢迎加入 uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>
+
+#### 备用文档地址：[查看](https://uvui.ppiyy.cn/components/textarea.html)
