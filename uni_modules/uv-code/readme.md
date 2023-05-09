@@ -1,4 +1,3 @@
-# uv-code
 ## Code 验证码输入框
 
 > **组件名：uv-code**
