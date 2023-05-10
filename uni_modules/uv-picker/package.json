@@ -5,10 +5,10 @@
   "description": "uv-picker 此选择器用于单列，多列，多列联动的选择场景。",
   "keywords": [
     "uv-picker",
-		"uvui",
-		"uv-ui",
-		"picker",
-		"联动选择"
+    "uvui",
+    "uv-ui",
+    "picker",
+    "联动选择"
 ],
   "repository": "",
   "engines": {

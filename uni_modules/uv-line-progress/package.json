@@ -5,10 +5,10 @@
   "description": "uv-line-progress 该组件展示操作或任务的当前进度，比如上传文件，是一个线形的进度条。",
   "keywords": [
     "uv-line-progress",
-		"uvui",
-		"uv-ui",
-		"progress",
-		"进度条"
+    "uvui",
+    "uv-ui",
+    "progress",
+    "进度条"
 ],
   "repository": "",
   "engines": {

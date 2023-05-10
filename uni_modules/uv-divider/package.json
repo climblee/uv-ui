@@ -5,10 +5,10 @@
   "description": "区隔内容的分割线，一般用于页面底部没有更多的提示。",
   "keywords": [
     "divider",
-		"uvui",
-		"uv-ui",
-		"分割线",
-		"没有更多"
+    "uvui",
+    "uv-ui",
+    "分割线",
+    "没有更多"
 ],
   "repository": "",
   "engines": {

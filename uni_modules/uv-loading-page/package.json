@@ -5,10 +5,10 @@
   "description": "uv-loading-page 该组件是一个页面级的加载效果，可以在页面初始化数据等场景使用，与骨架屏有相似之处。",
   "keywords": [
     "uv-loading-page",
-		"uvui",
-		"uv-ui",
-		"page",
-		"loading"
+    "uvui",
+    "uv-ui",
+    "page",
+    "loading"
 ],
   "repository": "",
   "engines": {

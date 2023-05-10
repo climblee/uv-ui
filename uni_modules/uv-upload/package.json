@@ -5,10 +5,10 @@
   "description": "该组件用于上传图片等文件场景。",
   "keywords": [
     "uv-upload",
-		"uvui",
-		"uv-ui",
-		"upload",
-		"上传"
+    "uvui",
+    "uv-ui",
+    "upload",
+    "上传"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "此组件一般用于表单场景，可以配置Input输入框，Textarea文本域，Checkbox复选框，Radio单选框，开关选择器等，进行表单验证等。",
   "keywords": [
     "form",
-		"uvui",
-		"uv-ui",
-		"表单",
-		"表单验证"
+    "uvui",
+    "uv-ui",
+    "表单",
+    "表单验证"
 ],
   "repository": "",
   "engines": {

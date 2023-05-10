@@ -5,10 +5,10 @@
   "description": "选择开关用于在打开和关闭状态之间进行切换。",
   "keywords": [
     "uv-switch",
-		"uvui",
-		"uv-ui",
-		"switch",
-		"开关选择器"
+    "uvui",
+    "uv-ui",
+    "switch",
+    "开关选择器"
 ],
   "repository": "",
   "engines": {

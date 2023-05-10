@@ -5,10 +5,10 @@
   "description": "时间选择器组件用于时间日期，主要用于年月日时分秒的选择，具体选择的精确度由参数控制。",
   "keywords": [
     "datetime-picker",
-		"uvui",
-		"uv-ui",
-		"datetime",
-		"时间选择"
+    "uvui",
+    "uv-ui",
+    "datetime",
+    "时间选择"
 ],
   "repository": "",
   "engines": {

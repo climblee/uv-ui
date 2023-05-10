@@ -2,13 +2,13 @@
   "id": "uv-radio",
   "displayName": "uv-radio 单选框",
   "version": "1.0.0",
-  "description": "uv-radio 单选框用于有一个选择，用户只能选择其中一个的场景。	",
+  "description": "uv-radio 单选框用于有一个选择，用户只能选择其中一个的场景。\t",
   "keywords": [
     "uv-radio",
-		"uvui",
-		"uv-ui",
-		"radio",
-		"单选框"
+    "uvui",
+    "uv-ui",
+    "radio",
+    "单选框"
 ],
   "repository": "",
   "engines": {

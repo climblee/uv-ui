@@ -5,10 +5,10 @@
   "description": "uv-index-list 该组件用于展示索引列表，右侧带索引的列表，方便快速定位到具体内容，通常用于城市/机场选择等场景。",
   "keywords": [
     "uv-index-list",
-		"uvui",
-		"uv-ui",
-		"index-list",
-		"索引列表"
+    "uvui",
+    "uv-ui",
+    "index-list",
+    "索引列表"
 ],
   "repository": "",
   "engines": {

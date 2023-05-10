@@ -5,10 +5,10 @@
   "description": "uv-notice-bar 该组件用于滚动通告场景，有多种模式可供选择。",
   "keywords": [
     "uv-notice-bar",
-		"uvui",
-		"uv-ui",
-		"notice",
-		"滚动公告"
+    "uvui",
+    "uv-ui",
+    "notice",
+    "滚动公告"
 ],
   "repository": "",
   "engines": {

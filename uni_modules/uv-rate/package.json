@@ -5,10 +5,10 @@
   "description": "uv-rate 该组件一般用于满意度调查，星型评分的场景。",
   "keywords": [
     "uv-rate",
-		"uvui",
-		"uv-ui",
-		"rate",
-		"评分"
+    "uvui",
+    "uv-ui",
+    "rate",
+    "评分"
 ],
   "repository": "",
   "engines": {

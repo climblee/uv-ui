@@ -5,10 +5,10 @@
   "description": "uv-notify 该组件一般用于页面顶部向下滑出一个提示，后自动收起的场景。",
   "keywords": [
     "uv-notify",
-		"uvui",
-		"uv-ui",
-		"notify",
-		"消息提示"
+    "uvui",
+    "uv-ui",
+    "notify",
+    "消息提示"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "tag组件一般用于标记和选择，我们提供了更加丰富的表现形式，能够较全面的涵盖您的使用场景。",
   "keywords": [
     "uv-tags",
-		"uvui",
-		"uv-ui",
-		"tag",
-		"标签"
+    "uvui",
+    "uv-ui",
+    "tag",
+    "标签"
 ],
   "repository": "",
   "engines": {

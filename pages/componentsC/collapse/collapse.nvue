@@ -96,8 +96,9 @@
 				</uv-collapse-item>
 			</uv-collapse>
 		</view>
-		<!-- 微信小程序不支持，因为微信中不支持 <slot name="title" slot="title" />的写法 -->
+		<!-- 微信小程序和VUE3暂不支持，因为不支持 <slot name="title" slot="title" />的写法 -->
 		<!-- #ifndef MP-WEIXIN -->
+		<!-- #ifndef VUE3 -->
 		<view class="uv-page__item">
 			<text class="uv-page__item__title">自定义标题和内容</text>
 			<uv-collapse
@@ -128,6 +129,7 @@
 				</uv-collapse-item>
 			</uv-collapse>
 		</view>
+		<!-- #endif -->
 		<!-- #endif -->
 		<uv-gap height="50"></uv-gap>
 	</view>

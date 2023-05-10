@@ -5,10 +5,10 @@
   "description": "uv-read-more 该组件一般用于内容较长，预先收起一部分，点击展开全部内容的场景。",
   "keywords": [
     "uv-read-more",
-		"uvui",
-		"uv-ui",
-		"read",
-		"展开阅读更多"
+    "uvui",
+    "uv-ui",
+    "read",
+    "展开阅读更多"
 ],
   "repository": "",
   "engines": {

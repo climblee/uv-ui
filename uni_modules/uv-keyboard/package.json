@@ -5,10 +5,10 @@
   "description": "uv-keyboard 该组件为自定义的键盘面板，内含了数字键盘，车牌号键，身份证号键盘3种模式，都有可以打乱按键顺序的选项。",
   "keywords": [
     "uv-keyboard",
-		"uvui",
-		"uv-ui",
-		"keyboard",
-		"键盘"
+    "uvui",
+    "uv-ui",
+    "keyboard",
+    "键盘"
 ],
   "repository": "",
   "engines": {

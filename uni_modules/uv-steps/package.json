@@ -5,10 +5,10 @@
   "description": "步骤条组件一般用于完成一个任务要分几个步骤，标识目前处于第几步的场景。",
   "keywords": [
     "uv-steps",
-		"uvui",
-		"uv-ui",
-		"steps",
-		"步骤条"
+    "uvui",
+    "uv-ui",
+    "steps",
+    "步骤条"
 ],
   "repository": "",
   "engines": {
@@ -53,7 +53,7 @@
 				},
 				"App": {
 					"app-vue": "y",
-					"app-nvue": "y"
+					"app-nvue": "n"
 				},
 				"H5-mobile": {
 					"Safari": "y",
