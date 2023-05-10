@@ -4,12 +4,12 @@
 	"version": "1.0.0",
 	"description": "uv-avatar 本组件一般用于展示头像的地方，如个人中心，或者评论列表页的用户头像展示等场所。",
 	"keywords": [
-		"uv-avatar",
-		"uvui",
-		"uv-ui",
-		"avatar",
-		"头像"
-	],
+        "uv-avatar",
+        "uvui",
+        "uv-ui",
+        "avatar",
+        "头像"
+    ],
 	"repository": "",
 	"engines": {
 		"HBuilderX": "^3.1.0"
@@ -37,9 +37,8 @@
 	"uni_modules": {
 		"dependencies": [
 			"uv-ui-tools",
-			"u-icon",
-			"u-text",
-			"uv-avatar"
+			"uv-icon",
+			"uv-text"
 		],
 		"encrypt": [],
 		"platforms": {

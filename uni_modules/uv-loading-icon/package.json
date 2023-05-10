@@ -5,10 +5,10 @@
   "description": "uv-loading-icon 此组件为一个小动画，目前用在uv-ui的loadMore加载更多等组件的正在加载状态场景。",
   "keywords": [
     "uv-loading-icon",
-		"uvui",
-		"uv-ui",
-		"loading",
-		"加载动画"
+    "uvui",
+    "uv-ui",
+    "loading",
+    "加载动画"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "该组件用于从底部弹出一个操作菜单，供用户选择并返回结果。本组件功能类似于uni的uni.showActionSheet API，配置更加灵活，所有平台都表现一致。",
   "keywords": [
     "action-sheet",
-		"uvui",
-		"uv-ui",
-		"操作菜单",
-		"菜单选择"
+    "uvui",
+    "uv-ui",
+    "操作菜单",
+    "菜单选择"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "uv-overlay 创建一个遮罩层，用于强调特定的页面元素，并阻止用户对遮罩下层的内容进行操作，一般用于弹窗场景，uv-popup、uv-toast、uv-tooltip等组件就是用了该组件。",
   "keywords": [
     "uv-overlay",
-		"uvui",
-		"uv-ui",
-		"overlay",
-		"遮罩层"
+    "uvui",
+    "uv-ui",
+    "overlay",
+    "遮罩层"
 ],
   "repository": "",
   "engines": {

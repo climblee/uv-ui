@@ -5,10 +5,10 @@
   "description": "cell单元格一般用于一组列表的情况，比如个人中心页，设置页等。",
   "keywords": [
     "uv-cell",
-		"uvui",
-		"uv-ui",
-		"单元格",
-		"设置页"
+    "uvui",
+    "uv-ui",
+    "单元格",
+    "设置页"
 ],
   "repository": "",
   "engines": {

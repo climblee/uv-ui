@@ -4,11 +4,11 @@
 	"version": "1.0.0",
 	"description": "uv-alert 警告提示，展现需要关注的信息。灵活配置，功能齐全，兼容全端",
 	"keywords": [
-		"alert",
-		"uvui",
-		"uv-ui",
-		"警告提示"
-	],
+        "alert",
+        "uvui",
+        "uv-ui",
+        "警告提示"
+    ],
 	"repository": "",
 	"engines": {
 		"HBuilderX": "^3.1.0"

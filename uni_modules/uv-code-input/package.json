@@ -5,10 +5,10 @@
   "description": "验证码输入组件一般用于验证用户短信验证码的场景，输入框或横线多种模式可选。",
   "keywords": [
     "uv-code-input",
-		"uvui",
-		"uv-ui",
-		"code",
-		"验证码输入"
+    "uvui",
+    "uv-ui",
+    "code",
+    "验证码输入"
 ],
   "repository": "",
   "engines": {

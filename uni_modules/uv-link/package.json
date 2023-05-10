@@ -5,10 +5,10 @@
   "description": "uv-link 该组件为超链接组件",
   "keywords": [
     "uv-link",
-		"uvui",
-		"uv-ui",
-		"link",
-		"超链接"
+    "uvui",
+    "uv-ui",
+    "link",
+    "超链接"
 ],
   "repository": "",
   "engines": {

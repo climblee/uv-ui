@@ -5,10 +5,10 @@
   "description": "状态栏占位组件主要用于状态填充，比如在自定导航栏的时候，它会自动适配一个恰当的状态栏高度。",
   "keywords": [
     "uv-status-bar",
-		"uvui",
-		"uv-ui",
-		"status-bar",
-		"状态栏"
+    "uvui",
+    "uv-ui",
+    "status-bar",
+    "状态栏"
 ],
   "repository": "",
   "engines": {

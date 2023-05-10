@@ -5,10 +5,10 @@
   "description": "transition 该组件用于组件的动画过渡效果。",
   "keywords": [
     "uv-transition",
-		"uvui",
-		"uv-ui",
-		"transition",
-		"动画"
+    "uvui",
+    "uv-ui",
+    "transition",
+    "动画"
 ],
   "repository": "",
   "engines": {
