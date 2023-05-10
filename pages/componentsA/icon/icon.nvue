@@ -635,7 +635,7 @@
 				align-items: center;
 				justify-content: center;
 				height: 240rpx;
-				width: 240rpx;
+				width: 33.3%;
 				padding: 0 5px;
 				
 				&__icon {
