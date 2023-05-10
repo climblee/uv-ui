@@ -115,7 +115,7 @@
 			}
 		},
 		onLoad() {
-			// this.getRandomData()
+			this.getRandomData();
 		},
 		onPullDownRefresh() {
 			this.list = [];
