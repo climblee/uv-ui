@@ -1,7 +1,7 @@
 {
 	"id": "uv-ui",
-	"displayName": "uv-ui",
-	"version": "1.0.0",
+	"displayName": "uv-ui 全端兼容、丰富UI库、支持单独导入",
+	"version": "1.0.2",
 	"description": "uv-ui 是基于uni-app的、全端兼容的、内容丰富、高性能UI框架",
 	"keywords": [
         "uv-ui",
