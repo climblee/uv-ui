@@ -5,10 +5,10 @@
   "description": "Tooltip组件主要用于长按操作，类似微信的长按气泡。",
   "keywords": [
     "uv-tooltip",
-		"uvui",
-		"uv-ui",
-		"tooltip",
-		"长按提示"
+    "uvui",
+    "uv-ui",
+    "tooltip",
+    "长按提示"
 ],
   "repository": "",
   "engines": {
@@ -54,7 +54,7 @@
 				},
 				"App": {
 					"app-vue": "y",
-					"app-nvue": "y"
+					"app-nvue": "n"
 				},
 				"H5-mobile": {
 					"Safari": "y",

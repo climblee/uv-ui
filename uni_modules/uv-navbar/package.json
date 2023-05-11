@@ -5,10 +5,10 @@
   "description": "uv-navbar 此组件一般用于在特殊情况下，需要自定义导航栏的时候用到，一般建议使用自带的原生导航栏。",
   "keywords": [
     "uv-navbar",
-		"uvui",
-		"uv-ui",
-		"navbar",
-		"自定义导航栏"
+    "uvui",
+    "uv-ui",
+    "navbar",
+    "自定义导航栏"
 ],
   "repository": "",
   "engines": {

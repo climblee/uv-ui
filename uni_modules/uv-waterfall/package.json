@@ -5,10 +5,10 @@
   "description": "该组件主要用于瀑布流式布局显示，视觉表现为参差不齐的多栏布局，随着页面滚动条向下滚动，这种布局还会不断加载数据块并附加至当前尾部。常用于一些电商商品展示等，如某宝首页。",
   "keywords": [
     "uv-waterfall",
-		"uvui",
-		"uv-ui",
-		"waterfall",
-		"瀑布流"
+    "uvui",
+    "uv-ui",
+    "waterfall",
+    "瀑布流"
 ],
   "repository": "",
   "engines": {

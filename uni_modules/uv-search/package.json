@@ -5,10 +5,10 @@
   "description": "搜索组件，集成了常见搜索框所需功能，用户可以一键引入，开箱即用。",
   "keywords": [
     "uv-search",
-		"uvui",
-		"uv-ui",
-		"search",
-		"搜索"
+    "uvui",
+    "uv-ui",
+    "search",
+    "搜索"
 ],
   "repository": "",
   "engines": {

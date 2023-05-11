@@ -5,10 +5,10 @@
   "description": "该倒计时组件一般使用于某个活动的截止时间上，通过数字的变化，给用户明确的时间感受，提示用户进行某一个行为操作。",
   "keywords": [
     "uv-count-down",
-		"uvui",
-		"uv-ui",
-		"countDown",
-		"倒计时"
+    "uvui",
+    "uv-ui",
+    "countDown",
+    "倒计时"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "滑动单元格组件一般用于左滑唤出操作菜单的场景，用的最多的是左滑删除操作。",
   "keywords": [
     "uv-swipe-action",
-		"uvui",
-		"uv-ui",
-		"swipe-action",
-		"滑动单元格"
+    "uvui",
+    "uv-ui",
+    "swipe-action",
+    "滑动单元格"
 ],
   "repository": "",
   "engines": {
@@ -37,8 +37,7 @@
   "uni_modules": {
     "dependencies": [
 			"uv-ui-tools",
-			"uv-icon",
-			"uv-swipe-action-item"
+			"uv-icon"
 		],
     "encrypt": [],
     "platforms": {

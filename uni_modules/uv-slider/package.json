@@ -5,10 +5,10 @@
   "description": "滑动选择器组件一般用于表单中，手动选择一个区间范围的场景。",
   "keywords": [
     "uv-slider",
-		"uvui",
-		"uv-ui",
-		"slider",
-		"滑动选择器"
+    "uvui",
+    "uv-ui",
+    "slider",
+    "滑动选择器"
 ],
   "repository": "",
   "engines": {

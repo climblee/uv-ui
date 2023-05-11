@@ -5,10 +5,10 @@
   "description": "该组件一般用于导航轮播，广告展示等场景,可开箱即用。",
   "keywords": [
     "swiper",
-		"uvui",
-		"uv-ui",
-		"轮播图",
-		"走马灯"
+    "uvui",
+    "uv-ui",
+    "轮播图",
+    "走马灯"
 ],
   "repository": "",
   "engines": {
@@ -37,7 +37,6 @@
   "uni_modules": {
     "dependencies": [
 			"uv-ui-tools",
-			"uv-swiper-indicator",
 			"uv-loading-icon"
 		],
     "encrypt": [],

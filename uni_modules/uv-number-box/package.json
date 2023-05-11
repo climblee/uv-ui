@@ -5,10 +5,10 @@
   "description": "uv-number-box 该组件一般用于商城购物选择物品数量的场景。",
   "keywords": [
     "uv-number-box",
-		"uvui",
-		"uv-ui",
-		"number",
-		"步进器"
+    "uvui",
+    "uv-ui",
+    "number",
+    "步进器"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "uv-row 通过基础的 12 分栏，迅速简便地创建布局",
   "keywords": [
     "uv-row",
-		"uvui",
-		"uv-ui",
-		"layout",
-		"布局"
+    "uvui",
+    "uv-ui",
+    "layout",
+    "布局"
 ],
   "repository": "",
   "engines": {

@@ -5,10 +5,10 @@
   "description": "该分段器组件一般用于用户从几个选项中选择某一个的场景。",
   "keywords": [
     "uv-subsection",
-		"uvui",
-		"uv-ui",
-		"subsection",
-		"分段器"
+    "uvui",
+    "uv-ui",
+    "subsection",
+    "分段器"
 ],
   "repository": "",
   "engines": {

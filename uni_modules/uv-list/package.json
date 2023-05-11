@@ -5,10 +5,10 @@
   "description": "uv-list 该组件为高性能列表组件",
   "keywords": [
     "uv-list",
-		"uvui",
-		"uv-ui",
-		"list",
-		"列表"
+    "uvui",
+    "uv-ui",
+    "list",
+    "列表"
 ],
   "repository": "",
   "engines": {

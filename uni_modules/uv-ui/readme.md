@@ -1,6 +1,8 @@
+<<<<<<< HEAD
 > **组件文档及演示地址：[uv-ui文档](https://www.uvui.cn/components/intro.html)**
 >
 > **uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>、（备用QQ群）549833913**
+
 # uv-ui介绍
 
 ## uv-ui产品特点
