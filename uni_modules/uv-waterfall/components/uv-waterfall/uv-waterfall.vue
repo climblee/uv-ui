@@ -212,7 +212,9 @@
 				this.$emit('update:modelValue', [])
 				// #endif
 				this.tempList = []
-				this.$emit('clear');
+				setTimeout(()=>{
+					this.$emit('clear');
+				},2)
 			},
 			// 清除指定的某一条数据，根据id来实现
 			remove(id) {
@@ -233,7 +235,7 @@
 				index = this.modelValue.findIndex(item => item[this.idKey] == id)
 				if (index != -1) this.$emit('update:modelValue', this.modelValue.splice(index, 1))
 				// #endif
-				this.$emit('remove');
+				this.$emit('remove',id);
 			}
 		}
 	}

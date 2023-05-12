@@ -8,7 +8,9 @@
 			right-gap="10"
 			column-gap="8"
 			column-width="40"
-			@finish="handleWaterFallFinish">
+			@finish="handleWaterFallFinish"
+			@clear="clear"
+			@remove="remove">
 			<!-- 第一列数据 -->
 			<template v-slot:list1="{ list1 }">
 				<view v-for="(item, index) in list1"
@@ -120,7 +122,6 @@
 		onPullDownRefresh() {
 			this.list = [];
 			this.$refs.waterfall.clear();
-			this.getRandomData();
 			uni.showToast({
 				icon: 'success',
 				title: '刷新成功'
@@ -131,6 +132,19 @@
 			this.getRandomData()
 		},
 		methods: {
+			remove(id){
+				console.log('删除',id)
+			},
+			clear(){
+				for (let i = 0; i < 10; i++) {
+					this.list.push({
+						id: uni.$uv.guid(),
+						image: this.getImage(),
+						title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
+						desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
+					});
+				}
+			},
 			longHandle(item) {
 				let that = this;
 				uni.showModal({
