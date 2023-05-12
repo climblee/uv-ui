@@ -1,27 +1,6 @@
 <template>
 	<view style="padding: 30rpx;">
-		<!-- <uv-icon custom-prefix="custom-icon" name="huangguan" color="red	"></uv-icon> -->
-	<!-- 	<uv-tooltip
-		  text="测试"
-			direction="bottom"
-		></uv-tooltip> -->
-		<!-- <uni-icons type="contact" size="30">1</uni-icons> -->
-		<!-- <image src="../../static/1.jpg" style="width: 300px;height: 500px;" mode="aspectFit"></image> -->
-		<!-- <image src="https://cdn.uviewui.com/uview/album/2.jpg" mode="widthFix" style="width: 100px;"></image> -->
-		<!-- <uv-image width="100px" mode="widthFix" src="https://cdn.uviewui.com/uview/album/2.jpg"></uv-image> -->
-		<!-- <uv-image width="200px" mode="widthFix" :observeLazyLoad="false" src="">
-			<template v-slot:loading>
-				<uv-loading-icon color="#999"></uv-loading-icon>
-			</template>
-		</uv-image>
-		<uv-image width="200px" mode="widthFix" :observeLazyLoad="false" src="https://cdn.uviewui.com/uview/album/2.jpg">
-			<template v-slot:loading>
-				<uv-loading-icon color="#999"></uv-loading-icon>
-			</template>
-		</uv-image> -->
-		<!-- <button open-type="share">分享</button> -->
-		<uv-input placeholder="输入手机号" v-model="demoValue"></uv-input>
-		<uv-avatar src="data:image/x-icon;base64,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Rw3/xFqV/8Zb///KXv//zmL//9Jl///TZcr/02VT/9dnVP/RZzP/vWQZ/55bGv+SVwn/kVcA/3YfFf94IMT/eyP//38m//+DKf//hyz//4cyhf+KR4n/kFD5/5db//+kYv//uGP//8lj///OZ///y3L//8dw///CX///vU70/7lAe/+/Tqj/xVn//8hd///MYP//0GP//9Jkyv/QY1P/1WZU/9ZoM//abRn/yWga/6hdCf+rXwD/cx0V/3UexP95If//fCT//30m//9+Lv//gjny/4lF+v+PUP//l1v//6pg//+9XP//v1b//7pT//+6WP//wWf//8Jg//+9T///uT74/7k/9v+9Tf//xFj//8pe///OYf//0GPG/89iTP/SZFT/1GYz/9hsGf/YbBr/0moJ/9dsAP9xGxX/cx3E/3Qe//9yHP//dCP//3su//+BOf//iET//5ZR//+vW///wlv//79W//+6Uv//tE7//65J//+rSP//sU7//7lM//+6Pv//uT///7tJ///DVP//y13//85h///OYcT/zWJB/9BkT//RZDT/2GoZ/9lsGv/Uagn/2GwA/3AaFf9vGcT/bBf//20Z//90I///eS3//4Q7//+jT///wVz//8dc///BV///u1P//7ZP//+wS///qkb//6VC//+fPv//njz//6k6//+3P///vEr//8NU///MXv//02X//9Bjxv/LX0H/zmNL/85iNP/VZhn/2Wwa/9RqCf/YbAD/bRgV/2wXxP9sF///bBj//3Mi//+RPP//u1j//81h///IXf//wlj//71U//+3UP//skz//6xI//+mRP//oT///5s7//+VN///kDL//5Yz//+rQP//wlT//81f///UZv//02XL/8xcT//PYVD/zWI0/9BiGf/YaRr/1GsJ/9hsAP9tGBX/axbC/2sW//97I///rkv//85i///RY///yV7//8Ra//++Vf//uVH//7NN//+uSf//qEX//6JB//+dPP//lzj//5I0//+MMP//hiv//4Mp//+VNf//vlP//9Rm///UZsn/zFtT/9FhVP/PYjT/z2MZ/9VlGv/VaAn/2GoA/2QRFf91HsL/mjr//8le///VZ///0WT//8tf///FW///wFf//7pT//+1Tv//r0r//6lG//+kQf//nj3//5k5//+TNf//jjH//4gs//+CKP//fCT//3Yf//95If//okD//8dcx//PXVP/0WFU/9FiNP/WZxn/1mga/9JiCf/WZAD/jTAS/75Vuv/VZ///1Wf//9Jk///MYP//x1z//8FY//+8VP//tk///7FL//+rR///pUP//6A///+aOv//lTb//48y//+KLv//hCn//34l//95If//cx3//20Z//9rF///eiLG/7NKU//QYFT/02My/9doGf/YbBr/1GkJ/9drAP/ueQL/12lG/9Rmxf/SZfz/zmH//8hd///DWf//vVX//7hR//+yTP//rEj//6dE//+hQP//nDv//5Y3//+RM///iy///4Ur//+AJv//eiL//3Ue//9vGv//bBf+/20Y2/9wGoH/eSBS/5QzVP+5UDH/22sZ/9lsGv/Ybgn/2GwA/9lyAP/PVwD/1WYZ/9Bjcv/KXtz/xFr+/79W//+5Uv//tE7//65J//+pRf//o0H//509//+YOP//kjT//40w//+HLP//gij//3wj//92H///cBv+/20Y6v9wG6H/eCBi/3ggUP90HFT/cBlT/3ohL/+qRhn/0WYa/9puCP/ZbQAAAAAAAAAAAP/JXgD/zWAC/8dcKP/BV5X/ulPq/7VP//+wS///qkb//6VC//+fPv//mjr//5Q2//+OMf//iS3//4Mp//99Jf//eCD//3Ic8v9xG7n/eSJr/4AlUv96IVL/dR1U/3MbTP9zHTT/dB0c/3UdGv+JLBr/qUYI/6RAAAAAAAAAAAAAAAAAAAAAAAD/u1IA/8FYBP+3T0L/sUyv/6xI9v+mQ///oD///5s7//+VN///kDP//4ou//+FKv//fyb//3kh+/93IMv/eyN+/4QqU/+CJ1H/eyJU/3YeUP91HTv/eSIi/3ggGf92HRr/dh0a/3QaFf92IAX/chkAAAAAAAAAAAAAAAAAAAAAAAAAAAD/kj4A/61IAP+uSQz/qUZd/6JAyv+cPP3/lzj//5I0//+ML///hiv//4An/v98JN3/fyaQ/4ctWv+HLVD/gihU/30jU/95IUL/eyIo/4AnGf96Ixr/dh0a/3UbGP92Hg3/dh8D/3gdAP9xIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7Z0AP9BAAD/oEAe/5o5gP+TNOP/jTH+/4cs/v+DKev/gymk/4owZP+PM0//iC1T/4MpVP+AJUn/gCYt/4QpHP+BKBn/fCUa/3UdGf91HBH/dBwF/28fAP90IgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+aNwD/nzoD/5IzL/+NL4r/iy6g/5Aybv+UN1L/kDRS/4guVP+FK03/hSk2/4gtHv+JLxn/gica/30mGv93IBT/dyAI/3IdAf9wGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/qUMA/69IAv+gPR3/mDhB/5A0U/+LME//iC48/4wxI/+PMRn/iTAa/4MoG/9/Jhb/eyQL/3UgAv9sFAD/kEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/ljEA/5Y9AP+YOwj/kTYc/5I0Iv+UOBr/kTMa/4owGv+GKhj/gCYO/38oBP96FAD/eycAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/7BPAP/DVgD/mTwG/5I1Ev+MMRn/iTES/4UpBv+ENQD/gywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+H///+Af///AD///AAP//AAA//gAAD/gAAAf4AAAB8AAAAPAAAAAwAAAAEBACABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAHAAAAB4AAAAfgAAAH+AAAD/4AAB//AAB//8AB///wB///+A/8="></uv-avatar>
+			<uv-qrcode ref="uvqrcode" canvas-id="qrcode" value="https://www.uvui.cn"></uv-qrcode>
 	</view>
 </template>
 
@@ -34,9 +13,7 @@
 			}
 		},
 		watch:{
-			demoValue(newVal){
-				console.log(newVal)
-			}
+			
 		},
 		onLoad() {
 			// #ifdef MP
@@ -45,7 +22,7 @@
 			// fetchMenu().then(res=>{
 			// 	console.log(res)
 			// })
-			console.log(uni.$uv.date('1585926095536', 'yyyy-mm'))
+			// console.log(uni.$uv.date('1585926095536', 'yyyy-mm'))
 		},
 		methods: {
 			clickIcon(e){

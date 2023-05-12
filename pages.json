@@ -256,6 +256,11 @@
 				"style": {
 					"navigationBarTitleText": "Grid 宫格布局"
 				}
+			}, {
+				"path": "qrcode/qrcode",
+				"style": {
+					"navigationBarTitleText": "QRCode 二维码生成"
+				}
 			}
 		]
 	}, {
