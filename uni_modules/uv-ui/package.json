@@ -1,8 +1,8 @@
 {
 	"id": "uv-ui",
-	"displayName": "uv-ui 全端兼容、丰富UI库、支持单独导入",
-	"version": "1.0.2",
-	"description": "uv-ui 是基于uni-app的、全端兼容的、内容丰富、高性能UI框架",
+	"displayName": "uv-ui 破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击",
+	"version": "1.0.3",
+	"description": "uv-ui 是基于uni-app的、全端兼容的、内容丰富、高性能UI框架。破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击。",
 	"keywords": [
         "uv-ui",
         "uvui",

@@ -30,7 +30,7 @@
 
 `uv-ui`中的`uv-ui-tools`组件集成了网络请求Http，是基于优秀的开源请求库：[luch-request](https://www.quanzhan.co/luch-request/)。
 
-还集成了常用的工具函数，一般都够用，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`mian.js`中引入即可，具体请参考[文档](https://www.uvui.cn/js/http.html)。下面也有说明具体使用方式。
+还集成了常用的工具函数，一般都够用，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`main.js`中引入即可，具体请参考[文档](https://www.uvui.cn/js/http.html)。下面也有说明具体使用方式。
 
 ### 4. 主题扩展
 
