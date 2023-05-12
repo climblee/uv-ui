@@ -201,7 +201,12 @@
 				// 发出change事件
 				this.$emit("change", this.activeIndex);
 				// 同时修改双向绑定的value的值
+				// #ifdef VUE2
 				this.$emit("input", this.activeIndex);
+				// #endif
+				// #ifdef VUE3
+				this.$emit("update:modelValue", this.activeIndex);
+				// #endif
 			},
 			// 获取当前激活的评分图标
 			getActiveIndex(x, isClick = false) {

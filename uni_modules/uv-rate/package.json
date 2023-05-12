@@ -1,7 +1,7 @@
 {
   "id": "uv-rate",
   "displayName": "uv-rate 评分",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "uv-rate 该组件一般用于满意度调查，星型评分的场景。",
   "keywords": [
     "uv-rate",
