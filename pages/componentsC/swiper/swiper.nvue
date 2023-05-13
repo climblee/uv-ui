@@ -182,6 +182,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/common/demo.scss';
 	.indicator {
 		@include flex(row);
 		justify-content: center;

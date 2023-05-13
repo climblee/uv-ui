@@ -318,8 +318,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 .uv-input {
     @include flex(row);
     align-items: center;

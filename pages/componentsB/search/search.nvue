@@ -207,7 +207,7 @@
 </script>
 
 <style lang="scss">
-	
+	@import '@/common/demo.scss';
 	.uv-page__tag-item {
 		@include flex(column);
 		flex: 1

@@ -85,6 +85,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/common/demo.scss';
 	.uv-page {
 		padding: 0;
 	}

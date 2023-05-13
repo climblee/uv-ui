@@ -111,7 +111,7 @@
 </script>
 
 <style lang="scss" scoped>
-	
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
   $uv-back-top-flex:1 !default;
   $uv-back-top-height:100% !default;
   $uv-back-top-background-color:#E1E1E1 !default;

@@ -203,6 +203,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.slot-icon {
 		width: 21px;
 		height: 21px;

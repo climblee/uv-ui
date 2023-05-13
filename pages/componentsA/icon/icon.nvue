@@ -623,7 +623,8 @@
 </script>
 
 <style lang="scss">
-	
+	@import '@/common/demo.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-page {
 		padding: 14rpx;
 
@@ -636,7 +637,12 @@
 				align-items: center;
 				justify-content: center;
 				height: 240rpx;
+				/* #ifndef APP-NVUE */
 				width: 33.3%;
+				/* #endif */
+				/* #ifdef APP-NVUE */
+				width: 240rpx;
+				/* #endif */
 				padding: 0 5px;
 				
 				&__icon {

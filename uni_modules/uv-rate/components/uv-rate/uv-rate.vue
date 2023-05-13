@@ -263,9 +263,9 @@
 		},
 	};
 </script>
-<style lang="scss"
-	scoped>
-	
+<style lang="scss" scoped>
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-rate-margin: 0 !default;
 	$uv-rate-padding: 0 !default;
 	$uv-rate-item-icon-wrap-half-top: 0 !default;

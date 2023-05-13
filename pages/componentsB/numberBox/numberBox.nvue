@@ -185,6 +185,7 @@
 	}
 </script>
 <style lang="scss">
+	@import '@/common/demo.scss';
 	.minus {
 		width: 22px;
 		height: 22px;

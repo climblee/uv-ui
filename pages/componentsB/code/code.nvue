@@ -145,6 +145,8 @@
 </script>
 
 <style lang="scss">
+	@import '@/common/demo.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-page {
 		&__code-text {
 			color: $uv-primary;

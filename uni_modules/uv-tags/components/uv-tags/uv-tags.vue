@@ -169,9 +169,8 @@
 </script>
 
 <style lang="scss" scoped >
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-tags-wrapper {
 		position: relative;
 	}

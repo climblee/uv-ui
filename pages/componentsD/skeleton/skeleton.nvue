@@ -139,6 +139,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/common/demo.scss';
 	.uv-skeleton-slot {
 		@include flex;
 		align-items: flex-start;

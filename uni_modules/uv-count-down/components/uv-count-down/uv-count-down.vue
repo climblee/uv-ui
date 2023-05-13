@@ -146,6 +146,7 @@
 </script>
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-count-down-text-color: $uv-content-color !default;
 	$uv-count-down-text-font-size: 15px !default;
 	$uv-count-down-text-line-height: 22px !default;

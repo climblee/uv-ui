@@ -174,7 +174,7 @@
 </script>
 
 <style lang="scss">
-	
+	@import '@/common/demo.scss';
 	.uv-popup-slot {
 		width: 200px;
 		height: 150px;

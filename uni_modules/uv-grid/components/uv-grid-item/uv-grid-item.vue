@@ -166,6 +166,7 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
   $uv-grid-item-hover-class-opcatiy:.5 !default;
   $uv-grid-item-margin-top:1rpx !default;
   $uv-grid-item-border-right-width:0.5px !default;

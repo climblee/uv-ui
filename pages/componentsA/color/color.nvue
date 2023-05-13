@@ -246,8 +246,9 @@
 	</view>
 </template>
 
-<style lang="scss">
-	
+<style lang="scss" scoped>
+	@import "@/common/demo.scss";
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-page {
 		padding: 15px;
 
@@ -255,7 +256,7 @@
 
 			&__title {
 				font-size: 15px;
-				color: $uv-content-color;
+				color: $content-color;
 				margin-top: 16px;
 				margin-bottom: 4px;
 			}
@@ -287,6 +288,6 @@
 	}
 
 	.uv-tips-color {
-		color: $uv-tips-color;
+		color: $tips-color;
 	}
 </style>

@@ -1,4 +1,4 @@
-import { addStyle,addUnit, $parent, deepMerge } from '../function/index.js';
+import { addStyle, addUnit, $parent, deepMerge } from '../function/index.js';
 import { array } from '../function/test.js'
 export default {
 	// 定义每个组件都可能需要用到的外部样式以及类名

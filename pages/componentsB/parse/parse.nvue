@@ -43,6 +43,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-content {
 		padding: 24rpx;
 		font-size: 32rpx;

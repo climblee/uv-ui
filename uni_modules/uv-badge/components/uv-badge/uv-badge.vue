@@ -85,9 +85,8 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-badge-primary: $uv-primary !default;
 	$uv-badge-error: $uv-error !default;
 	$uv-badge-success: $uv-success !default;

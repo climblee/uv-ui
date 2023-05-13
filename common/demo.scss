@@ -1,3 +1,10 @@
+
+@mixin flex($direction: row) {
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: $direction;
+}
 .uv-block{
 	padding: 14px;
 	&__section{
@@ -6,7 +13,11 @@
 	&__title {
 		margin-top:10px;
 		font-size: 15px;
-		color: $uv-content-color;
+		@if variable-exists(uv-content-color) {
+			color: $uv-content-color;
+		}@else {
+			color: #606266;
+		}
 		margin-bottom:10px;
 	}
 	&__flex{

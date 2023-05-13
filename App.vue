@@ -30,4 +30,5 @@
 		color: #8f9ca2;
 		margin-bottom: 8px;
 	}
+	
 </style>

@@ -39,6 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.nav-wrap {
 		padding: 15px;
 		position: relative;

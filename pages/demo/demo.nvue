@@ -1,6 +1,6 @@
 <template>
 	<view style="padding: 30rpx;">
-		<uv-icon name="baidu" color="primary"></uv-icon>
+		<uv-icon name="baidu" color="error"></uv-icon>
 	</view>
 </template>
 

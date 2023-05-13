@@ -27,7 +27,10 @@
 		/* #endif */
 	}
 }
-
+$uv-bordercolor: #dadbde;
+@if variable-exists(uv-border-color) {
+	$uv-bordercolor: $uv-border-color;
+}
 
 // 此处加上!important并非随意乱用，而是因为目前*.nvue页面编译到H5时，
 // App.vue的样式会被uni-app的view元素的自带border属性覆盖，导致无效
@@ -35,38 +38,38 @@
 // 移动端兼容性较好，直接使用0.5px去实现细边框，不使用伪元素形式实现
 .uv-border {
 	border-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-style: solid;
 }
 
 .uv-border-top {
 	border-top-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-top-style: solid;
 }
 
 .uv-border-left {
 	border-left-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-left-style: solid;
 }
 
 .uv-border-right {
 	border-right-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-right-style: solid;
 }
 
 .uv-border-bottom {
 	border-bottom-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-bottom-style: solid;
 }
 
 .uv-border-top-bottom {
 	border-top-width: 0.5px!important;
 	border-bottom-width: 0.5px!important;
-	border-color: $uv-border-color!important;
+	border-color: $uv-bordercolor!important;
     border-top-style: solid;
     border-bottom-style: solid;
 }

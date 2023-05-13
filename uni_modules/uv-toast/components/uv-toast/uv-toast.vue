@@ -176,7 +176,7 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-toast-color:#fff !default;
 	$uv-toast-border-radius:4px !default;
 	$uv-toast-border-background-color:#585858 !default;

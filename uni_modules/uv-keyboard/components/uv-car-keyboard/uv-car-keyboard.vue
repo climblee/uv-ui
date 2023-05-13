@@ -221,8 +221,8 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-car-keyboard-background-color: rgb(224, 228, 230) !default;
 	$uv-car-keyboard-padding:6px 0 6px !default;
 	$uv-car-keyboard-button-inner-width:64rpx !default;

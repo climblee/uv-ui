@@ -192,6 +192,7 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-code-input-cursor-width: 1px;
 	$uv-code-input-cursor-height: 40%;
 	$uv-code-input-cursor-animation-duration: 1s;

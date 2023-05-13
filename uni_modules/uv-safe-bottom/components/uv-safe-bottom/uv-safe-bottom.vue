@@ -8,7 +8,7 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { deepMerge, sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	/**
@@ -35,9 +35,9 @@
 				const style = {};
 				// #ifdef APP-NVUE
 				// nvue下，高度使用js计算填充
-				style.height = addUnit(sys().safeAreaInsets.bottom, 'px');
+				style.height = this.$uv.addUnit(sys().safeAreaInsets.bottom, 'px');
 				// #endif
-				return deepMerge(style, addStyle(this.customStyle));
+				return deepMerge(style, this.$uv.addStyle(this.customStyle));
 			},
 		},
 		mounted() {
