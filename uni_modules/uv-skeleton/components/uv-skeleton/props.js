@@ -55,6 +55,6 @@ export default {
 			type: String,
 			default: 'circle'
 		},
-		...uni.$uv.props?.skeleton
+		...uni.$uv?.props?.skeleton
 	}
 }

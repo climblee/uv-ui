@@ -11,6 +11,7 @@
 </template>
 
 <script>
+	import { addStyle, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -42,7 +43,7 @@
 					bottom: 0,
 					'background-color': `rgba(0, 0, 0, ${this.opacity})`
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, addStyle(this.customStyle))
 			}
 		},
 		methods: {

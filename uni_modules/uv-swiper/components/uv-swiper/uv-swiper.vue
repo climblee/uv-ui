@@ -91,6 +91,8 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { image, video, object } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -141,6 +143,16 @@
 			}
 		},
 		computed: {
+			$uv(){
+				return {
+					addStyle,
+					addUnit,
+					test: {
+						object,
+						image
+					}
+				}
+			},
 			itemStyle() {
 				return index => {
 					const style = {}
@@ -148,7 +160,7 @@
 					// 左右流出空间的写法不支持nvue和头条
 					// 只有配置了此二值，才加上对应的圆角，以及缩放
 					if (this.nextMargin && this.previousMargin) {
-						style.borderRadius = uni.$uv.addUnit(this.radius)
+						style.borderRadius = this.$uv.addUnit(this.radius)
 						if (index !== this.currentIndex) style.transform = 'scale(0.92)'
 					}
 					// #endif
@@ -158,9 +170,9 @@
 		},
 		methods: {
       getItemType(item) {
-        if (typeof item === 'string') return uni.$uv.test.video(this.getSource(item)) ? 'video' : 'image'
+        if (typeof item === 'string') return video(this.getSource(item)) ? 'video' : 'image'
         if (typeof item === 'object' && this.keyName) {
-          if (!item.type) return uni.$uv.test.video(this.getSource(item)) ? 'video' : 'image'
+          if (!item.type) return video(this.getSource(item)) ? 'video' : 'image'
           if (item.type === 'image') return 'image'
           if (item.type === 'video') return 'video'
           return 'image'
@@ -170,7 +182,7 @@
 			getSource(item) {
 				if (typeof item === 'string') return item
 				if (typeof item === 'object' && this.keyName) return item[this.keyName]
-				else uni.$uv.error('请按格式传递列表参数')
+				else error('请按格式传递列表参数')
 				return ''
 			},
 			// 轮播切换事件
@@ -186,7 +198,7 @@
 			// 切换轮播时，暂停视频播放
 			pauseVideo(index) {
 				const lastItem = this.getSource(this.list[index])
-				if (uni.$uv.test.video(lastItem)) {
+				if (video(lastItem)) {
 					// 当视频隐藏时，暂停播放
 					const video = uni.createVideoContext(`video-${index}`, this)
 					video.pause()

@@ -24,6 +24,7 @@
 </template>
 
 <script>
+	import { getPx, deepMerge, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -57,8 +58,8 @@
 			backTopStyle() {
 				// 动画组件样式
 				const style = {
-					bottom: uni.$uv.addUnit(this.bottom),
-					right: uni.$uv.addUnit(this.right),
+					bottom: this.$uv.addUnit(this.bottom),
+					right: this.$uv.addUnit(this.right),
 					width: '40px',
 					height: '40px',
 					position: 'fixed',
@@ -67,7 +68,7 @@
 				return style
 			},
 			show() {
-				return uni.$uv.getPx(this.scrollTop) > uni.$uv.getPx(this.top)
+				return getPx(this.scrollTop) > getPx(this.top)
 			},
 			contentStyle() {
 				const style = {}
@@ -83,14 +84,14 @@
 				style.borderTopRightRadius = radius
 				style.borderBottomLeftRadius = radius
 				style.borderBottomRightRadius = radius
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		methods: {
 			backToTop() {
 				// #ifdef APP-NVUE
 				if (!this.$parent.$refs['uv-back-top']) {
-					uni.$uv.error(`nvue页面需要给页面最外层元素设置"ref='uv-back-top'`)
+					error(`nvue页面需要给页面最外层元素设置"ref='uv-back-top'`)
 				}
 				dom.scrollToElement(this.$parent.$refs['uv-back-top'], {
 					offset: 0

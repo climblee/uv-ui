@@ -124,6 +124,8 @@
 </template>
 
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { func, image, video, array, promise  } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import { chooseFile } from './utils';
@@ -194,8 +196,8 @@
 				const lists = fileList.map((item) =>
 					Object.assign(Object.assign({}, item), {
 						// 如果item.url为本地选择的blob文件的话，无法判断其为video还是image，此处优先通过accept做判断处理
-						isImage: this.accept === 'image' || uni.$uv.test.image(item.url || item.thumb),
-						isVideo: this.accept === 'video' || uni.$uv.test.video(item.url || item.thumb),
+						isImage: this.accept === 'image' || image(item.url || item.thumb),
+						isVideo: this.accept === 'video' || video(item.url || item.thumb),
 						deletable: typeof(item.deletable) === 'boolean' ? item.deletable : this.deletable,
 					})
 				);
@@ -213,7 +215,7 @@
 				// 如果用户传入的是字符串，需要格式化成数组
 				let capture;
 				try {
-					capture = uni.$uv.test.array(this.capture) ? this.capture : this.capture.split(',');
+					capture = array(this.capture) ? this.capture : this.capture.split(',');
 				}catch(e) {
 					capture = [];
 				}
@@ -245,7 +247,7 @@
 				} = this;
 				let res = true
 				// beforeRead是否为一个方法
-				if (uni.$uv.test.func(beforeRead)) {
+				if (func(beforeRead)) {
 					// 如果用户定义了此方法，则去执行此方法，并传入读取的文件回调
 					res = beforeRead(file, this.getDetail());
 				}
@@ -266,7 +268,7 @@
 				if (!res) {
 					return;
 				}
-				if (uni.$uv.test.promise(res)) {
+				if (promise(res)) {
 					res.then((data) => this.onAfterRead(data || file));
 				} else {
 					this.onAfterRead(file);
@@ -312,10 +314,10 @@
 				if (!item.isImage || !this.previewFullImage) return
 				uni.previewImage({
 					// 先filter找出为图片的item，再返回filter结果中的图片url
-					urls: this.lists.filter((item) => this.accept === 'image' || uni.$uv.test.image(item.url || item.thumb)).map((item) => item.url || item.thumb),
+					urls: this.lists.filter((item) => this.accept === 'image' || image(item.url || item.thumb)).map((item) => item.url || item.thumb),
 					current: item.url || item.thumb,
 					fail() {
-						uni.$uv.toast('预览图片失败')
+						toast('预览图片失败')
 					},
 				});
 			},
@@ -337,7 +339,7 @@
 						),
 					current: index,
 					fail() {
-						uni.$uv.toast('预览视频失败')
+						toast('预览视频失败')
 					},
 				});
 			},

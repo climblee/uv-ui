@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	import { guid, deepMerge, getPx, os, sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';;
@@ -39,7 +40,7 @@
 			return {
 				cssSticky: false, // 是否使用css的sticky实现
 				stickyTop: 0, // 吸顶的top值，因为可能受自定义导航栏影响，最终的吸顶值非offsetTop值
-				elId: uni.$uv.guid(),
+				elId: guid(),
 				left: 0, // js模式时，吸顶的内容因为处于postition: fixed模式，为了和原来保持一致的样式，需要记录并重新设置它的left，height，width属性
 				width: 'auto',
 				height: 'auto',
@@ -53,7 +54,7 @@
 					if (this.cssSticky) {
 						style.position = 'sticky'
 						style.zIndex = this.uZindex
-						style.top = uni.$uv.addUnit(this.stickyTop)
+						style.top = this.$uv.addUnit(this.stickyTop)
 					} else {
 						style.height = this.fixed ? this.height + 'px' : 'auto'
 					}
@@ -67,7 +68,7 @@
 					// #endif
 				}
 				style.backgroundColor = this.bgColor
-				return uni.$uv.deepMerge(uni.$uv.addStyle(this.customStyle), style)
+				return deepMerge(this.$uv.addStyle(this.customStyle), style)
 			},
 			// 吸顶内容的样式
 			stickyContent() {
@@ -137,7 +138,7 @@
 				observer && observer.disconnect()
 			},
 			getStickyTop() {
-				this.stickyTop = uni.$uv.getPx(this.offsetTop) + uni.$uv.getPx(this.customNavHeight)
+				this.stickyTop = getPx(this.offsetTop) + getPx(this.customNavHeight)
 			},
 			async checkSupportCssSticky() {
 				// #ifdef H5
@@ -148,7 +149,7 @@
 				// #endif
 
 				// 如果安卓版本高于8.0，依然认为是支持css sticky的(因为安卓7在某些机型，可能不支持sticky)
-				if (uni.$uv.os() === 'android' && Number(uni.$uv.sys().system) > 8) {
+				if (os() === 'android' && Number(sys().system) > 8) {
 					this.cssSticky = true
 				}
 
@@ -158,7 +159,7 @@
 				// #endif
 
 				// ios上，从ios6开始，都是支持css sticky的
-				if (uni.$uv.os() === 'ios') {
+				if (os() === 'ios') {
 					this.cssSticky = true
 				}
 

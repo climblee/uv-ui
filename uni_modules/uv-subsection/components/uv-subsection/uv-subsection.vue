@@ -39,6 +39,7 @@
 </template>
 
 <script>
+	import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE
@@ -88,7 +89,7 @@
 					// 故用animation模块进行位移
 					const ref = this.$refs?.["uv-subsection__bar"]?.ref;
 					// 不存在ref的时候(理解为第一次初始化时，需要渲染dom，进行一定延时再获取ref)，这里的100ms是经过测试得出的结果(某些安卓需要延时久一点)，勿随意修改
-					uni.$uv.sleep(ref ? 0 : 100).then(() => {
+					sleep(ref ? 0 : 100).then(() => {
 						animation.transition(this.$refs["uv-subsection__bar"].ref, {
 							styles: {
 								transform: `translateX(${
@@ -148,7 +149,7 @@
 					const style = {};
 					style.fontWeight =
 						this.bold && this.current === index ? "bold" : "normal";
-					style.fontSize = uni.$uv.addUnit(this.fontSize);
+					style.fontSize = this.$uv.addUnit(this.fontSize);
 					// subsection模式下，激活时默认为白色的文字
 					if (this.mode === "subsection") {
 						style.color =
@@ -169,7 +170,7 @@
 		},
 		methods: {
 			init() {
-				uni.$uv.sleep().then(() => this.getRect());
+				sleep().then(() => this.getRect());
 			},
 			// 判断展示文本
 			getText(item) {

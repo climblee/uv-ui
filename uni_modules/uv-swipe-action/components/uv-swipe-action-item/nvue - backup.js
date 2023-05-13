@@ -2,7 +2,7 @@
 const dom = uni.requireNativePlugin('dom')
 // nvue中用于操作元素动画的库，类似于uni.animation，只不过uni.animation不能用于nvue
 const animation = uni.requireNativePlugin('animation')
-
+import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 export default {
     data() {
         return {
@@ -40,18 +40,12 @@ export default {
         show: {
             immediate: true,
             handler(n) {
-                // if(n === true) {
-                // 	uni.$uv.sleep(50).then(() => {
-                // 		this.openSwipeAction()
-                // 	})
-                // } else {
-                // 	this.closeSwipeAction()
-                // }
+                
             }
         }
     },
     mounted() {
-        uni.$uv.sleep(20).then(() => {
+        sleep(20).then(() => {
             this.queryRect()
         })
     },

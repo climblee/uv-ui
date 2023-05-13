@@ -60,6 +60,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.radio
+		...uni.$uv?.props?.radio
 	}
 }

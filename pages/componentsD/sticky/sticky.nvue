@@ -1,12 +1,5 @@
 <template>
 	<view class="uv-page">
-		<!-- <uv-navbar
-			title="吸顶"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">基础使用</text>
 			<uv-text
@@ -35,14 +28,12 @@
 </template>
 
 <script>
-	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	export default {
 		data() {
 			return {
-
+			
 			}
 		},
-		mixins: [mixin],
 		methods: {
 			navigateBack() {
 				uni.navigateBack()

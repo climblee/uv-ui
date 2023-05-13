@@ -37,6 +37,7 @@
 	</view>
 </template>
 <script>
+	import { addStyle, deepMerge, formValidate, os } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from "./props.js";
@@ -145,14 +146,14 @@
 				const style = {};
 				// #ifdef APP-NVUE
 				// 由于textarea在安卓nvue上的差异性，需要额外再调整其内边距
-				if (uni.$uv.os() === "android") {
+				if (os() === "android") {
 					style.paddingTop = "6px";
 					style.paddingLeft = "9px";
 					style.paddingBottom = "3px";
 					style.paddingRight = "6px";
 				}
 				// #endif
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle));
+				return deepMerge(style, addStyle(this.customStyle));
 			},
 			maxlen() {
 				return this.maxlength < 0 ? 140 : this.maxlength;
@@ -169,7 +170,7 @@
 			onBlur(e) {
 				this.$emit("blur", e);
 				// 尝试调用uv-form的验证方法
-				uni.$uv.formValidate(this, "blur");
+				formValidate(this, "blur");
 			},
 			onLinechange(e) {
 				this.$emit("linechange", e);
@@ -200,7 +201,7 @@
 					this.changeFromInner = true;
 					this.$emit("change", value);
 					// 尝试调用uv-form的验证方法
-					uni.$uv.formValidate(this, "change");
+					formValidate(this, "change");
 				});
 			},
 			onConfirm(e) {
@@ -214,6 +215,7 @@
 </script>
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-textarea {
 		border-radius: 4px;
 		background-color: #fff;

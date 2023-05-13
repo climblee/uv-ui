@@ -50,6 +50,6 @@ export default {
 			type: [Boolean, String, Number],
 			default: 0
 		},
-		...uni.$uv.props?.actionSheet
+		...uni.$uv?.props?.actionSheet
 	}
 }

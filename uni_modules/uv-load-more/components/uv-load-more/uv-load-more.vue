@@ -95,8 +95,8 @@
 			loadTextStyle() {
 				return {
 					color: this.color,
-					fontSize: uni.$uv.addUnit(this.fontSize),
-					lineHeight: uni.$uv.addUnit(this.fontSize),
+					fontSize: this.$uv.addUnit(this.fontSize),
+					lineHeight: this.$uv.addUnit(this.fontSize),
 					backgroundColor: this.bgColor,
 				}
 			},

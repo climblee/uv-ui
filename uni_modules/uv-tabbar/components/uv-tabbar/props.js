@@ -40,6 +40,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.tabbar
+		...uni.$uv?.props?.tabbar
 	}
 }

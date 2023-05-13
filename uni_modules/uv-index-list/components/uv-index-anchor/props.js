@@ -25,6 +25,6 @@ export default {
 			type: [String, Number],
 			default: 32
 		},
-		...uni.$uv.props?.indexAnchor
+		...uni.$uv?.props?.indexAnchor
 	}
 }

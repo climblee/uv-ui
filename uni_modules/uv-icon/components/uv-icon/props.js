@@ -85,6 +85,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.icon
+		...uni.$uv?.props?.icon
 	}
 }

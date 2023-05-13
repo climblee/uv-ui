@@ -55,6 +55,7 @@
 </template>
 
 <script>
+	import { random } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	const indexList = () => {
 		const indexList = []
 		const charCodeOfA = 'A'.charCodeAt(0)
@@ -93,8 +94,8 @@
 					const arr = []
 					for (let i = 0; i < 10; i++) {
 						arr.push({
-							name: this.names[uni.$uv.random(0, this.names.length - 1)],
-							url: this.urls[uni.$uv.random(0, this.urls.length - 1)]
+							name: this.names[random(0, this.names.length - 1)],
+							url: this.urls[random(0, this.urls.length - 1)]
 						})
 					}
 					return arr

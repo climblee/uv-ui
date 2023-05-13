@@ -5,6 +5,8 @@
 </template>
 
 <script>
+	import { addUnit, deepClone, getProperty, error, setProperty } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from "./props.js";
@@ -23,7 +25,7 @@
 	 * @property {String | Number}				labelWidth		提示文字的宽度，单位px  ( 默认 45 ）
 	 * @property {String}						labelAlign		lable字体的对齐方式   ( 默认 ‘left' ）
 	 * @property {Object}						labelStyle		lable的样式，对象形式
-	 * @example <uv--formlabelPosition="left" :model="model1" :rules="rules" ref="form1"></uv--form>
+	 * @example <uv-form labelPosition="left" :model="model1" :rules="rules" ref="form1"></uv-form>
 	 */
 	export default {
 		name: "uv-form",
@@ -65,7 +67,7 @@
 				immediate: true,
 				handler(n) {
 					if (!this.originalModel) {
-						this.originalModel = uni.$uv.deepClone(n);
+						this.originalModel = deepClone(n);
 					}
 				},
 			},
@@ -93,7 +95,7 @@
 				// 判断是否有规则
 				if (Object.keys(rules).length === 0) return;
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.model).length === 0) {
-					uni.$uv.error('设置rules，model必须设置！如果已经设置，请刷新页面。');
+					error('设置rules，model必须设置！如果已经设置，请刷新页面。');
 					return;
 				};
 				this.formRules = rules;
@@ -109,8 +111,8 @@
 				// 历遍所有uv-form-item，根据其prop属性，还原model的原始快照
 				this.children.map((child) => {
 					const prop = child?.prop;
-					const value = uni.$uv.getProperty(this.originalModel, prop);
-					uni.$uv.setProperty(this.model, prop, value);
+					const value = getProperty(this.originalModel, prop);
+					setProperty(this.model, prop, value);
 				});
 			},
 			// 清空校验结果
@@ -137,7 +139,7 @@
 						const childErrors = [];
 						if (value.includes(child.prop)) {
 							// 获取对应的属性，通过类似'a.b.c'的形式
-							const propertyVal = uni.$uv.getProperty(
+							const propertyVal = getProperty(
 								this.model,
 								child.prop
 							);
@@ -167,7 +169,7 @@
 										[propertyName]: propertyVal,
 									},
 									(errors, fields) => {
-										if (uni.$uv.test.array(errors)) {
+										if (array(errors)) {
 											errorsRes.push(...errors);
 											childErrors.push(...errors);
 										}
@@ -186,7 +188,7 @@
 			validate(callback) {
 				// 开发环境才提示，生产环境不会提示
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.formRules).length === 0) {
-					uni.$uv.error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
+					error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
 					return;
 				}
 				return new Promise((resolve, reject) => {
@@ -199,7 +201,7 @@
 						this.validateField(formItemProps, (errors) => {
 							if(errors.length) {
 								// 如果错误提示方式为toast，则进行提示
-								this.errorType === 'toast' && uni.$uv.toast(errors[0].message)
+								this.errorType === 'toast' && toast(errors[0].message)
 								reject(errors)
 							} else {
 								resolve(true)

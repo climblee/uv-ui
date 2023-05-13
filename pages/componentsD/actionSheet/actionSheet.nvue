@@ -73,6 +73,7 @@
 	</view>
 </template>
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -164,12 +165,12 @@
 			// 点击cell，判断显示哪个功能
 			openSheet(index) {
 				// #ifndef MP
-				if (index === 5) return uni.$uv.toast('请在微信内预览')
+				if (index === 5) return toast('请在微信内预览')
 				// #endif
 				this[`show${index}`] = true
 			},
 			getuserinfo(res) {
-				uni.$uv.toast(`用户名：${res.userInfo.nickName}`)
+				toast(`用户名：${res.userInfo.nickName}`)
 			},
 			navigateBack() {
 				uni.navigateBack()

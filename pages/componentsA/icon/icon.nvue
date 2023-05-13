@@ -21,6 +21,7 @@
 </template>
 
 <script>
+	import { toast,os } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -615,7 +616,7 @@
 					}
 				});
 				uni.hideToast()
-				uni.$uv.toast('图标名称已复制');
+				toast('图标名称已复制');
 			}
 		}
 	}

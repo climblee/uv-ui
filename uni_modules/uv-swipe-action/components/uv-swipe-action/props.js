@@ -5,6 +5,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.swipeAction
+		...uni.$uv?.props?.swipeAction
 	}
 }

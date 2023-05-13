@@ -58,6 +58,8 @@
 </template>
 
 <script>
+	import { error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -84,8 +86,8 @@
 			text: {
 				immediate: true,
 				handler(newValue, oldValue) {
-					if(!uni.$uv.test.array(newValue)) {
-						uni.$uv.error('noticebar组件direction为column时，要求text参数为数组形式')
+					if(!array(newValue)) {
+						error('noticebar组件direction为column时，要求text参数为数组形式')
 					}
 				}
 			}
@@ -95,7 +97,7 @@
 			textStyle() {
 				let style = {}
 				style.color = this.color
-				style.fontSize = uni.$uv.addUnit(this.fontSize)
+				style.fontSize = this.$uv.addUnit(this.fontSize)
 				return style
 			},
 			// 垂直或者水平滚动

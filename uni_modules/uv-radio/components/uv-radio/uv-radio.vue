@@ -35,6 +35,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, deepMerge, formValidate, os } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -122,7 +123,7 @@
 			},
 			// label大小
 			elLabelSize() {
-				return uni.$uv.addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
+				return addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
 					'15'))
 			},
 			elIconColor() {
@@ -157,8 +158,8 @@
 				const style = {}
 				style.backgroundColor = this.checked && !this.elDisabled ? this.elActiveColor : '#ffffff'
 				style.borderColor = this.checked && !this.elDisabled ? this.elActiveColor : this.elInactiveColor
-				style.width = uni.$uv.addUnit(this.elSize)
-				style.height = uni.$uv.addUnit(this.elSize)
+				style.width = addUnit(this.elSize)
+				style.height = addUnit(this.elSize)
 				// 如果是图标在右边的话，移除它的右边距
 				if (this.parentData.iconPlacement === 'right') {
 					style.marginRight = 0
@@ -168,14 +169,14 @@
 			radioStyle() {
 				const style = {}
 				if(this.parentData.borderBottom && this.parentData.placement === 'row') {
-					uni.$uv.error('检测到您将borderBottom设置为true，需要同时将uv-radio-group的placement设置为column才有效')
+					error('检测到您将borderBottom设置为true，需要同时将uv-radio-group的placement设置为column才有效')
 				}
 				// 当父组件设置了显示下边框并且排列形式为纵向时，给内容和边框之间加上一定间隔
 				if(this.parentData.borderBottom && this.parentData.placement === 'column') {
 					// ios像素密度高，需要多一点的距离
-					style.paddingBottom = uni.$uv.os() === 'ios' ? '12px' : '8px'
+					style.paddingBottom = os() === 'ios' ? '12px' : '8px'
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, addStyle(this.customStyle))
 			}
 		},
 		mounted() {
@@ -186,7 +187,7 @@
 				// 支付宝小程序不支持provide/inject，所以使用这个方法获取整个父组件，在created定义，避免循环引用
 				this.updateParentData()
 				if (!this.parent) {
-					uni.$uv.error('uv-radio必须搭配uv-radio-group组件使用')
+					error('uv-radio必须搭配uv-radio-group组件使用')
 				}
 				// 设置初始化时，是否默认选中的状态
 				this.checked = this.name === this.parentData.value
@@ -220,7 +221,7 @@
 					this.$emit('change', this.name)
 					// 尝试调用uv-form的验证方法，进行一定延迟，否则微信小程序更新可能会不及时
 					this.$nextTick(() => {
-						uni.$uv.formValidate(this, 'change')
+						formValidate(this, 'change')
 					})
 				}
 			},
@@ -238,8 +239,8 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-radio-wrap-margin-right:6px !default;
 	$uv-radio-wrap-font-size:20px !default;
 	$uv-radio-wrap-border-width:1px !default;

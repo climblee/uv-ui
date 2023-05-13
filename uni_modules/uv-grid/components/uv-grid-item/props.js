@@ -10,6 +10,6 @@ export default {
 			type: String,
 			default: 'transparent'
 		},
-		...uni.$uv.props?.gridItem
+		...uni.$uv?.props?.gridItem
 	}
 }

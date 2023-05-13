@@ -20,6 +20,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.countDown
+		...uni.$uv?.props?.countDown
 	}
 }

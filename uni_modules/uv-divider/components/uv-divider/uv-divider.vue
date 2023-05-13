@@ -44,7 +44,7 @@
 		computed: {
 			textStyle() {
 				const style = {}
-				style.fontSize = uni.$uv.addUnit(this.textSize)
+				style.fontSize = this.$uv.addUnit(this.textSize)
 				style.color = this.textColor
 				return style
 			},

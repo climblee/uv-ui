@@ -85,6 +85,6 @@ export default {
 			type: String,
 			default: '#f3f4f6'
 		},
-		...uni.$uv.props?.image
+		...uni.$uv?.props?.image
 	}
 }

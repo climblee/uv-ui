@@ -45,6 +45,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, sleep, deepMerge, os, sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -102,27 +103,27 @@
 				}
 				style[this.mode] = 0
 				if (this.mode === 'left') {
-					return uni.$uv.deepMerge(style, {
+					return deepMerge(style, {
 						bottom: 0,
 						top: 0,
 					})
 				} else if (this.mode === 'right') {
-					return uni.$uv.deepMerge(style, {
+					return deepMerge(style, {
 						bottom: 0,
 						top: 0,
 					})
 				} else if (this.mode === 'top') {
-					return uni.$uv.deepMerge(style, {
+					return deepMerge(style, {
 						left: 0,
 						right: 0
 					})
 				} else if (this.mode === 'bottom') {
-					return uni.$uv.deepMerge(style, {
+					return deepMerge(style, {
 						left: 0,
 						right: 0,
 					})
 				} else if (this.mode === 'center') {
-					return uni.$uv.deepMerge(style, {
+					return deepMerge(style, {
 						alignItems: 'center',
 						'justify-content': 'center',
 						top: 0,
@@ -138,7 +139,7 @@
 				// 不使用css方案，是因为nvue不支持css的iPhoneX安全区查询属性
 				const {
 					safeAreaInsets
-				} = uni.$uv.sys()
+				} = sys()
 				if (this.mode !== 'center') {
 					style.flex = 1
 				}
@@ -147,7 +148,7 @@
 					style.backgroundColor = this.bgColor
 				}
 				if(this.round) {
-					const value = uni.$uv.addUnit(this.round)
+					const value = addUnit(this.round)
 					if(this.mode === 'top') {
 						style.borderBottomLeftRadius = value
 						style.borderBottomRightRadius = value
@@ -158,7 +159,7 @@
 						style.borderRadius = value
 					} 
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, addStyle(this.customStyle))
 			},
 			position() {
 				if (this.mode === 'center') {
@@ -214,7 +215,7 @@
 					// 判断如果在需要重新初始化的组件数组中名中，并且存在init方法的话，则执行
 					if (names.includes(child.$options.name) && typeof child?.init === 'function') {
 						// 需要进行一定的延时，因为初始化页面需要时间
-						uni.$uv.sleep(50).then(() => {
+						sleep(50).then(() => {
 							child.init()
 						})
 					}

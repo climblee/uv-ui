@@ -148,6 +148,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.button
+		...uni.$uv?.props?.button
 	}
 }

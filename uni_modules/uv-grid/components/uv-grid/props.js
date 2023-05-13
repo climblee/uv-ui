@@ -15,6 +15,6 @@ export default {
 			type: String,
 			default: 'left'
 		},
-		...uni.$uv.props?.grid
+		...uni.$uv?.props?.grid
 	}
 }

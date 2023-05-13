@@ -66,6 +66,6 @@ export default {
 			type: String,
 			default: 'navigateTo'
 		},
-		...uni.$uv.props?.noticeBar
+		...uni.$uv?.props?.noticeBar
 	}
 }

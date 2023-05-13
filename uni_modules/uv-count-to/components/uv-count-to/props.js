@@ -55,6 +55,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.countTo
+		...uni.$uv?.props?.countTo
 	}
 }

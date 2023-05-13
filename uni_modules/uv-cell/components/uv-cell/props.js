@@ -106,6 +106,6 @@ export default {
 			type: [Number, String],
 			default: ''
 		},
-		...uni.$uv.props?.cell
+		...uni.$uv?.props?.cell
 	}
 }

@@ -80,6 +80,6 @@ export default {
 			type: [String, Object],
 			default: ''
 		},
-		...uni.$uv.props?.navbar
+		...uni.$uv?.props?.navbar
 	}
 }

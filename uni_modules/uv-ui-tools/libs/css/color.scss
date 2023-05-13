@@ -1,0 +1,151 @@
+$main-color: #303133;
+$content-color: #606266;
+$tips-color: #909193;
+$light-color: #c0c4cc;
+$border-color: #dadbde;
+$bg-color: #f3f4f6;
+$disabled-color: #c8c9cc;
+
+$primary: #3c9cff;
+$primary-dark: #398ade;
+$primary-disabled: #9acafc;
+$primary-light: #ecf5ff;
+
+$warning: #f9ae3d;
+$warning-dark: #f1a532;
+$warning-disabled: #f9d39b;
+$warning-light: #fdf6ec;
+
+$success: #5ac725;
+$success-dark: #53c21d;
+$success-disabled: #a9e08f;
+$success-light: #f5fff0;
+
+$error: #f56c6c;
+$error-dark: #e45656;
+$error-disabled: #f7b2b2;
+$error-light: #fef0f0;
+
+$info: #909399;
+$info-dark: #767a82;
+$info-disabled: #c4c6c9;
+$info-light: #f4f4f5;
+@if variable-exists(uv-main-color) {
+	$main-color: $uv-main-color;
+}
+@if variable-exists(uv-content-color) {
+	$content-color: $uv-content-color;
+}
+@if variable-exists(uv-tips-color) {
+	$tips-color: $uv-tips-color;
+}
+@if variable-exists(uv-light-color) {
+	$light-color: $uv-light-color;
+}
+@if variable-exists(uv-border-color) {
+	$border-color: $uv-border-color;
+}
+@if variable-exists(uv-bg-color) {
+	$bg-color: $uv-bg-color;
+}
+@if variable-exists(uv-disabled-color) {
+	$disabled-color: $uv-disabled-color;
+}
+
+@if variable-exists(uv-primary) {
+	$primary: $uv-primary;
+}
+@if variable-exists(uv-primary-dark) {
+	$primary-dark: $uv-primary-dark;
+}
+@if variable-exists(uv-primary-disabled) {
+	$primary-disabled: $uv-primary-disabled;
+}
+@if variable-exists(uv-primary-light) {
+	$primary-light: $uv-primary-light;
+}
+
+@if variable-exists(uv-warning) {
+	$warning: $uv-warning;
+}
+@if variable-exists(uv-warning-dark) {
+	$warning-dark: $uv-warning-dark;
+}
+@if variable-exists(uv-warning-disabled) {
+	$warning-disabled: $uv-warning-disabled;
+}
+@if variable-exists(uv-warning-light) {
+	$warning-light: $uv-warning-light;
+}
+
+@if variable-exists(uv-success) {
+	$success: $uv-success;
+}
+@if variable-exists(uv-success-dark) {
+	$success-dark: $uv-success-dark;
+}
+@if variable-exists(uv-success-disabled) {
+	$success-disabled: $uv-success-disabled;
+}
+@if variable-exists(uv-success-light) {
+	$success-light: $uv-success-light;
+}
+
+@if variable-exists(uv-error) {
+	$error: $uv-error;
+}
+@if variable-exists(uv-error-dark) {
+	$error-dark: $uv-error-dark;
+}
+@if variable-exists(uv-error-disabled) {
+	$error-disabled: $uv-error-disabled;
+}
+@if variable-exists(uv-error-light) {
+	$error-light: $uv-error-light;
+}
+
+@if variable-exists(uv-info) {
+	$info: $uv-info;
+}
+@if variable-exists(uv-info-dark) {
+	$info-dark: $uv-info-dark;
+}
+@if variable-exists(uv-info-disabled) {
+	$info-disabled: $uv-info-disabled;
+}
+@if variable-exists(uv-info-light) {
+	$info-light: $uv-info-light;
+}
+
+$uv-main-color: $main-color;
+$uv-content-color: $content-color;
+$uv-tips-color: $tips-color;
+$uv-light-color: $light-color;
+$uv-border-color: $border-color;
+$uv-bg-color: $bg-color;
+$uv-disabled-color: $disabled-color;
+
+$uv-primary: $primary;
+$uv-primary-dark: $primary-dark;
+$uv-primary-disabled: $primary-disabled;
+$uv-primary-light: $primary-light;
+
+$uv-warning: $warning;
+$uv-warning-dark: $warning-dark;
+$uv-warning-disabled: $warning-disabled;
+$uv-warning-light: $warning-light;
+
+$uv-success: $success;
+$uv-success-dark: $success-dark;
+$uv-success-disabled: $success-disabled;
+$uv-success-light: $success-light;
+
+$uv-error: $error;
+$uv-error-dark: $error-dark;
+$uv-error-disabled: $error-disabled;
+$uv-error-light: $error-light;
+
+$uv-info: $info;
+$uv-info-dark: $info-dark;
+$uv-info-disabled: $info-disabled;
+$uv-info-light: $info-light;

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+	import config from '@/uni_modules/uv-ui-tools/libs/config/config.js';
 	export default {
 		props: {
 			desc: String,
@@ -22,7 +23,7 @@
 		},
 		data() {
 			return {
-				version: uni.$uv.config.v
+				version: config.v
 			}
 		},
 		methods: {

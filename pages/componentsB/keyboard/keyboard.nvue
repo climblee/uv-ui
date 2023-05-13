@@ -102,7 +102,7 @@
 				this.show = true
 			},
 			change(e) {
-				// console.log('change');
+				console.log('change',e);
 				this.input += e
 			},
 			close() {

@@ -1,3 +1,4 @@
+import { range } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 export default {
 	props: {
 		// 头像图片路径(不能为相对路径)
@@ -65,7 +66,7 @@ export default {
 			type: [String, Number],
 			// 校验参数规则，索引在0-19之间
 			validator(n) {
-				return uni.$uv.test.range(n, [0, 19]) || n === ''
+				return range(n, [0, 19]) || n === ''
 			},
 			default: ''
 		},
@@ -74,6 +75,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.avatar
+		...uni.$uv?.props?.avatar
 	}
 }

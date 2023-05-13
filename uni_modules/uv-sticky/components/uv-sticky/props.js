@@ -36,6 +36,6 @@ export default {
 			type: [String, Number],
 			default: ''
 		},
-		...uni.$uv.props?.sticky
+		...uni.$uv?.props?.sticky
 	}
 }

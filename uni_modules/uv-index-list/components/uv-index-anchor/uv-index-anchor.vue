@@ -24,6 +24,7 @@
 </template>
 
 <script>
+	import { error, $parent } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -54,17 +55,17 @@
 		methods: {
 			init() {
 				// 此处会活动父组件实例，并赋值给实例的parent属性
-				const indexList = uni.$uv.$parent.call(this, 'uv-index-list')
+				const indexList = $parent.call(this, 'uv-index-list')
 				if (!indexList) { 
-					return uni.$uv.error('uv-index-anchor必须要搭配uv-index-list组件使用')
+					return error('uv-index-anchor必须要搭配uv-index-list组件使用')
 				}
 				// 将当前实例放入到uv-index-list中
 				indexList.anchors.push(this)
-				const indexListItem = uni.$uv.$parent.call(this, 'uv-index-item')
+				const indexListItem = $parent.call(this, 'uv-index-item')
 				// #ifndef APP-NVUE
 				// 只有在非nvue下，uv-index-anchor才是嵌套在uv-index-item中的
 				if (!indexListItem) {
-					return uni.$uv.error('uv-index-anchor必须要搭配uv-index-item组件使用')
+					return error('uv-index-anchor必须要搭配uv-index-item组件使用')
 				}
 				// 设置uv-index-item的id为anchor的text标识符，因为非nvue下滚动列表需要依赖scroll-view滚动到元素的特性
 				indexListItem.id = this.text.charCodeAt(0)

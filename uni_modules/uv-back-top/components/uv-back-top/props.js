@@ -53,6 +53,6 @@ export default {
 				fontSize: '19px'
 			})
 		},
-		...uni.$uv.props?.backtop
+		...uni.$uv?.props?.backtop
 	}
 }

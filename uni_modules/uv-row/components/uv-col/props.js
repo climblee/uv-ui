@@ -25,6 +25,6 @@ export default {
 			type: String,
 			default: 'left'
 		},
-		...uni.$uv.props?.col
+		...uni.$uv?.props?.col
 	}
 }

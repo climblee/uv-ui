@@ -40,6 +40,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.notify
+		...uni.$uv?.props?.notify
 	}
 }

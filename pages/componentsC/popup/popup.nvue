@@ -61,6 +61,7 @@
 </template>
 
 <script>
+	import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -154,7 +155,7 @@
 		methods: {
 			openPopup(popupData) {
 				this.popupData = popupData
-				uni.$uv.sleep().then(() => {
+				sleep().then(() => {
 					this.show = !this.show
 				})
 			},

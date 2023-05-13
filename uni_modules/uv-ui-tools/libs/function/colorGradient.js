@@ -126,7 +126,7 @@ function colorToRgba(color, alpha) {
     return sColor
 }
 
-export default {
+export {
     colorGradient,
     hexToRgb,
     rgbToHex,

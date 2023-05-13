@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import { sys, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -30,9 +31,9 @@
 			style() {
 				const style = {}
 				// 状态栏高度，由于某些安卓和微信开发工具无法识别css的顶部状态栏变量，所以使用js获取的方式
-				style.height = uni.$uv.addUnit(uni.$uv.sys().statusBarHeight, 'px')
+				style.height = this.$uv.addUnit(sys().statusBarHeight, 'px')
 				style.backgroundColor = this.bgColor
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 	}

@@ -90,6 +90,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.loadmore
+		...uni.$uv?.props?.loadmore
 	}
 }

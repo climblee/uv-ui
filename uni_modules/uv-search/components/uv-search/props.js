@@ -122,6 +122,6 @@ export default {
 			type: [String, Number, null],
 			default: null
 		},
-		...uni.$uv.props?.search
+		...uni.$uv?.props?.search
 	}
 }

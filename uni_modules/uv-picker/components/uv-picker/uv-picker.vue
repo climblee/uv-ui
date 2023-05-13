@@ -30,7 +30,7 @@
 					class="uv-picker__view__column"
 				>
 					<text
-						v-if="$uv.test.array(item)"
+						v-if="$uv.array(item)"
 						class="uv-picker__view__column__item uv-line-1"
 						v-for="(item1, index1) in item"
 						:key="index1"
@@ -76,6 +76,9 @@
  * @event {Function} change		当选择值变化时触发
  * @event {Function} confirm	点击确定按钮，返回当前选择的值
  */
+import { addUnit, sleep, deepClone } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
+import { object } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from './props.js';
@@ -93,6 +96,14 @@ export default {
 			innerColumns: [],
 			// 上一次的变化列索引
 			columnIndex: 0,
+		}
+	},
+	computed: {
+		$uv(){
+			return {
+				addUnit,
+				array
+			}
 		}
 	},
 	watch: {
@@ -114,7 +125,7 @@ export default {
 	methods: {
 		// 获取item需要显示的文字，判别为对象还是文本
 		getItemText(item) {
-			if (uni.$uv.test.object(item)) {
+			if (object(item)) {
 				return item[this.keyName]
 			} else {
 				return item
@@ -177,7 +188,7 @@ export default {
 		},
 		// 设置index索引，此方法可被外部调用设置
 		setIndexs(index, setLastIndex) {
-			this.innerIndex = uni.$uv.deepClone(index)
+			this.innerIndex = deepClone(index)
 			if (setLastIndex) {
 				this.setLastIndex(index)
 			}
@@ -186,14 +197,14 @@ export default {
 		setLastIndex(index) {
 			// 当能进入此方法，意味着当前设置的各列默认索引，即为“上一次”的选中值，需要记录，是因为changeHandler中
 			// 需要拿前后的变化值进行对比，得出当前发生改变的是哪一列
-			this.lastIndex = uni.$uv.deepClone(index)
+			this.lastIndex = deepClone(index)
 		},
 		// 设置对应列选项的所有值
 		setColumnValues(columnIndex, values) {
 			// 替换innerColumns数组中columnIndex索引的值为values，使用的是数组的splice方法
 			this.innerColumns.splice(columnIndex, 1, values)
 			// 拷贝一份原有的innerIndex做临时变量，将大于当前变化列的所有的列的默认索引设置为0
-			let tmpIndex = uni.$uv.deepClone(this.innerIndex)
+			let tmpIndex = deepClone(this.innerIndex)
 			for (let i = 0; i < this.innerColumns.length; i++) {
 				if (i > this.columnIndex) {
 					tmpIndex[i] = 0
@@ -207,13 +218,13 @@ export default {
 			// 进行同步阻塞，因为外部得到change事件之后，可能需要执行setColumnValues更新列的值
 			// 索引如果在外部change的回调中调用getColumnValues的话，可能无法得到变更后的列值，这里进行一定延时，保证值的准确性
 			(async () => {
-				await uni.$uv.sleep()
+				await sleep()
 			})()
 			return this.innerColumns[columnIndex]
 		},
 		// 设置整体各列的columns的值
 		setColumns(columns) {
-			this.innerColumns = uni.$uv.deepClone(columns)
+			this.innerColumns = deepClone(columns)
 			// 如果在设置各列数据时，没有被设置默认的各列索引defaultIndex，那么用0去填充它，数组长度为列的数量
 			if (this.innerIndex.length === 0) {
 				this.innerIndex = new Array(columns.length).fill(0)
@@ -228,7 +239,7 @@ export default {
 			// 进行同步阻塞，因为外部得到change事件之后，可能需要执行setColumnValues更新列的值
 			// 索引如果在外部change的回调中调用getValues的话，可能无法得到变更后的列值，这里进行一定延时，保证值的准确性
 			(async () => {
-				await uni.$uv.sleep()
+				await sleep()
 			})()
 			return this.innerColumns.map((item, index) => item[this.innerIndex[index]])
 		}
@@ -237,9 +248,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-picker {
 		position: relative;
 

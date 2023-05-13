@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import throttle from '@/uni_modules/uv-ui-tools/libs/function/throttle.js';
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import button from '@/uni_modules/uv-ui-tools/libs/mixin/button.js'
@@ -266,7 +267,7 @@ export default {
             // 非禁止并且非加载中，才能点击
             if (!this.disabled && !this.loading) {
 				// 进行节流控制，每this.throttle毫秒内，只在开始处执行
-				uni.$uv.throttle(() => {
+				throttle(() => {
 					this.$emit("click");
 				}, this.throttleTime);
             }
@@ -292,8 +293,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 
 /* #ifndef APP-NVUE */
 @import "./vue.scss";

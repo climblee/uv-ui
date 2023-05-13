@@ -175,6 +175,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.input
+		...uni.$uv?.props?.input
 	}
 }

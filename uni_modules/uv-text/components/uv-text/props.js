@@ -108,6 +108,6 @@ export default {
 			type: String,
 			default: 'normal'
 		},
-		...uni.$uv.props?.text
+		...uni.$uv?.props?.text
 	}
 }

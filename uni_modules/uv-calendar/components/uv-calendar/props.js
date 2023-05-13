@@ -140,6 +140,6 @@ export default {
 			type: [Number, String],
 			default: 3
 		},
-		...uni.$uv.props?.calendar
+		...uni.$uv?.props?.calendar
 	}
 }

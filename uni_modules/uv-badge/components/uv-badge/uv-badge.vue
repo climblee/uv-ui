@@ -57,8 +57,8 @@
 						// top和right分为为offset的第一个和第二个值，如果没有第二个值，则right等于top
 						const top = this.offset[0]
 						const right = this.offset[1] || top
-						style.top = uni.$uv.addUnit(top)
-						style.right = uni.$uv.addUnit(right)
+						style.top = this.$uv.addUnit(top)
+						style.right = this.$uv.addUnit(right)
 					}
 				}
 				return style

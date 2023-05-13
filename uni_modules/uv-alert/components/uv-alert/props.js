@@ -40,6 +40,6 @@ export default {
 			type: [String, Number],
 			default: 14
 		},
-		...uni.$uv.props?.alert
+		...uni.$uv?.props?.alert
 	}
 }

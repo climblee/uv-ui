@@ -55,6 +55,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.tooltip
+		...uni.$uv?.props?.tooltip
 	}
 }

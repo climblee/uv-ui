@@ -44,6 +44,6 @@ export default {
 			type: [String, Object],
 			default: ''
 		},
-		...uni.$uv.props?.formItem
+		...uni.$uv?.props?.formItem
 	}
 }

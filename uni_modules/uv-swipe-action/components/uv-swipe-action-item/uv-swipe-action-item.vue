@@ -44,6 +44,7 @@
 <script src="./index.wxs" module="wxs" lang="wxs"></script>
 <!-- #endif -->
 <script>
+	import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import touch from '@/uni_modules/uv-ui-tools/libs/mixin/touch.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -112,7 +113,7 @@
 				// 初始化父组件数据
 				this.updateParentData()
 				// #ifndef APP-NVUE
-				uni.$uv.sleep().then(() => {
+				sleep().then(() => {
 					this.queryRect()
 				})
 				// #endif

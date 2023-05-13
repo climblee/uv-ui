@@ -61,6 +61,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, guid, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -106,7 +107,7 @@
 				show: false,
 				// 是否开启图片出现在可视范围进行加载（另一种懒加载）
 				observeShow: !this.observeLazyLoad,
-				elIndex: uni.$uv.guid(),
+				elIndex: guid(),
 				// 因为props的值无法修改，故需要一个中间值
 				imgWidth: this.width,
 				// 因为props的值无法修改，故需要一个中间值
@@ -131,20 +132,20 @@
 			wrapStyle() {
 				let style = {};
 				// 通过调用addUnit()方法，如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上rpx单位
-				style.width = this.$uv.addUnit(this.imgWidth);
-				style.height = this.$uv.addUnit(this.imgHeight);
+				style.width = addUnit(this.imgWidth);
+				style.height = addUnit(this.imgHeight);
 				// 如果是显示圆形，设置一个很多的半径值即可
-				style.borderRadius = this.shape == 'circle' ? '10000px' : uni.$uv.addUnit(this.radius)
+				style.borderRadius = this.shape == 'circle' ? '10000px' : addUnit(this.radius)
 				// 如果设置圆角，必须要有hidden，否则可能圆角无效
 				style.overflow = this.radius > 0 ? 'hidden' : 'visible'
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle));
+				return deepMerge(style, addStyle(this.customStyle));
 			},
 			imageStyle() {
 				let style = {};
-				style.borderRadius = this.shape == 'circle' ? '10000px' : uni.$uv.addUnit(this.radius);
+				style.borderRadius = this.shape == 'circle' ? '10000px' : addUnit(this.radius);
 				// #ifdef APP-NVUE
-				style.width = uni.$uv.addUnit(this.imgWidth);
-				style.height = uni.$uv.addUnit(this.imgHeight);
+				style.width = addUnit(this.imgWidth);
+				style.height = addUnit(this.imgHeight);
 				// #endif
 				return style;
 			}
@@ -227,7 +228,7 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-image-error-top:0px !default;
 	$uv-image-error-left:0px !default;
 	$uv-image-error-width:100% !default;

@@ -223,6 +223,8 @@
 </template>
 
 <script>
+	import { toast,timeFormat } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { chinese } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	export default {
 		data() {
 			return {
@@ -265,7 +267,7 @@
 						// 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
 						validator: (rule, value, callback) => {
 							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
-							return uni.$uv.test.chinese(value);
+							return chinese(value);
 						},
 						message: "姓名必须为中文",
 						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
@@ -403,12 +405,12 @@
 					setTimeout(() => {
 						uni.hideLoading();
 						// 这里此提示会被this.start()方法中的提示覆盖
-						uni.$uv.toast('验证码已发送');
+						toast('验证码已发送');
 						// 通知验证码组件内部开始倒计时
 						this.$refs.uCode.start();
 					}, 2000);
 				} else {
-					uni.$uv.toast('倒计时结束后再发送');
+					toast('倒计时结束后再发送');
 				}
 			},
 			calendarClose() {
@@ -421,15 +423,15 @@
 			},
 			birthdayConfirm(e) {
 				this.showBirthday = false
-				this.model1.userInfo.birthday = uni.$uv.timeFormat(e.value, 'yyyy-mm-dd')
+				this.model1.userInfo.birthday = timeFormat(e.value, 'yyyy-mm-dd')
 				this.$refs.form1.validateField('userInfo.birthday')
 			},
 			submit() {
 				// 如果有错误，会在catch中返回报错信息数组，校验通过则在then中返回true
 				this.$refs.form1.validate().then(res => {
-					uni.$uv.toast('校验通过')
+					toast('校验通过')
 				}).catch(errors => {
-					uni.$uv.toast('校验失败')
+					toast('校验失败')
 				})
 			},
 			reset() {

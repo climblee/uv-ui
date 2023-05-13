@@ -255,7 +255,7 @@ function regExp(o) {
     return o && Object.prototype.toString.call(o) === '[object RegExp]'
 }
 
-export default {
+export {
     email,
     mobile,
     url,
@@ -273,7 +273,6 @@ export default {
     range,
     rangeLength,
     empty,
-    isEmpty: empty,
     jsonString,
     landline,
     object,

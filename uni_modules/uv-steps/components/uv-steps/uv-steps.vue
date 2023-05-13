@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import { func } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -50,7 +51,7 @@
 			updateChildData() {
 				this.children.map(child => {
 					// 先判断子组件是否存在对应的方法
-					uni.$uv.test.func((child || {}).updateFromParent()) && child.updateFromParent()
+					func((child || {}).updateFromParent()) && child.updateFromParent()
 				})
 			},
 			// 接受子组件的通知，去修改其他子组件的数据

@@ -85,6 +85,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.tags
+		...uni.$uv?.props?.tags
 	}
 }

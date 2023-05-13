@@ -15,6 +15,6 @@ export default {
 			type: String,
 			default: 'center'
 		},
-		...uni.$uv.props?.row
+		...uni.$uv?.props?.row
 	}
 }

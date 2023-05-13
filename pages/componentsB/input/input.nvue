@@ -138,6 +138,7 @@
 </template>
 
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	export default {
 		data() {
 			return {
@@ -163,12 +164,12 @@
 					setTimeout(() => {
 						uni.hideLoading();
 						// 这里此提示会被this.start()方法中的提示覆盖
-						uni.$uv.toast('验证码已发送');
+						toast('验证码已发送');
 						// 通知验证码组件内部开始倒计时
 						this.$refs.uCode.start();
 					}, 2000);
 				} else {
-					uni.$uv.toast('倒计时结束后再发送');
+					toast('倒计时结束后再发送');
 				}
 			},
 			change(e) {

@@ -80,6 +80,7 @@
 </template>
 
 <script>
+	import { addStyle, deepMerge, getPx, sys, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import uvBadgeProps from '@/uni_modules/uv-badge/components/uv-badge/props.js'
@@ -141,14 +142,14 @@
 				return index => {
 					const style = {}
 					// 取当期是否激活的样式
-					const customeStyle = index === this.innerCurrent ? uni.$uv.addStyle(this.activeStyle) : uni.$uv
+					const customeStyle = index === this.innerCurrent ? addStyle(this.activeStyle) : this.$uv
 						.addStyle(
 							this.inactiveStyle)
 					// 如果当前菜单被禁用，则加上对应颜色，需要在此做处理，是因为nvue下，无法在style样式中通过!import覆盖标签的内联样式
 					if (this.list[index].disabled) {
 						style.color = '#c8c9cc'
 					}
-					return uni.$uv.deepMerge(customeStyle, style)
+					return deepMerge(customeStyle, style)
 				}
 			},
 			propsBadge() {
@@ -169,7 +170,7 @@
 					.slice(0, this.innerCurrent)
 					.reduce((total, curr) => total + curr.rect.width, 0);
                 // 获取下划线的数值px表示法
-				const lineWidth = uni.$uv.getPx(this.lineWidth);
+				const lineWidth = getPx(this.lineWidth);
 				this.lineOffsetLeft = lineOffsetLeft + (tabItem.rect.width - lineWidth) / 2
 				// #ifdef APP-NVUE
 				// 第一次移动滑块，无需过渡时间
@@ -213,7 +214,7 @@
 				})
 			},
 			init() {
-				uni.$uv.sleep().then(() => {
+				sleep().then(() => {
 					this.resize()
 				})
 			},
@@ -227,7 +228,7 @@
 						return total + curr.rect.width
 					}, 0)
 				// 此处为屏幕宽度
-				const windowWidth = uni.$uv.sys().windowWidth
+				const windowWidth = sys().windowWidth
 				// 将活动的tabs-item移动到屏幕正中间，实际上是对scroll-view的移动
 				let scrollLeft = offsetLeft - (this.tabsRect.width - tabRect.rect.width) / 2 - (windowWidth - this.tabsRect
 					.right) / 2 + this.tabsRect.left / 2
@@ -273,7 +274,7 @@
 			queryRect(el, item) {
 				// #ifndef APP-NVUE
 				// $uvGetRect为uni-ui自带的节点查询简化方法，详见文档介绍：https://www.uvui.cn/js/getRect.html
-				// 组件内部一般用this.$uvGetRect，对外的为uni.$uv.getRect，二者功能一致，名称不同
+				// 组件内部一般用this.$uvGetRect，对外的为getRect，二者功能一致，名称不同
 				return new Promise(resolve => {
 					this.$uvGetRect(`.${el}`).then(size => {
 						resolve(size)

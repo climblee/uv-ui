@@ -45,6 +45,6 @@ export default {
 			type: String,
 			default: 'name'
 		},
-		...uni.$uv.props?.subsection
+		...uni.$uv?.props?.subsection
 	}
 }

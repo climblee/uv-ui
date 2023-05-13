@@ -58,8 +58,8 @@
 			// 指示器为线型的样式
 			lineStyle() {
 				let style = {}
-				style.width = uni.$uv.addUnit(this.lineWidth)
-				style.transform = `translateX(${ uni.$uv.addUnit(this.current * this.lineWidth) })`
+				style.width = this.$uv.addUnit(this.lineWidth)
+				style.transform = `translateX(${ this.$uv.addUnit(this.current * this.lineWidth) })`
 				style.backgroundColor = this.indicatorActiveColor
 				return style
 			},

@@ -70,6 +70,6 @@ export default {
 			type: [String, Number],
 			default: 1
 		},
-		...uni.$uv.props?.list
+		...uni.$uv?.props?.list
 	}
 }

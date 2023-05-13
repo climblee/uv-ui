@@ -41,6 +41,6 @@ export default {
 		},
 		tagStyle: Object,
 		useAnchor: null,
-		...uni.$uv.props?.parse
+		...uni.$uv?.props?.parse
 	}
 }

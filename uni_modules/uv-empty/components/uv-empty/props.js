@@ -55,6 +55,6 @@ export default {
 			type: [String, Number],
 			default: 0
 		},
-		...uni.$uv.props?.empty
+		...uni.$uv?.props?.empty
 	}
 }

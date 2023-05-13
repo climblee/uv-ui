@@ -71,6 +71,7 @@
 
 <script>
 import value from './value.js'
+import { addStyle, addUnit, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import button from '@/uni_modules/uv-ui-tools/libs/mixin/button.js'
@@ -102,10 +103,10 @@ import props from './props.js'
  * @property {String} 					align		文本对齐方式，可选值left|center|right（默认 'left' ）
  * @property {String} 					wordWrap	文字换行，可选值break-word|normal|anywhere（默认 'normal' ）
  * @event {Function} click  点击触发事件
- * @example <uv--text text="我用十年青春,赴你最后之约"></uv--text>
+ * @example <uv-text text="我用十年青春,赴你最后之约"></uv-text>
  */
 export default {
-    name: 'uv--text',
+    name: 'uv-text',
 		emits: ['click'],
     // #ifdef MP
     mixins: [mpMixin, mixin, value, button, openType, props],
@@ -119,14 +120,14 @@ export default {
                 textDecoration: this.decoration,
                 fontWeight: this.bold ? 'bold' : 'normal',
                 wordWrap: this.wordWrap,
-                fontSize: uni.$uv.addUnit(this.size)
+                fontSize: addUnit(this.size)
             }
             !this.type && (style.color = this.color)
             this.isNvue && this.lines && (style.lines = this.lines)
             this.lineHeight &&
-                (style.lineHeight = uni.$uv.addUnit(this.lineHeight))
+                (style.lineHeight = addUnit(this.lineHeight))
             !this.isNvue && this.block && (style.display = 'block')
-            return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+            return deepMerge(style, addStyle(this.customStyle))
         },
         isNvue() {
             let nvue = false
@@ -161,9 +162,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 .uv-text {
     @include flex(row);
     align-items: center;

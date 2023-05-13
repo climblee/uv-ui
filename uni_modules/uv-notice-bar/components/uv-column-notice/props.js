@@ -51,6 +51,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.columnNotice
+		...uni.$uv?.props?.columnNotice
 	}
 }

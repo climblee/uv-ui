@@ -24,6 +24,6 @@ export default {
 			type: [String, Number],
 			default: 12
 		},
-		...uni.$uv.props?.lineProgress
+		...uni.$uv?.props?.lineProgress
 	}
 }

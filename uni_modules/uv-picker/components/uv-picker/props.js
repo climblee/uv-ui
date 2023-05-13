@@ -75,6 +75,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.picker
+		...uni.$uv?.props?.picker
 	}
 }

@@ -113,6 +113,6 @@ export default {
 			type: [Object, String],
 			default: ''
 		},
-		...uni.$uv.props?.numberBox
+		...uni.$uv?.props?.numberBox
 	}
 }

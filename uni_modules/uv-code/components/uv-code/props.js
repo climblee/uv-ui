@@ -30,6 +30,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.code
+		...uni.$uv?.props?.code
 	}
 }

@@ -120,6 +120,6 @@ export default {
 			type: Array,
 			default: () => []
 		},
-		...uni.$uv.props?.datetimePicker
+		...uni.$uv?.props?.datetimePicker
 	}
 }

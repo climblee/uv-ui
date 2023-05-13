@@ -58,6 +58,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.slider
+		...uni.$uv?.props?.slider
 	}
 }

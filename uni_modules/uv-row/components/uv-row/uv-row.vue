@@ -10,6 +10,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, deepMerge, sleep} from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE
@@ -55,10 +56,10 @@
 				}
 				// 通过给uv-row左右两边的负外边距，消除uv-col在有gutter时，第一个和最后一个元素的左内边距和右内边距造成的影响
 				if(this.gutter) {
-					style.marginLeft = uni.$uv.addUnit(-Number(this.gutter)/2)
-					style.marginRight = uni.$uv.addUnit(-Number(this.gutter)/2)
+					style.marginLeft = addUnit(-Number(this.gutter)/2)
+					style.marginRight = addUnit(-Number(this.gutter)/2)
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, addStyle(this.customStyle))
 			}
 		},
 		methods: {
@@ -67,7 +68,7 @@
 			},
 			async getComponentWidth() {
 				// 延时一定时间，以确保节点渲染完成
-				await uni.$uv.sleep()
+				await sleep()
 				return new Promise(resolve => {
 					// uvui封装的获取节点的方法，详见文档
 					// #ifndef APP-NVUE
@@ -89,7 +90,6 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-	
 	.uv-row {
 		@include flex;
 	}

@@ -55,6 +55,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.loadingIcon
+		...uni.$uv?.props?.loadingIcon
 	}
 }

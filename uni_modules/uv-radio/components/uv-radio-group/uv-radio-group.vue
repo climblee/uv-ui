@@ -11,7 +11,6 @@
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
-
 	/**
 	 * radioRroup 单选框父组件
 	 * @description 单选框用于有一个选择，用户只能选择其中一个的场景。搭配uv-radio使用
@@ -102,8 +101,7 @@
 </script>
 
 <style lang="scss" scoped>
-	
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	.uv-radio-group {
 		flex: 1;
 

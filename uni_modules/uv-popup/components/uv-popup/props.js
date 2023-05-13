@@ -75,6 +75,6 @@ export default {
 			type: [Number, String],
 			default: 0.5
 		},
-		...uni.$uv.props?.popup
+		...uni.$uv?.props?.popup
 	}
 }

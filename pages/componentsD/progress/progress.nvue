@@ -83,6 +83,7 @@
 </template>
 
 <script>
+	import { os, range, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -97,18 +98,18 @@
 		},
 		onLoad() {
 			// #ifdef APP-NVUE
-			this.androidNvue = uni.$uv.os() === 'android'
+			this.androidNvue = os() === 'android'
 			// #endif
-			uni.$uv.sleep(2500).then(() => {
+			sleep(2500).then(() => {
 				this.percentage1 = 120
 			})
 		},
 		methods: {
 			computedWidth(type) {
 				if(type === 'plus') {
-					this.percentage6 = uni.$uv.range(0, 100, this.percentage6 + 10)
+					this.percentage6 = range(0, 100, this.percentage6 + 10)
 				} else {
-					this.percentage6 = uni.$uv.range(0, 100, this.percentage6 - 10)
+					this.percentage6 = range(0, 100, this.percentage6 - 10)
 				}
 			}
 		},

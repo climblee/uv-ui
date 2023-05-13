@@ -38,6 +38,7 @@
 
 <script>
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+import { sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 export default {
     data() {
         return {
@@ -45,8 +46,8 @@ export default {
             show: false,
             style: {
                 position: "fixed",
-                top: `${uni.$uv.sys().windowHeight / 2 - 50}px`,
-                left: `${uni.$uv.sys().windowWidth / 2 - 50}px`,
+                top: `${sys().windowHeight / 2 - 50}px`,
+                left: `${sys().windowWidth / 2 - 50}px`,
                 width: "120px",
                 height: "120px",
                 backgroundColor: "#1989fa",
@@ -156,6 +157,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 .uv-page {
     padding: 0;
 }

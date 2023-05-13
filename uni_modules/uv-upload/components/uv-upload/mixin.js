@@ -1,3 +1,4 @@
+import { error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 export default {
     watch: {
         // 监听accept的变化，判断是否符合个平台要求
@@ -7,12 +8,12 @@ export default {
             handler(val) {
                 // #ifndef MP-WEIXIN
                 if (val === 'all' || val === 'media') {
-                    uni.$uv.error('只有微信小程序才支持把accept配置为all、media之一')
+                    error('只有微信小程序才支持把accept配置为all、media之一')
                 }
                 // #endif
                 // #ifndef H5 || MP-WEIXIN
                 if (val === 'file') {
-                    uni.$uv.error('只有微信小程序和H5(HX2.9.9)才支持把accept配置为file')
+                    error('只有微信小程序和H5(HX2.9.9)才支持把accept配置为file')
                 }
                 // #endif
             }

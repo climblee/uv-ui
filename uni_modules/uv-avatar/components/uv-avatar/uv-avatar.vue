@@ -54,6 +54,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, random } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -114,6 +115,13 @@
 			}
 		},
 		computed: {
+			$uv(){
+				return {
+					addStyle,
+					addUnit,
+					random
+				}
+			},
 			imageStyle() {
 				const style = {}
 				return style

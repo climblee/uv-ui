@@ -29,6 +29,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.line
+		...uni.$uv?.props?.line
 	}
 }

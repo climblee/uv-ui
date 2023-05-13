@@ -58,6 +58,7 @@
 </template>
 
 <script>
+	import { colorGradient } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -104,7 +105,7 @@
 			// 之所以需要这么做的原因是，比如父组件传了color为红色，那么需要另外的三个边为浅红色
 			// 而不能是固定的某一个其他颜色(因为这个固定的颜色可能浅蓝，导致效果没有那么细腻良好)
 			otherBorderColor() {
-				const lightColor = uni.$uv.colorGradient(this.color, '#ffffff', 100)[80]
+				const lightColor = colorGradient(this.color, '#ffffff', 100)[80]
 				if (this.mode === 'circle') {
 					return this.inactiveColor ? this.inactiveColor : lightColor
 				} else {
@@ -189,8 +190,8 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-loading-icon-color: #c8c9cc !default;
 	$uv-loading-icon-text-margin-left:4px !default;
 	$uv-loading-icon-text-color:$uv-content-color !default;

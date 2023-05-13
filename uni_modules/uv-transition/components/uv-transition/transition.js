@@ -20,7 +20,9 @@ import animationMap from './nvue.ani-map.js'
 const animation = uni.requireNativePlugin('animation')
 const getStyle = (name) => animationMap[name]
 // #endif
-
+// #ifdef H5
+import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+// #endif
 export default {
 		emits:['click','beforeEnter','enter','afterEnter','beforeLeave','leave','afterLeave'],
     methods: {
@@ -41,7 +43,7 @@ export default {
             this.classes = classNames.enter
             this.$nextTick(async () => {
 				// #ifdef H5
-				await uni.$uv.sleep(20)
+				await sleep(20)
 				// #endif
                 // 标识动画尚未结束
                 this.$emit('enter')

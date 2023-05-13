@@ -15,6 +15,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.collapse
+		...uni.$uv?.props?.collapse
 	}
 }

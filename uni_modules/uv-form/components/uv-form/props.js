@@ -41,6 +41,6 @@ export default {
 			type: Object,
 			default: () => ({})
 		},
-		...uni.$uv.props?.form
+		...uni.$uv?.props?.form
 	}
 }

@@ -35,6 +35,6 @@ export default {
 			type: [String, Number],
 			default: 300
 		},
-		...uni.$uv.props?.swipeActionItem
+		...uni.$uv?.props?.swipeActionItem
 	}
 }

@@ -20,6 +20,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.stepsItem
+		...uni.$uv?.props?.stepsItem
 	}
 }

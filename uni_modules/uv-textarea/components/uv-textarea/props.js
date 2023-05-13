@@ -123,6 +123,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.textarea
+		...uni.$uv?.props?.textarea
 	}
 }

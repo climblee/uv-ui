@@ -35,6 +35,6 @@ export default {
 			type: [String, Number],
 			default: 80
 		},
-		...uni.$uv.props?.rowNotice
+		...uni.$uv?.props?.rowNotice
 	}
 }

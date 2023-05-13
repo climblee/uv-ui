@@ -16,6 +16,7 @@
 </template>
 
 <script>
+	import { sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -38,7 +39,7 @@
 				rect: {},
 				index: 0,
 				show: true,
-				sys: uni.$uv.sys()
+				sys: sys()
 			}
 		},
 		computed: {

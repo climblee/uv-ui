@@ -68,6 +68,7 @@
 </template>
 
 <script>
+	import { image } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -104,6 +105,13 @@
 			}
 		},
 		computed: {
+			$uv(){
+				return {
+					test: {
+						image
+					}
+				}
+			},
 			style() {
 				const style = {}
 				if (this.bgColor) {

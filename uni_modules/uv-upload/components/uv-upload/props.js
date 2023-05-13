@@ -120,6 +120,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.upload
+		...uni.$uv?.props?.upload
 	}
 }

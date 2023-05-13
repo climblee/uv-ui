@@ -73,6 +73,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.rate
+		...uni.$uv?.props?.rate
 	}
 }

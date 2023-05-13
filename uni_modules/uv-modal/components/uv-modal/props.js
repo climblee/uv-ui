@@ -80,6 +80,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.modal
+		...uni.$uv?.props?.modal
 	}
 }

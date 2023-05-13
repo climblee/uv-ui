@@ -66,6 +66,6 @@ export default {
 			type: String,
 			default: 'name'
 		},
-		...uni.$uv.props?.tabs
+		...uni.$uv?.props?.tabs
 	}
 }

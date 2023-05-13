@@ -75,6 +75,7 @@
 </template>
 
 <script>
+	import { getPx, addUnit  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -144,14 +145,14 @@
 		computed: {
 			getCursorSpacing() {
 				// 判断传入的单位，如果为px单位，需要转成px
-				return uni.$uv.getPx(this.cursorSpacing)
+				return getPx(this.cursorSpacing)
 			},
 			// 按钮的样式
 			buttonStyle() {
 				return (type) => {
 					const style = {
 						backgroundColor: this.bgColor,
-						height: uni.$uv.addUnit(this.buttonSize),
+						height: addUnit(this.buttonSize),
 						color: this.color
 					}
 					if (this.isDisabled(type)) {
@@ -166,8 +167,8 @@
 				const style = {
 					color: this.color,
 					backgroundColor: this.bgColor,
-					height: uni.$uv.addUnit(this.buttonSize),
-					width: uni.$uv.addUnit(this.inputWidth)
+					height: addUnit(this.buttonSize),
+					width: addUnit(this.inputWidth)
 				}
 				return style
 			},

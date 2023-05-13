@@ -1,4 +1,4 @@
-import test from './test.js'
+import { number, empty } from './test.js'
 import { round } from './digit.js'
 /**
  * @description 如果value小于min，取min；如果value大于max，取max
@@ -17,7 +17,7 @@ function range(min = 0, max = 0, value = 0) {
  * @returns {number|string}
  */
 function getPx(value, unit = false) {
-	if (test.number(value)) {
+	if (number(value)) {
 		return unit ? `${value}px` : Number(value)
 	}
 	// 如果带有rpx，先取出其数值部分，再转为px值
@@ -133,7 +133,7 @@ function $parent(name = undefined) {
  */
 function addStyle(customStyle, target = 'object') {
 	// 字符串转字符串，对象转对象情形，直接返回
-	if (test.empty(customStyle) || typeof(customStyle) === 'object' && target === 'object' || target === 'string' &&
+	if (empty(customStyle) || typeof(customStyle) === 'object' && target === 'object' || target === 'string' &&
 		typeof(customStyle) === 'string') {
 		return customStyle
 	}
@@ -173,7 +173,7 @@ function addStyle(customStyle, target = 'object') {
 function addUnit(value = 'auto', unit = uni?.$uv?.config?.unit ?? 'px') {
 	value = String(value)
 	// 用uvui内置验证规则中的number判断是否为数值
-	return test.number(value) ? `${value}${unit}` : value
+	return number(value) ? `${value}${unit}` : value
 }
 
 /**
@@ -293,20 +293,20 @@ if (!String.prototype.padStart) {
  * @param {String} fmt 格式化规则 yyyy:mm:dd|yyyy:mm|yyyy年mm月dd日|yyyy年mm月dd日 hh时MM分等,可自定义组合 默认yyyy-mm-dd
  * @returns {string} 返回格式化后的字符串
  */
- function timeFormat(dateTime = null, formatStr = 'yyyy-mm-dd') {
-  let date
+function timeFormat(dateTime = null, formatStr = 'yyyy-mm-dd') {
+	let date
 	// 若传入时间为假值，则取当前时间
-  if (!dateTime) {
-    date = new Date()
-  }
-  // 若为unix秒时间戳，则转为毫秒时间戳（逻辑有点奇怪，但不敢改，以保证历史兼容）
-  else if (/^\d{10}$/.test(dateTime?.toString().trim())) {
-    date = new Date(dateTime * 1000)
-  }
-  // 若用户传入字符串格式时间戳，new Date无法解析，需做兼容
-  else if (typeof dateTime === 'string' && /^\d+$/.test(dateTime.trim())) {
-    date = new Date(Number(dateTime))
-  }
+	if (!dateTime) {
+		date = new Date()
+	}
+	// 若为unix秒时间戳，则转为毫秒时间戳（逻辑有点奇怪，但不敢改，以保证历史兼容）
+	else if (/^\d{10}$/.test(dateTime?.toString().trim())) {
+		date = new Date(dateTime * 1000)
+	}
+	// 若用户传入字符串格式时间戳，new Date无法解析，需做兼容
+	else if (typeof dateTime === 'string' && /^\d+$/.test(dateTime.trim())) {
+		date = new Date(Number(dateTime))
+	}
 	// 处理平台性差异，在Safari/Webkit中，new Date仅支持/作为分割符的字符串时间
 	// 处理 '2022-07-10 01:02:03'，跳过 '2022-07-10T01:02:03'
 	else if (typeof dateTime === 'string' && dateTime.includes('-') && !dateTime.includes('T')) {
@@ -327,16 +327,16 @@ if (!String.prototype.padStart) {
 		// 有其他格式化字符需求可以继续添加，必须转化成字符串
 	}
 
-  for (const key in timeSource) {
-    const [ret] = new RegExp(`${key}+`).exec(formatStr) || []
-    if (ret) {
-      // 年可能只需展示两位
-      const beginIndex = key === 'y' && ret.length === 2 ? 2 : 0
-      formatStr = formatStr.replace(ret, timeSource[key].slice(beginIndex))
-    }
-  }
+	for (const key in timeSource) {
+		const [ret] = new RegExp(`${key}+`).exec(formatStr) || []
+		if (ret) {
+			// 年可能只需展示两位
+			const beginIndex = key === 'y' && ret.length === 2 ? 2 : 0
+			formatStr = formatStr.replace(ret, timeSource[key].slice(beginIndex))
+		}
+	}
 
-  return formatStr
+	return formatStr
 }
 
 /**
@@ -573,8 +573,8 @@ function padZero(value) {
  * @param {*} event
  */
 function formValidate(instance, event) {
-	const formItem = uni.$uv.$parent.call(instance, 'uv-form-item')
-	const form = uni.$uv.$parent.call(instance, 'uv-form')
+	const formItem = $parent.call(instance, 'uv-form-item')
+	const form = $parent.call(instance, 'uv-form')
 	// 如果发生变化的input或者textarea等，其父组件中有uv-form-item或者uv-form等，就执行form的validate方法
 	// 同时将form-item的pros传递给form，让其进行精确对象验证
 	if (formItem && form) {
@@ -675,6 +675,8 @@ function getHistoryPage(back = 0) {
 	return pages[len - 1 + back]
 }
 
+
+
 /**
  * @description 修改uvui内置属性值
  * @param {object} props 修改内置props属性
@@ -695,10 +697,9 @@ function setConfig({
 	uni.$uv.props = deepMerge(uni.$uv.props, props)
 	uni.$uv.color = deepMerge(uni.$uv.color, color)
 	uni.$uv.zIndex = deepMerge(uni.$uv.zIndex, zIndex)
-	console.log(uni.$uv.config,uni.$uv.props)
 }
 
-export default {
+export {
 	range,
 	getPx,
 	sleep,

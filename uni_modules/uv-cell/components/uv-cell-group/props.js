@@ -10,6 +10,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.cellGroup
+		...uni.$uv?.props?.cellGroup
 	}
 }

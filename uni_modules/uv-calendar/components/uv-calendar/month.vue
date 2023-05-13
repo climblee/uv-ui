@@ -31,6 +31,9 @@
 	// 由于nvue不支持百分比单位，需要查询宽度来计算每个日期的宽度
 	const dom = uni.requireNativePlugin('dom')
 	// #endif
+	import { colorGradient } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js';
+	import { addUnit, sleep, deepClone, toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.js'
@@ -155,13 +158,13 @@
 					const dayWidth = Number(parseFloat(this.width / 7).toFixed(3).slice(0, -1))
 					// 得出每个日期的宽度
 					// #ifdef APP-NVUE
-					style.width = uni.$uv.addUnit(dayWidth)
+					style.width = addUnit(dayWidth)
 					// #endif
-					style.height = uni.$uv.addUnit(this.rowHeight)
+					style.height = addUnit(this.rowHeight)
 					if (index2 === 0) {
 						// 获取当前为星期几，如果为0，则为星期天，减一为每月第一天时，需要向左偏移的item个数
 						week = (week === 0 ? 7 : week) - 1
-						style.marginLeft = uni.$uv.addUnit(week * dayWidth)
+						style.marginLeft = addUnit(week * dayWidth)
 					}
 					if (this.mode === 'range') {
 						// 之所以需要这么写，是因为DCloud公司的iOS客户端的开发者能力有限导致的bug
@@ -205,7 +208,7 @@
 							// 处于第一和最后一个之间的日期，背景色设置为浅色，通过将对应颜色进行等分，再取其尾部的颜色值
 							if (dayjs(date).isAfter(dayjs(this.selected[0])) && dayjs(date).isBefore(dayjs(this
 									.selected[len]))) {
-								style.backgroundColor = uni.$uv.colorGradient(this.color, '#ffffff', 100)[90]
+								style.backgroundColor = colorGradient(this.color, '#ffffff', 100)[90]
 								// 增加一个透明度，让范围区间的背景色也能看到底部的mark水印字符
 								style.opacity = 0.7
 							}
@@ -288,7 +291,7 @@
 				this.$nextTick(() => {
 					// 这里需要另一个延时，因为获取宽度后，会进行月份数据渲染，只有渲染完成之后，才有真正的高度
 					// 因为nvue下，$nextTick并不是100%可靠的
-					uni.$uv.sleep(10).then(() => {
+					sleep(10).then(() => {
 						this.getWrapperWidth()
 						this.getMonthRect()
 					})
@@ -333,7 +336,7 @@
 			getMonthRectByPromise(el) {
 				// #ifndef APP-NVUE
 				// $uvGetRect为uvui自带的节点查询简化方法，详见文档介绍：https://www.uvui.cn/js/getRect.html
-				// 组件内部一般用this.$uvGetRect，对外的为uni.$uv.getRect，二者功能一致，名称不同
+				// 组件内部一般用this.$uvGetRect，对外的为getRect，二者功能一致，名称不同
 				return new Promise(resolve => {
 					this.$uvGetRect(`.${el}`).then(size => {
 						resolve(size)
@@ -360,7 +363,7 @@
 				const date = dayjs(item.date).format("YYYY-MM-DD")
 				if (item.disabled) return
 				// 对上一次选择的日期数组进行深度克隆
-				let selected = uni.$uv.deepClone(this.selected)
+				let selected = deepClone(this.selected)
 				if (this.mode === 'single') {
 					// 单选情况下，让数组中的元素为当前点击的日期
 					selected = [date]
@@ -388,9 +391,9 @@
 							// 当前日期减去最大可选的日期天数，如果大于起始时间，则进行提示
 							if(dayjs(dayjs(date).subtract(this.maxRange, 'day')).isAfter(dayjs(selected[0])) && this.showRangePrompt) {
 								if(this.rangePrompt) {
-									uni.$uv.toast(this.rangePrompt)
+									toast(this.rangePrompt)
 								} else {
-									uni.$uv.toast(`选择天数不能超过 ${this.maxRange} 天`)
+									toast(`选择天数不能超过 ${this.maxRange} 天`)
 								}
 								return
 							}
@@ -430,14 +433,14 @@
 				const maxDate = this.maxDate || dayjs(minDate).add(this.maxMonth - 1, 'month').format("YYYY-MM-DD")
 				if (this.mode === 'single') {
 					// 单选模式，可以是字符串或数组，Date对象等
-					if (!uni.$uv.test.array(this.defaultDate)) {
+					if (!array(this.defaultDate)) {
 						defaultDate = [dayjs(this.defaultDate).format("YYYY-MM-DD")]
 					} else {
 						defaultDate = [this.defaultDate[0]]
 					}
 				} else {
 					// 如果为非数组，则不执行
-					if (!uni.$uv.test.array(this.defaultDate)) return
+					if (!array(this.defaultDate)) return
 					defaultDate = this.defaultDate
 				}
 				// 过滤用户传递的默认数组，取出只在可允许最大值与最小值之间的元素

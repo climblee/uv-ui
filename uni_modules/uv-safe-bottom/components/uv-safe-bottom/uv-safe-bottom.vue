@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	/**
@@ -22,7 +23,7 @@
 	 */
 	export default {
 		name: "uv-safe-bottom",
-		mixins: [mpMixin,mixin],
+		mixins: [mpMixin, mixin],
 		data() {
 			return {
 				safeAreaBottomHeight: 0,
@@ -34,9 +35,9 @@
 				const style = {};
 				// #ifdef APP-NVUE
 				// nvue下，高度使用js计算填充
-				style.height = uni.$uv.addUnit(uni.$uv.sys().safeAreaInsets.bottom, 'px');
+				style.height = addUnit(sys().safeAreaInsets.bottom, 'px');
 				// #endif
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle));
+				return deepMerge(style, addStyle(this.customStyle));
 			},
 		},
 		mounted() {

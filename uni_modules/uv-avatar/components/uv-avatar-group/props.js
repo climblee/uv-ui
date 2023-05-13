@@ -48,6 +48,6 @@ export default {
 			type: [Number, String],
 			default: 0
 		},
-		...uni.$uv.props?.avatarGroup
+		...uni.$uv?.props?.avatarGroup
 	}
 }

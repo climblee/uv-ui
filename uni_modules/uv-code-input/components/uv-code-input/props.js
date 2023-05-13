@@ -83,6 +83,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		...uni.$uv.props?.codeInput
+		...uni.$uv?.props?.codeInput
 	}
 }

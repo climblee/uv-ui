@@ -25,6 +25,6 @@ export default {
 			type: String,
 			default: ''
 		},
-		...uni.$uv.props?.swiperIndicator
+		...uni.$uv?.props?.swiperIndicator
 	}
 }

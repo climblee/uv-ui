@@ -20,6 +20,6 @@ export default {
 			type: [String, Number],
 			default: 0
 		},
-		...uni.$uv.props?.gap
+		...uni.$uv?.props?.gap
 	}
 }

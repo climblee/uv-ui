@@ -85,6 +85,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.checkboxGroup
+		...uni.$uv?.props?.checkboxGroup
 	}
 }

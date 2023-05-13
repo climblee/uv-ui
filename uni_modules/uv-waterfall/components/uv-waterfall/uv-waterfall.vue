@@ -66,6 +66,7 @@
 	</view>
 </template>
 <script>
+	import { sys, deepClone, deepMerge  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -100,17 +101,17 @@
 				list5: [],
 				// 临时列表
 				tempList: [],
-				sys: uni.$uv.sys()
+				sys: sys()
 			}
 		},
 		computed: {
 			// 破坏value变量引用，否则数据会保持不变
 			copyValue() {
 				// #ifdef VUE2
-				return uni.$uv.deepClone(this.value)
+				return deepClone(this.value)
 				// #endif
 				// #ifdef VUE3
-				return uni.$uv.deepClone(this.modelValue)
+				return deepClone(this.modelValue)
 				// #endif
 			},
 			columnNum() {
@@ -118,28 +119,28 @@
 			},
 			gapLeftStyle() {
 				const style = {}
-				style.width = uni.$uv.addUnit(this.leftGap)
+				style.width = this.$uv.addUnit(this.leftGap)
 				return style;
 			},
 			gapRightStyle() {
 				const style = {}
-				style.width = uni.$uv.addUnit(this.rightGap)
+				style.width = this.$uv.addUnit(this.rightGap)
 				return style;
 			},
 			gapCenterStyle() {
 				const style = {}
-				style.width = uni.$uv.addUnit(this.columnGap)
+				style.width = this.$uv.addUnit(this.columnGap)
 				return style;
 			},
 			nvueWaterfallStyle(){
 				const style = {},
-				addUnit = uni.$uv.addUnit
+				addUnit = this.$uv.addUnit
 				if (this.width != 0) style.width = addUnit(this.width)
 				if (this.height != 0) style.height = addUnit(this.height)
 				// 如果没有定义列表高度，则默认使用屏幕高度
 				if (!style.width) style.width = addUnit(this.sys.windowWidth, 'px')
 				if (!style.height) style.height = addUnit(this.sys.windowHeight, 'px')
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		watch: {
@@ -148,21 +149,21 @@
 				// 取出数组发生变化的部分
 				let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
 				// 拼接原有数据
-				this.tempList = this.tempList.concat(uni.$uv.deepClone(nVal.slice(startIndex)))
+				this.tempList = this.tempList.concat(deepClone(nVal.slice(startIndex)))
 				this.splitData()
 				// #endif
 			}
 		},
 		mounted() {
 			// #ifndef APP-NVUE
-			this.tempList = uni.$uv.deepClone(this.copyValue)
+			this.tempList = deepClone(this.copyValue)
 			this.splitData()
 			// #endif
 		},
 		methods: {
 			// 滚动到底部触发事件
 			scrolltolower(e) {
-				uni.$uv.sleep(30).then(() => {
+				sleep(30).then(() => {
 					this.$emit('scrolltolower')
 				})
 			},

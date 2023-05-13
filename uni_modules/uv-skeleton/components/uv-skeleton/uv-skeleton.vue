@@ -49,6 +49,8 @@
 </template>
 
 <script>
+	import { error, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -90,26 +92,26 @@
 		computed: {
 			rowsArray() {
 				if (/%$/.test(this.rowsHeight)) {
-					uni.$uv.error('rowsHeight参数不支持百分比单位')
+					error('rowsHeight参数不支持百分比单位')
 				}
 				const rows = []
 				for (let i = 0; i < this.rows; i++) {
 					let item = {},
 						// 需要预防超出数组边界的情况
-						rowWidth = uni.$uv.test.array(this.rowsWidth) ? (this.rowsWidth[i] || (i === this.row - 1 ? '70%' : '100%')) : i ===
+						rowWidth = array(this.rowsWidth) ? (this.rowsWidth[i] || (i === this.row - 1 ? '70%' : '100%')) : i ===
 						this.rows - 1 ? '70%' : this.rowsWidth,
-						rowHeight = uni.$uv.test.array(this.rowsHeight) ? (this.rowsHeight[i] || '18px') : this.rowsHeight
+						rowHeight = array(this.rowsHeight) ? (this.rowsHeight[i] || '18px') : this.rowsHeight
 					// 如果有title占位图，第一个段落占位图的外边距需要大一些，如果没有title占位图，第一个段落占位图则无需外边距
 					// 之所以需要这么做，是因为weex的无能，以提升性能为借口不支持css的一些伪类
 					item.marginTop = !this.title && i === 0 ? 0 : this.title && i === 0 ? '20px' : '12px'
 					// 如果设置的为百分比的宽度，转换为px值，因为nvue不支持百分比单位
 					if (/%$/.test(rowWidth)) {
 						// 通过parseInt提取出百分比单位中的数值部分，除以100得到百分比的小数值
-						item.width = uni.$uv.addUnit(this.width * parseInt(rowWidth) / 100)
+						item.width = this.$uv.addUnit(this.width * parseInt(rowWidth) / 100)
 					} else {
-						item.width = uni.$uv.addUnit(rowWidth)
+						item.width = this.$uv.addUnit(rowWidth)
 					}
-					item.height = uni.$uv.addUnit(rowHeight)
+					item.height = this.$uv.addUnit(rowHeight)
 					rows.push(item)
 				}
 				// console.log(rows);
@@ -119,11 +121,11 @@
 				let tWidth = 0
 				if (/%$/.test(this.titleWidth)) {
 					// 通过parseInt提取出百分比单位中的数值部分，除以100得到百分比的小数值
-					tWidth = uni.$uv.addUnit(this.width * parseInt(this.titleWidth) / 100)
+					tWidth = this.$uv.addUnit(this.width * parseInt(this.titleWidth) / 100)
 				} else {
-					tWidth = uni.$uv.addUnit(this.titleWidth)
+					tWidth = this.$uv.addUnit(this.titleWidth)
 				}
-				return uni.$uv.addUnit(tWidth)
+				return this.$uv.addUnit(tWidth)
 			},
 			
 		},
@@ -140,7 +142,7 @@
 			async setNvueAnimation() {
 				// #ifdef APP-NVUE
 				// 为了让opacity:1的状态保持一定时间，这里做一个延时
-				await uni.$uv.sleep(500)
+				await sleep(500)
 				const skeleton = this.$refs['uv-skeleton__wrapper'];
 				skeleton && this.loading && this.animate && animation.transition(skeleton, {
 					styles: {
@@ -165,7 +167,7 @@
 			// 获取组件的宽度
 			async getComponentWidth() {
 				// 延时一定时间，以获取dom尺寸
-				await uni.$uv.sleep(20)
+				await sleep(20)
 				// #ifndef APP-NVUE
 				this.$uvGetRect('.uv-skeleton__wrapper__content').then(size => {
 					this.width = size.width

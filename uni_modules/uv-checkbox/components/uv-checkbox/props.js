@@ -65,6 +65,6 @@ export default {
 			type: [String, Boolean],
 			default: ''
 		},
-		...uni.$uv.props?.checkbox
+		...uni.$uv?.props?.checkbox
 	}
 }

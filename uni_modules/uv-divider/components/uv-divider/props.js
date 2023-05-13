@@ -40,6 +40,6 @@ export default {
 			type: String,
 			default: '#dcdfe6'
 		},
-		...uni.$uv.props?.divider
+		...uni.$uv?.props?.divider
 	}
 }

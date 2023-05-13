@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
-import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
-import props from "./props.js";
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+	import props from "./props.js";
 /**
  * loadingPage 加载动画
  * @description 警此组件为一个小动画，目前用在uvui的loadmore加载更多和switch开关等组件的正在加载状态场景。

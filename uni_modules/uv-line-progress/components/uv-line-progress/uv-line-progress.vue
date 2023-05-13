@@ -24,6 +24,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, range, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -60,12 +61,12 @@
 				let style = {}
 				style.width = this.lineWidth
 				style.backgroundColor = this.activeColor
-				style.height = uni.$uv.addUnit(this.height)
+				style.height = addUnit(this.height)
 				return style
 			},
 			innserPercentage() {
 				// 控制范围在0-100之间
-				return uni.$uv.range(0, 100, this.percentage)
+				return range(0, 100, this.percentage)
 			}
 		},
 		mounted() {
@@ -73,7 +74,7 @@
 		},
 		methods: {
 			init() {
-				uni.$uv.sleep(20).then(() => {
+				sleep(20).then(() => {
 					this.resizeProgressWidth()
 				})
 			},

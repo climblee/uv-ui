@@ -90,6 +90,7 @@
 </template>
 
 <script>
+	import { guid, sys, getPx, sleep, toast  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -124,8 +125,8 @@
 				// 是否展示气泡
 				showTooltip: true,
 				// 生成唯一id，防止一个页面多个组件，造成干扰
-				textId: uni.$uv.guid(),
-				tooltipId: uni.$uv.guid(),
+				textId: guid(),
+				tooltipId: guid(),
 				// 初始时甚至为很大的值，让其移到屏幕外面，为了计算元素的尺寸
 				tooltipTop: -10000,
 				// 气泡的位置信息
@@ -166,18 +167,16 @@
 				const style = {
 						transform: `translateY(${this.direction === 'top' ? '-100%' : '100%'})`,
 					},
-					sys = uni.$uv.sys(),
-					getPx = uni.$uv.getPx,
-					addUnit = uni.$uv.addUnit
+					addUnit = this.$uv.addUnit
 				if (this.tooltipInfo.width / 2 > this.textInfo.left + this.textInfo.width / 2 - this.screenGap) {
 					this.indicatorStyle = {}
 					style.left = `-${addUnit(this.textInfo.left - this.screenGap)}`
 					this.indicatorStyle.left = addUnit(this.textInfo.width / 2 - getPx(style.left) - this.indicatorWidth /
 						2)
-				} else if (this.tooltipInfo.width / 2 > sys.windowWidth - this.textInfo.right + this.textInfo.width / 2 -
+				} else if (this.tooltipInfo.width / 2 > sys().windowWidth - this.textInfo.right + this.textInfo.width / 2 -
 					this.screenGap) {
 					this.indicatorStyle = {}
-					style.right = `-${addUnit(sys.windowWidth - this.textInfo.right - this.screenGap)}`
+					style.right = `-${addUnit(sys().windowWidth - this.textInfo.right - this.screenGap)}`
 					this.indicatorStyle.right = addUnit(this.textInfo.width / 2 - getPx(style.right) - this
 						.indicatorWidth / 2)
 				} else {
@@ -223,7 +222,7 @@
 			// 查询内容高度
 			queryRect(ref) {
 				// #ifndef APP-NVUE
-				// 组件内部一般用this.$uvGetRect，对外的为uni.$uv.getRect，二者功能一致，名称不同
+				// 组件内部一般用this.$uvGetRect，对外的为getRect，二者功能一致，名称不同
 				return new Promise(resolve => {
 					this.$uvGetRect(`#${ref}`).then(size => {
 						resolve(size)
@@ -246,7 +245,7 @@
 				// 调用之前，先将指示器调整到屏幕外，方便获取尺寸
 				this.showTooltip = true
 				this.tooltipTop = -10000
-				uni.$uv.sleep(500).then(() => {
+				sleep(500).then(() => {
 					this.queryRect(this.tooltipId).then(size => {
 						this.tooltipInfo = size
 						// 获取气泡尺寸之后，将其隐藏，为了让下次切换气泡显示与隐藏时，有淡入淡出的效果
@@ -266,10 +265,10 @@
 					// 优先使用copyText字段，如果没有，则默认使用text字段当做复制的内容
 					data: this.copyText || this.text,
 					success: () => {
-						this.showToast && uni.$uv.toast('复制成功')
+						this.showToast && toast('复制成功')
 					},
 					fail: () => {
-						this.showToast && uni.$uv.toast('复制失败')
+						this.showToast && toast('复制失败')
 					},
 					complete: () => {
 						this.showTooltip = false

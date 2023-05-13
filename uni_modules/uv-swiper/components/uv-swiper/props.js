@@ -121,6 +121,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.swiper
+		...uni.$uv?.props?.swiper
 	}
 }

@@ -23,6 +23,7 @@
 </template>
 
 <script>
+	import { deepMerge, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -59,7 +60,7 @@
 					zIndex: this.zIndex
 				}
 				// 合并来自父组件的customStyle样式
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, this.$uv.addStyle(this.customStyle))
 			},
 			// 监听多个参数的变化，通过在computed执行对应的操作
 			updateChild() {
@@ -94,7 +95,7 @@
 			async setPlaceholderHeight() {
 				if (!this.fixed || !this.placeholder) return
 				// 延时一定时间
-				await uni.$uv.sleep(20)
+				await sleep(20)
 				// #ifndef APP-NVUE
 				this.$uvGetRect('.uv-tabbar__content').then(({height = 50}) => {
 					// 修复IOS safearea bottom 未填充高度

@@ -46,6 +46,7 @@
 </template>
 
 <script>
+	import { getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -109,7 +110,7 @@
 			// 循环item的样式
 			itemStyle() {
 				return index => {
-					const addUnit = uni.$uv.addUnit
+					const addUnit = this.$uv.addUnit
 					const style = {
 						width: addUnit(this.size),
 						height: addUnit(this.size)
@@ -119,7 +120,7 @@
 						// 设置盒子的边框，如果是细边框，则设置为0.5px宽度
 						style.border = `${this.hairline ? 0.5 : 1}px solid ${this.borderColor}`
 						// 如果盒子间距为0的话
-						if (uni.$uv.getPx(this.space) === 0) {
+						if (getPx(this.space) === 0) {
 							// 给第一和最后一个盒子设置圆角
 							if (index === 0) {
 								style.borderTopLeftRadius = '3px'
@@ -154,7 +155,7 @@
 			lineStyle() {
 				const style = {}
 				style.height = this.hairline ? '2px' : '4px'
-				style.width = uni.$uv.addUnit(this.size)
+				style.width = this.$uv.addUnit(this.size)
 				// 线条模式下，背景色即为边框颜色
 				style.backgroundColor = this.borderColor
 				return style

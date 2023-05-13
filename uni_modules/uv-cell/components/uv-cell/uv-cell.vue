@@ -23,7 +23,7 @@
 			<slot name="value">
 				<text class="uv-cell__value"
 					:class="[disabled && 'uv-cell--disabled', size === 'large' && 'uv-cell__value--large']"
-					v-if="!$uv.test.empty(value)">{{ value }}</text>
+					v-if="!$uv.empty(value)">{{ value }}</text>
 			</slot>
 			<view class="uv-cell__right-icon-wrap" v-if="$slots['right-icon'] || isLink"
 				:class="[`uv-cell__right-icon-wrap--${arrowDirection}`]">
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+	import { addStyle } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
+	import { empty } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -79,8 +81,14 @@
 		},
 		mixins: [mpMixin, mixin, props],
 		computed: {
+			$uv() {
+				return {
+					addStyle,
+					empty
+				}
+			},
 			titleTextStyle() {
-				return uni.$uv.addStyle(this.titleStyle)
+				return addStyle(this.titleStyle)
 			}
 		},
 		methods: {
@@ -100,9 +108,8 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-cell-padding: 10px 15px !default;
 	$uv-cell-font-size: 15px !default;
 	$uv-cell-line-height: 24px !default;

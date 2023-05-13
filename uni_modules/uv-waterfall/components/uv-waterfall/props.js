@@ -64,6 +64,6 @@ export default {
 			type: [Number, String],
 			default: ''
 		},
-		...uni.$uv.props?.waterfall
+		...uni.$uv?.props?.waterfall
 	}
 }

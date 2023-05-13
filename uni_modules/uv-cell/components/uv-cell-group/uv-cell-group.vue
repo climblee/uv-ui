@@ -30,7 +30,7 @@
 	 */
 	export default {
 		name: 'uv-cell-group',
-		mixins: [mpMixin, mixin, props],
+		mixins: [mpMixin, mixin, props]
 	}
 </script>
 

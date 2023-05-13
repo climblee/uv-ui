@@ -25,6 +25,6 @@ export default {
 			type: [String, Number],
 			default: 0
 		},
-		...uni.$uv.props?.indexList
+		...uni.$uv?.props?.indexList
 	}
 }

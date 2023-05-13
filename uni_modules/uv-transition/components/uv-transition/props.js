@@ -20,6 +20,6 @@ export default {
 			type: String,
 			default: 'ease-out'
 		},
-		...uni.$uv.props?.transition
+		...uni.$uv?.props?.transition
 	}
 }

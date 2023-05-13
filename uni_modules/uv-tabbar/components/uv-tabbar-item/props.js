@@ -30,6 +30,6 @@ export default {
 			type: [Object, String],
 			default: 'top: 6px;right:2px;'
 		},
-		...uni.$uv.props?.tabbarItem
+		...uni.$uv?.props?.tabbarItem
 	}
 }

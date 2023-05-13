@@ -7,6 +7,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -33,9 +34,9 @@
 			linkStyle() {
 				const style = {
 					color: this.color,
-					fontSize: uni.$uv.addUnit(this.fontSize),
+					fontSize: addUnit(this.fontSize),
 					// line-height设置为比字体大小多2px
-					lineHeight: uni.$uv.addUnit(uni.$uv.getPx(this.fontSize) + 2),
+					lineHeight: addUnit(getPx(this.fontSize) + 2),
 					textDecoration: this.underLine ? 'underline' : 'none'
 				}
 				return style
@@ -55,7 +56,7 @@
 					success: () => {
 						uni.hideToast();
 						this.$nextTick(() => {
-							uni.$uv.toast(this.mpTips);
+							toast(this.mpTips);
 						})
 					}
 				});

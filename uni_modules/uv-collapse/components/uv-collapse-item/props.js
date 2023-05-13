@@ -55,6 +55,6 @@ export default {
 			type: Number,
 			default: 300
 		},
-		...uni.$uv.props?.collapseItem
+		...uni.$uv?.props?.collapseItem
 	}
 }

@@ -88,6 +88,6 @@ export default {
 			type: String,
 			default: 'left'
 		},
-		...uni.$uv.props?.radioGroup
+		...uni.$uv?.props?.radioGroup
 	}
 }

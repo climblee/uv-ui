@@ -68,6 +68,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		...uni.$uv.props?.badge
+		...uni.$uv?.props?.badge
 	}
 }

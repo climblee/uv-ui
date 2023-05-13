@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, getPx, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -56,8 +57,8 @@
 			colStyle() {
 				const style = {
 					// 这里写成"padding: 0 10px"的形式是因为nvue的需要
-					paddingLeft: uni.$uv.addUnit(uni.$uv.getPx(this.parentData.gutter)/2),
-					paddingRight: uni.$uv.addUnit(uni.$uv.getPx(this.parentData.gutter)/2),
+					paddingLeft: addUnit(getPx(this.parentData.gutter)/2),
+					paddingRight: addUnit(getPx(this.parentData.gutter)/2),
 					alignItems: this.uAlignItem,
 					justifyContent: this.uJustify,
 					textAlign: this.textAlign,
@@ -68,11 +69,11 @@
 					// #endif
 					// #ifdef APP-NVUE
 					// 在nvue上，由于无法使用百分比单位，这里需要获取父组件的宽度，再计算得出该有对应的百分比尺寸
-					width: uni.$uv.addUnit(Math.floor(this.width / this.gridNum * Number(this.span))),
-					marginLeft: uni.$uv.addUnit(Math.floor(this.width / this.gridNum * Number(this.offset))),
+					width: addUnit(Math.floor(this.width / this.gridNum * Number(this.span))),
+					marginLeft: addUnit(Math.floor(this.width / this.gridNum * Number(this.offset))),
 					// #endif
 				}
-				return uni.$uv.deepMerge(style, uni.$uv.addStyle(this.customStyle))
+				return deepMerge(style, addStyle(this.customStyle))
 			}
 		},
 		mounted() {

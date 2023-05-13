@@ -32,6 +32,8 @@
 </template>
 
 <script>
+	import { addStyle, addUnit } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { object } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -61,6 +63,14 @@
 			}
 		},
 		computed: {
+			$uv(){
+				return {
+					addUnit,
+					test: {
+						object
+					}
+				}
+			},
 			showUrl() {
 				return this.urls.slice(0, this.maxCount)
 			}

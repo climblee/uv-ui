@@ -28,6 +28,7 @@
 </template>
 
 <script>
+	import { addStyle, addUnit, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -59,7 +60,7 @@
 				immediate: true,
 				handler(n) {
 					if(n !== this.inactiveValue && n !== this.activeValue) {
-						uni.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+						error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
 					}
 				}
 			}
@@ -69,7 +70,7 @@
 				immediate: true,
 				handler(n) {
 					if(n !== this.inactiveValue && n !== this.activeValue) {
-						uni.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+						error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
 					}
 				}
 			}
@@ -100,8 +101,8 @@
 			switchStyle() {
 				let style = {}
 				// 这里需要加2，是为了腾出边框的距离，否则圆点node会和外边框紧贴在一起
-				style.width = uni.$uv.addUnit(this.size * 2 + 2)
-				style.height = uni.$uv.addUnit(Number(this.size) + 2)
+				style.width = addUnit(this.size * 2 + 2)
+				style.height = addUnit(Number(this.size) + 2)
 				// 如果自定义了“非激活”演示，name边框颜色设置为透明(跟非激活颜色一致)
 				// 这里不能简单的设置为非激活的颜色，否则打开状态时，会有边框，所以需要透明
 				if(this.customInactiveColor) {
@@ -113,17 +114,17 @@
 			nodeStyle() {
 				let style = {}
 				// 如果自定义非激活颜色，将node圆点的尺寸减少两个像素，让其与外边框距离更大一点
-				style.width = uni.$uv.addUnit(this.size - this.space)
-				style.height = uni.$uv.addUnit(this.size - this.space)
-				const translateX = this.isActive ? uni.$uv.addUnit(this.space) : uni.$uv.addUnit(this.size);
+				style.width = addUnit(this.size - this.space)
+				style.height = addUnit(this.size - this.space)
+				const translateX = this.isActive ? addUnit(this.space) : addUnit(this.size);
 				style.transform = `translateX(-${translateX})`
 				return style
 			},
 			bgStyle() {
 				let style = {}
 				// 这里配置一个多余的元素在HTML中，是为了让switch切换时，有更良好的背景色扩充体验(见实际效果)
-				style.width = uni.$uv.addUnit(Number(this.size) * 2 - this.size / 2)
-				style.height = uni.$uv.addUnit(this.size)
+				style.width = addUnit(Number(this.size) * 2 - this.size / 2)
+				style.height = addUnit(this.size)
 				style.backgroundColor = this.inactiveColor
 				// 打开时，让此元素收缩，否则反之
 				style.transform = `scale(${this.isActive ? 0 : 1})`
@@ -157,9 +158,7 @@
 </script>
 
 <style lang="scss" scoped>
-	
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-
 	.uv-switch {
 		@include flex(row);
 		/* #ifndef APP-NVUE */

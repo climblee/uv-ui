@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { addStyle } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from './props.js';
@@ -57,12 +58,11 @@ export default {
 				transitionTimingFunction: this.timingFunction,
 	            // #endif
 				// 避免自定义样式影响到动画属性，所以写在viewStyle前面
-	            ...uni.$uv.addStyle(customStyle),
+	            ...addStyle(customStyle),
 	            ...viewStyle
 	        }
 	    }
 	},
-	// 将mixin挂在到组件中，uni.$uv.mixin实际上为一个vue格式对象
 	mixins: [mpMixin, mixin, transition, props],
 	watch: {
 		show: {
@@ -88,6 +88,4 @@ export default {
 // vue版本动画相关的样式抽离在外部文件
 @import './vue.ani-style.scss';
 /* #endif */
-
-.uv-transition {}
 </style>

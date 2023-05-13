@@ -31,10 +31,10 @@
 </template>
 
 <script>
+	import { deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
-
 	/**
 	 * empty 内容为空
 	 * @description 该组件用于需要加载内容，但是加载的第一页数据就为空，提示一个"没有内容"的场景， 我们精心挑选了十几个场景的图标，方便您使用。
@@ -84,15 +84,15 @@
 			// 组件样式
 			emptyStyle() {
 				const style = {}
-				style.marginTop = uni.$uv.addUnit(this.marginTop)
+				style.marginTop = this.$uv.addUnit(this.marginTop)
 				// 合并customStyle样式，此参数通过mixin中的props传递
-				return uni.$uv.deepMerge(uni.$uv.addStyle(this.customStyle), style)
+				return deepMerge(this.$uv.addStyle(this.customStyle), style)
 			},
 			// 文本样式
 			textStyle() {
 				const style = {}
 				style.color = this.textColor
-				style.fontSize = uni.$uv.addUnit(this.textSize)
+				style.fontSize = this.$uv.addUnit(this.textSize)
 				return style
 			},
 			// 判断icon是否图片路径

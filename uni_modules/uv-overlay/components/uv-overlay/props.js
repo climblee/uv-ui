@@ -20,6 +20,6 @@ export default {
 			type: [String, Number],
 			default: 0.5
 		},
-		...uni.$uv.props?.overlay
+		...uni.$uv?.props?.overlay
 	}
 }
