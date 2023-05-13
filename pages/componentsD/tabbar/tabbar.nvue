@@ -218,6 +218,7 @@
 </template>
 
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -235,7 +236,7 @@
 		},
 		methods: {
 			change5(name) {
-				if (name === 1) return uni.$uv.toast('请您先登录')
+				if (name === 1) return toast('请您先登录')
 				else this.value5 = name
 			},
 			change1(e) {

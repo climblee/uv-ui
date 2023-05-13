@@ -75,6 +75,7 @@
 </template>
 
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -84,7 +85,7 @@
 		methods: {
 			loadmore() {
 				console.log('loadmore');
-				uni.$uv.toast('加载更多')
+				toast('加载更多')
 			}
 		},
 	}

@@ -122,7 +122,12 @@
 		},
 		onPullDownRefresh() {
 			this.list = [];
+			// #ifdef APP-NVUE
+			this.getRandomData();
+			// #endif
+			// #ifndef APP-NVUE
 			this.$refs.waterfall.clear();
+			// #endif
 			uni.showToast({
 				icon: 'success',
 				title: '刷新成功'
@@ -130,7 +135,7 @@
 			uni.stopPullDownRefresh();
 		},
 		onReachBottom() {
-			this.getRandomData()
+			this.getRandomData();
 		},
 		methods: {
 			remove(id){

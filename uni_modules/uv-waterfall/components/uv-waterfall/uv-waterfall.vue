@@ -66,7 +66,7 @@
 	</view>
 </template>
 <script>
-	import { sys, deepClone, deepMerge  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { sleep, sys, deepClone, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -133,13 +133,13 @@
 				return style;
 			},
 			nvueWaterfallStyle(){
-				const style = {},
-				addUnit = this.$uv.addUnit
-				if (this.width != 0) style.width = addUnit(this.width)
-				if (this.height != 0) style.height = addUnit(this.height)
+				const style = {};
+				if (this.width != 0) style.width = this.$uv.addUnit(this.width)
+				if (this.height != 0) style.height = this.$uv.addUnit(this.height)
 				// 如果没有定义列表高度，则默认使用屏幕高度
-				if (!style.width) style.width = addUnit(this.sys.windowWidth, 'px')
-				if (!style.height) style.height = addUnit(this.sys.windowHeight, 'px')
+				if (!style.width) style.width = this.$uv.addUnit(this.sys.windowWidth, 'px')
+				if (!style.height) style.height = this.$uv.addUnit(this.sys.windowHeight, 'px')
+				console.log(style)
 				return deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},

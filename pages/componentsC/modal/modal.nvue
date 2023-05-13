@@ -28,83 +28,85 @@
 			</template>
 			</uv-cell>
 		</uv-cell-group>
-		<uv-modal
-			:content="content"
-			title="标题"
-			:show="show1"
-			@confirm="() => show1 = false"
-		></uv-modal>
-		<uv-modal
-			:content="content"
-			:show="show2"
-			@confirm="() => show2 = false"
-		></uv-modal>
-		<uv-modal
-			:content="content"
-			:show="show3"
-			showCancelButton
-			closeOnClickOverlay
-			@confirm="confirm"
-			@cancel="cancel"
-			@close="close"
-		></uv-modal>
-		<uv-modal
-			:content="content"
-			:show="show4"
-			showCancelButton
-			asyncClose
-			@confirm="confirm4"
-			@cancel="() => show4 = false"
-		></uv-modal>
-		<uv-modal
-			:content="content"
-			:show="show5"
-			showCancelButton
-			buttonReverse
-			@confirm="() => show5 = false"
-			@cancel="() => show5 = false"
-		></uv-modal>
-		<uv-modal
-			:content="content"
-			title="标题"
-			:show="show6"
-			closeOnClickOverlay
-			@confirm="() => show6 = false"
-			@close="() => show6 = false"
-		></uv-modal>
-		<uv-modal
-			title="利剑出鞘,一统江湖"
-			:show="show7"
-			closeOnClickOverlay
-			@confirm="() => show7 = false"
-		>
-			<image
-				style="width: 80px;height: 80px;"
-				src="/static/uvui/common/logo.png"
-			></image>
-		</uv-modal>
-		<uv-modal
-			title="标题"
-			:show="show8"
-			:content="content"
-			closeOnClickOverlay
-			showCancelButton
-		>
-			<uv-button
-				slot="confirmButton"
-				text="确定"
-				type="success"
-				shape="circle"
-				@click="show8 = false"
-			></uv-button>
-		</uv-modal>
-		<uv-modal
-			:content="content"
-			title="标题"
-			:show="show9"
-			:zoom="false"
-			@confirm="() => show9 = false"
-		></uv-modal>
+		<view>
+			<uv-modal
+				:content="content"
+				title="标题"
+				:show="show1"
+				@confirm="() => show1 = false"
+			></uv-modal>
+			<uv-modal
+				:content="content"
+				:show="show2"
+				@confirm="() => show2 = false"
+			></uv-modal>
+			<uv-modal
+				:content="content"
+				:show="show3"
+				showCancelButton
+				closeOnClickOverlay
+				@confirm="confirm"
+				@cancel="cancel"
+				@close="close"
+			></uv-modal>
+			<uv-modal
+				:content="content"
+				:show="show4"
+				showCancelButton
+				asyncClose
+				@confirm="confirm4"
+				@cancel="() => show4 = false"
+			></uv-modal>
+			<uv-modal
+				:content="content"
+				:show="show5"
+				showCancelButton
+				buttonReverse
+				@confirm="() => show5 = false"
+				@cancel="() => show5 = false"
+			></uv-modal>
+			<uv-modal
+				:content="content"
+				title="标题"
+				:show="show6"
+				closeOnClickOverlay
+				@confirm="() => show6 = false"
+				@close="() => show6 = false"
+			></uv-modal>
+			<uv-modal
+				title="利剑出鞘,一统江湖"
+				:show="show7"
+				closeOnClickOverlay
+				@confirm="() => show7 = false"
+			>
+				<image
+					style="width: 80px;height: 80px;"
+					src="/static/uvui/common/logo.png"
+				></image>
+			</uv-modal>
+			<uv-modal
+				title="标题"
+				:show="show8"
+				:content="content"
+				closeOnClickOverlay
+				showCancelButton
+			>
+				<uv-button
+					slot="confirmButton"
+					text="确定"
+					type="success"
+					shape="circle"
+					@click="show8 = false"
+				></uv-button>
+			</uv-modal>
+			<uv-modal
+				:content="content"
+				title="标题"
+				:show="show9"
+				:zoom="false"
+				@confirm="() => show9 = false"
+			></uv-modal>
+		</view>
 	</view>
 </template>
 

@@ -151,12 +151,13 @@
 </template>
 
 <script>
+	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		onLoad() {},
 		methods: {
 			clickHandler() {
 				// #ifndef MP-WEIXIN
-				uni.$uv.toast('请在微信小程序内查看效果')
+				toast('请在微信小程序内查看效果')
 				// #endif
 			}
 		},

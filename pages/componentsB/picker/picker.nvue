@@ -80,6 +80,7 @@
 </template>
 
 <script>
+	import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -168,7 +169,7 @@
 				} = e
 				if (columnIndex === 0) {
 					this.loading = true
-					uni.$uv.sleep(1500).then(() => {
+					sleep(1500).then(() => {
 						picker.setColumnValues(1, this.columnData[index])
 						this.loading = false
 					})
