@@ -256,7 +256,7 @@
 
 			&__title {
 				font-size: 15px;
-				color: $content-color;
+				color: $uv-content-color;
 				margin-top: 16px;
 				margin-bottom: 4px;
 			}
@@ -288,6 +288,6 @@
 	}
 
 	.uv-tips-color {
-		color: $tips-color;
+		color: $uv-tips-color;
 	}
 </style>

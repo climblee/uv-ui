@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	// import { fetchMenu } from '@/common/api.js';
+	import { fetchMenu } from '@/common/api.js';
 	export default {
 		data() {
 			return {
@@ -19,12 +19,12 @@
 		},
 		onLoad() {
 			// #ifdef MP
-			// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
+			uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
+			fetchMenu().then(res=>{
+				console.log(res)
+			})
 			// #endif
-			// fetchMenu().then(res=>{
-			// 	console.log(res)
-			// })
-			// console.log(uni.$uv.date('1585926095536', 'yyyy-mm'))
+			console.log('格式化后的时间：',uni.$uv.date('1585926095536', 'yyyy-mm-dd'))
 		},
 		methods: {
 			clickIcon(e){
