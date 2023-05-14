@@ -192,7 +192,7 @@
 			    :value="value6"
 			    @change="name => value6 = name"
 			    :fixed="true"
-				:placeholder="true"
+					:placeholder="true"
 			    :safeAreaInsetBottom="true"
 			>
 				<uv-tabbar-item

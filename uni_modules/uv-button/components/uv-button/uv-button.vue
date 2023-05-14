@@ -293,6 +293,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$show-reset-button: 1;
+@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 @import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 @import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 

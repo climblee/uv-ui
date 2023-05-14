@@ -317,68 +317,72 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    $show-border: 1;
+	$show-border-surround: 1;
+	$show-border-bottom: 1;
+	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-.uv-input {
-    @include flex(row);
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-
-    &--radius,
-    &--square {
-        border-radius: 4px;
-    }
-
-    &--no-radius {
-        border-radius: 0;
-    }
-
-    &--circle {
-        border-radius: 100px;
-    }
-
-    &__content {
-        flex: 1;
+	.uv-input {
         @include flex(row);
         align-items: center;
         justify-content: space-between;
+        flex: 1;
 
-        &__field-wrapper {
-            position: relative;
-            @include flex(row);
-            margin: 0;
-            flex: 1;
-			
-			&__field {
-				line-height: 26px;
-				text-align: left;
-				color: $uv-main-color;
-				height: 24px;
-				font-size: 15px;
-				flex: 1;
-			}
+        &--radius,
+        &--square {
+            border-radius: 4px;
         }
 
-        &__clear {
-            width: 20px;
-            height: 20px;
+        &--no-radius {
+            border-radius: 0;
+        }
+
+        &--circle {
             border-radius: 100px;
-            background-color: #c6c7cb;
+        }
+
+        &__content {
+            flex: 1;
             @include flex(row);
             align-items: center;
-            justify-content: center;
-            transform: scale(0.82);
-            margin-left: 4px;
-        }
+            justify-content: space-between;
 
-        &__subfix-icon {
-            margin-left: 4px;
-        }
+            &__field-wrapper {
+                position: relative;
+                @include flex(row);
+                margin: 0;
+                flex: 1;
+                
+                &__field {
+                    line-height: 26px;
+                    text-align: left;
+                    color: $uv-main-color;
+                    height: 24px;
+                    font-size: 15px;
+                    flex: 1;
+                }
+            }
 
-        &__prefix-icon {
-            margin-right: 4px;
+            &__clear {
+                width: 20px;
+                height: 20px;
+                border-radius: 100px;
+                background-color: #c6c7cb;
+                @include flex(row);
+                align-items: center;
+                justify-content: center;
+                transform: scale(0.82);
+                margin-left: 4px;
+            }
+
+            &__subfix-icon {
+                margin-left: 4px;
+            }
+
+            &__prefix-icon {
+                margin-right: 4px;
+            }
         }
-    }
-}
+	}
 </style>

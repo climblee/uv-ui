@@ -238,6 +238,9 @@
 </script>
 
 <style lang="scss" scoped>
+	$show-border: 1;
+	$show-border-bottom: 1;
+	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-radio-wrap-margin-right:6px !default;

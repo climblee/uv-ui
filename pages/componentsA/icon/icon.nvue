@@ -666,4 +666,35 @@
 			}
 		}
 	}
+	.uv-border-top {
+		border-top-width: 0.5px!important;
+		border-color: $uv-border-color!important;
+	    border-top-style: solid;
+	}
+	
+	.uv-border-left {
+		border-left-width: 0.5px!important;
+		border-color: $uv-border-color!important;
+	  border-left-style: solid;
+	}
+	
+	.uv-border-right {
+		border-right-width: 0.5px!important;
+		border-color: $uv-border-color!important;
+	  border-right-style: solid;
+	}
+	
+	.uv-border-bottom {
+		border-bottom-width: 0.5px!important;
+		border-color: $uv-border-color!important;
+	  border-bottom-style: solid;
+	}
+	
+	.uv-border-top-bottom {
+		border-top-width: 0.5px!important;
+		border-bottom-width: 0.5px!important;
+		border-color: $uv-border-color!important;
+	  border-top-style: solid;
+	  border-bottom-style: solid;
+	}
 </style>

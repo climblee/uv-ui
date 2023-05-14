@@ -3,7 +3,7 @@
 	<header>
 	<!-- #endif -->
 	<view
-	    class="uv-index-anchor uv-border-bottom"
+	    class="uv-index-anchor"
 		:ref="`uv-index-anchor-${text}`"
 	    :style="{
 			height: $uv.addUnit(height),

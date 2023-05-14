@@ -16,7 +16,7 @@
 	/* #ifndef APP-NVUE */
 	@import "@/static/iconfont.css";
 	/* #endif */
-	@import '@/uni_modules/uv-ui-tools/index.scss';
+	// @import '@/uni_modules/uv-ui-tools/index.scss';
 	@import "@/common/demo.scss";
 	/*每个页面公共css */
 	.uv-page {

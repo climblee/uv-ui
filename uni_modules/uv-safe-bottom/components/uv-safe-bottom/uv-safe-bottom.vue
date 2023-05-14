@@ -54,4 +54,14 @@
 		width: 100%;
 		/* #endif */
 	}
+	/* #ifndef APP-NVUE */
+	// 历遍生成4个方向的底部安全区
+	@each $d in top, right, bottom, left {
+		.uv-safe-area-inset-#{$d} {
+			padding-#{$d}: 0;
+			padding-#{$d}: constant(safe-area-inset-#{$d});  
+			padding-#{$d}: env(safe-area-inset-#{$d});  
+		}
+	}
+	/* #endif */
 </style>
