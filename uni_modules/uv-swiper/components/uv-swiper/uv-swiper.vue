@@ -91,8 +91,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
-	import { image, video, object } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -143,16 +141,6 @@
 			}
 		},
 		computed: {
-			$uv(){
-				return {
-					addStyle,
-					addUnit,
-					test: {
-						object,
-						image
-					}
-				}
-			},
 			itemStyle() {
 				return index => {
 					const style = {}
@@ -182,7 +170,7 @@
 			getSource(item) {
 				if (typeof item === 'string') return item
 				if (typeof item === 'object' && this.keyName) return item[this.keyName]
-				else error('请按格式传递列表参数')
+				else this.$uv.error('请按格式传递列表参数')
 				return ''
 			},
 			// 轮播切换事件

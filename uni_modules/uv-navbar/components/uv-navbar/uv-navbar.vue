@@ -73,7 +73,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, getPx, sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -107,16 +106,6 @@
 		data() {
 			return {
 
-			}
-		},
-		computed: {
-			$uv(){
-				return {
-					addStyle,
-					addUnit,
-					getPx,
-					sys
-				}
 			}
 		},
 		methods: {

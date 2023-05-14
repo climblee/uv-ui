@@ -71,7 +71,6 @@
 
 <script>
 import value from './value.js'
-import { addStyle, addUnit, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import button from '@/uni_modules/uv-ui-tools/libs/mixin/button.js'
@@ -120,14 +119,14 @@ export default {
                 textDecoration: this.decoration,
                 fontWeight: this.bold ? 'bold' : 'normal',
                 wordWrap: this.wordWrap,
-                fontSize: addUnit(this.size)
+                fontSize: this.$uv.addUnit(this.size)
             }
             !this.type && (style.color = this.color)
             this.isNvue && this.lines && (style.lines = this.lines)
             this.lineHeight &&
-                (style.lineHeight = addUnit(this.lineHeight))
+                (style.lineHeight = this.$uv.addUnit(this.lineHeight))
             !this.isNvue && this.block && (style.display = 'block')
-            return deepMerge(style, addStyle(this.customStyle))
+            return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
         },
         isNvue() {
             let nvue = false

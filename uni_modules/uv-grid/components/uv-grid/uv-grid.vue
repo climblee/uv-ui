@@ -9,7 +9,6 @@
 </template>
 
 <script>
-	import { addStyle, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -69,7 +68,7 @@
 					default:
 						style.justifyContent = 'flex-start';
 				};
-				return deepMerge(style, addStyle(this.customStyle));
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle));
 			}
 		},
 		methods: {

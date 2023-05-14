@@ -30,8 +30,6 @@
 	    }
 	    return result
 	}
-	import { error, padZero, range } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-	import { date } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -140,12 +138,12 @@
 				let judge = e.match(/\d+/g)
 				//判断是否掺杂数字
 				if(judge.length>1){
-					error("请勿在过滤或格式化函数时添加数字")
+					this.$uv.error("请勿在过滤或格式化函数时添加数字")
 					return 0
 				}else if(type&&judge[0].length==4){//判断是否是年份
 					return judge[0]
 				}else if(judge[0].length>2){
-					error("请勿在过滤或格式化函数时添加数字")
+					this.$uv.error("请勿在过滤或格式化函数时添加数字")
 					return 0
 				}else{
 					return judge[0]
@@ -213,15 +211,15 @@
 				    values = [
 				        formatter('year', `${dayjs(value).year()}`),
 						// 月份补0
-				        formatter('month', padZero(dayjs(value).month() + 1))
+				        formatter('month', this.$uv.padZero(dayjs(value).month() + 1))
 				    ]
 				    if (this.mode === 'date') {
 						// date模式，需要添加天列
-				        values.push(formatter('day', padZero(dayjs(value).date())))
+				        values.push(formatter('day', this.$uv.padZero(dayjs(value).date())))
 				    }
 				    if (this.mode === 'datetime') {
 						// 数组的push方法，可以写入多个参数
-				        values.push(formatter('day', padZero(dayjs(value).date())), formatter('hour', padZero(dayjs(value).hour())), formatter('minute', padZero(dayjs(value).minute())))
+				        values.push(formatter('day', this.$uv.padZero(dayjs(value).date())), formatter('hour', this.$uv.padZero(dayjs(value).hour())), formatter('minute', this.$uv.padZero(dayjs(value).minute())))
 				    }
 				}
 
@@ -244,7 +242,7 @@
 			    const results = this.getRanges().map(({ type, range }) => {
 			        let values = times(range[1] - range[0] + 1, (index) => {
 			            let value = range[0] + index
-			            value = type === 'year' ? `${value}` : padZero(value)
+			            value = type === 'year' ? `${value}` : this.$uv.padZero(value)
 			            return value
 			        })
 					// 进行过滤
@@ -262,20 +260,20 @@
 			// 得出合法的时间
 			correctValue(value) {
 				const isDateMode = this.mode !== 'time'
-				if (isDateMode && !date(value)) {
+				if (isDateMode && !this.$uv.test.date(value)) {
 					// 如果是日期类型，但是又没有设置合法的当前时间的话，使用最小时间为当前时间
 					value = this.minDate
 				} else if (!isDateMode && !value) {
 					// 如果是时间类型，而又没有默认值的话，就用最小时间
-					value = `${padZero(this.minHour)}:${padZero(this.minMinute)}`
+					value = `${this.$uv.padZero(this.minHour)}:${this.$uv.padZero(this.minMinute)}`
 				}
 				// 时间类型
 				if (!isDateMode) {
-					if (String(value).indexOf(':') === -1) return error('时间错误，请传递如12:24的格式')
+					if (String(value).indexOf(':') === -1) return this.$uv.error('时间错误，请传递如12:24的格式')
 					let [hour, minute] = value.split(':')
 					// 对时间补零，同时控制在最小值和最大值之间
-					hour = padZero(range(this.minHour, this.maxHour, Number(hour)))
-					minute = padZero(range(this.minMinute, this.maxMinute, Number(minute)))
+					hour = this.$uv.padZero(this.$uv.range(this.minHour, this.maxHour, Number(hour)))
+					minute = this.$uv.padZero(this.$uv.range(this.minMinute, this.maxMinute, Number(minute)))
 					return `${ hour }:${ minute }`
 				} else {
 					// 如果是日期格式，控制在最小日期和最大日期之间

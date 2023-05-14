@@ -106,7 +106,6 @@
 </template>
 
 <script>
-	import { addUnit } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import button from '@/uni_modules/uv-ui-tools/libs/mixin/button.js'
@@ -158,7 +157,7 @@
 				return (index) => {
 					let style = {};
 					if (this.actions[index].color) style.color = this.actions[index].color
-					if (this.actions[index].fontSize) style.fontSize = addUnit(this.actions[index].fontSize)
+					if (this.actions[index].fontSize) style.fontSize = this.$uv.addUnit(this.actions[index].fontSize)
 					// 选项被禁用的样式
 					if (this.actions[index].disabled) style.color = '#c0c4cc'
 					return style;

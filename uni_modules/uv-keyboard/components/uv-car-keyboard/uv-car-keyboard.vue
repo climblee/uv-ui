@@ -68,7 +68,6 @@
 </template>
 
 <script>
-	import { randomArray, sleep  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -132,7 +131,7 @@
 				];
 				let tmp = [];
 				// 打乱顺序
-				if (this.random) data = randomArray(data);
+				if (this.random) data = this.$uv.randomArray(data);
 				// 切割成二维数组
 				tmp[0] = data.slice(0, 10);
 				tmp[1] = data.slice(10, 20);
@@ -180,7 +179,7 @@
 					'M'
 				];
 				let tmp = [];
-				if (this.random) data = randomArray(data);
+				if (this.random) data = this.$uv.randomArray(data);
 				tmp[0] = data.slice(0, 10);
 				tmp[1] = data.slice(10, 20);
 				tmp[2] = data.slice(20, 30);
@@ -196,7 +195,7 @@
 				if (this.abc) value = this.engKeyBoardList[i][j];
 				else value = this.areaList[i][j];
 				// 如果允许自动切换，则将中文状态切换为英文
-				if (!this.abc && this.autoChange) sleep(200).then(() => this.abc = true)
+				if (!this.abc && this.autoChange) this.$uv.sleep(200).then(() => this.abc = true)
 				this.$emit('change', value);
 			},
 			// 修改汽车牌键盘的输入模式，中文|英文

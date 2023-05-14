@@ -23,7 +23,7 @@
 			<slot name="value">
 				<text class="uv-cell__value"
 					:class="[disabled && 'uv-cell--disabled', size === 'large' && 'uv-cell__value--large']"
-					v-if="!$uv.empty(value)">{{ value }}</text>
+					v-if="!$uv.test.empty(value)">{{ value }}</text>
 			</slot>
 			<view class="uv-cell__right-icon-wrap" v-if="$slots['right-icon'] || isLink"
 				:class="[`uv-cell__right-icon-wrap--${arrowDirection}`]">
@@ -38,8 +38,6 @@
 </template>
 
 <script>
-	import { addStyle } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-	import { empty } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -81,14 +79,8 @@
 		},
 		mixins: [mpMixin, mixin, props],
 		computed: {
-			$uv() {
-				return {
-					addStyle,
-					empty
-				}
-			},
 			titleTextStyle() {
-				return addStyle(this.titleStyle)
+				return this.$uv.addStyle(this.titleStyle)
 			}
 		},
 		methods: {

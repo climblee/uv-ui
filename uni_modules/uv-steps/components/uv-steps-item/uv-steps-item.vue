@@ -47,7 +47,6 @@
 </template>
 
 <script>
-	import { sleep, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -161,7 +160,7 @@
 		},
 		mounted() {
 			this.parent && this.parent.updateFromChild()
-			sleep().then(() => {
+			this.$uv.sleep().then(() => {
 				this.getStepsItemRect()
 			})
 		},
@@ -170,7 +169,7 @@
 				// 初始化数据
 				this.updateParentData()
 				if (!this.parent) {
-					return error('uv-steps-item必须要搭配uv-steps组件使用')
+					return this.$uv.error('uv-steps-item必须要搭配uv-steps组件使用')
 				}
 				this.index = this.parent.children.indexOf(this)
 				this.childLength = this.parent.children.length

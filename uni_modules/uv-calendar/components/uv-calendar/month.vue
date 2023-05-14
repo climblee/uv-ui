@@ -32,8 +32,6 @@
 	const dom = uni.requireNativePlugin('dom')
 	// #endif
 	import { colorGradient } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js';
-	import { addUnit, sleep, deepClone, toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.js'
@@ -158,13 +156,13 @@
 					const dayWidth = Number(parseFloat(this.width / 7).toFixed(3).slice(0, -1))
 					// 得出每个日期的宽度
 					// #ifdef APP-NVUE
-					style.width = addUnit(dayWidth)
+					style.width = this.$uv.addUnit(dayWidth)
 					// #endif
-					style.height = addUnit(this.rowHeight)
+					style.height = this.$uv.addUnit(this.rowHeight)
 					if (index2 === 0) {
 						// 获取当前为星期几，如果为0，则为星期天，减一为每月第一天时，需要向左偏移的item个数
 						week = (week === 0 ? 7 : week) - 1
-						style.marginLeft = addUnit(week * dayWidth)
+						style.marginLeft = this.$uv.addUnit(week * dayWidth)
 					}
 					if (this.mode === 'range') {
 						// 之所以需要这么写，是因为DCloud公司的iOS客户端的开发者能力有限导致的bug
@@ -291,7 +289,7 @@
 				this.$nextTick(() => {
 					// 这里需要另一个延时，因为获取宽度后，会进行月份数据渲染，只有渲染完成之后，才有真正的高度
 					// 因为nvue下，$nextTick并不是100%可靠的
-					sleep(10).then(() => {
+					this.$uv.sleep(10).then(() => {
 						this.getWrapperWidth()
 						this.getMonthRect()
 					})
@@ -363,7 +361,7 @@
 				const date = dayjs(item.date).format("YYYY-MM-DD")
 				if (item.disabled) return
 				// 对上一次选择的日期数组进行深度克隆
-				let selected = deepClone(this.selected)
+				let selected = this.$uv.deepClone(this.selected)
 				if (this.mode === 'single') {
 					// 单选情况下，让数组中的元素为当前点击的日期
 					selected = [date]
@@ -391,9 +389,9 @@
 							// 当前日期减去最大可选的日期天数，如果大于起始时间，则进行提示
 							if(dayjs(dayjs(date).subtract(this.maxRange, 'day')).isAfter(dayjs(selected[0])) && this.showRangePrompt) {
 								if(this.rangePrompt) {
-									toast(this.rangePrompt)
+									this.$uv.toast(this.rangePrompt)
 								} else {
-									toast(`选择天数不能超过 ${this.maxRange} 天`)
+									this.$uv.toast(`选择天数不能超过 ${this.maxRange} 天`)
 								}
 								return
 							}
@@ -433,14 +431,14 @@
 				const maxDate = this.maxDate || dayjs(minDate).add(this.maxMonth - 1, 'month').format("YYYY-MM-DD")
 				if (this.mode === 'single') {
 					// 单选模式，可以是字符串或数组，Date对象等
-					if (!array(this.defaultDate)) {
+					if (!this.$uv.test.array(this.defaultDate)) {
 						defaultDate = [dayjs(this.defaultDate).format("YYYY-MM-DD")]
 					} else {
 						defaultDate = [this.defaultDate[0]]
 					}
 				} else {
 					// 如果为非数组，则不执行
-					if (!array(this.defaultDate)) return
+					if (!this.$uv.test.array(this.defaultDate)) return
 					defaultDate = this.defaultDate
 				}
 				// 过滤用户传递的默认数组，取出只在可允许最大值与最小值之间的元素

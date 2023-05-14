@@ -16,7 +16,6 @@
 </template>
 
 <script>
-	import { sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -38,8 +37,7 @@
 				// 节点信息
 				rect: {},
 				index: 0,
-				show: true,
-				sys: sys()
+				show: true
 			}
 		},
 		computed: {
@@ -50,7 +48,7 @@
 			// #ifndef APP-NVUE
 			'uvList.innerScrollTop'(n) {
 				const preLoadScreen = this.uvList.preLoadScreen
-				const windowHeight = this.sys.windowHeight
+				const windowHeight = this.$uv.sys().windowHeight
 				if(n <= windowHeight * preLoadScreen) {
 					this.parent.updateOffsetFromChild(0)
 				} else if (this.rect.top <= n - windowHeight * preLoadScreen) {
@@ -81,7 +79,7 @@
 					const lastChild = this.parent.children[this.index - 1]
 					this.rect = size
 					const preLoadScreen = this.uvList.preLoadScreen
-					const windowHeight = this.sys.windowHeight
+					const windowHeight = this.$uv.sys().windowHeight
 					// #ifndef APP-NVUE
 					if (lastChild) {
 						this.rect.top = lastChild.rect.top + lastChild.rect.height

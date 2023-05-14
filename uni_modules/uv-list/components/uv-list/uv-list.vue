@@ -37,7 +37,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, deepMerge, sys, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -79,18 +78,17 @@
 				// 记录内部滚动的距离
 				innerScrollTop: 0,
 				// vue下，scroll-view在上拉加载时的偏移值
-				offset: 0,
-				sys: sys()
+				offset: 0
 			}
 		},
 		computed: {
 			listStyle() {
 				const style = {};
-				if (this.width != 0) style.width = addUnit(this.width)
-				if (this.height != 0) style.height = addUnit(this.height)
+				if (this.width != 0) style.width = this.$uv.addUnit(this.width)
+				if (this.height != 0) style.height = this.$uv.addUnit(this.height)
 				// 如果没有定义列表高度，则默认使用屏幕高度
-				if (!style.height) style.height = addUnit(this.sys.windowHeight, 'px')
-				return deepMerge(style, addStyle(this.customStyle))
+				if (!style.height) style.height = this.$uv.addUnit(this.$uv.sys().windowHeight, 'px')
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		provide() {
@@ -131,14 +129,14 @@
 			},
 			// 滚动到底部触发事件
 			scrolltolower(e) {
-				sleep(30).then(() => {
+				this.$uv.sleep(30).then(() => {
 					this.$emit('scrolltolower')
 				})
 			},
 			// #ifndef APP-NVUE
 			// 滚动到底部时触发，非nvue有效
 			scrolltoupper(e) {
-				sleep(30).then(() => {
+				this.$uv.sleep(30).then(() => {
 					this.$emit('scrolltoupper')
 					// 这一句很重要，能绝对保证在性功能障碍的webview，滚动条到顶时，取消偏移值，让页面置顶
 					this.offset = 0

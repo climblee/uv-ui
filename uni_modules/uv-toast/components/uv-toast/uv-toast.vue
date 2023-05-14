@@ -39,7 +39,6 @@
 </template>
 
 <script>
-	import { type2icon, os, deepMerge, sys } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import { hexToRgb } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -92,7 +91,7 @@
 					return '';
 				}
 				if (['error', 'warning', 'success', 'primary'].includes(this.tmpConfig.type)) {
-					return type2icon(this.tmpConfig.type)
+					return this.$uv.type2icon(this.tmpConfig.type)
 				} else {
 					return ''
 				}
@@ -113,7 +112,7 @@
 				style.marginRight = '4px'
 				// #ifdef APP-NVUE
 				// iOSAPP下，图标有1px的向下偏移，这里进行修正
-				if (os() === 'ios') {
+				if (this.$uv.os() === 'ios') {
 					style.marginTop = '-1px'
 				}
 				// #endif
@@ -121,7 +120,7 @@
 			},
 			// 内容盒子的样式
 			contentStyle() {
-				const windowHeight = sys().windowHeight, style = {}
+				const windowHeight = this.$uv.sys().windowHeight, style = {}
 				let value = 0
 				// 根据top和bottom，对Y轴进行窗体高度的百分比偏移
 				if(this.tmpConfig.position === 'top') {
@@ -146,7 +145,7 @@
 			// 显示toast组件，由父组件通过this.$refs.xxx.show(options)形式调用
 			show(options) {
 				// 不将结果合并到this.config变量，避免多次调用uv-toast，前后的配置造成混乱
-				this.tmpConfig = deepMerge(this.config, options)
+				this.tmpConfig = this.$uv.deepMerge(this.config, options)
 				// 清除定时器
 				this.clearTimer()
 				this.isShow = true

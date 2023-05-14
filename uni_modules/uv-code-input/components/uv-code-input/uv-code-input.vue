@@ -46,7 +46,6 @@
 </template>
 
 <script>
-	import { getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -120,7 +119,7 @@
 						// 设置盒子的边框，如果是细边框，则设置为0.5px宽度
 						style.border = `${this.hairline ? 0.5 : 1}px solid ${this.borderColor}`
 						// 如果盒子间距为0的话
-						if (getPx(this.space) === 0) {
+						if (this.$uv.getPx(this.space) === 0) {
 							// 给第一和最后一个盒子设置圆角
 							if (index === 0) {
 								style.borderTopLeftRadius = '3px'

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-	import { addUnit, deepClone, getProperty, error, setProperty } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from "./props.js";
@@ -67,7 +65,7 @@
 				immediate: true,
 				handler(n) {
 					if (!this.originalModel) {
-						this.originalModel = deepClone(n);
+						this.originalModel = this.$uv.deepClone(n);
 					}
 				},
 			},
@@ -95,7 +93,7 @@
 				// 判断是否有规则
 				if (Object.keys(rules).length === 0) return;
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.model).length === 0) {
-					error('设置rules，model必须设置！如果已经设置，请刷新页面。');
+					this.$uv.error('设置rules，model必须设置！如果已经设置，请刷新页面。');
 					return;
 				};
 				this.formRules = rules;
@@ -111,8 +109,8 @@
 				// 历遍所有uv-form-item，根据其prop属性，还原model的原始快照
 				this.children.map((child) => {
 					const prop = child?.prop;
-					const value = getProperty(this.originalModel, prop);
-					setProperty(this.model, prop, value);
+					const value = this.$uv.getProperty(this.originalModel, prop);
+					this.$uv.setProperty(this.model, prop, value);
 				});
 			},
 			// 清空校验结果
@@ -139,7 +137,7 @@
 						const childErrors = [];
 						if (value.includes(child.prop)) {
 							// 获取对应的属性，通过类似'a.b.c'的形式
-							const propertyVal = getProperty(
+							const propertyVal = this.$uv.getProperty(
 								this.model,
 								child.prop
 							);
@@ -169,7 +167,7 @@
 										[propertyName]: propertyVal,
 									},
 									(errors, fields) => {
-										if (array(errors)) {
+										if (this.$uv.test.array(errors)) {
 											errorsRes.push(...errors);
 											childErrors.push(...errors);
 										}
@@ -188,7 +186,7 @@
 			validate(callback) {
 				// 开发环境才提示，生产环境不会提示
 				if (process.env.NODE_ENV === 'development' && Object.keys(this.formRules).length === 0) {
-					error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
+					this.$uv.error('未设置rules，请看文档说明！如果已经设置，请刷新页面。');
 					return;
 				}
 				return new Promise((resolve, reject) => {

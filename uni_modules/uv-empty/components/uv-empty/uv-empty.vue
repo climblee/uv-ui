@@ -31,7 +31,6 @@
 </template>
 
 <script>
-	import { deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -86,7 +85,7 @@
 				const style = {}
 				style.marginTop = this.$uv.addUnit(this.marginTop)
 				// 合并customStyle样式，此参数通过mixin中的props传递
-				return deepMerge(this.$uv.addStyle(this.customStyle), style)
+				return this.$uv.deepMerge(this.$uv.addStyle(this.customStyle), style)
 			},
 			// 文本样式
 			textStyle() {

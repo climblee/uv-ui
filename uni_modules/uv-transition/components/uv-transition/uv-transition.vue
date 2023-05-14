@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { addStyle } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from './props.js';
@@ -58,7 +57,7 @@ export default {
 				transitionTimingFunction: this.timingFunction,
 	            // #endif
 				// 避免自定义样式影响到动画属性，所以写在viewStyle前面
-	            ...addStyle(customStyle),
+	            ...this.$uv.addStyle(customStyle),
 	            ...viewStyle
 	        }
 	    }

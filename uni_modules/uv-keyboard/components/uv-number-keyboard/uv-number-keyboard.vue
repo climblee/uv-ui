@@ -39,7 +39,6 @@
 </template>
 
 <script>
-	import { randomArray } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -72,19 +71,19 @@
 					if (!this.random) {
 						return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 					} else {
-						return randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+						return this.$uv.randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
 					}
 				} else if (!this.dotDisabled && this.mode == 'number') {
 					if (!this.random) {
 						return [1, 2, 3, 4, 5, 6, 7, 8, 9, this.dot, 0];
 					} else {
-						return randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, this.dot, 0]);
+						return this.$uv.randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, this.dot, 0]);
 					}
 				} else if (this.mode == 'card') {
 					if (!this.random) {
 						return [1, 2, 3, 4, 5, 6, 7, 8, 9, this.cardX, 0];
 					} else {
-						return randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, this.cardX, 0]);
+						return this.$uv.randomArray([1, 2, 3, 4, 5, 6, 7, 8, 9, this.cardX, 0]);
 					}
 				}
 			},

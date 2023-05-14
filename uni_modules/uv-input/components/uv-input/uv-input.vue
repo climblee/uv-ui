@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import { addStyle, addUnit, deepMerge, sleep, formValidate, os, $parent } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import props from "./props.js";
@@ -218,13 +217,13 @@ export default {
                 style.paddingLeft = "9px";
                 style.paddingRight = "9px";
             }
-            return deepMerge(style, addStyle(this.customStyle));
+            return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle));
         },
         // 输入框的样式
         inputStyle() {
             const style = {
                 color: this.color,
-                fontSize: addUnit(this.fontSize),
+                fontSize: this.$uv.addUnit(this.fontSize),
 				textAlign: this.inputAlign
             };
             return style;
@@ -253,11 +252,11 @@ export default {
             this.$emit("blur", event.detail.value);
             // H5端的blur会先于点击清除控件的点击click事件触发，导致focused
             // 瞬间为false，从而隐藏了清除控件而无法被点击到
-            sleep(50).then(() => {
+            this.$uv.sleep(50).then(() => {
                 this.focused = false;
             });
             // 尝试调用uv-form的验证方法
-            formValidate(this, "blur");
+            this.$uv.formValidate(this, "blur");
         },
         // 输入框聚焦时触发
         onFocus(event) {
@@ -287,7 +286,7 @@ export default {
                 this.changeFromInner = true;
                 this.$emit("change", value);
                 // 尝试调用uv-form的验证方法
-                formValidate(this, "change");
+                this.$uv.formValidate(this, "change");
             });
         },
         // 点击清除控件
@@ -305,8 +304,8 @@ export default {
          */
         clickHandler() {
             // #ifdef APP-NVUE
-            if (os() === "android") {
-                const formItem = $parent.call(this, "uv-form-item");
+            if (this.$uv.os() === "android") {
+                const formItem = this.$uv.$parent.call(this, "uv-form-item");
                 if (formItem) {
                     formItem.clickHandler();
                 }

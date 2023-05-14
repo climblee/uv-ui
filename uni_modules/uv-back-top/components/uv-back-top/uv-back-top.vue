@@ -24,7 +24,6 @@
 </template>
 
 <script>
-	import { getPx, deepMerge, error } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -68,7 +67,7 @@
 				return style
 			},
 			show() {
-				return getPx(this.scrollTop) > getPx(this.top)
+				return this.$uv.getPx(this.scrollTop) > this.$uv.getPx(this.top)
 			},
 			contentStyle() {
 				const style = {}
@@ -84,14 +83,14 @@
 				style.borderTopRightRadius = radius
 				style.borderBottomLeftRadius = radius
 				style.borderBottomRightRadius = radius
-				return deepMerge(style, this.$uv.addStyle(this.customStyle))
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		methods: {
 			backToTop() {
 				// #ifdef APP-NVUE
 				if (!this.$parent.$refs['uv-back-top']) {
-					error(`nvue页面需要给页面最外层元素设置"ref='uv-back-top'`)
+					this.$uv.error(`nvue页面需要给页面最外层元素设置"ref='uv-back-top'`)
 				}
 				dom.scrollToElement(this.$parent.$refs['uv-back-top'], {
 					offset: 0

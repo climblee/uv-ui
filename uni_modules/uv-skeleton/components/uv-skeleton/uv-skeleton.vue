@@ -49,8 +49,6 @@
 </template>
 
 <script>
-	import { error, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
-	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -92,15 +90,15 @@
 		computed: {
 			rowsArray() {
 				if (/%$/.test(this.rowsHeight)) {
-					error('rowsHeight参数不支持百分比单位')
+					this.$uv.error('rowsHeight参数不支持百分比单位')
 				}
 				const rows = []
 				for (let i = 0; i < this.rows; i++) {
 					let item = {},
 						// 需要预防超出数组边界的情况
-						rowWidth = array(this.rowsWidth) ? (this.rowsWidth[i] || (i === this.row - 1 ? '70%' : '100%')) : i ===
+						rowWidth = this.$uv.test.array(this.rowsWidth) ? (this.rowsWidth[i] || (i === this.row - 1 ? '70%' : '100%')) : i ===
 						this.rows - 1 ? '70%' : this.rowsWidth,
-						rowHeight = array(this.rowsHeight) ? (this.rowsHeight[i] || '18px') : this.rowsHeight
+						rowHeight = this.$uv.test.array(this.rowsHeight) ? (this.rowsHeight[i] || '18px') : this.rowsHeight
 					// 如果有title占位图，第一个段落占位图的外边距需要大一些，如果没有title占位图，第一个段落占位图则无需外边距
 					// 之所以需要这么做，是因为weex的无能，以提升性能为借口不支持css的一些伪类
 					item.marginTop = !this.title && i === 0 ? 0 : this.title && i === 0 ? '20px' : '12px'
@@ -142,7 +140,7 @@
 			async setNvueAnimation() {
 				// #ifdef APP-NVUE
 				// 为了让opacity:1的状态保持一定时间，这里做一个延时
-				await sleep(500)
+				await this.$uv.sleep(500)
 				const skeleton = this.$refs['uv-skeleton__wrapper'];
 				skeleton && this.loading && this.animate && animation.transition(skeleton, {
 					styles: {
@@ -167,7 +165,7 @@
 			// 获取组件的宽度
 			async getComponentWidth() {
 				// 延时一定时间，以获取dom尺寸
-				await sleep(20)
+				await this.$uv.sleep(20)
 				// #ifndef APP-NVUE
 				this.$uvGetRect('.uv-skeleton__wrapper__content').then(size => {
 					this.width = size.width

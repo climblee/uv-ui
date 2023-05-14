@@ -64,8 +64,6 @@
 </template>
 
 <script>
-import { error, range, padZero } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-import { number, array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 import uvHeader from './header.vue'
@@ -153,12 +151,12 @@ export default {
 	computed: {
 		// 由于maxDate和minDate可以为字符串(2021-10-10)，或者数值(时间戳)，但是dayjs如果接受字符串形式的时间戳会有问题，这里进行处理
 		innerMaxDate() {
-			return number(this.maxDate)
+			return this.$uv.test.number(this.maxDate)
 				? Number(this.maxDate)
 				: this.maxDate
 		},
 		innerMinDate() {
-			return number(this.minDate)
+			return this.$uv.test.number(this.minDate)
 				? Number(this.minDate)
 				: this.minDate
 		},
@@ -219,7 +217,7 @@ export default {
 				this.innerMinDate &&
 				new Date(this.innerMaxDate).getTime() < new Date(this.innerMinDate).getTime()
 			) {
-				return error('maxDate不能小于minDate')
+				return this.$uv.error('maxDate不能小于minDate')
 			}
 			// 滚动区域的高度
 			this.listHeight = this.rowHeight * 5 + 30
@@ -253,7 +251,7 @@ export default {
 					.add(this.monthNum - 1, 'month')
 					.valueOf()
 			// 最大最小月份之间的共有多少个月份，
-			const months = range(
+			const months = this.$uv.range(
 				1,
 				this.monthNum,
 				this.getMonths(minDate, maxDate)
@@ -325,7 +323,7 @@ export default {
 				  year,
 				  month
 			  }) => {
-				month = padZero(month)
+				month = this.$uv.padZero(month)
 				return `${year}-${month}` === selected
 			})
 			if (_index !== -1) {
@@ -366,7 +364,7 @@ export default {
 			}
 			let selected = dayjs().format("YYYY-MM");
 			// 单选模式，可以是字符串或数组，Date对象等
-			if (!array(this.defaultDate)) {
+			if (!this.$uv.test.array(this.defaultDate)) {
 				selected = dayjs(this.defaultDate).format("YYYY-MM")
 			} else {
 				selected = dayjs(this.defaultDate[0]).format("YYYY-MM");

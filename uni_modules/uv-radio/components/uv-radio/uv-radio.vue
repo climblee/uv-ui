@@ -35,7 +35,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, deepMerge, formValidate, os } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -123,7 +122,7 @@
 			},
 			// label大小
 			elLabelSize() {
-				return addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
+				return this.$uv.addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
 					'15'))
 			},
 			elIconColor() {
@@ -158,8 +157,8 @@
 				const style = {}
 				style.backgroundColor = this.checked && !this.elDisabled ? this.elActiveColor : '#ffffff'
 				style.borderColor = this.checked && !this.elDisabled ? this.elActiveColor : this.elInactiveColor
-				style.width = addUnit(this.elSize)
-				style.height = addUnit(this.elSize)
+				style.width = this.$uv.addUnit(this.elSize)
+				style.height = this.$uv.addUnit(this.elSize)
 				// 如果是图标在右边的话，移除它的右边距
 				if (this.parentData.iconPlacement === 'right') {
 					style.marginRight = 0
@@ -174,9 +173,9 @@
 				// 当父组件设置了显示下边框并且排列形式为纵向时，给内容和边框之间加上一定间隔
 				if(this.parentData.borderBottom && this.parentData.placement === 'column') {
 					// ios像素密度高，需要多一点的距离
-					style.paddingBottom = os() === 'ios' ? '12px' : '8px'
+					style.paddingBottom = this.$uv.os() === 'ios' ? '12px' : '8px'
 				}
-				return deepMerge(style, addStyle(this.customStyle))
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		mounted() {
@@ -221,7 +220,7 @@
 					this.$emit('change', this.name)
 					// 尝试调用uv-form的验证方法，进行一定延迟，否则微信小程序更新可能会不及时
 					this.$nextTick(() => {
-						formValidate(this, 'change')
+						this.$uv.formValidate(this, 'change')
 					})
 				}
 			},

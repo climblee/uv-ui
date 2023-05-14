@@ -44,8 +44,6 @@
 </template>
 
 <script>
-	import { guid, error, sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
-	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -75,7 +73,7 @@
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
-				elId: guid(),
+				elId: '',
 				// uni.createAnimation的导出数据
 				animationData: {},
 				// 是否展开状态
@@ -101,6 +99,9 @@
 				}, n ? 10 : 290)
 			}
 		},
+		created() {
+			this.elId = this.$uv.guid();
+		},
 		mounted() {
 			this.init()
 		},
@@ -110,7 +111,7 @@
 				// 初始化数据
 				this.updateParentData()
 				if (!this.parent) {
-					return error('uv-collapse-item必须要搭配uv-collapse组件使用')
+					return this.$uv.error('uv-collapse-item必须要搭配uv-collapse组件使用')
 				}
 				const {
 					value,
@@ -119,13 +120,13 @@
 				} = this.parent
 
 				if (accordion) {
-					if (array(value)) {
-						return error('手风琴模式下，uv-collapse组件的value参数不能为数组')
+					if (this.$uv.test.array(value)) {
+						return this.$uv.error('手风琴模式下，uv-collapse组件的value参数不能为数组')
 					}
 					this.expanded = this.name == value
 				} else {
-					if (!array(value) && value !== null) {
-						return error('非手风琴模式下，uv-collapse组件的value参数必须为数组')
+					if (!this.$uv.test.array(value) && value !== null) {
+						return this.$uv.error('非手风琴模式下，uv-collapse组件的value参数必须为数组')
 					}
 					this.expanded = (value || []).some(item => item == this.name)
 				}
@@ -172,7 +173,7 @@
 				// 导出动画数据给面板的animationData值
 				this.animationData = animation.export()
 				// 标识动画结束
-				sleep(this.duration).then(() => {
+				this.$uv.sleep(this.duration).then(() => {
 					this.animating = false
 				})
 				// #endif

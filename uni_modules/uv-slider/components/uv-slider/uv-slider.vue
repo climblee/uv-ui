@@ -21,7 +21,6 @@
 </template>
 
 <script>
-	import { addStyle, getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js'
@@ -29,12 +28,6 @@
 		name: 'uv-slider',
 		mixins: [mpMixin, mixin, props],
 		computed: {
-			$uv(){
-				return {
-					addStyle,
-					getPx
-				}
-			},
 			sliderValue(){
 				// #ifdef VUE2
 				return this.value;

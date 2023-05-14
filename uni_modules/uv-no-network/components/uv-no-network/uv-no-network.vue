@@ -43,7 +43,6 @@
 </template>
 
 <script>
-	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -94,10 +93,10 @@
 						this.networkType = res.networkType
 						this.emitEvent(this.networkType)
 						if (res.networkType == 'none') {
-							toast('无网络连接')
+							this.$uv.toast('无网络连接')
 							this.isConnected = false
 						} else {
-							toast('网络已连接')
+							this.$uv.toast('网络已连接')
 							this.isConnected = true
 						}
 					}

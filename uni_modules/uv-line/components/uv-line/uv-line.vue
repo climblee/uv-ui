@@ -7,7 +7,6 @@
 </template>
 
 <script>
-	import {addStyle, addUnit, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -36,17 +35,17 @@
 					// 此处采用兼容分开写，兼容nvue的写法
 					style.borderBottomWidth = '1px'
 					style.borderBottomStyle = this.dashed ? 'dashed' : 'solid'
-					style.width = addUnit(this.length)
+					style.width = this.$uv.addUnit(this.length)
 					if (this.hairline) style.transform = 'scaleY(0.5)'
 				} else {
 					// 如果是竖向线条，边框宽度为1px，再通过transform缩小一半，就是0.5px了
 					style.borderLeftWidth = '1px'
 					style.borderLeftStyle = this.dashed ? 'dashed' : 'solid'
-					style.height = addUnit(this.length)
+					style.height = this.$uv.addUnit(this.length)
 					if (this.hairline) style.transform = 'scaleX(0.5)'
 				}
 				style.borderColor = this.color
-				return deepMerge(style, addStyle(this.customStyle))
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		}
 	}

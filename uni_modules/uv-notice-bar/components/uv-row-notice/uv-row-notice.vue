@@ -52,8 +52,6 @@
 	</view>
 </template>
 <script>
-	import { sleep, getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
-	import { string } from '@/uni_modules/uv-ui-tools/libs/function/test.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -102,7 +100,7 @@
 					this.vue()
 					// #endif
 					
-					if(!string(newValue)) {
+					if(!this.$uv.test.string(newValue)) {
 						error('noticebar组件direction为row时，要求text参数为字符串形式')
 					}
 				}
@@ -179,7 +177,7 @@
 				this.vue()
 				// #endif
 				
-				if(!string(this.text)) {
+				if(!this.$uv.test.string(this.text)) {
 					error('noticebar组件direction为row时，要求text参数为字符串形式')
 				}
 			},
@@ -189,13 +187,13 @@
 				let boxWidth = 0,
 					textWidth = 0
 				// 进行一定的延时
-				await sleep()
+				await this.$uv.sleep()
 				// 查询盒子和文字的宽度
 				textWidth = (await this.$uvGetRect('.uv-notice__content__text')).width
 				boxWidth = (await this.$uvGetRect('.uv-notice__content')).width
 				// 根据t=s/v(时间=路程/速度)，这里为何不需要加上#uv-notice-box的宽度，因为中设置了.uv-notice-content样式中设置了padding-left: 100%
 				// 恰巧计算出来的结果中已经包含了#uv-notice-box的宽度
-				this.animationDuration = `${textWidth / getPx(this.speed)}s`
+				this.animationDuration = `${textWidth / this.$uv.getPx(this.speed)}s`
 				// 这里必须这样开始动画，否则在APP上动画速度不会改变
 				this.animationPlayState = 'paused'
 				setTimeout(() => {
@@ -210,7 +208,7 @@
 				let boxWidth = 0,
 					textWidth = 0
 				// 进行一定的延时
-				await sleep()
+				await this.$uv.sleep()
 				// 查询盒子和文字的宽度
 				textWidth = (await this.getNvueRect('uv-notice__content__text')).width
 				boxWidth = (await this.getNvueRect('uv-notice__content')).width
@@ -233,7 +231,7 @@
 						transform: `translateX(-${textWidth}px)`
 					},
 					// 滚动时间的计算为，时间 = 路程(boxWidth + textWidth) / 速度，最后转为毫秒
-					duration: (boxWidth + textWidth) / getPx(this.speed) * 1000,
+					duration: (boxWidth + textWidth) / this.$uv.getPx(this.speed) * 1000,
 					delay: 10
 				}, () => {
 					animation.transition(this.$refs['uv-notice__content__text'], {

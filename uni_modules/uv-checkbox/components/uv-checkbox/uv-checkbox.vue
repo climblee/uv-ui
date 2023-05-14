@@ -32,8 +32,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit, deepMerge, formValidate, os } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-	import { array } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -120,7 +118,7 @@
 			},
 			// label大小
 			elLabelSize() {
-				return addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
+				return this.$uv.addUnit(this.labelSize ? this.labelSize : (this.parentData.labelSize ? this.parentData.labelSize :
 					'15'))
 			},
 			elIconColor() {
@@ -155,8 +153,8 @@
 				const style = {}
 				style.backgroundColor = this.isChecked && !this.elDisabled ? this.elActiveColor : '#ffffff'
 				style.borderColor = this.isChecked && !this.elDisabled ? this.elActiveColor : this.elInactiveColor
-				style.width = addUnit(this.elSize)
-				style.height = addUnit(this.elSize)
+				style.width = this.$uv.addUnit(this.elSize)
+				style.height = this.$uv.addUnit(this.elSize)
 				// 如果是图标在右边的话，移除它的右边距
 				if (this.parentData.iconPlacement === 'right') {
 					style.marginRight = 0
@@ -172,7 +170,7 @@
 				if (this.parentData.borderBottom && this.parentData.placement === 'column') {
 					style.paddingBottom = '8px'
 				}
-				return deepMerge(style, addStyle(this.customStyle))
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		mounted() {
@@ -188,7 +186,7 @@
 				// 设置初始化时，是否默认选中的状态，父组件uv-checkbox-group的value可能是array，所以额外判断
 				if (this.checked) {
 					this.isChecked = true
-				} else if (array(this.parentData.value)) {
+				} else if (this.$uv.test.array(this.parentData.value)) {
 					// 查找数组是是否存在this.name元素值
 					this.isChecked = this.parentData.value.some(item => {
 						return item === this.name
@@ -222,7 +220,7 @@
 				this.$emit('change', this.isChecked)
 				// 尝试调用uv-form的验证方法，进行一定延迟，否则微信小程序更新可能会不及时
 				this.$nextTick(() => {
-					formValidate(this, 'change')
+					this.$uv.formValidate(this, 'change')
 				})
 			},
 			// 改变组件选中状态

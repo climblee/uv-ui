@@ -35,7 +35,6 @@
 </template>
 
 <script>
-	import { addStyle, addUnit } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE
@@ -106,11 +105,11 @@
 			iconStyle() {
 				let style = {}
 				style = {
-					fontSize: addUnit(this.size),
-					lineHeight: addUnit(this.size),
+					fontSize: this.$uv.addUnit(this.size),
+					lineHeight: this.$uv.addUnit(this.size),
 					fontWeight: this.bold ? 'bold' : 'normal',
 					// 某些特殊情况需要设置一个到顶部的距离，才能更好的垂直居中
-					top: addUnit(this.top)
+					top: this.$uv.addUnit(this.top)
 				}
 				// 非主题色值时，才当作颜色值
 				if (this.color) style.color = this.color
@@ -124,8 +123,8 @@
 			imgStyle() {
 				let style = {}
 				// 如果设置width和height属性，则优先使用，否则使用size属性
-				style.width = this.width ? addUnit(this.width) : addUnit(this.size)
-				style.height = this.height ? addUnit(this.height) : addUnit(this.size)
+				style.width = this.width ? this.$uv.addUnit(this.width) : this.$uv.addUnit(this.size)
+				style.height = this.height ? this.$uv.addUnit(this.height) : this.$uv.addUnit(this.size)
 				return style
 			},
 			// 通过图标名，查找对应的图标

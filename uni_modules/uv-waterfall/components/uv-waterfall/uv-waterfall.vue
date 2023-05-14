@@ -66,7 +66,6 @@
 	</view>
 </template>
 <script>
-	import { sleep, sys, deepClone, deepMerge } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -100,18 +99,17 @@
 				list4: [],
 				list5: [],
 				// 临时列表
-				tempList: [],
-				sys: sys()
+				tempList: []
 			}
 		},
 		computed: {
 			// 破坏value变量引用，否则数据会保持不变
 			copyValue() {
 				// #ifdef VUE2
-				return deepClone(this.value)
+				return this.$uv.deepClone(this.value)
 				// #endif
 				// #ifdef VUE3
-				return deepClone(this.modelValue)
+				return this.$uv.deepClone(this.modelValue)
 				// #endif
 			},
 			columnNum() {
@@ -137,10 +135,9 @@
 				if (this.width != 0) style.width = this.$uv.addUnit(this.width)
 				if (this.height != 0) style.height = this.$uv.addUnit(this.height)
 				// 如果没有定义列表高度，则默认使用屏幕高度
-				if (!style.width) style.width = this.$uv.addUnit(this.sys.windowWidth, 'px')
-				if (!style.height) style.height = this.$uv.addUnit(this.sys.windowHeight, 'px')
-				console.log(style)
-				return deepMerge(style, this.$uv.addStyle(this.customStyle))
+				if (!style.width) style.width = this.$uv.addUnit(this.$uv.sys().windowWidth, 'px')
+				if (!style.height) style.height = this.$uv.addUnit(this.$uv.sys().windowHeight, 'px')
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
 		watch: {
@@ -149,21 +146,21 @@
 				// 取出数组发生变化的部分
 				let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
 				// 拼接原有数据
-				this.tempList = this.tempList.concat(deepClone(nVal.slice(startIndex)))
+				this.tempList = this.tempList.concat(this.$uv.deepClone(nVal.slice(startIndex)))
 				this.splitData()
 				// #endif
 			}
 		},
 		mounted() {
 			// #ifndef APP-NVUE
-			this.tempList = deepClone(this.copyValue)
+			this.tempList = this.$uv.deepClone(this.copyValue)
 			this.splitData()
 			// #endif
 		},
 		methods: {
 			// 滚动到底部触发事件
 			scrolltolower(e) {
-				sleep(30).then(() => {
+				this.$uv.sleep(30).then(() => {
 					this.$emit('scrolltolower')
 				})
 			},

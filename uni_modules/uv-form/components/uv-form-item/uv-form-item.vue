@@ -77,7 +77,6 @@
 </template>
 
 <script>
-	import { error, getProperty, setProperty } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -126,7 +125,7 @@
 				// 父组件的实例
 				this.updateParentData()
 				if (!this.parent) {
-					error('uv-form-item需要结合uv-form组件使用')
+					this.$uv.error('uv-form-item需要结合uv-form组件使用')
 				}
 			},
 			// 获取父组件的参数
@@ -141,9 +140,9 @@
 			// 清空当前的组件的校验结果，并重置为初始值
 			resetField() {
 				// 找到原始值
-				const value = getProperty(this.parent.originalModel, this.prop)
+				const value = this.$uv.getProperty(this.parent.originalModel, this.prop)
 				// 将uv-form的model的prop属性链还原原始值
-				setProperty(this.parent.model, this.prop, value)
+				this.$uv.setProperty(this.parent.model, this.prop, value)
 				// 移除校验结果
 				this.message = null
 			},

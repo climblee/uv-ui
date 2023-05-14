@@ -124,7 +124,6 @@
 </template>
 
 <script>
-	import { toast } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
 	import { func, image, video, array, promise  } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -317,7 +316,7 @@
 					urls: this.lists.filter((item) => this.accept === 'image' || image(item.url || item.thumb)).map((item) => item.url || item.thumb),
 					current: item.url || item.thumb,
 					fail() {
-						toast('预览图片失败')
+						this.$uv.toast('预览图片失败')
 					},
 				});
 			},
@@ -339,7 +338,7 @@
 						),
 					current: index,
 					fail() {
-						toast('预览视频失败')
+						this.$uv.toast('预览视频失败')
 					},
 				});
 			},

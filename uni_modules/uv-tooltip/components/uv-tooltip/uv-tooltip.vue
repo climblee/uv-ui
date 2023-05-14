@@ -90,7 +90,6 @@
 </template>
 
 <script>
-	import { guid, sys, getPx, sleep, toast  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -125,8 +124,8 @@
 				// 是否展示气泡
 				showTooltip: true,
 				// 生成唯一id，防止一个页面多个组件，造成干扰
-				textId: guid(),
-				tooltipId: guid(),
+				textId: '',
+				tooltipId: '',
 				// 初始时甚至为很大的值，让其移到屏幕外面，为了计算元素的尺寸
 				tooltipTop: -10000,
 				// 气泡的位置信息
@@ -166,22 +165,21 @@
 			tooltipStyle() {
 				const style = {
 						transform: `translateY(${this.direction === 'top' ? '-100%' : '100%'})`,
-					},
-					addUnit = this.$uv.addUnit
+				};
 				if (this.tooltipInfo.width / 2 > this.textInfo.left + this.textInfo.width / 2 - this.screenGap) {
 					this.indicatorStyle = {}
-					style.left = `-${addUnit(this.textInfo.left - this.screenGap)}`
-					this.indicatorStyle.left = addUnit(this.textInfo.width / 2 - getPx(style.left) - this.indicatorWidth /
+					style.left = `-${this.$uv.addUnit(this.textInfo.left - this.screenGap)}`
+					this.indicatorStyle.left = this.$uv.addUnit(this.textInfo.width / 2 - this.$uv.getPx(style.left) - this.indicatorWidth /
 						2)
-				} else if (this.tooltipInfo.width / 2 > sys().windowWidth - this.textInfo.right + this.textInfo.width / 2 -
+				} else if (this.tooltipInfo.width / 2 > this.$uv.sys().windowWidth - this.textInfo.right + this.textInfo.width / 2 -
 					this.screenGap) {
 					this.indicatorStyle = {}
-					style.right = `-${addUnit(sys().windowWidth - this.textInfo.right - this.screenGap)}`
-					this.indicatorStyle.right = addUnit(this.textInfo.width / 2 - getPx(style.right) - this
+					style.right = `-${this.$uv.addUnit(this.$uv.sys().windowWidth - this.textInfo.right - this.screenGap)}`
+					this.indicatorStyle.right = this.$uv.addUnit(this.textInfo.width / 2 - this.$uv.getPx(style.right) - this
 						.indicatorWidth / 2)
 				} else {
 					const left = Math.abs(this.textInfo.width / 2 - this.tooltipInfo.width / 2)
-					style.left = this.textInfo.width > this.tooltipInfo.width ? addUnit(left) : -addUnit(left)
+					style.left = this.textInfo.width > this.tooltipInfo.width ? this.$uv.addUnit(left) : -this.$uv.addUnit(left)
 					this.indicatorStyle = {}
 				}
 				if (this.direction === 'top') {
@@ -193,6 +191,10 @@
 				}
 				return style
 			}
+		},
+		created() {
+			this.textId = this.$uv.guid();
+			this.tooltipId = this.$uv.guid();
 		},
 		mounted() {
 			this.init()
@@ -245,7 +247,7 @@
 				// 调用之前，先将指示器调整到屏幕外，方便获取尺寸
 				this.showTooltip = true
 				this.tooltipTop = -10000
-				sleep(500).then(() => {
+				this.$uv.sleep(500).then(() => {
 					this.queryRect(this.tooltipId).then(size => {
 						this.tooltipInfo = size
 						// 获取气泡尺寸之后，将其隐藏，为了让下次切换气泡显示与隐藏时，有淡入淡出的效果

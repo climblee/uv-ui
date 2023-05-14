@@ -1,5 +1,5 @@
-import { addStyle, addUnit, $parent, deepMerge } from '../function/index.js';
-import { array } from '../function/test.js'
+import * as index from '../function/index.js';
+import * as test from '../function/test.js';
 export default {
 	// 定义每个组件都可能需要用到的外部样式以及类名
 	props: {
@@ -7,7 +7,6 @@ export default {
 		customStyle: {
 			type: [Object, String],
 			default: () => ({})
-
 		},
 		customClass: {
 			type: String,
@@ -38,8 +37,8 @@ export default {
 	computed: {
 		$uv() {
 			return {
-				addStyle,
-				addUnit
+				...index,
+				test
 			}
 		},
 		/**
@@ -112,7 +111,7 @@ export default {
 			// 将父组件this中对应的参数，赋值给本组件(uv-radio的this)的parentData对象中对应的属性
 			// 之所以需要这么做，是因为所有端中，头条小程序不支持通过this.parent.xxx去监听父组件参数的变化
 			// 此处并不会自动更新子组件的数据，而是依赖父组件uv-radio-group去监听data的变化，手动调用更新子组件的方法去重新获取
-			this.parent = $parent.call(this, parentName)
+			this.parent = this.$uv.$parent.call(this, parentName)
 			if (this.parent.children) {
 				// 如果父组件的children不存在本组件的实例，才将本实例添加到父组件的children中
 				this.parent.children.indexOf(this) === -1 && this.parent.children.push(this)
@@ -139,7 +138,7 @@ export default {
 	beforeDestroy() {
 		// 判断当前页面是否存在parent和chldren，一般在checkbox和checkbox-group父子联动的场景会有此情况
 		// 组件销毁时，移除子组件在父组件children数组中的实例，释放资源，避免数据混乱
-		if (this.parent && array(this.parent.children)) {
+		if (this.parent && test.array(this.parent.children)) {
 			// 组件销毁时，移除父组件中的children数组中对应的实例
 			const childrenList = this.parent.children
 			childrenList.map((child, index) => {

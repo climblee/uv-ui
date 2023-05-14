@@ -46,7 +46,6 @@
 </template>
 
 <script>
-	import { getPx, sleep, guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	// #ifdef APP-NVUE
@@ -77,7 +76,7 @@
 			return {
 				isLongContent: false, // 是否需要隐藏一部分内容
 				status: 'close', // 当前隐藏与显示的状态，close-收起状态，open-展开状态
-				elId: guid(), // 生成唯一class
+				elId: '', // 生成唯一class
 				contentHeight: 100, // 内容高度
 			}
 		},
@@ -88,6 +87,9 @@
 				else return this.shadowStyle
 			}
 		},
+		created() {
+			this.elId = this.$uv.guid();
+		},
 		mounted() {
 			this.init()
 		},
@@ -96,7 +98,7 @@
 				this.getContentHeight().then(height => {
 					this.contentHeight = height
 					// 判断高度，如果真实内容高度大于占位高度，则显示收起与展开的控制按钮
-					if (height > getPx(this.showHeight)) {
+					if (height > this.$uv.getPx(this.showHeight)) {
 						this.isLongContent = true
 						this.status = 'close'
 					}
@@ -105,7 +107,7 @@
 			// 获取内容的高度
 			async getContentHeight() {
 				// 延时一定时间再获取节点
-				await sleep(30)
+				await this.$uv.sleep(30)
 				return new Promise(resolve => {
 					// #ifndef APP-NVUE
 					this.$uvGetRect('.' + this.elId).then(res => {

@@ -102,7 +102,6 @@
 		}
 		return indexList;
 	}
-	import { sys, sleep, getPx  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -151,7 +150,7 @@
 				// scroll-view的高度
 				scrollViewHeight: 0,
 				// 系统信息
-				sys: sys(),
+				sys: '',
 				scrolling: false,
 				scrollIntoView: '',
 				hasHeight: 0
@@ -176,13 +175,14 @@
 			uIndexList: {
 				immediate: true,
 				handler() {
-					sleep().then(() => {
+					this.$uv.sleep().then(() => {
 						this.setIndexListLetterInfo()
 					})
 				}
 			}
 		},
 		created() {
+			this.sys = this.$uv.sys()
 			this.children = []
 			this.anchors = []
 			this.init()
@@ -229,7 +229,7 @@
 			// 触摸结束
 			touchEnd(e) {
 				// 延时一定时间后再隐藏指示器，为了让用户看的更直观，同时也是为了消除快速切换uv-transition的show带来的影响
-				sleep(300).then(() => {
+				this.$uv.sleep(300).then(() => {
 					this.touching = false
 				})
 			},
@@ -257,19 +257,19 @@
 					const {
 						height
 					} = size
-					const windowHeight = sys().windowHeight
+					const windowHeight = this.$uv.sys().windowHeight
 					let customNavHeight = 0
 					// 消除各端导航栏非原生和原生导致的差异，让索引列表字母对屏幕垂直居中
 					if (this.customNavHeight == 0) {
 						// #ifdef H5
-						customNavHeight = sys().windowTop
+						customNavHeight = this.$uv.sys().windowTop
 						// #endif
 						// #ifndef H5
 						// 在非H5中，为原生导航栏，其高度不算在windowHeight内，这里设置为负值，后面相加时变成减去其高度的一半
 						customNavHeight = 0
 						// #endif
 					} else {
-						customNavHeight = getPx(this.customNavHeight)
+						customNavHeight = this.$uv.getPx(this.customNavHeight)
 					}
 					this.letterInfo = {
 						height,
@@ -288,7 +288,7 @@
 				} = this.letterInfo
 				// 对H5的pageY进行修正，这是由于uni-app自作多情在H5中将触摸点的坐标跟H5的导航栏结合导致的问题
 				// #ifdef H5
-				pageY += sys().windowTop
+				pageY += this.$uv.sys().windowTop
 				// #endif
 				// 对第一和最后一个字母做边界处理，因为用户可能在字母列表上触摸到两端的尽头后依然继续滑动
 				if (pageY < top) {
@@ -339,7 +339,7 @@
 				if (this.touching || this.scrolling) return
 				// 每过一定时间取样一次，减少资源损耗以及可能带来的卡顿
 				this.scrolling = true
-				sleep(30).then(() => {
+				this.$uv.sleep(30).then(() => {
 					this.scrolling = false
 				})
 				let scrollTop = 0

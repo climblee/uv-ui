@@ -61,7 +61,6 @@
 	</view>
 </template>
 <script>
-	import { guid, range, os, sleep  } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import props from './props.js';
@@ -95,8 +94,8 @@
 		data() {
 			return {
 				// 生成一个唯一id，否则一个页面多个评分组件，会造成冲突
-				elId: guid(),
-				elClass: guid(),
+				elId: '',
+				elClass: '',
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
 				// #ifdef VUE2
 				activeIndex: this.value,
@@ -122,16 +121,20 @@
 			// #endif
 			activeIndex: 'emitEvent'
 		},
+		created() {
+			this.elId = this.$uv.guid();
+			this.elClass = this.$uv.guid();
+		},
 		methods: {
 			init() {
-				sleep().then(() => {
+				this.$uv.sleep().then(() => {
 					this.getRateItemRect();
 					this.getRateIconWrapRect();
 				})
 			},
 			// 获取评分组件盒子的布局信息
 			async getRateItemRect() {
-				await sleep();
+				await this.$uv.sleep();
 				// uvui封装的获取节点的方法，详见文档
 				// #ifndef APP-NVUE
 				this.$uvGetRect("#" + this.elId).then((res) => {
@@ -182,7 +185,7 @@
 			// 通过点击，直接选中
 			clickHandler(e, index) {
 				// ios上，moving状态取消事件触发
-				if (os() === "ios" && this.moving) {
+				if (this.$uv.os() === "ios" && this.moving) {
 					return;
 				}
 				this.preventEvent(e);
@@ -217,7 +220,7 @@
 				// 判断当前操作的点的x坐标值，是否在允许的边界范围内
 				const allRateWidth = this.rateWidth * this.count + this.rateBoxLeft;
 				// 如果小于第一个图标的左边界，设置为最小值，如果大于所有图标的宽度，则设置为最大值
-				x = range(this.rateBoxLeft, allRateWidth, x) - this.rateBoxLeft
+				x = this.$uv.range(this.rateBoxLeft, allRateWidth, x) - this.rateBoxLeft
 				// 滑动点相对于评分盒子左边的距离
 				const distance = x;
 				// 滑动的距离，相当于多少颗星星
