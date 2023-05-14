@@ -30,5 +30,11 @@
 		color: #8f9ca2;
 		margin-bottom: 8px;
 	}
-	
+	::-webkit-scrollbar {
+	    display: none;  
+	    width: 0 !important;  
+	    height: 0 !important;  
+	    -webkit-appearance: none;  
+	    background: transparent;  
+	}
 </style>
