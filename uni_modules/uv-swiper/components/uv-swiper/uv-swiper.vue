@@ -158,9 +158,9 @@
 		},
 		methods: {
       getItemType(item) {
-        if (typeof item === 'string') return video(this.getSource(item)) ? 'video' : 'image'
+        if (typeof item === 'string') return this.$uv.test.video(this.getSource(item)) ? 'video' : 'image'
         if (typeof item === 'object' && this.keyName) {
-          if (!item.type) return video(this.getSource(item)) ? 'video' : 'image'
+          if (!item.type) return this.$uv.test.video(this.getSource(item)) ? 'video' : 'image'
           if (item.type === 'image') return 'image'
           if (item.type === 'video') return 'video'
           return 'image'
@@ -186,7 +186,7 @@
 			// 切换轮播时，暂停视频播放
 			pauseVideo(index) {
 				const lastItem = this.getSource(this.list[index])
-				if (video(lastItem)) {
+				if (this.$uv.test.video(lastItem)) {
 					// 当视频隐藏时，暂停播放
 					const video = uni.createVideoContext(`video-${index}`, this)
 					video.pause()
