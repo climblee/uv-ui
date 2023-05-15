@@ -2,11 +2,13 @@
 	<view style="padding: 30rpx;">
 		<uv-icon name="baidu" color="error"></uv-icon>
 		<uv-tabs :list="list" :current="0"></uv-tabs>
+		<uv-button width="100px">btn</uv-button>
+		<uv-avatar src="/static/1.jpg" size="100rpx"></uv-avatar>
 	</view>
 </template>
 
 <script>
-	import { fetchMenu } from '@/common/api.js';
+	// import { fetchMenu } from '@/common/api.js';
 	export default {
 		data() {
 			return {
@@ -27,12 +29,12 @@
 		},
 		onLoad() {
 			// #ifdef MP
-			uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
-			fetchMenu().then(res=>{
-				console.log(res)
-			})
+			// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
+			// fetchMenu().then(res=>{
+			// 	console.log(res)
+			// })
 			// #endif
-			console.log('格式化后的时间：',uni.$uv.date('1585926095536', 'yyyy-mm-dd'))
+			// console.log('格式化后的时间：',uni.$uv.date('1585926095536', 'yyyy-mm-dd'))
 		},
 		methods: {
 			clickIcon(e){

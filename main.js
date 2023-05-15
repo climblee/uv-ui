@@ -1,6 +1,6 @@
 import App from './App'
-import uvUI from '@/uni_modules/uv-ui-tools'
-import { Request } from '@/util/request/index'
+// import uvUI from '@/uni_modules/uv-ui-tools'
+// import { Request } from '@/util/request/index'
 // #ifdef MP
 // 引入uvui对小程序分享的mixin封装
 import mpShare from '@/uni_modules/uv-ui-tools/libs/mixin/mpShare.js'
@@ -55,7 +55,7 @@ app.$mount()
 Vue.mixin(mpShare)
 // #endif
 // 引入请求封装
-Request(app)
+// Request(app)
 // #endif
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
@@ -65,7 +65,7 @@ export function createApp() {
 	app.mixin(mpShare)
 	// #endif
 	// 引入请求封装
-	Request(app)
+	// Request(app)
 	return {
 		app
 	}
