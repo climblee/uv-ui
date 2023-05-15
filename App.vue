@@ -16,7 +16,7 @@
 	/* #ifndef APP-NVUE */
 	@import "@/static/iconfont.css";
 	/* #endif */
-	// @import '@/uni_modules/uv-ui-tools/index.scss';
+	@import '@/uni_modules/uv-ui-tools/index.scss';
 	@import "@/common/demo.scss";
 	/*每个页面公共css */
 	.uv-page {
@@ -29,12 +29,5 @@
 		font-size: 14px;
 		color: #8f9ca2;
 		margin-bottom: 8px;
-	}
-	::-webkit-scrollbar {
-	    display: none;  
-	    width: 0 !important;  
-	    height: 0 !important;  
-	    -webkit-appearance: none;  
-	    background: transparent;  
 	}
 </style>

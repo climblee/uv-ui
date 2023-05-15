@@ -316,6 +316,7 @@
 			}
 
 			&__nav {
+				flex: 1;
 				@include flex;
 				position: relative;
 

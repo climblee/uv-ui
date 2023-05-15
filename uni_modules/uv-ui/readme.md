@@ -1,23 +1,17 @@
-<<<<<<< HEAD
-> **组件文档及演示地址：[uv-ui文档](https://www.uvui.cn/components/intro.html)**
+> ## **组件文档及演示地址：[uv-ui文档](https://www.uvui.cn/components/intro.html)**
 >
-> **uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>、（备用QQ群）549833913**
-
+> ## **uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>、（备用QQ群）549833913**
 # uv-ui介绍
 
 ## uv-ui产品特点
 
 ### 1. uv-ui与uview2.x的关系？
 
-`uv-ui` 是基于 `uview2.x` 版本改造而来。在历次做项目的过程中其实比较喜欢`uni-ui`这样独立组件，但是官方组件可能没有 `uview-ui` 组件丰富，基于这两问题的考虑让我产生一个新的想法，就是将`uview`改造成独立组件方便使用，重命名也是为了避开很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。
+`uv-ui` 是基于 `uview2.x` 版本改造而来。重命名也是为了避开发布冲突和很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。
 
-目前 `uview2.x` 不支持 `VUE3` ，而且根据官方的更新情况，希望我能做点事情，希望我们作为后来者能继承 `uview` 团队优秀的基因。所以第一步就是把组件拆开独立上线，该结合的结合，同时全面支持 `VUE3` 和 `NVUE` ，同时部分组件做了优化。
-
-由于本人也开发过几款插件，特别是瀑布流插件一直都有人使用，虽然问题也有，但是仍在坚持。这次我将改良后的最新款瀑布流插件 `uv-waterfall` 也加入到了 `uv-ui` 的家庭，希望能帮助更多的开发者！我也是 `uni-app` 的忠实粉丝，在项目中没少用， `uv-ui` 我自己也在使用，所以不要担心没人维护。
+**uv-ui全面兼容小程序、nvue、vue2、vue3等多端。**
 
 >在这里，感谢 `uview-ui` 作者的开源奉献，再次为开源点赞。 同时 `uv-ui` 也是无条件开源。
->
->其实在开源很不容易，无收益无赞助，最容易饿死了，所以后期部分组件可能会加入广告，不过分吧。也感谢 `uni-app` 给我们这样一个舞台。
 
 
 ### 2. 全端兼容
@@ -28,27 +22,19 @@
 
 ### 3. 集成工具
 
-`uv-ui`中的`uv-ui-tools`组件集成了网络请求Http，是基于优秀的开源请求库：[luch-request](https://www.quanzhan.co/luch-request/)。
-
-还集成了常用的工具函数，一般都够用，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`main.js`中引入即可，具体请参考[文档](https://www.uvui.cn/js/http.html)。下面也有说明具体使用方式。
+`uv-ui`中的`uv-ui-tools`组件集成了强大的网络请求 `HTTP`   及常用的工具函数，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`mian.js`中引入即可，更多工具请参考[文档](https://www.uvui.cn/js/http.html)。使用方式请参考[扩展配置-集成工具的使用](https://www.uvui.cn/components/setting.html)。
 
 ### 4. 主题扩展
 
-`uv-ui`中的`uv-ui-tools`组件下面的`theme.scss`为主题文件，直接在`uni.scss`中引入主题即可，可以根据自己的需求进行扩展。下面也有说明具体使用方式。
-
+`uv-ui`中的`uv-ui-tools`组件下面的`theme.scss`为主题文件，直接在`uni.scss`中引入主题即可，可以根据自己的需求进行扩展。下面也有说明具体使用方式。使用方法请参考[扩展配置-自定义主题的使用](https://www.uvui.cn/components/setting.html)。
 ## 快速开始
 
 `uv-ui` 目前暂时只支持单独导入个别组件使用方式。后续会根据情况加入其它使用方式，我一直推崇的是，既然开发`uni-app`项目，推荐直接使用`HBuilderX`创建项目和导入组件。
 
-### 声明：导入插件后必须按照下面1、2、3点进行配置才能正常使用，组件都依赖`uv-ui-tools`工具组件，建议通过导入使用，会自动导入相关依赖。如果是自行复制注意查看相关依赖的组件，复制不全面可能会造成不能使用的后果。
+### 注意：大部分组件依赖`uv-ui-tools`组件，建议通过导入使用，会自动导入相关依赖。
 
-**1. 导入插件后，在 `main.js` 中引入 `uv-ui-tools`工具库。**
-```javascript
-// main.js
-import uvUI from '@/uni_modules/uv-ui-tools'
-```
 
-**2. App.vue 引入基础样式（注意style标签需声明scss属性支持）。**
+**1. 导入插件后，建议在`App.vue`引入基础样式（注意style标签需声明scss属性支持）。如果不引入，可能在 `h5` 平台的 `uv-tabs` 会有滚动条等，当然这不是必须的，除非你知道怎么处理。**
 
 ```css
 /* App.vue */
@@ -57,14 +43,7 @@ import uvUI from '@/uni_modules/uv-ui-tools'
 </style>
 ```
 
-**3. 在项目根目录中的 `uni.scss` 中引入全局 scss 变量文件。**
-
-```css
-/* uni.scss，加在最上面即可 */
-@import '@/uni_modules/uv-ui-tools/theme.scss';
-```
-
-**4. 在项目中使用**
+**2. 直接在项目中使用，无需通过import引入组件。**
 
 ```html
 <uv-icon name="baidu" size="30" color="#909399" ></uv-icon>
@@ -74,9 +53,9 @@ import uvUI from '@/uni_modules/uv-ui-tools'
 
 下表为 `uv-ui` 的扩展组件清单，点击每个组件**点击下载&安装**即可在详情页面导入组件到项目下，导入后按照上面的配置后就直接使用，组件无需import和注册。
 
-### 再次声明：导入插件后必须按照上面所说的1、2、3点进行配置才能正常使用。
+### 提示：导入插件后，建议`HBuilderX`重新运行项目，可能新导入的插件不能实时更新导致不能运行。
 
-### 注意：导入插件后，建议重启`HBuilderX`重新运行，有时候新导入的插件不能实时更新导致不能运行。
+### 有疑问请加 `uv-ui` 的交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>。
 
 | 组件名 | 组件说明 |
 | --- | --- |
