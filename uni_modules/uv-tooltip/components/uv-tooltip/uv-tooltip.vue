@@ -9,18 +9,34 @@
 			@click="overlayClickHandler"
 		></uv-overlay>
 		<view class="uv-tooltip__wrapper">
-			<text
-				class="uv-tooltip__wrapper__text"
-				:id="textId"
-				:ref="textId"
-				:userSelect="false"
-				:selectable="false"
-				@longpress.stop="longpressHandler"
-				:style="{
-					color: color,
-					backgroundColor: bgColor && showTooltip && tooltipTop !== -10000 ? bgColor : 'transparent'
-				}"
-			>{{ text }}</text>
+			<template v-if="$uv.sys()?.model == 'PC'">
+				<text
+					class="uv-tooltip__wrapper__text"
+					:id="textId"
+					:ref="textId"
+					:userSelect="false"
+					:selectable="false"
+					@click.stop="longpressHandler"
+					:style="{
+						color: color,
+						backgroundColor: bgColor && showTooltip && tooltipTop !== -10000 ? bgColor : 'transparent'
+					}"
+				>{{ text }}</text>
+			</template>
+			<template v-else>
+				<text
+					class="uv-tooltip__wrapper__text"
+					:id="textId"
+					:ref="textId"
+					:userSelect="false"
+					:selectable="false"
+					@longpress.stop="longpressHandler"
+					:style="{
+						color: color,
+						backgroundColor: bgColor && showTooltip && tooltipTop !== -10000 ? bgColor : 'transparent'
+					}"
+				>{{ text }}</text>
+			</template>
 			<uv-transition
 				mode="fade"
 				:show="showTooltip"
@@ -267,10 +283,10 @@
 					// 优先使用copyText字段，如果没有，则默认使用text字段当做复制的内容
 					data: this.copyText || this.text,
 					success: () => {
-						this.showToast && toast('复制成功')
+						this.showToast && this.$uv.toast('复制成功')
 					},
 					fail: () => {
-						this.showToast && toast('复制失败')
+						this.showToast && this.$uv.toast('复制失败')
 					},
 					complete: () => {
 						this.showTooltip = false

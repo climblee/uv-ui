@@ -1,6 +1,7 @@
 <template>
 	<view style="padding: 30rpx;">
 		<uv-icon name="baidu" color="error"></uv-icon>
+		<uv-tabs :list="list" :current="0"></uv-tabs>
 	</view>
 </template>
 
@@ -9,7 +10,14 @@
 	export default {
 		data() {
 			return {
-				demoValue:''
+				demoValue:'',
+				list: [{
+					name: '关注',
+				}, {
+					name: '推荐',
+				}, {
+					name: '电影'
+				}]
 			}
 		},
 		watch:{
@@ -29,6 +37,9 @@
 		methods: {
 			clickIcon(e){
 				console.log(e)
+			},
+			demoHandle(){
+				console.log('进来啦')
 			}
 		}
 	}

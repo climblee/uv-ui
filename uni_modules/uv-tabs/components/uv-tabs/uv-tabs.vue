@@ -21,7 +21,7 @@
 							:key="index"
 							@tap="clickHandler(item, index)"
 							:ref="`uv-tabs__wrapper__nav__item-${index}`"
-							:style="[$uv.addStyle(itemStyle), {flex: scrollable ? '' : 1}]"
+							:style="[{flex: scrollable ? '' : 1},$uv.addStyle(itemStyle)]"
 							:class="[`uv-tabs__wrapper__nav__item-${index}`, item.disabled && 'uv-tabs__wrapper__nav__item--disabled']"
 						>
 							<text
@@ -294,12 +294,6 @@
 		},
 	}
 </script>
-<style lang="scss">
-	// 非nvue的样式
-	/* #ifndef APP-NVUE */
-	@import "@/uni_modules/uv-ui-tools/libs/css/vue.scss";
-	/* #endif */
-</style>
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
