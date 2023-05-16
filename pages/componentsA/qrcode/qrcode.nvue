@@ -1,0 +1,68 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基本使用</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__button-item">
+					<uv-qrcode ref="uvqrcode"
+						canvas-id="qrcode1"
+						value="https://h5.uvui.cn"></uv-qrcode>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义风格</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__button-item">
+					<uv-qrcode ref="uvqrcode2"
+						canvas-id="qrcode"
+						value="https://h5.uvui.cn"
+						:options="options2">
+						<template v-slot:loading>
+							<uv-loading-icon color="red"></uv-loading-icon>
+						</template>
+					</uv-qrcode>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义样式</text>
+			<view class="uv-demo-block__content">
+				<view class="uv-page__button-item">
+					<uv-qrcode ref="uvqrcode3"
+						canvas-id="qrcode"
+						value="https://h5.uvui.cn"
+						:options="options3"
+						>
+					</uv-qrcode>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import QRCodeStyleRound from './uqrcode.plugin.round.es.js';
+	export default {
+		data() {
+			return {
+				options2: {
+					data: 'https://www.uvui.cn',
+					size: 300,
+					useDynamicSize: false,
+					errorCorrectLevel: 'Q',
+					margin: 10,
+					areaColor: "#F95F6B",
+					backgroundColor: "#3c9cff"
+				},
+				options3: {
+					style: 'round'
+				}
+			}
+		},
+		onReady() {
+			/* 注册扩展插件 */
+			this.$refs.uvqrcode3.registerStyle(QRCodeStyleRound); // qrcode为组件的ref名称
+		}
+	}
+</script>

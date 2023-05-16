@@ -70,6 +70,11 @@
 			"style": {
 				"navigationBarTitleText": "Layout 布局"
 			}
+		}, {
+			"path": "qrcode/qrcode",
+			"style": {
+				"navigationBarTitleText": "QRCode 二维码"
+			}
 		}]
 	}, {
 		"root": "pages/componentsB",

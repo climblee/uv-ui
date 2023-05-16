@@ -1,14 +1,17 @@
 export default [{
+	groupName: '最新组件',
+	groupName_en: 'Basic components',
+	list: [{
+		path: '/pages/componentsA/qrcode/qrcode',
+		icon: 'color',
+		title: 'QRCode 二维码',
+		title_en: 'QRCode',
+		isNew: true
+	}]
+}, {
 	groupName: '基础组件',
 	groupName_en: 'Basic components',
-	list: [
-	// 	{
-	// 	path: '/pages/demo/demo',
-	// 	icon: 'color',
-	// 	title: 'demo',
-	// 	title_en: 'Color'
-	// },
-	{
+	list: [{
 		path: '/pages/componentsA/color/color',
 		icon: 'color',
 		title: 'Color 色彩',

@@ -14,9 +14,13 @@
 					@click="openPage"
 					:name="item1.path">
 					<template v-slot:icon>
+						<template v-if="item1.isNew">
+							<view class="new">新</view>
+						</template>
 						<image class="uv-cell-icon"
 							:src="getIcon(item1.icon)"
-							mode="widthFix"></image>
+							mode="widthFix"
+							v-else></image>
 					</template>
 				</uv-cell>
 			</uv-cell-group>
@@ -85,5 +89,15 @@
 	}
 	.uv-cell-group__title__text {
 		font-weight: bold;
+	}
+	.new {
+		width: 40rpx;
+		height: 40rpx;
+		line-height: 40rpx;
+		text-align: center;
+		background: #f3f4f6;
+		border-radius: 4rpx;
+		font-size: 28rpx;
+		color: #3c9cff;
 	}
 </style>
