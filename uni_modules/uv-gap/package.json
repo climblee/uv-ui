@@ -1,7 +1,7 @@
 {
   "id": "uv-gap",
-  "displayName": "uv-gap 间隔槽",
-  "version": "1.0.0",
+  "displayName": "uv-gap 间隔槽 全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "该组件一般用于内容块之间的用一个灰色块隔开的场景，方便用户风格统一，减少工作量。",
   "keywords": [
     "gap",

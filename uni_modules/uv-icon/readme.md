@@ -4,7 +4,7 @@
 
 基于字体的图标集，包含了大多数常见场景的图标，支持自定义，支持自定义图片图标等。
 
-### [查看文档](https://www.uvui.cn/components/icon.html)
+### <a href="https://www.uvui.cn/components/icon.html" target="_blank">查看文档</a>
 
 ### [完整示例项目下载 | 关注更多组件](https://ext.dcloud.net.cn/plugin?name=uv-ui)
 

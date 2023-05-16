@@ -1,7 +1,7 @@
 {
   "id": "uv-line-progress",
-  "displayName": "uv-line-progress 线形进度条",
-  "version": "1.0.0",
+  "displayName": "uv-line-progress 线形进度条  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "uv-line-progress 该组件展示操作或任务的当前进度，比如上传文件，是一个线形的进度条。",
   "keywords": [
     "uv-line-progress",

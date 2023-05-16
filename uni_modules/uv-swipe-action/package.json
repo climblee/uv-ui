@@ -1,7 +1,7 @@
 {
   "id": "uv-swipe-action",
-  "displayName": "uv-swipe-action 滑动单元格",
-  "version": "1.0.0",
+  "displayName": "uv-swipe-action 滑动单元格  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "滑动单元格组件一般用于左滑唤出操作菜单的场景，用的最多的是左滑删除操作。",
   "keywords": [
     "uv-swipe-action",

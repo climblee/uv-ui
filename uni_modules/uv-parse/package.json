@@ -1,7 +1,7 @@
 {
   "id": "uv-parse",
-  "displayName": "uv-parse 富文本解析器",
-  "version": "1.0.0",
+  "displayName": "uv-parse 富文本解析器  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "uv-parse 该组件一般用于富文本解析场景，比如解析文章内容，商品详情，带原生HTML标签的各类字符串等，此组件和uni-app官方的rich-text组件功能有重合之处，但是也有不同的地方。",
   "keywords": [
     "uv-parse",

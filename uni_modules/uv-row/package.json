@@ -1,7 +1,7 @@
 {
   "id": "uv-row",
-  "displayName": "uv-row layout布局",
-  "version": "1.0.0",
+  "displayName": "uv-row layout布局  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "uv-row 通过基础的 12 分栏，迅速简便地创建布局",
   "keywords": [
     "uv-row",

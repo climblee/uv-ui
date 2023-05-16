@@ -1,7 +1,7 @@
 {
   "id": "uv-read-more",
-  "displayName": "uv-read-more 展开阅读更多",
-  "version": "1.0.0",
+  "displayName": "uv-read-more 展开阅读更多  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "uv-read-more 该组件一般用于内容较长，预先收起一部分，点击展开全部内容的场景。",
   "keywords": [
     "uv-read-more",

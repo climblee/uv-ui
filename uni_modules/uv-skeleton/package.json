@@ -1,7 +1,7 @@
 {
   "id": "uv-skeleton",
-  "displayName": "uv-skeleton 骨架屏",
-  "version": "1.0.0",
+  "displayName": "uv-skeleton 骨架屏  全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "骨架屏一般用于页面在请求远程数据尚未完成时，页面用灰色块预显示本来的页面结构，给用户更好的体验。",
   "keywords": [
     "uv-skeleton",

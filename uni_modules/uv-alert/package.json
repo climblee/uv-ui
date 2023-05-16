@@ -1,7 +1,7 @@
 {
 	"id": "uv-alert",
-	"displayName": "uv-alert 警告提示",
-	"version": "1.0.0",
+	"displayName": "uv-alert 警告提示 全面兼容小程序、nvue、vue2、vue3等多端",
+	"version": "1.0.1",
 	"description": "uv-alert 警告提示，展现需要关注的信息。灵活配置，功能齐全，兼容全端",
 	"keywords": [
         "alert",

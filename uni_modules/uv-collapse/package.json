@@ -1,7 +1,7 @@
 {
   "id": "uv-collapse",
-  "displayName": "uv-collapse 折叠面板",
-  "version": "1.0.0",
+  "displayName": "uv-collapse 折叠面板 全面兼容小程序、nvue、vue2、vue3等多端",
+  "version": "1.0.1",
   "description": "折叠面板组件，通过折叠面板收纳内容区域，点击可展开收起，多功能参数可配置。",
   "keywords": [
     "uv-collapse",
