@@ -36,6 +36,8 @@
 						>
 					</uv-qrcode>
 				</view>
+				<uv-gap></uv-gap>
+				<uv-button text="保存二维码" type="primary" :custom-style="{width:'200px'}" @click="saveQRCode"></uv-button>
 			</view>
 		</view>
 	</view>
@@ -63,6 +65,18 @@
 		onReady() {
 			/* 注册扩展插件 */
 			this.$refs.uvqrcode3.registerStyle(QRCodeStyleRound); // qrcode为组件的ref名称
+		},
+		methods: {
+			saveQRCode(){
+				this.$refs.uvqrcode3.save({
+				  success: () => {
+				    uni.showToast({
+				      icon: 'success',
+				      title: '保存成功'
+				    });
+				  }
+				});
+			}
 		}
 	}
 </script>
