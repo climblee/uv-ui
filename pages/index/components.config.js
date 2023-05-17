@@ -1,7 +1,15 @@
 export default [{
 	groupName: '最新组件',
 	groupName_en: 'Basic components',
-	list: [{
+	list: [
+	// 	{
+	// 	path: '/pages/demo/demo',
+	// 	icon: 'DEMO',
+	// 	title: 'DEMO',
+	// 	title_en: 'DEMO',
+	// 	isNew: true
+	// },
+	{
 		path: '/pages/componentsA/qrcode/qrcode',
 		icon: 'color',
 		title: 'QRCode 二维码',

@@ -74,7 +74,7 @@ export default {
 		//H5下载名称
 		h5DownloadName: {
 			type: String,
-			default: 'uQRCode'
+			default: 'uvQRCode'
 		}
 	}
 }

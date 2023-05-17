@@ -5,17 +5,15 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__button-item">
 					<uv-qrcode ref="uvqrcode"
-						canvas-id="qrcode1"
 						value="https://h5.uvui.cn"></uv-qrcode>
 				</view>
 			</view>
 		</view>
 		<view class="uv-demo-block">
-			<text class="uv-demo-block__title">自定义风格</text>
+			<text class="uv-demo-block__title">自定义样式</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__button-item">
 					<uv-qrcode ref="uvqrcode2"
-						canvas-id="qrcode"
 						value="https://h5.uvui.cn"
 						:options="options2">
 						<template v-slot:loading>
@@ -26,11 +24,10 @@
 			</view>
 		</view>
 		<view class="uv-demo-block">
-			<text class="uv-demo-block__title">自定义样式</text>
+			<text class="uv-demo-block__title">自定义风格</text>
 			<view class="uv-demo-block__content">
 				<view class="uv-page__button-item">
 					<uv-qrcode ref="uvqrcode3"
-						canvas-id="qrcode"
 						value="https://h5.uvui.cn"
 						:options="options3"
 						>

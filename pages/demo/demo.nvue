@@ -1,9 +1,38 @@
 <template>
-	<view style="padding: 30rpx;">
+	<view style="padding: 30rpx;height: 2000px;">
 		<uv-icon name="baidu" color="error"></uv-icon>
 		<uv-tabs :list="list" :current="0"></uv-tabs>
-		<uv-button width="100px">btn</uv-button>
+		<uv-button width="100px" @click="show=true" text="按钮"></uv-button>
 		<uv-avatar src="/static/1.jpg" size="100rpx"></uv-avatar>
+		<uv-image :src="mySrc"></uv-image>
+		<uv-popup :show="show" mode="center" @close="show=false">
+			<view class="content" style="height: 100px;overflow-y: auto;">
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+				<view>11111111111111</view>
+			</view>
+		</uv-popup>
 	</view>
 </template>
 
@@ -12,6 +41,8 @@
 	export default {
 		data() {
 			return {
+				show:false,
+				mySrc:'',
 				demoValue:'',
 				list: [{
 					name: '关注',
@@ -28,6 +59,9 @@
 			}
 		},
 		onLoad() {
+			setTimeout(()=>{
+				this.mySrc = 'https://cdn.uviewui.com/uview/album/1.jpg'
+			},100)
 			// #ifdef MP
 			// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
 			// fetchMenu().then(res=>{

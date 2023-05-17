@@ -15,7 +15,9 @@
 					:name="item1.path">
 					<template v-slot:icon>
 						<template v-if="item1.isNew">
-							<view class="new">新</view>
+							<view class="new">
+								<text class="text">新</text>
+							</view>
 						</template>
 						<image class="uv-cell-icon"
 							:src="getIcon(item1.icon)"
@@ -75,12 +77,6 @@
 	}
 </script>
 
-<style>
-	/* page {
-		background-color: rgb(240, 242, 244);
-	} */
-</style>
-
 <style lang="scss">
 	.uv-cell-icon1 {
 		width: 36rpx;
@@ -91,13 +87,21 @@
 		font-weight: bold;
 	}
 	.new {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
 		width: 40rpx;
 		height: 40rpx;
 		line-height: 40rpx;
 		text-align: center;
 		background: #f3f4f6;
 		border-radius: 4rpx;
-		font-size: 28rpx;
-		color: #3c9cff;
+		.text {
+			font-size: 28rpx;
+			color: #3c9cff;
+		}
 	}
 </style>

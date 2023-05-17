@@ -1,7 +1,7 @@
 {
   "id": "uv-tooltip",
   "displayName": "uv-tooltip 长按提示",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tooltip组件主要用于长按操作，类似微信的长按气泡。",
   "keywords": [
     "uv-tooltip",

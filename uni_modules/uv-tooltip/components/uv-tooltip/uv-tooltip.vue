@@ -9,7 +9,7 @@
 			@click="overlayClickHandler"
 		></uv-overlay>
 		<view class="uv-tooltip__wrapper">
-			<template v-if="$uv.sys()?.model == 'PC'">
+			<template v-if="isShow">
 				<text
 					class="uv-tooltip__wrapper__text"
 					:id="textId"
@@ -172,6 +172,9 @@
 			}
 		},
 		computed: {
+			isShow(){
+				return $uv.sys()?.model == 'PC';
+			},
 			// 特别处理H5的复制，因为H5浏览器是自带系统复制功能的，在H5环境
 			// 当一些依赖参数变化时，需要重新计算气泡和指示器的位置信息
 			propsChange() {

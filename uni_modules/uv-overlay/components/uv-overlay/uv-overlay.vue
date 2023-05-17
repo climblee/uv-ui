@@ -1,10 +1,11 @@
 <template>
 	<uv-transition
-	    :show="show"
-	    custom-class="uv-overlay"
-	    :duration="duration"
-	    :custom-style="overlayStyle"
-	    @click="clickHandler"
+	  :show="show"
+	  custom-class="uv-overlay"
+	  :duration="duration"
+	  :custom-style="overlayStyle"
+	  @click="clickHandler"
+		@touchmove.stop.prevent="clear"
 	>
 		<slot />
 	</uv-transition>
@@ -31,6 +32,17 @@
 		name: "uv-overlay",
 		emits: ['click'],
 		mixins: [mpMixin, mixin, props],
+		watch: {
+			show(newVal){
+				// #ifdef H5
+				if(newVal){
+					document.querySelector('body').style.overflow = 'hidden';
+				}else{
+					document.querySelector('body').style.overflow = '';
+				}
+				// #endif
+			}
+		},
 		computed: {
 			overlayStyle() {
 				const style = {
@@ -48,7 +60,8 @@
 		methods: {
 			clickHandler() {
 				this.$emit('click')
-			}
+			},
+			clear() {}
 		}
 	}
 </script>

@@ -96,7 +96,7 @@
 	 * @description 二维码生成插件，可扩展性高，它支持自定义渲染二维码，可通过uQRCode API得到二维码绘制关键信息后，使用canvas、svg或js操作dom的方式绘制二维码图案。还可自定义二维码样式，如随机颜色、圆点、方块、块与块之间的间距等。
 	 * @tutorial https://www.uvui.cn/components/qrcode.html
 	 * @property {String}	 value	 二维码内容 (start为true时必填 )
-	 * @property {Object}	 options  二维码配置选项 (data|size|margin)
+	 * @property {Object}	 options  二维码配置选项 (data|size|margin...)
 	 * @property {String}	 fileType  导出的文件类型  (jpg | png)  
 	 * @property {String}	 start  是否初始化组件后就开始生成 (默认 true)
 	 * @property {String}	 auto  是否数据发生改变自动重绘 (默认 false)

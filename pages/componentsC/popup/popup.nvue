@@ -53,7 +53,7 @@
 					type="success"
 					text="点我关闭"
 					customStyle="width: 200rpx;color:#fff;"
-					@click="show = !show"
+					@click="show = false"
 				></uv-button>
 			</view>
 		</uv-popup>
