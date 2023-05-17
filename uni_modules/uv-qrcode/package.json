@@ -5,10 +5,10 @@
   "description": "该组件是超级强大二维码生成功能，可扩展性高。自定义二维码样式，如随机颜色、圆点、方块、块与块之间的间距等等，具体请查看文档。",
   "keywords": [
     "uv-qrcode",
-		"qrcode",
-		"uvui",
-		"uv-ui",
-		"二维码"
+    "qrcode",
+    "uvui",
+    "uv-ui",
+    "二维码"
 ],
   "repository": "",
   "engines": {
