@@ -1,38 +1,8 @@
 <template>
-	<view style="padding: 30rpx;height: 2000px;">
-		<uv-icon name="baidu" color="error"></uv-icon>
-		<uv-tabs :list="list" :current="0"></uv-tabs>
-		<uv-button width="100px" @click="show=true" text="按钮"></uv-button>
-		<uv-avatar src="/static/1.jpg" size="100rpx"></uv-avatar>
-		<uv-image :src="mySrc"></uv-image>
-		<uv-popup :show="show" mode="center" @close="show=false">
-			<view class="content" style="height: 100px;overflow-y: auto;">
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-				<view>11111111111111</view>
-			</view>
-		</uv-popup>
+	<view>
+		<uv-button text="选择颜色" @click="openColor"></uv-button>
+		<uv-picker-color ref="uvPickerColor" title="颜色选择" :show="show" @confirm="show=false" @cancel="show=false"></uv-picker-color>
+		<view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view>
 	</view>
 </template>
 
@@ -76,6 +46,13 @@
 			},
 			demoHandle(){
 				console.log('进来啦')
+			},
+			openColor(){
+				// this.$refs.uvPickerColor.open();
+				this.show = true;
+			},
+			touchstart(e){
+				console.log(e)
 			}
 		}
 	}
