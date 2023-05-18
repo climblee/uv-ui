@@ -1,5 +1,5 @@
 <template>
-	<view class="wrap">
+	<view class="wrap" ref="uv-back-top">
 		<page-nav :desc="desc"></page-nav>
 		<view class="list-wrap">
 			<uv-cell-group title-bg-color="rgb(243, 244, 246)"
@@ -54,6 +54,9 @@
 		},
 		onPageScroll(e) {
 			this.scrollTop = e.scrollTop;
+			// #ifdef APP-NVUE
+			this.scrollTop = e.detail.scrollTop;
+			// #endif
 		},
 		methods: {
 			openPage(detail) {
