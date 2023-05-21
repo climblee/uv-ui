@@ -404,7 +404,7 @@
 		}
 		&__control {
 			@include flex;
-			padding: 0 20rpx;
+			padding: 10rpx 20rpx;
 			&__alpha {
 				width: 100rpx;
 				height: 100rpx;

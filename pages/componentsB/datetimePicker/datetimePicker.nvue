@@ -1,12 +1,5 @@
 <template>
 	<view class="uv-page">
-		<!-- <uv-navbar
-			title="datetimePicker 时间日期选择器"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<uv-cell-group>
 			<uv-cell
 				@click="showDatetimePicker(index)"

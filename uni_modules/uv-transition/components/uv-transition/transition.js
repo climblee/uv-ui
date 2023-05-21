@@ -17,9 +17,7 @@ import animationMap from './nvue.ani-map.js'
 const animation = uni.requireNativePlugin('animation')
 const getStyle = (name) => animationMap[name]
 // #endif
-// #ifdef H5
 import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js';
-// #endif
 export default {
 	emits: ['click', 'beforeEnter', 'enter', 'afterEnter', 'beforeLeave', 'leave', 'afterLeave'],
 	methods: {
@@ -29,7 +27,7 @@ export default {
 		},
 		// #ifndef APP-NVUE
 		// vue版本的组件进场处理
-		vueEnter() {
+		async vueEnter() {
 			// 动画进入时的类名
 			const classNames = getClassNames(this.mode)
 			// 定义状态和发出动画进入前事件
@@ -38,21 +36,19 @@ export default {
 			this.inited = true
 			this.display = true
 			this.classes = classNames.enter
-			this.$nextTick(async () => {
-				// #ifdef H5
-				await sleep(20)
-				// #endif
-				// 标识动画尚未结束
-				this.$emit('enter')
-				this.transitionEnded = false
-				// 组件动画进入后触发的事件
-				this.$emit('afterEnter')
-				// 赋予组件enter-to类名
-				this.classes = classNames['enter-to']
-			})
+			// this.$nextTick(async () => {
+			await sleep(20)
+			// 标识动画尚未结束
+			this.$emit('enter')
+			this.transitionEnded = false
+			// 组件动画进入后触发的事件
+			this.$emit('afterEnter')
+			// 赋予组件enter-to类名
+			this.classes = classNames['enter-to']
+			// })
 		},
 		// 动画离场处理
-		vueLeave() {
+		async vueLeave() {
 			// 如果不是展示状态，无需执行逻辑
 			if (!this.display) return
 			const classNames = getClassNames(this.mode)
@@ -61,14 +57,15 @@ export default {
 			this.$emit('beforeLeave')
 			// 获得类名
 			this.classes = classNames.leave
-			this.$nextTick(() => {
+			await sleep(10)
+			// this.$nextTick(() => {
 				// 动画正在离场的状态
 				this.transitionEnded = false
 				this.$emit('leave')
 				// 组件执行动画，到了执行的执行时间后，执行一些额外处理
 				setTimeout(this.onTransitionEnd, this.duration)
 				this.classes = classNames['leave-to']
-			})
+			// })
 		},
 		// #endif
 		// #ifdef APP-NVUE

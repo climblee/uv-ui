@@ -27,7 +27,7 @@
 				</view>
 			</slot>
 		</view>
-		<!-- #ifdef APP-VUE || MP-WEIXIN || H5 || MP-QQ -->
+		<!-- #ifdef APP-VUE || MP-WEIXIN || H5 || MP-QQ || MP-BAIDU -->
 		<view class="uv-swipe-action-item__content" @touchstart="wxs.touchstart" @touchmove="wxs.touchmove"
 			@touchend="wxs.touchend" :status="status" :change:status="wxs.statusChange" :size="size"
 			:change:size="wxs.sizeChange">
