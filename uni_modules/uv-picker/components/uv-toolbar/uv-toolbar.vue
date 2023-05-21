@@ -1,6 +1,6 @@
 <template>
 	<view
-		class="uv-toolbar"
+		:class="['uv-toolbar',{'uv-border-bottom':showBorder}]"
 		@touchmove.stop.prevent="noop"
 		v-if="show"
 	>

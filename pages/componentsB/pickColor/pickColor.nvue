@@ -1,0 +1,124 @@
+<template>
+	<view class="uv-page" ref="page">
+		<uv-cell-group>
+			<uv-cell
+				@click="showPickColor(index)"
+				:title="item.title"
+				v-for="(item, index) in list"
+				:key="index"
+				isLink
+			>
+				<template v-slot:value>
+					<view 
+						class="color"
+						:style="{
+							background: item.color
+						}"
+					>
+					</view>
+				</template>
+				<template v-slot:icon>
+					<image
+						slot="icon"
+						class="uv-cell-icon"
+						:src="item.iconUrl"
+						mode="widthFix"
+					></image>
+				</template>
+			</uv-cell>
+		</uv-cell-group>
+		<view>
+			<uv-pick-color 
+				ref="pickColor1"
+				@confirm="confirm"
+			></uv-pick-color>
+			<uv-pick-color 
+				ref="pickColor2"
+				:color="color"
+				@confirm="confirm"
+			></uv-pick-color>
+			<uv-pick-color 
+				ref="pickColor3"
+				:prefab-color="prefabColor"
+				@confirm="confirm"
+			></uv-pick-color>
+			<uv-pick-color
+				ref="pickColor4"
+				title="颜色选择"
+				@confirm="confirm"
+			></uv-pick-color>
+			<uv-pick-color
+				ref="pickColor5"
+				:closeOnClickOverlay="true"
+				@confirm="confirm"
+			></uv-pick-color>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data(){
+			return {
+				index: 0,
+				color: { r: 60, g: 156, b: 255, a: 1 },
+				prefabColor: [{
+					r: 60,
+					g: 156,
+					b: 255,
+					a: 1
+				}, {
+					r: 245,
+					g: 108,
+					b: 108,
+					a: 1
+				}],
+				list: [{
+						title: '基础使用',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/2.png',
+						color: 'rgba(0,0,0,0)'
+					},
+					{
+						title: '设置初始颜色',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/5.png',
+						color: 'rgba(60,156,255,1)'
+					},
+					{
+						title: '设置预制颜色',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/1.png',
+						color: 'rgba(0,0,0,0)'
+					},
+					{
+						title: '设置标题',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/4.png',
+						color: 'rgba(0,0,0,0)'
+					}, {
+						title: '允许点击遮罩关闭',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/6.png',
+						color: 'rgba(0,0,0,0)'
+					}
+				]
+			}
+		},
+		methods: {
+			showPickColor(index) {
+				this.index = index + 1;
+				this.$refs[`pickColor${this.index}`].open();
+			},
+			confirm(e){
+				const color = `rgba(${e.rgba.r},${e.rgba.g},${e.rgba.b},${e.rgba.a})`
+				this.$set(this.list[this.index - 1],'color',color);
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+.uv-page {
+	.color {
+		width: 50rpx;
+		height: 50rpx;
+		border-radius: 6rpx;
+	}
+}
+</style>

@@ -1,8 +1,14 @@
 <template>
 	<view>
 		<uv-button text="选择颜色" @click="openColor"></uv-button>
-		<uv-picker-color ref="uvPickerColor" title="颜色选择" :show="show" @confirm="show=false" @cancel="show=false"></uv-picker-color>
-		<view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view>
+		<uv-pick-color 
+		ref="uvPickerColor" 
+		title="颜色选择" 
+		:show="show" 
+		@confirm="confirmColor" 
+		@cancel="show=false"
+		></uv-pick-color>
+		<!-- <view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view> -->
 	</view>
 </template>
 
@@ -52,6 +58,10 @@
 				this.show = true;
 			},
 			touchstart(e){
+				console.log(e)
+			},
+			confirmColor(e){
+				this.show = false;
 				console.log(e)
 			}
 		}

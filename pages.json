@@ -163,6 +163,11 @@
 			"style": {
 				"navigationBarTitleText": "Parse 富文本解析器"
 			}
+		}, {
+			"path": "pickColor/pickColor",
+			"style": {
+				"navigationBarTitleText": "PickColor 选择颜色"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",

@@ -1,12 +1,5 @@
 <template>
 	<view class="uv-page" ref="page">
-		<!-- <uv-navbar
-			title="选择器"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<uv-cell-group>
 			<uv-cell
 				@click="showPicker(index)"

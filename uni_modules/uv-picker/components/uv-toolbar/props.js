@@ -5,6 +5,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 是否显示下边框
+		showBorder: {
+			type: Boolean,
+			default: false
+		},
 		// 取消按钮的文字
 		cancelText: {
 			type: String,

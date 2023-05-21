@@ -1,9 +1,16 @@
 export default {
 	props: {
-		// 是否展示颜色选择弹窗
-		show: {
-			type: Boolean,
-			default: false
+		// 颜色选择器初始颜色
+		color: {
+			type: Object,
+			default: () => {
+				return { r: 0, g: 0, b: 0, a: 0 }
+			}
+		},
+		// 预制颜色
+		prefabColor: {
+			type: Array,
+			default: () => []
 		},
 		// 是否允许点击遮罩关闭
 		closeOnClickOverlay: {

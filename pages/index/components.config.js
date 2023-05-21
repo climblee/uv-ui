@@ -2,20 +2,27 @@ export default [{
 	groupName: '最新组件',
 	groupName_en: 'Basic components',
 	list: [
+		// 	{
+		// 	path: '/pages/demo/demo',
+		// 	icon: 'DEMO',
+		// 	title: 'DEMO',
+		// 	title_en: 'DEMO',
+		// 	isNew: true
+		// },
 		{
-		path: '/pages/demo/demo',
-		icon: 'DEMO',
-		title: 'DEMO',
-		title_en: 'DEMO',
-		isNew: true
-	},
-	{
-		path: '/pages/componentsA/qrcode/qrcode',
-		icon: 'color',
-		title: 'QRCode 二维码',
-		title_en: 'QRCode',
-		isNew: true
-	}]
+			path: '/pages/componentsB/pickColor/pickColor',
+			icon: 'color',
+			title: 'PickColor 选择颜色',
+			title_en: 'PickColor',
+			isNew: true
+		}, {
+			path: '/pages/componentsA/qrcode/qrcode',
+			icon: 'color',
+			title: 'QRCode 二维码',
+			title_en: 'QRCode',
+			isNew: true
+		}
+	]
 }, {
 	groupName: '基础组件',
 	groupName_en: 'Basic components',
