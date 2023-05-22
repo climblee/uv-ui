@@ -58,6 +58,7 @@
 				</view>
 			</template>
 		</uv-waterfall>
+		<uv-load-more :status="loadStatus"></uv-load-more>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
 		<uv-waterfall ref="waterfall"
@@ -208,6 +209,13 @@
 		}
 	}
 </script>
+<style>
+	/* #ifndef APP-NVUE */
+	page {
+		background: #f1f1f1;
+	}
+	/* #endif */
+</style>
 <style scoped lang="scss">
 	$show-lines: 1;
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
