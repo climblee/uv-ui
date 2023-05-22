@@ -2,13 +2,13 @@ export default [{
 	groupName: '最新组件',
 	groupName_en: 'Basic components',
 	list: [
-		// 	{
-		// 	path: '/pages/demo/demo',
-		// 	icon: 'DEMO',
-		// 	title: 'DEMO',
-		// 	title_en: 'DEMO',
-		// 	isNew: true
-		// },
+			{
+			path: '/pages/demo/test',
+			icon: 'DEMO',
+			title: 'DEMO',
+			title_en: 'DEMO',
+			isNew: true
+		},
 		{
 			path: '/pages/componentsB/pickColor/pickColor',
 			icon: 'color',

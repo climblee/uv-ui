@@ -10,9 +10,10 @@
 			column-width="40"
 			@finish="handleWaterFallFinish"
 			@clear="clear"
-			@remove="remove">
+			@remove="remove"
+			@change="changeList">
 			<!-- 第一列数据 -->
-			<template v-slot:list1="{ list1 }">
+			<template v-slot:list1>
 				<view v-for="(item, index) in list1"
 					:key="item.id"
 					class="waterfall-item"
@@ -42,7 +43,7 @@
 				</view>
 			</template>
 			<!-- 第二列数据 -->
-			<template v-slot:list2="{ list2 }">
+			<template v-slot:list2>
 				<view v-for="(item, index) in list2"
 					:key="item.id"
 					class="waterfall-item"
@@ -114,7 +115,9 @@
 		mixins: [mixin],
 		data() {
 			return {
-				list: []
+				list: [],
+				list1: [],
+				list2: []
 			}
 		},
 		onLoad() {
@@ -138,6 +141,11 @@
 			this.getRandomData();
 		},
 		methods: {
+			changeList(o){
+				this.list1 = o.list1;
+				this.list2 = o.list2;
+				console.log(o)
+			},
 			remove(id){
 				console.log('删除',id)
 			},

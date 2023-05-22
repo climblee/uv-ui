@@ -99,7 +99,8 @@
 				list4: [],
 				list5: [],
 				// 临时列表
-				tempList: []
+				tempList: [],
+				emitList: {}
 			}
 		},
 		computed: {
@@ -180,6 +181,8 @@
 				// 列宽可能使用的到
 				item.width = minCol.width;
 				this[`list${minCol.name}`].push(item);
+				this.emitList[`list${minCol.name}`] = this[`list${minCol.name}`];
+				this.$emit('change',this.emitList);
 				// 移除临时数组中已处理的数据
 				this.tempList.splice(0, 1)
 				// 如果还有数据则继续执行
