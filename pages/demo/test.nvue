@@ -1,0 +1,228 @@
+<template>
+	<view>
+		<!-- #ifndef APP-NVUE -->
+		<uv-waterfall ref="waterfall"
+			v-model="list"
+			column-count="2"
+			left-gap="10"
+			right-gap="10"
+			column-gap="8"
+			column-width="40"
+			@finish="handleWaterFallFinish"
+			@clear="clear"
+			@remove="remove">
+			<!-- 第一列数据 -->
+			<template v-slot:list1="{ list1 }">
+				<view v-for="(item, index) in list1"
+					:key="item.id"
+					class="waterfall-item"
+					@longpress="longHandle(item)">
+					<view class="waterfall-item__image">
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="#999"></uv-loading-icon>
+							</template>
+						</uv-image>
+					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text>{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc">
+							<text>{{item.desc}}</text>
+						</view>
+						<view class="waterfall-item__ft__btn"
+							v-if="index==0">
+							<uv-button type="primary"
+								size="mini"
+								text="异步修改"
+								@click="edit(item)"></uv-button>
+						</view>
+					</view>
+				</view>
+			</template>
+			<!-- 第二列数据 -->
+			<template v-slot:list2="{ list2 }">
+				<view v-for="(item, index) in list2"
+					:key="item.id"
+					class="waterfall-item"
+					@longpress="longHandle(item)">
+					<view class="waterfall-item__image">
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="red"></uv-loading-icon>
+							</template>
+						</uv-image>
+					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text>{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc">
+							<text>{{item.desc}}</text>
+						</view>
+					</view>
+				</view>
+			</template>
+		</uv-waterfall>
+		<!-- #endif -->
+		<!-- #ifdef APP-NVUE -->
+		<uv-waterfall ref="waterfall"
+			column-count="2"
+			left-gap="10"
+			right-gap="10"
+			column-gap="8"
+			@scrolltolower="getRandomData">
+			<cell v-for="(item,index) in list"
+				class="waterfall-item">
+				<view class="waterfall-item__image">
+						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
+							<template v-slot:loading>
+								<uv-loading-icon color="red"></uv-loading-icon>
+							</template>
+						</uv-image>
+				</view>
+				<view class="waterfall-item__ft">
+					<view class="waterfall-item__ft__title">
+						<text>{{item.title}}</text>
+					</view>
+					<view class="waterfall-item__ft__desc">
+						<text>{{item.desc}}</text>
+					</view>
+				</view>
+			</cell>
+		</uv-waterfall>
+		<!-- #endif -->
+	</view>
+</template>
+<script>
+	import { guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+	const imgs = [
+		'https://cdn.uviewui.com/uview/album/1.jpg',
+		'https://cdn.uviewui.com/uview/album/2.jpg',
+		'https://cdn.uviewui.com/uview/album/3.jpg',
+		'https://cdn.uviewui.com/uview/album/4.jpg',
+		'https://cdn.uviewui.com/uview/album/5.jpg',
+		'https://cdn.uviewui.com/uview/album/6.jpg',
+		'https://cdn.uviewui.com/uview/album/7.jpg',
+		'https://cdn.uviewui.com/uview/album/8.jpg',
+		'https://cdn.uviewui.com/uview/album/9.jpg',
+		'https://cdn.uviewui.com/uview/album/10.jpg',
+	]
+	export default {
+		mixins: [mixin],
+		data() {
+			return {
+				list: []
+			}
+		},
+		onLoad() {
+			this.getRandomData();
+		},
+		onPullDownRefresh() {
+			this.list = [];
+			// #ifdef APP-NVUE
+			this.getRandomData();
+			// #endif
+			// #ifndef APP-NVUE
+			this.$refs.waterfall.clear();
+			// #endif
+			uni.showToast({
+				icon: 'success',
+				title: '刷新成功'
+			})
+			uni.stopPullDownRefresh();
+		},
+		onReachBottom() {
+			this.getRandomData();
+		},
+		methods: {
+			remove(id){
+				console.log('删除',id)
+			},
+			clear(){
+				for (let i = 0; i < 10; i++) {
+					this.list.push({
+						id: guid(),
+						image: this.getImage(),
+						title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
+						desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
+					});
+				}
+			},
+			longHandle(item) {
+				let that = this;
+				uni.showModal({
+					title: '提示',
+					content: '你确定删除该项？',
+					success(res) {
+						if (res.confirm) {
+							that.$refs.waterfall.remove(item.id);
+						}
+					}
+				})
+			},
+			edit(item) {
+				uni.showLoading({
+					title: '修改中'
+				})
+				setTimeout(() => {
+					item.title = 'uv-ui1.0';
+					item.desc = '修改后的文本';
+					uni.hideLoading();
+				}, 1000)
+			},
+			/* 瀑布流*/
+			// 获取随机数据
+			getRandomData() {
+				this.loadStatus = 'loading'
+				// 模拟异步
+				setTimeout(() => {
+					for (let i = 0; i < 10; i++) {
+						this.list.push({
+							id: guid(),
+							image: this.getImage(),
+							title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
+							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
+						});
+					}
+				}, 200)
+			},
+			// 瀑布流加载完毕事件
+			handleWaterFallFinish() {
+				this.loadStatus = 'loadmore'
+			},
+			getImage() {
+				const index = Math.floor(Math.random() * 10);
+				return imgs[index];
+			}
+		}
+	}
+</script>
+<style scoped lang="scss">
+	.waterfall-item {
+		/* #ifndef APP-NVUE */
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		/* #endif */
+		margin-top: 10px;
+	}
+	.waterfall-item__ft {
+		padding: 20rpx;
+		background: #fff;
+		&__title {
+			margin-bottom: 10px;
+			line-height: 48rpx;
+			font-size: 32rpx;
+			font-weight: 700;
+			color: #111;
+		}
+		&__desc {
+			font-size: 28rpx;
+			color: #666;
+		}
+		&__btn {
+			padding: 10px 0;
+		}
+	}
+</style>
