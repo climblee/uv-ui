@@ -368,6 +368,7 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$height: 400rpx;
+	/* #ifndef APP-NVUE */
 	.uv-pick-color {
 		&__box {
 			position: relative;
@@ -518,4 +519,5 @@
 			}
 		}
 	}
+	/* #endif */
 </style>

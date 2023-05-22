@@ -50,18 +50,20 @@
 			:style="[gapRightStyle]"></view>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
-		<waterfall
-			:column-count="columnNum"
-			:show-scrollbar="false"
-			column-width="auto"
-			:column-gap="columnGap"
-			:left-gap="leftGap"
-			:right-gap="rightGap"
-			:always-scrollable-vertical="true"
-			:style="[nvueWaterfallStyle]"
-			@loadmore="scrolltolower">
-			<slot></slot>
-		</waterfall>
+		<view class="waterfall-warapper">
+			<waterfall
+				:column-count="columnNum"
+				:show-scrollbar="false"
+				column-width="auto"
+				:column-gap="columnGap"
+				:left-gap="leftGap"
+				:right-gap="rightGap"
+				:always-scrollable-vertical="true"
+				:style="[nvueWaterfallStyle]"
+				@loadmore="scrolltolower">
+				<slot></slot>
+			</waterfall>
+		</view>
 		<!-- #endif -->
 	</view>
 </template>
@@ -99,8 +101,7 @@
 				list4: [],
 				list5: [],
 				// 临时列表
-				tempList: [],
-				emitList: {}
+				tempList: []
 			}
 		},
 		computed: {
@@ -168,6 +169,7 @@
 			// 拆分数据
 			async splitData() {
 				let rectArr = [];
+				let emitList = {};
 				if (!this.tempList.length) return
 				for (let i = 1; i <= this.columnNum; i++) {
 					const rect = await this.$uvGetRect(`#uv-waterfall-${i}`);
@@ -181,8 +183,9 @@
 				// 列宽可能使用的到
 				item.width = minCol.width;
 				this[`list${minCol.name}`].push(item);
-				this.emitList[`list${minCol.name}`] = this[`list${minCol.name}`];
-				this.$emit('change',this.emitList);
+				emitList.name = `list${minCol.name}`;
+				emitList.value = item;
+				this.$emit('changeList',emitList);
 				// 移除临时数组中已处理的数据
 				this.tempList.splice(0, 1)
 				// 如果还有数据则继续执行

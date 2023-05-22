@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="waterfall">
 		<!-- #ifndef APP-NVUE -->
 		<uv-waterfall ref="waterfall"
 			v-model="list"
@@ -10,26 +10,23 @@
 			column-width="40"
 			@finish="handleWaterFallFinish"
 			@clear="clear"
-			@remove="remove">
+			@remove="remove"
+			@changeList="changeList">
 			<!-- 第一列数据 -->
-			<template v-slot:list1="{ list1 }">
+			<template v-slot:list1>
 				<view v-for="(item, index) in list1"
 					:key="item.id"
 					class="waterfall-item"
 					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
-							<template v-slot:loading>
-								<uv-loading-icon color="#999"></uv-loading-icon>
-							</template>
-						</uv-image>
+						<image :src="item.image" mode="widthFix" :style="{width: item.width+'px',minHeight:'50px'}"></image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
-							<text>{{item.title}}</text>
+							<text class="value">{{item.title}}</text>
 						</view>
-						<view class="waterfall-item__ft__desc">
-							<text>{{item.desc}}</text>
+						<view class="waterfall-item__ft__desc uv-line-2">
+							<text class="value">{{item.desc}}</text>
 						</view>
 						<view class="waterfall-item__ft__btn"
 							v-if="index==0">
@@ -42,24 +39,20 @@
 				</view>
 			</template>
 			<!-- 第二列数据 -->
-			<template v-slot:list2="{ list2 }">
+			<template v-slot:list2>
 				<view v-for="(item, index) in list2"
 					:key="item.id"
 					class="waterfall-item"
 					@longpress="longHandle(item)">
 					<view class="waterfall-item__image">
-						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="true" :src="item.image">
-							<template v-slot:loading>
-								<uv-loading-icon color="red"></uv-loading-icon>
-							</template>
-						</uv-image>
+						<image :src="item.image" mode="widthFix" :style="{width: item.width+'px',minHeight:'50px'}"></image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
-							<text>{{item.title}}</text>
+							<text class="value">{{item.title}}</text>
 						</view>
-						<view class="waterfall-item__ft__desc">
-							<text>{{item.desc}}</text>
+						<view class="waterfall-item__ft__desc uv-line-2">
+							<text class="value">{{item.desc}}</text>
 						</view>
 					</view>
 				</view>
@@ -73,23 +66,24 @@
 			right-gap="10"
 			column-gap="8"
 			@scrolltolower="getRandomData">
-			<cell v-for="(item,index) in list"
-				class="waterfall-item">
-				<view class="waterfall-item__image">
-						<uv-image :width="item.width" mode="widthFix" :observeLazyLoad="false" :src="item.image">
-							<template v-slot:loading>
-								<uv-loading-icon color="red"></uv-loading-icon>
-							</template>
-						</uv-image>
-				</view>
-				<view class="waterfall-item__ft">
-					<view class="waterfall-item__ft__title">
-						<text>{{item.title}}</text>
+			<cell 
+				v-for="(item,index) in list"
+				class="waterfall-item-cell"
+			>
+				<view class="waterfall-item">
+					<view class="waterfall-item__image">
+							<image :src="item.image" mode="widthFix"></image>
 					</view>
-					<view class="waterfall-item__ft__desc">
-						<text>{{item.desc}}</text>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text class="value">{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc uv-line-2">
+							<text class="value">{{item.desc}}</text>
+						</view>
 					</view>
 				</view>
+				<uv-gap></uv-gap>
 			</cell>
 		</uv-waterfall>
 		<!-- #endif -->
@@ -114,7 +108,10 @@
 		mixins: [mixin],
 		data() {
 			return {
-				list: []
+				list: [],
+				list1: [],
+				list2: [],
+				loadStatus: 'loadmore'
 			}
 		},
 		onLoad() {
@@ -135,20 +132,28 @@
 			uni.stopPullDownRefresh();
 		},
 		onReachBottom() {
-			this.getRandomData();
+			if(this.loadStatus == 'loadmore')
+				this.getRandomData();
 		},
 		methods: {
+			changeList(e){
+				this[e.name].push(e.value);
+			},
 			remove(id){
-				console.log('删除',id)
+				this.list1.forEach((item,index)=>{
+					if(item.id == id){
+						this.list1.splice(index,1);
+					}
+				})
+				this.list2.forEach((item,index)=>{
+					if(item.id == id){
+						this.list2.splice(index,1);
+					}
+				})
 			},
 			clear(){
 				for (let i = 0; i < 10; i++) {
-					this.list.push({
-						id: guid(),
-						image: this.getImage(),
-						title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
-						desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
-					});
+					this.list.push(this.getItem(i));
 				}
 			},
 			longHandle(item) {
@@ -176,16 +181,11 @@
 			/* 瀑布流*/
 			// 获取随机数据
 			getRandomData() {
-				this.loadStatus = 'loading'
+				this.loadStatus = 'loading';
 				// 模拟异步
 				setTimeout(() => {
 					for (let i = 0; i < 10; i++) {
-						this.list.push({
-							id: guid(),
-							image: this.getImage(),
-							title: i % 2 == 0 ? '体验xx-ui框架-' + (this.list.length + 1) : 'xx-ui支持多平台-' + (this.list.length + 1),
-							desc: i % 2 == 0 ? '欢迎使用xx-ui，uni-app生态专用的UI框架-' + (this.list.length + 1) : '开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序-' + (this.list.length + 1)
-						});
+						this.list.push(this.getItem(i));
 					}
 				}, 200)
 			},
@@ -196,31 +196,51 @@
 			getImage() {
 				const index = Math.floor(Math.random() * 10);
 				return imgs[index];
+			},
+			getItem(i){
+				return {
+					id: guid(),
+					image: this.getImage(),
+					title: i % 2 == 0 ? `(${this.list.length + 1})体验uv-ui框架`: `(${this.list.length + 1})uv-ui支持多平台`,
+					desc: i % 2 == 0 ? `(${this.list.length + 1})欢迎使用uv-ui，uni-app生态专用的UI框架` : `(${this.list.length + 1})开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序`
+				}
 			}
 		}
 	}
 </script>
-<style scoped
-	lang="scss">
-	.waterfall-item {
-		/* #ifndef APP-NVUE */
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		/* #endif */
-		margin-top: 10px;
+<style scoped lang="scss">
+	$show-lines: 1;
+	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
+	.waterfall {
+		background: #f1f1f1;
 	}
+	/* #ifndef APP-NVUE */
+	.waterfall-item {
+		overflow: hidden;
+		margin-top: 10px;
+		border-radius: 6px;
+	}
+	/* #endif */
+	/* #ifdef APP-NVUE */
+	.waterfall-item {
+		background: #fff;
+	}
+	/* #endif */
 	.waterfall-item__ft {
 		padding: 20rpx;
 		background: #fff;
 		&__title {
-			margin-bottom: 10px;
+			margin-bottom: 10rpx;
 			line-height: 48rpx;
-			font-size: 32rpx;
 			font-weight: 700;
-			color: #111;
+			.value {
+				font-size: 32rpx;
+				color: #303133;
+			}
 		}
-		&__desc {
+		&__desc .value {
 			font-size: 28rpx;
-			color: #666;
+			color: #606266;
 		}
 		&__btn {
 			padding: 10px 0;
