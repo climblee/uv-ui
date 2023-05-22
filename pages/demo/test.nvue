@@ -144,7 +144,6 @@
 			changeList(o){
 				this.list1 = o.list1;
 				this.list2 = o.list2;
-				console.log(o)
 			},
 			remove(id){
 				console.log('删除',id)

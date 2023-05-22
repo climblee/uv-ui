@@ -110,7 +110,8 @@
 				// 因为props的值无法修改，故需要一个中间值
 				imgWidth: this.width,
 				// 因为props的值无法修改，故需要一个中间值
-				imgHeight: this.height
+				imgHeight: this.height,
+				thresholdValue: 50
 			};
 		},
 		watch: {
