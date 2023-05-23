@@ -59,6 +59,7 @@
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-pick-color | [颜色选择器](https://www.uvui.cn/components/pickColor.html) |
 | uv-qrcode | [二维码](https://www.uvui.cn/components/qrcode.html) |
 | uv-waterfall | [瀑布流](https://www.uvui.cn/components/waterfall.html) |
 | uv-row | [Layout 布局](https://www.uvui.cn/components/layout.html) |
