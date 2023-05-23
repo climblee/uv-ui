@@ -86,11 +86,7 @@
 			>
 				<view class="waterfall-item">
 					<view class="waterfall-item__image">
-							<uv-image :src="item.image" mode="widthFix">
-								<template v-slot:loading>
-									<uv-loading-icon></uv-loading-icon>
-								</template>
-							</uv-image>
+							<image :src="item.image" mode="widthFix"></image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
