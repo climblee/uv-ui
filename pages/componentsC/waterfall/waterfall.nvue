@@ -14,45 +14,58 @@
 			@changeList="changeList">
 			<!-- 第一列数据 -->
 			<template v-slot:list1>
-				<view v-for="(item, index) in list1"
-					:key="item.id"
-					class="waterfall-item"
-					@longpress="longHandle(item)">
-					<view class="waterfall-item__image">
-						<image :src="item.image" mode="widthFix" :style="{width: item.width+'px',minHeight:'50px'}"></image>
-					</view>
-					<view class="waterfall-item__ft">
-						<view class="waterfall-item__ft__title">
-							<text class="value">{{item.title}}</text>
+				<!-- 为了磨平部分平台的BUG，必须套一层view -->
+				<view>
+					<view v-for="(item, index) in list1"
+						:key="item.id"
+						class="waterfall-item"
+						@longpress="longHandle(item)">
+						<view class="waterfall-item__image">
+							<uv-image :src="item.image" mode="widthFix" :width="item.width+'px'">
+								<template v-slot:loading>
+									<uv-loading-icon></uv-loading-icon>
+								</template>
+							</uv-image>
 						</view>
-						<view class="waterfall-item__ft__desc uv-line-2">
-							<text class="value">{{item.desc}}</text>
-						</view>
-						<view class="waterfall-item__ft__btn"
-							v-if="index==0">
-							<uv-button type="primary"
-								size="mini"
-								text="异步修改"
-								@click="edit(item)"></uv-button>
+						<view class="waterfall-item__ft">
+							<view class="waterfall-item__ft__title">
+								<text class="value">{{item.title}}</text>
+							</view>
+							<view class="waterfall-item__ft__desc uv-line-2">
+								<text class="value">{{item.desc}}</text>
+							</view>
+							<view class="waterfall-item__ft__btn"
+								v-if="index==0">
+								<uv-button type="primary"
+									size="mini"
+									text="异步修改"
+									@click="edit(item)"></uv-button>
+							</view>
 						</view>
 					</view>
 				</view>
 			</template>
 			<!-- 第二列数据 -->
 			<template v-slot:list2>
-				<view v-for="(item, index) in list2"
-					:key="item.id"
-					class="waterfall-item"
-					@longpress="longHandle(item)">
-					<view class="waterfall-item__image">
-						<image :src="item.image" mode="widthFix" :style="{width: item.width+'px',minHeight:'50px'}"></image>
-					</view>
-					<view class="waterfall-item__ft">
-						<view class="waterfall-item__ft__title">
-							<text class="value">{{item.title}}</text>
+				<view>
+					<view v-for="(item, index) in list2"
+						:key="item.id"
+						class="waterfall-item"
+						@longpress="longHandle(item)">
+						<view class="waterfall-item__image">
+							<uv-image :src="item.image" mode="widthFix" :width="item.width+'px'">
+								<template v-slot:loading>
+									<uv-loading-icon></uv-loading-icon>
+								</template>
+							</uv-image>
 						</view>
-						<view class="waterfall-item__ft__desc uv-line-2">
-							<text class="value">{{item.desc}}</text>
+						<view class="waterfall-item__ft">
+							<view class="waterfall-item__ft__title">
+								<text class="value">{{item.title}}</text>
+							</view>
+							<view class="waterfall-item__ft__desc uv-line-2">
+								<text class="value">{{item.desc}}</text>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -73,7 +86,11 @@
 			>
 				<view class="waterfall-item">
 					<view class="waterfall-item__image">
-							<image :src="item.image" mode="widthFix"></image>
+							<uv-image :src="item.image" mode="widthFix">
+								<template v-slot:loading>
+									<uv-loading-icon></uv-loading-icon>
+								</template>
+							</uv-image>
 					</view>
 					<view class="waterfall-item__ft">
 						<view class="waterfall-item__ft__title">
