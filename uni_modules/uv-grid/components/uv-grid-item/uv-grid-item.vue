@@ -75,7 +75,7 @@
 			init() {
 				// 用于在父组件uv-grid的children中被添加入子组件时，
 				// 重新计算item的边框
-				uni.$on('$uGridItem', () => {
+				uni.$on('$uvGridItem', () => {
 					this.gridItemClasses()
 				})
 				// 父组件的实例
@@ -87,7 +87,7 @@
 				})
 				// #endif
 				// 发出事件，通知所有的grid-item都重新计算自己的边框
-				uni.$emit('$uGridItem')
+				uni.$emit('$uvGridItem')
 				this.gridItemClasses()
 			},
 			// 获取父组件的参数
@@ -131,7 +131,7 @@
 			},
 			gridItemClasses() {
 				if(this.parentData.border) {
-					const classes = []
+					let classes = []
 					this.parent.children.map((child, index) =>{
 						if(this === child) {
 							const len = this.parent.children.length
@@ -158,7 +158,7 @@
 		},
 		beforeDestroy() {
 			// 移除事件监听，释放性能
-			uni.$off('$uGridItem')
+			uni.$off('$uvGridItem')
 		}
 	};
 </script>

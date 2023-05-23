@@ -1,20 +1,29 @@
 <template>
-	<view class="uv-divider"
+	<view 
+		class="uv-divider"
 		:style="[$uv.addStyle(customStyle)]"
-		@tap="click">
-		<uv-line :color="lineColor"
+		@tap="click"
+		>
+		<uv-line 
+			:color="lineColor"
 			:customStyle="leftLineStyle"
 			:hairline="hairline"
 			:dashed="dashed"></uv-line>
-		<text v-if="dot"
-			class="uv-divider__dot">●</text>
-		<text v-else-if="text"
+		<text 
+			v-if="dot"
+			class="uv-divider__dot"
+		>●</text>
+		<text 
+			v-else-if="text"
 			class="uv-divider__text"
-			:style="[textStyle]">{{text}}</text>
-		<uv-line :color="lineColor"
+			:style="[textStyle]"
+		>{{text}}</text>
+		<uv-line 
+			:color="lineColor"
 			:customStyle="rightLineStyle"
 			:hairline="hairline"
-			:dashed="dashed"></uv-line>
+			:dashed="dashed"
+		></uv-line>
 	</view>
 </template>
 <script>
