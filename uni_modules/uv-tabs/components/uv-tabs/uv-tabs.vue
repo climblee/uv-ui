@@ -14,6 +14,9 @@
 					<view
 						class="uv-tabs__wrapper__nav"
 						ref="uv-tabs__wrapper__nav"
+						:style="{
+							flex: scrollable ? '' : 1
+						}"
 					>
 						<view
 							class="uv-tabs__wrapper__nav__item"
@@ -316,7 +319,7 @@
 			}
 
 			&__nav {
-				flex: 1;
+				// flex: 1;
 				@include flex;
 				position: relative;
 
