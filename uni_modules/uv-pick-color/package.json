@@ -1,14 +1,14 @@
 {
   "id": "uv-pick-color",
-  "displayName": "uv-pick-color 颜色选择器",
+  "displayName": "uv-pick-color 颜色选择器 兼容小程序、vue2、vue3等",
   "version": "1.0.0",
   "description": "uv-pick-color 该组件为颜色选择器",
   "keywords": [
     "uv-pick-color",
-		"uvui",
-		"uv-ui",
-		"颜色",
-		"color"
+    "uvui",
+    "uv-ui",
+    "颜色",
+    "color"
 ],
   "repository": "",
   "engines": {

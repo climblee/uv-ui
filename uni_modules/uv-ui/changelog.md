@@ -1,3 +1,13 @@
+## 1.0.6（2023-05-23）
+1. 新增uv-pick-color颜色选择器组件
+2. uv-toolbar组件增加showBorder属性，是否显示下边框
+3. uv-transition组件在百度小程序等平台不支持this.$nextick导致下面的逻辑不执行，使用延时替换方案
+4. uv-ui-tools组件中bem()函数兼容百度/头条小程序等
+5. uv-waterfall组件修复在百度/头条小程序显示异常等BUG，增加changeList回调函数处理数据，同步更新示例等
+6. uv-image组件修复在百度/头条小程序等开启observeLazyLoad后显示异常BUG
+7. uv-tabs组件修复上次更新导致的在nvue中不滚动的BUG
+8. uv-qrcode组件修复在部分平台不显示加载的BUG
+9. 修复其他已知问题等
 ## 1.0.5（2023-05-17）
 1. 新增uv-qrcode二维码组件
 2. 修复uv-tooltip在vue2模式下的BUG

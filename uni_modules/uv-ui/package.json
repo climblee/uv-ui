@@ -1,7 +1,7 @@
 {
 	"id": "uv-ui",
 	"displayName": "uv-ui 破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "uv-ui 是基于uni-app的、全端兼容的、内容丰富、高性能UI框架。破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击。",
 	"keywords": [
         "uv-ui",
