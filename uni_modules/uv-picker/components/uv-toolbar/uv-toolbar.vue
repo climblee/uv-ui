@@ -44,6 +44,7 @@
 	 * @description 
 	 * @tutorial https://www.uvui.cn/components/toolbar.html
 	 * @property {Boolean}	show			是否展示工具条（默认 true ）
+	 * @property {Boolean}	showBorder			是否展示工具条下方边框（默认 false ）
 	 * @property {String}	cancelText		取消按钮的文字（默认 '取消' ）
 	 * @property {String}	confirmText		确认按钮的文字（默认 '确认' ）
 	 * @property {String}	cancelColor		取消按钮的颜色（默认 '#909193' ）

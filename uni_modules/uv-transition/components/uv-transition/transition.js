@@ -59,12 +59,12 @@ export default {
 			this.classes = classNames.leave
 			await sleep(10)
 			// this.$nextTick(() => {
-				// 动画正在离场的状态
-				this.transitionEnded = false
-				this.$emit('leave')
-				// 组件执行动画，到了执行的执行时间后，执行一些额外处理
-				setTimeout(this.onTransitionEnd, this.duration)
-				this.classes = classNames['leave-to']
+			// 动画正在离场的状态
+			this.transitionEnded = false
+			this.$emit('leave')
+			// 组件执行动画，到了执行的执行时间后，执行一些额外处理
+			setTimeout(this.onTransitionEnd, this.duration)
+			this.classes = classNames['leave-to']
 			// })
 		},
 		// #endif

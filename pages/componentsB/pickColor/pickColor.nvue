@@ -30,27 +30,38 @@
 		<view>
 			<uv-pick-color 
 				ref="pickColor1"
-				@confirm="confirm"
+				:show="show1"
+				@confirm="confirmHandler"
+				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor2"
+				:show="show2"
 				:color="color"
-				@confirm="confirm"
+				@confirm="confirmHandler"
+				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor3"
+				:show="show3"
 				:prefab-color="prefabColor"
-				@confirm="confirm"
+				@confirm="confirmHandler"
+				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor4"
+				:show="show4"
 				title="颜色选择"
-				@confirm="confirm"
+				@confirm="confirmHandler"
+				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor5"
+				:show="show5"
 				:closeOnClickOverlay="true"
-				@confirm="confirm"
+				@confirm="confirmHandler"
+				@cancel="cancel"
+				@close="close"
 			></uv-pick-color>
 		</view>
 	</view>
@@ -60,6 +71,11 @@
 	export default {
 		data(){
 			return {
+				show1: false,
+				show2: false,
+				show3: false,
+				show4: false,
+				show5: false,
 				index: 0,
 				color: { r: 60, g: 156, b: 255, a: 1 },
 				prefabColor: [{
@@ -103,11 +119,18 @@
 		methods: {
 			showPickColor(index) {
 				this.index = index + 1;
-				this.$refs[`pickColor${this.index}`].open();
+				this[`show${this.index}`] = true;
 			},
-			confirm(e){
+			confirmHandler(e){
 				const color = `rgba(${e.rgba.r},${e.rgba.g},${e.rgba.b},${e.rgba.a})`
 				this.$set(this.list[this.index - 1],'color',color);
+				this[`show${this.index}`] = false;
+			},
+			cancel(){
+				this[`show${this.index}`] = false;
+			},
+			close(){
+				this[`show${this.index}`] = false;
 			}
 		}
 	}

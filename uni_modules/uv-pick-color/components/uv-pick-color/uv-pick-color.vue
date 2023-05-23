@@ -4,14 +4,16 @@
 		:show="show"
 		@close="closeHandler">
 		<view class="uv-pick-color">
-			<uv-toolbar :cancelColor="cancelColor"
+			<uv-toolbar
+				:show="show"
+				:cancelColor="cancelColor"
 				:confirmColor="confirmColor"
 				:cancelText="cancelText"
 				:confirmText="confirmText"
 				:title="title"
 				:show-border="true"
-				@cancel="cancel"
-				@confirm="confirm"></uv-toolbar>
+				@cancel="cancelHandler"
+				@confirm="confirmHandler"></uv-toolbar>
 			<view 
 				class="uv-pick-color__box"
 				:style="{
@@ -20,9 +22,9 @@
 			>
 				<view 
 					class="uv-pick-color__box__bg drag-box"
-					@touchstart="touchstart($event, 0)"
-					@touchmove="touchmove($event, 0)"
-					@touchend="touchend($event, 0)"
+					@touchstart.stop.prevent="touchstart($event, 0)"
+					@touchmove.stop.prevent="touchmove($event, 0)"
+					@touchend.stop.prevent="touchend($event, 0)"
 				>
 					<view class="uv-pick-color__box__bg-mask"></view>
 					<view 
@@ -42,9 +44,9 @@
 				<view class="uv-pick-color__control__item">
 					<view 
 						class="uv-pick-color__control__item__drag drag-box"
-						@touchstart="touchstart($event, 1)"
-						@touchmove="touchmove($event, 1)"
-						@touchend="touchend($event, 1)"
+						@touchstart.stop="touchstart($event, 1)"
+						@touchmove.stop="touchmove($event, 1)"
+						@touchend.stop="touchend($event, 1)"
 					>
 						<view class="uv-pick-color__control__item__drag--hue"></view>
 						<view 
@@ -56,9 +58,9 @@
 					</view>
 					<view 
 						class="uv-pick-color__control__item__drag drag-box"
-						@touchstart="touchstart($event, 2)"
-						@touchmove="touchmove($event, 2)"
-						@touchend="touchend($event, 2)"
+						@touchstart.stop="touchstart($event, 2)"
+						@touchmove.stop="touchmove($event, 2)"
+						@touchend.stop="touchend($event, 2)"
 					>
 						<view class="uv-pick-color__control__item__drag--alpha"></view>
 						<view 
@@ -74,7 +76,7 @@
 				<view 
 					class="uv-pick-color__result__select"
 					hover-class="uv-hover-class"
-					@click="select"
+					@click.stop="select"
 				>
 					<text class="text">切换</text>
 					<text class="text">模式</text>
@@ -134,7 +136,7 @@
 					<view 
 						class="uv-pick-color__prefab__item--color"
 						:style="{ background:`rgba(${item.r},${item.g},${item.b},${item.a})` }"
-						@click="setColorBySelect(item)"
+						@click.stop="setColorBySelect(item)"
 					></view>
 				</view>
 			</view>
@@ -166,7 +168,6 @@
 		},
 		data() {
 			return {
-				show: false,
 				// rgba 颜色
 				rgba: {
 					r: 0,
@@ -221,29 +222,18 @@
 			if (this.prefabColor.length) this.colorList = this.prefabColor;
 		},
 		methods: {
-			// 打开选择器
-			open(){
-				this.show = true;
-				this.init();
-			},
-			close(){
-				this.show = false;
-			},
 			// 关闭选择器
 			closeHandler() {
 				if (this.closeOnClickOverlay) {
-					this.close();
 					this.$emit('close')
 				}
 			},
 			// 点击工具栏的取消按钮
-			cancel() {
-				this.close();
+			cancelHandler() {
 				this.$emit('cancel')
 			},
 			// 点击工具栏的确定按钮
-			confirm() {
-				this.close();
+			confirmHandler() {
 				this.$emit('confirm', {
 					rgba: this.rgba,
 					hex: this.hex

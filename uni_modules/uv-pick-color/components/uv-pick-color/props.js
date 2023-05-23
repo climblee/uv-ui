@@ -1,5 +1,10 @@
 export default {
 	props: {
+		// 是否显示
+		show: {
+			type: Boolean,
+			default: false
+		},
 		// 颜色选择器初始颜色
 		color: {
 			type: Object,

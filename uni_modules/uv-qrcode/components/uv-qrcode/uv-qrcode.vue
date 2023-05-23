@@ -33,7 +33,7 @@
 
 		<!-- 加载效果 -->
 		<view class="uqrcode-makeing"
-			v-if="loading === undefined ? makeing : loading">
+			v-if="loading === undefined || !loading ? makeing : loading">
 			<slot name="loading">
 				<image class="uqrcode-makeing-image"
 					:style="{ width: `${templateOptions.size / 4}px`, height: `${templateOptions.size / 4}px` }"
