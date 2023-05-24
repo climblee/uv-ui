@@ -1,3 +1,9 @@
+## 1.0.7（2023-05-24）
+1. uv-icon 将线上ttf字体包替换成base64，避免加载时或者网络差时候显示白色方块
+2. uv-text 去掉多余的data-index属性，避免警告
+3. uv-upload 在fileList的watch中增加deep属性
+4. uv-pick-color 去掉template中存在的this.导致头条小程序编译警告
+5. uv-image 去掉template中存在的this.导致头条小程序编译警告
 ## 1.0.6（2023-05-23）
 1. 新增uv-pick-color颜色选择器组件
 2. uv-toolbar组件增加showBorder属性，是否显示下边框
