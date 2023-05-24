@@ -31,7 +31,6 @@
             <button
                 class="uv-reset-button uv-text__value"
                 :style="[valueStyle]"
-                :data-index="index"
                 :openType="openType"
                 @getuserinfo="onGetUserInfo"
                 @contact="onContact"

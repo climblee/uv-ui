@@ -17,7 +17,7 @@
 			<view 
 				class="uv-pick-color__box"
 				:style="{
-					background:`rgb(${this.bgcolor.r},${this.bgcolor.g},${this.bgcolor.b})`
+					background:`rgb(${bgcolor.r},${bgcolor.g},${bgcolor.b})`
 				}"
 			>
 				<view 

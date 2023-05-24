@@ -26,7 +26,7 @@
 				class="uv-image__loading"
 				:style="{
 					borderRadius: shape == 'circle' ? '50%' : $uv.addUnit(radius),
-					backgroundColor: this.bgColor,
+					backgroundColor: bgColor,
 					width: $uv.addUnit(width),
 					height: $uv.addUnit(height)
 				}"
