@@ -1,4 +1,4 @@
-## 1.0.7（2023-05-24）
+## 1.0.7（2023-05-25）
 1. uv-icon 将线上ttf字体包替换成base64，避免加载时或者网络差时候显示白色方块
 2. uv-text 去掉多余的data-index属性，避免警告
 3. uv-upload 在fileList的watch中增加deep属性
