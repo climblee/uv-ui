@@ -1,53 +1,67 @@
 <template>
 	<view class="uv-waterfall">
 		<!-- #ifndef APP-NVUE -->
-		<view class="uv-waterfall__gap_left"
-			:style="[gapLeftStyle]"></view>
+		<view 
+			class="uv-waterfall__gap_left"
+			:style="[gapLeftStyle]"
+		></view>
 		<template v-if="columnNum>=1">
-			<view id="uv-waterfall-1"
-				class="uv-waterfall__column">
-				<slot name="list1"
-					:list1="list1"></slot>
+			<view 
+				id="uv-waterfall-1"
+				class="uv-waterfall__column"
+			>
+				<slot name="list1"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=2">
-			<view class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-2"
+			<view 
+				class="uv-waterfall__gap_center"
+				:style="[gapCenterStyle]"
+			></view>
+			<view 
+				id="uv-waterfall-2"
 				class="uv-waterfall__column">
-				<slot name="list2"
-					:list2="list2"></slot>
+				<slot name="list2"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=3">
-			<view class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-3"
-				class="uv-waterfall__column">
-				<slot name="list3"
-					:list3="list3"></slot>
+			<view 
+				class="uv-waterfall__gap_center"
+				:style="[gapCenterStyle]"
+			></view>
+			<view 
+				id="uv-waterfall-3"
+				class="uv-waterfall__column"
+				>
+				<slot name="list3"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=4">
-			<view class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-4"
+			<view 
+				class="uv-waterfall__gap_center"
+				:style="[gapCenterStyle]">
+				</view>
+			<view 
+				id="uv-waterfall-4"
 				class="uv-waterfall__column">
-				<slot name="list4"
-					:list4="list4"></slot>
+				<slot name="list4"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=5">
-			<view class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"></view>
-			<view id="uv-waterfall-5"
+			<view 
+				class="uv-waterfall__gap_center"
+				:style="[gapCenterStyle]">
+			</view>
+			<view 
+				id="uv-waterfall-5"
 				class="uv-waterfall__column">
-				<slot name="list5"
-					:list5="list5"></slot>
+				<slot name="list5"></slot>
 			</view>
 		</template>
-		<view class="uv-waterfall__gap_right"
-			:style="[gapRightStyle]"></view>
+		<view 
+			class="uv-waterfall__gap_right"
+			:style="[gapRightStyle]">
+		</view>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
 		<view class="waterfall-warapper">
@@ -206,9 +220,6 @@
 			},
 			// 清空数据列表
 			clear() {
-				for (let i = 1; i <= this.columnCount; i++) {
-					this[`list${i}`] = [];
-				}
 				// #ifdef VUE2
 				this.$emit('input', [])
 				// #endif
@@ -218,7 +229,7 @@
 				this.tempList = []
 				setTimeout(()=>{
 					this.$emit('clear');
-				},2)
+				},300)
 			},
 			// 清除指定的某一条数据，根据id来实现
 			remove(id) {

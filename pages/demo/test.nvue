@@ -3,6 +3,7 @@
 		<!-- #ifndef APP-NVUE -->
 		<uv-waterfall ref="waterfall"
 			v-model="list"
+			:add-time="50"
 			column-count="2"
 			left-gap="10"
 			right-gap="10"
@@ -125,11 +126,18 @@
 				list: [],
 				list1: [],
 				list2: [],
-				loadStatus: 'loadmore'
+				loadStatus: 'loadmore',
+				pageHide: false
 			}
 		},
 		onLoad() {
 			this.getRandomData();
+		},
+		onShow() {
+			this.pageHide = false;
+		},
+		onHide() {
+			this.pageHide = true;
 		},
 		onPullDownRefresh() {
 			this.list = [];
@@ -138,6 +146,8 @@
 			// #endif
 			// #ifndef APP-NVUE
 			this.$refs.waterfall.clear();
+			this.list1 = [];
+			this.list2 = [];
 			// #endif
 			uni.showToast({
 				icon: 'success',
@@ -151,7 +161,8 @@
 		},
 		methods: {
 			changeList(e){
-				this[e.name].push(e.value);
+				if(!this.pageHide) 
+					this[e.name].push(e.value);
 			},
 			remove(id){
 				this.list1.forEach((item,index)=>{

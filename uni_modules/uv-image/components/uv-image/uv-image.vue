@@ -157,7 +157,7 @@
 		},
 		mounted() {
 			this.show = true
-			this.observerFn();
+			if(this.observeLazyLoad) this.observerFn();
 		},
 		methods: {
 			// 点击图片
@@ -198,20 +198,16 @@
 					// #ifndef APP-NVUE
 					this.disconnectObserver(this.observerName)
 					const contentObserver = uni.createIntersectionObserver(this)
-					try{
-						contentObserver.relativeToViewport({
-							bottom: this.thresholdValue
-						}).observe(`.uv-image--${this.elIndex}`, (res) => {
-							if (res.intersectionRatio > 0) {
-								// 懒加载状态改变
-								this.observeShow = true
-								// 如果图片已经加载，去掉监听，减少性能消耗
-								this.disconnectObserver(this.observerName)
-							}
-						})
-					}catch(e){
-						//TODO handle the exception
-					}
+					contentObserver.relativeToViewport({
+						bottom: this.thresholdValue
+					}).observe(`.uv-image--${this.elIndex}`, (res) => {
+						if (res.intersectionRatio > 0) {
+							// 懒加载状态改变
+							this.observeShow = true
+							// 如果图片已经加载，去掉监听，减少性能消耗
+							this.disconnectObserver(this.observerName)
+						}
+					})
 					this[this.observerName] = contentObserver
 					// #endif
 					// #ifdef APP-NVUE

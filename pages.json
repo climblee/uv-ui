@@ -9,13 +9,13 @@
 			"path": "pages/demo/demo",
 			"style": {
 				"navigationBarTitleText": "测试",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/demo/test",
 			"style": {
 				"navigationBarTitleText": "测试2",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}
 	],
