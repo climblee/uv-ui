@@ -36,6 +36,8 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-pick-color",
+			"uv-qrcode",
 			"uv-ui-tools",
 			"uv-action-sheet",
 			"uv-alert",
