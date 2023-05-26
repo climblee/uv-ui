@@ -22,6 +22,7 @@
 			>
 				<view 
 					class="uv-pick-color__box__bg drag-box"
+					@tap.stop.prevent="touchstart($event, 0)"
 					@touchstart.stop.prevent="touchstart($event, 0)"
 					@touchmove.stop.prevent="touchmove($event, 0)"
 					@touchend.stop.prevent="touchend($event, 0)"
@@ -44,6 +45,7 @@
 				<view class="uv-pick-color__control__item">
 					<view 
 						class="uv-pick-color__control__item__drag drag-box"
+						@tap.stop="touchstart($event, 1)"
 						@touchstart.stop="touchstart($event, 1)"
 						@touchmove.stop="touchmove($event, 1)"
 						@touchend.stop="touchend($event, 1)"
@@ -58,6 +60,7 @@
 					</view>
 					<view 
 						class="uv-pick-color__control__item__drag drag-box"
+						@tap.stop="touchstart($event, 2)"
 						@touchstart.stop="touchstart($event, 2)"
 						@touchmove.stop="touchmove($event, 2)"
 						@touchend.stop="touchend($event, 2)"
