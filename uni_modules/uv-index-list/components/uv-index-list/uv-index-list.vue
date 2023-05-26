@@ -232,6 +232,7 @@
 				this.$uv.sleep(300).then(() => {
 					this.touching = false
 				})
+				this.$emit('select',this.activeIndex);
 			},
 			// 获取索引列表的尺寸以及单个字符的尺寸信息
 			getIndexListLetterRect() {
