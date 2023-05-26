@@ -10,7 +10,7 @@
 			column-gap="8"
 			column-width="40"
 			@finish="handleWaterFallFinish"
-			@clear="clear"
+			@clear="clearCallback"
 			@remove="remove"
 			@changeList="changeList">
 			<!-- 第一列数据 -->
@@ -36,7 +36,7 @@
 								<text class="value">{{item.desc}}</text>
 							</view>
 							<view class="waterfall-item__ft__btn"
-								v-if="index==0">
+								v-if="item.allowEdit">
 								<uv-button type="primary"
 									size="mini"
 									text="异步修改"
@@ -48,6 +48,7 @@
 			</template>
 			<!-- 第二列数据 -->
 			<template v-slot:list2>
+				<!-- 为了磨平部分平台的BUG，必须套一层view -->
 				<view>
 					<view v-for="(item, index) in list2"
 						:key="item.id"
@@ -123,9 +124,9 @@
 		mixins: [mixin],
 		data() {
 			return {
-				list: [],
-				list1: [],
-				list2: [],
+				list: [],// 瀑布流全部数据
+				list1: [],// 瀑布流第一列数据
+				list2: [],// 瀑布流第二列数据
 				loadStatus: 'loadmore',
 				pageHide: false
 			}
@@ -139,13 +140,15 @@
 		onHide() {
 			this.pageHide = true;
 		},
+		// 下拉刷新数据
 		onPullDownRefresh() {
 			this.list = [];
 			// #ifdef APP-NVUE
 			this.getRandomData();
 			// #endif
 			// #ifndef APP-NVUE
-			this.$refs.waterfall.clear();
+			this.clear();
+			// 清空列数据
 			this.list1 = [];
 			this.list2 = [];
 			// #endif
@@ -155,32 +158,19 @@
 			})
 			uni.stopPullDownRefresh();
 		},
+		// 触底加载更多
 		onReachBottom() {
 			if(this.loadStatus == 'loadmore')
 				this.getRandomData();
 		},
 		methods: {
+			// 离开当前页面时，就不处理还未处理的数据
+			// e.name在这里返回是list1或list2，要手动将数据追加到相应列
 			changeList(e){
 				if(!this.pageHide) 
 					this[e.name].push(e.value);
 			},
-			remove(id){
-				this.list1.forEach((item,index)=>{
-					if(item.id == id){
-						this.list1.splice(index,1);
-					}
-				})
-				this.list2.forEach((item,index)=>{
-					if(item.id == id){
-						this.list2.splice(index,1);
-					}
-				})
-			},
-			clear(){
-				for (let i = 0; i < 10; i++) {
-					this.list.push(this.getItem(i));
-				}
-			},
+			// 长按某项执行删除操作
 			longHandle(item) {
 				let that = this;
 				uni.showModal({
@@ -193,6 +183,30 @@
 					}
 				})
 			},
+			// 删除某项后返回对应id，根据id标识在列数据中手动删除该项数据
+			remove(id){
+				this.list1.forEach((item,index)=>{
+					if(item.id == id){
+						this.list1.splice(index,1);
+					}
+				})
+				this.list2.forEach((item,index)=>{
+					if(item.id == id){
+						this.list2.splice(index,1);
+					}
+				})
+			},
+			// 清空数据
+			clear(){
+				this.$refs.waterfall.clear();
+			},
+			// 清空数据返回
+			clearCallback(){
+				for (let i = 0; i < 10; i++) {
+					this.list.push(this.getItem(i));
+				}
+			},
+			// 修改某项数据
 			edit(item) {
 				uni.showLoading({
 					title: '修改中'
@@ -203,7 +217,6 @@
 					uni.hideLoading();
 				}, 1000)
 			},
-			/* 瀑布流*/
 			// 获取随机数据
 			getRandomData() {
 				this.loadStatus = 'loading';
@@ -225,6 +238,7 @@
 			getItem(i){
 				return {
 					id: guid(),
+					allowEdit: i==0,
 					image: this.getImage(),
 					title: i % 2 == 0 ? `(${this.list.length + 1})体验uv-ui框架`: `(${this.list.length + 1})uv-ui支持多平台`,
 					desc: i % 2 == 0 ? `(${this.list.length + 1})欢迎使用uv-ui，uni-app生态专用的UI框架` : `(${this.list.length + 1})开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序`
