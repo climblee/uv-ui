@@ -75,6 +75,34 @@
 		</uv-waterfall>
 		<uv-load-more :status="loadStatus"></uv-load-more>
 		<!-- #endif -->
+		<!-- #ifdef APP-NVUE -->
+		<uv-waterfall ref="waterfall"
+			column-count="2"
+			left-gap="10"
+			right-gap="10"
+			column-gap="8"
+			@scrolltolower="getRandomData">
+			<cell 
+				v-for="(item,index) in list"
+				class="waterfall-item-cell"
+			>
+				<view class="waterfall-item">
+					<view class="waterfall-item__image">
+							<image :src="item.image" mode="widthFix"></image>
+					</view>
+					<view class="waterfall-item__ft">
+						<view class="waterfall-item__ft__title">
+							<text class="value">{{item.title}}</text>
+						</view>
+						<view class="waterfall-item__ft__desc uv-line-2">
+							<text class="value">{{item.desc}}</text>
+						</view>
+					</view>
+				</view>
+				<uv-gap></uv-gap>
+			</cell>
+		</uv-waterfall>
+		<!-- #endif -->
 	</view>
 </template>
 <script>
@@ -115,6 +143,9 @@
 		// 下拉刷新数据
 		onPullDownRefresh() {
 			this.list = [];
+			// #ifdef APP-NVUE
+			this.getRandomData();
+			// #endif
 			// #ifndef APP-NVUE
 			this.clear();
 			// 清空列数据
@@ -234,6 +265,11 @@
 		overflow: hidden;
 		margin-top: 10px;
 		border-radius: 6px;
+	}
+	/* #endif */
+	/* #ifdef APP-NVUE */
+	.waterfall-item {
+		background: #fff;
 	}
 	/* #endif */
 	.waterfall-item__ft {

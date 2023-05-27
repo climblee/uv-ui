@@ -105,6 +105,9 @@
 			}
 		},
 		mounted() {
+			// #ifdef MP-TOUTIAO
+			this.$uv.error('抖音小程序暂不支持wxs，故该组件暂不支持抖音小程序');
+			// #endif
 			this.init()
 		},
 		methods: {

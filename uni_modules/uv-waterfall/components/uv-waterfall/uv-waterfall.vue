@@ -159,11 +159,13 @@
 		watch: {
 			copyValue(nVal, oVal) {
 				// #ifndef APP-NVUE
-				// 取出数组发生变化的部分
-				let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
-				// 拼接原有数据
-				this.tempList = this.tempList.concat(this.$uv.deepClone(nVal.slice(startIndex)))
-				this.splitData()
+				if(nVal.length != 0) {
+					// 取出数组发生变化的部分
+					let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
+					// 拼接原有数据
+					this.tempList = this.tempList.concat(this.$uv.deepClone(nVal.slice(startIndex)))
+					this.splitData()
+				}
 				// #endif
 			}
 		},
@@ -204,9 +206,13 @@
 				this.tempList.splice(0, 1)
 				// 如果还有数据则继续执行
 				if (this.tempList.length) {
-					setTimeout(() => {
-						this.splitData()
-					}, this.addTime)
+					let _timeout = this.addTime;
+					// 部分平台在延时较短的情况会出现BUG
+					// #ifdef MP-BAIDU
+					_timeout = _timeout<200?200:_timeout;
+					// #endif
+					await this.$uv.sleep(_timeout);
+					this.splitData()
 				} else {
 					this.$emit('finish')
 				}
@@ -219,7 +225,7 @@
 				return newArr[0];
 			},
 			// 清空数据列表
-			clear() {
+			async clear() {
 				// #ifdef VUE2
 				this.$emit('input', [])
 				// #endif
@@ -227,9 +233,8 @@
 				this.$emit('update:modelValue', [])
 				// #endif
 				this.tempList = []
-				setTimeout(()=>{
-					this.$emit('clear');
-				},300)
+				await this.$uv.sleep(300);
+				this.$emit('clear');
 			},
 			// 清除指定的某一条数据，根据id来实现
 			remove(id) {
