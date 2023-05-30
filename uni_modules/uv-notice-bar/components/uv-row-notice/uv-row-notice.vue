@@ -101,7 +101,7 @@
 					// #endif
 					
 					if(!this.$uv.test.string(newValue)) {
-						error('noticebar组件direction为row时，要求text参数为字符串形式')
+						this.$uv.error('noticebar组件direction为row时，要求text参数为字符串形式')
 					}
 				}
 			},
@@ -178,7 +178,7 @@
 				// #endif
 				
 				if(!this.$uv.test.string(this.text)) {
-					error('noticebar组件direction为row时，要求text参数为字符串形式')
+					this.$uv.error('noticebar组件direction为row时，要求text参数为字符串形式')
 				}
 			},
 			// vue版处理
