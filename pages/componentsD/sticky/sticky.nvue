@@ -13,7 +13,7 @@
 			></uv-text>
 			<!-- #endif -->
 		</view>
-		<uv-sticky>
+		<uv-sticky offset-top="50">
 			<uv-button
 				text="吸顶区域"
 				type="success"
