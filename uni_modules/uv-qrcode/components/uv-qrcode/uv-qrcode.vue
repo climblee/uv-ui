@@ -112,6 +112,7 @@
 	export default {
 		name: 'uv-qrcode',
 		mixins: [mpMixin,mixin,props],
+		emits: ['click','change','complete'],
 		data() {
 			return {
 				canvasId: "",

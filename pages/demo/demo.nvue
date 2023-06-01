@@ -8,6 +8,13 @@
 		@confirm="confirmColor" 
 		@cancel="show=false"
 		></uv-pick-color>
+		<!-- <uv-button text="你好按钮" @click="clickHandler"></uv-button> -->
+		<!-- <uv-alert title="测试"  type = "warning" :closable="true" description = "测试" @click="clickHandler"></uv-alert> -->
+		<!-- <uv-divider color="red" @click="clickHandler">锦瑟无端五十弦</uv-divider> -->
+		<!-- <uv-grid :col="3" @click="clickHandler">
+			<uv-grid-item>123</uv-grid-item>
+		</uv-grid> -->
+		<uv-qrcode ref="uvqrcode" size="400rpx" canvas-id="qrcode" value="https://www.uvui.cn" @click="clickHandler"></uv-qrcode>
 		<!-- <view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view> -->
 	</view>
 </template>
@@ -47,6 +54,9 @@
 			// console.log('格式化后的时间：',uni.$uv.date('1585926095536', 'yyyy-mm-dd'))
 		},
 		methods: {
+			clickHandler(){
+				console.log('你好')
+			},
 			clickIcon(e){
 				console.log(e)
 			},

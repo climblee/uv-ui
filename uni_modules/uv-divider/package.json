@@ -1,7 +1,7 @@
 {
   "id": "uv-divider",
   "displayName": "uv-divider 分割线 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "区隔内容的分割线，一般用于页面底部没有更多的提示。",
   "keywords": [
     "divider",

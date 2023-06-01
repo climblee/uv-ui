@@ -83,6 +83,7 @@
 	export default {
 		name: 'uv-alert',
 		mixins: [mpMixin, mixin, props],
+		emits: ['click'],
 		data() {
 			return {
 				show: true

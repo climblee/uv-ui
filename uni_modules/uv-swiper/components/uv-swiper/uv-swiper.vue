@@ -129,6 +129,7 @@
 	export default {
 		name: 'uv-swiper',
 		mixins: [mpMixin, mixin, props],
+		emits: ['click','change'],
 		data() {
 			return {
 				currentIndex: 0

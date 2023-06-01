@@ -50,6 +50,7 @@
 	export default {
 		name: 'uv-divider',
 		mixins: [mpMixin, mixin, props],
+		emits: ['click'],
 		computed: {
 			textStyle() {
 				const style = {}

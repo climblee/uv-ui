@@ -26,6 +26,7 @@
 	export default {
 		name: 'uv-grid',
 		mixins: [mpMixin, mixin, props],
+		emits: ['click'],
 		data() {
 			return {
 				index: 0,

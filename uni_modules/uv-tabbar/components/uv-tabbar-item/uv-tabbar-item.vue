@@ -63,6 +63,7 @@
 	export default {
 		name: 'uv-tabbar-item',
 		mixins: [mpMixin, mixin, props],
+		emits: ['click','change'],
 		data() {
 			return {
 				isActive: false, // 是否处于激活状态

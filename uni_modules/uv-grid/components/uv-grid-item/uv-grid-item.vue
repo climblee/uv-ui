@@ -41,6 +41,7 @@
 	export default {
 		name: "uv-grid-item",
 		mixins: [mpMixin, mixin, props],
+		emits: ['$uvGridItem','click'],
 		data() {
 			return {
 				parentData: {

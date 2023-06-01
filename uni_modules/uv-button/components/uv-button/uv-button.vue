@@ -165,6 +165,7 @@ export default {
     // #ifndef MP
     mixins: [mpMixin, mixin, props],
     // #endif
+		emits: ['click','getphonenumber','getuserinfo','error','opensetting','launchapp'],
     data() {
         return {};
     },
