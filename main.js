@@ -1,5 +1,5 @@
 import App from './App'
-// import uvUI from '@/uni_modules/uv-ui-tools'
+import uvUI from '@/uni_modules/uv-ui-tools'
 // import { Request } from '@/util/request/index'
 // #ifdef MP
 // 引入uvui对小程序分享的mixin封装
@@ -25,6 +25,10 @@ import App from './App'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
+Vue.use(uvUI);
+// #ifdef MP
+Vue.prototype.openShare = true;
+// #endif
 try {
 	function isPromise(obj) {
 		return (!!obj && (typeof obj === "object" || typeof obj === "function") && typeof obj.then === "function");
@@ -51,9 +55,6 @@ const app = new Vue({
 	...App
 })
 app.$mount()
-// #ifdef MP
-// Vue.mixin(mpShare)
-// #endif
 // 引入请求封装
 // Request(app)
 // #endif
@@ -61,11 +62,9 @@ app.$mount()
 import { createSSRApp } from 'vue'
 export function createApp() {
 	const app = createSSRApp(App)
-	// #ifdef MP
-	// app.mixin(mpShare)
-	// #endif
 	// 引入请求封装
 	// Request(app)
+	app.use(uvUI)
 	return {
 		app
 	}

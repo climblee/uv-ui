@@ -1,6 +1,11 @@
 // 全局挂载引入http相关请求拦截插件
 import Request from './libs/luch-request'
 
+// 引入全局mixin
+import mixin from './libs/mixin/mixin.js'
+// 小程序特有的mixin
+import mpMixin from './libs/mixin/mpMixin.js'
+
 // 路由封装
 import route from './libs/util/route.js'
 // 公共工具函数
@@ -34,7 +39,34 @@ const $uv = {
 	http: new Request(),
 	debounce,
 	throttle,
-	platform
+	platform,
+	mixin,
+	mpMixin
 }
 uni.$uv = $uv;
-export default {}
+const install = (Vue) => {
+		// #ifndef APP-NVUE
+		Vue.mixin(mixin);
+		// #endif
+		// #ifdef VUE2
+		if (Vue.prototype.openShare) {
+			Vue.mixin(mpShare);
+		}
+		// 时间格式化，同时两个名称，date和timeFormat
+		Vue.filter('timeFormat', (timestamp, format) => uni.$uv.timeFormat(timestamp, format));
+		Vue.filter('date', (timestamp, format) => uni.$uv.timeFormat(timestamp, format));
+		// 将多久以前的方法，注入到全局过滤器
+		Vue.filter('timeFrom', (timestamp, format) => uni.$uv.timeFrom(timestamp, format));
+		// 同时挂载到uni和Vue.prototype中
+		// #ifndef APP-NVUE
+		// 只有vue，挂载到Vue.prototype才有意义，因为nvue中全局Vue.prototype和Vue.mixin是无效的
+		Vue.prototype.$uv = $uv;
+		// #endif
+		// #endif
+		// #ifdef VUE3
+		Vue.config.globalProperties.$uv = $uv;
+		// #endif
+}
+export default {
+	install
+}

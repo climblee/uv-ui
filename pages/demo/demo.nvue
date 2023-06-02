@@ -1,5 +1,6 @@
 <template>
-	<view>
+	<view class="demo">
+		11
 		<!-- <uv-button text="选择颜色" @click="openColor"></uv-button>
 		<uv-pick-color 
 		ref="uvPickerColor" 
@@ -21,8 +22,23 @@
 	</view>
 </template>
 
-<script setup>
-	
+<script>
+	export default {
+		async onReady() {
+			//1.  在vue3中可以直接使用this.$uv.getRect获取mixin中的数据
+			console.log(await this.$uv.getRect('.demo'))
+			//2.  在vue3中setup语法糖中使用getCurrentInstance获取
+			// import {getCurrentInstance} from 'vue'
+			// export default {
+			// 	async onReady() {
+			// 		const { ctx } = getCurrentInstance();
+						// ctx.$uv.getRect
+						//ctx相当于this
+			// 3. 其他方法直接到uni.$uv中获取
+			
+			// 4. Vue.prototype.openShare = true;会自动导入openShare相关
+		}
+	}
 </script>
 
 <style>
