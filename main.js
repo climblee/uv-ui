@@ -1,5 +1,5 @@
 import App from './App'
-import uvUI from '@/uni_modules/uv-ui-tools'
+// import uvUI from '@/uni_modules/uv-ui-tools'
 // import { Request } from '@/util/request/index'
 // #ifdef MP
 // 引入uvui对小程序分享的mixin封装
@@ -25,7 +25,7 @@ import uvUI from '@/uni_modules/uv-ui-tools'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
-Vue.use(uvUI);
+// Vue.use(uvUI);
 // #ifdef MP
 Vue.prototype.openShare = true;
 // #endif
@@ -64,7 +64,7 @@ export function createApp() {
 	const app = createSSRApp(App)
 	// 引入请求封装
 	// Request(app)
-	app.use(uvUI)
+	// app.use(uvUI)
 	return {
 		app
 	}
