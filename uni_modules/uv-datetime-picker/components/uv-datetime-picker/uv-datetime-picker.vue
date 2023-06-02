@@ -80,6 +80,7 @@
 		watch: {
 			show(newValue, oldValue) {
 				if (newValue) {
+					this.getValue();
 					this.updateColumnValue(this.innerValue)
 				}
 			},
@@ -98,13 +99,16 @@
 		},
 		methods: {
 			init() {
+				this.getValue();
+				this.updateColumnValue(this.innerValue)
+			},
+			getValue() {
 				// #ifdef VUE2
 				this.innerValue = this.correctValue(this.value)
 				// #endif
 				// #ifdef VUE3
 				this.innerValue = this.correctValue(this.modelValue)
 				// #endif
-				this.updateColumnValue(this.innerValue)
 			},
 			// 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
 			setFormatter(e) {

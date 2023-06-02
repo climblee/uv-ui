@@ -16,108 +16,13 @@
 		</uv-grid> -->
 		<!-- <uv-qrcode ref="uvqrcode" size="400rpx" canvas-id="qrcode" value="https://www.uvui.cn" @click="clickHandler"></uv-qrcode> -->
 		<!-- <view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view> -->
-		<uv-parse :content="contentHtml" :useAnchor="true"></uv-parse>
-		<uv-button :text="btnText" @click="clickHandler"></uv-button>
+		<!-- <uv-parse :content="contentHtml" :useAnchor="true"></uv-parse> -->
+		<!-- <uv-button :text="btnText" @click="clickHandler"></uv-button> -->
 	</view>
 </template>
 
 <script setup>
-	import {
-			onMounted,
-			ref
-		} from "vue";
-	const content =
-			`<p>测试</p>
-	<table style="border-collapse: collapse; width: 100%; border-width: 1px; background-color: #FBEEB8;" border="1"><colgroup><col style="width: 19.9463%;"><col style="width: 19.9463%;"><col style="width: 19.9463%;"><col style="width: 19.9463%;"><col style="width: 19.9463%;"></colgroup>
-	<tbody>
-	<tr>
-	<td style="border-width: 1px;">11</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	</tr>
-	<tr>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">2</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	</tr>
-	<tr>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">3</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	<td style="border-width: 1px;">&nbsp;</td>
-	</tr>
-	</tbody>
-	</table>`;
-	const contentHtml = ref(content);
-	// let messageText = ref('测试')
-	const btnText = ref('测试')
-	async function clickHandler(){
-		btnText.value = '你好'
-	}
-	// import { fetchMenu } from '@/common/api.js';
-	// export default {
-	// 	data() {
-	// 		return {
-	// 			show:false,
-	// 			mySrc:'',
-	// 			demoValue:'',
-	// 			list: [{
-	// 				name: '关注',
-	// 			}, {
-	// 				name: '推荐',
-	// 			}, {
-	// 				name: '电影'
-	// 			}],
-	// 			contentHtml: content,
-	// 			btnText: '按钮文字'
-	// 		}
-	// 	},
-	// 	watch:{
-	// 		demoValue(newVal){
-	// 			console.log(newVal)
-	// 		}
-	// 	},
-	// 	onLoad() {
-	// 		setTimeout(()=>{
-	// 			this.mySrc = 'https://cdn.uviewui.com/uview/album/1.jpg'
-	// 		},100)
-	// 		// #ifdef MP
-	// 		// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
-	// 		// fetchMenu().then(res=>{
-	// 		// 	console.log(res)
-	// 		// })
-	// 		// #endif
-	// 		// console.log('格式化后的时间：',uni.$uv.date('1585926095536', 'yyyy-mm-dd'))
-	// 	},
-	// 	methods: {
-	// 		clickHandler(){
-	// 			console.log('你好')
-	// 			this.btnText = '改变后的按钮文字'
-	// 		},
-	// 		clickIcon(e){
-	// 			console.log(e)
-	// 		},
-	// 		demoHandle(){
-	// 			console.log('进来啦')
-	// 		},
-	// 		openColor(){
-	// 			// this.$refs.uvPickerColor.open();
-	// 			this.show = true;
-	// 		},
-	// 		touchstart(e){
-	// 			console.log(e)
-	// 		},
-	// 		confirmColor(e){
-	// 			this.show = false;
-	// 			console.log(e)
-	// 		}
-	// 	}
-	// }
+	
 </script>
 
 <style>

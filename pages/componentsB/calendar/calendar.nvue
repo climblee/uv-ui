@@ -28,14 +28,14 @@
 			</uv-cell-group>
 			<uv-calendar
 				:show="show1"
-				defaultDate="2022-02-15"
+				:defaultDate="currentDate"
 				@confirm="confirm"
 				@close="close"
 			></uv-calendar>
 			<uv-calendar
 				:show="show2"
 				mode="multiple"
-				:defaultDate="['2022-03-01']"
+				:defaultDate="[currentDate]"
 				month-num="5"
 				@confirm="confirm"
 				@close="close"
@@ -106,6 +106,7 @@
 				show7: false,
 				show8: false,
 				values: ['','','','','','','',''],
+				currentDate: `${year}-${month}-${date}`,
 				customThemeDefaultDate: [`${year}-${month}-${date}`, `${year}-${month}-${date + 5}`], 
 				customTextDefaultDate: [`${year}-${month}-${date}`],
 				maxDate: `${year}-${month}-${date + 10}`,
