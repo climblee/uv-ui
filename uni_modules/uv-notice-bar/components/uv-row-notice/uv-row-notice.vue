@@ -142,7 +142,7 @@
 				let result = [],
 					// 每组text标签的字符长度
 					len = 20
-				const textArr = this.text.split('')
+				const textArr = this.text? this.text.split(''):[]
 				for (let i = 0; i < textArr.length; i += len) {
 					// 对拆分的后的text进行slice分割，得到的为数组再进行join拼接为字符串
 					result.push(textArr.slice(i, i + len).join(''))

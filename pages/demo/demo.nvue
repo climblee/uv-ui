@@ -1,46 +1,39 @@
 <template>
-	<view class="demo">
-		11
-		<!-- <uv-button text="选择颜色" @click="openColor"></uv-button>
-		<uv-pick-color 
-		ref="uvPickerColor" 
-		title="颜色选择" 
-		:show="show" 
-		@confirm="confirmColor" 
-		@cancel="show=false"
-		></uv-pick-color> -->
-		<!-- <uv-button text="你好按钮" @click="clickHandler"></uv-button> -->
-		<!-- <uv-alert title="测试"  type = "warning" :closable="true" description = "测试" @click="clickHandler"></uv-alert> -->
-		<!-- <uv-divider color="red" @click="clickHandler">锦瑟无端五十弦</uv-divider> -->
-		<!-- <uv-grid :col="3" @click="clickHandler">
-			<uv-grid-item>123</uv-grid-item>
-		</uv-grid> -->
-		<!-- <uv-qrcode ref="uvqrcode" size="400rpx" canvas-id="qrcode" value="https://www.uvui.cn" @click="clickHandler"></uv-qrcode> -->
-		<!-- <view style="width: 100px;height: 100px;background: linear-gradient(to right, #ff0000, #2878ff);" @touchstart="touchstart"></view> -->
-		<!-- <uv-parse :content="contentHtml" :useAnchor="true"></uv-parse> -->
-		<!-- <uv-button :text="btnText" @click="clickHandler"></uv-button> -->
+	<view>
+		<uv-datetime-picker
+			:show="show5"
+			v-model="value5"
+			:filter="filter"
+			mode="date"
+			closeOnClickOverlay
+			@confirm="confirm"
+			@cancel="cancel"
+		></uv-datetime-picker>
 	</view>
 </template>
 
 <script>
 	export default {
-		async onReady() {
-			//1.  在vue3中可以直接使用this.$uv.getRect获取mixin中的数据
-			console.log(await this.$uv.getRect('.demo'))
-			//2.  在vue3中setup语法糖中使用getCurrentInstance获取
-			// import {getCurrentInstance} from 'vue'
-			// export default {
-			// 	async onReady() {
-			// 		const { ctx } = getCurrentInstance();
-						// ctx.$uv.getRect
-						//ctx相当于this
-			// 3. 其他方法直接到uni.$uv中获取
-			
-			// 4. Vue.prototype.openShare = true;会自动导入openShare相关
+		data(){
+			return{
+				show5: true,
+				value5: Number(new Date())
+			}
+		},
+		methods: {
+			filter(type, options) {
+				if (type === 'year') {
+					return options.filter((option) => option % 2 === 0)
+				}
+				return options;
+			},
+			confirm(e){
+				console.log('确认选择时间：',e)
+				this.show5 = false;
+			},
+			cancel(){
+				this.show5 = false;
+			}
 		}
 	}
 </script>
-
-<style>
-
-</style>
