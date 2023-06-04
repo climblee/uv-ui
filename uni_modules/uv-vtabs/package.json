@@ -1,14 +1,14 @@
 {
   "id": "uv-vtabs",
-  "displayName": "uv-vtabs 垂直选项卡|垂直分类",
-  "version": "1.0.0",
-  "description": "uv-vtabs 该组件主要用于分类选择，开箱即用，简单配置参数即可使用，左右自动进行联动，不用自己再去做复杂的计算，组件内部已经完成相关计算。联动和不联动两种可选方式，联动-左右均可滚动，不联动-右边区域只会在选中时显示。",
+  "displayName": "uv-vtabs 垂直选项卡",
+  "version": "1.0.1",
+  "description": "uv-vtabs 该组件主要用于分类选择，简单配置即可使用，左右自动进行联动，不用自己再去做复杂的计算，组件内部已经完成相关计算。",
   "keywords": [
     "uv-vtabs",
-		"uvui",
-		"uv-ui",
-		"垂直分类",
-		"垂直选项卡"
+    "uvui",
+    "uv-ui",
+    "垂直分类",
+    "垂直选项卡"
 ],
   "repository": "",
   "engines": {
