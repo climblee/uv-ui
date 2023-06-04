@@ -1,14 +1,10 @@
 <template>
 	<view>
-		<uv-datetime-picker
-			:show="show5"
-			v-model="value5"
-			:filter="filter"
-			mode="date"
-			closeOnClickOverlay
-			@confirm="confirm"
-			@cancel="cancel"
-		></uv-datetime-picker>
+		<!-- <uv-text
+		    text="分享到微信"
+		    openType="share"
+		    type="success"
+		></uv-text> -->
 	</view>
 </template>
 
@@ -16,24 +12,13 @@
 	export default {
 		data(){
 			return{
-				show5: true,
-				value5: Number(new Date())
 			}
 		},
+		onLoad() {
+			// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
+		},
 		methods: {
-			filter(type, options) {
-				if (type === 'year') {
-					return options.filter((option) => option % 2 === 0)
-				}
-				return options;
-			},
-			confirm(e){
-				console.log('确认选择时间：',e)
-				this.show5 = false;
-			},
-			cancel(){
-				this.show5 = false;
-			}
+			
 		}
 	}
 </script>

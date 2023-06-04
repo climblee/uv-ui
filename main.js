@@ -1,10 +1,6 @@
 import App from './App'
 // import uvUI from '@/uni_modules/uv-ui-tools'
 // import { Request } from '@/util/request/index'
-// #ifdef MP
-// 引入uvui对小程序分享的mixin封装
-// import mpShare from '@/uni_modules/uv-ui-tools/libs/mixin/mpShare.js'
-// #endif
 // uni.$uv.setConfig({
 // 	config: {
 // 			// 修改默认单位为rpx，相当于执行 uni.$uv.config.unit = 'rpx'
@@ -25,10 +21,7 @@ import App from './App'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
-// Vue.use(uvUI);
-// #ifdef MP
-Vue.prototype.openShare = true;
-// #endif
+// Vue.use(uvUI,{mpShare:true});
 try {
 	function isPromise(obj) {
 		return (!!obj && (typeof obj === "object" || typeof obj === "function") && typeof obj.then === "function");
@@ -64,7 +57,7 @@ export function createApp() {
 	const app = createSSRApp(App)
 	// 引入请求封装
 	// Request(app)
-	// app.use(uvUI)
+	// app.use(uvUI,{mpShare:true})
 	return {
 		app
 	}

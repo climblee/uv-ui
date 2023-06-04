@@ -5,6 +5,9 @@ import Request from './libs/luch-request'
 import mixin from './libs/mixin/mixin.js'
 // 小程序特有的mixin
 import mpMixin from './libs/mixin/mpMixin.js'
+// #ifdef MP
+import mpShare from '@/uni_modules/uv-ui-tools/libs/mixin/mpShare.js'
+// #endif
 
 // 路由封装
 import route from './libs/util/route.js'
@@ -44,14 +47,16 @@ const $uv = {
 	mpMixin
 }
 uni.$uv = $uv;
-const install = (Vue) => {
+const install = (Vue,options={}) => {
 		// #ifndef APP-NVUE
 		Vue.mixin(mixin);
-		// #endif
-		// #ifdef VUE2
-		if (Vue.prototype.openShare) {
+		// #ifdef MP
+		if(options.mpShare){
 			Vue.mixin(mpShare);
 		}
+		// #endif
+		// #endif
+		// #ifdef VUE2
 		// 时间格式化，同时两个名称，date和timeFormat
 		Vue.filter('timeFormat', (timestamp, format) => uni.$uv.timeFormat(timestamp, format));
 		Vue.filter('date', (timestamp, format) => uni.$uv.timeFormat(timestamp, format));

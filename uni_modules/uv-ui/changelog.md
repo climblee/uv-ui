@@ -1,3 +1,11 @@
+## 1.0.9（2023-06-05）
+1. 新增uv-vtabs垂直选项卡组件，主要用于分类展示，分类切换功能，支持联动和不联动两种模式
+2. uv-qrcode，uv-datetime-picker，uv-subsection等文档说明优化，避免开发困难；优化API相关说明
+3. uv-notice-bar 1. 修复在触发error函数报错的BUG；2. 修复在text值为undefined的时候，解决报错BUG
+4. uv-button 等组件修复触发两次事件的BUG
+5. uv-datetime-picker 1. 修复重置值存在不更新的BUG；2. 优化文档，增加filter使用方法说明
+6. uv-badge 修复type等属性为null或undefined的时候不显示徽标的BUG
+7. uv-ui-tools 优化工具组件，兼容更多功能，小程序分享功能优化等
 ## 1.0.8（2023-05-27）
 1. uv-waterfall修复在百度小程序中可能存在的BUG；去掉原有的slot方式
 2. uv-image修复可能报错的问题
