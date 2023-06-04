@@ -22,7 +22,7 @@ export default {
 		},
 		// 主题类型，error|warning|success|primary
 		type: {
-			type: String,
+			type: [String,undefined,null],
 			default: 'error'
 		},
 		// 当数值为 0 时，是否展示 Badge
@@ -42,7 +42,7 @@ export default {
 		},
 		// 徽标形状，circle-四角均为圆角，horn-左下角为直角
 		shape: {
-			type: String,
+			type: [String,undefined,null],
 			default: 'circle'
 		},
 		// 设置数字的显示方式，overflow|ellipsis|limit
@@ -50,7 +50,7 @@ export default {
 		// ellipsis会根据max判断，超出显示`${max}...`
 		// limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
 		numberType: {
-			type: String,
+			type: [String,undefined,null],
 			default: 'overflow'
 		},
 		// 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，absolute为true时有效

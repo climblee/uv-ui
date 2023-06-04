@@ -10,6 +10,13 @@ export default [{
 		// 	isNew: true
 		// },
 		{
+			path: '/pages/componentsD/vtabs/vtabs',
+			icon: 'color',
+			title: 'Vtabs 垂直选项卡',
+			title_en: 'Vtabs',
+			isNew: true
+		},
+		{
 			path: '/pages/componentsB/pickColor/pickColor',
 			icon: 'color',
 			title: 'PickColor 选择颜色',

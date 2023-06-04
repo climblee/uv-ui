@@ -1,7 +1,7 @@
 <template>
 	<text
 		v-if="show && ((Number(value) === 0 ? showZero : true) || isDot)"
-		:class="[isDot ? 'uv-badge--dot' : 'uv-badge--not-dot', inverted && 'uv-badge--inverted', shape === 'horn' && 'uv-badge--horn', `uv-badge--${type}${inverted ? '--inverted' : ''}`]"
+		:class="[isDot ? 'uv-badge--dot' : 'uv-badge--not-dot', inverted && 'uv-badge--inverted', shape === 'horn' && 'uv-badge--horn', `uv-badge--${propsType}${inverted ? '--inverted' : ''}`]"
 		:style="[$uv.addStyle(customStyle), badgeStyle]"
 		class="uv-badge"
 	>{{ isDot ? '' :showValue }}</text>
@@ -80,6 +80,9 @@
 						return Number(this.value)
 				}
 			},
+			propsType(){
+				return this.type || 'error'
+			}
 		}
 	}
 </script>

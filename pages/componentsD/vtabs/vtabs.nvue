@@ -1,0 +1,58 @@
+<template>
+	<view class="uv-page" ref="page">
+		<uv-cell-group>
+			<uv-cell
+				@click="showVtabs(index)"
+				:title="item.title"
+				v-for="(item, index) in list"
+				:key="index"
+				isLink
+			>
+			<template v-slot:icon>
+				<image
+					class="uv-cell-icon"
+					:src="item.iconUrl"
+					mode="widthFix"
+				></image>
+			</template>
+			</uv-cell>
+		</uv-cell-group>
+	</view>
+</template>
+
+<script>
+	export default {
+		data(){
+			return {
+				list: [{
+						title: '垂直选项卡-联动',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/1.png',
+						key: 1
+					},
+					{
+						title: '垂直选项卡-不联动',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/2.png',
+						key: 0
+					}
+				]
+			}
+		},
+		methods: {
+			showVtabs(index) {
+				uni.navigateTo({
+					url: `/pages/componentsD/vtabs/vtabs-${this.list[index].key}`
+				})
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+.uv-page {
+	.color {
+		width: 50rpx;
+		height: 50rpx;
+		border-radius: 6rpx;
+	}
+}
+</style>
