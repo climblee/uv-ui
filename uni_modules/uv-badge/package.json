@@ -1,7 +1,7 @@
 {
 	"id": "uv-badge",
 	"displayName": "uv-badge 徽标数，数字角标 全面兼容小程序、nvue、vue2、vue3等多端",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "徽标数一般用于图标右上角显示未读的消息数量，提示用户点击，有圆点和圆包含文字两种形式。",
 	"keywords": [
         "uv-badge",
