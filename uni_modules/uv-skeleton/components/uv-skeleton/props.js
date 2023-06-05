@@ -25,6 +25,11 @@ export default {
 			type: [String, Number, Array],
 			default: 18
 		},
+		// 段落占位图的左边距
+		rowsLeft: {
+			type: [String, Number, Array],
+			default: 0
+		},
 		// 是否展示标题占位图
 		title: {
 			type: Boolean,
