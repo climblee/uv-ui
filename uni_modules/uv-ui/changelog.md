@@ -1,3 +1,6 @@
+## 1.0.10（2023-06-05）
+1. uv-navbar 渐变背景色兼容
+2. uv-calendar 日历选择BUG修复
 ## 1.0.9（2023-06-05）
 1. 新增uv-vtabs垂直选项卡组件，主要用于分类展示，分类切换功能，支持联动和不联动两种模式
 2. uv-qrcode，uv-datetime-picker，uv-subsection等文档说明优化，避免开发困难；优化API相关说明
