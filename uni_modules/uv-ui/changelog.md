@@ -6,6 +6,7 @@
 5. uv-datetime-picker 1. 修复重置值存在不更新的BUG；2. 优化文档，增加filter使用方法说明
 6. uv-badge 修复type等属性为null或undefined的时候不显示徽标的BUG
 7. uv-ui-tools 优化工具组件，兼容更多功能，小程序分享功能优化等
+...
 ## 1.0.8（2023-05-27）
 1. uv-waterfall修复在百度小程序中可能存在的BUG；去掉原有的slot方式
 2. uv-image修复可能报错的问题

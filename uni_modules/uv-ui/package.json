@@ -1,7 +1,7 @@
 {
 	"id": "uv-ui",
 	"displayName": "uv-ui 破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "uv-ui 是基于uni-app的、全端兼容的、内容丰富、高性能UI框架。破釜沉舟之兼容nvue、vue2、vue3等多端，灵活导入，利剑出击。",
 	"keywords": [
         "uv-ui",
@@ -36,6 +36,7 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-vtabs",
 			"uv-pick-color",
 			"uv-qrcode",
 			"uv-ui-tools",

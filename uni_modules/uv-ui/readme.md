@@ -1,47 +1,32 @@
-> ## **组件文档及演示地址：[uv-ui文档](https://www.uvui.cn/components/intro.html)**
->
-> ## **uv-ui 交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>、（备用QQ群）549833913**
-# uv-ui介绍
+> ## 组件文档：[https://www.uvui.cn](https://www.uvui.cn)
+> ## 演示地址：[https://h5.uvui.cn](https://h5.uvui.cn)
+> ## uv-ui 交流QQ群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">549833913</a>
+
+
+## 预览
+
+通过微信或浏览器扫码查看演示效果，后续上线小程序端等。
+
+<img src="https://www.uvui.cn/common/h5_qrcode.png" width="200" height="200" />
+
 
 ## uv-ui产品特点
 
-### 1. uv-ui与uview2.x的关系？
+1. **uv-ui的前世今生**，`uv-ui` 是基于 `uview2.x` 版本改造而来。重命名也是为了避开发布冲突和很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。感谢 `uview-ui` 作者的开源奉献，再次为开源点赞。 同时 `uv-ui` 也是无条件开源。
 
-`uv-ui` 是基于 `uview2.x` 版本改造而来。重命名也是为了避开发布冲突和很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。
+2. **全端兼容**，`uv-ui`支持App（vue）、App（nvue）、H5、小程序、VUE2、VUE3，支持nvue原生渲染。`uv-ui`的组件都是多端自适应的，底层会抹平很多小程序平台的差异或bug。
 
-**uv-ui全面兼容小程序、nvue、vue2、vue3等多端。**
+3. **集成工具**，`uv-ui`中的`uv-ui-tools`组件集成了强大的网络请求 `HTTP`   及常用的工具函数，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`mian.js`中引入即可，更多工具请参考[文档](https://www.uvui.cn/js/http.html)。使用方式请参考[扩展配置-集成工具的使用](https://www.uvui.cn/components/setting.html)。
 
->在这里，感谢 `uview-ui` 作者的开源奉献，再次为开源点赞。 同时 `uv-ui` 也是无条件开源。
+4. **主题扩展**，`uv-ui`中的`uv-ui-tools`组件下面的`theme.scss`为主题文件，直接在`uni.scss`中引入主题即可，可以根据自己的需求进行扩展。下面也有说明具体使用方式。使用方法请参考[扩展配置-自定义主题的使用](https://www.uvui.cn/components/setting.html)。
 
-
-### 2. 全端兼容
-
-`uv-ui`支持App（vue）、App（nvue）、H5、小程序、VUE2、VUE3，支持nvue原生渲染。
-
-`uv-ui`的组件都是多端自适应的，底层会抹平很多小程序平台的差异或bug。
-
-### 3. 集成工具
-
-`uv-ui`中的`uv-ui-tools`组件集成了强大的网络请求 `HTTP`   及常用的工具函数，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`mian.js`中引入即可，更多工具请参考[文档](https://www.uvui.cn/js/http.html)。使用方式请参考[扩展配置-集成工具的使用](https://www.uvui.cn/components/setting.html)。
-
-### 4. 主题扩展
-
-`uv-ui`中的`uv-ui-tools`组件下面的`theme.scss`为主题文件，直接在`uni.scss`中引入主题即可，可以根据自己的需求进行扩展。下面也有说明具体使用方式。使用方法请参考[扩展配置-自定义主题的使用](https://www.uvui.cn/components/setting.html)。
 ## 快速开始
 
 `uv-ui` 目前暂时只支持单独导入个别组件使用方式。后续会根据情况加入其它使用方式，我一直推崇的是，既然开发`uni-app`项目，推荐直接使用`HBuilderX`创建项目和导入组件。
 
-### 注意：大部分组件依赖`uv-ui-tools`组件，建议通过导入使用，会自动导入相关依赖。
+**1. 通过uni_modules下载入口，下载插件并导入HbuilderX。**
 
-
-**1. 导入插件后，建议在`App.vue`引入基础样式（注意style标签需声明scss属性支持）。如果不引入，可能在 `h5` 平台的 `uv-tabs` 会有滚动条等，当然这不是必须的，除非你知道怎么处理。**
-
-```css
-/* App.vue */
-<style lang="scss">
-    @import '@/uni_modules/uv-ui-tools/index.scss';
-</style>
-```
+**温馨提示：** 导入插件后，建议`HBuilderX`重新运行项目，可能新导入的插件不能实时更新而导致不能运行。
 
 **2. 直接在项目中使用，无需通过import引入组件。**
 
@@ -49,16 +34,15 @@
 <uv-icon name="baidu" size="30" color="#909399" ></uv-icon>
 ```
 
-## 通过 uni_modules 单独安装组件
+**3. 有开发相关的疑问不要生气，不要抱怨，不要骂人哦！直接加 `uv-ui` 的交流群手把手免费解决问题。**
 
-下表为 `uv-ui` 的扩展组件清单，点击每个组件**点击下载&安装**即可在详情页面导入组件到项目下，导入后按照上面的配置后就直接使用，组件无需import和注册。
+## 通过uni_modules下载入口
 
-### 提示：导入插件后，建议`HBuilderX`重新运行项目，可能新导入的插件不能实时更新导致不能运行。
-
-### 有疑问请加 `uv-ui` 的交流群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">官方QQ群</a>。
+下表为 `uv-ui` 的扩展组件清单，点击每个组件**点击下载&安装**即可在详情页面导入组件到项目下，导入后建议重新运行即可直接使用，组件无需import和注册。
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-vtabs | [垂直选项卡](https://www.uvui.cn/components/vtabs.html) |
 | uv-pick-color | [颜色选择器](https://www.uvui.cn/components/pickColor.html) |
 | uv-qrcode | [二维码](https://www.uvui.cn/components/qrcode.html) |
 | uv-waterfall | [瀑布流](https://www.uvui.cn/components/waterfall.html) |
@@ -128,6 +112,6 @@
 | uv-divider | [分割线](https://www.uvui.cn/components/divider.html) |
 
 ## 最后作者想说
-- 开源真的不易，不图大家的钱财，所以希望大家多多鼓励支持。
+- 开源真的不易，不图大家的钱财，所以希望大家多多鼓励支持，希望不要恶意评论，有问题加群快速解决。
 - 遇到BUG，是一件很正常的事情，是程序肯定就有BUG，所以希望大家能以理解的心态去提出BUG，然后作者才有动力去努力修复。
 - 最后觉得好用的小伙伴，不要吝啬你的双手，给个好评就是给我们最大的鼓励。
