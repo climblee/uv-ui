@@ -368,7 +368,7 @@
 				} else if (this.mode === 'multiple') {
 					if (selected.some(item => this.dateSame(item, date))) {
 						// 如果点击的日期已在数组中，则进行移除操作，也就是达到反选的效果
-						const itemIndex = selected.findIndex(item => item === date)
+						const itemIndex = selected.findIndex(item => dayjs(item).format("YYYY-MM-DD") === dayjs(date).format("YYYY-MM-DD"))
 						selected.splice(itemIndex, 1)
 					} else {
 						// 如果点击的日期不在数组中，且已有的长度小于总可选长度时，则添加到数组中去
