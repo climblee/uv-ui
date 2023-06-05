@@ -1,13 +1,12 @@
 export default {
 	props: {
-		// 用于v-model双向绑定选中的星星数量
-		// #ifdef VUE2
+		// vue2用于v-model双向绑定选中的星星数量或vue3禁用等状态的选中数量
 		value: {
 			type: [String, Number],
 			default: 1
 		},
-		// #endif
 		// #ifdef VUE3
+		// vue3用于v-model双向绑定选中的星星数量
 		modelValue: {
 			type: [String, Number],
 			default: 1
@@ -71,7 +70,7 @@ export default {
 		// 是否可以通过滑动手势选择评分
 		touchable: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		...uni.$uv?.props?.rate
 	}

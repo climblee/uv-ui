@@ -1,8 +1,10 @@
 <template>
-	<view class="uv-rate"
+	<view 
+		class="uv-rate"
 		:id="elId"
 		ref="uv-rate"
-		:style="[$uv.addStyle(customStyle)]">
+		:style="[$uv.addStyle(customStyle)]"
+	>
 		<view class="uv-rate__content"
 			@touchmove.stop="touchMove"
 			@touchend.stop="touchEnd">
@@ -13,48 +15,30 @@
 				<view class="uv-rate__content__item__icon-wrap"
 					ref="uv-rate__content__item__icon-wrap"
 					@tap.stop="clickHandler($event, index + 1)">
-					<uv-icon :name="
-                            Math.floor(activeIndex) > index
-                                ? activeIcon
-                                : inactiveIcon
-                        "
-						:color="
-                            disabled
-                                ? '#c8c9cc'
-                                : Math.floor(activeIndex) > index
-                                ? activeColor
-                                : inactiveColor
-                        "
+					<uv-icon 
+						:name="Math.floor(activeIndex) > index? activeIcon : inactiveIcon"
+						:color="disabled ? '#c8c9cc' : Math.floor(activeIndex) > index ? activeColor : inactiveColor"
 						:custom-style="{
-                            'padding-left': $uv.addUnit(gutter / 2),
+              'padding-left': $uv.addUnit(gutter / 2),
 							'padding-right': $uv.addUnit(gutter / 2)
-                        }"
-						:size="size"></uv-icon>
+            }"
+						:size="size"
+					></uv-icon>
 				</view>
 				<view v-if="allowHalf"
 					@tap.stop="clickHandler($event, index + 1)"
 					class="uv-rate__content__item__icon-wrap uv-rate__content__item__icon-wrap--half"
-					:style="[{
-                        width: $uv.addUnit(rateWidth / 2),
-                    }]"
+					:style="[{ width: $uv.addUnit(rateWidth / 2)}]"
 					ref="uv-rate__content__item__icon-wrap">
-					<uv-icon :name="
-                            Math.ceil(activeIndex) > index
-                                ? activeIcon
-                                : inactiveIcon
-                        "
-						:color="
-                            disabled
-                                ? '#c8c9cc'
-                                : Math.ceil(activeIndex) > index
-                                ? activeColor
-                                : inactiveColor
-                        "
+					<uv-icon 
+						:name=" Math.ceil(activeIndex) > index ? activeIcon : inactiveIcon "
+						:color=" disabled ? '#c8c9cc' : Math.ceil(activeIndex) > index ? activeColor : inactiveColor "
 						:custom-style="{
 							'padding-left': $uv.addUnit(gutter / 2),
 							'padding-right': $uv.addUnit(gutter / 2)
-                        }"
-						:size="size"></uv-icon>
+            }"
+						:size="size">
+					</uv-icon>
 				</view>
 			</view>
 		</view>
@@ -83,7 +67,7 @@
 	 * @property {Boolean}			allowHalf		是否允许半星选择 （默认 false ）
 	 * @property {String}			activeIcon		选中时的图标名，只能为uvui的内置图标 （默认 'star-fill' ）
 	 * @property {String}			inactiveIcon	未选中时的图标名，只能为uvui的内置图标 （默认 'star' ）
-	 * @property {Boolean}			touchable		是否可以通过滑动手势选择评分 （默认 'true' ）
+	 * @property {Boolean}			touchable		是否可以通过滑动手势选择评分 （默认 'false' ）
 	 * @property {Object}			customStyle		组件的样式，对象形式
 	 * @event {Function} change 选中的星星发生变化时触发
 	 * @example <uv-rate :count="count" :value="2"></uv-rate>
@@ -106,17 +90,43 @@
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
 				moving: false,
+				// #ifdef VUE3
+			 prepare: {
+				 modelValue: 1,
+				 value: 1
+			 }
+				// #endif
 			};
 		},
 		watch: {
 			// #ifdef VUE2
-			value(val) {
-				this.activeIndex = val;
+			value: {
+				deep: true,
+				immediate: true,
+				handler(val){
+					this.activeIndex = val;
+				}
 			},
 			// #endif
 			// #ifdef VUE3
-			modelValue(val) {
-				this.activeIndex = val;
+			modelValue: {
+				deep: true,
+				immediate: true,
+				handler(val){
+					this.prepare.modelValue = val;
+				}
+			},
+			value: {
+				deep: true,
+				immediate: true,
+				handler(val){
+					this.prepare.value = val;
+					if(this.prepare.modelValue > 1){
+						this.activeIndex = this.prepare.modelValue;
+					}else{
+						this.activeIndex = val;
+					}
+				}
 			},
 			// #endif
 			activeIndex: 'emitEvent'

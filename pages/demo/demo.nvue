@@ -1,6 +1,8 @@
 <template>
-	<view>
-		<uv-navbar title="剑未配妥，出门已是江湖" left-text="返回" right-text="帮助" :border="true" bg-color="linear-gradient(to right, rgb(213, 51, 186),rgb(66, 83, 216))"></uv-navbar>
+	<view style="margin: 100px;">
+		<uv-rate class="app-rate" size="20" activeColor="#ff007f" readonly :allowHalf="true" :value="3.6"></uv-rate>
+		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value"></uv-rate>
+		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value2"></uv-rate>
 	</view>
 </template>
 
@@ -8,6 +10,8 @@
 	export default {
 		data(){
 			return{
+				value: 3,
+				value2: 4
 			}
 		},
 		onLoad() {
