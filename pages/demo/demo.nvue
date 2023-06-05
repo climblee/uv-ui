@@ -1,10 +1,6 @@
 <template>
 	<view>
-		<!-- <uv-text
-		    text="分享到微信"
-		    openType="share"
-		    type="success"
-		></uv-text> -->
+		<uv-navbar title="剑未配妥，出门已是江湖" left-text="返回" right-text="帮助" :border="true" bg-color="linear-gradient(to right, rgb(213, 51, 186),rgb(66, 83, 216))"></uv-navbar>
 	</view>
 </template>
 

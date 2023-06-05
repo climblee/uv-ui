@@ -15,10 +15,9 @@
 			<view
 				class="uv-navbar__content"
 				:class="[border && 'uv-border-bottom']"
-				:style="{
-					height: $uv.addUnit(height),
-					backgroundColor: bgColor,
-				}"
+				:style="[{
+					height: $uv.addUnit(height)
+				},getBgColor]"
 			>
 				<view
 					class="uv-navbar__content__left"
@@ -108,6 +107,19 @@
 
 			}
 		},
+		computed: {
+			getBgColor(){
+				const style = {};
+				if(this.bgColor){
+					if (this.bgColor.indexOf("gradient") > -1) {// 渐变色
+						style.backgroundImage = this.bgColor;
+					}else{
+						style.background = this.bgColor;
+					}
+				}
+				return style;
+			}
+		},
 		methods: {
 			// 点击左侧区域
 			leftClick() {
@@ -120,7 +132,7 @@
 			// 点击右侧区域
 			rightClick() {
 				this.$emit('rightClick')
-			},
+			}
 		}
 	}
 </script>

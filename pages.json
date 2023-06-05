@@ -9,7 +9,8 @@
 			"path": "pages/demo/demo",
 			"style": {
 				"navigationBarTitleText": "测试",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/demo/test",

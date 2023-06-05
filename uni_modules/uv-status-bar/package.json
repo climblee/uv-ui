@@ -1,7 +1,7 @@
 {
   "id": "uv-status-bar",
   "displayName": "uv-status-bar 状态栏占位",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "状态栏占位组件主要用于状态填充，比如在自定导航栏的时候，它会自动适配一个恰当的状态栏高度。",
   "keywords": [
     "uv-status-bar",
