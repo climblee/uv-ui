@@ -1,3 +1,6 @@
+## 1.0.3（2023-06-06）
+1. uv-checkbox-group 兼容自定义样式customStyle，方便通过样式调整整体位置等；
+2. .uv-checkbox-group--row增加flex-wrap: wrap;允许换行
 ## 1.0.2（2023-05-30）
 1. 修复error报错的BUG
 ## 1.0.1（2023-05-16）

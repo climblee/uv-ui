@@ -2,6 +2,7 @@
 	<view
 	    class="uv-checkbox-group"
 	    :class="bemClass"
+			:style="[$uv.addStyle(this.customStyle)]"
 	>
 		<slot></slot>
 	</view>
@@ -105,6 +106,7 @@
 
 		&--row {
 			@include flex;
+			flex-wrap: wrap;
 		}
 
 		&--column {

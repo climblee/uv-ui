@@ -1,8 +1,16 @@
 <template>
-	<view style="margin: 100px;">
-		<uv-rate class="app-rate" size="20" activeColor="#ff007f" readonly :allowHalf="true" :value="3.6"></uv-rate>
+	<view>
+		<!-- <uv-rate class="app-rate" size="20" activeColor="#ff007f" readonly :allowHalf="true" :value="3.6"></uv-rate>
 		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value"></uv-rate>
-		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value2"></uv-rate>
+		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value2"></uv-rate> -->
+		<uv-gap height="600px"></uv-gap>
+		<uv-input 
+		placeholder="请输入手机号码"
+		:cursor-spacing="100"
+		:adjust-position="false"
+		>
+		</uv-input>
+		<input type="text" placeholder="请输入手机号码22" :cursor-spacing="100" :adjust-position="false">
 	</view>
 </template>
 

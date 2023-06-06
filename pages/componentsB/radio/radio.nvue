@@ -119,9 +119,10 @@
 					<uv-radio-group
 						v-model="radiovalue6"
 						placement="row"
+						:customStyle="{margin:'0 -8px'}"
 					>
 						<uv-radio
-							:customStyle="{marginRight: '16px'}"
+							:customStyle="{padding: '8px'}"
 							v-for="(item, index) in radiolist6"
 							:key="index"
 							:label="item.name"
@@ -272,6 +273,18 @@
 					},
 					{
 						name: '不知火舞',
+						disabled: false
+					},
+					{
+						name: '李元芳',
+						disabled: false
+					},
+					{
+						name: '典韦',
+						disabled: false
+					},
+					{
+						name: '黄忠',
 						disabled: false
 					},
 				],

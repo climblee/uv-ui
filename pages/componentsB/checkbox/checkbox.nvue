@@ -122,9 +122,10 @@
 					<uv-checkbox-group
 						v-model="checkboxValue6"
 						@change="checkboxChange"
+						:customStyle="{margin:'0 -8px'}"
 					>
 						<uv-checkbox
-							:customStyle="{marginRight: '16px'}"
+							:customStyle="{padding: '8px'}"
 							v-for="(item, index) in checkboxList6"
 							:key="index"
 							:label="item.name"
@@ -282,6 +283,18 @@
 					},
 					{
 						name: '飞机',
+						disabled: false
+					},
+					{
+						name: '骑车',
+						disabled: false
+					},
+					{
+						name: '汽车',
+						disabled: false
+					},
+					{
+						name: '火箭',
 						disabled: false
 					}
 				],
