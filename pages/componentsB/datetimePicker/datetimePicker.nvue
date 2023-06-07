@@ -85,7 +85,7 @@
 			v-model="value7"
 			mode="datetime"
 			:minDate="1587524800000"
-			:maxDate="1786778555000"
+			:maxDate="1893470400000"
 			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"

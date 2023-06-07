@@ -115,11 +115,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 各列的默认索引
-		defaultIndex: {
-			type: Array,
-			default: () => []
-		},
 		...uni.$uv?.props?.datetimePicker
 	}
 }
