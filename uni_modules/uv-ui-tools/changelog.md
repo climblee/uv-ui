@@ -1,3 +1,6 @@
+## 1.0.7（2023-06-07）
+1. 解决微信小程序使用uvui提示 Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors
+2. 解决上述提示，需要在uni.scss配置$uvui-nvue-style: false; 然后在APP.vue下面引入uvui内置的基础样式:@import '@/uni_modules/uv-ui-tools/index.scss';
 ## 1.0.6（2023-06-04）
 1.  uv-ui-tools 优化工具组件，兼容更多功能
 2.  小程序分享功能优化等

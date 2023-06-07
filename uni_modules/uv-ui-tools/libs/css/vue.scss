@@ -25,3 +25,16 @@ uni-toast .uni-toast {
     -webkit-appearance: none;  
     background: transparent;  
 }
+
+$uvui-nvue-style: true !default;
+@if $uvui-nvue-style == false {
+	view, scroll-view, swiper-item {
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		flex-grow: 0;
+		flex-basis: auto;
+		align-items: stretch;
+		align-content: flex-start;
+	}
+}
