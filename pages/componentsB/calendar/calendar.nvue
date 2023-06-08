@@ -54,6 +54,21 @@
 				color="#f56c6c"
 				:defaultDate="customThemeDefaultDate"
 			></uv-calendar>
+			<!-- #ifdef MP-WEIXIN -->
+			<!-- #ifdef VUE2 -->
+			<uv-calendar
+				ref="calendar5"
+				:show="show5"
+				mode="range"
+				@confirm="confirm"
+				@close="close"
+				:defaultDate="customTextDefaultDate"
+				startText="住店"
+				endText="离店"
+				confirmDisabledText="请选择离店日期"
+			></uv-calendar>
+			<!-- #endif -->
+			<!-- #ifdef VUE3 -->
 			<uv-calendar
 				:show="show5"
 				mode="range"
@@ -65,6 +80,21 @@
 				confirmDisabledText="请选择离店日期"
 				:formatter="formatter"
 			></uv-calendar>
+			<!-- #endif -->
+			<!-- #endif -->
+			<!-- #ifndef MP-WEIXIN -->
+			<uv-calendar
+				:show="show5"
+				mode="range"
+				@confirm="confirm"
+				@close="close"
+				:defaultDate="customTextDefaultDate"
+				startText="住店"
+				endText="离店"
+				confirmDisabledText="请选择离店日期"
+				:formatter="formatter"
+			></uv-calendar>
+			<!-- #endif -->
 			<uv-calendar
 				:show="show6"
 				@confirm="confirm"
@@ -96,6 +126,7 @@
 			month = month < 10 ? `0${month}` : month
 			const date = d.getDate()
 			return {
+				desc: '打6折',
 				index: 0,
 				show1: false,
 				show2: false,
@@ -141,6 +172,13 @@
 					}
 				]
 			}
+		},
+		onReady() {
+			// #ifdef MP-WEIXIN
+			// #ifdef VUE2
+			this.$refs.calendar5.setFormatter(this.formatter)
+			// #endif
+			// #endif
 		},
 		methods: {
 			showCalendar(index) {
@@ -193,6 +231,7 @@
 				const date = d.getDate()
 				if(day.month == month && day.day == date + 3) {
 					day.bottomInfo = '有优惠'
+					day.bottomInfo = this.desc
 					day.dot = true
 				}
 				return day
