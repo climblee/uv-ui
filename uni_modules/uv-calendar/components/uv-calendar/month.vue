@@ -37,7 +37,7 @@
 	import dayjs from '@/uni_modules/uv-ui-tools/libs/util/dayjs.js'
 	export default {
 		name: 'uv-calendar-month',
-		emits:['monthSelected','updateMonthTop'],
+		emits:['monthSelected','updateMonthTop','change'],
 		mixins: [mpMixin, mixin],
 		props: {
 			// 是否显示月份背景色
@@ -418,6 +418,10 @@
 					}
 				}
 				this.setSelected(selected)
+				this.$emit('change',{
+					day: date,
+					selected: selected
+				});
 			},
 			// 设置默认日期
 			setDefaultDate() {

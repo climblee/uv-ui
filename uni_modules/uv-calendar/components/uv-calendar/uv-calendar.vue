@@ -44,6 +44,7 @@
 					ref="month"
 					@monthSelected="monthSelected"
 					@updateMonthTop="updateMonthTop"
+					@change="changeDay"
 				></uvMonth>
 			</scroll-view>
 			<slot name="footer" v-if="showConfirm">
@@ -111,7 +112,7 @@ import Calendar from './calendar.js'
  * */
 export default {
 	name: 'uv-calendar',
-	emits:['confirm','close'],
+	emits:['confirm','close','change'],
 	mixins: [mpMixin, mixin, props],
 	components: {
 		uvHeader,
@@ -195,6 +196,10 @@ export default {
 		// 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
 		setFormatter(e) {
 			this.innerFormatter = e
+		},
+		// 点击日期框触发
+		changeDay(e) {
+			this.$emit('change',e);
 		},
 		// month组件内部选择日期后，通过事件通知给父组件
 		monthSelected(e) {

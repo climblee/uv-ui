@@ -1,12 +1,5 @@
 <template>
 	<view class="uv-page">
-		<!-- <uv-navbar
-			title="日历"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<view>
 			<uv-cell-group>
 				<uv-cell
@@ -31,6 +24,7 @@
 				:defaultDate="currentDate"
 				@confirm="confirm"
 				@close="close"
+				@change="change"
 			></uv-calendar>
 			<uv-calendar
 				:show="show2"
@@ -39,12 +33,14 @@
 				month-num="5"
 				@confirm="confirm"
 				@close="close"
+				@change="change"
 			></uv-calendar>
 			<uv-calendar
 				:show="show3"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
+				@change="change"
 			></uv-calendar>
 			<uv-calendar
 				:show="show4"
@@ -235,6 +231,9 @@
 					day.dot = true
 				}
 				return day
+			},
+			change(e){
+				console.log('点击日期触发：',e)
 			}
 		},
 	}
