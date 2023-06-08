@@ -1,3 +1,5 @@
+## 1.0.4（2023-06-08）
+1. 复选框修复全局设置不生效的BUG
 ## 1.0.3（2023-06-06）
 1. uv-checkbox-group 兼容自定义样式customStyle，方便通过样式调整整体位置等；
 2. .uv-checkbox-group--row增加flex-wrap: wrap;允许换行

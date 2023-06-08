@@ -28,7 +28,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-
 		// 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
 		activeColor: {
 			type: String,
@@ -39,7 +38,6 @@ export default {
 			type: String,
 			default: '#c8c9cc'
 		},
-
 		// 整个组件的尺寸，默认px
 		size: {
 			type: [String, Number],

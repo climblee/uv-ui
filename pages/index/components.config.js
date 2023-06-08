@@ -28,6 +28,13 @@ export default [{
 			title: 'QRCode 二维码',
 			title_en: 'QRCode',
 			isNew: true
+		},
+		{
+			path: '/pages/componentsC/waterfall/waterfall',
+			icon: 'scrollList',
+			title: 'Waterfall 瀑布流布局',
+			title_en: 'scrollList',
+			isNew: true
 		}
 	]
 }, {
@@ -296,11 +303,6 @@ export default [{
 		icon: 'swipeAction',
 		title: 'SwipeAction 滑动单元格',
 		title_en: 'SwipeAction'
-	}, {
-		path: '/pages/componentsC/waterfall/waterfall',
-		icon: 'scrollList',
-		title: 'Waterfall 瀑布流布局',
-		title_en: 'scrollList'
 	}, {
 		path: '/pages/componentsC/swiper/swiper',
 		icon: 'swiper',

@@ -7,10 +7,7 @@ import App from './App'
 // 			unit: 'px'
 // 	},
 // 	props: {
-// 		button: {
-// 			size: {
-// 				default: 'large'
-// 			},
+// 		text: {
 // 			color: {
 // 				default: 'red'
 // 			}
