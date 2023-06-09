@@ -186,6 +186,37 @@
 			</uv-tabbar>
 		</view>
 		<view class="uv-page__item">
+			<text class="uv-page__item__title">自定义图标大小</text>
+			<uv-tabbar
+			    :value="value7"
+			    @change="change1"
+			    :fixed="false"
+			    :placeholder="false"
+					:icon-size="30"
+			>
+				<uv-tabbar-item
+				    text="首页"
+				    icon="home"
+					@click="click1"
+				></uv-tabbar-item>
+				<uv-tabbar-item
+				    text="放映厅"
+				    icon="photo"
+					@click="click1"
+				></uv-tabbar-item>
+				<uv-tabbar-item
+				    text="直播"
+				    icon="play-right"
+					@click="click1"
+				></uv-tabbar-item>
+				<uv-tabbar-item
+				    text="我的"
+				    icon="account"
+					@click="click1"
+				></uv-tabbar-item>
+			</uv-tabbar>
+		</view>
+		<view class="uv-page__item">
 			<text class="uv-page__item__title">固定在底部(固定在屏幕最下方)</text>
 			<uv-gap height="150"></uv-gap>
 			<uv-tabbar

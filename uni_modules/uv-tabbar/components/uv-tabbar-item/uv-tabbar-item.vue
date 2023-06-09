@@ -9,7 +9,7 @@
 			    v-if="icon"
 			    :name="icon"
 			    :color="isActive? parentData.activeColor : parentData.inactiveColor"
-			    :size="20"
+			    :size="iconSize? iconSize: parentData.iconSize"
 			></uv-icon>
 			<template v-else>
 				<slot
@@ -70,7 +70,8 @@
 				parentData: {
 					value: null,
 					activeColor: '',
-					inactiveColor: ''
+					inactiveColor: '',
+					iconSize: 20
 				}
 			}
 		},

@@ -10,6 +10,11 @@ export default {
 			icon: String,
 			default: ''
 		},
+		// 图标大小，默认uv-tabbar的iconSize=20
+		iconSize: {
+			type: [String, Number],
+			default: ''
+		},
 		// 右上角的角标提示信息
 		badge: {
 			type: [String, Number, null],

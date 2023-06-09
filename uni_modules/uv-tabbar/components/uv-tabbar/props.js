@@ -40,6 +40,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 图标大小
+		iconSize: {
+			type: [String, Number],
+			default: 20
+		},
 		...uni.$uv?.props?.tabbar
 	}
 }
