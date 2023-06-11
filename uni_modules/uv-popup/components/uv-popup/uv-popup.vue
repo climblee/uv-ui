@@ -7,6 +7,7 @@
 			:duration="overlayDuration"
 			:customStyle="overlayStyle"
 			:opacity="overlayOpacity"
+            :zIndex="zIndex"
 		></uv-overlay>
 		<uv-transition
 			:show="show"
