@@ -3,6 +3,7 @@
 		mode="center"
 		:zoom="zoom"
 		:show="show"
+        :zIndex="zIndex"
 		:customStyle="{
 			borderRadius: '6px', 
 			overflow: 'hidden',
