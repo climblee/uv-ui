@@ -1,32 +1,19 @@
 <template>
-	<view>
-		<!-- <uv-rate class="app-rate" size="20" activeColor="#ff007f" readonly :allowHalf="true" :value="3.6"></uv-rate>
-		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value"></uv-rate>
-		<uv-rate class="app-rate" size="20" activeColor="#ff007f" v-model="value2"></uv-rate> -->
-		<uv-gap height="600px"></uv-gap>
-		<uv-input 
-		placeholder="请输入手机号码"
-		:cursor-spacing="100"
-		:adjust-position="false"
-		>
-		</uv-input>
-		<input type="text" placeholder="请输入手机号码22" :cursor-spacing="100" :adjust-position="false">
+	<view style="padding-top: 100px;">
+		<uv-modal :show="show" :title="title" :content='content' :z-index="9999999" @confirm="() => show = false"></uv-modal>
+		<button @click="show = true" style="position: absolute;z-index: 999999;">打开</button>
 	</view>
 </template>
 
 <script>
-	export default {
-		data(){
-			return{
-				value: 3,
-				value2: 4
-			}
-		},
-		onLoad() {
-			// uni.$uv.mpShare.title = '天苍苍野茫茫，风吹草低见牛羊';
-		},
-		methods: {
-			
-		}
+	
+export default {
+	data() {
+		return {
+			show:false,
+			title:'标题',
+			content:'uv-ui的目标是成为uni-app生态最优秀的UI框架'
+		};
 	}
+};
 </script>

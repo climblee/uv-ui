@@ -55,7 +55,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-        // 层级
+		// 层级
 		zIndex: {
 			type: [String, Number],
 			default: 10075
