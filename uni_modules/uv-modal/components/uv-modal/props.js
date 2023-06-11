@@ -55,6 +55,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+        // 层级
+		zIndex: {
+			type: [String, Number],
+			default: 10075
+		},
 		// 是否异步关闭，只对确定按钮有效
 		asyncClose: {
 			type: Boolean,
