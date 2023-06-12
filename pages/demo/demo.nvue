@@ -1,18 +1,60 @@
 <template>
 	<view style="padding-top: 100px;">
-		<uv-modal :show="show" :title="title" :content='content' :z-index="9999999" @confirm="() => show = false"></uv-modal>
-		<button @click="show = true" style="position: absolute;z-index: 999999;">打开</button>
+		<uv-tabs
+			:list="list4"
+			lineWidth="30"
+			lineColor="#f56c6c"
+			:activeStyle="{
+				fontSize: '20px',
+				color: '#303133',
+				fontWeight: 'bold',
+				transform: 'scale(1.05)'
+			}"
+			:inactiveStyle="{
+				color: '#606266',
+				transform: 'scale(1)'
+			}"
+			itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+		>
+		</uv-tabs>
 	</view>
 </template>
 
 <script>
 	
 export default {
+	onLoad() {
+		this.$nextTick(()=>{
+			console.log('进来$nextTick$nextTick==》')
+		})
+	},
 	data() {
 		return {
 			show:false,
 			title:'标题',
-			content:'uv-ui的目标是成为uni-app生态最优秀的UI框架'
+			content:'uv-ui的目标是成为uni-app生态最优秀的UI框架',
+			list4: [{
+				name: '关注'
+			}, {
+				name: '推荐',
+				badge: {
+					isDot: true
+				}
+			}, {
+				name: '电影',
+			}, {
+				name: '科技'
+			}, {
+				name: '音乐'
+			}, {
+				name: '美食'
+			}, {
+				name: '文化'
+			}, {
+				name: '财经'
+			}, {
+				name: '手工'
+			}],
 		};
 	}
 };

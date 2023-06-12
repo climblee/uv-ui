@@ -44,7 +44,7 @@
 			// 拉取父组件新的变化后的参数
 			parentData() {
 				return [this.value, this.disabled, this.inactiveColor, this.activeColor, this.size, this.labelDisabled, this.shape,
-					this.iconSize, this.borderBottom, this.placement, this.labelSize, this.labelColor, this.labelDisabled
+					this.iconSize, this.borderBottom, this.placement, this.labelSize, this.labelColor
 				]
 			},
 			bemClass() {

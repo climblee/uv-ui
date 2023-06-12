@@ -209,7 +209,19 @@
 				// 如果disabled状态，返回
 				if (item.disabled) return
 				this.innerCurrent = index
-				this.resize()
+				// #ifndef APP-NVUE
+				this.$nextTick(()=>{
+					this.resize()
+				})
+				// #endif
+				// #ifdef APP-NVUE
+				this.$nextTick(()=>{
+					// nvue模式下再给点延时，确保万无一失
+					this.$uv.sleep(30).then(res=>{
+						this.resize()
+					});
+				})
+				// #endif
 				this.$emit('change', {
 					...item,
 					index

@@ -36,7 +36,7 @@
 		<uv-picker
 			:show="show3"
 			:columns="columns3"
-			ref="uPicker3"
+			ref="uvPickerRef3"
 			@cancel="cancel"
 			@confirm="confirm"
 			@change="changeHandler1"
@@ -48,7 +48,7 @@
 			@confirm="confirm"
 			:loading="loading"
 			@change="changeHandler2"
-			ref="uPicker4"
+			ref="uvPickerRef4"
 		></uv-picker>
 		<uv-picker
 			:show="show5"
@@ -72,7 +72,6 @@
 </template>
 
 <script>
-	import { sleep } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -141,12 +140,10 @@
 					columnIndex,
 					value,
 					values,
-					index,
-					// 微信小程序无法将picker实例传出来，只能通过ref操作
-					picker = this.$refs.uPicker3
+					index
 				} = e
 				if (columnIndex === 0) {
-					picker.setColumnValues(1, this.columnData[index])
+					this.$refs.uvPickerRef3.setColumnValues(1, this.columnData[index])
 				}
 			},
 			changeHandler2(e) {
@@ -155,23 +152,21 @@
 					columnIndex,
 					value,
 					values,
-					index,
-					// 微信小程序无法将picker实例传出来，只能通过ref操作
-					picker = this.$refs.uPicker4
+					index
 				} = e
 				if (columnIndex === 0) {
 					this.loading = true
-					sleep(1500).then(() => {
-						picker.setColumnValues(1, this.columnData[index])
+					setTimeout(()=>{
+						this.$refs.uvPickerRef4.setColumnValues(1, this.columnData[index])
 						this.loading = false
-					})
+					},1500)
 				}
 			},
 			navigateBack() {
 				uni.navigateBack()
 			},
 			change(e) {
-				// console.log('change', e);
+				console.log('change', e);
 			},
 			showPicker(index) {
 				this.index = index + 1
@@ -182,7 +177,7 @@
 				this[`show${this.index}`] = false
 			},
 			confirm(e) {
-				// console.log('confirm', e);
+				console.log('confirm', e);
 				this[`show${this.index}`] = false
 			},
 			cancel() {

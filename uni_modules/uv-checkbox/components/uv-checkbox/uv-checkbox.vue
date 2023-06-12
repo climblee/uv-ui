@@ -79,8 +79,7 @@
 					borderBottom: false,
 					iconPlacement: 'left',
 					labelSize: 14,
-					labelColor: '#303133',
-					labelDisabled: false
+					labelColor: '#303133'
 				}
 			}
 		},

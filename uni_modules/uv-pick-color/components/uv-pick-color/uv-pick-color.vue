@@ -20,13 +20,23 @@
 					background:`rgb(${bgcolor.r},${bgcolor.g},${bgcolor.b})`
 				}"
 			>
-				<view 
+				<!-- #ifdef H5 -->
+				<view
 					class="uv-pick-color__box__bg drag-box"
 					@tap.stop.prevent="touchstart($event, 0)"
 					@touchstart.stop.prevent="touchstart($event, 0)"
 					@touchmove.stop.prevent="touchmove($event, 0)"
 					@touchend.stop.prevent="touchend($event, 0)"
 				>
+				<!-- #endif -->
+				<!-- #ifndef H5 -->
+				<view
+					class="uv-pick-color__box__bg drag-box"
+					@touchstart.stop.prevent="touchstart($event, 0)"
+					@touchmove.stop.prevent="touchmove($event, 0)"
+					@touchend.stop.prevent="touchend($event, 0)"
+				>
+				<!-- #endif -->
 					<view class="uv-pick-color__box__bg-mask"></view>
 					<view 
 						class="uv-pick-color__box__bg-pointer"
@@ -43,13 +53,23 @@
 					></view>
 				</view>
 				<view class="uv-pick-color__control__item">
-					<view 
+					<!-- #ifdef H5 -->
+					<view
 						class="uv-pick-color__control__item__drag drag-box"
 						@tap.stop="touchstart($event, 1)"
 						@touchstart.stop="touchstart($event, 1)"
 						@touchmove.stop="touchmove($event, 1)"
 						@touchend.stop="touchend($event, 1)"
 					>
+					<!-- #endif -->
+					<!-- #ifndef H5 -->
+					<view
+						class="uv-pick-color__control__item__drag drag-box"
+						@touchstart.stop="touchstart($event, 1)"
+						@touchmove.stop="touchmove($event, 1)"
+						@touchend.stop="touchend($event, 1)"
+					>
+					<!-- #endif -->
 						<view class="uv-pick-color__control__item__drag--hue"></view>
 						<view 
 							class="uv-pick-color__control__item__drag--circle"
@@ -58,13 +78,23 @@
 							}"
 						></view>
 					</view>
-					<view 
+					<!-- #ifdef H5 -->
+					<view
 						class="uv-pick-color__control__item__drag drag-box"
 						@tap.stop="touchstart($event, 2)"
 						@touchstart.stop="touchstart($event, 2)"
 						@touchmove.stop="touchmove($event, 2)"
 						@touchend.stop="touchend($event, 2)"
 					>
+					<!-- #endif -->
+					<!-- #ifndef H5 -->
+					<view
+						class="uv-pick-color__control__item__drag drag-box"
+						@touchstart.stop="touchstart($event, 2)"
+						@touchmove.stop="touchmove($event, 2)"
+						@touchend.stop="touchend($event, 2)"
+					>
+					<!-- #endif -->
 						<view class="uv-pick-color__control__item__drag--alpha"></view>
 						<view 
 							class="uv-pick-color__control__item__drag--circle"

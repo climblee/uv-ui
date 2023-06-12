@@ -36,16 +36,16 @@ export default {
 			this.inited = true
 			this.display = true
 			this.classes = classNames.enter
-			// this.$nextTick(async () => {
-			await sleep(20)
-			// 标识动画尚未结束
-			this.$emit('enter')
-			this.transitionEnded = false
-			// 组件动画进入后触发的事件
-			this.$emit('afterEnter')
-			// 赋予组件enter-to类名
-			this.classes = classNames['enter-to']
-			// })
+			this.$nextTick(async () => {
+				await sleep(20)
+				// 标识动画尚未结束
+				this.$emit('enter')
+				this.transitionEnded = false
+				// 组件动画进入后触发的事件
+				this.$emit('afterEnter')
+				// 赋予组件enter-to类名
+				this.classes = classNames['enter-to']
+			})
 		},
 		// 动画离场处理
 		async vueLeave() {
@@ -57,15 +57,15 @@ export default {
 			this.$emit('beforeLeave')
 			// 获得类名
 			this.classes = classNames.leave
-			await sleep(10)
-			// this.$nextTick(() => {
-			// 动画正在离场的状态
-			this.transitionEnded = false
-			this.$emit('leave')
-			// 组件执行动画，到了执行的执行时间后，执行一些额外处理
-			setTimeout(this.onTransitionEnd, this.duration)
-			this.classes = classNames['leave-to']
-			// })
+			this.$nextTick(async () => {
+				await sleep(10);
+				// 动画正在离场的状态
+				this.transitionEnded = false
+				this.$emit('leave')
+				// 组件执行动画，到了执行的执行时间后，执行一些额外处理
+				setTimeout(this.onTransitionEnd, this.duration)
+				this.classes = classNames['leave-to']
+			})
 		},
 		// #endif
 		// #ifdef APP-NVUE
