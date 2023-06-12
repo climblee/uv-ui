@@ -1,3 +1,17 @@
+## 1.0.11（2023-06-12）
+1. uv-radio-group、uv-checkbox-group 兼容自定义样式customStyle，方便通过样式调整整体位置等，数据较多时允许换行
+2. uv-ui-tools 优化内置样式等，解决微信小程序使用uvui提示 Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors，[详情](https://www.uvui.cn/components/problem.html)
+3. uv-datetime-picker 取消defaultIndex参数，目前传该值也没实际意义
+4. uv-tabbar 增加iconSize参数
+5. uv-calendar 增加change回调
+6. uv-calendar 修复BUG
+7. uv-rate 修复只读或禁止状态下设置value无效的问题
+8. uv-popup 修复zIndex问题
+9. uv-modal 修复zIndex问题
+10. 文档-扩展配置更新：[扩展配置](https://www.uvui.cn/components/setting.html)
+11. 文档-优化更新：[uv-ui文档](https://www.uvui.cn/components/changelog.html)
+12. 文档-新增常见问题：[常见问题](https://www.uvui.cn/components/problem.html)
+13. 优化其他
 ## 1.0.10（2023-06-05）
 1. uv-navbar 渐变背景色兼容
 2. uv-calendar 日历选择BUG修复
