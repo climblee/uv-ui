@@ -1,12 +1,5 @@
 <template>
 	<view class="uv-page" style="background-color: #fff;">
-		<!-- <uv-navbar
-			title="表单"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">基础使用</text>
 			<view class="uv-demo-block__content">
