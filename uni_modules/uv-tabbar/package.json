@@ -1,7 +1,7 @@
 {
   "id": "uv-tabbar",
   "displayName": "uv-tabbar 底部导航栏   全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "底部导航栏组件提供了自定义tabbar的能力。",
   "keywords": [
     "uv-tabbar",
@@ -38,7 +38,8 @@
     "dependencies": [
 			"uv-ui-tools",
 			"uv-icon",
-			"uv-badge"
+			"uv-badge",
+			"uv-safe-bottom"
 		],
     "encrypt": [],
     "platforms": {
