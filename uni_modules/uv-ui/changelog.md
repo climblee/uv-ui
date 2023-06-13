@@ -1,3 +1,14 @@
+## 1.0.12（2023-06-14）
+1. 优化部分组件，优化文档部分细节
+2. uv-popup、uv-modal 修复遮罩层zIndex问题
+3. uv-form 在vue3的setup语法中ref使用uvForm会导致报错
+4. uv-tabs activeStyle设置字体大小，可能会导致下划线位置不对BUG
+5. uv-pick-color 百度小程序点击报错
+6. uv-transition 恢复this.$nextTick
+7. uv-picker 抖音小程序选择的时候报错，导致不能关闭的BUG
+8. uv-checkbox 多余的属性labelDisabled，导致APP中报错提示
+9. uv-tabbar 底部安全距离组件无效的BUG
+10. uv-vtabs 头部存在的时候，联动不准确的BUG
 ## 1.0.11（2023-06-12）
 1. uv-radio-group、uv-checkbox-group 兼容自定义样式customStyle，方便通过样式调整整体位置等，数据较多时允许换行
 2. uv-ui-tools 优化内置样式等，解决微信小程序使用uvui提示 Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors，[详情](https://www.uvui.cn/components/problem.html)
