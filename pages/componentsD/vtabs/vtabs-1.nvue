@@ -1,9 +1,15 @@
 <template>
 	<view class="content">
-		<uv-vtabs 
+		<view style="height: 100rpx;background: #ecf5ff;color: #909193;display: flex;justify-content: center;text-align: center;">
+			<text style="font-size: 28rpx;">欢迎使用多功能组件uv-vtabs，这是头部内容，有头部内容必须传hdHeight参数</text>
+		</view>
+		<uv-vtabs
 			:chain="chain"
 			:list="list"
-			@change="change">
+			:height="height"
+			hdHeight="100rpx"
+			@change="change"
+			@scrolltolower="scrolltolower">
 			<!-- #ifdef VUE2 -->
 			<template v-for="(item,index) in list">
 				<uv-vtabs-item :index="index" :key="index">
@@ -83,6 +89,11 @@
 				chain: true
 			}
 		},
+		computed: {
+			height(){
+				return uni.getSystemInfoSync().windowHeight - uni.upx2px(100);
+			}
+		},
 		onReady() {
 			// 模拟接口请求数据
 			uni.showLoading({
@@ -96,6 +107,9 @@
 		methods: {
 			change(index) {
 				console.log('选项改变：',index)
+			},
+			scrolltolower(index){
+				console.log('内容滚动到底部触发：',index)
 			}
 		}
 	}

@@ -70,6 +70,7 @@
 			:scroll-into-view="contentScrollTo"
 			:scroll-with-animation="true"
 			@scroll="scrollHandler"
+			@scrolltolower="scrolltolower"
 			v-if="chain"
 		>
 			<slot />
@@ -81,6 +82,7 @@
 			:scroll-y="true" 
 			:scroll-x="scrollX"
 			:show-scrollbar="false"
+			@scrolltolower="scrolltolower"
 		>
 			<slot />
 		</scroll-view>
@@ -103,6 +105,7 @@
 	 * @property {Array}	list  选项数组，元素为对象，如[{name:'uv-ui'}]（默认 [] ）
 	 * @property {String}  keyName  从list元素对象中读取的键名（默认 name ）
 	 * @property {Number}  current  当前选中项，从0开始（默认 0 ）
+	 * @property {Number | String}  hdHeight  头部内容的高度，头部有内容必传，否则会有联动误差（默认 0 ）
 	 * @property {Boolean}  chain  是否开启联动，开启后右边区域可以滑动查看内容（默认 true ）
 	 * @property {Number|String}  height  整个列表的高度，默认auto或空则为屏幕高度（默认 auto屏幕高度 ）
 	 * @property {Number|String}  barWidth  左边选项区域的宽度（默认 180rpx ）
@@ -128,6 +131,7 @@
 				// 微信小程序下，scroll-view的scroll-into-view属性无法对slot中的内容的id生效，只能通过设置scrollTop的形式去移动滚动条
 				contentScrollTop: 0,
 				contentScrollTo: '',
+				scrolling: false,
 				barScrolling: false,
 				touching: false,
 				hasHeight: 0,
@@ -221,6 +225,10 @@
 					}
 				},100)
 			},
+			// 内容滚动到底部触发
+			scrolltolower(){
+				this.$emit('scrolltolower',this.activeIndex);
+			},
 			async resize() {
 				// 如果list数组长度为0就不处理 || 选中目标未变则不处理
 				if (this.list.length == 0 || !this.barScrollable) return;
@@ -263,7 +271,7 @@
 				this.activeIndex = currentIndex;
 				if(this.chain) {
 					// 给一点随机值，避免出现不能滚动的BUG。微信端必须用此方法
-					this.contentScrollTop = this.children[currentIndex].top + Math.random() * 10;
+					this.contentScrollTop = this.children[currentIndex].top - this.$uv.getPx(this.hdHeight) - Math.random() * 4 - 4;
 					// #ifndef MP-WEIXIN
 					this.contentScrollTo = `content_${currentIndex}`;
 					// #endif
@@ -278,7 +286,12 @@
 			},
 			// 内容滚动
 			scrollHandler(e) {
-				if (this.touching) return;
+				if (this.touching || this.scrolling) return;
+				// 每过一定时间取样一次，减少资源损耗以及可能带来的卡顿
+				this.scrolling = true;
+				this.$uv.sleep(80).then(() => {
+					this.scrolling = false;
+				})
 				const scrollTop = e.detail.scrollTop;
 				let children = this.children;
 				const len = children.length;

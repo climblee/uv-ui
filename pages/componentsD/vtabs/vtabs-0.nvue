@@ -4,7 +4,8 @@
 			:chain="chain"
 			:list="list"
 			:barItemBadgeStyle="{right:'20px',top:'12px'}"
-			@change="change">
+			@change="change"
+			@scrolltolower="scrolltolower">
 			<uv-vtabs-item>
 				<view 
 					class="item"
@@ -91,6 +92,9 @@
 			change(index) {
 				console.log('选项改变：',index)
 				this.value = index;
+			},
+			scrolltolower(index){
+				console.log('内容滚动到底部触发：',index)
 			}
 		}
 	}

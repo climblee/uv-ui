@@ -15,6 +15,11 @@ export default {
 			type: [Number, String],
 			default: 0
 		},
+		// 头部内容的高度
+		hdHeight: {
+			type: [Number, String],
+			default: 0
+		},
 		// 是否联动，默认开启联动
 		chain: {
 			type: Boolean,
