@@ -172,7 +172,7 @@
 											childErrors.push(...errors);
 										}
 										child.message =
-											childErrors[0]?.message ?? null;
+											childErrors[0]?.message ? childErrors[0]?.message : null;
 									}
 								);
 							}

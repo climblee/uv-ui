@@ -34,11 +34,11 @@
 						class="uv-picker__view__column__item uv-line-1"
 						v-for="(item1, index1) in item"
 						:key="index1"
-						:style="{
-							height: $uv.addUnit(itemHeight),
-							lineHeight: $uv.addUnit(itemHeight),
-							fontWeight: index1 === innerIndex[index] ? 'bold' : 'normal'
-						}"
+						:style="[{
+								height: $uv.addUnit(itemHeight),
+								lineHeight: $uv.addUnit(itemHeight),
+								fontWeight: index1 === innerIndex[index] ? 'bold' : 'normal'
+							},textStyle]"
 					>{{ getItemText(item1) }}</text>
 				</picker-view-column>
 			</picker-view>
@@ -83,6 +83,16 @@ export default {
 	name: 'uv-picker',
 	emits: ['confirm','cancel','close','change'],
 	mixins: [mpMixin, mixin, props],
+	computed: {
+		// 为了解决支付宝不生效
+		textStyle(){
+			const style = {};
+			// #ifndef APP-NVUE 
+			style.display = 'block';
+			// #endif
+			return style;
+		}
+	},
 	data() {
 		return {
 			// 上一次选择的列索引

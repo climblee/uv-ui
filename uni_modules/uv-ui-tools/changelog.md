@@ -1,3 +1,5 @@
+## 1.0.8（2023-06-15）
+1. 修改支付宝报错的BUG
 ## 1.0.7（2023-06-07）
 1. 解决微信小程序使用uvui提示 Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors
 2. 解决上述提示，需要在uni.scss配置$uvui-nvue-style: false; 然后在APP.vue下面引入uvui内置的基础样式:@import '@/uni_modules/uv-ui-tools/index.scss';

@@ -1,7 +1,7 @@
 {
   "id": "uv-ui-tools",
   "displayName": "uv-ui-tools 工具集  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "uv-ui-tools，集成工具库，强大的Http请求封装，清晰的文档说明，开箱即用。方便使用，可以全局使用",
   "keywords": [
     "uv-ui-tools,uv-ui,uv,ui,uview"

@@ -170,7 +170,7 @@ function addStyle(customStyle, target = 'object') {
  * @param {string|number} value 需要添加单位的值
  * @param {string} unit 添加的单位名 比如px
  */
-function addUnit(value = 'auto', unit = uni?.$uv?.config?.unit ?? 'px') {
+function addUnit(value = 'auto', unit = uni?.$uv?.config?.unit ? uni?.$uv?.config?.unit : 'px') {
 	value = String(value)
 	// 用uvui内置验证规则中的number判断是否为数值
 	return number(value) ? `${value}${unit}` : value
@@ -652,9 +652,10 @@ function setProperty(obj, key, value) {
  * @description 获取当前页面路径
  */
 function page() {
-	const pages = getCurrentPages()
+	const pages = getCurrentPages();
+	const route = pages[pages.length - 1]?.route;
 	// 某些特殊情况下(比如页面进行redirectTo时的一些时机)，pages可能为空数组
-	return `/${pages[pages.length - 1]?.route ?? ''}`
+	return `/${route ? route : ''}`
 }
 
 /**
