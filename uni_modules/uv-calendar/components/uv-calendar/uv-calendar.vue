@@ -281,6 +281,7 @@ export default {
 								.add(i, 'month')
 								.date(day)
 								.format('YYYY-MM-DD')
+							let topInfo = ''
 							let bottomInfo = ''
 							if (this.showLunar) {
 								// 将日期转为农历格式
@@ -304,6 +305,7 @@ export default {
 									),
 								// 返回一个日期对象，供外部的formatter获取当前日期的年月日等信息，进行加工处理
 								date: new Date(date),
+								topInfo,
 								bottomInfo,
 								dot: false,
 								month:

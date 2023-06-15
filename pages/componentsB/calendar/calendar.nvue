@@ -170,7 +170,7 @@
 			}
 		},
 		onReady() {
-			// #ifdef MP-WEIXIN
+			// #ifdef MP-WEIXIN || MP-ALIPAY
 			// #ifdef VUE2
 			this.$refs.calendar5.setFormatter(this.formatter)
 			// #endif
@@ -227,8 +227,11 @@
 				const date = d.getDate()
 				if(day.month == month && day.day == date + 3) {
 					day.bottomInfo = '有优惠'
-					day.bottomInfo = this.desc
+					// day.bottomInfo = this.desc
 					day.dot = true
+				}
+				if(day.month == month && day.day == date + 2) {
+					day.topInfo = '顶部文案'
 				}
 				return day
 			},

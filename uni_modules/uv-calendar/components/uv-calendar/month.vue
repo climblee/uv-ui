@@ -11,6 +11,11 @@
 					:style="[dayStyle(index, index1, item1)]" @tap="clickHandler(index, index1, item1)"
 					:class="[item1.selected && 'uv-calendar-month__days__day__select--selected']">
 					<view class="uv-calendar-month__days__day__select" :style="[daySelectStyle(index, index1, item1)]">
+						<text v-if="getTopInfo(index, index1, item1)"
+						class="uv-calendar-month__days__day__select__top-info"
+						:class="[item1.disabled && 'uv-calendar-month__days__day__select__top-info--disabled']"
+						:style="[textStyle(item1)]"
+						>{{ getTopInfo(index, index1, item1) }}</text>
 						<text class="uv-calendar-month__days__day__select__info"
 							:class="[item1.disabled && 'uv-calendar-month__days__day__select__info--disabled']"
 							:style="[textStyle(item1)]">{{ item1.day }}</text>
@@ -245,6 +250,12 @@
 						}
 					}
 					return style
+				}
+			},
+			// 获取顶部的提示文字
+			getTopInfo() {
+				return (index1, index2, item) => {
+					return item.topInfo;
 				}
 			},
 			// 获取底部的提示文字
@@ -524,7 +535,25 @@
 						top: 12px;
 						right: 7px;
 					}
-
+					
+					&__top-info {
+						color: $uv-content-color;
+						text-align: center;
+						position: absolute;
+						top: 2px;
+						font-size: 10px;
+						text-align: center;
+						left: 0;
+						right: 0;
+						&--selected {
+							color: #ffffff;
+						}
+						
+						&--disabled {
+							color: #cacbcd;
+						}
+					}
+					
 					&__buttom-info {
 						color: $uv-content-color;
 						text-align: center;
