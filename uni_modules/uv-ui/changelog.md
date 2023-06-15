@@ -1,3 +1,5 @@
+## 1.0.12（2023-06-15)
+1. uv-ui-tools、uv-form、uv-picker 修复vue3编译支付宝异常
 ## 1.0.12（2023-06-14）
 1. 优化部分组件，优化文档部分细节
 2. uv-popup、uv-modal 修复遮罩层zIndex问题
