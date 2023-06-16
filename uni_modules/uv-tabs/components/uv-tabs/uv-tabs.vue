@@ -1,5 +1,5 @@
 <template>
-	<view class="uv-tabs">
+	<view class="uv-tabs" :style="[$uv.addStyle(customStyle)]">
 		<view class="uv-tabs__wrapper">
 			<slot name="left" />
 			<view class="uv-tabs__wrapper__scroll-view-wrapper">
