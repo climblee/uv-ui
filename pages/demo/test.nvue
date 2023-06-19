@@ -1,24 +1,32 @@
 <template>
 	<view class="uv-content">
-		<uv-parse :content="content"></uv-parse>
+		<uv-popup :show="show1" mode="center" @open="open">
+			<view class="content" style="width: 600rpx;height: 300px;background-color: #fff;">
+				<uv-subsection :list="list" v-if="show2" :current="current" @change="index=>current = index"></uv-subsection>
+			</view>
+		</uv-popup>
 	</view>
 </template>
-
 <script>
 	export default {
 		data() {
 			return {
-				content: `
-					<p>露从今夜白，月是故乡明</p>
-					<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />
-				`
+				show1: false,
+				show2: false,
+				current: 1,
+				list: ['未付款', '待评价', '已付款']
 			}
 		},
+		onLoad() {
+			this.show1 = true;
+		},
+		methods: {
+			open(){
+				// 弹窗弹出后，给一点延迟再去显示分段器组件，建议设置的值大点
+				setTimeout(()=>{
+					this.show2 = true
+				},200)
+			}
+		}
 	}
 </script>
-
-<style lang="scss" scoped>
-    .uv-content {
-        padding: 24rpx;
-    }
-</style>
