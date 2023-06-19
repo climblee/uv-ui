@@ -1,36 +1,12 @@
 <template>
-	<view>
-		<uv-button text="打开弹窗" @click="openPopup"></uv-button>
-		<uv-popup :show="show" @close="show = false">
-			<view class="content">
-				<uv-subsection :list="list" :current="current" @change="sectionChange"></uv-subsection>
-			</view>
-		</uv-popup>
-	</view>
+	<uv-parse @linktap="linkTap" content='<p><a href="#">跳转到顶部</a><br><a href="#1">跳转到顶部</a></p>'></uv-parse>
 </template>
 <script>
 	export default {
-		data(){
-			return {
-				show: false,
-				list: ['未付款', '待评价', '已付款'],
-				// 或者如下，也可以配置keyName参数修改对象键名
-				// list: [{name: '未付款'}, {name: '待评价'}, {name: '已付款'}],
-				current: 1
-			}
-		},
 		methods: {
-			openPopup(){
-				this.show = true;
-			},
-			sectionChange(index) {
-				this.current = index;
+			linkTap(e){
+				console.log(e)
 			}
 		}
 	}
 </script>
-<style scoped>
-	.content {
-		height: 200px;
-	}
-</style>
