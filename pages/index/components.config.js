@@ -3,7 +3,7 @@ export default [{
 	groupName_en: 'Basic components',
 	list: [
 		// 	{
-		// 	path: '/pages/demo/demo',
+		// 	path: '/pages/demo/test',
 		// 	icon: 'DEMO',
 		// 	title: 'DEMO',
 		// 	title_en: 'DEMO',

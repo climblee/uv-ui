@@ -100,8 +100,8 @@
 			switchStyle() {
 				let style = {}
 				// 这里需要加2，是为了腾出边框的距离，否则圆点node会和外边框紧贴在一起
-				style.width = this.$uv.addUnit(this.size * 2 + 2)
-				style.height = this.$uv.addUnit(Number(this.size) + 2)
+				style.width = this.$uv.addUnit(this.$uv.getPx(this.size) * 2 + 2)
+				style.height = this.$uv.addUnit(this.$uv.getPx(this.size) + 2)
 				// 如果自定义了“非激活”演示，name边框颜色设置为透明(跟非激活颜色一致)
 				// 这里不能简单的设置为非激活的颜色，否则打开状态时，会有边框，所以需要透明
 				if(this.customInactiveColor) {
@@ -113,17 +113,17 @@
 			nodeStyle() {
 				let style = {}
 				// 如果自定义非激活颜色，将node圆点的尺寸减少两个像素，让其与外边框距离更大一点
-				style.width = this.$uv.addUnit(this.size - this.space)
-				style.height = this.$uv.addUnit(this.size - this.space)
-				const translateX = this.isActive ? this.$uv.addUnit(this.space) : this.$uv.addUnit(this.size);
+				style.width = this.$uv.addUnit(this.$uv.getPx(this.size) - this.space)
+				style.height = this.$uv.addUnit(this.$uv.getPx(this.size) - this.space)
+				const translateX = this.isActive ? this.$uv.addUnit(this.space) : this.$uv.addUnit(this.$uv.getPx(this.size));
 				style.transform = `translateX(-${translateX})`
 				return style
 			},
 			bgStyle() {
 				let style = {}
 				// 这里配置一个多余的元素在HTML中，是为了让switch切换时，有更良好的背景色扩充体验(见实际效果)
-				style.width = this.$uv.addUnit(Number(this.size) * 2 - this.size / 2)
-				style.height = this.$uv.addUnit(this.size)
+				style.width = this.$uv.addUnit(this.$uv.getPx(this.size) * 2 - this.$uv.getPx(this.size) / 2)
+				style.height = this.$uv.addUnit(this.$uv.getPx(this.size))
 				style.backgroundColor = this.inactiveColor
 				// 打开时，让此元素收缩，否则反之
 				style.transform = `scale(${this.isActive ? 0 : 1})`
