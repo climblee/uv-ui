@@ -71,7 +71,7 @@
 		</view>
 		<uv-line
 			v-if="borderBottom"
-			:color="message && parentData.errorType === 'border-bottom' ? $uv.color.error : '#d6d7d9'"
+			:color="message && parentData.errorType === 'border-bottom' ? '#f56c6c' : '#d6d7d9'"
 		></uv-line>
 	</view>
 </template>

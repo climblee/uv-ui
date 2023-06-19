@@ -199,7 +199,7 @@
 						this.validateField(formItemProps, (errors) => {
 							if(errors.length) {
 								// 如果错误提示方式为toast，则进行提示
-								this.errorType === 'toast' && toast(errors[0].message)
+								this.errorType === 'toast' && this.$uv.toast(errors[0].message)
 								reject(errors)
 							} else {
 								resolve(true)

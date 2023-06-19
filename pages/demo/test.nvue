@@ -1,35 +1,48 @@
 <template>
-	<uv-tabs :list="list" @click="click"></uv-tabs>
+	<view>
+		<uv-form :model="form" :rules="rules" ref="uvFormRef">
+			<uv-form-item label="电话" prop="mobile" :borderBottom=true>
+				<uv-input v-model="form.mobile" placeholder="请输入电话" />
+			</uv-form-item>
+		</uv-form>
+		<uv-button @click="submit">提交</uv-button>
+	</view>
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				list: [{
-					name: '关注',
-				}, {
-					name: '推荐',
-				}, {
-					name: '电影'
-				}, {
-					name: '科技'
-				}, {
-					name: '音乐'
-				}, {
-					name: '美食'
-				}, {
-					name: '文化'
-				}, {
-					name: '财经'
-				}, {
-					name: '手工'
-				}]
-			}
+				form: {
+					mobile: ''
+				},
+				rules: {
+					mobile: [{
+						// 自定义验证函数，见上说明
+						validator: (rule, valcallback) => {
+							const flag = uni?.$uv?.mobile(value) ? uni?.$uv?.mobile(value) : false;
+							// 上面有说，返回true表校验通过，返回false表示不通过
+							return flag;
+						},
+						message: '请输入电话',
+						trigger: ['blur', 'change']
+					}]
+				}
+			};
 		},
 		methods: {
-			click(item) {
-				console.log('item', item);
+			submit() {
+				this.$refs.uvFormRef.validate().then(res => {
+					uni.showToast({
+						icon: 'success',
+						title: '校验通过'
+					})
+				}).catch(errors => {
+					uni.showToast({
+						icon: 'error',
+						title: '校验失败'
+					})
+				})
 			}
-		}
-	}
+		},
+	};
 </script>
