@@ -1,35 +1,24 @@
 <template>
-	<uv-tabs :list="list" @click="click"></uv-tabs>
+	<view class="uv-content">
+		<uv-parse :content="content"></uv-parse>
+	</view>
 </template>
+
 <script>
 	export default {
 		data() {
 			return {
-				list: [{
-					name: '关注',
-				}, {
-					name: '推荐',
-				}, {
-					name: '电影'
-				}, {
-					name: '科技'
-				}, {
-					name: '音乐'
-				}, {
-					name: '美食'
-				}, {
-					name: '文化'
-				}, {
-					name: '财经'
-				}, {
-					name: '手工'
-				}]
+				content: `
+					<p>露从今夜白，月是故乡明</p>
+					<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />
+				`
 			}
 		},
-		methods: {
-			click(item) {
-				console.log('item', item);
-			}
-		}
 	}
 </script>
+
+<style lang="scss" scoped>
+    .uv-content {
+        padding: 24rpx;
+    }
+</style>

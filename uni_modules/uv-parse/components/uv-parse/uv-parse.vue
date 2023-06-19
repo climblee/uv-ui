@@ -5,16 +5,16 @@
     <node v-else :childs="nodes" :opts="[lazyLoad,loadingImg,errorImg,showImgMenu,selectable]" name="span" />
     <!-- #endif -->
     <!-- #ifdef APP-PLUS-NVUE -->
-    <web-view ref="web" src="/uni_modules/mp-html/static/app-plus/mp-html/local.html" :style="'margin-top:-2px;height:' + height + 'px'" @onPostMessage="_onMessage" />
+    <web-view ref="web" src="/uni_modules/uv-parse/static/app-plus/uv-parse/local.html" :style="'margin-top:-2px;height:' + height + 'px'" @onPostMessage="_onMessage" />
     <!-- #endif -->
   </view>
 </template>
 
 <script>
 /**
- * mp-html v2.4.2
+ * uv-parse v1.0.3
  * @description 富文本组件
- * @tutorial https://github.com/jin-yufeng/mp-html
+ * @tutorial https://www.uvui.cn/components/parse.html
  * @property {String} container-style 容器的样式
  * @property {String} content 用于渲染的 html 字符串
  * @property {Boolean} copy-link 是否允许外部链接被点击时自动复制
@@ -46,7 +46,7 @@ const plugins=[]
 const dom = weex.requireModule('dom')
 // #endif
 export default {
-  name: 'mp-html',
+  name: 'uv-parse',
   data () {
     return {
       nodes: [],

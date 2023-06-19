@@ -145,7 +145,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      for (this.root = this.$parent; this.root.$options.name !== 'mp-html'; this.root = this.root.$parent);
+      for (this.root = this.$parent; this.root.$options.name !== 'uv-parse'; this.root = this.root.$parent);
     })
     // #ifdef H5 || APP-PLUS
     if (this.opts[0]) {
