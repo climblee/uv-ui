@@ -1,5 +1,12 @@
-## 1.0.12（2023-06-15)
-1. uv-ui-tools、uv-form、uv-picker 修复vue3编译支付宝异常
+## 1.0.13（2023-06-20）
+1. 优化 uv-calendar formatter格式化中增加topInfo参数
+2. 优化 uv-tabs 增加customStyle参数
+3. 优化 文档优化，便于开发者直接开干
+4. 优化 uv-switch 优化size属性，适配单位传递
+5. 修复 uv-ui-tools、uv-form、uv-picker 修复vue3编译支付宝异常
+6. 修复 uv-ui-tools、uv-form、uv-picker 修复vue3编译支付宝异常
+7. 修复 uv-parse 修复在nvue不显示的BUG
+8. 修复 uv-form 修复某些条件下报错的BUG
 ## 1.0.12（2023-06-14）
 1. 优化部分组件，优化文档部分细节
 2. uv-popup、uv-modal 修复遮罩层zIndex问题
