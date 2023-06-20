@@ -1,24 +1,3 @@
 <template>
-	<view>
-		<uv-count-to :startVal="30" :endVal="500.55" :decimals="2" decimal="."></uv-count-to>
-	</view>
+	<uv-loading-page :loading="true" icon-size="50rpx"></uv-loading-page>
 </template>
-<script>
-	export default {
-		methods: {
-			start() {
-				this.$refs.uvCountTo.start();
-			},
-			stop() {
-				this.$refs.uvCountTo.stop();
-			},
-			restart() {
-				this.$refs.uvCountTo.restart();
-			},
-			
-			end() {
-				console.log('结束')
-			}
-		}
-	}
-</script>

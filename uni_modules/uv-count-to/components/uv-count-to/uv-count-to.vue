@@ -2,7 +2,7 @@
 	<text
 		class="uv-count-num"
 		:style="[{
-			fontSize: $uv.addUnit($uv.getPx(fontSize)),
+			fontSize: $uv.addUnit(fontSize),
 			fontWeight: bold ? 'bold' : 'normal',
 			color: color
 		},$uv.addStyle(customStyle)]"

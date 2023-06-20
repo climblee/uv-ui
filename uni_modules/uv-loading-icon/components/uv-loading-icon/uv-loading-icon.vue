@@ -70,8 +70,8 @@
 	 * @description 警此组件为一个小动画，目前用在uvui的loadmore加载更多和switch开关等组件的正在加载状态场景。
 	 * @tutorial https://www.uvui.cn/components/loading.html
 	 * @property {Boolean}			show			是否显示组件  (默认 true)
-	 * @property {String}			color			动画活动区域的颜色，只对 mode = flower 模式有效（默认color['uv-tips-color']）
-	 * @property {String}			textColor		提示文本的颜色（默认color['uv-tips-color']）
+	 * @property {String}			color			动画活动区域的颜色，只对 mode = flower 模式有效（默认#909193）
+	 * @property {String}			textColor		提示文本的颜色（默认#909193）
 	 * @property {Boolean}			vertical		文字和图标是否垂直排列 (默认 false )
 	 * @property {String}			mode			模式选择，见官网说明（默认 'circle' ）
 	 * @property {String | Number}	size			加载图标的大小，单位px （默认 24 ）
@@ -111,7 +111,6 @@
 				} else {
 					return 'transparent'
 				}
-				// return this.mode === 'circle' ? this.inactiveColor ? this.inactiveColor : lightColor : 'transparent'
 			}
 		},
 		watch: {
