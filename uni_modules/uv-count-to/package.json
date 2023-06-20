@@ -1,7 +1,7 @@
 {
   "id": "uv-count-to",
   "displayName": "uv-count-to 数字滚动 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "该数字滚动组件一般用于需要滚动数字到某一个值的场景，目标要求是一个递增的值，一种数字上升的视觉冲击效果。",
   "keywords": [
     "countTo",

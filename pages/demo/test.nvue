@@ -1,56 +1,24 @@
 <template>
 	<view>
-		<!-- 单选 -->
-		<!-- <view class="uv-page__tag-item" v-for="(item, index) in radios" :key="index">
-			<uv-tags :text="`选项${index + 1}`" :plain="!item.checked" type="warning" :name="index" @click="radioClick">
-			</uv-tags>
-		</view> -->
-		<!-- 多选 -->
-		<view class="uv-page__tag-item" v-for="(item, index) in checkboxs" :key="index">
-			<uv-tags 
-				:text="`选项${index + 1}`" 
-				:plain="!item.checked" 
-				type="warning" 
-				:name="index" 
-				@click="checkboxClick">
-			</uv-tags>
-		</view>
+		<uv-count-to :startVal="30" :endVal="500.55" :decimals="2" decimal="."></uv-count-to>
 	</view>
 </template>
 <script>
 	export default {
-		data() {
-			return {
-				radios: [{
-					checked: true
-				}, {
-					checked: false
-				}, {
-					checked: false
-				}],
-				checkboxs: [{
-					checked: true
-				}, {
-					checked: false
-				}, {
-					checked: false
-				}]
-			}
-		},
 		methods: {
-			radioClick(name) {
-				this.radios.map((item, index) => {
-					item.checked = index === name ? true : false
-				})
+			start() {
+				this.$refs.uvCountTo.start();
 			},
-			checkboxClick(name) {
-				this.checkboxs[name].checked = !this.checkboxs[name].checked
+			stop() {
+				this.$refs.uvCountTo.stop();
+			},
+			restart() {
+				this.$refs.uvCountTo.restart();
+			},
+			
+			end() {
+				console.log('结束')
 			}
 		}
 	}
 </script>
-<style lang="scss">
-	.uv-page__tag-item {
-		margin-right: 20px;
-	}
-</style>

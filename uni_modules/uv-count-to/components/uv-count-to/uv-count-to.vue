@@ -1,11 +1,11 @@
 <template>
 	<text
 		class="uv-count-num"
-		:style="{
-			fontSize: $uv.addUnit(fontSize),
+		:style="[{
+			fontSize: $uv.addUnit($uv.getPx(fontSize)),
 			fontWeight: bold ? 'bold' : 'normal',
 			color: color
-		}"
+		},$uv.addStyle(customStyle)]"
 	>{{ displayValue }}</text>
 </template>
 
@@ -89,8 +89,8 @@ export default {
 			this.paused = false;
 			this.rAF = this.requestAnimationFrame(this.count);
 		},
-		// 暂定状态，重新再开始滚动；或者滚动状态下，暂停
-		reStart() {
+		// 暂定状态，从暂停状态开始滚动；或者滚动状态下，暂停
+		restart() {
 			if (this.paused) {
 				this.resume();
 				this.paused = false;
@@ -102,10 +102,11 @@ export default {
 		// 暂停
 		stop() {
 			this.cancelAnimationFrame(this.rAF);
+			this.paused = true;
 		},
 		// 重新开始(暂停的情况下)
 		resume() {
-			if (!this.remaining) return
+			if (!this.remaining) return;
 			this.startTime = 0;
 			this.localDuration = this.remaining;
 			this.localStartVal = this.printVal;
@@ -158,7 +159,7 @@ export default {
 			num += '';
 			const x = num.split('.');
 			let x1 = x[0];
-			const x2 = x.length > 1 ? this.decimal + x[1] : '';
+			const x2 = x.length > 1 ? `${this.decimal}${x[1]}` : '';
 			const rgx = /(\d+)(\d{3})/;
 			if (this.separator && !this.isNumber(this.separator)) {
 				while (rgx.test(x1)) {

@@ -33,7 +33,7 @@ export default {
 		// 十进制分割
 		decimal: {
 			type: [String, Number],
-			default: ''
+			default: '.'
 		},
 		// 字体颜色
 		color: {

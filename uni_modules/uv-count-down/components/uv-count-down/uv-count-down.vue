@@ -1,5 +1,7 @@
 <template>
-	<view class="uv-count-down">
+	<view 
+		class="uv-count-down"
+		:style="[$uv.addStyle(customStyle)]">
 		<slot>
 			<text class="uv-count-down__text">{{ formattedTime }}</text>
 		</slot>

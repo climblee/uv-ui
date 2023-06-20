@@ -1,7 +1,7 @@
 {
   "id": "uv-count-down",
   "displayName": "uv-count-down 倒计时 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "该倒计时组件一般使用于某个活动的截止时间上，通过数字的变化，给用户明确的时间感受，提示用户进行某一个行为操作。",
   "keywords": [
     "uv-count-down",

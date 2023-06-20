@@ -8,7 +8,7 @@
 		    ref="uv-line-progress__background"
 		    :style="[{
 				backgroundColor: inactiveColor,
-				height: $uv.addUnit(height),
+				height: $uv.addUnit($uv.getPx(height))
 			}]"
 		>
 		</view>
@@ -60,7 +60,7 @@
 				let style = {}
 				style.width = this.lineWidth
 				style.backgroundColor = this.activeColor
-				style.height = this.$uv.addUnit(this.height)
+				style.height = this.$uv.addUnit(this.$uv.getPx(this.height))
 				return style
 			},
 			innserPercentage() {
