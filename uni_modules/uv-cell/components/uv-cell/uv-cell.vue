@@ -137,8 +137,6 @@
 			padding: $uv-cell-padding;
 			font-size: $uv-cell-font-size;
 			color: $uv-cell-color;
-			// line-height: $uv-cell-line-height;
-			align-items: center;
 
 			&__content {
 				@include flex(row);

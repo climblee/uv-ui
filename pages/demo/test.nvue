@@ -1,7 +1,29 @@
 <template>
-	<uv-modal :show="true" content="不知天上宫阙，今夕是何年。" >
-		<template v-slot:confirmButton>
-			<button type="default">自定义按钮</button>
-		</template>
-	</uv-modal>
+	<!-- #ifndef APP-NVUE || MP-TOUTIAO -->
+	<view class="uv-demo-block">
+		<text class="uv-demo-block__title">卡片式</text>
+		<uv-swiper 
+			:list="list" 
+			previousMargin="30" 
+			nextMargin="30" 
+			circular 
+			:autoplay="false" 
+			radius="5" 
+			bgColor="#ffffff">
+		</uv-swiper>
+	</view>
+	<!-- #endif -->
 </template>
+<script>
+	export default {
+		data() {
+			return {
+				list: [
+					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper1.png'
+				]
+			}
+		}
+	}
+</script>

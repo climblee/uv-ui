@@ -33,7 +33,7 @@ export default {
 		// 内容是否垂直居中(主要是针对右侧的value部分)
 		center: {
 			type: Boolean,
-			default: false
+			default: true
 		},
 		// 点击后跳转的URL地址
 		url: {
