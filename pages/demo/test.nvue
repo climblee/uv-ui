@@ -1,3 +1,7 @@
 <template>
-	<uv-loading-page :loading="true" icon-size="50rpx"></uv-loading-page>
+	<uv-modal :show="true" content="不知天上宫阙，今夕是何年。" >
+		<template v-slot:confirmButton>
+			<button type="default">自定义按钮</button>
+		</template>
+	</uv-modal>
 </template>

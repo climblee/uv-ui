@@ -80,11 +80,6 @@ export default {
 			type: [String, Number],
 			default: '650rpx'
 		},
-		// 确认按钮的样式，circle-圆形，square-方形，如设置，将不会显示取消按钮
-		confirmButtonShape: {
-			type: String,
-			default: ''
-		},
 		...uni.$uv?.props?.modal
 	}
 }

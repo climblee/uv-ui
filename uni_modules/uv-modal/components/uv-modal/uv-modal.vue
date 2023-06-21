@@ -113,7 +113,6 @@
 	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭Modal （默认 false ）
 	 * @property {String | Number}	negativeTop			往上偏移的值，给一个负的margin-top，往上偏移，避免和键盘重合的情况，单位任意，数值则默认为px单位 （默认 0 ）
 	 * @property {String | Number}	width				modal宽度，不支持百分比，可以数值，px，rpx单位 （默认 '650rpx' ）
-	 * @property {String}			confirmButtonShape	确认按钮的样式,如设置，将不会显示取消按钮
 	 * @event {Function} confirm	点击确认按钮时触发
 	 * @event {Function} cancel		点击取消按钮时触发
 	 * @event {Function} close		点击遮罩关闭出发，closeOnClickOverlay为true有效

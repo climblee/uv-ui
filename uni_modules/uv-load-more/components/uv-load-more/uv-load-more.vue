@@ -1,15 +1,13 @@
 <template>
 	<view
 	    class="uv-loadmore"
-	    :style="[
-			$uv.addStyle(customStyle),
-			{
+	    :style="[{
 				backgroundColor: bgColor,
 				marginBottom: $uv.addUnit(marginBottom),
 				marginTop: $uv.addUnit(marginTop),
 				height: $uv.addUnit(height),
 			},
-		]"
+			$uv.addStyle(customStyle)]"
 	>
 		<uv-line
 		    length="140rpx"
