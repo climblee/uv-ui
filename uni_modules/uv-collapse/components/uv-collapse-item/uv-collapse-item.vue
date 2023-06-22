@@ -62,7 +62,6 @@
 	 * @property {Boolean}			isLink 		是否展示右侧箭头并开启点击反馈 ( 默认 true )
 	 * @property {Boolean}			clickable	是否开启点击反馈 ( 默认 true )
 	 * @property {Boolean}			border		是否显示内边框 ( 默认 true )
-	 * @property {String}			align		标题的对齐方式 ( 默认 'left' )
 	 * @property {String | Number}	name		唯一标识符
 	 * @property {String}			icon		标题左侧图片，可为绝对路径的图片或内置图标
 	 * @event {Function}			change 			某个item被打开或者收起时触发

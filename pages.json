@@ -16,7 +16,8 @@
 			"path": "pages/demo/test",
 			"style": {
 				"navigationBarTitleText": "测试2",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
 			}
 		}
 	],

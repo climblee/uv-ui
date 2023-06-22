@@ -1,28 +1,43 @@
 <template>
-	<!-- #ifndef APP-NVUE || MP-TOUTIAO -->
-	<view class="uv-demo-block">
-		<text class="uv-demo-block__title">卡片式</text>
-		<uv-swiper 
-			:list="list" 
-			previousMargin="30" 
-			nextMargin="30" 
-			circular 
-			:autoplay="false" 
-			radius="5" 
-			bgColor="#ffffff">
-		</uv-swiper>
+	<view>
+		<uv-action-sheet 
+		:actions="list" 
+		:title="title" 
+		:show="show"
+		@select="select"
+		@close="close">
+		</uv-action-sheet>
+		<button @click="show = true">打开ActionSheet</button>
 	</view>
-	<!-- #endif -->
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				list: [
-					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper1.png'
-				]
+				show: false,
+				title: '标题',
+				list: [{
+					name: '选项一',
+					subname: "选项一描述",
+					color: '#ffaa7f',
+					fontSize: '20'
+				}, {
+					name: '选项二禁用',
+					disabled: true
+				}, {
+					name: '开启load加载', //开启后文字不显示
+					loading: true
+				}]
+			}
+		},
+		methods: {
+			select(e){
+				console.log('选中该项：',e);
+				this.show = false;
+			},
+			close(){
+				console.log('关闭');
+				this.show = false;
 			}
 		}
 	}
