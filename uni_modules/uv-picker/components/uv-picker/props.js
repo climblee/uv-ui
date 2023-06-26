@@ -50,6 +50,16 @@ export default {
 			type: String,
 			default: '#3c9cff'
 		},
+		// 文字颜色
+		color: {
+			type: String,
+			default: ''
+		},
+		// 选中文字的颜色
+		activeColor: {
+			type: String,
+			default: ''
+		},
 		// 每列中可见选项的数量
 		visibleItemCount: {
 			type: [String, Number],

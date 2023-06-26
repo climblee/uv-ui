@@ -1,3 +1,13 @@
+## 1.0.14（2023-06-25）
+1. 欢迎加QQ群交流：[549833913](https://www.uvui.cn/components/addQQGroup.html)
+2. 优化 uv-count-down 增加外部样式customStyle参数
+3. 优化 文档的全面优化
+4. 修复 uv-count-to 1. 修复继续滚动的函数 2. 修改文档错误 4. 适配px和rpx的单位 4. 适配customStyle参数
+5. 修复 uv-load-more 修复customStyle参数设置背景等不生效的BUG
+6. 修复 uv-code-input 优化下边框
+7. 修复 uv-tabs 添加uv-icon依赖
+8. 修复 uv-grid 优化修改
+9. 修复 uv-cell 优化修改
 ## 1.0.13（2023-06-20）
 1. 优化 uv-calendar formatter格式化中增加topInfo参数
 2. 优化 uv-tabs 增加customStyle参数

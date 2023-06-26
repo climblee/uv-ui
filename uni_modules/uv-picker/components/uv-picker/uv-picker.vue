@@ -38,7 +38,7 @@
 								height: $uv.addUnit(itemHeight),
 								lineHeight: $uv.addUnit(itemHeight),
 								fontWeight: index1 === innerIndex[index] ? 'bold' : 'normal'
-							},textStyle]"
+							},textStyle(index,index1)]"
 					>{{ getItemText(item1) }}</text>
 				</picker-view-column>
 			</picker-view>
@@ -66,6 +66,8 @@
  * @property {String}			confirmText			确认按钮的文字（默认 '确定' ）
  * @property {String}			cancelColor			取消按钮的颜色（默认 '#909193' ）
  * @property {String}			confirmColor		确认按钮的颜色（默认 '#3c9cff' ）
+ * @property {String}			color		文字颜色（默认 '' ）
+ * @property {String}			activeColor		选中文字的颜色（默认 '' ）
  * @property {String | Number}	visibleItemCount	每列中可见选项的数量（默认 5 ）
  * @property {String}			keyName				选项对象中，需要展示的属性键名（默认 'text' ）
  * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭选择器（默认 false ）
@@ -86,11 +88,19 @@ export default {
 	computed: {
 		// 为了解决支付宝不生效
 		textStyle(){
-			const style = {};
-			// #ifndef APP-NVUE 
-			style.display = 'block';
-			// #endif
-			return style;
+			return (index,index1) => {
+				const style = {};
+				// #ifndef APP-NVUE 
+				style.display = 'block';
+				// #endif
+				if(this.color) {
+					style.color = this.color;
+				}
+				if(this.activeColor && index1 === this.innerIndex[index]) {
+					style.color = this.activeColor;
+				}
+				return style;
+			}
 		}
 	},
 	data() {
