@@ -153,7 +153,7 @@
 			// 下划线模式下，横线的样式
 			lineStyle() {
 				const style = {}
-				style.height = this.hairline ? '2px' : '4px'
+				style.height = this.hairline ? '1px' : '4px'
 				style.width = this.$uv.addUnit(this.size)
 				// 线条模式下，背景色即为边框颜色
 				style.backgroundColor = this.borderColor
