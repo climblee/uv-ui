@@ -1,3 +1,19 @@
 <template>
-	<uv-divider text="分割线" textColor="#2979ff" lineColor="#ff0000"></uv-divider>
+	<view>
+		<uv-qrcode ref="qrcode" value="https://h5.uvui.cn" :h5SaveTip="false"></uv-qrcode>
+		<uv-button text="点击" @click="save">保存二维码</uv-button>
+	</view>
 </template>
+<script>
+	export default {
+		methods: {
+			save(){
+				this.$refs.qrcode.save({
+				 success: (res) => {
+				   console.log(res);
+				 }
+				})
+			}
+		}
+	}
+</script>

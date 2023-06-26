@@ -75,6 +75,11 @@ export default {
 		h5DownloadName: {
 			type: String,
 			default: 'uvQRCode'
+		},
+		// H5保存二维码时候是否显示提示
+		h5SaveTip: {
+			type: Boolean,
+			default: true
 		}
 	}
 }
