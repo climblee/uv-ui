@@ -1,18 +1,15 @@
+
 <template>
 	<view class="waterfall">
 		<!-- #ifndef APP-NVUE -->
 		<uv-waterfall ref="waterfall"
 			v-model="list"
-			:add-time="50"
-			column-count="2"
 			left-gap="10"
 			right-gap="10"
 			column-gap="8"
-			column-width="40"
-			@finish="handleWaterFallFinish"
-			@clear="clearCallback"
-			@remove="remove"
-			@changeList="changeList">
+			@changeList="changeList"
+			@clear="clear"
+			@remove="remove">
 			<!-- 第一列数据 -->
 			<template v-slot:list1>
 				<!-- 为了磨平部分平台的BUG，必须套一层view -->
@@ -22,11 +19,7 @@
 						class="waterfall-item"
 						@longpress="longHandle(item)">
 						<view class="waterfall-item__image">
-							<uv-image :src="item.image" mode="widthFix" :width="item.width+'px'">
-								<template v-slot:loading>
-									<uv-loading-icon></uv-loading-icon>
-								</template>
-							</uv-image>
+							<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 						</view>
 						<view class="waterfall-item__ft">
 							<view class="waterfall-item__ft__title">
@@ -35,12 +28,8 @@
 							<view class="waterfall-item__ft__desc uv-line-2">
 								<text class="value">{{item.desc}}</text>
 							</view>
-							<view class="waterfall-item__ft__btn"
-								v-if="item.allowEdit">
-								<uv-button type="primary"
-									size="mini"
-									text="异步修改"
-									@click="edit(item)"></uv-button>
+							<view class="waterfall-item__ft__btn" v-if="index==0">
+								<button type="primary" style="height: 60rpx;line-height: 60rpx;font-size: 28rpx;" @click="edit(item)">异步修改</button>
 							</view>
 						</view>
 					</view>
@@ -52,14 +41,9 @@
 				<view>
 					<view v-for="(item, index) in list2"
 						:key="item.id"
-						class="waterfall-item"
-						@longpress="longHandle(item)">
+						class="waterfall-item">
 						<view class="waterfall-item__image">
-							<uv-image :src="item.image" mode="widthFix" :width="item.width+'px'">
-								<template v-slot:loading>
-									<uv-loading-icon></uv-loading-icon>
-								</template>
-							</uv-image>
+							<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 						</view>
 						<view class="waterfall-item__ft">
 							<view class="waterfall-item__ft__title">
@@ -76,82 +60,64 @@
 		<uv-load-more :status="loadStatus"></uv-load-more>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
-		<uv-waterfall ref="waterfall"
+		<uv-waterfall 
 			column-count="2"
 			left-gap="10"
 			right-gap="10"
 			column-gap="8"
-			@scrolltolower="getRandomData">
-			<cell 
-				v-for="(item,index) in list"
-				class="waterfall-item-cell"
-			>
-				<view class="waterfall-item">
-					<view class="waterfall-item__image">
-							<image :src="item.image" mode="widthFix"></image>
-					</view>
-					<view class="waterfall-item__ft">
-						<view class="waterfall-item__ft__title">
-							<text class="value">{{item.title}}</text>
+			@scrolltolower="init">
+				<cell 
+					v-for="(item,index) in list"
+					class="waterfall-item-cell"
+				>
+					<view class="waterfall-item">
+						<view class="waterfall-item__image">
+								<image :src="item.image" mode="widthFix" style="width: 400rpx;"></image>
 						</view>
-						<view class="waterfall-item__ft__desc uv-line-2">
-							<text class="value">{{item.desc}}</text>
+						<view class="waterfall-item__ft">
+							<view class="waterfall-item__ft__title">
+								<text class="value">{{item.title}}</text>
+							</view>
+							<view class="waterfall-item__ft__desc uv-line-2">
+								<text class="value">{{item.desc}}</text>
+							</view>
 						</view>
 					</view>
-				</view>
-				<uv-gap></uv-gap>
-			</cell>
-		</uv-waterfall>
+					<view style="height: 4px;width: 4px;"></view>
+				</cell>
+			</uv-waterfall>
 		<!-- #endif -->
 	</view>
 </template>
 <script>
 	import { guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
-	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
-	const imgs = [
-		'https://cdn.uviewui.com/uview/album/1.jpg',
-		'https://cdn.uviewui.com/uview/album/2.jpg',
-		'https://cdn.uviewui.com/uview/album/3.jpg',
-		'https://cdn.uviewui.com/uview/album/4.jpg',
-		'https://cdn.uviewui.com/uview/album/5.jpg',
-		'https://cdn.uviewui.com/uview/album/6.jpg',
-		'https://cdn.uviewui.com/uview/album/7.jpg',
-		'https://cdn.uviewui.com/uview/album/8.jpg',
-		'https://cdn.uviewui.com/uview/album/9.jpg',
-		'https://cdn.uviewui.com/uview/album/10.jpg',
-	]
 	export default {
-		mixins: [mixin],
 		data() {
 			return {
 				list: [],// 瀑布流全部数据
 				list1: [],// 瀑布流第一列数据
 				list2: [],// 瀑布流第二列数据
-				loadStatus: 'loadmore',
-				pageHide: false
+				loadStatus: 'loadmore'
 			}
 		},
-		onLoad() {
-			this.getRandomData();
-		},
-		onShow() {
-			this.pageHide = false;
+		async onLoad() {
+			const { data } = await this.getData();
+			this.list = data;
 		},
 		onHide() {
-			this.pageHide = true;
+			// #ifndef APP-NVUE
+			this.$refs.waterfall.clear();
+			// #endif
 		},
 		// 下拉刷新数据
-		onPullDownRefresh() {
+		async onPullDownRefresh() {
 			this.list = [];
-			// #ifdef APP-NVUE
-			this.getRandomData();
-			// #endif
 			// #ifndef APP-NVUE
-			this.clear();
-			// 清空列数据
+			this.$refs.waterfall.clear();
+			// #endif
 			this.list1 = [];
 			this.list2 = [];
-			// #endif
+			this.init();
 			uni.showToast({
 				icon: 'success',
 				title: '刷新成功'
@@ -159,16 +125,21 @@
 			uni.stopPullDownRefresh();
 		},
 		// 触底加载更多
-		onReachBottom() {
-			if(this.loadStatus == 'loadmore')
-				this.getRandomData();
+		async onReachBottom() {
+			if(this.loadStatus == 'loadmore') {
+				this.init();
+			}
 		},
 		methods: {
-			// 离开当前页面时，就不处理还未处理的数据
-			// e.name在这里返回是list1或list2，要手动将数据追加到相应列
+			// 这点非常重要：e.name在这里返回是list1或list2，要手动将数据追加到相应列
 			changeList(e){
-				if(!this.pageHide) 
-					this[e.name].push(e.value);
+				this[e.name].push(e.value);
+			},
+			async init() {
+				this.loadStatus = 'loading';
+				const { data } = await this.getData();
+				this.list.push.apply(this.list,data);
+				this.loadStatus = 'loadmore';
 			},
 			// 长按某项执行删除操作
 			longHandle(item) {
@@ -196,15 +167,8 @@
 					}
 				})
 			},
-			// 清空数据
-			clear(){
-				this.$refs.waterfall.clear();
-			},
-			// 清空数据返回
-			clearCallback(){
-				for (let i = 0; i < 10; i++) {
-					this.list.push(this.getItem(i));
-				}
+			clear() {
+				console.log('执行了clear')
 			},
 			// 修改某项数据
 			edit(item) {
@@ -217,61 +181,58 @@
 					uni.hideLoading();
 				}, 1000)
 			},
-			// 获取随机数据
-			getRandomData() {
-				this.loadStatus = 'loading';
-				// 模拟异步
-				setTimeout(() => {
-					for (let i = 0; i < 10; i++) {
-						this.list.push(this.getItem(i));
-					}
-				}, 200)
-			},
-			// 瀑布流加载完毕事件
-			handleWaterFallFinish() {
-				this.loadStatus = 'loadmore'
-			},
-			getImage() {
-				const index = Math.floor(Math.random() * 10);
-				return imgs[index];
-			},
-			getItem(i){
-				return {
-					id: guid(),
-					allowEdit: i==0,
-					image: this.getImage(),
-					title: i % 2 == 0 ? `(${this.list.length + 1})体验uv-ui框架`: `(${this.list.length + 1})uv-ui支持多平台`,
-					desc: i % 2 == 0 ? `(${this.list.length + 1})欢迎使用uv-ui，uni-app生态专用的UI框架` : `(${this.list.length + 1})开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序`
-				}
+			// 模拟的后端数据
+			getData() {
+				return new Promise((resolve)=>{
+					const imgs = [
+						'https://cdn.uviewui.com/uview/album/1.jpg',
+						'https://cdn.uviewui.com/uview/album/2.jpg',
+						'https://cdn.uviewui.com/uview/album/3.jpg',
+						'https://cdn.uviewui.com/uview/album/4.jpg',
+						'https://cdn.uviewui.com/uview/album/5.jpg',
+						'https://cdn.uviewui.com/uview/album/6.jpg',
+						'https://cdn.uviewui.com/uview/album/7.jpg',
+						'https://cdn.uviewui.com/uview/album/8.jpg',
+						'https://cdn.uviewui.com/uview/album/9.jpg',
+						'https://cdn.uviewui.com/uview/album/10.jpg',
+					];
+					let list = [];
+					const doFn = (i)=>{
+						const randomIndex = Math.floor(Math.random() * 10);
+						return {
+							id: guid(),
+							allowEdit: i==0,
+							image: imgs[randomIndex],
+							title: i % 2 == 0 ? `(${this.list.length + i + 1})体验uv-ui框架`: `(${this.list.length + i +1})uv-ui支持多平台`,
+							desc: i % 2 == 0 ? `(${this.list.length + i + 1})欢迎使用uv-ui，uni-app生态专用的UI框架` : 
+							`(${this.list.length + i})开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序`
+						}
+					};
+					// 模拟异步
+					setTimeout(() => {
+						for (let i = 0; i < 20; i++) {
+							list.push(doFn(i));
+						}
+						resolve({data:list});
+					}, 200)
+				})
 			}
 		}
 	}
 </script>
 <style>
-	/* #ifndef APP-NVUE */
 	page {
 		background: #f1f1f1;
 	}
-	/* #endif */
 </style>
 <style scoped lang="scss">
 	$show-lines: 1;
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
-	.waterfall {
-		background: #f1f1f1;
-	}
-	/* #ifndef APP-NVUE */
 	.waterfall-item {
 		overflow: hidden;
 		margin-top: 10px;
 		border-radius: 6px;
 	}
-	/* #endif */
-	/* #ifdef APP-NVUE */
-	.waterfall-item {
-		background: #fff;
-	}
-	/* #endif */
 	.waterfall-item__ft {
 		padding: 20rpx;
 		background: #fff;
