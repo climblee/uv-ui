@@ -107,6 +107,7 @@
 	 * @property {String}	 loading  loading态 (默认 false)
 	 * @property {String}	 h5SaveIsDownload  H5保存即自动下载（在支持的环境下），默认false为仅弹层提示用户需要长按图片保存，不会自动下载 (默认 false)
 	 * @property {String}	 h5DownloadName  H5下载名称 
+	 * @property {String}	 h5SaveTip  H5保存二维码时候是否显示提示
 	 * @example <uv-qrcode ref="uvqrcode" size="400rpx" canvas-id="qrcode" value="https://www.uvui.cn"></uv-qrcode>
 	 */
 	export default {
@@ -802,7 +803,7 @@
 
 						// #ifdef H5
 						/* 可以在电脑浏览器下载，移动端iOS不行，安卓微信浏览器不行，安卓外部浏览器可以 */
-						this.isH5Save = true;
+						this.isH5Save = this.h5SaveTip;
 						this.tempFilePath = res.tempFilePath;
 						if (this.h5SaveIsDownload) {
 							const aEle = document.createElement('a');

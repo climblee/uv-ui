@@ -1,43 +1,18 @@
 <template>
 	<view>
-		<uv-action-sheet 
-		:actions="list" 
-		:title="title" 
-		:show="show"
-		@select="select"
-		@close="close">
-		</uv-action-sheet>
-		<button @click="show = true">打开ActionSheet</button>
+		<uv-qrcode ref="qrcode" value="https://h5.uvui.cn" :h5SaveTip="false"></uv-qrcode>
+		<uv-button text="点击" @click="save">保存二维码</uv-button>
 	</view>
 </template>
 <script>
 	export default {
-		data() {
-			return {
-				show: false,
-				title: '标题',
-				list: [{
-					name: '选项一',
-					subname: "选项一描述",
-					color: '#ffaa7f',
-					fontSize: '20'
-				}, {
-					name: '选项二禁用',
-					disabled: true
-				}, {
-					name: '开启load加载', //开启后文字不显示
-					loading: true
-				}]
-			}
-		},
 		methods: {
-			select(e){
-				console.log('选中该项：',e);
-				this.show = false;
-			},
-			close(){
-				console.log('关闭');
-				this.show = false;
+			save(){
+				this.$refs.qrcode.save({
+				 success: (res) => {
+				   console.log(res);
+				 }
+				})
 			}
 		}
 	}

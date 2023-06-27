@@ -1,7 +1,7 @@
 {
   "id": "uv-code-input",
   "displayName": "uv-code-input 验证码输入 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "验证码输入组件一般用于验证用户短信验证码的场景，输入框或横线多种模式可选。",
   "keywords": [
     "uv-code-input",
