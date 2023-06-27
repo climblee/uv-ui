@@ -1,18 +1,60 @@
 <template>
-	<view>
-		<uv-qrcode ref="qrcode" value="https://h5.uvui.cn" :h5SaveTip="false"></uv-qrcode>
-		<uv-button text="点击" @click="save">保存二维码</uv-button>
+	<view class="uv-page">
+		<uv-list @scrolltolower="scrolltolower">
+			<uv-list-item v-for="(item, index) in indexList" :key="index">
+					<template v-slot:icon>
+						<uv-avatar 
+							shape="square" 
+							size="35" 
+							:src="item.url" 
+							customStyle="margin: -3px 5px -3px 0"
+						></uv-avatar>
+						<!-- <uv-image :src="item.url"></uv-image> -->
+						<uv-transition
+							mode="fade"
+							:show="true"
+							:duration="100"
+						>
+							你好
+						</uv-transition>
+					</template>
+			</uv-list-item>
+		</uv-list>
 	</view>
 </template>
 <script>
+	import { random } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
+		data() {
+			return {
+				indexList: [],
+				urls: [
+					'https://cdn.uviewui.com/uview/album/1.jpg',
+					'https://cdn.uviewui.com/uview/album/2.jpg',
+					'https://cdn.uviewui.com/uview/album/3.jpg',
+					'https://cdn.uviewui.com/uview/album/4.jpg',
+					'https://cdn.uviewui.com/uview/album/5.jpg',
+					'https://cdn.uviewui.com/uview/album/6.jpg',
+					'https://cdn.uviewui.com/uview/album/7.jpg',
+					'https://cdn.uviewui.com/uview/album/8.jpg',
+					'https://cdn.uviewui.com/uview/album/9.jpg',
+					'https://cdn.uviewui.com/uview/album/10.jpg',
+				]
+			}
+		},
+		onLoad() {
+			this.loadmore()
+		},
 		methods: {
-			save(){
-				this.$refs.qrcode.save({
-				 success: (res) => {
-				   console.log(res);
-				 }
-				})
+			scrolltolower() {
+				this.loadmore()
+			},
+			loadmore() {
+				for (let i = 0; i < 30; i++) {
+					this.indexList.push({
+						url: this.urls[random(0, this.urls.length - 1)]
+					})
+				}
 			}
 		}
 	}
