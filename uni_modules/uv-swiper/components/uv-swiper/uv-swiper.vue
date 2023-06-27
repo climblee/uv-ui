@@ -69,8 +69,9 @@
 						@tap="clickHandler(index)"
 					></video>
 					<text
-						v-if="showTitle && $uv.test.object(item) && item.title && $uv.test.image(getSource(item))"
+						v-if="showTitle && $uv.test.object(item) && item.title"
 						class="uv-swiper__wrapper__item__wrapper__title uv-line-1"
+						:style="[$uv.addStyle(titleStyle)]"
 					>{{ item.title }}</text>
 				</view>
 			</swiper-item>

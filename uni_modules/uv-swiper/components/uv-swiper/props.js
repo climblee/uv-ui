@@ -121,6 +121,11 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		// 显示的标题样式
+		titleStyle: {
+			type: Object,
+			default: ()=>{}
+		},
 		...uni.$uv?.props?.swiper
 	}
 }
