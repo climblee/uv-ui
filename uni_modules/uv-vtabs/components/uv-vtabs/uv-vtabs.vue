@@ -82,6 +82,7 @@
 			:scroll-y="true" 
 			:scroll-x="scrollX"
 			:show-scrollbar="false"
+			:scroll-top="contentScrollTop2"
 			@scrolltolower="scrolltolower"
 		>
 			<slot />
@@ -130,6 +131,7 @@
 				activeIndex: 0,
 				// 微信小程序下，scroll-view的scroll-into-view属性无法对slot中的内容的id生效，只能通过设置scrollTop的形式去移动滚动条
 				contentScrollTop: 0,
+				contentScrollTop2: 0,//针对非联动
 				contentScrollTo: '',
 				scrolling: false,
 				barScrolling: false,
@@ -208,6 +210,9 @@
 				}
 			},
 			activeIndex(newVal){
+				if(!this.chain) {// 解决：非联动，内容过多的情况，滚动一段距离，再切换未滚动到顶部的BUG
+					this.contentScrollTop2 = 0 - Math.random() * 4 - 4;
+				}
 				this.$emit('change',newVal);
 			}
 		},
