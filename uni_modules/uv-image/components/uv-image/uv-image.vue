@@ -2,7 +2,7 @@
 	<uv-transition
 		mode="fade"
 		:show="show"
-		:duration="fade ? 1000 : 0"
+		:duration="fade ? duration : 0"
 	>
 		<view
 			class="uv-image"
