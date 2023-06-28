@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uv-code-input v-model="value" :disabledKeyboard="true" @change="change" @finish="finish"></uv-code-input>
+		<uv-button text="月落" :custom-style="{opacity:0}"></uv-button>
 	</view>
 </template>
 <script>

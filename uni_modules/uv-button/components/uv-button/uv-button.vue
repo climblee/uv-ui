@@ -1,110 +1,140 @@
 <template>
     <!-- #ifndef APP-NVUE -->
+		<!-- #ifdef MP -->
+		<button
+		  :hover-start-time="Number(hoverStartTime)"
+		  :hover-stay-time="Number(hoverStayTime)"
+		  :form-type="formType"
+		  :open-type="openType"
+		  :app-parameter="appParameter"
+		  :hover-stop-propagation="hoverStopPropagation"
+		  :send-message-title="sendMessageTitle"
+		  :send-message-path="sendMessagePath"
+		  :lang="lang"
+		  :data-name="dataName"
+		  :session-from="sessionFrom"
+		  :send-message-img="sendMessageImg"
+		  :show-message-card="showMessageCard"
+		  @getphonenumber="onGetPhoneNumber"
+		  @getuserinfo="onGetUserInfo"
+		  @error="onError"
+		  @opensetting="onOpenSetting"
+		  @launchapp="onLaunchApp"
+			@contact="onContact"
+			@chooseavatar="onChooseavatar"
+			@addgroupapp="onAddgroupapp"
+			@chooseaddress="onChooseaddress"
+			@subscribe="onSubscribe"
+			@login="onLogin"
+			@im="onIm"
+		  :hover-class="!disabled && !loading ? 'uv-button--active' : ''"
+		  class="uv-button uv-reset-button"
+		  :style="[baseColor, $uv.addStyle(customStyle)]"
+		  @tap="clickHandler"
+		  :class="bemClass"
+		>
+		<!-- #endif -->
+    <!-- #ifndef MP -->
     <button
-        :hover-start-time="Number(hoverStartTime)"
-        :hover-stay-time="Number(hoverStayTime)"
-        :form-type="formType"
-        :open-type="openType"
-        :app-parameter="appParameter"
-        :hover-stop-propagation="hoverStopPropagation"
-        :send-message-title="sendMessageTitle"
-        :send-message-path="sendMessagePath"
-        :lang="lang"
-        :data-name="dataName"
-        :session-from="sessionFrom"
-        :send-message-img="sendMessageImg"
-        :show-message-card="showMessageCard"
-        @getphonenumber="getphonenumber"
-        @getuserinfo="getuserinfo"
-        @error="error"
-        @opensetting="opensetting"
-        @launchapp="launchapp"
-        :hover-class="!disabled && !loading ? 'uv-button--active' : ''"
-        class="uv-button uv-reset-button"
-        :style="[baseColor, $uv.addStyle(customStyle)]"
-        @tap="clickHandler"
-        :class="bemClass"
+      :hover-start-time="Number(hoverStartTime)"
+      :hover-stay-time="Number(hoverStayTime)"
+      :form-type="formType"
+      :open-type="openType"
+      :app-parameter="appParameter"
+      :hover-stop-propagation="hoverStopPropagation"
+      :send-message-title="sendMessageTitle"
+      :send-message-path="sendMessagePath"
+      :lang="lang"
+      :data-name="dataName"
+      :session-from="sessionFrom"
+      :send-message-img="sendMessageImg"
+      :show-message-card="showMessageCard"
+      :hover-class="!disabled && !loading ? 'uv-button--active' : ''"
+      class="uv-button uv-reset-button"
+      :style="[baseColor, $uv.addStyle(customStyle)]"
+      @tap="clickHandler"
+      :class="bemClass"
     >
-        <template v-if="loading">
-            <uv-loading-icon
-                :mode="loadingMode"
-                :size="loadingSize * 1.15"
-                :color="loadingColor"
-            ></uv-loading-icon>
-            <text
-                class="uv-button__loading-text"
-                :style="[{ fontSize: textSize + 'px' }]"
-                >{{ loadingText || text }}</text
-            >
-        </template>
-        <template v-else>
-            <uv-icon
-                v-if="icon"
-                :name="icon"
-                :color="iconColorCom"
-                :size="textSize * 1.35"
-                :customStyle="{ marginRight: '2px' }"
-            ></uv-icon>
-            <slot>
-                <text
-                    class="uv-button__text"
-                    :style="[{ fontSize: textSize + 'px' }]"
-                    >{{ text }}</text
-                >
-            </slot>
-        </template>
+    <!-- #endif -->
+      <template v-if="loading">
+        <uv-loading-icon
+          :mode="loadingMode"
+          :size="loadingSize * 1.15"
+          :color="loadingColor"
+        ></uv-loading-icon>
+          <text
+              class="uv-button__loading-text"
+              :style="[{ fontSize: textSize + 'px' }]"
+              >{{ loadingText || text }}</text
+          >
+      </template>
+      <template v-else>
+        <uv-icon
+          v-if="icon"
+          :name="icon"
+          :color="iconColorCom"
+          :size="textSize * 1.35"
+          :customStyle="{ marginRight: '2px' }"
+        ></uv-icon>
+        <slot>
+          <text
+            class="uv-button__text"
+            :style="[{ fontSize: textSize + 'px' }]"
+            >{{ text }}</text
+          >
+        </slot>
+      </template>
     </button>
     <!-- #endif -->
-
     <!-- #ifdef APP-NVUE -->
     <view
-        :hover-start-time="Number(hoverStartTime)"
-        :hover-stay-time="Number(hoverStayTime)"
-        class="uv-button"
-        :hover-class="
-            !disabled && !loading && !color && (plain || type === 'info')
-                ? 'uv-button--active--plain'
-                : !disabled && !loading && !plain
-                ? 'uv-button--active'
-                : ''
-        "
-        @tap="clickHandler"
-        :class="bemClass"
-        :style="[baseColor, $uv.addStyle(customStyle)]"
+      :hover-start-time="Number(hoverStartTime)"
+      :hover-stay-time="Number(hoverStayTime)"
+      class="uv-button"
+      :hover-class="
+        !disabled && !loading && !color && (plain || type === 'info')
+        ? 'uv-button--active--plain'
+        : !disabled && !loading && !plain
+        ? 'uv-button--active'
+        : ''
+      "
+      @tap="clickHandler"
+      :class="bemClass"
+      :style="[baseColor, $uv.addStyle(customStyle)]"
     >
-        <template v-if="loading">
-            <uv-loading-icon
-                :mode="loadingMode"
-                :size="loadingSize * 1.15"
-                :color="loadingColor"
-            ></uv-loading-icon>
-            <text
-                class="uv-button__loading-text"
-                :style="[nvueTextStyle]"
-                :class="[plain && `uv-button__text--plain--${type}`]"
-                >{{ loadingText || text }}</text
-            >
-        </template>
-        <template v-else>
-            <uv-icon
-                v-if="icon"
-                :name="icon"
-                :color="iconColorCom"
-                :size="textSize * 1.35"
-            ></uv-icon>
-            <text
-                class="uv-button__text"
-                :style="[
-                    {
-                        marginLeft: icon ? '2px' : 0,
-                    },
-                    nvueTextStyle,
-                ]"
-                :class="[plain && `uv-button__text--plain--${type}`]"
-                >{{ text }}</text
-            >
-        </template>
-    </view>
+    <template v-if="loading">
+        <uv-loading-icon
+          :mode="loadingMode"
+          :size="loadingSize * 1.15"
+          :color="loadingColor"
+        ></uv-loading-icon>
+        <text
+          class="uv-button__loading-text"
+          :style="[nvueTextStyle]"
+          :class="[plain && `uv-button__text--plain--${type}`]"
+          >{{ loadingText || text }}</text
+        >
+    </template>
+    <template v-else>
+      <uv-icon
+        v-if="icon"
+        :name="icon"
+        :color="iconColorCom"
+        :size="textSize * 1.35"
+      ></uv-icon>
+      <text
+        class="uv-button__text"
+        :style="[
+          {
+            marginLeft: icon ? '2px' : 0,
+          },
+          nvueTextStyle
+        ]"
+        :class="[plain && `uv-button__text--plain--${type}`]"
+        >{{ text }}</text
+      >
+    </template>
+    view>
     <!-- #endif -->
 </template>
 
@@ -119,7 +149,6 @@ import props from "./props.js";
  * button 按钮
  * @description Button 按钮
  * @tutorial https://www.uvui.cn/components/button.html
- *
  * @property {Boolean}			hairline				是否显示按钮的细边框 (默认 true )
  * @property {String}			type					按钮的预置样式，info，primary，error，warning，success (默认 'info' )
  * @property {String}			size					按钮尺寸，large，normal，mini （默认 normal）
@@ -158,139 +187,117 @@ import props from "./props.js";
  * @example <uv-button>月落</uv-button>
  */
 export default {
-    name: "uv-button",
-    // #ifdef MP
-    mixins: [mpMixin, mixin, button, openType, props],
-    // #endif
-    // #ifndef MP
-    mixins: [mpMixin, mixin, props],
-    // #endif
-		emits: ['click','getphonenumber','getuserinfo','error','opensetting','launchapp'],
-    data() {
-        return {};
-    },
-    computed: {
-        // 生成bem风格的类名
-        bemClass() {
-            // this.bem为一个computed变量，在mixin中
-            if (!this.color) {
-                return this.bem(
-                    "button",
-                    ["type", "shape", "size"],
-                    ["disabled", "plain", "hairline"]
-                );
-            } else {
-                // 由于nvue的原因，在有color参数时，不需要传入type，否则会生成type相关的类型，影响最终的样式
-                return this.bem(
-                    "button",
-                    ["shape", "size"],
-                    ["disabled", "plain", "hairline"]
-                );
-            }
-        },
-        loadingColor() {
-            if (this.plain) {
-                // 如果有设置color值，则用color值，否则使用type主题颜色
-                return this.color
-                    ? this.color
-                    : '#3c9cff';
-            }
-            if (this.type === "info") {
-                return "#c9c9c9";
-            }
-            return "rgb(200, 200, 200)";
-        },
-        iconColorCom() {
-            // 如果是镂空状态，设置了color就用color值，否则使用主题颜色，
-            // uv-icon的color能接受一个主题颜色的值
-			if (this.iconColor) return this.iconColor;
-			if (this.plain) {
-                return this.color ? this.color : this.type;
-            } else {
-                return this.type === "info" ? "#000000" : "#ffffff";
-            }
-        },
-        baseColor() {
-            let style = {};
-            if (this.color) {
-                // 针对自定义了color颜色的情况，镂空状态下，就是用自定义的颜色
-                style.color = this.plain ? this.color : "white";
-                if (!this.plain) {
-                    // 非镂空，背景色使用自定义的颜色
-                    style["background-color"] = this.color;
-                }
-                if (this.color.indexOf("gradient") !== -1) {
-                    // 如果自定义的颜色为渐变色，不显示边框，以及通过backgroundImage设置渐变色
-                    // weex文档说明可以写borderWidth的形式，为什么这里需要分开写？
-                    // 因为weex是阿里巴巴为了部门业绩考核而做的你懂的东西，所以需要这么写才有效
-                    style.borderTopWidth = 0;
-                    style.borderRightWidth = 0;
-                    style.borderBottomWidth = 0;
-                    style.borderLeftWidth = 0;
-                    if (!this.plain) {
-                        style.backgroundImage = this.color;
-                    }
-                } else {
-                    // 非渐变色，则设置边框相关的属性
-                    style.borderColor = this.color;
-                    style.borderWidth = "1px";
-                    style.borderStyle = "solid";
-                }
-            }
-            return style;
-        },
-        // nvue版本按钮的字体不会继承父组件的颜色，需要对每一个text组件进行单独的设置
-        nvueTextStyle() {
-            let style = {};
-            // 针对自定义了color颜色的情况，镂空状态下，就是用自定义的颜色
-            if (this.type === "info") {
-                style.color = "#323233";
-            }
-            if (this.color) {
-                style.color = this.plain ? this.color : "white";
-            }
-            style.fontSize = this.textSize + "px";
-            return style;
-        },
-        // 字体大小
-        textSize() {
-            let fontSize = 14,
-                { size } = this;
-            if (size === "large") fontSize = 16;
-            if (size === "normal") fontSize = 14;
-            if (size === "small") fontSize = 12;
-            if (size === "mini") fontSize = 10;
-            return fontSize;
-        },
-    },
-    methods: {
-        clickHandler() {
-            // 非禁止并且非加载中，才能点击
-            if (!this.disabled && !this.loading) {
-				// 进行节流控制，每this.throttle毫秒内，只在开始处执行
-				throttle(() => {
-					this.$emit("click");
-				}, this.throttleTime);
-            }
-        },
-        // 下面为对接uniapp官方按钮开放能力事件回调的对接
-        getphonenumber(res) {
-            this.$emit("getphonenumber", res);
-        },
-        getuserinfo(res) {
-            this.$emit("getuserinfo", res);
-        },
-        error(res) {
-            this.$emit("error", res);
-        },
-        opensetting(res) {
-            this.$emit("opensetting", res);
-        },
-        launchapp(res) {
-            this.$emit("launchapp", res);
-        },
-    },
-};
+		name: "uv-button",
+		// #ifdef MP
+		mixins: [mpMixin, mixin, button, openType, props],
+		// #endif
+		// #ifndef MP
+		mixins: [mpMixin, mixin, props],
+		// #endif
+		emits: ['click'],
+		data() {
+			return {};
+		},
+		computed: {
+			// 生成bem风格的类名
+			bemClass() {
+				// this.bem为一个computed变量，在mixin中
+				if (!this.color) {
+					return this.bem("button",
+						["type", "shape", "size"],
+						["disabled", "plain", "hairline"]);
+				} else {
+					// 由于nvue的原因，在有color参数时，不需要传入type，否则会生成type相关的类型，影响最终的样式
+					return this.bem("button",
+						["shape", "size"],
+						["disabled", "plain", "hairline"]);
+				}
+			},
+			loadingColor() {
+				if (this.plain) {
+					// 如果有设置color值，则用color值，否则使用type主题颜色
+					return this.color ? this.color : '#3c9cff';
+				}
+				if (this.type === "info") {
+					return "#c9c9c9";
+				}
+				return "rgb(200, 200, 200)";
+			},
+			iconColorCom() {
+				// 如果是镂空状态，设置了color就用color值，否则使用主题颜色，
+				// uv-icon的color能接受一个主题颜色的值
+				if (this.iconColor) return this.iconColor;
+				if (this.plain) {
+					return this.color ? this.color : this.type;
+				} else {
+					return this.type === "info" ? "#000000" : "#ffffff";
+				}
+			},
+			baseColor() {
+				let style = {};
+				if (this.color) {
+					// 针对自定义了color颜色的情况，镂空状态下，就是用自定义的颜色
+					style.color = this.plain ? this.color : "white";
+					if (!this.plain) {
+						// 非镂空，背景色使用自定义的颜色
+						style["background-color"] = this.color;
+					}
+					if (this.color.indexOf("gradient") !== -1) {
+						// 如果自定义的颜色为渐变色，不显示边框，以及通过backgroundImage设置渐变色
+						// weex文档说明可以写borderWidth的形式，为什么这里需要分开写？
+						// 因为weex是阿里巴巴为了部门业绩考核而做的你懂的东西，所以需要这么写才有效
+						style.borderTopWidth = 0;
+						style.borderRightWidth = 0;
+						style.borderBottomWidth = 0;
+						style.borderLeftWidth = 0;
+						if (!this.plain) {
+							style.backgroundImage = this.color;
+						}
+					} else {
+						// 非渐变色，则设置边框相关的属性
+						style.borderColor = this.color;
+						style.borderWidth = "1px";
+						style.borderStyle = "solid";
+					}
+				}
+				return style;
+			},
+			// nvue版本按钮的字体不会继承父组件的颜色，需要对每一个text组件进行单独的设置
+			nvueTextStyle() {
+				let style = {};
+				// 针对自定义了color颜色的情况，镂空状态下，就是用自定义的颜色
+				if (this.type === "info") {
+					style.color = "#323233";
+				}
+				if (this.color) {
+					style.color = this.plain ? this.color : "white";
+				}
+				style.fontSize = this.textSize + "px";
+				return style;
+			},
+			// 字体大小
+			textSize() {
+				let fontSize = 14,
+					{ size } = this;
+				if (size === "large") fontSize = 16;
+				if (size === "normal") fontSize = 14;
+				if (size === "small") fontSize = 12;
+				if (size === "mini") fontSize = 10;
+				return fontSize;
+			},
+		},
+		methods: {
+			clickHandler() {
+				// 非禁止并且非加载中，才能点击
+				if (!this.disabled && !this.loading) {
+					// 进行节流控制，每this.throttle毫秒内，只在开始处执行
+					throttle(() => {
+						this.$emit("click");
+					}, this.throttleTime);
+				}
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

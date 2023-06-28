@@ -73,7 +73,7 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3",
+    "vueVersion" : "2",
     "h5" : {
         "router" : {
             "mode" : "history"
