@@ -87,7 +87,10 @@
 				immediate: true,
 				handler(val) {
 					// 转为字符串，超出部分截掉
-					this.inputValue = String(val).substring(0, this.maxlength)
+					this.inputValue = String(val).substring(0, this.maxlength);
+					if(this.disabledKeyboard){
+						this.customInput();
+					}
 				}
 			}
 			// #endif
@@ -96,7 +99,10 @@
 				immediate: true,
 				handler(val) {
 					// 转为字符串，超出部分截掉
-					this.inputValue = String(val).substring(0, this.maxlength)
+					this.inputValue = String(val).substring(0, this.maxlength);
+					if(this.disabledKeyboard){
+						this.customInput();
+					}
 				}
 			}
 			// #endif
@@ -180,6 +186,22 @@
 				// #ifdef VUE3
 				this.$emit('update:modelValue',value)
 				// #endif
+				// 达到用户指定输入长度时，发出完成事件
+				if (String(value).length >= Number(this.maxlength)) {
+					this.$emit('finish', value)
+				}
+			},
+			// 自定义键盘输入值监听
+			customInput() {
+				const value = this.inputValue;
+				// 是否允许输入“.”符号
+				if(this.disabledDot) {
+					this.$nextTick(() => {
+						this.inputValue = value.replace('.', '')
+					})
+				}
+				// 未达到maxlength之前，发送change事件，达到后发送finish事件
+				this.$emit('change', value)
 				// 达到用户指定输入长度时，发出完成事件
 				if (String(value).length >= Number(this.maxlength)) {
 					this.$emit('finish', value)
