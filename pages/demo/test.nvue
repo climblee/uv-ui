@@ -1,26 +1,26 @@
 <template>
-	<view>
-		<uv-button text="月落" open-type="chooseAvatar" @chooseavatar="chooseAvatar" @click="clickHandler"></uv-button>
+	<view class="">
+		<uv-modal ref="modal" :show="show" content="模态框内容" @confirm="confirm" :asyncClose="true"></uv-modal>
+		<button @click="showModal">弹起Modal</button>
 	</view>
 </template>
 <script>
 	export default {
-		data(){
+		data() {
 			return {
-				value: 12
+				show: false
 			}
 		},
-		onLoad() {
-			setTimeout(()=>{
-				this.value = '123456'
-			},1000)
-		},
 		methods: {
-			chooseAvatar(e) {
-				console.log('内容改变，当前值为：' + e);
+			showModal() {
+				this.show = true;
 			},
-			clickHandler(e) {
-				console.log('输入结束，当前值为：' + e);
+			confirm() {
+				setTimeout(() => {
+					// 3秒后自动关闭
+					// this.show = false;
+					this.$refs.modal.closeLoading()
+				}, 3000)
 			}
 		}
 	}

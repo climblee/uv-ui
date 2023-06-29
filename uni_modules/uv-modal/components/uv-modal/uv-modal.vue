@@ -155,6 +155,9 @@
 				if (this.closeOnClickOverlay) {
 					this.$emit('close')
 				}
+			},
+			closeLoading() {
+				this.loading = false;
 			}
 		}
 	}

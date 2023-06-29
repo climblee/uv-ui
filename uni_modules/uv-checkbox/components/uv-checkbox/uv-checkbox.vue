@@ -1,33 +1,35 @@
 <template>
 	<view
-	    class="uv-checkbox"
-	    :style="[checkboxStyle]"
-	    @tap.stop="wrapperClickHandler"
-	    :class="[`uv-checkbox-label--${parentData.iconPlacement}`, parentData.borderBottom && parentData.placement === 'column' && 'uv-border-bottom']"
+	  class="uv-checkbox"
+	  :style="[checkboxStyle]"
+	  @tap.stop="wrapperClickHandler"
+	  :class="[`uv-checkbox-label--${parentData.iconPlacement}`, parentData.borderBottom && parentData.placement === 'column' && 'uv-border-bottom']"
 	>
 		<view
-		    class="uv-checkbox__icon-wrap"
-		    @tap.stop="iconClickHandler"
-		    :class="iconClasses"
-		    :style="[iconWrapStyle]"
+		  class="uv-checkbox__icon-wrap"
+		  @tap.stop="iconClickHandler"
+		  :class="iconClasses"
+		  :style="[iconWrapStyle]"
 		>
 			<slot name="icon">
 				<uv-icon
-				    class="uv-checkbox__icon-wrap__icon"
-				    name="checkbox-mark"
-				    :size="elIconSize"
-				    :color="elIconColor"
+				  class="uv-checkbox__icon-wrap__icon"
+				  name="checkbox-mark"
+				  :size="elIconSize"
+				  :color="elIconColor"
 				/>
 			</slot>
 		</view>
-		<text
-		    @tap.stop="labelClickHandler"
-		    :style="{
-				color: elDisabled ? elInactiveColor : elLabelColor,
-				fontSize: elLabelSize,
-				lineHeight: elLabelSize
-			}"
-		>{{label}}</text>
+		<slot>
+			<text
+			  @tap.stop="labelClickHandler"
+			  :style="{
+					color: elDisabled ? elInactiveColor : elLabelColor,
+					fontSize: elLabelSize,
+					lineHeight: elLabelSize
+				}"
+			>{{label}}</text>
+		</slot>
 	</view>
 </template>
 

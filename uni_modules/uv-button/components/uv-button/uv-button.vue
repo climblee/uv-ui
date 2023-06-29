@@ -63,10 +63,9 @@
           :color="loadingColor"
         ></uv-loading-icon>
           <text
-              class="uv-button__loading-text"
-              :style="[{ fontSize: textSize + 'px' }]"
-              >{{ loadingText || text }}</text
-          >
+            class="uv-button__loading-text"
+            :style="[{ fontSize: textSize + 'px' }]"
+            >{{ loadingText || text }}</text>
       </template>
       <template v-else>
         <uv-icon
@@ -80,8 +79,7 @@
           <text
             class="uv-button__text"
             :style="[{ fontSize: textSize + 'px' }]"
-            >{{ text }}</text
-          >
+            >{{ text }}</text>
         </slot>
       </template>
     </button>
@@ -93,16 +91,16 @@
       class="uv-button"
       :hover-class="
         !disabled && !loading && !color && (plain || type === 'info')
-        ? 'uv-button--active--plain'
-        : !disabled && !loading && !plain
-        ? 'uv-button--active'
-        : ''
+          ? 'uv-button--active--plain'
+          : !disabled && !loading && !plain
+          ? 'uv-button--active'
+          : ''
       "
       @tap="clickHandler"
       :class="bemClass"
       :style="[baseColor, $uv.addStyle(customStyle)]"
     >
-    <template v-if="loading">
+      <template v-if="loading">
         <uv-loading-icon
           :mode="loadingMode"
           :size="loadingSize * 1.15"
@@ -112,29 +110,27 @@
           class="uv-button__loading-text"
           :style="[nvueTextStyle]"
           :class="[plain && `uv-button__text--plain--${type}`]"
-          >{{ loadingText || text }}</text
-        >
-    </template>
-    <template v-else>
-      <uv-icon
-        v-if="icon"
-        :name="icon"
-        :color="iconColorCom"
-        :size="textSize * 1.35"
-      ></uv-icon>
-      <text
-        class="uv-button__text"
-        :style="[
-          {
-            marginLeft: icon ? '2px' : 0,
-          },
-          nvueTextStyle
-        ]"
-        :class="[plain && `uv-button__text--plain--${type}`]"
-        >{{ text }}</text
-      >
-    </template>
-    view>
+          >{{ loadingText || text }}</text>
+      </template>
+      <template v-else>
+        <uv-icon
+          v-if="icon"
+          :name="icon"
+          :color="iconColorCom"
+          :size="textSize * 1.35"
+        ></uv-icon>
+        <text
+          class="uv-button__text"
+          :style="[
+            {
+              marginLeft: icon ? '2px' : 0,
+            },
+            nvueTextStyle
+          ]"
+          :class="[plain && `uv-button__text--plain--${type}`]"
+          >{{ text }}</text>
+      </template>
+    </view>
     <!-- #endif -->
 </template>
 
