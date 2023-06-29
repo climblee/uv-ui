@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uv-button text="月落" :custom-style="{opacity:0}"></uv-button>
+		<uv-button text="月落" open-type="chooseAvatar" @chooseavatar="chooseAvatar" @click="clickHandler"></uv-button>
 	</view>
 </template>
 <script>
@@ -16,10 +16,10 @@
 			},1000)
 		},
 		methods: {
-			change(e) {
+			chooseAvatar(e) {
 				console.log('内容改变，当前值为：' + e);
 			},
-			finish(e) {
+			clickHandler(e) {
 				console.log('输入结束，当前值为：' + e);
 			}
 		}

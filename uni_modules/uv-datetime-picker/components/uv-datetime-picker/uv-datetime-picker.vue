@@ -187,10 +187,6 @@
 				// 发出change时间，value为当前选中的时间戳
 				this.$emit('change', {
 					value: selectValue,
-					// #ifndef MP-WEIXIN
-					// 微信小程序不能传递this实例，会因为循环引用而报错
-					picker: this.$refs.picker,
-					// #endif
 					mode: this.mode
 				})
 			},
