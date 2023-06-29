@@ -1,7 +1,7 @@
 <template>
 	<view
-	    class="uv-steps"
-	    :class="[`uv-steps--${direction}`]"
+	  :class="['uv-steps',`uv-steps--${direction}`]"
+		:style="[$uv.addStyle(customStyle)]"
 	>
 		<slot></slot>
 	</view>

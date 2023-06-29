@@ -1,7 +1,7 @@
 {
   "id": "uv-steps",
   "displayName": "uv-steps 步骤条  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "步骤条组件一般用于完成一个任务要分几个步骤，标识目前处于第几步的场景。",
   "keywords": [
     "uv-steps",

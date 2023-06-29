@@ -2,7 +2,9 @@
 	<view 
 		class="uv-steps-item" 
 		ref="uv-steps-item" 
-		:class="[`uv-steps-item--${parentData.direction}`]">
+		:class="[`uv-steps-item--${parentData.direction}`]"
+		:style="[$uv.addStyle(customStyle)]"
+		>
 		<view 
 			class="uv-steps-item__line" 
 			v-if="index + 1 < childLength"

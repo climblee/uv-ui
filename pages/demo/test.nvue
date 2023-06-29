@@ -1,27 +1,7 @@
 <template>
-	<view class="">
-		<uv-modal ref="modal" :show="show" content="模态框内容" @confirm="confirm" :asyncClose="true"></uv-modal>
-		<button @click="showModal">弹起Modal</button>
-	</view>
+	<uv-steps current="1" direction="column" :customStyle="{background:'red'}">
+		<uv-steps-item title="已下单" desc="10:30" :customStyle="{padding:'0 0 50px'}"></uv-steps-item>
+		<uv-steps-item title="已出库" desc="10:35"></uv-steps-item>
+		<uv-steps-item title="运输中" desc="11:40"></uv-steps-item>
+	</uv-steps>
 </template>
-<script>
-	export default {
-		data() {
-			return {
-				show: false
-			}
-		},
-		methods: {
-			showModal() {
-				this.show = true;
-			},
-			confirm() {
-				setTimeout(() => {
-					// 3秒后自动关闭
-					// this.show = false;
-					this.$refs.modal.closeLoading()
-				}, 3000)
-			}
-		}
-	}
-</script>
