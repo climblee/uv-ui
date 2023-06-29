@@ -1,3 +1,15 @@
+## 1.0.15（2023-06-29）
+1. 欢迎加QQ群交流：[549833913](https://www.uvui.cn/components/addQQGroup.html)
+2. 优化 uv-swiper 优化：1. 增加titleStyle属性，方便修改标题样式；2. 标题上去掉是否是图片的判断，避免无后缀的图片不显示
+3. 优化 uv-steps 优化：1. 增加插槽title; 3. 文档关于插槽相关的参数说明完善；增加customStyle属性
+4. 优化 uv-checkbox 优化：增加label文字插槽，与radio保持一致，优化文档相关说明
+5. 优化 uv-modal 优化：增加closeLoading方法，方便异步加载手动取消加载状态，更新文档
+6. 优化 uv-image 增加文档说明：uv-list、 uv-waterfall等组件在 Android平台使用了list封装，所以在该组件中仍然不能使用uv-image等组件
+7. 优化 优化更多文档
+8. 修复 uv-vtabs 修复非联动情况下，内容过多的情况，滚动一段距离，再切换未滚动到顶部的BUG
+9. 修复 uv-image 修复：duration属性不生效的BUG
+10. 修复 uv-code-input 修复：使用:disabledKeyboard="true"属性，事件全部失效的BUG
+11. 修复 uv-button 修复：设置open-type="chooseAvatar"等值不生效的BUG
 ## 1.0.14（2023-06-25）
 1. 欢迎加QQ群交流：[549833913](https://www.uvui.cn/components/addQQGroup.html)
 2. 优化 uv-count-down 增加外部样式customStyle参数
