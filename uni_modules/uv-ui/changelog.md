@@ -1,4 +1,4 @@
-## 1.0.15（2023-06-29）
+## 1.0.15（2023-06-30）
 1. 欢迎加QQ群交流：[549833913](https://www.uvui.cn/components/addQQGroup.html)
 2. 优化 uv-swiper 优化：1. 增加titleStyle属性，方便修改标题样式；2. 标题上去掉是否是图片的判断，避免无后缀的图片不显示
 3. 优化 uv-steps 优化：1. 增加插槽title; 3. 文档关于插槽相关的参数说明完善；增加customStyle属性
