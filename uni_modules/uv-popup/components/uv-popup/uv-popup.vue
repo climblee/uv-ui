@@ -1,281 +1,473 @@
 <template>
-	<view class="uv-popup">
-		<uv-overlay
-			:show="show"
-			@click="overlayClick"
-			v-if="overlay"
-			:duration="overlayDuration"
-			:customStyle="overlayStyle"
-			:opacity="overlayOpacity"
-      :zIndex="zIndex"
-		></uv-overlay>
-		<uv-transition
-			:show="show"
-			:customStyle="transitionStyle"
-			:mode="position"
-			:duration="duration"
-			@afterEnter="afterEnter"
-			@click="clickHandler"
-		>
-			<view
-				class="uv-popup__content"
-				:style="[contentStyle]"
-				@tap.stop="noop"
+	<view 
+		v-if="showPopup" 
+		class="uv-popup" 
+		:class="[popupClass, isDesktop ? 'fixforpc-z-index' : '']"
+	>
+		<view @touchstart="touchstart">
+			<!-- 遮罩层 -->
+			<uv-overlay
+				key="1"
+				v-if="maskShow && overlay"
+				:show="showTrans"
+				:duration="duration"
+				:custom-style="overlayStyle"
+				:opacity="overlayOpacity"
+			  :zIndex="zIndex"
+				@click="onTap"
+			></uv-overlay>
+			<uv-transition 
+				key="2" 
+				:mode="ani" 
+				name="content" 
+				:custom-style="transitionStyle" 
+				:duration="duration"
+				:show="showTrans" 
+				@click="onTap"
 			>
-				<uv-status-bar v-if="safeAreaInsetTop"></uv-status-bar>
-				<slot></slot>
-				<view
-					v-if="closeable"
-					@tap.stop="close"
-					class="uv-popup__content__close"
-					:class="['uv-popup__content__close--' + closeIconPos]"
-					hover-class="uv-popup__content__close--hover"
-					hover-stay-time="150"
+				<view 
+					class="uv-popup__content" 
+					:style="[contentStyle]" 
+					:class="[popupClass]" 
+					@click="clear"
 				>
-					<uv-icon
-						name="close"
-						color="#909399"
-						size="18"
-						bold
-					></uv-icon>
+					<uv-status-bar v-if="safeAreaInsetTop"></uv-status-bar>
+					<slot />
+					<uv-safe-bottom v-if="safeAreaInsetBottom"></uv-safe-bottom>
+					<view
+						v-if="closeable"
+						@tap.stop="close"
+						class="uv-popup__content__close"
+						:class="['uv-popup__content__close--' + closeIconPos]"
+						hover-class="uv-popup__content__close--hover"
+						hover-stay-time="150"
+					>
+						<uv-icon
+							name="close"
+							color="#909399"
+							size="18"
+							bold
+						></uv-icon>
+					</view>
 				</view>
-				<uv-safe-bottom v-if="safeAreaInsetBottom"></uv-safe-bottom>
-			</view>
-		</uv-transition>
+			</uv-transition>
+		</view>
+		<!-- #ifdef H5 -->
+		<keypress v-if="maskShow" @esc="onTap" />
+		<!-- #endif -->
 	</view>
 </template>
 
 <script>
+	// #ifdef H5
+	import keypress from './keypress.js'
+	// #endif
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
-	import props from './props.js';
-
 	/**
-	 * popup 弹窗
-	 * @description 弹出层容器，用于展示弹窗、信息提示等内容，支持上、下、左、右和中部弹出。组件只提供容器，内部内容由用户自定义
-	 * @tutorial https://www.uvui.cn/components/popup.html
-	 * @property {Boolean}			show				是否展示弹窗 (默认 false )
-	 * @property {Boolean}			overlay				是否显示遮罩 （默认 true ）
-	 * @property {String}			mode				弹出方向（默认 'bottom' ）
-	 * @property {String | Number}	duration			动画时长，单位ms （默认 300 ）
-	 * @property {String | Number}	overlayDuration			遮罩层动画时长，单位ms （默认 350 ）
-	 * @property {Boolean}			closeable			是否显示关闭图标（默认 false ）
-	 * @property {Object | String}	overlayStyle		自定义遮罩的样式
-	 * @property {String | Number}	overlayOpacity		遮罩透明度，0-1之间（默认 0.5）
-	 * @property {Boolean}			closeOnClickOverlay	点击遮罩是否关闭弹窗 （默认  true ）
-	 * @property {String | Number}	zIndex				层级 （默认 10075 ）
-	 * @property {Boolean}			safeAreaInsetBottom	是否为iPhoneX留出底部安全距离 （默认 true ）
-	 * @property {Boolean}			safeAreaInsetTop	是否留出顶部安全距离（状态栏高度） （默认 false ）
-	 * @property {String}			closeIconPos		自定义关闭图标位置（默认 'top-right' ）
-	 * @property {String | Number}	round				圆角值（默认 0）
-	 * @property {Boolean}			zoom				当mode=center时 是否开启缩放（默认 true ）
-	 * @property {String}			bgColor				弹窗背景色，设置为transparent可去除白色背景
-	 * @property {Object}			customStyle			组件的样式，对象形式
-	 * @event {Function} open 弹出层打开
-	 * @event {Function} close 弹出层收起
-	 * @example <uv-popup v-model="show"><text>出淤泥而不染，濯清涟而不妖</text></uv-popup>
-	 */
+	* PopUp 弹出层
+	* @description 弹出层组件，为了解决遮罩弹层的问题
+	* @tutorial https://www.uvui.cn/components/popup.html
+	* @property {String} mode = [top|center|bottom|left|right] 弹出方式
+	* 	@value top 顶部弹出
+	* 	@value center 中间弹出
+	* 	@value bottom 底部弹出
+	* 	@value left		左侧弹出
+	* 	@value right  右侧弹出
+	* @property {Number} duration 动画时长，默认300
+	* @property {Boolean} overlay 是否显示遮罩，默认true
+	* @property {Boolean} overlayOpacity 遮罩透明度，默认0.5 
+	* @property {Object} overlayStyle 遮罩自定义样式
+	* @property {Boolean} closeOnClickOverlay = [true|false] 蒙版点击是否关闭弹窗，默认true
+	* @property {Number | String} zIndex 弹出层的层级
+	* @property {Boolean} safeAreaInsetTop 是否留出顶部安全区（状态栏高度），默认false
+	* @property {Boolean} safeAreaInsetBottom 是否为留出底部安全区适配，默认true
+	* @property {Boolean} closeable 是否显示关闭图标，默认false
+	* @property {Boolean} closeIconPos 自定义关闭图标位置，`top-left`-左上角，`top-right`-右上角，`bottom-left`-左下角，`bottom-right`-右下角，默认top-right
+	* @property {String}  bgColor 主窗口背景色
+	* @property {String}  maskBackgroundColor 蒙版颜色
+	* @property {Boolean} customStyle 自定义样式
+	* @event {Function} change 打开关闭弹窗触发，e={show: false}
+	* @event {Function} maskClick 点击遮罩触发
+	*/
 	export default {
 		name: 'uv-popup',
-		emits:['click','close','open'],
-		mixins: [mpMixin, mixin, props],
-		data() {
-			return {
-				overlayDuration: this.duration + 50
+		components: {
+			// #ifdef H5
+			keypress
+			// #endif
+		},
+		mixins: [mpMixin, mixin],
+		emits: ['change', 'maskClick'],
+		props: {
+			// 弹出层类型，可选值，top: 顶部弹出层；bottom：底部弹出层；center：全屏弹出层
+			// message: 消息提示 ; dialog : 对话框
+			mode: {
+				type: String,
+				default: 'center'
+			},
+			// 动画时长，单位ms
+			duration: {
+				type: [String, Number],
+				default: 300
+			},
+			// 层级
+			zIndex: {
+				type: [String, Number],
+				default: 10075
+			},
+			bgColor: {
+				type: String,
+				default: '#fff'
+			},
+			safeArea: {
+				type: Boolean,
+				default: true
+			},
+			// 是否显示遮罩
+			overlay: {
+				type: Boolean,
+				default: true
+			},
+			// 点击遮罩是否关闭弹窗
+			closeOnClickOverlay: {
+				type: Boolean,
+				default: true
+			},
+			// 遮罩的透明度，0-1之间
+			overlayOpacity: {
+				type: [Number, String],
+				default: 0.4
+			},
+			// 自定义遮罩的样式
+			overlayStyle: {
+				type: [Object, String],
+				default: ''
+			},
+			// 是否为iPhoneX留出底部安全距离
+			safeAreaInsetBottom: {
+				type: Boolean,
+				default: true
+			},
+			// 是否留出顶部安全距离（状态栏高度）
+			safeAreaInsetTop: {
+				type: Boolean,
+				default: false
+			},
+			// 是否显示关闭图标
+			closeable: {
+				type: Boolean,
+				default: false
+			},
+			// 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
+			closeIconPos: {
+				type: String,
+				default: 'top-right'
+			},
+			// mode=center，也即中部弹出时，是否使用缩放模式
+			zoom: {
+				type: Boolean,
+				default: true
 			}
 		},
 		watch: {
-			show(newValue, oldValue) {
-				if (newValue === true) {
-					// #ifdef MP-WEIXIN
-					const children = this.$children
-					this.retryComputedComponentRect(children)
-					// #endif
-				}
+			/**
+			 * 监听type类型
+			 */
+			type: {
+				handler: function(type) {
+					if (!this.config[type]) return
+					this[this.config[type]](true)
+				},
+				immediate: true
+			},
+			isDesktop: {
+				handler: function(newVal) {
+					if (!this.config[newVal]) return
+					this[this.config[this.mode]](true)
+				},
+				immediate: true
+			},
+			// H5 下禁止底部滚动
+			showPopup(show) {
+				// #ifdef H5
+				// fix by mehaotian 处理 h5 滚动穿透的问题
+				document.getElementsByTagName('body')[0].style.overflow = show ? 'hidden' : 'visible'
+				// #endif
+			}
+		},
+		data() {
+			return {
+				ani: [],
+				showPopup: false,
+				showTrans: false,
+				popupWidth: 0,
+				popupHeight: 0,
+				config: {
+					top: 'top',
+					bottom: 'bottom',
+					center: 'center',
+					left: 'left',
+					right: 'right',
+					message: 'top',
+					dialog: 'center',
+					share: 'bottom'
+				},
+				transitionStyle: {
+					position: 'fixed',
+					left: 0,
+					right: 0
+				},
+				maskShow: true,
+				mkclick: true,
+				popupClass: this.isDesktop ? 'fixforpc-top' : 'top'
 			}
 		},
 		computed: {
-			transitionStyle() {
-				const style = {
-					zIndex: this.zIndex,
-					position: 'fixed',
-					display: 'flex',
+			isDesktop() {
+				return this.popupWidth >= 500 && this.popupHeight >= 500
+			},
+			bg() {
+				if (this.bgColor === '' || this.bgColor === 'none') {
+					return 'transparent'
 				}
-				style[this.mode] = 0
-				if (this.mode === 'left') {
-					return this.$uv.deepMerge(style, {
-						bottom: 0,
-						top: 0,
-					})
-				} else if (this.mode === 'right') {
-					return this.$uv.deepMerge(style, {
-						bottom: 0,
-						top: 0,
-					})
-				} else if (this.mode === 'top') {
-					return this.$uv.deepMerge(style, {
-						left: 0,
-						right: 0
-					})
-				} else if (this.mode === 'bottom') {
-					return this.$uv.deepMerge(style, {
-						left: 0,
-						right: 0,
-					})
-				} else if (this.mode === 'center') {
-					return this.$uv.deepMerge(style, {
-						alignItems: 'center',
-						'justify-content': 'center',
-						top: 0,
-						left: 0,
-						right: 0,
-						bottom: 0
-					})
-				}
+				return this.bgColor
 			},
 			contentStyle() {
-				const style = {}
-				// 通过设备信息的safeAreaInsets值来判断是否需要预留顶部状态栏和底部安全局的位置
-				// 不使用css方案，是因为nvue不支持css的iPhoneX安全区查询属性
-				const {
-					safeAreaInsets
-				} = this.$uv.sys()
-				if (this.mode !== 'center') {
-					style.flex = 1
-				}
-				// 背景色，一般用于设置为transparent，去除默认的白色背景
+				const style = {};
 				if (this.bgColor) {
-					style.backgroundColor = this.bgColor
-				}
-				if(this.round) {
-					const value = this.$uv.addUnit(this.round)
-					if(this.mode === 'top') {
-						style.borderBottomLeftRadius = value
-						style.borderBottomRightRadius = value
-					} else if(this.mode === 'bottom') {
-						style.borderTopLeftRadius = value
-						style.borderTopRightRadius = value
-					} else if(this.mode === 'center') {
-						style.borderRadius = value
-					} 
+					style.backgroundColor = this.bg
 				}
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
-			},
-			position() {
-				if (this.mode === 'center') {
-					return this.zoom ? 'fade-zoom' : 'fade'
-				}
-				if (this.mode === 'left') {
-					return 'slide-left'
-				}
-				if (this.mode === 'right') {
-					return 'slide-right'
-				}
-				if (this.mode === 'bottom') {
-					return 'slide-up'
-				}
-				if (this.mode === 'top') {
-					return 'slide-down'
-				}
-			},
+			}
+		},
+		// #ifndef VUE3
+		// TODO vue2
+		destroyed() {
+			this.setH5Visible()
+		},
+		// #endif
+		// #ifdef VUE3
+		// TODO vue3
+		unmounted() {
+			this.setH5Visible()
+		},
+		// #endif
+		created() {
+			// TODO 处理 message 组件生命周期异常的问题
+			this.messageChild = null
+			// TODO 解决头条冒泡的问题
+			this.clearPropagation = false
 		},
 		methods: {
-			// 点击遮罩
-			overlayClick() {
-				if (this.closeOnClickOverlay) {
-					this.$emit('close')
+			setH5Visible() {
+				// #ifdef H5
+				// fix by mehaotian 处理 h5 滚动穿透的问题
+				document.getElementsByTagName('body')[0].style.overflow = 'visible'
+				// #endif
+			},
+			/**
+			 * 公用方法，不显示遮罩层
+			 */
+			closeMask() {
+				this.maskShow = false
+			},
+			// TODO nvue 取消冒泡
+			clear(e) {
+				// #ifndef APP-NVUE
+				e.stopPropagation()
+				// #endif
+				this.clearPropagation = true
+			},
+
+			open(direction) {
+				// fix by mehaotian 处理快速打开关闭的情况
+				if (this.showPopup) {
+					return
 				}
-			},
-			close(e) {
-				this.$emit('close')
-			},
-			afterEnter() {
-				this.$emit('open')
-			},
-			clickHandler() {
-				// 由于中部弹出时，其uv-transition占据了整个页面相当于遮罩，此时需要发出遮罩点击事件，是否无法通过点击遮罩关闭弹窗
-				if(this.mode === 'center') {
-					this.overlayClick()
+				let innerType = ['top', 'center', 'bottom', 'left', 'right', 'message', 'dialog', 'share']
+				if (!(direction && innerType.indexOf(direction) !== -1)) {
+					direction = this.mode
 				}
-				this.$emit('click')
+				if (!this.config[direction]) {
+					return this.$uv.error(`缺少类型：${direction}`);
+				}
+				this[this.config[direction]]()
+				this.$emit('change', {
+					show: true,
+					type: direction
+				})
 			},
-			// #ifdef MP-WEIXIN
-			retryComputedComponentRect(children) {
-				// 组件内部需要计算节点的组件
-				const names = ['uv-calendar-month', 'uv-album', 'uv-collapse-item', 'uv-dropdown', 'uv-index-item', 'uv-index-list',
-					'uv-line-progress', 'uv-list-item', 'uv-rate', 'uv-read-more', 'uv-row', 'uv-row-notice', 'uv-scroll-list',
-					'uv-skeleton', 'uv-slider', 'uv-steps-item', 'uv-sticky', 'uv-subsection', 'uv-swipe-action-item', 'uv-tabbar',
-					'uv-tabs', 'uv-tooltip'
-				]
-				// 历遍所有的子组件节点
-				for (let i = 0; i < children.length; i++) {
-					const child = children[i]
-					// 拿到子组件的子组件
-					const grandChild = child.$children
-					// 判断如果在需要重新初始化的组件数组中名中，并且存在init方法的话，则执行
-					if (names.includes(child.$options.name) && typeof child?.init === 'function') {
-						// 需要进行一定的延时，因为初始化页面需要时间
-						this.$uv.sleep(50).then(() => {
-							child.init()
-						})
+			close(type) {
+				this.showTrans = false
+				this.$emit('change', {
+					show: false,
+					type: this.mode
+				})
+				clearTimeout(this.timer)
+				// // 自定义关闭事件
+				this.timer = setTimeout(() => {
+					this.showPopup = false
+				}, 300)
+			},
+			// TODO 处理冒泡事件，头条的冒泡事件有问题 ，先这样兼容
+			touchstart() {
+				this.clearPropagation = false
+			},
+			onTap() {
+				if (this.clearPropagation) {
+					// fix by mehaotian 兼容 nvue
+					this.clearPropagation = false
+					return
+				}
+				this.$emit('maskClick')
+				if (!this.closeOnClickOverlay) return
+				this.close()
+			},
+			/**
+			 * 顶部弹出样式处理
+			 */
+			top(type) {
+				this.popupClass = this.isDesktop ? 'fixforpc-top' : 'top'
+				this.ani = ['slide-top']
+				this.transitionStyle = {
+					position: 'fixed',
+					zIndex: this.zIndex,
+					left: 0,
+					right: 0,
+					backgroundColor: this.bg
+				}
+				// TODO 兼容 type 属性 ，后续会废弃
+				if (type) return
+				this.showPopup = true
+				this.showTrans = true
+				this.$nextTick(() => {
+					if (this.messageChild && this.mode === 'message') {
+						this.messageChild.timerClose()
 					}
-					// 如果子组件还有孙组件，进行递归历遍
-					if (grandChild.length) {
-						this.retryComputedComponentRect(grandChild)
-					}
+				})
+			},
+			/**
+			 * 底部弹出样式处理
+			 */
+			bottom(type) {
+				this.popupClass = 'bottom'
+				this.ani = ['slide-bottom']
+				this.transitionStyle = {
+					position: 'fixed',
+					zIndex: this.zIndex,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundColor: this.bg
 				}
+				// TODO 兼容 type 属性 ，后续会废弃
+				if (type) return
+				this.showPopup = true
+				this.showTrans = true
+			},
+			/**
+			 * 中间弹出样式处理
+			 */
+			center(type) {
+				this.popupClass = 'center'
+				this.ani = this.zoom?['zoom-in', 'fade']:['fade'];
+				this.transitionStyle = {
+					position: 'fixed',
+					zIndex: this.zIndex,
+					/* #ifndef APP-NVUE */
+					display: 'flex',
+					flexDirection: 'column',
+					/* #endif */
+					bottom: 0,
+					left: 0,
+					right: 0,
+					top: 0,
+					justifyContent: 'center',
+					alignItems: 'center'
+				}
+				// TODO 兼容 type 属性 ，后续会废弃
+				if (type) return
+				this.showPopup = true
+				this.showTrans = true
+			},
+			left(type) {
+				this.popupClass = 'left'
+				this.ani = ['slide-left']
+				this.transitionStyle = {
+					position: 'fixed',
+					zIndex: this.zIndex,
+					left: 0,
+					bottom: 0,
+					top: 0,
+					backgroundColor: this.bg,
+					/* #ifndef APP-NVUE */
+					display: 'flex',
+					flexDirection: 'column'
+					/* #endif */
+				}
+				// TODO 兼容 type 属性 ，后续会废弃
+				if (type) return
+				this.showPopup = true
+				this.showTrans = true
+			},
+			right(type) {
+				this.popupClass = 'right'
+				this.ani = ['slide-right']
+				this.transitionStyle = {
+					position: 'fixed',
+					zIndex: this.zIndex,
+					bottom: 0,
+					right: 0,
+					top: 0,
+					backgroundColor: this.bg,
+					/* #ifndef APP-NVUE */
+					display: 'flex',
+					flexDirection: 'column'
+					/* #endif */
+				}
+				// TODO 兼容 type 属性 ，后续会废弃
+				if (type) return
+				this.showPopup = true
+				this.showTrans = true
 			}
-			// #endif
 		}
 	}
 </script>
-
 <style lang="scss" scoped>
-	$uv-popup-flex:1 !default;
-	$uv-popup-content-background-color: #fff !default;
-
 	.uv-popup {
-		flex: $uv-popup-flex;
+		position: fixed;
+		/* #ifndef APP-NVUE */
+		z-index: 99;
 
-		&__content {
-			background-color: $uv-popup-content-background-color;
+		/* #endif */
+		&.top,
+		&.left,
+		&.right {
+			/* #ifdef H5 */
+			top: var(--window-top);
+			/* #endif */
+			/* #ifndef H5 */
+			top: 0;
+			/* #endif */
+		}
+
+		.uv-popup__content {
+			/* #ifndef APP-NVUE */
+			display: block;
+			/* #endif */
 			position: relative;
 
-			&--round-top {
-				border-top-left-radius: 0;
-				border-top-right-radius: 0;
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 10px;
+			&.left,
+			&.right {
+				/* #ifdef H5 */
+				padding-top: var(--window-top);
+				/* #endif */
+				/* #ifndef H5 */
+				padding-top: 0;
+				/* #endif */
+				flex: 1;
 			}
-
-			&--round-left {
-				border-top-left-radius: 0;
-				border-top-right-radius: 10px;
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 10px;
-			}
-
-			&--round-right {
-				border-top-left-radius: 10px;
-				border-top-right-radius: 0;
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 0;
-			}
-
-			&--round-bottom {
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
-			}
-
-			&--round-center {
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 10px;
-			}
-
 			&__close {
 				position: absolute;
 
@@ -283,26 +475,36 @@
 					opacity: 0.4;
 				}
 			}
-
+			
 			&__close--top-left {
 				top: 15px;
 				left: 15px;
 			}
-
+			
 			&__close--top-right {
 				top: 15px;
 				right: 15px;
 			}
-
+			
 			&__close--bottom-left {
 				bottom: 15px;
 				left: 15px;
 			}
-
+			
 			&__close--bottom-right {
 				right: 15px;
 				bottom: 15px;
 			}
 		}
+	}
+
+	.fixforpc-z-index {
+		/* #ifndef APP-NVUE */
+		z-index: 999;
+		/* #endif */
+	}
+
+	.fixforpc-top {
+		top: 0;
 	}
 </style>
