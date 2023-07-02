@@ -57,7 +57,7 @@
 	 * @property {String}			cancelColor			取消按钮的颜色  ( 默认 '#909193' )
 	 * @property {String}			confirmColor		确认按钮的颜色  ( 默认 '#3c9cff' )
 	 * @property {String | Number}	visibleItemCount	每列中可见选项的数量  ( 默认 5 )
-	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭选择器  ( 默认 false )
+	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭选择器  ( 默认 true )
 	 * @event {Function} close 关闭选择器时触发
 	 * @event {Function} confirm 点击确定按钮，返回当前选择的值
 	 * @event {Function} change 当选择值变化时触发

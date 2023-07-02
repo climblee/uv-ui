@@ -1,7 +1,7 @@
 <template>
   <!-- #ifndef APP-NVUE -->
   <view 
-		v-show="isShow" 
+		v-if="isShow" 
 		ref="ani" 
 		:animation="animationData" 
 		:class="customClass" 
@@ -113,7 +113,6 @@
 					...this.$uv.addStyle(this.customStyle),
 					'transition-duration': `${this.duration / 1000}s`
 				};
-				console.log('style',style)
 				return this.$uv.addStyle(style,'string');
 			}
 		},
@@ -195,7 +194,7 @@
 					}, 20);
 				})
 			},
-			// 关闭过度动画
+			// 关闭过渡动画
 			close(type) {
 				if (!this.animation) return;
 				this.tranfromInit(true)

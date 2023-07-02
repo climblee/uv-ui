@@ -114,7 +114,8 @@
 						popupData: {
 							overlay: true,
 							mode: 'bottom',
-							closeOnClickOverlay: true
+							closeOnClickOverlay: true,
+							round: 10
 						},
 						title: '显示圆角',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/popup/showRadis.png'
@@ -148,10 +149,7 @@
 				this.timer && clearTimeout(this.timer);
 				this.timer = setTimeout(()=>{
 					this.$refs.popup.open();
-				},2)
-			},
-			navigateBack() {
-				uni.navigateBack()
+				},200)
 			},
 			close() {
 				this.$refs.popup.close();

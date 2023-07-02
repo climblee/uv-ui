@@ -146,6 +146,7 @@
 	export default {
 		name: "uv-action-sheet",
 		mixins: [openType, button, mpMixin , mixin, props],
+		emits: ['close', 'select'],
 		computed: {
 			// 操作项目的样式
 			itemStyle() {

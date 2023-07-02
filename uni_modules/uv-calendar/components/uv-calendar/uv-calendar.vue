@@ -1,6 +1,6 @@
 <template>
 	<uv-popup
-		ref="popup"
+		ref="calendarPopup"
 		mode="bottom"
 		closeable
 		:round="round"
@@ -92,7 +92,7 @@ import Calendar from './calendar.js'
  * @property {String}				confirmText			确定按钮的文字 (默认 '确定' )
  * @property {String}				confirmDisabledText	确认按钮处于禁用状态时的文字 (默认 '确定' )
  * @property {Boolean}				show				是否显示日历弹窗 (默认 false )
- * @property {Boolean}				closeOnClickOverlay	是否允许点击遮罩关闭日历 (默认 true )
+ * @property {Boolean}				closeOnClickOverlay	是否允许点击遮罩关闭日历 (默认 false )
  * @property {Boolean}				closeOnClickConfirm	是否允许点击确认按钮关闭日历，设置为false不影响confirm事件返回 (默认 true )
  * @property {Boolean}				readonly	        是否为只读状态，只读状态下禁止选择日期 (默认 false )
  * @property {String | Number}		maxRange	        日期区间最多可选天数，默认无限制，mode = range时有效
@@ -220,7 +220,7 @@ export default {
 		},
 		open() {
 			this.setMonth()
-			this.$refs.popup.open();
+			this.$refs.calendarPopup.open();
 		},
 		popupChange(e) {
 			if(!e.show) {
@@ -233,7 +233,7 @@ export default {
 				this.$emit('confirm', this.selected)
 			}
 			if (this.closeOnClickConfirm) {
-				this.$refs.popup.close();
+				this.$refs.calendarPopup.close();
 			}
 		},
 		// 获得两个日期之间的月份数

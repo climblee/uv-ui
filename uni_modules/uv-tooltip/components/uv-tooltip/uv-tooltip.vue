@@ -40,7 +40,7 @@
 			<uv-transition
 				mode="fade"
 				:show="showTooltip"
-				duration="300"
+				:duration="300"
 				:customStyle="{
 					position: 'absolute', 
 					top: $uv.addUnit(tooltipTop),
@@ -173,7 +173,14 @@
 		},
 		computed: {
 			isShow(){
-				return this.$uv.sys()?.model == 'PC';
+				const isPC = this.$uv.sys()?.model == 'PC';
+				if(isPC) {
+					return true;
+				}
+				// #ifdef MP-WEIXIN || H5
+				return false;
+				// #endif
+				return true;
 			},
 			// 特别处理H5的复制，因为H5浏览器是自带系统复制功能的，在H5环境
 			// 当一些依赖参数变化时，需要重新计算气泡和指示器的位置信息
@@ -206,6 +213,9 @@
 					style.marginTop = `${this.tooltipInfo.height-10}px`
 					this.indicatorStyle.top = '-4px'
 				}
+				// #ifdef VUE3
+				style.opacity = 1;
+				// #endif
 				return style
 			}
 		},

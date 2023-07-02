@@ -163,12 +163,8 @@
 			getuserinfo(res) {
 				toast(`用户名：${res.userInfo.nickName}`)
 			},
-			navigateBack() {
-				uni.navigateBack()
-			},
 			close() {
 				console.log('close');
-				this['show0'] = false
 			},
 			select(e) {
 				console.log('select', e);
