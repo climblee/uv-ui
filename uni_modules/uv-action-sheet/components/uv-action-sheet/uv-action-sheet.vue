@@ -1,36 +1,37 @@
 
 <template>
 	<uv-popup
-	    :show="show"
-	    mode="bottom"
-	    @close="closeHandler"
-	    :safeAreaInsetBottom="safeAreaInsetBottom"
-	    :round="round"
+	  ref="popup"
+	  mode="bottom"
+	  :safeAreaInsetBottom="safeAreaInsetBottom"
+	  :round="round"
+		:close-on-click-overlay="closeOnClickOverlay"
+		@change="popupChange"
 	>
 		<view class="uv-action-sheet">
 			<view
-			    class="uv-action-sheet__header"
-			    v-if="title"
+			  class="uv-action-sheet__header"
+			  v-if="title"
 			>
 				<text class="uv-action-sheet__header__title uv-line-1">{{title}}</text>
 				<view
-				    class="uv-action-sheet__header__icon-wrap"
-				    @tap.stop="cancel"
+				  class="uv-action-sheet__header__icon-wrap"
+				  @tap.stop="cancel"
 				>
 					<uv-icon
-					    name="close"
-					    size="17"
-					    color="#c8c9cc"
-					    bold
+					  name="close"
+					  size="17"
+					  color="#c8c9cc"
+					  bold
 					></uv-icon>
 				</view>
 			</view>
 			<text
-			    class="uv-action-sheet__description"
+			  class="uv-action-sheet__description"
 				:style="[{
 					marginTop: `${title && description ? 0 : '18px'}`
 				}]"
-			    v-if="description"
+			  v-if="description"
 			>{{description}}</text>
 			<slot>
 				<uv-line v-if="description"></uv-line>
@@ -38,46 +39,46 @@
 					<view v-for="(item, index) in actions" :key="index">
 						<!-- #ifdef MP -->
 						<button
-						    class="uv-reset-button"
-						    :openType="item.openType"
-						    @getuserinfo="onGetUserInfo"
-						    @contact="onContact"
-						    @getphonenumber="onGetPhoneNumber"
-						    @error="onError"
-						    @launchapp="onLaunchApp"
-						    @opensetting="onOpenSetting"
-						    :lang="lang"
-						    :session-from="sessionFrom"
-						    :send-message-title="sendMessageTitle"
-						    :send-message-path="sendMessagePath"
-						    :send-message-img="sendMessageImg"
-						    :show-message-card="showMessageCard"
-						    :app-parameter="appParameter"
-						    @tap="selectHandler(index)"
-						    :hover-class="!item.disabled && !item.loading ? 'uv-action-sheet--hover' : ''"
+						  class="uv-reset-button"
+						  :openType="item.openType"
+						  @getuserinfo="onGetUserInfo"
+						  @contact="onContact"
+						  @getphonenumber="onGetPhoneNumber"
+						  @error="onError"
+						  @launchapp="onLaunchApp"
+						  @opensetting="onOpenSetting"
+						  :lang="lang"
+						  :session-from="sessionFrom"
+						  :send-message-title="sendMessageTitle"
+						  :send-message-path="sendMessagePath"
+						  :send-message-img="sendMessageImg"
+						  :show-message-card="showMessageCard"
+						  :app-parameter="appParameter"
+						  @tap="selectHandler(index)"
+						  :hover-class="!item.disabled && !item.loading ? 'uv-action-sheet--hover' : ''"
 						>
 							<!-- #endif -->
 							<view
-							    class="uv-action-sheet__item-wrap__item"
-							    @tap.stop="selectHandler(index)"
-							    :hover-class="!item.disabled && !item.loading ? 'uv-action-sheet--hover' : ''"
-							    :hover-stay-time="150"
+							  class="uv-action-sheet__item-wrap__item"
+							  @tap.stop="selectHandler(index)"
+							  :hover-class="!item.disabled && !item.loading ? 'uv-action-sheet--hover' : ''"
+							  :hover-stay-time="150"
 							>
 								<template v-if="!item.loading">
 									<text
-									    class="uv-action-sheet__item-wrap__item__name"
-									    :style="[itemStyle(index)]"
+									  class="uv-action-sheet__item-wrap__item__name"
+									  :style="[itemStyle(index)]"
 									>{{ item.name }}</text>
 									<text
-									    v-if="item.subname"
-									    class="uv-action-sheet__item-wrap__item__subname"
+									  v-if="item.subname"
+									  class="uv-action-sheet__item-wrap__item__subname"
 									>{{ item.subname }}</text>
 								</template>
 								<uv-loading-icon
-								    v-else
-								    custom-class="van-action-sheet__loading"
-								    size="18"
-								    mode="circle"
+								  v-else
+								  custom-class="van-action-sheet__loading"
+								  size="18"
+								  mode="circle"
 								/>
 							</view>
 							<!-- #ifdef MP -->
@@ -88,17 +89,17 @@
 				</view>
 			</slot>
 			<uv-gap
-			    bgColor="#eaeaec"
-			    height="6"
-			    v-if="cancelText"
+			  bgColor="#eaeaec"
+			  height="6"
+			  v-if="cancelText"
 			></uv-gap>
 			<view hover-class="uv-action-sheet--hover">
 				<text
-				    @touchmove.stop.prevent
-				    :hover-stay-time="150"
-				    v-if="cancelText"
-				    class="uv-action-sheet__cancel-text"
-				    @tap="cancel"
+				  @touchmove.stop.prevent
+				  :hover-stay-time="150"
+				  v-if="cancelText"
+				  class="uv-action-sheet__cancel-text"
+				  @tap="cancel"
 				>{{cancelText}}</text>
 			</view>
 		</view>
@@ -124,7 +125,6 @@
 	 * @property {Boolean}			safeAreaInsetBottom	处理底部安全区 （默认 true ）
 	 * @property {String}			openType			小程序的打开方式 (contact | launchApp | getUserInfo | openSetting ｜getPhoneNumber ｜error )
 	 * @property {Boolean}			closeOnClickOverlay	点击遮罩是否允许关闭  (默认 true )
-	 * @property {Number|String}	round				圆角值，默认无圆角  (默认 0 )
 	 * @property {String}			lang				指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文
 	 * @property {String}			sessionFrom			会话来源，openType="contact"时有效
 	 * @property {String}			sendMessageTitle	会话内消息卡片标题，openType="contact"时有效
@@ -141,16 +141,11 @@
 	 * @event {Function} error			当使用开放能力时，发生错误的回调，openType="error"时有效
 	 * @event {Function} launchapp		打开 APP 成功的回调，openType="launchApp"时有效
 	 * @event {Function} opensetting	在打开授权设置页后回调，openType="openSetting"时有效
-	 * @example <uv-action-sheet :actions="list" :title="title" :show="show"></uv-action-sheet>
+	 * @example <uv-action-sheet ref="actionSheet" :actions="list" :title="title" ></uv-action-sheet>
 	 */
 	export default {
 		name: "uv-action-sheet",
 		mixins: [openType, button, mpMixin , mixin, props],
-		data() {
-			return {
-
-			}
-		},
 		computed: {
 			// 操作项目的样式
 			itemStyle() {
@@ -165,22 +160,25 @@
 			},
 		},
 		methods: {
-			closeHandler() {
-				// 允许点击遮罩关闭时，才发出close事件
-				if(this.closeOnClickOverlay) {
-					this.$emit('close')
-				}
+			open() {
+				this.$refs.popup.open();
+			},
+			close() {
+				this.$refs.popup.close();
+			},
+			popupChange(e) {
+				if(!e.show) this.$emit('close');
 			},
 			// 点击取消按钮
 			cancel() {
-				this.$emit('close')
+				this.close();
 			},
 			selectHandler(index) {
 				const item = this.actions[index]
 				if (item && !item.disabled && !item.loading) {
 					this.$emit('select', item)
 					if (this.closeOnClickAction) {
-						this.$emit('close')
+						this.close();
 					}
 				}
 			},

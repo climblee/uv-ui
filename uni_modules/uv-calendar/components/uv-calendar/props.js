@@ -90,15 +90,15 @@ export default {
 			type: String,
 			default: '确定'
 		},
-		// 是否显示日历弹窗
-		show: {
-			type: Boolean,
-			default: false
-		},
 		// 是否允许点击遮罩关闭日历
 		closeOnClickOverlay: {
 			type: Boolean,
 			default: false
+		},
+		// 是否允许点击确认按钮关闭日历
+		closeOnClickConfirm: {
+			type: Boolean,
+			default: true
 		},
 		// 是否为只读状态，只读状态下禁止选择日期
 		readonly: {

@@ -1,7 +1,9 @@
 <template>
 	<uv-popup
-		:show="show"
-		@close="closeHandler"
+		ref="pickerPopup"
+		mode="bottom"
+		:close-on-click-overlay="closeOnClickOverlay"
+		@change="popupChange"
 	>
 		<view class="uv-picker">
 			<uv-toolbar
@@ -56,7 +58,6 @@
 /**
  * uv-picker
  * @description 选择器
- * @property {Boolean}			show				是否显示picker弹窗（默认 false ）
  * @property {Boolean}			showToolbar			是否显示顶部的操作栏（默认 true ）
  * @property {String}			title				顶部标题
  * @property {Array}			columns				对象数组，设置每一列的数据
@@ -132,6 +133,15 @@ export default {
 		},
 	},
 	methods: {
+		open() {
+			this.$refs.pickerPopup.open();
+		},
+		close() {
+			this.$refs.pickerPopup.close();
+		},
+		popupChange(e) {
+			if(!e.show) this.$emit('close');
+		},
 		// 获取item需要显示的文字，判别为对象还是文本
 		getItemText(item) {
 			if (this.$uv.test.object(item)) {
@@ -140,15 +150,10 @@ export default {
 				return item
 			}
 		},
-		// 关闭选择器
-		closeHandler() {
-			if (this.closeOnClickOverlay) {
-				this.$emit('close')
-			}
-		},
 		// 点击工具栏的取消按钮
 		cancel() {
-			this.$emit('cancel')
+			this.$emit('cancel');
+			this.close();
 		},
 		// 点击工具栏的确定按钮
 		confirm() {
@@ -156,7 +161,10 @@ export default {
 				indexs: this.innerIndex,
 				value: this.innerColumns.map((item, index) => item[this.innerIndex[index]]),
 				values: this.innerColumns
-			})
+			});
+			if(this.closeOnClickConfirm) {
+				this.close();
+			}
 		},
 		// 选择器某一列的数据发生变化时触发
 		changeHandler(e) {

@@ -1,6 +1,6 @@
 <template>
 	<uv-transition
-		mode="slide-down"
+		mode="slide-top"
 		:customStyle="containerStyle"
 		:show="open"
 	>

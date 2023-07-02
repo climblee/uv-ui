@@ -1,10 +1,5 @@
 export default {
 	props: {
-		// 是否展示picker弹窗
-		show: {
-			type: Boolean,
-			default: false
-		},
 		// 是否展示顶部的操作栏
 		showToolbar: {
 			type: Boolean,
@@ -73,7 +68,12 @@ export default {
 		// 是否允许点击遮罩关闭选择器
 		closeOnClickOverlay: {
 			type: Boolean,
-			default: false
+			default: true
+		},
+		// 是否允许点击确认关闭选择器
+		closeOnClickConfirm: {
+			type: Boolean,
+			default: true
 		},
 		// 各列的默认索引
 		defaultIndex: {

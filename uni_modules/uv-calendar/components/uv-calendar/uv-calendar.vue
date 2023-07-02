@@ -1,11 +1,11 @@
 <template>
 	<uv-popup
-		:show="show"
+		ref="popup"
 		mode="bottom"
 		closeable
-		@close="close"
 		:round="round"
 		:closeOnClickOverlay="closeOnClickOverlay"
+		@change="popupChange"
 	>
 		<view class="uv-calendar">
 			<uvHeader
@@ -15,9 +15,7 @@
 				:showTitle="showTitle"
 			></uvHeader>
 			<scroll-view
-				:style="{
-                    height: $uv.addUnit(listHeight)
-                }"
+				:style="{ height: $uv.addUnit(listHeight) }"
 				scroll-y
 				@scroll="onScroll"
 				:scroll-top="scrollTop"
@@ -51,9 +49,7 @@
 				<view class="uv-calendar__confirm">
 					<uv-button
 						shape="circle"
-						:text="
-                            buttonDisabled ? confirmDisabledText : confirmText
-                        "
+						:text="buttonDisabled ? confirmDisabledText : confirmText"
 						:color="color"
 						@click="confirm"
 						:disabled="buttonDisabled"
@@ -96,7 +92,8 @@ import Calendar from './calendar.js'
  * @property {String}				confirmText			确定按钮的文字 (默认 '确定' )
  * @property {String}				confirmDisabledText	确认按钮处于禁用状态时的文字 (默认 '确定' )
  * @property {Boolean}				show				是否显示日历弹窗 (默认 false )
- * @property {Boolean}				closeOnClickOverlay	是否允许点击遮罩关闭日历 (默认 false )
+ * @property {Boolean}				closeOnClickOverlay	是否允许点击遮罩关闭日历 (默认 true )
+ * @property {Boolean}				closeOnClickConfirm	是否允许点击确认按钮关闭日历，设置为false不影响confirm事件返回 (默认 true )
  * @property {Boolean}				readonly	        是否为只读状态，只读状态下禁止选择日期 (默认 false )
  * @property {String | Number}		maxRange	        日期区间最多可选天数，默认无限制，mode = range时有效
  * @property {String}				rangePrompt	        范围选择超过最多可选天数时的提示文案，mode = range时有效
@@ -107,7 +104,7 @@ import Calendar from './calendar.js'
  *
  * @event {Function()} confirm 		点击确定按钮时触发		选择日期相关的返回参数
  * @event {Function()} close 		日历关闭时触发			可定义页面关闭时的回调事件
- * @example <uv-calendar  :defaultDate="defaultDateMultiple" :show="show" mode="multiple" @confirm="confirm">
+ * @example <uv-calendar ref="calendar" :defaultDate="defaultDateMultiple" mode="multiple" @confirm="confirm">
 	</uv-calendar>
  * */
 export default {
@@ -136,13 +133,6 @@ export default {
 	},
 	watch: {
 		selectedChange: {
-			immediate: true,
-			handler(n) {
-				this.setMonth()
-			}
-		},
-		// 打开弹窗时，设置月份数据
-		show: {
 			immediate: true,
 			handler(n) {
 				this.setMonth()
@@ -228,13 +218,22 @@ export default {
 			this.listHeight = this.rowHeight * 5 + 30
 			this.setMonth()
 		},
-		close() {
-			this.$emit('close')
+		open() {
+			this.setMonth()
+			this.$refs.popup.open();
+		},
+		popupChange(e) {
+			if(!e.show) {
+				this.$emit('close');
+			}
 		},
 		// 点击确定按钮
 		confirm() {
 			if (!this.buttonDisabled) {
 				this.$emit('confirm', this.selected)
+			}
+			if (this.closeOnClickConfirm) {
+				this.$refs.popup.close();
 			}
 		},
 		// 获得两个日期之间的月份数

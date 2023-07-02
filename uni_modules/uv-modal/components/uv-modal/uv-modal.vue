@@ -1,8 +1,8 @@
 <template>
 	<uv-popup
+		ref="modalPopup"
 		mode="center"
 		:zoom="zoom"
-		:show="show"
     :zIndex="zIndex"
 		:customStyle="{
 			borderRadius: '6px', 
@@ -12,7 +12,7 @@
 		:closeOnClickOverlay="closeOnClickOverlay"
 		:safeAreaInsetBottom="false"
 		:duration="400"
-		@click="clickHandler"
+		@change="popupChange"
 	>
 		<view
 			class="uv-modal"
@@ -98,7 +98,6 @@
 	 * Modal 模态框
 	 * @description 弹出模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作。
 	 * @tutorial https://www.uvui.cn/components/modul.html
-	 * @property {Boolean}			show				是否显示模态框，请赋值给show （默认 false ）
 	 * @property {String}			title				标题内容
 	 * @property {String}			content				模态框内容，如传入slot内容，则此参数无效
 	 * @property {String}			confirmText			确认按钮的文字 （默认 '确认' ）
@@ -110,13 +109,13 @@
 	 * @property {Boolean}			buttonReverse		对调确认和取消的位置 （默认 false ）
 	 * @property {Boolean}			zoom				是否开启缩放模式 （默认 true ）
 	 * @property {Boolean}			asyncClose			是否异步关闭，只对确定按钮有效，见上方说明 （默认 false ）
-	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭Modal （默认 false ）
+	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭该组件 （默认 true ）
 	 * @property {String | Number}	negativeTop			往上偏移的值，给一个负的margin-top，往上偏移，避免和键盘重合的情况，单位任意，数值则默认为px单位 （默认 0 ）
 	 * @property {String | Number}	width				modal宽度，不支持百分比，可以数值，px，rpx单位 （默认 '650rpx' ）
 	 * @event {Function} confirm	点击确认按钮时触发
 	 * @event {Function} cancel		点击取消按钮时触发
 	 * @event {Function} close		点击遮罩关闭出发，closeOnClickOverlay为true有效
-	 * @example <uv-modal :show="true" title="title" content="content"></uv-modal>
+	 * @example <uv-modal ref="modalPopup" title="title" content="content"></uv-modal>
 	 */
 	export default {
 		name: 'uv-modal',
@@ -126,35 +125,31 @@
 				loading: false
 			}
 		},
-		watch: {
-			show(n) {
-				// 为了避免第一次打开modal，又使用了异步关闭的loading
-				// 第二次打开modal时，loading依然存在的情况
-				if (n && this.loading) this.loading = false
-			}
-		},
 		methods: {
+			open() {
+				this.$refs.modalPopup.open();
+				if (this.loading) this.loading = false;
+			},
+			close() {
+				this.$refs.modalPopup.close();
+			},
+			popupChange(e) {
+				if(!e.show) this.$emit('close');
+			},
 			// 点击确定按钮
 			confirmHandler() {
 				// 如果配置了异步关闭，将按钮值为loading状态
 				if (this.asyncClose) {
 					this.loading = true;
+				} else {
+					this.close();
 				}
-				this.$emit('confirm')
+				this.$emit('confirm');
 			},
 			// 点击取消按钮
 			cancelHandler() {
-				this.$emit('cancel')
-			},
-			// 点击遮罩
-			// 从原理上来说，modal的遮罩点击，并不是真的点击到了遮罩
-			// 因为modal依赖于popup的中部弹窗类型，中部弹窗比较特殊，虽然有遮罩，但是为了让弹窗内容能flex居中
-			// 多了一个透明的遮罩，此透明的遮罩会覆盖在灰色的遮罩上，所以实际上是点击不到灰色遮罩的，popup内部在
-			// 透明遮罩的子元素做了.stop处理，所以点击内容区，也不会导致误触发
-			clickHandler() {
-				if (this.closeOnClickOverlay) {
-					this.$emit('close')
-				}
+				this.$emit('cancel');
+				this.close();
 			},
 			closeLoading() {
 				this.loading = false;

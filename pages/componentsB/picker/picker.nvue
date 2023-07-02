@@ -19,14 +19,14 @@
 		</uv-cell-group>
 		<view>
 		<uv-picker
-			:show="show1"
+			ref="picker1"
 			:columns="columns1"
 			@change="change"
 			@cancel="cancel"
 			@confirm="confirm"
 		></uv-picker>
 		<uv-picker
-			:show="show2"
+			ref="picker2"
 			:columns="columns2"
 			:defaultIndex="[1]"
 			@cancel="cancel"
@@ -34,24 +34,22 @@
 			@change="change"
 		></uv-picker>
 		<uv-picker
-			:show="show3"
+			ref="picker3"
 			:columns="columns3"
-			ref="uvPickerRef3"
 			@cancel="cancel"
 			@confirm="confirm"
 			@change="changeHandler1"
 		></uv-picker>
 		<uv-picker
-			:show="show4"
+			ref="picker4"
 			:columns="columns4"
 			@cancel="cancel"
 			@confirm="confirm"
 			:loading="loading"
 			@change="changeHandler2"
-			ref="uvPickerRef4"
 		></uv-picker>
 		<uv-picker
-			:show="show5"
+			ref="picker5"
 			:columns="columns5"
 			title="标题太长就会显示省略号"
 			@cancel="cancel"
@@ -59,9 +57,9 @@
 			@change="change"
 		></uv-picker>
 		<uv-picker
-			:show="show6"
+			ref="picker6"
 			:columns="columns6"
-			closeOnClickOverlay
+			:closeOnClickOverlay="false"
 			@cancel="cancel"
 			@confirm="confirm"
 			@close="close"
@@ -75,7 +73,6 @@
 	export default {
 		data() {
 			return {
-				index: 0,
 				loading: false,
 				columnData: [
 					['深圳', '厦门', '上海', '拉萨'],
@@ -101,36 +98,25 @@
 				columns6: [
 					['中国', '美国', '日本']
 				],
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
-				show6: false,
 				list: [{
 						title: '基础使用',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/2.png'
-					},
-					{
+					}, {
 						title: '设置默认项',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/5.png'
-					},
-					{
+					}, {
 						title: '多列联动',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/1.png'
-					},
-					{
+					}, {
 						title: '加载中状态(切换第一列)',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/3.png'
-					},
-					{
+					}, {
 						title: '设置标题',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/4.png'
 					}, {
-						title: '允许点击遮罩关闭',
+						title: '禁止点击遮罩关闭',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/6.png'
-					},
-				]
+					}]
 			}
 		},
 		methods: {
@@ -143,7 +129,7 @@
 					index
 				} = e
 				if (columnIndex === 0) {
-					this.$refs.uvPickerRef3.setColumnValues(1, this.columnData[index])
+					this.$refs.picker3.setColumnValues(1, this.columnData[index])
 				}
 			},
 			changeHandler2(e) {
@@ -157,32 +143,25 @@
 				if (columnIndex === 0) {
 					this.loading = true
 					setTimeout(()=>{
-						this.$refs.uvPickerRef4.setColumnValues(1, this.columnData[index])
+						this.$refs.picker4.setColumnValues(1, this.columnData[index])
 						this.loading = false
 					},1500)
 				}
 			},
-			navigateBack() {
-				uni.navigateBack()
+			showPicker(index) {
+				this.$refs[`picker${index+1}`].open();
 			},
 			change(e) {
 				console.log('change', e);
 			},
-			showPicker(index) {
-				this.index = index + 1
-				this[`show${index + 1}`] = true
-			},
 			close() {
-				// console.log('close');
-				this[`show${this.index}`] = false
+				console.log('close');
 			},
 			confirm(e) {
 				console.log('confirm', e);
-				this[`show${this.index}`] = false
 			},
 			cancel() {
-				// console.log('cancel');
-				this[`show${this.index}`] = false
+				console.log('cancel');
 			}
 		},
 	}

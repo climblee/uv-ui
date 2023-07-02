@@ -65,19 +65,3 @@
 		}
 	}
 </script>
-
-<style lang="scss" scoped>
-     $uv-overlay-top:0 !default;
-     $uv-overlay-left:0 !default;
-     $uv-overlay-width:100% !default;
-     $uv-overlay-height:100% !default;
-     $uv-overlay-background-color:rgba(0, 0, 0, .7) !default;
-	.uv-overlay {
-		position: fixed;
-		top:$uv-overlay-top;
-		left:$uv-overlay-left;
-		width: $uv-overlay-width;
-		height:$uv-overlay-height;
-		background-color:$uv-overlay-background-color;
-	}
-</style>

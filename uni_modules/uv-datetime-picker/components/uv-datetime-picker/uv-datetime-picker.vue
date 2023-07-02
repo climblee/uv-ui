@@ -1,8 +1,8 @@
 <template>
 	<uv-picker
 		ref="picker"
-		:show="show"
 		:closeOnClickOverlay="closeOnClickOverlay"
+		:closeOnClickConfirm="closeOnClickConfirm"
 		:columns="columns"
 		:title="title"
 		:itemHeight="itemHeight"
@@ -38,7 +38,6 @@
 	 * DatetimePicker 时间日期选择器
 	 * @description 此选择器用于时间日期
 	 * @tutorial https://www.uvui.cn/components/datetimePicker.html
-	 * @property {Boolean}			show				用于控制选择器的弹出与收起 ( 默认 false )
 	 * @property {Boolean}			showToolbar			是否显示顶部的操作栏  ( 默认 true )
 	 * @property {String | Number}	value				绑定值
 	 * @property {String}			title				顶部标题
@@ -63,10 +62,10 @@
 	 * @event {Function} confirm 点击确定按钮，返回当前选择的值
 	 * @event {Function} change 当选择值变化时触发
 	 * @event {Function} cancel 点击取消按钮
-	 * @example  <uv-datetime-picker :show="show" :value="value1"  mode="datetime" ></uv-datetime-picker>
+	 * @example  <uv-datetime-picker ref="datetimepicker" :value="value1"  mode="datetime" ></uv-datetime-picker>
 	 */
 	export default {
-		name: 'datetime-picker',
+		name: 'uv-datetime-picker',
 		emits: ['close','cancel','confirm','input','change','update:modelValue'],
 		mixins: [mpMixin, mixin, props],
 		data() {
@@ -77,12 +76,6 @@
 			}
 		},
 		watch: {
-			show(newValue, oldValue) {
-				if (newValue) {
-					this.getValue();
-					this.updateColumnValue(this.innerValue)
-				}
-			},
 			propsChange() {
 				this.init()
 			}
@@ -113,11 +106,13 @@
 			setFormatter(e) {
 				this.innerFormatter = e
 			},
-			// 关闭选择器
+			open() {
+				this.$refs.picker.open();
+				this.getValue();
+				this.updateColumnValue(this.innerValue);
+			},
 			close() {
-				if (this.closeOnClickOverlay) {
-					this.$emit('close')
-				}
+					this.$emit('close');
 			},
 			// 点击工具栏的取消按钮
 			cancel() {

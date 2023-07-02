@@ -182,9 +182,7 @@
 			},
 			// 计算气泡和指示器的位置信息
 			tooltipStyle() {
-				const style = {
-						transform: `translateY(${this.direction === 'top' ? '-100%' : '100%'})`,
-				};
+				const style = {};
 				if (this.tooltipInfo.width / 2 > this.textInfo.left + this.textInfo.width / 2 - this.screenGap) {
 					this.indicatorStyle = {}
 					style.left = `-${this.$uv.addUnit(this.textInfo.left - this.screenGap)}`
@@ -202,10 +200,10 @@
 					this.indicatorStyle = {}
 				}
 				if (this.direction === 'top') {
-					style.marginTop = '-10px'
+					style.marginTop = `-${10 + this.tooltipInfo.height}px`
 					this.indicatorStyle.bottom = '-4px'
 				} else {
-					style.marginBottom = '-10px'
+					style.marginTop = `${this.tooltipInfo.height-10}px`
 					this.indicatorStyle.top = '-4px'
 				}
 				return style

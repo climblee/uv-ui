@@ -59,7 +59,7 @@
 		</view>
 		<view class="uv-form-item__body__right__message__box">
 			<slot name="error">
-				<uv-transition :show="true" :duration="100" mode="slide-down" v-if="!!message && parentData.errorType === 'message'">
+				<uv-transition :show="true" :duration="100" mode="slide-top" v-if="!!message && parentData.errorType === 'message'">
 					<text
 						class="uv-form-item__body__right__message"
 						:style="{

@@ -118,7 +118,7 @@
 			},
 			bgColor: {
 				type: String,
-				default: '#fff'
+				default: '#ffffff'
 			},
 			safeArea: {
 				type: Boolean,
@@ -168,6 +168,10 @@
 			zoom: {
 				type: Boolean,
 				default: true
+			},
+			round: {
+				type: [Number, String],
+				default: 0
 			}
 		},
 		watch: {
@@ -228,7 +232,7 @@
 				return this.popupWidth >= 500 && this.popupHeight >= 500
 			},
 			bg() {
-				if (this.bgColor === '' || this.bgColor === 'none') {
+				if (this.bgColor === '' || this.bgColor === 'none' || this.$uv.getPx(this.round)>0) {
 					return 'transparent'
 				}
 				return this.bgColor
@@ -237,6 +241,19 @@
 				const style = {};
 				if (this.bgColor) {
 					style.backgroundColor = this.bg
+				}
+				if(this.round) {
+					const value = this.$uv.addUnit(this.round)
+					style.backgroundColor = this.bgColor
+					if(this.mode === 'top') {
+						style.borderBottomLeftRadius = value
+						style.borderBottomRightRadius = value
+					} else if(this.mode === 'bottom') {
+						style.borderTopLeftRadius = value
+						style.borderTopRightRadius = value
+					} else if(this.mode === 'center') {
+						style.borderRadius = value
+					} 
 				}
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}

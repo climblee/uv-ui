@@ -1,37 +1,29 @@
 <template>
 	<view class="uv-page">
-		<!-- <uv-navbar
-			title="键盘"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
-		<!-- <uv-gap height="20" bgColor="#fff"></uv-gap> -->
 		<uv-cell-group>
 			<uv-cell
-			    :titleStyle="{fontWeight: 500}"
-			    @click="openKeyboard(index)"
-			    :title="item.title"
-			    v-for="(item, index) in list"
-			    :key="index"
-			    isLink
+			  :titleStyle="{fontWeight: 500}"
+			  @click="openKeyboard(index)"
+			  :title="item.title"
+			  v-for="(item, index) in list"
+			  :key="index"
+			  isLink
 			>
 			<template v-slot:icon>
 				<image
-				    class="uv-cell-icon"
-				    :src="item.iconUrl"
-				    mode="widthFix"
+				  class="uv-cell-icon"
+				  :src="item.iconUrl"
+				  mode="widthFix"
 				></image>
 			</template>
 			</uv-cell>
 		</uv-cell-group>
 		<uv-keyboard
-		    :mode="keyData.mode"
-		    :dotDisabled="keyData.dotDisabled"
-		    :random='keyData.random'
-		    :show="show"
-		    @close="close"
+			ref="keyboardRef"
+		  :mode="keyData.mode"
+		  :dotDisabled="keyData.dotDisabled"
+		  :random='keyData.random'
+		  @close="close"
 			@cancel="cancel"
 			@confirm="confirm"
 			@change="change"
@@ -69,9 +61,8 @@
 					{
 						title: '打乱键盘按键的顺序',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/keyboard/order.png'
-					},
-				],
-				show: false
+					}
+				]
 			}
 		},
 		methods: {
@@ -79,48 +70,44 @@
 				uni.navigateBack();
 			},
 			// 点击展示不同的键盘
-			openKeyboard(indexNum) {
+			openKeyboard(index) {
 				this.keyData = {
 					mode: '',
 					dotDisabled: false,
 					random: false,
 				}
-				if (indexNum == 0) {
+				if (index == 0) {
 					this.keyData.mode = ''
-				} else if (indexNum == 1) {
+				} else if (index == 1) {
 					this.keyData.mode = 'number'
-				} else if (indexNum == 2) {
+				} else if (index == 2) {
 					this.keyData.mode = 'card'
-				} else if (indexNum == 3) {
+				} else if (index == 3) {
 					this.keyData.mode = 'number'
 					this.keyData.dotDisabled = true
-				} else if (indexNum == 4) {
+				} else if (index == 4) {
 					this.keyData.mode = 'number'
 					this.keyData.random = true
 				}
 				this.input = ''
-				this.show = true
+				this.$refs.keyboardRef.open();
 			},
 			change(e) {
 				console.log('change',e);
 				this.input += e
 			},
 			close() {
-				// console.log('close');
-				this.show = false
+				console.log('键盘关闭');
 			},
 			cancel() {
-				// console.log('cancel');
-				this.show = false
+				console.log('cancel');
 			},
 			confirm() {
-				// console.log('confirm');
-				this.show = false
+				console.log('confirm');
 			},
 			backspace() {
 				this.input = this.input.slice(0, -1)
 			}
-
 		}
 	}
 </script>

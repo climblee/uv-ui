@@ -1,11 +1,13 @@
 <template>
 	<!-- #ifndef APP-NVUE -->
 	<uv-popup 
-		:show="show"
-		@close="closeHandler">
+		ref="pickerColorPopup"
+		mode="bottom"
+		:close-on-click-overlay="closeOnClickOverlay"
+		@change="popupChange">
 		<view class="uv-pick-color">
 			<uv-toolbar
-				:show="show"
+				:show="showToolbar"
 				:cancelColor="cancelColor"
 				:confirmColor="confirmColor"
 				:cancelText="cancelText"
@@ -201,6 +203,7 @@
 		},
 		data() {
 			return {
+				showToolbar: false,
 				// rgba 颜色
 				rgba: {
 					r: 0,
@@ -237,14 +240,6 @@
 		watch: {
 			prefabColor(newVal) {
 				this.colorList = newVal;
-			},
-			show(newVal) {
-				if (newVal === true) {
-					this.$nextTick(async () => {
-						await this.$uv.sleep(350);
-						this.getSelectorQuery();
-					})
-				}
 			}
 		},
 		created() {
@@ -255,15 +250,24 @@
 			if (this.prefabColor.length) this.colorList = this.prefabColor;
 		},
 		methods: {
-			// 关闭选择器
-			closeHandler() {
-				if (this.closeOnClickOverlay) {
-					this.$emit('close')
-				}
+			open() {
+				this.$refs.pickerColorPopup.open();
+				this.showToolbar = true;
+				this.$nextTick(async () => {
+					await this.$uv.sleep(350);
+					this.getSelectorQuery();
+				})
+			},
+			close() {
+				this.$refs.pickerColorPopup.close();
+			},
+			popupChange(e) {
+				if(!e.show) this.$emit('close');
 			},
 			// 点击工具栏的取消按钮
 			cancelHandler() {
-				this.$emit('cancel')
+				this.$emit('cancel');
+				this.close();
 			},
 			// 点击工具栏的确定按钮
 			confirmHandler() {
@@ -271,6 +275,7 @@
 					rgba: this.rgba,
 					hex: this.hex
 				})
+				this.close();
 			},
 			// 初始化
 			init() {

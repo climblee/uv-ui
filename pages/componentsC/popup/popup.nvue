@@ -1,12 +1,5 @@
 <template>
 	<view>
-		<!-- <uv-navbar
-			title="弹窗"
-			@leftClick="navigateBack"
-			safeAreaInsetTop
-			fixed
-			placeholder
-		></uv-navbar> -->
 		<uv-gap
 			height="20"
 			bgColor="#fff"
@@ -30,17 +23,17 @@
 			</uv-cell>
 		</uv-cell-group>
 		<uv-popup
+			ref="popup"
 			:safeAreaInsetBottom="true"
 			:safeAreaInsetTop="true"
 			:mode="popupData.mode"
-			:show="show"
 			:round="popupData.round"
 			:overlay="popupData.overlay"
 			:borderRadius="popupData.borderRadius"
 			:closeable="popupData.closeable"
 			:closeOnClickOverlay="popupData.closeOnClickOverlay"
-			@close="close"
-			@open="open"
+			@change="change"
+			@maskClick="maskClick"
 		>
 			<view
 				class="uv-popup-slot"
@@ -53,7 +46,7 @@
 					type="success"
 					text="点我关闭"
 					customStyle="width: 200rpx;color:#fff;"
-					@click="show = false"
+					@click="close"
 				></uv-button>
 			</view>
 		</uv-popup>
@@ -68,8 +61,7 @@
 				show: false,
 				popupData: {
 					overlay: true,
-					mode: 'bottom',
-					borderRadius: '',
+					mode: 'top',
 					closeable: true,
 					closeOnClickOverlay: true
 				},
@@ -113,7 +105,6 @@
 						popupData: {
 							overlay: true,
 							mode: 'center',
-							round: 10,
 							closeOnClickOverlay: true
 						},
 						title: '居中弹出',
@@ -123,7 +114,6 @@
 						popupData: {
 							overlay: true,
 							mode: 'bottom',
-							round: 10,
 							closeOnClickOverlay: true
 						},
 						title: '显示圆角',
@@ -155,19 +145,22 @@
 		methods: {
 			openPopup(popupData) {
 				this.popupData = popupData
-				sleep().then(() => {
-					this.show = !this.show
-				})
+				this.timer && clearTimeout(this.timer);
+				this.timer = setTimeout(()=>{
+					this.$refs.popup.open();
+				},2)
 			},
 			navigateBack() {
 				uni.navigateBack()
 			},
-			open() {
-				// console.log('open');
-			},
 			close() {
-				this.show = false
-				// console.log('close');
+				this.$refs.popup.close();
+			},
+			change(e) {
+				console.log('改变弹窗状态',e);
+			},
+			maskClick() {
+				console.log('点击蒙层');
 			}
 		}
 	}

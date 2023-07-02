@@ -105,22 +105,16 @@
 			}
 		},
 		computed: {
-			// 生成样式数据
-			stylesObject() {
-				let styles = {
-					...this.$uv.addStyle(this.customStyle),
-					'transition-duration': `${this.duration / 1000}s`
-				}
-				let transform = '';
-				for (let i in styles) {
-					let line = this.toLine(i);
-					transform += line + ':' + styles[i] + ';'
-				}
-				return transform;
-			},
 			// 初始化动画条件
 			transformStyles() {
-				return 'transform:' + this.transform + ';' + 'opacity:' + this.opacity + ';' + this.stylesObject
+				const style = {
+					transform: this.transform,
+					opacity: this.opacity,
+					...this.$uv.addStyle(this.customStyle),
+					'transition-duration': `${this.duration / 1000}s`
+				};
+				console.log('style',style)
+				return this.$uv.addStyle(style,'string');
 			}
 		},
 		created() {

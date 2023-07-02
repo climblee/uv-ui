@@ -50,10 +50,10 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 控制键盘的弹出与收起
-		show: {
+		// 是否允许点击确认按钮关闭组件
+		closeOnClickConfirm: {
 			type: Boolean,
-			default: false
+			default: true
 		},
 		// 是否显示遮罩，某些时候数字键盘时，用户希望看到自己的数值，所以可能不想要遮罩
 		overlay: {
