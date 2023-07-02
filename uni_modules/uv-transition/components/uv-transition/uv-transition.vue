@@ -188,6 +188,11 @@
 						this.animation = createAnimation(this.config, this);
 						this.tranfromInit(false).step();
 						this.animation.run();
+						// #ifdef VUE3
+						// #ifdef H5
+						this.opacity = 1;
+						// #endif
+						// #endif
 						this.$emit('change', {
 							detail: this.isShow
 						})

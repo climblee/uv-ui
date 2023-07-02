@@ -1,3 +1,20 @@
+## 1.0.16（2023-07-03）
+1. 优化 uv-transition 动画组件，代码重构优化，性能更加友好，增加自定义动画功能。详情[参考文档](https://www.uvui.cn/components/transition.html)
+2. 优化 uv-popup 弹出层，代码重构优化，性能翻倍，小程序体验性能更加，避免卡顿。打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/popup.html)
+3. 优化 uv-calendar 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/actionSheet.html)
+4. 优化 uv-action-sheet 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/calendar.html)
+5. 优化 uv-datetime-picker 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/datetimePicker.html)
+6. 优化 uv-form 由于弹出层uv-transition的修改，组件内部做了相应的修改，参数不变。
+7. 优化 uv-keyboard 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/keyboard.html)
+8. 优化 uv-modal 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/modal.html)
+9. 优化 uv-notify 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/notify.html)
+10. 优化 uv-overlay 由于弹出层uv-transition的修改，组件内部做了相应的修改，参数不变。
+11. 优化 uv-pick-color 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/pickColor.html)
+12. 优化 uv-picker 由于弹出层uv-popup的修改，打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/picker.html)
+13. 优化 uv-tooltip 由于弹出层uv-transition的修改，组件内部做了相应的修改，参数不变。
+14. 优化 uv-loading-page 由于弹出层uv-transition的修改，组件内部做了相应的修改，参数不变。
+15. 优化 相关文档的优化更改。
+16. 修复 uv-safe-bottom 修复，在百度程序，抖音小程序不生效的BUG
 ## 1.0.15（2023-06-29）
 1. 欢迎加QQ群交流：[549833913](https://www.uvui.cn/components/addQQGroup.html)
 2. 优化 uv-swiper 优化：1. 增加titleStyle属性，方便修改标题样式；2. 标题上去掉是否是图片的判断，避免无后缀的图片不显示

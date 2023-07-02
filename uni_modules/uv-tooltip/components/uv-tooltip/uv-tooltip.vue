@@ -213,9 +213,6 @@
 					style.marginTop = `${this.tooltipInfo.height-10}px`
 					this.indicatorStyle.top = '-4px'
 				}
-				// #ifdef VUE3
-				style.opacity = 1;
-				// #endif
 				return style
 			}
 		},

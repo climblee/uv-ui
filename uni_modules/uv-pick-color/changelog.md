@@ -1,3 +1,5 @@
+## 1.0.4（2023-07-02）
+uv-pick-color  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/pickColor.html
 ## 1.0.3（2023-06-12）
 1. 修复在选择颜色时候百度小程序报错的BUG
 ## 1.0.2（2023-05-27）

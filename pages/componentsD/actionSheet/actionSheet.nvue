@@ -68,12 +68,6 @@
 	export default {
 		data() {
 			return {
-				// show0: false,
-				// show1: false,
-				// show2: false,
-				// show3: false,
-				// show4: false,
-				// show5: false,
 				actions0: [{
 						name: '选项1',
 					},

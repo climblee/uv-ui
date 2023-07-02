@@ -3,7 +3,6 @@
 		:show="show"
 		mode="fade"
 		:duration="fade ? duration : 0"
-		:custom-style="{opacity:opacity}"
 	>
 		<view
 			class="uv-image"
@@ -112,8 +111,7 @@
 				imgWidth: this.width,
 				// 因为props的值无法修改，故需要一个中间值
 				imgHeight: this.height,
-				thresholdValue: 50,
-				opacity: 0
+				thresholdValue: 50
 			};
 		},
 		watch: {
@@ -126,9 +124,6 @@
 					} else {
 						this.isError = false;
 						this.loading = true;
-						// #ifdef VUE3
-						this.opacity = 1;
-						// #endif
 					}
 				}
 			}

@@ -1,3 +1,5 @@
+## 1.0.4（2023-07-02）
+uv-modal  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/modal.html
 ## 1.0.3（2023-06-29）
 1. 增加closeLoading方法，方便异步加载手动取消
 2. 更新文档

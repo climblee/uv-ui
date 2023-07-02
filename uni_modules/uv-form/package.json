@@ -1,7 +1,7 @@
 {
   "id": "uv-form",
   "displayName": "uv-form 表单 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "此组件一般用于表单场景，可以配置Input输入框，Textarea文本域，Checkbox复选框，Radio单选框，开关选择器等，进行表单验证等。",
   "keywords": [
     "form",
