@@ -1,48 +1,43 @@
 <template>
 	<view
-	    class="uv-search"
-	    @tap="clickHandler"
-	    :style="[{
+	  class="uv-search"
+	  @tap="clickHandler"
+	  :style="[{
 			margin: margin,
 		}, $uv.addStyle(customStyle)]"
 	>
 		<view
-		    class="uv-search__content"
-		    :style="{
+		  class="uv-search__content"
+		  :style="{
 				backgroundColor: bgColor,
 				borderRadius: shape == 'round' ? '100px' : '4px',
 				borderColor: borderColor,
 			}"
 		>
-			<template v-if="$slots.label || label !== null">
-				<slot name="label">
-					<text class="uv-search__content__label">{{ label }}</text>
-				</slot>
-			</template>
 			<view class="uv-search__content__icon">
 				<uv-icon
 					@tap="clickIcon"
-				    :size="searchIconSize"
-				    :name="searchIcon"
-				    :color="searchIconColor ? searchIconColor : color"
+				  :size="searchIconSize"
+				  :name="searchIcon"
+				  :color="searchIconColor ? searchIconColor : color"
 				></uv-icon>
 			</view>
 			<input
-			    confirm-type="search"
-			    @blur="blur"
-			    :value="inputValue"
-			    @confirm="search"
-			    @input="inputChange"
-			    :disabled="disabled"
-			    @focus="getFocus"
-			    :focus="focus"
-			    :maxlength="maxlength"
-			    placeholder-class="uv-search__content__input--placeholder"
-			    :placeholder="placeholder"
-			    :placeholder-style="`color: ${placeholderColor}`"
-			    class="uv-search__content__input"
-			    type="text"
-			    :style="[{
+			  confirm-type="search"
+			  @blur="blur"
+			  :value="inputValue"
+			  @confirm="search"
+			  @input="inputChange"
+			  :disabled="disabled"
+			  @focus="getFocus"
+			  :focus="focus"
+			  :maxlength="maxlength"
+			  placeholder-class="uv-search__content__input--placeholder"
+			  :placeholder="placeholder"
+			  :placeholder-style="`color: ${placeholderColor}`"
+			  class="uv-search__content__input"
+			  type="text"
+			  :style="[{
 					textAlign: inputAlign,
 					color: color,
 					backgroundColor: bgColor,
@@ -50,23 +45,23 @@
 				}, inputStyle]"
 			/>
 			<view
-			    class="uv-search__content__icon uv-search__content__close"
-			    v-if="keyword && clearabled && focused"
-			    @tap="clear"
+			  class="uv-search__content__icon uv-search__content__close"
+			  v-if="keyword && clearabled && focused"
+			  @tap="clear"
 			>
 				<uv-icon
-				    name="close"
-				    size="11"
-				    color="#ffffff"
+				  name="close"
+				  size="11"
+				  color="#ffffff"
 					customStyle="line-height: 12px"
 				></uv-icon>
 			</view>
 		</view>
 		<text
-		    :style="[actionStyle]"
-		    class="uv-search__action"
-		    :class="[(showActionBtn || show) && 'uv-search__action--active']"
-		    @tap.stop.prevent="custom"
+		  :style="[actionStyle]"
+		  class="uv-search__action"
+		  :class="[(showActionBtn || show) && 'uv-search__action--active']"
+		  @tap.stop.prevent="custom"
 		>{{ actionText }}</text>
 	</view>
 </template>
@@ -112,7 +107,7 @@
 	 */
 	export default {
 		name: "uv-search",
-		emits: ['click','input','change','clear','search','custom','focus','blur','clickIcon','update:modelValue'],
+		emits: ['click', 'input', 'change', 'clear', 'search', 'custom', 'focus', 'blur', 'clickIcon', 'update:modelValue'],
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
@@ -132,7 +127,7 @@
 				this.$emit('input', nVal)
 				// #endif
 				// #ifdef VUE3
-				this.$emit('update:modelValue',nVal)
+				this.$emit('update:modelValue', nVal)
 				// #endif
 				// 触发change事件，事件效果和v-model双向绑定的效果一样，让用户多一个选择
 				this.$emit('change', nVal);
@@ -172,7 +167,7 @@
 			inputChange(e) {
 				this.keyword = e.detail.value;
 				// #ifdef VUE3
-				this.$emit('update:modelValue',this.keyword)
+				this.$emit('update:modelValue', this.keyword)
 				// #endif
 			},
 			// 清空输入
@@ -184,7 +179,7 @@
 					this.$emit('clear');
 				})
 				// #ifdef VUE3
-				this.$emit('update:modelValue',this.keyword)
+				this.$emit('update:modelValue', this.keyword)
 				// #endif
 			},
 			// 确定搜索
@@ -233,103 +228,93 @@
 </script>
 
 <style lang="scss" scoped>
-@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-$uv-search-content-padding: 0 10px !default;
-$uv-search-label-color: $uv-main-color !default;
-$uv-search-label-font-size: 14px !default;
-$uv-search-label-margin: 0 4px !default;
-$uv-search-close-size: 20px !default;
-$uv-search-close-radius: 100px !default;
-$uv-search-close-bgColor: #C6C7CB !default;
-$uv-search-close-transform: scale(0.82) !default;
-$uv-search-input-font-size: 14px !default;
-$uv-search-input-margin: 0 5px !default;
-$uv-search-input-color: $uv-main-color !default;
-$uv-search-input-placeholder-color: $uv-tips-color !default;
-$uv-search-action-font-size: 14px !default;
-$uv-search-action-color: $uv-main-color !default;
-$uv-search-action-width: 0 !default;
-$uv-search-action-active-width: 40px !default;
-$uv-search-action-margin-left: 5px !default;
-
-/* #ifdef H5 */
-// iOS15在H5下，hx的某些版本，input type=search时，会多了一个搜索图标，进行移除
-[type="search"]::-webkit-search-decoration {
-    display: none;
-}
-/* #endif */
-
-.uv-search {
-	@include flex(row);
-	align-items: center;
-	flex: 1;
-
-	&__content {
-		@include flex;
+	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
+	$uv-search-content-padding: 0 10px !default;
+	$uv-search-label-color: $uv-main-color !default;
+	$uv-search-label-font-size: 14px !default;
+	$uv-search-label-margin: 0 4px !default;
+	$uv-search-close-size: 20px !default;
+	$uv-search-close-radius: 100px !default;
+	$uv-search-close-bgColor: #C6C7CB !default;
+	$uv-search-close-transform: scale(0.82) !default;
+	$uv-search-input-font-size: 14px !default;
+	$uv-search-input-margin: 0 5px !default;
+	$uv-search-input-color: $uv-main-color !default;
+	$uv-search-input-placeholder-color: $uv-tips-color !default;
+	$uv-search-action-font-size: 14px !default;
+	$uv-search-action-color: $uv-main-color !default;
+	$uv-search-action-width: 0 !default;
+	$uv-search-action-active-width: 40px !default;
+	$uv-search-action-margin-left: 5px !default;
+	/* #ifdef H5 */
+	// iOS15在H5下，hx的某些版本，input type=search时，会多了一个搜索图标，进行移除
+	[type="search"]::-webkit-search-decoration {
+		display: none;
+	}
+	/* #endif */
+	.uv-search {
+		@include flex(row);
 		align-items: center;
-		padding: $uv-search-content-padding;
 		flex: 1;
-		justify-content: space-between;
-		border-width: 1px;
-		border-color: transparent;
-		border-style: solid;
-		overflow: hidden;
-
-		&__icon {
+		&__content {
 			@include flex;
 			align-items: center;
-		}
-
-		&__label {
-			color: $uv-search-label-color;
-			font-size: $uv-search-label-font-size;
-			margin: $uv-search-label-margin;
-		}
-
-		&__close {
-			width: $uv-search-close-size;
-			height: $uv-search-close-size;
-			border-top-left-radius: $uv-search-close-radius;
-			border-top-right-radius: $uv-search-close-radius;
-			border-bottom-left-radius: $uv-search-close-radius;
-			border-bottom-right-radius: $uv-search-close-radius;
-			background-color: $uv-search-close-bgColor;
-			@include flex(row);
-			align-items: center;
-			justify-content: center;
-			transform: $uv-search-close-transform;
-		}
-
-		&__input {
+			padding: $uv-search-content-padding;
 			flex: 1;
-			font-size: $uv-search-input-font-size;
-			line-height: 1;
-			margin: $uv-search-input-margin;
-			color: $uv-search-input-color;
-
-			&--placeholder {
-				color: $uv-search-input-placeholder-color;
+			justify-content: space-between;
+			border-width: 1px;
+			border-color: transparent;
+			border-style: solid;
+			overflow: hidden;
+			&__icon {
+				@include flex;
+				align-items: center;
+			}
+			&__label {
+				color: $uv-search-label-color;
+				font-size: $uv-search-label-font-size;
+				margin: $uv-search-label-margin;
+			}
+			&__close {
+				width: $uv-search-close-size;
+				height: $uv-search-close-size;
+				border-top-left-radius: $uv-search-close-radius;
+				border-top-right-radius: $uv-search-close-radius;
+				border-bottom-left-radius: $uv-search-close-radius;
+				border-bottom-right-radius: $uv-search-close-radius;
+				background-color: $uv-search-close-bgColor;
+				@include flex(row);
+				align-items: center;
+				justify-content: center;
+				transform: $uv-search-close-transform;
+			}
+			&__input {
+				flex: 1;
+				font-size: $uv-search-input-font-size;
+				line-height: 1;
+				margin: $uv-search-input-margin;
+				color: $uv-search-input-color;
+				&--placeholder {
+					color: $uv-search-input-placeholder-color;
+				}
+			}
+		}
+		&__action {
+			font-size: $uv-search-action-font-size;
+			color: $uv-search-action-color;
+			width: $uv-search-action-width;
+			overflow: hidden;
+			transition-property: width;
+			transition-duration: 0.3s;
+			/* #ifndef APP-NVUE */
+			white-space: nowrap;
+			/* #endif */
+			text-align: center;
+			&--active {
+				width: $uv-search-action-active-width;
+				margin-left: $uv-search-action-margin-left;
 			}
 		}
 	}
-
-	&__action {
-		font-size: $uv-search-action-font-size;
-		color: $uv-search-action-color;
-		width: $uv-search-action-width;
-		overflow: hidden;
-		transition-property: width;
-		transition-duration: 0.3s;
-		/* #ifndef APP-NVUE */
-		white-space: nowrap;
-		/* #endif */
-		text-align: center;
-
-		&--active {
-			width: $uv-search-action-active-width;
-			margin-left: $uv-search-action-margin-left;
-		}
-	}
-}
 </style>
