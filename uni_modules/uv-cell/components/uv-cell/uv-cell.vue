@@ -4,10 +4,10 @@
 		@click="clickHandler">
 		<view class="uv-cell__body" :class="[ center && 'uv-cell--center', size === 'large' && 'uv-cell__body--large']">
 			<view class="uv-cell__body__content">
-				<view class="uv-cell__left-icon-wrap" v-if="$slots.icon || icon">
-					<slot name="icon" v-if="$slots.icon">
+				<view class="uv-cell__left-icon-wrap">
+					<slot name="icon">
+						<uv-icon v-if="icon" :name="icon" :custom-style="iconStyle" :size="size === 'large' ? 22 : 18"></uv-icon>
 					</slot>
-					<uv-icon v-else :name="icon" :custom-style="iconStyle" :size="size === 'large' ? 22 : 18"></uv-icon>
 				</view>
 				<view class="uv-cell__title">
 					<slot name="title">
@@ -72,11 +72,6 @@
 	export default {
 		name: 'uv-cell',
 		emits: ['click'],
-		data() {
-			return {
-
-			}
-		},
 		mixins: [mpMixin, mixin, props],
 		computed: {
 			titleTextStyle() {
@@ -124,10 +119,8 @@
 	$uv-cell-title-font-size-large: 16px !default;
 	$uv-cell-left-icon-wrap-margin-right: 4px !default;
 	$uv-cell-right-icon-wrap-margin-left: 4px !default;
-	$uv-cell-title-flex:1 !default;
-	$uv-cell-label-margin-top:5px !default;
-
-
+	$uv-cell-title-flex: 1 !default;
+	$uv-cell-label-margin-top: 5px !default;
 	.uv-cell {
 		&__body {
 			@include flex();
@@ -137,19 +130,16 @@
 			padding: $uv-cell-padding;
 			font-size: $uv-cell-font-size;
 			color: $uv-cell-color;
-
 			&__content {
 				@include flex(row);
 				align-items: center;
 				flex: 1;
 			}
-
 			&--large {
 				padding-top: $uv-cell-padding-top-large;
 				padding-bottom: $uv-cell-padding-bottom-large;
 			}
 		}
-
 		&__left-icon-wrap,
 		&__right-icon-wrap {
 			@include flex();
@@ -157,72 +147,57 @@
 			// height: $uv-cell-line-height;
 			font-size: $uv-cell-icon-size;
 		}
-
 		&__left-icon-wrap {
 			margin-right: $uv-cell-left-icon-wrap-margin-right;
 		}
-
 		&__right-icon-wrap {
 			margin-left: $uv-cell-right-icon-wrap-margin-left;
 			transition: transform 0.3s;
-
 			&--up {
 				transform: rotate(-90deg);
 			}
-
 			&--down {
 				transform: rotate(90deg);
 			}
 		}
-
 		&__title {
 			flex: $uv-cell-title-flex;
-
 			&-text {
 				font-size: $uv-cell-title-font-size;
 				line-height: $uv-cell-title-line-height;
 				color: $uv-cell-title-color;
-
 				&--large {
 					font-size: $uv-cell-title-font-size-large;
 				}
 			}
-
 		}
-
 		&__label {
 			margin-top: $uv-cell-label-margin-top;
 			font-size: $uv-cell-label-font-size;
 			color: $uv-cell-label-color;
 			line-height: $uv-cell-label-line-height;
-
 			&--large {
 				font-size: $uv-cell-label-font-size-large;
 			}
 		}
-
 		&__value {
 			text-align: right;
 			font-size: $uv-cell-value-font-size;
 			line-height: $uv-cell-line-height;
 			color: $uv-cell-value-color;
-
 			&--large {
 				font-size: $uv-cell-value-font-size-large;
 			}
 		}
-
 		&--clickable {
 			background-color: $uv-cell-clickable-color;
 		}
-
 		&--disabled {
 			color: $uv-cell-disabled-color;
 			/* #ifndef APP-NVUE */
 			cursor: not-allowed;
 			/* #endif */
 		}
-
 		&--center {
 			align-items: center;
 		}
