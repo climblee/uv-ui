@@ -1,25 +1,11 @@
 <template>
-	<uv-transition
-	    mode="fade"
-	    :customStyle="backTopStyle"
-	    :show="show"
-	>
-		<view
-		    class="uv-back-top"
-			:style="[contentStyle]"
-		    v-if="!$slots.default && !$slots.$default"
-			@click="backToTop"
-		>
-			<uv-icon
-			    :name="icon"
-			    :custom-style="iconStyle"
-			></uv-icon>
-			<text
-			    v-if="text"
-			    class="uv-back-top__text"
-			>{{text}}</text>
-		</view>
-		<slot v-else />
+	<uv-transition mode="fade" :customStyle="backTopStyle" :show="show">
+		<slot>
+			<view class="uv-back-top" :style="[contentStyle]" @click="backToTop">
+				<uv-icon :name="icon" :custom-style="iconStyle"></uv-icon>
+				<text v-if="text" class="uv-back-top__text">{{text}}</text>
+			</view>
+		</slot>
 	</uv-transition>
 </template>
 
@@ -34,7 +20,6 @@
 	 * backTop 返回顶部
 	 * @description 本组件一个用于长页面，滑动一定距离后，出现返回顶部按钮，方便快速返回顶部的场景。
 	 * @tutorial https://www.uvui.cn/components/backTop.html
-	 * 
 	 * @property {String}			mode  		返回顶部的形状，circle-圆形，square-方形 （默认 'circle' ）
 	 * @property {String} 			icon 		自定义图标 （默认 'arrow-upward' ） 见官方文档示例
 	 * @property {String} 			text 		提示文字 
@@ -73,7 +58,7 @@
 				const style = {}
 				let radius = 0
 				// 是否圆形
-				if(this.mode === 'circle') {
+				if (this.mode === 'circle') {
 					radius = '100px'
 				} else {
 					radius = '4px'
@@ -96,7 +81,7 @@
 					offset: 0
 				})
 				// #endif
-				
+
 				// #ifndef APP-NVUE
 				uni.pageScrollTo({
 					scrollTop: 0,
@@ -111,21 +96,20 @@
 
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-  $uv-back-top-flex:1 !default;
-  $uv-back-top-height:100% !default;
-  $uv-back-top-background-color:#E1E1E1 !default;
-  $uv-back-top-tips-font-size:12px !default;
+	$uv-back-top-flex: 1 !default;
+	$uv-back-top-height: 100% !default;
+	$uv-back-top-background-color: #E1E1E1 !default;
+	$uv-back-top-tips-font-size: 12px !default;
 	.uv-back-top {
 		@include flex;
 		flex-direction: column;
 		align-items: center;
-		flex:$uv-back-top-flex;
+		flex: $uv-back-top-flex;
 		height: $uv-back-top-height;
 		justify-content: center;
 		background-color: $uv-back-top-background-color;
-
 		&__tips {
-			font-size:$uv-back-top-tips-font-size;
+			font-size: $uv-back-top-tips-font-size;
 			transform: scale(0.8);
 		}
 	}
