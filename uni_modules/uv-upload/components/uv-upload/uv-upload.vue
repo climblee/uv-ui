@@ -3,123 +3,117 @@
 		<view class="uv-upload__wrap" >
 			<template v-if="previewImage">
 				<view
-				    class="uv-upload__wrap__preview"
-				    v-for="(item, index) in lists"
-				    :key="index"
+				  class="uv-upload__wrap__preview"
+				  v-for="(item, index) in lists"
+				  :key="index"
 				>
 					<image
-					    v-if="item.isImage || (item.type && item.type === 'image')"
-					    :src="item.thumb || item.url"
-					    :mode="imageMode"
-					    class="uv-upload__wrap__preview__image"
-					    @tap="onPreviewImage(item)"
+					  v-if="item.isImage || (item.type && item.type === 'image')"
+					  :src="item.thumb || item.url"
+					  :mode="imageMode"
+					  class="uv-upload__wrap__preview__image"
+					  @tap="onPreviewImage(item)"
 						:style="[{
 							width: $uv.addUnit(width),
 							height: $uv.addUnit(height)
 						}]"
 					/>
 					<view
-					    v-else
-					    class="uv-upload__wrap__preview__other"
+					  v-else
+					  class="uv-upload__wrap__preview__other"
 					>
 						<uv-icon
-						    color="#80CBF9"
-						    size="26"
-						    :name="item.isVideo || (item.type && item.type === 'video') ? 'movie' : 'folder'"
+						  color="#80CBF9"
+						  size="26"
+						  :name="item.isVideo || (item.type && item.type === 'video') ? 'movie' : 'folder'"
 						></uv-icon>
 						<text class="uv-upload__wrap__preview__other__text">{{item.isVideo || (item.type && item.type === 'video') ? '视频' : '文件'}}</text>
 					</view>
 					<view
-					    class="uv-upload__status"
-					    v-if="item.status === 'uploading' || item.status === 'failed'"
+					  class="uv-upload__status"
+					  v-if="item.status === 'uploading' || item.status === 'failed'"
 					>
 						<view class="uv-upload__status__icon">
 							<uv-icon
-							    v-if="item.status === 'failed'"
-							    name="close-circle"
-							    color="#ffffff"
-							    size="25"
+							  v-if="item.status === 'failed'"
+							  name="close-circle"
+							  color="#ffffff"
+							  size="25"
 							/>
 							<uv-loading-icon
-							    size="22"
-							    mode="circle"
-							    v-else
+							  size="22"
+							  mode="circle"
+							  v-else
 							/>
 						</view>
 						<text
-						    v-if="item.message"
-						    class="uv-upload__status__message"
+						  v-if="item.message"
+						  class="uv-upload__status__message"
 						>{{ item.message }}</text>
 					</view>
 					<view
-					    class="uv-upload__deletable"
-					    v-if="item.status !== 'uploading' && (deletable || item.deletable)"
-					    @tap.stop="deleteItem(index)"
+					  class="uv-upload__deletable"
+					  v-if="item.status !== 'uploading' && (deletable || item.deletable)"
+					  @tap.stop="deleteItem(index)"
 					>
 						<view class="uv-upload__deletable__icon">
 							<uv-icon
-							    name="close"
-							    color="#ffffff"
-							    size="10"
+							  name="close"
+							  color="#ffffff"
+							  size="10"
 							></uv-icon>
 						</view>
 					</view>
 					<view
-					    class="uv-upload__success"
-					    v-if="item.status === 'success'"
+					  class="uv-upload__success"
+					  v-if="item.status === 'success'"
 					>
 						<!-- #ifdef APP-NVUE -->
 						<image
-						    :src="successIcon"
-						    class="uv-upload__success__icon"
+						  :src="successIcon"
+						  class="uv-upload__success__icon"
 						></image>
 						<!-- #endif -->
 						<!-- #ifndef APP-NVUE -->
 						<view class="uv-upload__success__icon">
 							<uv-icon
-							    name="checkmark"
-							    color="#ffffff"
-							    size="12"
+							  name="checkmark"
+							  color="#ffffff"
+							  size="12"
 							></uv-icon>
 						</view>
 						<!-- #endif -->
 					</view>
 				</view>
-				
 			</template>
-			
 			<template v-if="isInCount">
-				<view
-				    v-if="$slots.default || $slots.$default"
-				    @tap="chooseFile"
-				>
-					<slot />
-				</view>
-				<view
-				    v-else
-				    class="uv-upload__button"
-				    :hover-class="!disabled ? 'uv-upload__button--hover' : ''"
-				    hover-stay-time="150"
-				    @tap="chooseFile"
-				    :class="[disabled && 'uv-upload__button--disabled']"
-					:style="[{
-						width: $uv.addUnit(width),
-						height: $uv.addUnit(height)
-					}]"
-				>
-					<uv-icon
-					    :name="uploadIcon"
-					    size="26"
-					    :color="uploadIconColor"
-					></uv-icon>
-					<text
-					    v-if="uploadText"
-					    class="uv-upload__button__text"
-					>{{ uploadText }}</text>
+				<view @tap="chooseFile">
+					<slot>
+						<view
+						  class="uv-upload__button"
+						  :hover-class="!disabled ? 'uv-upload__button--hover' : ''"
+						  hover-stay-time="150"
+						  @tap.stop="chooseFile"
+						  :class="[disabled && 'uv-upload__button--disabled']"
+							:style="[{
+								width: $uv.addUnit(width),
+								height: $uv.addUnit(height)
+							}]"
+						>
+							<uv-icon
+							  :name="uploadIcon"
+							  size="26"
+							  :color="uploadIconColor"
+							></uv-icon>
+							<text
+							  v-if="uploadText"
+							  class="uv-upload__button__text"
+							>{{ uploadText }}</text>
+						</view>
+					</slot>
 				</view>
 			</template>
 		</view>
-
 	</view>
 </template>
 
@@ -205,39 +199,42 @@
 				this.isInCount = lists.length < maxCount
 			},
 			chooseFile() {
-				const {
-					maxCount,
-					multiple,
-					lists,
-					disabled
-				} = this;
-				if (disabled) return;
-				// 如果用户传入的是字符串，需要格式化成数组
-				let capture;
-				try {
-					capture = array(this.capture) ? this.capture : this.capture.split(',');
-				}catch(e) {
-					capture = [];
-				}
-				chooseFile(
-						Object.assign({
-							accept: this.accept,
-							multiple: this.multiple,
-							capture: capture,
-							compressed: this.compressed,
-							maxDuration: this.maxDuration,
-							sizeType: this.sizeType,
-							camera: this.camera,
-						}, {
-							maxCount: maxCount - lists.length,
+				this.timer && clearTimeout(this.timer);
+				this.timer = setTimeout(()=>{
+					const {
+						maxCount,
+						multiple,
+						lists,
+						disabled
+					} = this;
+					if (disabled) return;
+					// 如果用户传入的是字符串，需要格式化成数组
+					let capture;
+					try {
+						capture = array(this.capture) ? this.capture : this.capture.split(',');
+					}catch(e) {
+						capture = [];
+					}
+					chooseFile(
+							Object.assign({
+								accept: this.accept,
+								multiple: this.multiple,
+								capture: capture,
+								compressed: this.compressed,
+								maxDuration: this.maxDuration,
+								sizeType: this.sizeType,
+								camera: this.camera,
+							}, {
+								maxCount: maxCount - lists.length,
+							})
+						)
+						.then((res) => {
+							this.onBeforeRead(multiple ? res : res[0]);
 						})
-					)
-					.then((res) => {
-						this.onBeforeRead(multiple ? res : res[0]);
-					})
-					.catch((error) => {
-						this.$emit('error', error);
-					});
+						.catch((error) => {
+							this.$emit('error', error);
+						});
+				},100)
 			},
 			// 文件读取之前
 			onBeforeRead(file) {
