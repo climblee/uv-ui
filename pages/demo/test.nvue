@@ -1,34 +1,91 @@
 <template>
 	<view>
-		<uv-transition
-		  :show="true"
-		  custom-class="uv-overlay"
-		  :duration="300"
-		  :custom-style="overlayStyle"
-		></uv-transition>
+		<uv-form labelPosition="left" :model="model1" :rules="rules" ref="uvFormRef">
+			<uv-form-item label="姓名" prop="userInfo.name" borderBottom ref="item1">
+				<uv-input v-model="model1.userInfo.name" border="none">
+				</uv-input>
+			</uv-form-item>
+			<uv-form-item label="性别" prop="userInfo.sex" borderBottom @click="showSexSelect" ref="item1">
+				<uv-input v-model="model1.userInfo.sex" disabled disabledColor="#ffffff" placeholder="请选择性别" border="none">
+				</uv-input>
+				<template v-slot:right>
+					<uv-icon name="arrow-right"></uv-icon>
+				</template>
+			</uv-form-item>
+			<uv-button type="primary" text="提交" customStyle="margin-top: 10px" @click="submit"></uv-button>
+			<uv-button type="error" text="重置" customStyle="margin-top: 10px" @click="reset"></uv-button>
+		</uv-form>
+		<uv-action-sheet ref="sexSelect" :actions="actions" title="请选择性别" description="如果选择保密会报错" @select="sexSelect">
+		</uv-action-sheet>
 	</view>
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				overlayStyle: {
-					position: 'fixed',
-					top: 0,
-					left: 0,
-					right: 0,
-					zIndex: 1000,
-					bottom: 0,
-					'background-color': `rgba(0, 0, 0, 0.4)`
-				}
+				model1: {
+					userInfo: {
+						name: 'uv-ui',
+						sex: '',
+					},
+				},
+				actions: [{
+					name: '男',
+				}, {
+					name: '女',
+				}, {
+					name: '保密',
+				}, ],
+				rules: {
+					'userInfo.name': {
+						type: 'string',
+						required: true,
+						message: '请填写姓名',
+						trigger: ['blur', 'change']
+					},
+					'userInfo.sex': {
+						type: 'string',
+						max: 1,
+						required: true,
+						message: '请选择男或女',
+						trigger: ['blur', 'change']
+					},
+				},
+				radio: '',
+				switchVal: false
 			}
 		},
 		methods: {
-			open() {
-				this.$refs.datetimePicker.open();
+			submit() {
+				// 如果有错误，会在catch中返回报错信息数组，校验通过则在then中返回true
+				this.$refs.uvFormRef.validate().then(res => {
+					uni.showToast({
+						icon: 'success',
+						title: '校验通过'
+					})
+				}).catch(errors => {
+					uni.showToast({
+						icon: 'error',
+						title: '校验失败'
+					})
+				})
 			},
-			confirm(e) {
-				console.log('confirm', e);
+			reset() {
+				this.$refs.uvFormRef.resetFields();
+				this.$refs.uvFormRef.clearValidate();
+			},
+			// 性别选择
+			showSexSelect() {
+				this.$refs.sexSelect.open();
+				this.hideKeyboard();
+			},
+			sexSelect(e) {
+				this.model1.userInfo.sex = e.name;
+				// 对部分表单字段进行校验
+				this.$refs.uvFormRef.validateField('userInfo.sex')
+			},
+			hideKeyboard() {
+				uni.hideKeyboard()
 			}
 		}
 	}

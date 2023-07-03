@@ -39,7 +39,10 @@
 			"uv-ui-tools",
 			"uv-icon",
 			"uv-line",
-			"uv-transition"
+			"uv-transition",
+			"uv-action-sheet",
+			"uv-input",
+			"uv-button"
 		],
     "encrypt": [],
     "platforms": {

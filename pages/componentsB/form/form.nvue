@@ -28,7 +28,7 @@
 						prop="userInfo.sex"
 						borderBottom
 						labelWidth="80"
-						@click="showSex = true; hideKeyboard()"
+						@click="showSexSelect"
 						ref="item1"
 					>
 						<uv-input
@@ -72,7 +72,6 @@
 						<uv-checkbox-group
 							v-model="model1.checkboxValue1"
 							shape="square"
-							@change="change"
 						>
 							<uv-checkbox
 								:customStyle="{marginRight: '16px'}"
@@ -102,7 +101,7 @@
 						prop="hotel"
 						borderBottom
 						labelWidth="80"
-						@click="showCalendar = true; hideKeyboard()"
+						@click="showTimeSelect"
 					>
 						<uv-input
 							v-model="model1.hotel"
@@ -143,7 +142,7 @@
 						prop="userInfo.birthday"
 						borderBottom
 						labelWidth="80"
-						@click="showBirthday = true; hideKeyboard()"
+						@click="showDateSelect"
 						ref="item1"
 					>
 						<uv-input
@@ -173,36 +172,34 @@
 					@click="reset"
 				></uv-button>
 				<view>
-					
 				<uv-action-sheet
-					:show="showSex"
+					ref="sexSelect"
 					:actions="actions"
 					title="请选择性别"
 					description="如果选择保密会报错"
-					@close="showSex = false"
 					@select="sexSelect"
 				>
 				</uv-action-sheet>
 				<uv-calendar
-					:show="showCalendar"
+					ref="timeSelect"
 					mode="range"
-					@confirm="calendarConfirm"
-					@close="calendarClose"
 					startText="住店"
 					endText="离店"
 					confirmDisabledText="请选择离店日期"
 					:formatter="formatter"
+					@confirm="calendarConfirm"
+					@close="calendarClose"
 				></uv-calendar>
 				<uv-code
 					ref="uCode"
-					@change="codeChange"
 					seconds="20"
 					@start="disabled1 = true"
 					@end="disabled1 = false"
+					@change="codeChange"
 				></uv-code>
 				<uv-datetime-picker
-					:show="showBirthday"
-					:value="birthday"
+					ref="dateSelect"
+					v-model="birthday"
 					mode="date"
 					closeOnClickOverlay
 					@confirm="birthdayConfirm"
@@ -225,8 +222,6 @@
 				disabled1: false,
 				tips: '',
 				value: '',
-				showCalendar: false,
-				showBirthday: false,
 				model1: {
 					userInfo: {
 						name: '楼兰',
@@ -238,7 +233,6 @@
 					intro: '',
 					code: ''
 				},
-				showSex: false,
 				birthday: Number(new Date()),
 				actions: [{
 						name: '男',
@@ -348,6 +342,21 @@
 			this.$refs.form1.setRules(this.rules)
 		},
 		methods: {
+			// 性别选择
+			showSexSelect() {
+				this.$refs.sexSelect.open();
+				this.hideKeyboard();
+			},
+			// 日历选择
+			showTimeSelect() {
+				this.$refs.timeSelect.open();
+				this.hideKeyboard();
+			},
+			// 性别选择
+			showDateSelect() {
+				this.$refs.dateSelect.open();
+				this.hideKeyboard();
+			},
 			afterRead(event) {
 				this.fileList1.push({
 					url: event.file,
@@ -355,21 +364,9 @@
 					message: '上传中'
 				})
 			},
-			groupChange(n) {
-				// console.log('groupChange', n);
-			},
-			radioChange(n) {
-				// console.log('radioChange', n);
-			},
-			navigateBack() {
-				uni.navigateBack()
-			},
 			sexSelect(e) {
 				this.model1.userInfo.sex = e.name
 				this.$refs.form1.validateField('userInfo.sex')
-			},
-			change(e) {
-				// console.log(e);
 			},
 			formatter(day) {
 				const d = new Date()
@@ -382,7 +379,6 @@
 				return day
 			},
 			calendarConfirm(e) {
-				this.showCalendar = false
 				this.model1.hotel = `${e[0]} / ${e[e.length - 1]}`
 				this.$refs.form1.validateField('hotel')
 			},
@@ -407,18 +403,16 @@
 				}
 			},
 			calendarClose() {
-				this.showCalendar = false
 				this.$refs.form1.validateField('hotel')
 			},
 			birthdayClose() {
-				this.showBirthday = false
 				this.$refs.form1.validateField('userInfo.birthday')
 			},
 			birthdayConfirm(e) {
-				this.showBirthday = false
 				this.model1.userInfo.birthday = timeFormat(e.value, 'yyyy-mm-dd')
 				this.$refs.form1.validateField('userInfo.birthday')
 			},
+			// 提交
 			submit() {
 				// 如果有错误，会在catch中返回报错信息数组，校验通过则在then中返回true
 				this.$refs.form1.validate().then(res => {
@@ -427,6 +421,7 @@
 					toast('校验失败')
 				})
 			},
+			// 重置
 			reset() {
 				const validateList = ['userInfo.name', 'userInfo.sex', 'radiovalue1', 'checkboxValue1', 'intro',
 				'hotel', 'code', 'userInfo.birthday']
@@ -443,7 +438,3 @@
 		},
 	}
 </script>
-
-<style lang="scss">
-
-</style>

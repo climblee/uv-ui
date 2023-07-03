@@ -4,6 +4,7 @@
 		<!-- #ifndef APP-NVUE -->
 		<uv-waterfall ref="waterfall"
 			v-model="list"
+			:add-time="80"
 			left-gap="10"
 			right-gap="10"
 			column-gap="8"
