@@ -50,12 +50,6 @@ export default {
 			type: [String, Number],
 			default: 2000
 		},
-		// 是否禁止用手滑动切换
-		// 目前HX2.6.11，只支持App 2.5.5+、H5 2.5.5+、支付宝小程序、字节跳动小程序
-		disableTouch: {
-			type: Boolean,
-			default: true
-		},
 		// 跳转的页面路径
 		url: {
 			type: String,
@@ -65,6 +59,17 @@ export default {
 		linkType: {
 			type: String,
 			default: 'navigateTo'
+		},
+		// 是否禁止用手滑动切换
+		// 目前HX2.6.11，只支持App 2.5.5+、H5 2.5.5+、支付宝小程序、字节跳动小程序
+		disableTouch: {
+			type: Boolean,
+			default: true
+		},
+		// 是否禁止滚动，仅`direction="column"生效`
+		disableScroll: {
+			type: Boolean,
+			default: false
 		},
 		...uni.$uv?.props?.noticeBar
 	}

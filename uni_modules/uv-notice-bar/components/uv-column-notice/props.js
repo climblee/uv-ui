@@ -45,11 +45,16 @@ export default {
 			type: [String, Number],
 			default: 1500
 		},
-		// 是否禁止用手滑动切换
+		// 是否禁止用手滑动切换，仅`direction="column"生效`
 		// 目前HX2.6.11，只支持App 2.5.5+、H5 2.5.5+、支付宝小程序、字节跳动小程序
 		disableTouch: {
 			type: Boolean,
 			default: true
+		},
+		// 是否禁止滚动，仅`direction="column"生效`
+		disableScroll: {
+			type: Boolean,
+			default: false
 		},
 		...uni.$uv?.props?.columnNotice
 	}

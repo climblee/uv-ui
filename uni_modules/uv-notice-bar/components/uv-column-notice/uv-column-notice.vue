@@ -20,7 +20,7 @@
 			:vertical="step ? false : true"
 			circular
 			:interval="duration"
-			:autoplay="true"
+			:autoplay="!disableScroll"
 			class="uv-notice__swiper"
 			:style="[swiperStyle]"
 			@change="noticeChange"

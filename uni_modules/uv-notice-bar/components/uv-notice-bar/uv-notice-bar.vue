@@ -15,6 +15,7 @@
 				:step="step"
 				:icon="icon"
 				:disable-touch="disableTouch"
+				:disable-scroll="disableScroll"
 				:fontSize="fontSize"
 				:duration="duration"
 				@close="close"
