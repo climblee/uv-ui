@@ -121,7 +121,7 @@
 							changeText="X秒重新获取哈哈哈"
 						></uv-code>
 						<uv-button
-							@tap="getCode"
+							@click="getCode"
 							:text="tips"
 							type="success"
 							size="mini"
