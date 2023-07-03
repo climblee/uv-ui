@@ -51,7 +51,6 @@
 				</slot>
 				<view
 					class="uv-navbar__content__right"
-					v-if="$slots.right || rightIcon || rightText"
 					@tap="rightClick"
 				>
 					<slot name="right">
