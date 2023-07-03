@@ -1,30 +1,30 @@
 <template>
 	<view
-	    class="uv-empty"
-	    :style="[emptyStyle]"
-	    v-if="show"
+	  class="uv-empty"
+	  :style="[emptyStyle]"
+	  v-if="show"
 	>
 		<uv-icon
-		    v-if="!isSrc"
-		    :name="mode === 'message' ? 'chat' : `empty-${mode}`"
-		    :size="iconSize"
-		    :color="iconColor"
-		    margin-top="14"
+		  v-if="!isSrc"
+		  :name="mode === 'message' ? 'chat' : `empty-${mode}`"
+		  :size="iconSize"
+		  :color="iconColor"
+		  margin-top="14"
 		></uv-icon>
 		<image
-		    v-else
-		    :style="{
+		  v-else
+		  :style="{
 				width: $uv.addUnit(width),
-				height: $uv.addUnit(height),
+				height: $uv.addUnit(height)
 			}"
-		    :src="icon"
-		    mode="widthFix"
+		  :src="icon"
+		  mode="widthFix"
 		></image>
 		<text
-		    class="uv-empty__text"
-		    :style="[textStyle]"
+		  class="uv-empty__text"
+		  :style="[textStyle]"
 		>{{text ? text : icons[mode]}}</text>
-		<view class="uv-empty__wrap" v-if="$slots.default || $slots.$default">
+		<view class="uv-empty__wrap">
 			<slot />
 		</view>
 	</view>
