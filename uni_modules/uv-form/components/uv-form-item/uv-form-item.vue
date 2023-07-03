@@ -48,10 +48,7 @@
 					<view class="uv-form-item__body__right__content__slot">
 						<slot />
 					</view>
-					<view
-						class="item__body__right__content__icon"
-						v-if="$slots.right"
-					>
+					<view class="item__body__right__content__icon">
 						<slot name="right" />
 					</view>
 				</view>
@@ -59,7 +56,12 @@
 		</view>
 		<view class="uv-form-item__body__right__message__box">
 			<slot name="error">
-				<uv-transition :show="true" :duration="100" mode="slide-top" v-if="!!message && parentData.errorType === 'message'">
+				<uv-transition 
+				:show="true" 
+				:duration="100" 
+				mode="slide-top" 
+				v-if="!!message && parentData.errorType === 'message'"
+			>
 					<text
 						class="uv-form-item__body__right__message"
 						:style="{
@@ -150,7 +152,7 @@
 			clickHandler() {
 				this.$emit('click')
 			}
-		},
+		}
 	}
 </script>
 
