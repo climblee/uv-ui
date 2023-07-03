@@ -11,14 +11,11 @@
 			@scroll="scrollHandler"
 			ref="uvList"
 		>
-			<cell
-				v-if="$slots.header"
-				ref="header"
-			>
+			<cell ref="header">
 				<slot name="header" />
 			</cell>
 			<slot />
-			<cell v-if="$slots.footer">
+			<cell>
 				<slot name="footer" />
 			</cell>
 		</list>
@@ -35,11 +32,11 @@
 			@scroll="scrollHandler"
 			ref="uvList"
 		>
-			<view v-if="$slots.header">
+			<view>
 				<slot name="header" />
 			</view>
 			<slot />
-			<view v-if="$slots.footer">
+			<view>
 				<slot name="footer" />
 			</view>
 		</scroll-view>
