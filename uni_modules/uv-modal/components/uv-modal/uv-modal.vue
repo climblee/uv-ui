@@ -34,13 +34,7 @@
 					<text class="uv-modal__content__text">{{ content }}</text>
 				</slot>
 			</view>
-			<view
-				class="uv-modal__button-group--confirm-button"
-				v-if="$slots.confirmButton"
-			>
-				<slot name="confirmButton"></slot>
-			</view>
-			<template v-else>
+			<slot name="confirmButton">
 				<uv-line></uv-line>
 				<view
 					class="uv-modal__button-group"
@@ -85,7 +79,7 @@
 						>{{ confirmText }}</text>
 					</view>
 				</view>
-			</template>
+			</slot>
 		</view>
 	</uv-popup>
 </template>
