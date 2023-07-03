@@ -1,7 +1,7 @@
 <template>
 	<uv-transition
-		mode="fade"
 		:show="show"
+		mode="fade"
 		:duration="fade ? duration : 0"
 	>
 		<view
@@ -156,7 +156,7 @@
 			this.observerName = 'lazyLoadContentObserver'
 		},
 		mounted() {
-			this.show = true
+			this.show = true;
 			if(this.observeLazyLoad) this.observerFn();
 		},
 		methods: {

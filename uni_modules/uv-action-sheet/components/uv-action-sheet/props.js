@@ -1,10 +1,5 @@
 export default {
 	props: {
-		// 操作菜单是否展示 （默认false）
-		show: {
-			type: Boolean,
-			default: false
-		},
 		// 标题，有值则显示，同时会显示关闭按钮
 		title: {
 			type: String,

@@ -19,74 +19,68 @@
 		</uv-cell-group>
 		<view>
 		<uv-datetime-picker
-			:show="show1"
+			ref="datetimePicker1"
 			v-model="value1"
 			mode="datetime"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show2"
+			ref="datetimePicker2"
 			v-model="value2"
 			mode="date"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show3"
+			ref="datetimePicker3"
 			v-model="value3"
 			mode="year-month"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show4"
+			ref="datetimePicker4"
 			v-model="value4"
 			mode="time"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show5"
+			ref="datetimePicker5"
 			v-model="value5"
 			:filter="filter"
 			mode="date"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show6"
+			ref="datetimePicker6"
 			v-model="value6"
 			mode="date"
 			:formatter="formatter"
-			closeOnClickOverlay
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
 			@close="close"
 		></uv-datetime-picker>
 		<uv-datetime-picker
-			:show="show7"
+			ref="datetimePicker7"
 			v-model="value7"
 			mode="datetime"
 			:minDate="1587524800000"
 			:maxDate="1893470400000"
-			closeOnClickOverlay
+			:closeOnClickOverlay="false"
 			@confirm="confirm"
 			@cancel="cancel"
 			@change="change"
@@ -104,7 +98,6 @@
 			let month = padZero(d.getMonth() + 1)
 			const date = d.getDate()
 			return {
-				current: 0,
 				value1: Number(new Date()),
 				value2: Number(new Date()),
 				value3: Number(new Date()),
@@ -112,26 +105,16 @@
 				value5: Number(new Date()),
 				value6: Number(new Date()),
 				value7: Number(new Date()),
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
-				show6: false,
-				show7: false,
 				list: [{
 						title: '完整日期时间',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/datetime-picker/6.png'
-					},
-					{
+					}, {
 						title: '年月日',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/datetime-picker/4.png'
-					},
-					{
+					}, {
 						title: '年月',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/datetime-picker/3.png'
-					},
-					{
+					}, {
 						title: '时间',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/datetime-picker/5.png'
 					}, {
@@ -148,26 +131,22 @@
 			}
 		},
 		methods: {
+			showDatetimePicker(index) {
+				this.value1 = Number(new Date());
+				this.$refs[`datetimePicker${index+1}`].open();
+			},
 			close() {
-				this[`show${this.current}`] = false
+				console.log('close');
 			},
 			cancel() {
-				this[`show${this.current}`] = false
+				console.log('cancel');
 			},
 			confirm(e) {
-				this[`show${this.current}`] = false
+				console.log('confirm',e);
 				this.result(e.value, e.mode)
 			},
 			change(e) {
 				console.log('change', e)
-			},
-			navigateBack() {
-				uni.navigateBack()
-			},
-			showDatetimePicker(index) {
-				this.current = index + 1
-				this[`show${index + 1}`] = true
-				this.value1 = Number(new Date());
 			},
 			result(time, mode) {
 				switch (mode) {
@@ -187,7 +166,6 @@
 				if (type === 'year') {
 					return options.filter((option) => option % 2 === 0)
 				}
-
 				return options;
 			},
 			formatter(type, value) {

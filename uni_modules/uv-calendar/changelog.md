@@ -1,3 +1,5 @@
+## 1.0.5（2023-07-02）
+uv-calendar  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/calendar.html
 ## 1.0.4（2023-06-15）
 1. formatter格式化中增加topInfo参数
 ## 1.0.3（2023-06-08）

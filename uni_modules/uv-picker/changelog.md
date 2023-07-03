@@ -1,3 +1,5 @@
+## 1.0.6（2023-07-02）
+uv-picker  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/picker.html
 ## 1.0.5（2023-06-26）
 1. 增加color参数
 2. 增加activeColor参数

@@ -20,14 +20,14 @@
 				</uv-cell>
 			</uv-cell-group>
 			<uv-calendar
-				:show="show1"
+				ref="calendar1"
 				:defaultDate="currentDate"
 				@confirm="confirm"
 				@close="close"
 				@change="change"
 			></uv-calendar>
 			<uv-calendar
-				:show="show2"
+				ref="calendar2"
 				mode="multiple"
 				:defaultDate="[currentDate]"
 				month-num="5"
@@ -36,14 +36,14 @@
 				@change="change"
 			></uv-calendar>
 			<uv-calendar
-				:show="show3"
+				ref="calendar3"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
 				@change="change"
 			></uv-calendar>
 			<uv-calendar
-				:show="show4"
+				ref="calendar4"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
@@ -54,7 +54,6 @@
 			<!-- #ifdef VUE2 -->
 			<uv-calendar
 				ref="calendar5"
-				:show="show5"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
@@ -66,7 +65,7 @@
 			<!-- #endif -->
 			<!-- #ifdef VUE3 -->
 			<uv-calendar
-				:show="show5"
+				ref="calendar5"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
@@ -80,7 +79,7 @@
 			<!-- #endif -->
 			<!-- #ifndef MP-WEIXIN -->
 			<uv-calendar
-				:show="show5"
+				ref="calendar5"
 				mode="range"
 				@confirm="confirm"
 				@close="close"
@@ -92,19 +91,19 @@
 			></uv-calendar>
 			<!-- #endif -->
 			<uv-calendar
-				:show="show6"
+				ref="calendar6"
 				@confirm="confirm"
 				@close="close"
 				:maxDate="maxDate"
 			></uv-calendar>
 			<uv-calendar
-				:show="show7"
+				ref="calendar7"
 				@confirm="confirm"
 				@close="close"
 				showLunar
 			></uv-calendar>
 			<uv-calendar
-				:show="show8"
+				ref="calendar8"
 				@confirm="confirm"
 				@close="close"
 				mode="multiple"
@@ -124,14 +123,6 @@
 			return {
 				desc: '打6折',
 				index: 0,
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
-				show6: false,
-				show7: false,
-				show8: false,
 				values: ['','','','','','','',''],
 				currentDate: `${year}-${month}-${date}`,
 				customThemeDefaultDate: [`${year}-${month}-${date}`, `${year}-${month}-${date + 5}`], 
@@ -179,7 +170,7 @@
 		methods: {
 			showCalendar(index) {
 				this.index = index + 1
-				this[`show${index + 1}`] = true
+				this.$refs[`calendar${this.index}`].open();
 			},
 			navigateBack() {
 				uni.navigateBack();
@@ -220,6 +211,7 @@
 			},
 			close() {
 				this[`show${this.index}`] = false
+				console.log('关闭')
 			},
 			formatter(day) {
 				const d = new Date()

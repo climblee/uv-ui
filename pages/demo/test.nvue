@@ -1,7 +1,35 @@
 <template>
-	<uv-steps current="1" direction="column" :customStyle="{background:'red'}">
-		<uv-steps-item title="已下单" desc="10:30" :customStyle="{padding:'0 0 50px'}"></uv-steps-item>
-		<uv-steps-item title="已出库" desc="10:35"></uv-steps-item>
-		<uv-steps-item title="运输中" desc="11:40"></uv-steps-item>
-	</uv-steps>
+	<view>
+		<uv-transition
+		  :show="true"
+		  custom-class="uv-overlay"
+		  :duration="300"
+		  :custom-style="overlayStyle"
+		></uv-transition>
+	</view>
 </template>
+<script>
+	export default {
+		data() {
+			return {
+				overlayStyle: {
+					position: 'fixed',
+					top: 0,
+					left: 0,
+					right: 0,
+					zIndex: 1000,
+					bottom: 0,
+					'background-color': `rgba(0, 0, 0, 0.4)`
+				}
+			}
+		},
+		methods: {
+			open() {
+				this.$refs.datetimePicker.open();
+			},
+			confirm(e) {
+				console.log('confirm', e);
+			}
+		}
+	}
+</script>

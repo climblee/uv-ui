@@ -1,10 +1,5 @@
 export default {
 	props: {
-		// 是否展示modal
-		show: {
-			type: Boolean,
-			default: false
-		},
 		// 标题
 		title: {
 			type: [String],
@@ -68,7 +63,7 @@ export default {
 		// 是否允许点击遮罩关闭modal
 		closeOnClickOverlay: {
 			type: Boolean,
-			default: false
+			default: true
 		},
 		// 给一个负的margin-top，往上偏移，避免和键盘重合的情况
 		negativeTop: {

@@ -2,13 +2,13 @@ export default [{
 	groupName: '最新组件',
 	groupName_en: 'Basic components',
 	list: [
-			{
-			path: '/pages/demo/test',
-			icon: 'DEMO',
-			title: 'DEMO',
-			title_en: 'DEMO',
-			isNew: true
-		},
+		// 	{
+		// 	path: '/pages/demo/test',
+		// 	icon: 'DEMO',
+		// 	title: 'DEMO',
+		// 	title_en: 'DEMO',
+		// 	isNew: true
+		// },
 		{
 			path: '/pages/componentsD/vtabs/vtabs',
 			icon: 'color',
@@ -281,7 +281,7 @@ export default [{
 		{
 			path: '/pages/componentsC/popup/popup',
 			icon: 'popup',
-			title: 'Popup 弹出层',
+			title: 'Popup 弹出层(抽屉)',
 			title_en: 'Popup'
 		}, {
 			path: '/pages/componentsC/modal/modal',

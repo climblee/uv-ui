@@ -30,7 +30,6 @@
 	export default {
 		data() {
 			return {
-				show: false,
 				notifyData: {
 					message: 'notify顶部提示',
 					type: 'primary',

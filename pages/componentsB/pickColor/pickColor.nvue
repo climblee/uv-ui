@@ -29,36 +29,31 @@
 		<view>
 			<uv-pick-color 
 				ref="pickColor1"
-				:show="show1"
-				@confirm="confirmHandler"
+				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor2"
-				:show="show2"
 				:color="color"
-				@confirm="confirmHandler"
+				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor3"
-				:show="show3"
 				:prefab-color="prefabColor"
-				@confirm="confirmHandler"
+				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor4"
-				:show="show4"
 				title="颜色选择"
-				@confirm="confirmHandler"
+				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor5"
-				:show="show5"
-				:closeOnClickOverlay="true"
-				@confirm="confirmHandler"
+				:closeOnClickOverlay="false"
+				@confirm="confirm"
 				@cancel="cancel"
 				@close="close"
 			></uv-pick-color>
@@ -70,11 +65,6 @@
 	export default {
 		data(){
 			return {
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
 				index: 0,
 				color: { r: 60, g: 156, b: 255, a: 1 },
 				prefabColor: [{
@@ -108,7 +98,7 @@
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/4.png',
 						color: 'rgba(0,0,0,0)'
 					}, {
-						title: '允许点击遮罩关闭',
+						title: '禁止点击遮罩关闭',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/6.png',
 						color: 'rgba(0,0,0,0)'
 					}
@@ -118,18 +108,18 @@
 		methods: {
 			showPickColor(index) {
 				this.index = index + 1;
-				this[`show${this.index}`] = true;
+				this.$refs[`pickColor${index+1}`].open();
 			},
-			confirmHandler(e){
+			confirm(e){
+				console.log('confirm',e);
 				const color = `rgba(${e.rgba.r},${e.rgba.g},${e.rgba.b},${e.rgba.a})`
 				this.$set(this.list[this.index - 1],'color',color);
-				this[`show${this.index}`] = false;
 			},
 			cancel(){
-				this[`show${this.index}`] = false;
+				console.log('cancel')
 			},
 			close(){
-				this[`show${this.index}`] = false;
+				console.log('close')
 			}
 		}
 	}

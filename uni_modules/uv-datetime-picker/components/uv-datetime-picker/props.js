@@ -113,7 +113,12 @@ export default {
 		// 是否允许点击遮罩关闭选择器
 		closeOnClickOverlay: {
 			type: Boolean,
-			default: false
+			default: true
+		},
+		// 是否允许点击确认关闭选择器
+		closeOnClickConfirm: {
+			type: Boolean,
+			default: true
 		},
 		...uni.$uv?.props?.datetimePicker
 	}

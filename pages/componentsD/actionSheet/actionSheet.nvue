@@ -19,35 +19,34 @@
 		</uv-cell-group>
 		<view>
 			<uv-action-sheet
-				:show="show0"
+				ref="actionSheet1"
 				@close="close"
 				@select="select"
 				:actions="actions0"
-				:closeOnClickOverlay="false"
 			>
 			</uv-action-sheet>
 			<uv-action-sheet
-				:show="show1"
+				ref="actionSheet2"
 				@close="show1 = false"
 				:actions="actions1"
 			>
 			</uv-action-sheet>
 			<uv-action-sheet
-				:show="show2"
+				ref="actionSheet3"
 				@close="show2 = false"
 				:actions="actions2"
 				cancelText="取消"
 			>
 			</uv-action-sheet>
 			<uv-action-sheet
-				:show="show3"
+				ref="actionSheet4"
 				@close="show3 = false"
 				:actions="actions3"
 				description="这是一段描述文本,字号偏小,颜色偏淡"
 			>
 			</uv-action-sheet>
 			<uv-action-sheet
-				:show="show4"
+				ref="actionSheet5"
 				@close="show4 = false"
 				title="标题位置"
 				:round="10"
@@ -55,7 +54,7 @@
 				<text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
 			</uv-action-sheet>
 			<uv-action-sheet
-				:show="show5"
+				ref="actionSheet6"
 				@close="show5 = false"
 				title="微信开放能力"
 				:actions="actions5"
@@ -69,12 +68,6 @@
 	export default {
 		data() {
 			return {
-				show0: false,
-				show1: false,
-				show2: false,
-				show3: false,
-				show4: false,
-				show5: false,
 				actions0: [{
 						name: '选项1',
 					},
@@ -159,17 +152,13 @@
 				// #ifndef MP
 				if (index === 5) return toast('请在微信内预览')
 				// #endif
-				this[`show${index}`] = true
+				this.$refs[`actionSheet${index+1}`].open();
 			},
 			getuserinfo(res) {
 				toast(`用户名：${res.userInfo.nickName}`)
 			},
-			navigateBack() {
-				uni.navigateBack()
-			},
 			close() {
 				console.log('close');
-				this['show0'] = false
 			},
 			select(e) {
 				console.log('select', e);

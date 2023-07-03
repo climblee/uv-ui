@@ -1,7 +1,7 @@
 {
   "id": "uv-action-sheet",
   "displayName": "uv-action-sheet 底部操作菜单 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "该组件用于从底部弹出一个操作菜单，供用户选择并返回结果。本组件功能类似于uni的uni.showActionSheet API，配置更加灵活，所有平台都表现一致。",
   "keywords": [
     "action-sheet",

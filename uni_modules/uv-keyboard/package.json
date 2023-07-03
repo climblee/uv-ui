@@ -1,7 +1,7 @@
 {
   "id": "uv-keyboard",
   "displayName": "uv-keyboard 键盘  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "uv-keyboard 该组件为自定义的键盘面板，内含了数字键盘，车牌号键，身份证号键盘3种模式，都有可以打乱按键顺序的选项。",
   "keywords": [
     "uv-keyboard",
