@@ -1,3 +1,9 @@
+## 1.0.17（2023-07-04）
+1. 优化 uv-icon 修复，NVUE平台主题颜色在APP不生效的BUG
+2. 优化 uv-notice-bar 优化，增加disableScroll属性
+3. 优化 uv-input uv-back-top uv-cell uv-form uv-search uv-modal uv-navbar uv-index-list uv-empty uv-upload 去除插槽判断，避免某些平台不显示的BUG
+4. 优化 uv-form 优化文档
+5. 优化 优化其他相关文档
 ## 1.0.16（2023-07-03）
 1. 优化 uv-transition 动画组件，代码重构优化，性能更加友好，增加自定义动画功能。详情[参考文档](https://www.uvui.cn/components/transition.html)
 2. 优化 uv-popup 弹出层，代码重构优化，性能翻倍，小程序体验性能更加，避免卡顿。打开和关闭方法更改，详情[参考文档](https://www.uvui.cn/components/popup.html)
