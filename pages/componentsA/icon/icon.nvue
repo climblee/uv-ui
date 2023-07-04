@@ -50,13 +50,10 @@
 						name: 'red-packet'
 					},
 					{
-						name: 'red-packet-fill'
-					},
-					{
 						name: 'order'
 					},
 					{
-						name: 'checkbox-mark'
+						name: 'folder'
 					},
 					{
 						name: 'arrow-up-fill'
@@ -86,12 +83,6 @@
 						name: 'lock-opened-fill'
 					},
 					{
-						name: 'hourglass'
-					},
-					{
-						name: 'hourglass-half-fill'
-					},
-					{
 						name: 'home'
 					},
 					{
@@ -116,6 +107,9 @@
 						name: 'share-fill'
 					},
 					{
+						name: 'share-square'
+					},
+					{
 						name: 'volume'
 					},
 					{
@@ -134,25 +128,13 @@
 						name: 'trash-fill'
 					},
 					{
-						name: 'rewind-right'
-					},
-					{
-						name: 'rewind-right-fill'
-					},
-					{
 						name: 'rewind-left'
-					},
-					{
-						name: 'rewind-left-fill'
 					},
 					{
 						name: 'shopping-cart'
 					},
 					{
 						name: 'shopping-cart-fill'
-					},
-					{
-						name: 'question'
 					},
 					{
 						name: 'question-circle'
@@ -209,21 +191,6 @@
 						name: 'list-dot'
 					},
 					{
-						name: 'man-delete'
-					},
-					{
-						name: 'man-add'
-					},
-					{
-						name: 'man-add-fill'
-					},
-					{
-						name: 'person-delete-fill'
-					},
-					{
-						name: 'info'
-					},
-					{
 						name: 'info-circle'
 					},
 					{
@@ -234,9 +201,6 @@
 					},
 					{
 						name: 'minus-circle'
-					},
-					{
-						name: 'minus-circle-fill'
 					},
 					{
 						name: 'mic'
@@ -258,6 +222,9 @@
 					},
 					{
 						name: 'eye-off'
+					},
+					{
+						name: 'eye-off-outline'
 					},
 					{
 						name: 'file-text'
@@ -290,6 +257,9 @@
 						name: 'checkmark-circle-fill'
 					},
 					{
+						name: 'checkbox-mark'
+					},
+					{
 						name: 'clock'
 					},
 					{
@@ -308,9 +278,6 @@
 						name: 'calendar'
 					},
 					{
-						name: 'calendar-fill'
-					},
-					{
 						name: 'car'
 					},
 					{
@@ -321,12 +288,6 @@
 					},
 					{
 						name: 'bell-fill'
-					},
-					{
-						name: 'bookmark'
-					},
-					{
-						name: 'bookmark-fill'
 					},
 					{
 						name: 'attach'
@@ -344,19 +305,10 @@
 						name: 'play-left-fill'
 					},
 					{
-						name: 'error'
-					},
-					{
 						name: 'error-circle'
 					},
 					{
 						name: 'error-circle-fill'
-					},
-					{
-						name: 'wifi'
-					},
-					{
-						name: 'wifi-off'
 					},
 					{
 						name: 'skip-back-left'
@@ -386,9 +338,6 @@
 						name: 'bag'
 					},
 					{
-						name: 'bag-fill'
-					},
-					{
 						name: 'arrow-upward'
 					},
 					{
@@ -411,15 +360,6 @@
 					},
 					{
 						name: 'arrow-right'
-					},
-					{
-						name: 'rmb'
-					},
-					{
-						name: 'rmb-circle'
-					},
-					{
-						name: 'rmb-circle-fill'
 					},
 					{
 						name: 'thumb-up'
@@ -458,30 +398,6 @@
 						name: 'warning-fill'
 					},
 					{
-						name: 'google'
-					},
-					{
-						name: 'google-circle-fill'
-					},
-					{
-						name: 'chrome-circle-fill'
-					},
-					{
-						name: 'ie'
-					},
-					{
-						name: 'IE-circle-fill'
-					},
-					{
-						name: 'github-circle-fill'
-					},
-					{
-						name: 'android-fill'
-					},
-					{
-						name: 'android-circle-fill'
-					},
-					{
 						name: 'apple-fill'
 					},
 					{
@@ -495,12 +411,6 @@
 					},
 					{
 						name: 'pushpin-fill'
-					},
-					{
-						name: 'minus-square-fill'
-					},
-					{
-						name: 'plus-square-fill'
 					},
 					{
 						name: 'heart'
@@ -518,31 +428,16 @@
 						name: 'account-fill'
 					},
 					{
-						name: 'minus-people-fill'
-					},
-					{
-						name: 'plus-people-fill'
-					},
-					{
 						name: 'integral'
 					},
 					{
 						name: 'integral-fill'
 					},
 					{
-						name: 'zhihu'
-					},
-					{
-						name: 'zhihu-circle-fill'
-					},
-					{
 						name: 'gift'
 					},
 					{
 						name: 'gift-fill'
-					},
-					{
-						name: 'zhifubao'
 					},
 					{
 						name: 'zhifubao-circle-fill'
@@ -554,22 +449,7 @@
 						name: 'weixin-circle-fill'
 					},
 					{
-						name: 'twitter'
-					},
-					{
 						name: 'twitter-circle-fill'
-					},
-					{
-						name: 'taobao'
-					},
-					{
-						name: 'taobao-circle-fill'
-					},
-					{
-						name: 'weibo'
-					},
-					{
-						name: 'weibo-circle-fill'
 					},
 					{
 						name: 'qq-fill'
@@ -584,28 +464,19 @@
 						name: 'moments-circel-fill'
 					},
 					{
-						name: 'qzone'
-					},
-					{
-						name: 'qzone-circle-fill'
-					},
-					{
 						name: 'facebook'
 					},
 					{
 						name: 'facebook-circle-fill'
 					},
 					{
-						name: 'baidu'
+						name: 'twitte'
 					},
 					{
-						name: 'baidu-circle-fill'
-					},
-					{
-						name: 'share-square'
-					},
+						name: 'empty-data'
+					}
 				]
-			};
+			}
 		},
 		methods: {
 			selectIcon(name) {
