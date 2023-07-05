@@ -77,7 +77,12 @@
 					activeColor: null,
 					inactiveColor: null,
 					size: 18,
+					// #ifdef VUE2
 					value: null,
+					// #endif
+					// #ifdef VUE3
+					modelValue: null,
+					// #endif
 					iconColor: null,
 					placement: 'row',
 					borderBottom: false,
@@ -188,8 +193,14 @@
 				if (!this.parent) {
 					error('uv-radio必须搭配uv-radio-group组件使用')
 				}
+				// #ifdef VUE2
+				const parentValue = this.parentData.value;
+				// #endif
+				// #ifdef VUE3
+				const parentValue = this.parentData.modelValue;
+				// #endif
 				// 设置初始化时，是否默认选中的状态
-				this.checked = this.name === this.parentData.value
+				this.checked = this.name === parentValue
 			},
 			updateParentData() {
 				this.getParentData('uv-radio-group')

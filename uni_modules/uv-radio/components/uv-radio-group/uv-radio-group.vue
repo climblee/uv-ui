@@ -44,9 +44,14 @@
 			// 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(uv-radio-group)
 			// 拉取父组件新的变化后的参数
 			parentData() {
-				return [this.value, this.disabled, this.inactiveColor, this.activeColor, this.size, this.labelDisabled, this.shape,
-					this.iconSize, this.borderBottom, this.placement
-				]
+				// #ifdef VUE2
+				const value = this.value;
+				// #endif
+				// #ifdef VUE3
+				const value = this.modelValue;
+				// #endif
+				return [value, this.disabled, this.inactiveColor, this.activeColor, this.size, this.labelDisabled, this.shape,
+					this.iconSize, this.borderBottom, this.placement]
 			},
 			bemClass() {
 				// this.bem为一个computed变量，在mixin中
@@ -70,9 +75,6 @@
 			}
 		},
 		created() {
-			// #ifdef VUE3
-			this.value = this.modelValue;
-			// #endif
 			this.children = []
 		},
 		methods: {
