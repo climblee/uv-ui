@@ -81,59 +81,27 @@
 				elId: '',
 				elClass: '',
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
-				// #ifdef VUE2
-				activeIndex: this.value,
-				// #endif
-				// #ifdef VUE3
-				activeIndex: this.modelValue,
-				// #endif
+				activeIndex: 0,
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
-				moving: false,
-				// #ifdef VUE3
-			 prepare: {
-				 modelValue: 1,
-				 value: 1
-			 }
-				// #endif
-			};
+				moving: false
+			}
 		},
 		watch: {
-			// #ifdef VUE2
-			value: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.activeIndex = val;
-				}
+			value(newVal){
+				this.activeIndex = newVal;
 			},
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.prepare.modelValue = val;
-				}
-			},
-			value: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.prepare.value = val;
-					if(this.prepare.modelValue > 1){
-						this.activeIndex = this.prepare.modelValue;
-					}else{
-						this.activeIndex = val;
-					}
-				}
-			},
-			// #endif
-			activeIndex: 'emitEvent'
+			modelValue(newVal){
+				this.activeIndex = newVal;
+			}
 		},
 		created() {
+			this.activeIndex = Number(this.value || this.modelValue);
 			this.elId = this.$uv.guid();
 			this.elClass = this.$uv.guid();
+		},
+		mounted() {
+			this.init();
 		},
 		methods: {
 			init() {
@@ -211,16 +179,10 @@
 				this.getActiveIndex(x, true);
 			},
 			// 发出事件
-			emitEvent() {
-				// 发出change事件
+			changeEvent() {
 				this.$emit("change", this.activeIndex);
-				// 同时修改双向绑定的value的值
-				// #ifdef VUE2
 				this.$emit("input", this.activeIndex);
-				// #endif
-				// #ifdef VUE3
 				this.$emit("update:modelValue", this.activeIndex);
-				// #endif
 			},
 			// 获取当前激活的评分图标
 			getActiveIndex(x, isClick = false) {
@@ -261,6 +223,7 @@
 				if (this.activeIndex < this.minCount) {
 					this.activeIndex = this.minCount;
 				}
+				this.changeEvent();
 				// 设置延时为了让click事件在touchmove之前触发
 				setTimeout(() => {
 					this.moving = true;
@@ -270,11 +233,8 @@
 					this.moving = false;
 				}, 10);
 			},
-		},
-		mounted() {
-			this.init();
-		},
-	};
+		}
+	}
 </script>
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
