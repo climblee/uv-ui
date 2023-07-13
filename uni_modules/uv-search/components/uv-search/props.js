@@ -1,5 +1,13 @@
 export default {
 	props: {
+		value: {
+			type: String,
+			default: ''
+		},
+		modelValue: {
+			type: String,
+			default: ''
+		},
 		// 搜索框形状，round-圆形，square-方形
 		shape: {
 			type: String,
@@ -94,19 +102,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 输入框的初始化内容
-		// #ifdef VUE2
-		value: {
-			type: String,
-			default: ''
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: String,
-			default: ''
-		},
-		// #endif
 		// 输入框最大能输入的长度，-1为不限制长度(来自uniapp文档)
 		maxlength: {
 			type: [String, Number],
