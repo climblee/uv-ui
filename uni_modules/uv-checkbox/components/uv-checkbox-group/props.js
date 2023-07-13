@@ -1,23 +1,19 @@
 export default {
 	props: {
-		// 标识符
-		name: {
-			type: String,
-			default: ''
-		},
-		// #ifdef VUE2
 		// 绑定的值
 		value: {
 			type: Array,
 			default: () => []
 		},
-		// #endif
-		// #ifdef VUE3
 		modelValue: {
 			type: Array,
 			default: () => []
 		},
-		// #endif
+		// 标识符
+		name: {
+			type: String,
+			default: ''
+		},
 		// 形状，circle-圆形，square-方形
 		shape: {
 			type: String,
