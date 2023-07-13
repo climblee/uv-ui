@@ -1,22 +1,22 @@
 <template>
 	<view
-	    class="uv-radio"
+	  class="uv-radio"
 		@tap.stop="wrapperClickHandler"
-	    :style="[radioStyle]"
-	    :class="[`uv-radio-label--${parentData.iconPlacement}`, parentData.borderBottom && parentData.placement === 'column' && 'uv-border-bottom']"
+	  :style="[radioStyle]"
+	  :class="[`uv-radio-label--${parentData.iconPlacement}`, parentData.borderBottom && parentData.placement === 'column' && 'uv-border-bottom']"
 	>
 		<view
-		    class="uv-radio__icon-wrap"
-		    @tap.stop="iconClickHandler"
-		    :class="iconClasses"
-		    :style="[iconWrapStyle]"
+		  class="uv-radio__icon-wrap"
+		  @tap.stop="iconClickHandler"
+		  :class="iconClasses"
+		  :style="[iconWrapStyle]"
 		>
 			<slot name="icon">
 				<uv-icon
-				    class="uv-radio__icon-wrap__icon"
-				    name="checkbox-mark"
-				    :size="elIconSize"
-				    :color="elIconColor"
+				  class="uv-radio__icon-wrap__icon"
+				  name="checkbox-mark"
+				  :size="elIconSize"
+				  :color="elIconColor"
 				/>
 			</slot>
 		</view>
@@ -33,7 +33,6 @@
 		</slot>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -61,7 +60,7 @@
 	 */
 	export default {
 		name: "uv-radio",
-		
+
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
@@ -77,12 +76,8 @@
 					activeColor: null,
 					inactiveColor: null,
 					size: 18,
-					// #ifdef VUE2
 					value: null,
-					// #endif
-					// #ifdef VUE3
 					modelValue: null,
-					// #endif
 					iconColor: null,
 					placement: 'row',
 					borderBottom: false,
@@ -172,11 +167,11 @@
 			},
 			radioStyle() {
 				const style = {}
-				if(this.parentData.borderBottom && this.parentData.placement === 'row') {
+				if (this.parentData.borderBottom && this.parentData.placement === 'row') {
 					error('检测到您将borderBottom设置为true，需要同时将uv-radio-group的placement设置为column才有效')
 				}
 				// 当父组件设置了显示下边框并且排列形式为纵向时，给内容和边框之间加上一定间隔
-				if(this.parentData.borderBottom && this.parentData.placement === 'column') {
+				if (this.parentData.borderBottom && this.parentData.placement === 'column') {
 					// ios像素密度高，需要多一点的距离
 					style.paddingBottom = this.$uv.os() === 'ios' ? '12px' : '8px'
 				}
@@ -193,14 +188,11 @@
 				if (!this.parent) {
 					error('uv-radio必须搭配uv-radio-group组件使用')
 				}
-				// #ifdef VUE2
-				const parentValue = this.parentData.value;
-				// #endif
-				// #ifdef VUE3
-				const parentValue = this.parentData.modelValue;
-				// #endif
 				// 设置初始化时，是否默认选中的状态
-				this.checked = this.name === parentValue
+				this.$nextTick(()=>{
+					const parentValue = this.parentData.value || this.parentData.modelValue;
+					this.checked = this.name === parentValue
+				})
 			},
 			updateParentData() {
 				this.getParentData('uv-radio-group')
@@ -254,24 +246,23 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-	$uv-radio-wrap-margin-right:6px !default;
-	$uv-radio-wrap-font-size:20px !default;
-	$uv-radio-wrap-border-width:1px !default;
+	$uv-radio-wrap-margin-right: 6px !default;
+	$uv-radio-wrap-font-size: 20px !default;
+	$uv-radio-wrap-border-width: 1px !default;
 	$uv-radio-wrap-border-color: #c8c9cc !default;
-	$uv-radio-line-height:0 !default;
-	$uv-radio-circle-border-radius:100% !default;
-	$uv-radio-square-border-radius:3px !default;
-	$uv-radio-checked-color:#fff !default;
-	$uv-radio-checked-background-color:red !default;
+	$uv-radio-line-height: 0 !default;
+	$uv-radio-circle-border-radius: 100% !default;
+	$uv-radio-square-border-radius: 3px !default;
+	$uv-radio-checked-color: #fff !default;
+	$uv-radio-checked-background-color: red !default;
 	$uv-radio-checked-border-color: #2979ff !default;
-	$uv-radio-disabled-background-color:#ebedf0 !default;
-	$uv-radio-disabled--checked-color:#c8c9cc !default;
+	$uv-radio-disabled-background-color: #ebedf0 !default;
+	$uv-radio-disabled--checked-color: #c8c9cc !default;
 	$uv-radio-label-margin-left: 5px !default;
-	$uv-radio-label-margin-right:12px !default;
-	$uv-radio-label-color:$uv-content-color !default;
-	$uv-radio-label-font-size:15px !default;
-	$uv-radio-label-disabled-color:#c8c9cc !default;
-	
+	$uv-radio-label-margin-right: 12px !default;
+	$uv-radio-label-color: $uv-content-color !default;
+	$uv-radio-label-font-size: 15px !default;
+	$uv-radio-label-disabled-color: #c8c9cc !default;
 	.uv-radio {
 		/* #ifndef APP-NVUE */
 		@include flex(row);
@@ -279,16 +270,13 @@
 		overflow: hidden;
 		flex-direction: row;
 		align-items: center;
-
 		&-label--left {
 			flex-direction: row
 		}
-
 		&-label--right {
 			flex-direction: row-reverse;
 			justify-content: space-between
 		}
-
 		&__icon-wrap {
 			/* #ifndef APP-NVUE */
 			box-sizing: border-box;
@@ -307,38 +295,30 @@
 			border-width: $uv-radio-wrap-border-width;
 			border-color: $uv-radio-wrap-border-color;
 			border-style: solid;
-
 			/* #ifdef MP-TOUTIAO */
 			// 头条小程序兼容性问题，需要设置行高为0，否则图标偏下
 			&__icon {
 				line-height: $uv-radio-line-height;
 			}
-
 			/* #endif */
-
 			&--circle {
 				border-radius: $uv-radio-circle-border-radius;
 			}
-
 			&--square {
 				border-radius: $uv-radio-square-border-radius;
 			}
-
 			&--checked {
 				color: $uv-radio-checked-color;
 				background-color: $uv-radio-checked-background-color;
 				border-color: $uv-radio-checked-border-color;
 			}
-
 			&--disabled {
 				background-color: $uv-radio-disabled-background-color !important;
 			}
-
 			&--disabled--checked {
 				color: $uv-radio-disabled--checked-color !important;
 			}
 		}
-
 		&__label {
 			/* #ifndef APP-NVUE */
 			word-wrap: break-word;
@@ -347,7 +327,6 @@
 			margin-right: $uv-radio-label-margin-right;
 			color: $uv-radio-label-color;
 			font-size: $uv-radio-label-font-size;
-
 			&--disabled {
 				color: $uv-radio-label-disabled-color;
 			}
