@@ -232,7 +232,7 @@
 				setTimeout(() => {
 					this.moving = false;
 				}, 10);
-			},
+			}
 		}
 	}
 </script>

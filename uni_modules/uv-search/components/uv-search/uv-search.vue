@@ -25,7 +25,7 @@
 			<input
 			  confirm-type="search"
 			  @blur="blur"
-			  :value="inputValue"
+			  :value="keyword"
 			  @confirm="search"
 			  @input="inputChange"
 			  :disabled="disabled"
@@ -74,6 +74,7 @@
 	 * search 搜索框
 	 * @description 搜索组件，集成了常见搜索框所需功能，用户可以一键引入，开箱即用。
 	 * @tutorial https://www.uvui.cn/components/search.html
+	 * @property {String}			value/v-model				输入框初始值
 	 * @property {String}			shape				搜索框形状，round-圆形，square-方形（默认 'round' ）
 	 * @property {String}			bgColor				搜索框背景颜色（默认 '#f2f2f2' ）
 	 * @property {String}			placeholder			占位文字内容（默认 '请输入关键字' ）
@@ -93,7 +94,6 @@
 	 * @property {String}			searchIcon			输入框左边的图标，可以为uvui图标名称或图片路径  (默认 'search' )
 	 * @property {String}			margin				组件与其他上下左右元素之间的距离，带单位的字符串形式，如"30px"   (默认 '0' )
 	 * @property {Boolean} 			animation			是否开启动画，见上方说明（默认 false ）
-	 * @property {String}			value				输入框初始值
 	 * @property {String | Number}	maxlength			输入框最大能输入的长度，-1为不限制长度  (默认 '-1' )
 	 * @property {String | Number}	height				输入框高度，单位px（默认 64 ）
 	 * @property {String | Number}	label				搜索框左边显示内容
@@ -116,71 +116,43 @@
 				show: false,
 				// 标记input当前状态是否处于聚焦中，如果是，才会显示右侧的清除控件
 				focused: this.focus
-				// 绑定输入框的值
-				// inputValue: this.value
 			};
 		},
+		created() {
+			this.keyword = this.value || this.modelValue;
+		},
 		watch: {
-			keyword(nVal) {
-				// 双向绑定值，让v-model绑定的值双向变化
-				// #ifdef VUE2
-				this.$emit('input', nVal)
-				// #endif
-				// #ifdef VUE3
-				this.$emit('update:modelValue', nVal)
-				// #endif
-				// 触发change事件，事件效果和v-model双向绑定的效果一样，让用户多一个选择
-				this.$emit('change', nVal);
+			value(nVal){
+				this.keyword = nVal;
 			},
-			// #ifdef VUE2
-			value: {
-				immediate: true,
-				handler(nVal) {
-					this.keyword = nVal;
-				}
+			modelValue(nVal){
+				this.keyword = nVal;
 			}
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				immediate: true,
-				handler(nVal) {
-					this.keyword = nVal;
-				}
-			}
-			// #endif
 		},
 		computed: {
 			showActionBtn() {
 				return !this.animation && this.showAction
-			},
-			inputValue() {
-				// #ifdef VUE2
-				return this.value
-				// #endif
-				// #ifdef VUE3
-				return this.modelValue;
-				// #endif
 			}
 		},
 		methods: {
+			keywordChange(){
+				this.$emit('input', this.keyword)
+				this.$emit('update:modelValue', this.keyword)
+				this.$emit('change', this.keyword);
+			},
 			// 目前HX2.6.9 v-model双向绑定无效，故监听input事件获取输入框内容的变化
 			inputChange(e) {
 				this.keyword = e.detail.value;
-				// #ifdef VUE3
-				this.$emit('update:modelValue', this.keyword)
-				// #endif
+				this.keywordChange();
 			},
 			// 清空输入
 			// 也可以作为用户通过this.$refs形式调用清空输入框内容
 			clear() {
 				this.keyword = '';
-				// 延后发出事件，避免在父组件监听clear事件时，value为更新前的值(不为空)
 				this.$nextTick(() => {
 					this.$emit('clear');
 				})
-				// #ifdef VUE3
-				this.$emit('update:modelValue', this.keyword)
-				// #endif
+				this.keywordChange();
 			},
 			// 确定搜索
 			search(e) {

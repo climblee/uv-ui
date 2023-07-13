@@ -75,7 +75,12 @@
 					activeColor: null,
 					inactiveColor: null,
 					size: 18,
+					// #ifdef VUE2
 					value: null,
+					// #endif
+					// #ifdef VUE3
+					modelValue: null,
+					// #endif
 					iconColor: null,
 					placement: 'row',
 					borderBottom: false,
@@ -187,12 +192,18 @@
 				if (!this.parent) {
 					this.$uv.error('uv-checkbox必须搭配uv-checkbox-group组件使用')
 				}
+				// #ifdef VUE2
+				const parentValue = this.parentData.value;
+				// #endif
+				// #ifdef VUE3
+				const parentValue = this.parentData.modelValue;
+				// #endif
 				// 设置初始化时，是否默认选中的状态，父组件uv-checkbox-group的value可能是array，所以额外判断
 				if (this.checked) {
 					this.isChecked = true
-				} else if (this.$uv.test.array(this.parentData.value)) {
+				} else if (this.$uv.test.array(parentValue)) {
 					// 查找数组是是否存在this.name元素值
-					this.isChecked = this.parentData.value.some(item => {
+					this.isChecked = parentValue.some(item => {
 						return item === this.name
 					})
 				}

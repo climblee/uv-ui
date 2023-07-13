@@ -1,3 +1,10 @@
+## 1.0.18（2023-07-06）
+1. 优化 uv-icon 1. 更新图标，删除一些不常用的图标；2. 删除base64，修改成ttf文件引入读取图标。uv-icon 图标
+2. 优化 uv-icon nvue自定义图标用法，文档说明：[点击跳转](https://www.uvui.cn/guide/customIcon.html)
+3. 优化 uv-upload 文档示例代码，增加fileList参数说明：[点击跳转](https://www.uvui.cn/components/upload.html#filelist-options)
+4. 修复 uv-checkbox vue3模式下，动态修改v-model绑定的值无效的BUG
+5. 修复 uv-radio vue3模式下，动态修改v-model绑定的值无效的BUG
+6. 修复 uv-datetime-picker vue3模式下，动态修改v-model绑定的值无效的BUG
 ## 1.0.17（2023-07-04）
 1. 优化 uv-icon 修复，NVUE平台主题颜色在APP不生效的BUG
 2. 优化 uv-notice-bar 优化，增加disableScroll属性

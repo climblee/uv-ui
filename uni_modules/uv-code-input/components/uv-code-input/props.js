@@ -1,5 +1,13 @@
 export default {
 	props: {
+		value: {
+			type: [String, Number],
+			default: ''
+		},
+		modelValue: {
+			type: [String, Number],
+			default: ''
+		},
 		// 键盘弹起时，是否自动上推页面
 		adjustPosition: {
 			type: Boolean,
@@ -30,19 +38,6 @@ export default {
 			type: [String, Number],
 			default: 10
 		},
-		// 预置值
-		// #ifdef VUE2
-		value: {
-			type: [String, Number],
-			default: ''
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: [String, Number],
-			default: ''
-		},
-		// #endif
 		// 是否自动获取焦点
 		focus: {
 			type: Boolean,

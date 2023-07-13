@@ -83,7 +83,13 @@
 		computed: {
 			// 如果以下这些变量发生了变化，意味着需要重新初始化各列的值
 			propsChange() {
-				return [this.mode, this.maxDate, this.minDate, this.minHour, this.maxHour, this.minMinute, this.maxMinute, this.filter, ]
+				// #ifdef VUE2
+				const propsValue = this.value;
+				// #endif
+				// #ifdef VUE3
+				const propsValue = this.modelValue;
+				// #endif
+				return [this.mode, this.maxDate, this.minDate, this.minHour, this.maxHour, this.minMinute, this.maxMinute, this.filter, propsValue ]
 			}
 		},
 		mounted() {

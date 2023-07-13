@@ -1,3 +1,5 @@
+## 1.0.6（2023-07-05）
+修复vue3模式下，动态修改v-model绑定的值无效的BUG
 ## 1.0.5（2023-07-02）
 uv-datetime-picker  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/datetimePicker.html
 ## 1.0.4（2023-06-29）
