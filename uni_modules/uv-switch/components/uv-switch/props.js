@@ -1,5 +1,13 @@
 export default {
 	props: {
+		value: {
+			type: [Boolean, String, Number],
+			default: false
+		},
+		modelValue: {
+			type: [Boolean, String, Number],
+			default: false
+		},
 		// 是否为加载中状态
 		loading: {
 			type: Boolean,
@@ -25,19 +33,6 @@ export default {
 			type: String,
 			default: '#fff'
 		},
-		// 通过v-model双向绑定的值
-		// #ifdef VUE2
-		value: {
-			type: [Boolean, String, Number],
-			default: false
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: [Boolean, String, Number],
-			default: false
-		},
-		// #endif
 		// switch打开时的值
 		activeValue: {
 			type: [String, Number, Boolean],

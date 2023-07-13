@@ -1,32 +1,31 @@
 <template>
 	<view
-	    class="uv-switch"
-	    :class="[disabled && 'uv-switch--disabled']"
-	    :style="[switchStyle, $uv.addStyle(customStyle)]"
-	    @tap="clickHandler"
+	  class="uv-switch"
+	  :class="[disabled && 'uv-switch--disabled']"
+	  :style="[switchStyle, $uv.addStyle(customStyle)]"
+	  @tap="clickHandler"
 	>
 		<view
-		    class="uv-switch__bg"
-		    :style="[bgStyle]"
+		  class="uv-switch__bg"
+		  :style="[bgStyle]"
 		>
 		</view>
 		<view
-		    class="uv-switch__node"
-		    :class="[switchValue && 'uv-switch__node--on']"
-		    :style="[nodeStyle]"
-		    ref="uv-switch__node"
+		  class="uv-switch__node"
+		  :class="[innerValue && 'uv-switch__node--on']"
+		  :style="[nodeStyle]"
+		  ref="uv-switch__node"
 		>
 			<uv-loading-icon
-			    :show="loading"
-			    mode="circle"
-			    timingFunction='linear'
-			    :color="switchValue ? activeColor : '#AAABAD'"
-			    :size="size * 0.6"
+			  :show="loading"
+			  mode="circle"
+			  timingFunction='linear'
+			  :color="innerValue ? activeColor : '#AAABAD'"
+			  :size="size * 0.6"
 			/>
 		</view>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -53,49 +52,32 @@
 	export default {
 		name: "uv-switch",
 		mixins: [mpMixin, mixin, props],
-		watch: {
-			// #ifdef VUE2
-			value: {
-				immediate: true,
-				handler(n) {
-					if(n !== this.inactiveValue && n !== this.activeValue) {
-						this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
-					}
-				}
-			}
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				immediate: true,
-				handler(n) {
-					if(n !== this.inactiveValue && n !== this.activeValue) {
-						this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
-					}
-				}
-			}
-			// #endif
-		},
 		data() {
 			return {
-				bgColor: '#ffffff'
+				bgColor: '#ffffff',
+				innerValue: false
 			}
 		},
-		computed: {
-			switchValue(){
-				// #ifdef VUE2
-				return this.value;
-				// #endif
-				// #ifdef VUE3
-				return this.modelValue;
-				// #endif
+		watch: {
+			value(newVal) {
+				if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
+					return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+				}
+				this.innerValue = newVal;
 			},
-			isActive(){
-				// #ifdef VUE2
-				return this.value === this.activeValue;
-				// #endif
-				// #ifdef VUE3
-				return this.modelValue === this.activeValue;
-				// #endif
+			modelValue(newVal) {
+				if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
+					return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+				}
+				this.innerValue = newVal;
+			}
+		},
+		created() {
+			this.innerValue = this.value || this.modelValue;
+		},
+		computed: {
+			isActive() {
+				return this.innerValue === this.activeValue;
 			},
 			switchStyle() {
 				let style = {}
@@ -104,7 +86,7 @@
 				style.height = this.$uv.addUnit(this.$uv.getPx(this.size) + 2)
 				// 如果自定义了“非激活”演示，name边框颜色设置为透明(跟非激活颜色一致)
 				// 这里不能简单的设置为非激活的颜色，否则打开状态时，会有边框，所以需要透明
-				if(this.customInactiveColor) {
+				if (this.customInactiveColor) {
 					style.borderColor = 'rgba(0, 0, 0, 0)'
 				}
 				style.backgroundColor = this.isActive ? this.activeColor : this.inactiveColor
@@ -138,13 +120,10 @@
 			clickHandler() {
 				if (!this.disabled && !this.loading) {
 					const oldValue = this.isActive ? this.inactiveValue : this.activeValue
-					if(!this.asyncChange) {
-						// #ifdef VUE2
+					this.innerValue = oldValue;
+					if (!this.asyncChange) {
 						this.$emit('input', oldValue)
-						// #endif
-						// #ifdef VUE3
-						this.$emit('update:modelValue',oldValue)
-						// #endif
+						this.$emit('update:modelValue', oldValue)
 					}
 					// 放到下一个生命周期，因为双向绑定的value修改父组件状态需要时间，且是异步的
 					this.$nextTick(() => {
@@ -175,7 +154,6 @@
 		// 由于weex为阿里逗着玩的KPI项目，导致bug奇多，这必须要写这一行，
 		// 否则在iOS上，点击页面任意地方，都会触发switch的点击事件
 		overflow: hidden;
-
 		&__node {
 			@include flex(row);
 			align-items: center;
@@ -188,7 +166,6 @@
 			transition-duration: 0.4s;
 			transition-timing-function: cubic-bezier(0.3, 1.05, 0.4, 1.05);
 		}
-
 		&__bg {
 			position: absolute;
 			border-radius: 100px;
@@ -199,7 +176,6 @@
 			border-bottom-left-radius: 0;
 			transition-timing-function: ease;
 		}
-
 		&--disabled {
 			opacity: 0.6;
 		}
