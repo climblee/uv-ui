@@ -19,7 +19,6 @@
 		></slider>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -29,27 +28,16 @@
 		mixins: [mpMixin, mixin, props],
 		computed: {
 			sliderValue(){
-				// #ifdef VUE2
-				return this.value;
-				// #endif
-				// #ifdef VUE3
-				return this.modelValue;
-				// #endif
+				return this.value || this.modelValue;
 			}
 		},
 		methods: {
 			// 拖动过程中触发
 			changingHandler(e) {
-				const {
-					value
-				} = e.detail
+				const { value } = e.detail
 				// 更新v-model的值
-				// #ifdef VUE2
 				this.$emit('input', value)
-				// #endif
-				// #ifdef VUE3
 				this.$emit('update:modelValue',value)
-				// #endif
 				// 触发事件
 				this.$emit('changing', value)
 			},
@@ -59,16 +47,12 @@
 					value
 				} = e.detail
 				// 更新v-model的值
-				// #ifdef VUE2
 				this.$emit('input', value)
-				// #endif
-				// #ifdef VUE3
 				this.$emit('update:modelValue',value)
-				// #endif
 				// 触发事件
 				this.$emit('change', value)
 			}
-		},
+		}
 	}
 </script>
 

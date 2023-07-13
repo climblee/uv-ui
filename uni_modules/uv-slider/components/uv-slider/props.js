@@ -1,5 +1,13 @@
 export default {
 	props: {
+		value: {
+			type: [Number, String],
+			default: 0
+		},
+		modelValue: {
+			type: [Number, String],
+			default: 0
+		},
 		// 最小可选值
 		min: {
 			type: [Number, String],
@@ -15,19 +23,6 @@ export default {
 			type: [Number, String],
 			default: 1
 		},
-		// 当前取值
-		// #ifdef VUE2
-		value: {
-			type: [Number, String],
-			default: 0
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: [Number, String],
-			default: 0
-		},
-		// #endif
 		// 滑块右侧已选择部分的背景色
 		activeColor: {
 			type: String,
