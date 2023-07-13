@@ -31,8 +31,8 @@
 			@keyboardheightchange="onKeyboardheightchange"></textarea>
 		<text class="uv-textarea__count"
 			:style="{
-                'background-color': disabled ? 'transparent' : '#fff',
-            }"
+        'background-color': disabled ? 'transparent' : '#fff',
+      }"
 			v-if="count">{{ innerValue.length }}/{{ maxlen }}</text>
 	</view>
 </template>
@@ -45,7 +45,7 @@
 	 * @description 文本域此组件满足了可能出现的表单信息补充，编辑等实际逻辑的功能，内置了字数校验等
 	 * @tutorial https://www.uvui.cn/components/textarea.html
 	 *
-	 * @property {String | Number} 		value					输入框的内容
+	 * @property {String | Number} 		value	/ v-model				输入框的内容
 	 * @property {String | Number}		placeholder				输入框为空时占位符
 	 * @property {String}			    placeholderClass		指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/ （ 默认 'input-placeholder' ）
 	 * @property {String | Object}	    placeholderStyle		指定placeholder的样式，字符串/对象形式，如"color: red;"
@@ -86,49 +86,20 @@
 				innerValue: "",
 				// 是否处于获得焦点状态
 				focused: false,
-				// value是否第一次变化，在watch中，由于加入immediate属性，会在第一次触发，此时不应该认为value发生了变化
-				firstChange: true,
-				// value绑定值的变化是由内部还是外部引起的
-				changeFromInner: false,
 				// 过滤处理方法
 				innerFormatter: value => value
 			}
 		},
+		created() {
+			this.innerValue = this.value || this.modelValue;
+		},
 		watch: {
-			// #ifdef VUE2
-			value: {
-				immediate: true,
-				handler(newVal, oldVal) {
-					this.innerValue = newVal;
-					/* #ifdef H5 */
-					// 在H5中，外部value变化后，修改input中的值，不会触发@input事件，此时手动调用值变化方法
-					if (this.firstChange === false && this.changeFromInner === false) {
-						this.valueChange();
-					}
-					/* #endif */
-					this.firstChange = false;
-					// 重置changeFromInner的值为false，标识下一次引起默认为外部引起的
-					this.changeFromInner = false;
-				},
-			}
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				immediate: true,
-				handler(newVal, oldVal) {
-					this.innerValue = newVal;
-					/* #ifdef H5 */
-					// 在H5中，外部value变化后，修改input中的值，不会触发@input事件，此时手动调用值变化方法
-					if (this.firstChange === false && this.changeFromInner === false) {
-						this.valueChange();
-					}
-					/* #endif */
-					this.firstChange = false;
-					// 重置changeFromInner的值为false，标识下一次引起默认为外部引起的
-					this.changeFromInner = false;
-				},
+			value(newVal){
+				this.innerValue = newVal;
 			},
-			// #endif
+			modelValue(newVal){
+				this.innerValue = newVal;
+			}
 		},
 		computed: {
 			// 组件的类名
@@ -190,14 +161,8 @@
 			valueChange() {
 				const value = this.innerValue;
 				this.$nextTick(() => {
-					// #ifdef VUE2
 					this.$emit("input", value);
-					// #endif
-					// #ifdef VUE3
 					this.$emit("update:modelValue", value);
-					// #endif
-					// 标识value值的变化是由内部引起的
-					this.changeFromInner = true;
 					this.$emit("change", value);
 					// 尝试调用uv-form的验证方法
 					this.$uv.formValidate(this, "change");
