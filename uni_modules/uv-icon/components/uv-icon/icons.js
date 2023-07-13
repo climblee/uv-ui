@@ -1,5 +1,5 @@
 export default {
-	'uvicon-level': 'e68e',
+	'uvicon-level': 'e68f',
 	'uvicon-checkbox-mark': 'e659',
 	'uvicon-folder': 'e694',
 	'uvicon-movie': 'e67c',
@@ -20,7 +20,7 @@ export default {
 	'uvicon-fingerprint': 'e6aa',
 	'uvicon-more-dot-fill': 'e66f',
 	'uvicon-scan': 'e631',
-	'uvicon-map': 'e61d',
+	'uvicon-map': 'e665',
 	'uvicon-map-fill': 'e6a8',
 	'uvicon-tags': 'e621',
 	'uvicon-tags-fill': 'e613',
