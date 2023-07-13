@@ -1,23 +1,18 @@
 export default {
 	props: {
+		value: {
+			type: [String, Number],
+			default: 0
+		},
+		modelValue: {
+			type: [String, Number],
+			default: 0
+		},
 		// 步进器标识符，在change回调返回
 		name: {
 			type: [String, Number],
 			default: ''
 		},
-		// 用于双向绑定的值，初始化时设置设为默认min值(最小值)
-		// #ifdef VUE2
-		value: {
-			type: [String, Number],
-			default: 0
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: [String, Number],
-			default: 0
-		},
-		// #endif
 		// 最小值
 		min: {
 			type: [String, Number],

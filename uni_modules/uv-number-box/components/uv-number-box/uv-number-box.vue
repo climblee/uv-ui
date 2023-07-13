@@ -1,79 +1,77 @@
 <template>
 	<view class="uv-number-box">
 		<view
-		    class="uv-number-box__slot"
-		    @tap.stop="clickHandler('minus')"
-		    @touchstart="onTouchStart('minus')"
-		    @touchend.stop="clearTimeout"
-		    v-if="showMinus && $slots.minus"
+		  class="uv-number-box__slot"
+		  @tap.stop="clickHandler('minus')"
+		  @touchstart="onTouchStart('minus')"
+		  @touchend.stop="clearTimeout"
+		  v-if="showMinus && $slots.minus"
 		>
 			<slot name="minus" />
 		</view>
 		<view
-		    v-else-if="showMinus"
-		    class="uv-number-box__minus"
-		    @tap.stop="clickHandler('minus')"
-		    @touchstart="onTouchStart('minus')"
-		    @touchend.stop="clearTimeout"
-		    hover-class="uv-number-box__minus--hover"
-		    hover-stay-time="150"
-		    :class="{ 'uv-number-box__minus--disabled': isDisabled('minus') }"
-		    :style="[buttonStyle('minus')]"
+		  v-else-if="showMinus"
+		  class="uv-number-box__minus"
+		  @tap.stop="clickHandler('minus')"
+		  @touchstart="onTouchStart('minus')"
+		  @touchend.stop="clearTimeout"
+		  hover-class="uv-number-box__minus--hover"
+		  hover-stay-time="150"
+		  :class="{ 'uv-number-box__minus--disabled': isDisabled('minus') }"
+		  :style="[buttonStyle('minus')]"
 		>
 			<uv-icon
-			    name="minus"
-			    :color="isDisabled('minus') ? '#c8c9cc' : '#323233'"
-			    size="15"
-			    bold
+			  name="minus"
+			  :color="isDisabled('minus') ? '#c8c9cc' : '#323233'"
+			  size="15"
+			  bold
 				:customStyle="iconStyle"
 			></uv-icon>
 		</view>
-
 		<slot name="input">
 			<input
-			    :disabled="disabledInput || disabled"
-			    :cursor-spacing="getCursorSpacing"
-			    :class="{ 'uv-number-box__input--disabled': disabled || disabledInput }"
-			    v-model="currentValue"
-			    class="uv-number-box__input"
-			    @blur="onBlur"
-			    @focus="onFocus"
-			    @input="onInput"
-			    type="number"
-			    :style="[inputStyle]"
+			  :disabled="disabledInput || disabled"
+			  :cursor-spacing="getCursorSpacing"
+			  :class="{ 'uv-number-box__input--disabled': disabled || disabledInput }"
+			  v-model="currentValue"
+			  class="uv-number-box__input"
+			  @blur="onBlur"
+			  @focus="onFocus"
+			  @input="onInput"
+			  type="number"
+			  :style="[inputStyle]"
 			/>
 		</slot>
 		<view
-		    class="uv-number-box__slot"
-		    @tap.stop="clickHandler('plus')"
-		    @touchstart="onTouchStart('plus')"
-		    @touchend.stop="clearTimeout"
-		    v-if="showPlus && $slots.plus"
+		  class="uv-number-box__slot"
+		  @tap.stop="clickHandler('plus')"
+		  @touchstart="onTouchStart('plus')"
+		  @touchend.stop="clearTimeout"
+		  v-if="showPlus && $slots.plus"
 		>
 			<slot name="plus" />
 		</view>
 		<view
-		    v-else-if="showPlus"
-		    class="uv-number-box__plus"
-		    @tap.stop="clickHandler('plus')"
-		    @touchstart="onTouchStart('plus')"
-		    @touchend.stop="clearTimeout"
-		    hover-class="uv-number-box__plus--hover"
-		    hover-stay-time="150"
-		    :class="{ 'uv-number-box__minus--disabled': isDisabled('plus') }"
-		    :style="[buttonStyle('plus')]"
+		  v-else-if="showPlus"
+		  class="uv-number-box__plus"
+		  @tap.stop="clickHandler('plus')"
+		  @touchstart="onTouchStart('plus')"
+		  @touchend.stop="clearTimeout"
+		  hover-class="uv-number-box__plus--hover"
+		  hover-stay-time="150"
+		  :class="{ 'uv-number-box__minus--disabled': isDisabled('plus') }"
+		  :style="[buttonStyle('plus')]"
 		>
 			<uv-icon
-			    name="plus"
-			    :color="isDisabled('plus') ? '#c8c9cc' : '#323233'"
-			    size="15"
-			    bold
+			  name="plus"
+			  :color="isDisabled('plus') ? '#c8c9cc' : '#323233'"
+			  size="15"
+			  bold
 				:customStyle="iconStyle"
 			></uv-icon>
 		</view>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -82,8 +80,8 @@
 	 * numberBox 步进器
 	 * @description 该组件一般用于商城购物选择物品数量的场景。
 	 * @tutorial https://www.uvui.cn/components/numberBox.html
+	 * @property {String | Number}	value / v-model			用于双向绑定的值，初始化时设置设为默认min值(最小值)  （默认 0 ）
 	 * @property {String | Number}	name			步进器标识符，在change回调返回
-	 * @property {String | Number}	value			用于双向绑定的值，初始化时设置设为默认min值(最小值)  （默认 0 ）
 	 * @property {String | Number}	min				最小值 （默认 1 ）
 	 * @property {String | Number}	max				最大值 （默认 Number.MAX_SAFE_INTEGER ）
 	 * @property {String | Number}	step			加减的步长，可为小数 （默认 1 ）
@@ -125,21 +123,16 @@
 			watchChange(n) {
 				this.check()
 			},
-			// 监听v-mode的变化，重新初始化内部的值
-			// #ifdef VUE2
-			value(n) {
-				if (n !== this.currentValue) {
+			value(newVal) {
+				if (newVal !== this.currentValue) {
 					this.currentValue = this.format(this.value)
 				}
 			},
-			// #endif
-			// #ifdef VUE3
-			modelValue(n) {
-				if (n !== this.currentValue) {
+			modelValue(newVal) {
+				if (newVal !== this.currentValue) {
 					this.currentValue = this.format(this.modelValue)
 				}
 			}
-			// #endif
 		},
 		computed: {
 			getCursorSpacing() {
@@ -194,17 +187,13 @@
 				}
 			},
 		},
-		mounted() {
+		created() {
 			this.init()
 		},
 		methods: {
 			init() {
-				// #ifdef VUE2
-				this.currentValue = this.format(this.value)
-				// #endif
-				// #ifdef VUE3
-				this.currentValue = this.format(this.modelValue)
-				// #endif
+				const value = this.value || this.modelValue;
+				this.currentValue = this.format(value)
 			},
 			// 格式化整理数据，限制范围
 			format(value) {
@@ -249,7 +238,7 @@
 				const value = this.format(event.detail.value)
 				// 发出blur事件
 				this.$emit(
-					'blur',{
+					'blur', {
 						...event.detail,
 						name: this.name,
 					}
@@ -276,12 +265,8 @@
 				// 如果开启了异步变更值，则不修改内部的值，需要用户手动在外部通过v-model变更
 				if (!this.asyncChange) {
 					this.$nextTick(() => {
-						// #ifdef VUE2
 						this.$emit('input', value)
-						// #endif
-						// #ifdef VUE3
-						this.$emit('update:modelValue',value)
-						// #endif
+						this.$emit('update:modelValue', value)
 						this.currentValue = value
 						this.$forceUpdate()
 					})
@@ -359,17 +344,14 @@
 	$uv-numberBox-input-margin: 0 2px !default;
 	$uv-numberBox-input-disabled-color: #c8c9cc !default;
 	$uv-numberBox-input-disabled-bgColor: #f2f3f5 !default;
-
 	.uv-number-box {
 		@include flex(row);
 		align-items: center;
-
 		&__slot {
 			/* #ifndef APP-NVUE */
 			touch-action: none;
 			/* #endif */
 		}
-
 		&__plus,
 		&__minus {
 			width: 35px;
@@ -379,27 +361,22 @@
 			/* #ifndef APP-NVUE */
 			touch-action: none;
 			/* #endif */
-
 			&--hover {
 				background-color: $uv-numberBox-hover-bgColor !important;
 			}
-
 			&--disabled {
 				color: $uv-numberBox-disabled-color;
 				background-color: $uv-numberBox-disabled-bgColor;
 			}
 		}
-
 		&__plus {
 			border-top-right-radius: $uv-numberBox-plus-radius;
 			border-bottom-right-radius: $uv-numberBox-plus-radius;
 		}
-
 		&__minus {
 			border-top-left-radius: $uv-numberBox-minus-radius;
 			border-bottom-left-radius: $uv-numberBox-minus-radius;
 		}
-
 		&__input {
 			position: relative;
 			text-align: $uv-numberBox-input-text-align;
@@ -409,7 +386,6 @@
 			@include flex;
 			align-items: center;
 			justify-content: center;
-
 			&--disabled {
 				color: $uv-numberBox-input-disabled-color;
 				background-color: $uv-numberBox-input-disabled-bgColor;

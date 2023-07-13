@@ -1,7 +1,7 @@
 {
   "id": "uv-number-box",
   "displayName": "uv-number-box 步进器  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "uv-number-box 该组件一般用于商城购物选择物品数量的场景。",
   "keywords": [
     "uv-number-box",
