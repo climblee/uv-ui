@@ -1,17 +1,13 @@
 export default {
 	props: {
-		// vue2用于v-model双向绑定选中的星星数量或vue3禁用等状态的选中数量
 		value: {
 			type: [String, Number],
-			default: 1
+			default: 0
 		},
-		// #ifdef VUE3
-		// vue3用于v-model双向绑定选中的星星数量
 		modelValue: {
 			type: [String, Number],
-			default: 1
+			default: 0
 		},
-		// #endif
 		// 要显示的星星数量
 		count: {
 			type: [String, Number],

@@ -81,57 +81,23 @@
 				elId: '',
 				elClass: '',
 				rateBoxLeft: 0, // 评分盒子左边到屏幕左边的距离，用于滑动选择时计算距离
-				// #ifdef VUE2
-				activeIndex: this.value,
-				// #endif
-				// #ifdef VUE3
-				activeIndex: this.modelValue,
-				// #endif
+				activeIndex: 0,
 				rateWidth: 0, // 每个星星的宽度
 				// 标识是否正在滑动，由于iOS事件上touch比click先触发，导致快速滑动结束后，接着触发click，导致事件混乱而出错
-				moving: false,
-				// #ifdef VUE3
-			 prepare: {
-				 modelValue: 1,
-				 value: 1
-			 }
-				// #endif
-			};
+				moving: false
+			}
 		},
 		watch: {
-			// #ifdef VUE2
-			value: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.activeIndex = val;
-				}
+			value(newVal){
+				this.activeIndex = newVal;
 			},
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.prepare.modelValue = val;
-				}
+			modelValue(newVal){
+				this.activeIndex = newVal;
 			},
-			value: {
-				deep: true,
-				immediate: true,
-				handler(val){
-					this.prepare.value = val;
-					if(this.prepare.modelValue > 1){
-						this.activeIndex = this.prepare.modelValue;
-					}else{
-						this.activeIndex = val;
-					}
-				}
-			},
-			// #endif
 			activeIndex: 'emitEvent'
 		},
 		created() {
+			this.activeIndex = Number(this.value || this.modelValue);
 			this.elId = this.$uv.guid();
 			this.elClass = this.$uv.guid();
 		},
@@ -273,8 +239,8 @@
 		},
 		mounted() {
 			this.init();
-		},
-	};
+		}
+	}
 </script>
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
