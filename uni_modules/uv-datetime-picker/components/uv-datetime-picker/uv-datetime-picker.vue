@@ -83,12 +83,7 @@
 		computed: {
 			// 如果以下这些变量发生了变化，意味着需要重新初始化各列的值
 			propsChange() {
-				// #ifdef VUE2
-				const propsValue = this.value;
-				// #endif
-				// #ifdef VUE3
-				const propsValue = this.modelValue;
-				// #endif
+				const propsValue = this.value || this.modelValue;
 				return [this.mode, this.maxDate, this.minDate, this.minHour, this.maxHour, this.minMinute, this.maxMinute, this.filter, propsValue ]
 			}
 		},
@@ -101,12 +96,8 @@
 				this.updateColumnValue(this.innerValue)
 			},
 			getValue() {
-				// #ifdef VUE2
-				this.innerValue = this.correctValue(this.value)
-				// #endif
-				// #ifdef VUE3
-				this.innerValue = this.correctValue(this.modelValue)
-				// #endif
+				const propsValue = this.value || this.modelValue;
+				this.innerValue = this.correctValue(propsValue)
 			},
 			// 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
 			setFormatter(e) {
@@ -130,12 +121,8 @@
 					value: this.innerValue,
 					mode: this.mode
 				})
-				// #ifdef VUE2
 				this.$emit('input', this.innerValue)
-				// #endif
-				// #ifdef VUE3
 				this.$emit('update:modelValue',this.innerValue)
-				// #endif
 			},
 			//用正则截取输出值,当出现多组数字时,抛出错误
 			intercept(e,type){

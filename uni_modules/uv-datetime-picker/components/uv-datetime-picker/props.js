@@ -1,5 +1,13 @@
 export default {
 	props: {
+		value: {
+			type: [String, Number],
+			default: ''
+		},
+		modelValue: {
+			type: [String, Number],
+			default: ''
+		},
 		// 是否打开组件
 		show: {
 			type: Boolean,
@@ -10,19 +18,6 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 绑定值
-		// #ifdef VUE2
-		value: {
-			type: [String, Number],
-			default: ''
-		},
-		// #endif
-		// #ifdef VUE3
-		modelValue: {
-			type: [String, Number],
-			default: ''
-		},
-		// #endif
 		// 顶部标题
 		title: {
 			type: String,
