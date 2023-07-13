@@ -53,12 +53,12 @@
 	 * CodeInput 验证码输入
 	 * @description 该组件一般用于验证用户短信验证码的场景，也可以结合uvui的键盘组件使用
 	 * @tutorial https://www.uvui.cn/components/codeInput.html
+	 * @property {String | Number}	value / v-model				预置值
 	 * @property {String | Number}	maxlength			最大输入长度 （默认 6 ）
 	 * @property {Boolean}			dot					是否用圆点填充 （默认 false ）
 	 * @property {String}			mode				显示模式，box-盒子模式，line-底部横线模式 （默认 'box' ）
 	 * @property {Boolean}			hairline			是否细边框 （默认 false ）
 	 * @property {String | Number}	space				字符间的距离 （默认 10 ）
-	 * @property {String | Number}	value				预置值
 	 * @property {Boolean}			focus				是否自动获取焦点 （默认 false ）
 	 * @property {Boolean}			bold				字体和输入横线是否加粗 （默认 false ）
 	 * @property {String}			color				字体颜色 （默认 '#606266' ）
@@ -81,31 +81,25 @@
 				isFocus: this.focus
 			}
 		},
+		created() {
+			const value = this.value || this.modelValue;
+			this.inputValue = String(value).substring(0, this.maxlength);
+		},
 		watch: {
-			// #ifdef VUE2
-			value: {
-				immediate: true,
-				handler(val) {
-					// 转为字符串，超出部分截掉
-					this.inputValue = String(val).substring(0, this.maxlength);
-					if(this.disabledKeyboard){
-						this.customInput();
-					}
+			value(newVal) {
+				// 转为字符串，超出部分截掉
+				this.inputValue = String(newVal).substring(0, this.maxlength);
+				if (this.disabledKeyboard) {
+					this.customInput();
+				}
+			},
+			modelValue(newVal) {
+				// 转为字符串，超出部分截掉
+				this.inputValue = String(newVal).substring(0, this.maxlength);
+				if (this.disabledKeyboard) {
+					this.customInput();
 				}
 			}
-			// #endif
-			// #ifdef VUE3
-			modelValue: {
-				immediate: true,
-				handler(val) {
-					// 转为字符串，超出部分截掉
-					this.inputValue = String(val).substring(0, this.maxlength);
-					if(this.disabledKeyboard){
-						this.customInput();
-					}
-				}
-			}
-			// #endif
 		},
 		computed: {
 			// 根据长度，循环输入框的个数，因为头条小程序数值不能用于v-for
@@ -148,7 +142,6 @@
 						// 最后一个盒子的有边框需要保留
 						style.marginRight = 0
 					}
-
 					return style
 				}
 			},
@@ -172,7 +165,7 @@
 				const value = e.detail.value
 				this.inputValue = value
 				// 是否允许输入“.”符号
-				if(this.disabledDot) {
+				if (this.disabledDot) {
 					this.$nextTick(() => {
 						this.inputValue = value.replace('.', '')
 					})
@@ -180,12 +173,8 @@
 				// 未达到maxlength之前，发送change事件，达到后发送finish事件
 				this.$emit('change', value)
 				// 修改通过v-model双向绑定的值
-				// #ifdef VUE2
 				this.$emit('input', value)
-				// #endif
-				// #ifdef VUE3
-				this.$emit('update:modelValue',value)
-				// #endif
+				this.$emit('update:modelValue', value)
 				// 达到用户指定输入长度时，发出完成事件
 				if (String(value).length >= Number(this.maxlength)) {
 					this.$emit('finish', value)
@@ -195,7 +184,7 @@
 			customInput() {
 				const value = this.inputValue;
 				// 是否允许输入“.”符号
-				if(this.disabledDot) {
+				if (this.disabledDot) {
 					this.$nextTick(() => {
 						this.inputValue = value.replace('.', '')
 					})
@@ -210,7 +199,6 @@
 		}
 	}
 </script>
-
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
@@ -218,30 +206,25 @@
 	$uv-code-input-cursor-height: 40%;
 	$uv-code-input-cursor-animation-duration: 1s;
 	$uv-code-input-cursor-animation-name: uv-cursor-flicker;
-
 	.uv-code-input {
 		@include flex;
 		position: relative;
 		overflow: hidden;
-
 		&__item {
 			@include flex;
 			justify-content: center;
 			align-items: center;
 			position: relative;
-
 			&__text {
 				font-size: 15px;
 				color: $uv-content-color;
 			}
-
 			&__dot {
 				width: 7px;
 				height: 7px;
 				border-radius: 100px;
 				background-color: $uv-content-color;
 			}
-
 			&__line {
 				position: absolute;
 				bottom: 0;
@@ -255,15 +238,13 @@
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%,-50%);
+				transform: translate(-50%, -50%);
 				width: $uv-code-input-cursor-width;
 				height: $uv-code-input-cursor-height;
 				animation: $uv-code-input-cursor-animation-duration uv-cursor-flicker infinite;
 			}
 			/* #endif */
-			
 		}
-
 		&__input {
 			// 之所以需要input输入框，是因为有它才能唤起键盘
 			// 这里将它设置为两倍的屏幕宽度，再将左边的一半移出屏幕，为了不让用户看到输入的内容
@@ -275,19 +256,17 @@
 			text-align: left;
 		}
 	}
-	
 	/* #ifndef APP-PLUS */
 	@keyframes uv-cursor-flicker {
 		0% {
-		    opacity: 0;
+			opacity: 0;
 		}
 		50% {
-		    opacity: 1;
+			opacity: 1;
 		}
 		100% {
-		    opacity: 0;
+			opacity: 0;
 		}
 	}
 	/* #endif */
-
 </style>
