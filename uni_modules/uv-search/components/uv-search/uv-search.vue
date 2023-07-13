@@ -25,7 +25,7 @@
 			<input
 			  confirm-type="search"
 			  @blur="blur"
-			  :value="inputValue"
+			  :value="keyword"
 			  @confirm="search"
 			  @input="inputChange"
 			  :disabled="disabled"
@@ -118,12 +118,10 @@
 				focused: this.focus
 			};
 		},
+		created() {
+			this.keyword = this.value || this.modelValue;
+		},
 		watch: {
-			keyword(nVal) {
-				this.$emit('input', nVal)
-				this.$emit('update:modelValue', nVal)
-				this.$emit('change', nVal);
-			},
 			value(nVal){
 				this.keyword = nVal;
 			},
@@ -134,15 +132,18 @@
 		computed: {
 			showActionBtn() {
 				return !this.animation && this.showAction
-			},
-			inputValue() {
-				return this.value || this.modelValue;
 			}
 		},
 		methods: {
+			keywordChange(){
+				this.$emit('input', this.keyword)
+				this.$emit('update:modelValue', this.keyword)
+				this.$emit('change', this.keyword);
+			},
 			// 目前HX2.6.9 v-model双向绑定无效，故监听input事件获取输入框内容的变化
 			inputChange(e) {
 				this.keyword = e.detail.value;
+				this.keywordChange();
 			},
 			// 清空输入
 			// 也可以作为用户通过this.$refs形式调用清空输入框内容
@@ -151,6 +152,7 @@
 				this.$nextTick(() => {
 					this.$emit('clear');
 				})
+				this.keywordChange();
 			},
 			// 确定搜索
 			search(e) {
