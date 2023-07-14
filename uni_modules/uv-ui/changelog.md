@@ -1,3 +1,17 @@
+## 1.0.19（2023-07-14）
+1. 优化 uv-waterfall 当changeList未处理数据时，正确返回对应列的数据，避免误导
+2. 修复 uv-rate VUE3模式下设置value属性不生效的BUG
+3. 修复 uv-input VUE3模式下设置value属性不生效的BUG
+4. 修复 uv-search VUE3模式下设置value属性不生效的BUG
+5. 修复 uv-code-input VUE3模式下设置value属性不生效的BUG
+6. 修复 uv-number-box VUE3模式下设置value属性不生效的BUG
+7. 修复 uv-radio VUE3模式下设置value属性不生效的BUG
+8. 修复 uv-checkbox VUE3模式下设置value属性不生效的BUG
+9. 修复 uv-textarea VUE3模式下设置value属性不生效的BUG
+10. 修复 uv-switch VUE3模式下设置value属性不生效的BUG
+11. 修复 uv-slider VUE3模式下设置value属性不生效的BUG
+12. 修复 uv-datetime-picker VUE3模式下设置value属性不生效的BUG
+13. 修复 uv-icon 部分图标错误的BUG
 ## 1.0.18（2023-07-06）
 1. 优化 uv-icon 1. 更新图标，删除一些不常用的图标；2. 删除base64，修改成ttf文件引入读取图标。uv-icon 图标
 2. 优化 uv-icon nvue自定义图标用法，文档说明：[点击跳转](https://www.uvui.cn/guide/customIcon.html)
