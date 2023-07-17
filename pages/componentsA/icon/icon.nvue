@@ -35,12 +35,6 @@
 						name: 'man'
 					},
 					{
-						name: 'arrow-left-double'
-					},
-					{
-						name: 'arrow-right-double'
-					},
-					{
 						name: 'chat'
 					},
 					{
@@ -89,12 +83,6 @@
 						name: 'home-fill'
 					},
 					{
-						name: 'fingerprint'
-					},
-					{
-						name: 'cut'
-					},
-					{
 						name: 'star'
 					},
 					{
@@ -126,9 +114,6 @@
 					},
 					{
 						name: 'trash-fill'
-					},
-					{
-						name: 'rewind-left'
 					},
 					{
 						name: 'shopping-cart'
@@ -464,16 +449,46 @@
 						name: 'moments-circel-fill'
 					},
 					{
-						name: 'facebook'
-					},
-					{
-						name: 'facebook-circle-fill'
-					},
-					{
 						name: 'twitte'
 					},
 					{
 						name: 'empty-data'
+					},
+					{
+						name: 'empty-address'
+					},
+					{
+						name: 'empty-favor'
+					},
+					{
+						name: 'empty-car'
+					},
+					{
+						name: 'empty-order'
+					},
+					{
+						name: 'empty-list'
+					},
+					{
+						name: 'empty-search'
+					},
+					{
+						name: 'empty-permission'
+					},
+					{
+						name: 'empty-news'
+					},
+					{
+						name: 'empty-history'
+					},
+					{
+						name: 'empty-coupon'
+					},
+					{
+						name: 'empty-page'
+					},
+					{
+						name: 'empty-wifi-off'
 					}
 				]
 			}

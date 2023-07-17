@@ -29,7 +29,6 @@
 		</view>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -65,7 +64,7 @@
 					page: '页面不存在',
 					search: '没有搜索结果',
 					address: '没有收货地址',
-					wifi: '没有WiFi',
+					'wifi-off': '没有WiFi',
 					order: '订单为空',
 					coupon: '没有优惠券',
 					favor: '暂无收藏',
@@ -101,18 +100,15 @@
 		}
 	}
 </script>
-
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-	$uv-empty-text-margin-top:20rpx !default;
-	$uv-empty-slot-margin-top:20rpx !default;
-
+	$uv-empty-text-margin-top: 20rpx !default;
+	$uv-empty-slot-margin-top: 20rpx !default;
 	.uv-empty {
 		@include flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-
 		&__text {
 			@include flex;
 			justify-content: center;
@@ -120,10 +116,10 @@
 			margin-top: $uv-empty-text-margin-top;
 		}
 	}
-		.uv-slot-wrap {
-			@include flex;
-			justify-content: center;
-			align-items: center;
-			margin-top:$uv-empty-slot-margin-top;
-		}
+	.uv-slot-wrap {
+		@include flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: $uv-empty-slot-margin-top;
+	}
 </style>

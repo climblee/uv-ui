@@ -71,7 +71,7 @@
 						title: '数据为空',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/empty/data.png'
 					}, {
-						imgName: 'comment',
+						imgName: 'message',
 						title: '评论为空',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/empty/comment.png'
 					}, {
@@ -111,7 +111,7 @@
 						title: '没有搜索结果',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/empty/search.png'
 					}, {
-						imgName: 'wifi',
+						imgName: 'wifi-off',
 						title: '没有WiFi',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/empty/wifi.png'
 					},
