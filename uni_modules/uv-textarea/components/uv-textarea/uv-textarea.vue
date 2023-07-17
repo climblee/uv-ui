@@ -126,7 +126,7 @@
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle));
 			},
 			maxlen() {
-				return this.maxlength < 0 ? 140 : this.maxlength;
+				return this.maxlength < 0 ? this.maxlength < 0 ? -1 : 140 : this.maxlength;
 			}
 		},
 		methods: {

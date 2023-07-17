@@ -1,80 +1,44 @@
 <template>
 	<view class="uv-waterfall">
 		<!-- #ifndef APP-NVUE -->
-		<view 
-			class="uv-waterfall__gap_left"
-			:style="[gapLeftStyle]"
-		></view>
+		<view class="uv-waterfall__gap_left" :style="[gapLeftStyle]"></view>
 		<template v-if="columnNum>=1">
-			<view 
-				id="uv-waterfall-1"
-				class="uv-waterfall__column"
-			>
+			<view id="uv-waterfall-1" class="uv-waterfall__column">
 				<slot name="list1"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=2">
-			<view 
-				class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"
-			></view>
-			<view 
-				id="uv-waterfall-2"
-				class="uv-waterfall__column">
+			<view class="uv-waterfall__gap_center" :style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-2" class="uv-waterfall__column">
 				<slot name="list2"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=3">
-			<view 
-				class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]"
-			></view>
-			<view 
-				id="uv-waterfall-3"
-				class="uv-waterfall__column"
-				>
+			<view class="uv-waterfall__gap_center" :style="[gapCenterStyle]"></view>
+			<view id="uv-waterfall-3" class="uv-waterfall__column">
 				<slot name="list3"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=4">
-			<view 
-				class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]">
-				</view>
-			<view 
-				id="uv-waterfall-4"
-				class="uv-waterfall__column">
+			<view class="uv-waterfall__gap_center" :style="[gapCenterStyle]">
+			</view>
+			<view id="uv-waterfall-4" class="uv-waterfall__column">
 				<slot name="list4"></slot>
 			</view>
 		</template>
 		<template v-if="columnNum>=5">
-			<view 
-				class="uv-waterfall__gap_center"
-				:style="[gapCenterStyle]">
+			<view class="uv-waterfall__gap_center" :style="[gapCenterStyle]">
 			</view>
-			<view 
-				id="uv-waterfall-5"
-				class="uv-waterfall__column">
+			<view id="uv-waterfall-5" class="uv-waterfall__column">
 				<slot name="list5"></slot>
 			</view>
 		</template>
-		<view 
-			class="uv-waterfall__gap_right"
-			:style="[gapRightStyle]">
+		<view class="uv-waterfall__gap_right" :style="[gapRightStyle]">
 		</view>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
 		<view class="waterfall-warapper">
-			<waterfall
-				:column-count="columnNum"
-				:show-scrollbar="false"
-				column-width="auto"
-				:column-gap="columnGap"
-				:left-gap="leftGap"
-				:right-gap="rightGap"
-				:always-scrollable-vertical="true"
-				:style="[nvueWaterfallStyle]"
-				@loadmore="scrolltolower">
+			<waterfall :column-count="columnNum" :show-scrollbar="false" column-width="auto" :column-gap="columnGap" :left-gap="leftGap" :right-gap="rightGap" :always-scrollable-vertical="true" :style="[nvueWaterfallStyle]" @loadmore="scrolltolower">
 				<slot></slot>
 			</waterfall>
 		</view>
@@ -146,7 +110,7 @@
 				style.width = this.$uv.addUnit(this.columnGap)
 				return style;
 			},
-			nvueWaterfallStyle(){
+			nvueWaterfallStyle() {
 				const style = {};
 				if (this.width != 0) style.width = this.$uv.addUnit(this.width)
 				if (this.height != 0) style.height = this.$uv.addUnit(this.height)
@@ -159,7 +123,7 @@
 		watch: {
 			copyValue(nVal, oVal) {
 				// #ifndef APP-NVUE
-				if(nVal.length != 0) {
+				if (nVal.length != 0) {
 					// 取出数组发生变化的部分
 					let startIndex = Array.isArray(oVal) && oVal.length > 0 ? oVal.length : 0
 					// 拼接原有数据
@@ -201,7 +165,7 @@
 				this[`list${minCol.name}`].push(item);
 				emitList.name = `list${minCol.name}`;
 				emitList.value = item;
-				this.$emit('changeList',emitList);
+				this.$emit('changeList', emitList);
 				// 移除临时数组中已处理的数据
 				this.tempList.splice(0, 1)
 				// 如果还有数据则继续执行
@@ -209,7 +173,7 @@
 					let _timeout = this.addTime;
 					// 部分平台在延时较短的情况会出现BUG
 					// #ifdef MP-BAIDU
-					_timeout = _timeout<200?200:_timeout;
+					_timeout = _timeout < 200 ? 200 : _timeout;
 					// #endif
 					await this.$uv.sleep(_timeout);
 					this.splitData()
@@ -218,11 +182,26 @@
 				}
 			},
 			getMin(arr) {
-				const min = Math.min.apply(Math, arr.map(item => {
-					return item.height;
-				}))
-				const newArr = arr.filter(item => item.height == min);
-				return newArr[0];
+				let result = null;
+				const filter = arr.filter(item => item.height == 0);
+				if (!filter.length) {
+					const min = Math.min.apply(Math, arr.map(item => {
+						return item.height;
+					}))
+					const [item] = arr.filter(item => item.height == min);
+					result = item;
+				} else {
+					let newArr = [];
+					arr.map((item, index) => {
+						newArr.push({ len: this[`list${index+1}`].length, item: item });
+					});
+					const minLen = Math.min.apply(Math, newArr.map(item => {
+						return item.len;
+					}))
+					const { item } = newArr.find(item => item.len == minLen && item.item.height == 0);
+					result = item;
+				}
+				return result;
 			},
 			// 清空数据列表
 			async clear() {
@@ -255,13 +234,12 @@
 				index = this.modelValue.findIndex(item => item[this.idKey] == id)
 				if (index != -1) this.$emit('update:modelValue', this.modelValue.splice(index, 1))
 				// #endif
-				this.$emit('remove',id);
+				this.$emit('remove', id);
 			}
 		}
 	}
 </script>
-<style lang="scss"
-	scoped>
+<style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	.uv-waterfall {
 		@include flex(row);
