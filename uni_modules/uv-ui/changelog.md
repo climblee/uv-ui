@@ -1,3 +1,8 @@
+## 1.0.20（2023-07-18）
+1. 修复 uv-textarea 设置-1不生效
+2. 修复 uv-icon 恢复uv-empty相关的图标
+3. 修复 uv-empty 恢复设置mode属性的内置图标
+4. 优化 [优化文档](https://www.uvui.cn)
 ## 1.0.19（2023-07-14）
 1. 优化 uv-waterfall 当changeList未处理数据时，正确返回对应列的数据，避免误导
 2. 修复 uv-rate VUE3模式下设置value属性不生效的BUG
