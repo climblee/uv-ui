@@ -1,8 +1,8 @@
 {
   "id": "uv-datetime-picker",
-  "displayName": "uv-datetime-picker 时间选择器 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.7",
-  "description": "时间选择器组件用于时间日期，主要用于年月日时分秒的选择，具体选择的精确度由参数控制。",
+  "displayName": "uv-datetime-picker 时间选择器 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.8",
+  "description": "时间选择器组件用于时间日期，主要用于年月日时分的选择，具体选择的精确度由参数控制。",
   "keywords": [
     "datetime-picker",
     "uvui",
