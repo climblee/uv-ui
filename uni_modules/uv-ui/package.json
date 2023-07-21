@@ -36,6 +36,7 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-scroll-list",
 			"uv-vtabs",
 			"uv-pick-color",
 			"uv-qrcode",
