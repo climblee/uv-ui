@@ -96,7 +96,9 @@
 	import props from './props.js';
 	export default {
 		name: 'uv-scroll-list',
+		// #ifndef APP-NVUE
 		mixins: [mpMixin, mixin, props],
+		// #endif
 		// #ifdef APP-NVUE
 		mixins: [mpMixin, mixin, nvueMixin, props],
 		// #endif
