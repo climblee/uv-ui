@@ -15,8 +15,7 @@ export default [{
 			title: 'Vtabs 垂直选项卡',
 			title_en: 'Vtabs',
 			isNew: true
-		},
-		{
+		}, {
 			path: '/pages/componentsB/pickColor/pickColor',
 			icon: 'color',
 			title: 'PickColor 选择颜色',
@@ -28,8 +27,7 @@ export default [{
 			title: 'QRCode 二维码',
 			title_en: 'QRCode',
 			isNew: true
-		},
-		{
+		}, {
 			path: '/pages/componentsC/waterfall/waterfall',
 			icon: 'scrollList',
 			title: 'Waterfall 瀑布流布局',
@@ -85,93 +83,86 @@ export default [{
 	groupName: '表单组件',
 	groupName_en: 'Form components',
 	list: [{
-			path: '/pages/componentsB/form/form',
-			icon: 'form',
-			title: 'Form 表单',
-			title_en: 'Form'
-		}, {
-			path: '/pages/componentsB/input/input',
-			icon: 'field',
-			title: 'Input 输入框',
-			title_en: 'Input'
-		}, {
-			path: '/pages/componentsB/textarea/textarea',
-			icon: 'textarea',
-			title: 'Textarea 文本域',
-			title_en: 'Textarea'
-		}, {
-			path: '/pages/componentsB/checkbox/checkbox',
-			icon: 'checkbox',
-			title: 'Checkbox 复选框',
-			title_en: 'Checkbox'
-		}, {
-			path: '/pages/componentsB/radio/radio',
-			icon: 'radio',
-			title: 'Radio 单选框',
-			title_en: 'Radio'
-		}, {
-			path: '/pages/componentsB/switch/switch',
-			icon: 'switch',
-			title: 'Switch 开关选择器',
-			title_en: 'Switch'
-		}, {
-			path: '/pages/componentsB/calendar/calendar',
-			icon: 'calendar',
-			title: 'Calendar 日历',
-			title_en: 'Calendar'
-		}, {
-			path: '/pages/componentsB/picker/picker',
-			icon: 'picker',
-			title: 'Picker 选择器',
-			title_en: 'Picker'
-		}, {
-			path: '/pages/componentsB/datetimePicker/datetimePicker',
-			icon: 'datetimePicker',
-			title: 'DatetimePicker 时间选择器',
-			title_en: 'Picker'
-		}, {
-			path: '/pages/componentsB/code/code',
-			icon: 'code',
-			title: 'Code 验证码倒计时',
-			title_en: 'VerificationCode'
-		}, {
-			path: '/pages/componentsB/keyboard/keyboard',
-			icon: 'keyboard',
-			title: 'Keyboard 键盘',
-			title_en: 'Keyboard'
-		}, {
-			path: '/pages/componentsB/rate/rate',
-			icon: 'rate',
-			title: 'Rate 评分',
-			title_en: 'Rate'
-		}, {
-			path: '/pages/componentsB/search/search',
-			icon: 'search',
-			title: 'Search 搜索',
-			title_en: 'Search'
-		}, {
-			path: '/pages/componentsB/numberBox/numberBox',
-			icon: 'numberBox',
-			title: 'NumberBox 步进器',
-			title_en: 'NumberBox'
-		}, {
-			path: '/pages/componentsB/upload/upload',
-			icon: 'upload',
-			title: 'Upload 上传',
-			title_en: 'Upload'
-		}, {
-			path: '/pages/componentsB/slider/slider',
-			icon: 'slider',
-			title: 'Slider 滑动选择器',
-			title_en: 'Slider'
-		}
-		// , {
-		// 	path: '/pages/componentsC/album/album',
-		// 	icon: 'album',
-		// 	title: 'Album 相册',
-		// 	title_en: 'Album'
-		// },
-	]
+		path: '/pages/componentsB/form/form',
+		icon: 'form',
+		title: 'Form 表单',
+		title_en: 'Form'
+	}, {
+		path: '/pages/componentsB/input/input',
+		icon: 'field',
+		title: 'Input 输入框',
+		title_en: 'Input'
+	}, {
+		path: '/pages/componentsB/textarea/textarea',
+		icon: 'textarea',
+		title: 'Textarea 文本域',
+		title_en: 'Textarea'
+	}, {
+		path: '/pages/componentsB/checkbox/checkbox',
+		icon: 'checkbox',
+		title: 'Checkbox 复选框',
+		title_en: 'Checkbox'
+	}, {
+		path: '/pages/componentsB/radio/radio',
+		icon: 'radio',
+		title: 'Radio 单选框',
+		title_en: 'Radio'
+	}, {
+		path: '/pages/componentsB/switch/switch',
+		icon: 'switch',
+		title: 'Switch 开关选择器',
+		title_en: 'Switch'
+	}, {
+		path: '/pages/componentsB/calendar/calendar',
+		icon: 'calendar',
+		title: 'Calendar 日历',
+		title_en: 'Calendar'
+	}, {
+		path: '/pages/componentsB/picker/picker',
+		icon: 'picker',
+		title: 'Picker 选择器',
+		title_en: 'Picker'
+	}, {
+		path: '/pages/componentsB/datetimePicker/datetimePicker',
+		icon: 'datetimePicker',
+		title: 'DatetimePicker 时间选择器',
+		title_en: 'Picker'
+	}, {
+		path: '/pages/componentsB/code/code',
+		icon: 'code',
+		title: 'Code 验证码倒计时',
+		title_en: 'VerificationCode'
+	}, {
+		path: '/pages/componentsB/keyboard/keyboard',
+		icon: 'keyboard',
+		title: 'Keyboard 键盘',
+		title_en: 'Keyboard'
+	}, {
+		path: '/pages/componentsB/rate/rate',
+		icon: 'rate',
+		title: 'Rate 评分',
+		title_en: 'Rate'
+	}, {
+		path: '/pages/componentsB/search/search',
+		icon: 'search',
+		title: 'Search 搜索',
+		title_en: 'Search'
+	}, {
+		path: '/pages/componentsB/numberBox/numberBox',
+		icon: 'numberBox',
+		title: 'NumberBox 步进器',
+		title_en: 'NumberBox'
+	}, {
+		path: '/pages/componentsB/upload/upload',
+		icon: 'upload',
+		title: 'Upload 上传',
+		title_en: 'Upload'
+	}, {
+		path: '/pages/componentsB/slider/slider',
+		icon: 'slider',
+		title: 'Slider 滑动选择器',
+		title_en: 'Slider'
+	}]
 }, {
 	groupName: '数据组件',
 	groupName_en: 'Data components',
@@ -240,6 +231,11 @@ export default [{
 		icon: 'empty',
 		title: 'Empty 内容为空',
 		title_en: 'Empty'
+	}, {
+		path: '/pages/componentsC/scrollList/scrollList',
+		icon: 'scrollList',
+		title: 'ScrollList 横向滚动列表',
+		title_en: 'scrollList'
 	}]
 }, {
 	groupName: '反馈组件',

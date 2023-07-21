@@ -1,10 +1,10 @@
-## Button 按钮
+## ScrollList 横向滚动列表
 
-> **组件名：uv-button**
+> **组件名：uv-scroll-list**
 
-该组件内部实现以`uni-app`的`button`组件为基础，进行二次封装，灵活配置，功能齐全，兼容全端。灵活配置，内置状态设置，开箱即用。
+该组件一般用于同时展示多个商品、分类的场景，也可以完成左右滑动的列表，往往数量不确定，数量较多支持左右滚动。灵活配置，开箱即用。
 
-# <a href="https://www.uvui.cn/components/button.html" target="_blank">查看文档</a>
+# <a href="https://www.uvui.cn/components/scrollList.html" target="_blank">查看文档</a>
 
 ## [下载完整示例项目](https://ext.dcloud.net.cn/plugin?name=uv-ui) <small>（请不要 下载插件ZIP）</small>
 

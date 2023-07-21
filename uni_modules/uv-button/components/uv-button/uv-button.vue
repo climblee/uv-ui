@@ -1,6 +1,9 @@
 <template>
+	<view class="uv-button-wrapper">
     <!-- #ifndef APP-NVUE -->
 		<!-- #ifdef MP -->
+		<!-- 为了解决微信小程序动态设置hover-class点击态不消失的BUG -->
+		<view class="uv-button-wrapper--dis" v-if="disabled || loading"></view>
 		<button
 		  :hover-start-time="Number(hoverStartTime)"
 		  :hover-stay-time="Number(hoverStayTime)"
@@ -27,7 +30,7 @@
 			@subscribe="onSubscribe"
 			@login="onLogin"
 			@im="onIm"
-		  :hover-class="!disabled && !loading ? 'uv-button--active' : ''"
+		  hover-class="uv-button--active"
 		  class="uv-button uv-reset-button"
 		  :style="[baseColor, $uv.addStyle(customStyle)]"
 		  @tap="clickHandler"
@@ -132,6 +135,7 @@
       </template>
     </view>
     <!-- #endif -->
+	</view>
 </template>
 
 <script>

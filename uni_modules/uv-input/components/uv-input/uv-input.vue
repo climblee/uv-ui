@@ -213,7 +213,7 @@
 				this.$emit("blur", event.detail.value);
 				// H5端的blur会先于点击清除控件的点击click事件触发，导致focused
 				// 瞬间为false，从而隐藏了清除控件而无法被点击到
-				this.$uv.sleep(50).then(() => {
+				this.$uv.sleep(100).then(() => {
 					this.focused = false;
 				});
 				// 尝试调用uv-form的验证方法

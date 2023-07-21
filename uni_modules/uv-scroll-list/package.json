@@ -1,14 +1,14 @@
 {
-	"id": "uv-button",
-	"displayName": "uv-button 按钮 全面兼容vue3+2、app、h5、小程序等多端",
-	"version": "1.0.5",
-	"description": "按钮组件内部实现以uni-app的button组件为基础，进行二次封装，灵活配置，功能齐全，兼容全端。",
+	"id": "uv-scroll-list",
+	"displayName": "uv-scroll-list 横向滚动列表 全面兼容vue3+2、app、h5、小程序等多端",
+	"version": "1.0.1",
+	"description": "该组件一般用于同时展示多个商品、分类的场景，也可以完成左右滑动的列表，往往数量不确定，数量较多支持左右滚动。灵活配置，开箱即用。",
 	"keywords": [
-        "uv-button",
+        "uv-scroll-list",
         "uvui",
         "uv-ui",
-        "button",
-        "按钮"
+        "横向滚动列表",
+        "scroll-view"
     ],
 	"repository": "",
 	"engines": {
@@ -29,16 +29,14 @@
 		},
 		"declaration": {
 			"ads": "无",
-			"data": "插件不采集任何数据",
+			"data": "无",
 			"permissions": "无"
 		},
 		"npmurl": ""
 	},
 	"uni_modules": {
 		"dependencies": [
-			"uv-ui-tools",
-			"uv-loading-icon",
-			"uv-icon"
+			"uv-ui-tools"
 		],
 		"encrypt": [],
 		"platforms": {

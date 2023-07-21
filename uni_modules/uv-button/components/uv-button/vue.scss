@@ -15,6 +15,19 @@ $uv-button-plain-uv-button-success-color:$uv-success;
 $uv-button-plain-uv-button-error-color:$uv-error;
 $uv-button-plain-uv-button-warning-color:$uv-error;
 
+.uv-button-wrapper {
+	position: relative;
+	width: 100%;
+	&--dis {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 9;
+	}
+}
+
 .uv-button {
 	width: 100%;
 	
