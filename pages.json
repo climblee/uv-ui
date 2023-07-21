@@ -273,6 +273,11 @@
 				"style": {
 					"navigationBarTitleText": "Grid 宫格布局"
 				}
+			}, {
+				"path": "scrollList/scrollList",
+				"style": {
+					"navigationBarTitleText": "ScrollList 横向滚动列表"
+				}
 			}
 		]
 	}, {
