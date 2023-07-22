@@ -42,7 +42,7 @@
 			return {
 				scrollTop: 0,
 				list: list,
-				desc: 'uv-ui，是全面兼容多端、vue2、vue3、nvue的uni-app生态框架，支持单独导入项目。全面的组件和便捷的工具会让您信手拈来，如鱼得水。',
+				desc: 'uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app的生态框架，支持单独导入，开箱即用，利剑出击。',
 			}
 		},
 		computed: {
