@@ -49,6 +49,7 @@
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-scroll-list | [横向滚动列表](https://www.uvui.cn/components/scrollList.html) |
 | uv-vtabs | [垂直选项卡](https://www.uvui.cn/components/vtabs.html) |
 | uv-pick-color | [颜色选择器](https://www.uvui.cn/components/pickColor.html) |
 | uv-qrcode | [二维码](https://www.uvui.cn/components/qrcode.html) |
