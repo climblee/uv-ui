@@ -22,6 +22,7 @@
 			}"
 			@change="change"
 			:circular="circular"
+			:vertical="vertical"
 			:interval="interval"
 			:duration="duration"
 			:autoplay="autoplay"
