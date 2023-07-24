@@ -77,6 +77,11 @@
 			customClass: {
 				type: String,
 				default: ''
+			},
+			// nvue模式下 是否直接显示，在uv-list等cell下面使用就需要设置
+			cellChild: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data(){
@@ -187,7 +192,16 @@
 					this.timer = setTimeout(() => {
 						this.animation = createAnimation(this.config, this);
 						this.tranfromInit(false).step();
+						// #ifdef APP-NVUE
+						if(this.cellChild) {
+							this.opacity = 1;
+						} else{
+							this.animation.run();
+						}
+						// #endif
+						// #ifndef APP-NVUE
 						this.animation.run();
+						// #endif
 						// #ifdef VUE3
 						// #ifdef H5
 						this.opacity = 1;

@@ -3,6 +3,7 @@
 		:show="show"
 		mode="fade"
 		:duration="fade ? duration : 0"
+		:cell-child="cellChild"
 	>
 		<view
 			class="uv-image"
