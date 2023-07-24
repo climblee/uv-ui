@@ -1,7 +1,7 @@
 {
   "id": "uv-notice-bar",
-  "displayName": "uv-notice-bar 滚动通知  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.4",
+  "displayName": "uv-notice-bar 滚动通知 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.5",
   "description": "uv-notice-bar 该组件用于滚动通告场景，有多种模式可供选择。",
   "keywords": [
     "uv-notice-bar",

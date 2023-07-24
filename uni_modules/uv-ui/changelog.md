@@ -1,3 +1,12 @@
+## 1.0.21（2023-07-22）
+1. 新增 uv-scroll-list 横向滚动列表组件
+2. 优化 增加测试占位图，方便开发者使用线上图片进行测试：[https://www.uvui.cn/components/testPic.html](https://www.uvui.cn/components/testPic.html)
+3. 优化 uv-calendar 组件文档示例等优化，增加setFormatter说明
+4. 优化 uv-notice-bar 优化文档，说明不显示左边图标的使用方法
+5. 修复 uv-input 在微信小程序端清除内容存在不能清除的BUG
+6. 修复 uv-button 1. 解决微信小程序动态设置hover-class点击态不消失的BUG; 2. 文档优化
+7. 修复 uv-waterfall 在tab切换等场景快速切换时，会出现报错的BUG
+8. 优化 优化其他
 ## 1.0.20（2023-07-18）
 1. 修复 uv-textarea 设置-1不生效
 2. 修复 uv-icon 恢复uv-empty相关的图标

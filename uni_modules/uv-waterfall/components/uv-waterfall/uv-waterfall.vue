@@ -198,8 +198,13 @@
 					const minLen = Math.min.apply(Math, newArr.map(item => {
 						return item.len;
 					}))
-					const { item } = newArr.find(item => item.len == minLen && item.item.height == 0);
-					result = item;
+					try{
+						const { item } = newArr.find(item => item.len == minLen && item.item.height == 0);
+						result = item;
+					}catch(e){
+						const { item } = newArr.find(item => item.item.height == 0);
+						result = item;
+					}
 				}
 				return result;
 			},

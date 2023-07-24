@@ -1,7 +1,7 @@
 {
   "id": "uv-waterfall",
-  "displayName": "uv-waterfall 瀑布流 全面兼容VUE3+2、APP、H5、小程序等多端",
-  "version": "1.0.6",
+  "displayName": "uv-waterfall 瀑布流 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.7",
   "description": "该组件主要用于瀑布流式布局显示，视觉表现为参差不齐的多栏布局，随着页面滚动条向下滚动，这种布局还会不断加载数据块并附加至当前尾部，同时集成nvue的原生瀑布流。",
   "keywords": [
     "uv-waterfall",

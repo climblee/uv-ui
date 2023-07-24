@@ -7,7 +7,7 @@ export default {
 		},
 		// 是否显示左侧的音量图标
 		icon: {
-			type: String,
+			type: [String, Boolean, null],
 			default: 'volume'
 		},
 		// 通告模式，link-显示右箭头，closable-显示右侧关闭图标
