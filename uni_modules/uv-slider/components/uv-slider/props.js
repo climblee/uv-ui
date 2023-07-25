@@ -29,7 +29,7 @@ export default {
 			default: '#2979ff'
 		},
 		// 滑块左侧未选择部分的背景色
-		inactiveColor: {
+		backgroundColor: {
 			type: String,
 			default: '#c0c4cc'
 		},
