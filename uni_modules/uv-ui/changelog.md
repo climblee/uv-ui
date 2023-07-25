@@ -1,3 +1,12 @@
+## 1.0.22（2023-07-26）
+1. 优化 uv-textarea 组件 增加textStyle和countStyle属性，方便控制文本样式
+2. 优化 uv-swiper 增加竖向播放属性：vertical
+3. 优化 uv-icon 支持base64图片格式
+4. 优化 uv-transition 和 uv-image 增加参数cellChild属性，避免nvue中出现回收后不显示的BUG
+5. 优化 uv-button 增加customTextStyle属性，方便自定义按钮文字样式
+6. 优化 优化部分文档说明
+7. 修复 uv-slider 修改背景颜色属性为backgroundColor，避免设置不生效
+8. 修复 uv-index-list 1. 修复全局设置成rpx存在的高度BUG；2. 修复其他BUG
 ## 1.0.21（2023-07-22）
 1. 新增 uv-scroll-list 横向滚动列表组件
 2. 优化 增加测试占位图，方便开发者使用线上图片进行测试：[https://www.uvui.cn/components/testPic.html](https://www.uvui.cn/components/testPic.html)
