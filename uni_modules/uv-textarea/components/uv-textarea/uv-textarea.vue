@@ -4,7 +4,10 @@
 		:style="[textareaStyle]">
 		<textarea class="uv-textarea__field"
 			:value="innerValue"
-			:style="{ height: $uv.addUnit(height) }"
+			:style="[
+				{height: $uv.addUnit(height)},
+				$uv.addStyle(textStyle)
+			]"
 			:placeholder="placeholder"
 			:placeholder-style="$uv.addStyle(placeholderStyle, 'string')"
 			:placeholder-class="placeholderClass"
@@ -29,10 +32,10 @@
 			@input="onInput"
 			@confirm="onConfirm"
 			@keyboardheightchange="onKeyboardheightchange"></textarea>
-		<text class="uv-textarea__count"
-			:style="{
+			<text class="uv-textarea__count"
+			:style="[{
         'background-color': disabled ? 'transparent' : '#fff',
-      }"
+      },$uv.addStyle(countStyle)]"
 			v-if="count">{{ innerValue.length }}/{{ maxlen }}</text>
 	</view>
 </template>
@@ -68,6 +71,8 @@
 	 * @property {String | Number}		maxlength				最大输入长度，设置为 -1 的时候不限制最大长度（默认 140 ）
 	 * @property {String}				border					边框类型，surround-四周边框，none-无边框，bottom-底部边框（默认 'surround' ）
 	 * @property {Boolean}				ignoreCompositionEvent	是否忽略组件内对文本合成系统事件的处理
+	 * @property {Object}	textStyle	文本样式
+	 * @property {Object}	countStyle	统计数字的样式
 	 *
 	 * @event {Function(e)} focus					输入框聚焦时触发，event.detail = { value, height }，height 为键盘高度
 	 * @event {Function(e)} blur					输入框失去焦点时触发，event.detail = {value, cursor}
@@ -94,10 +99,10 @@
 			this.innerValue = this.value || this.modelValue;
 		},
 		watch: {
-			value(newVal){
+			value(newVal) {
 				this.innerValue = newVal;
 			},
-			modelValue(newVal){
+			modelValue(newVal) {
 				this.innerValue = newVal;
 			}
 		},
