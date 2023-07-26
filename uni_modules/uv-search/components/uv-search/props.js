@@ -117,6 +117,11 @@ export default {
 			type: [String, Number, null],
 			default: null
 		},
+		// 搜索框扩展样式
+		boxStyle: {
+			type: [String, Object],
+			default: ()=>{}
+		},
 		...uni.$uv?.props?.search
 	}
 }

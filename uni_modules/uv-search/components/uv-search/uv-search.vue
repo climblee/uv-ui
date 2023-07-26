@@ -235,7 +235,7 @@
 		&__content {
 			@include flex;
 			align-items: center;
-			padding: $uv-search-content-padding;
+			// padding: $uv-search-content-padding;
 			flex: 1;
 			justify-content: space-between;
 			border-width: 1px;
