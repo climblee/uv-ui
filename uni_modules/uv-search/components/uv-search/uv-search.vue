@@ -14,14 +14,16 @@
 				borderColor: borderColor,
 			}"
 		>
-			<view class="uv-search__content__icon">
-				<uv-icon
-					@tap="clickIcon"
-				  :size="searchIconSize"
-				  :name="searchIcon"
-				  :color="searchIconColor ? searchIconColor : color"
-				></uv-icon>
-			</view>
+			<slot name="prefix">
+				<view class="uv-search__content__icon">
+					<uv-icon
+						@tap="clickIcon"
+					  :size="searchIconSize"
+					  :name="searchIcon"
+					  :color="searchIconColor ? searchIconColor : color"
+					></uv-icon>
+				</view>
+			</slot>
 			<input
 			  confirm-type="search"
 			  @blur="blur"
@@ -56,6 +58,7 @@
 					customStyle="line-height: 12px"
 				></uv-icon>
 			</view>
+			<slot name="suffix"></slot>
 		</view>
 		<text
 		  :style="[actionStyle]"
