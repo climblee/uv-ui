@@ -1,3 +1,7 @@
+## 1.1.0（2023-07-26）
+1. 重构 uv-list  全面重构，提高性能，放弃使用scroll-view，具体文档参考：uv-list列表
+2. 优化 uv-search 1. 增加prefix和suffix 前置和后置插槽；2. 增加boxStyle参数，方便控制输入框部分的样式
+3. 优化 文档优化：获取节点布局信息，文档新增nvue获取方式的说明
 ## 1.0.22（2023-07-26）
 1. 优化 uv-textarea 组件 增加textStyle和countStyle属性，方便控制文本样式
 2. 优化 uv-swiper 增加竖向播放属性：vertical
