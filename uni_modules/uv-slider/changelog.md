@@ -1,3 +1,5 @@
+## 1.0.3（2023-07-25）
+1. 将inactiveColor修正为backgroundColor 参数，避免不生效
 ## 1.0.2（2023-07-13）
 1.  修复 uv-slider设置value属性不生效的BUG 
 ## 1.0.1（2023-05-16）

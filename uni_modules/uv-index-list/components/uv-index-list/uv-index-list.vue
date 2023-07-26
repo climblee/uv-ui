@@ -6,7 +6,7 @@
 			enable-back-to-top
 			:offset-accuracy="1"
 			:style="{
-				maxHeight: $uv.addUnit(scrollViewHeight)
+				maxHeight: $uv.addUnit(scrollViewHeight,'px')
 			}"
 			@scroll="scrollHandler"
 			ref="uvList"
@@ -26,7 +26,7 @@
 			:scrollIntoView="scrollIntoView"
 			:offset-accuracy="1"
 			:style="{
-				maxHeight: $uv.addUnit(scrollViewHeight)
+				maxHeight: $uv.addUnit(scrollViewHeight,'px')
 			}"
 			scroll-y
 			@scroll="scrollHandler"
@@ -44,7 +44,7 @@
 		<view
 			class="uv-index-list__letter"
 			ref="uv-index-list__letter"
-			:style="{ top: $uv.addUnit(letterInfo.top || 100) }"
+			:style="{ top: $uv.addUnit(letterInfo.top || 100 ,'px') }"
 			@touchstart="touchStart"
 			@touchmove.stop.prevent="touchMove"
 			@touchend.stop.prevent="touchEnd"
@@ -70,7 +70,7 @@
 			:customStyle="{
 				position: 'fixed',
 				right: '40px',
-				top: $uv.addUnit(indicatorTop),
+				top: $uv.addUnit(indicatorTop,'px'),
 				zIndex: 2
 			}"
 		>
@@ -79,8 +79,8 @@
 					class="uv-index-list__indicator"
 					:class="['uv-index-list__indicator--show']"
 					:style="{
-						height: $uv.addUnit(indicatorHeight),
-						width: $uv.addUnit(indicatorHeight)
+						height: $uv.addUnit(indicatorHeight,'px'),
+						width: $uv.addUnit(indicatorHeight,'px')
 					}"
 				>
 					<text class="uv-index-list__indicator__text">{{ uIndexList[activeIndex] }}</text>
@@ -192,7 +192,7 @@
 				// 设置列表的高度为整个屏幕的高度
 				//减去this.customNavHeight，并将this.scrollViewHeight设置为maxHeight
 				//解决当uv-index-list组件放在tabbar页面时,scroll-view内容较少时，还能滚动
-				this.scrollViewHeight = this.sys.windowHeight - this.customNavHeight
+				this.scrollViewHeight = this.sys.windowHeight - this.$uv.getPx(this.customNavHeight)
 			},
 			// 索引列表被触摸
 			touchStart(e) {
@@ -253,9 +253,10 @@
 			setIndexListLetterInfo() {
 				this.getIndexListLetterRect().then(size => {
 					const {
+						top,
 						height
 					} = size
-					const windowHeight = this.$uv.sys().windowHeight
+					const windowHeight = this.$uv.sys().windowHeight;
 					let customNavHeight = 0
 					// 消除各端导航栏非原生和原生导致的差异，让索引列表字母对屏幕垂直居中
 					if (this.customNavHeight == 0) {
@@ -288,6 +289,9 @@
 				// #ifdef H5
 				pageY += this.$uv.sys().windowTop
 				// #endif
+				// #ifdef APP-NVUE
+				pageY += top
+				// #endif
 				// 对第一和最后一个字母做边界处理，因为用户可能在字母列表上触摸到两端的尽头后依然继续滑动
 				if (pageY < top) {
 					return 0
@@ -296,9 +300,6 @@
 					return this.uIndexList.length - 1
 				} else {
 					// 将触摸点的Y轴偏移值，减去索引字母的top值，除以每个字母的高度，即可得到当前触摸点落在哪个字母上
-					// #ifdef APP-NVUE && VUE3
-					return Math.floor(pageY / itemHeight);
-					// #endif
 					return Math.floor((pageY - top) / itemHeight);
 				}
 			},

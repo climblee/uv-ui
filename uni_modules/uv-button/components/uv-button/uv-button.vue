@@ -67,8 +67,11 @@
         ></uv-loading-icon>
           <text
             class="uv-button__loading-text"
-            :style="[{ fontSize: textSize + 'px' }]"
-            >{{ loadingText || text }}</text>
+            :style="[
+							{ fontSize: textSize + 'px' },
+							$uv.addStyle(customTextStyle)
+						]"
+          >{{ loadingText || text }}</text>
       </template>
       <template v-else>
         <uv-icon
@@ -81,7 +84,10 @@
         <slot>
           <text
             class="uv-button__text"
-            :style="[{ fontSize: textSize + 'px' }]"
+            :style="[
+							{ fontSize: textSize + 'px' },
+							$uv.addStyle(customTextStyle)
+						]"
             >{{ text }}</text>
         </slot>
       </template>
@@ -111,7 +117,7 @@
         ></uv-loading-icon>
         <text
           class="uv-button__loading-text"
-          :style="[nvueTextStyle]"
+          :style="[nvueTextStyle,$uv.addStyle(customTextStyle)]"
           :class="[plain && `uv-button__text--plain--${type}`]"
           >{{ loadingText || text }}</text>
       </template>
@@ -128,7 +134,8 @@
             {
               marginLeft: icon ? '2px' : 0,
             },
-            nvueTextStyle
+            nvueTextStyle,
+						$uv.addStyle(customTextStyle)
           ]"
           :class="[plain && `uv-button__text--plain--${type}`]"
           >{{ text }}</text>

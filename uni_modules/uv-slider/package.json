@@ -1,7 +1,7 @@
 {
   "id": "uv-slider",
-  "displayName": "uv-slider 滑动选择器   全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "displayName": "uv-slider 滑动选择器 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.3",
   "description": "滑动选择器组件一般用于表单中，手动选择一个区间范围的场景。",
   "keywords": [
     "uv-slider",

@@ -118,6 +118,16 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 文本样式
+		textStyle: {
+			type: [Object, String],
+			default: () => {}
+		},
+		// 统计数字的样式
+		countStyle: {
+			type: [Object, String],
+			default: () => {}
+		},
 		...uni.$uv?.props?.textarea
 	}
 }

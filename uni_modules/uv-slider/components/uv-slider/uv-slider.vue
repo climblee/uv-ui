@@ -9,7 +9,7 @@
 			:step="step"
 			:value="sliderValue"
 			:activeColor="activeColor"
-			:inactiveColor="inactiveColor"
+			:backgroundColor="backgroundColor"
 			:blockSize="$uv.getPx(blockSize)"
 			:blockColor="blockColor"
 			:showValue="showValue"
