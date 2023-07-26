@@ -1,8 +1,8 @@
 {
   "id": "uv-list",
-  "displayName": "uv-list 列表  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
-  "description": "uv-list 该组件为高性能列表组件",
+  "displayName": "uv-list 列表 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.2",
+  "description": "uv-list 多功能高性能列表组件",
   "keywords": [
     "uv-list",
     "uvui",

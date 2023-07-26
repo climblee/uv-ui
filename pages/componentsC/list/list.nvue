@@ -1,29 +1,34 @@
 <template>
-	<view class="uv-page">
-		<uv-list
-			@scrolltolower="scrolltolower"
-		>
-			<uv-list-item
-				v-for="(item, index) in indexList"
-				:key="index"
-			>
-				<uv-cell
-					:title="`列表长度-${index + 1}`"
-				>
-				<template v-slot:icon>
-					<uv-avatar
-						shape="square"
-						size="35"
-						:src="item.url"
-						customStyle="margin: -3px 5px -3px 0"
-					></uv-avatar>
-				</template>
-				</uv-cell>
-			</uv-list-item>
+	<view>
+		<uv-list>
+				<uv-list-item title="uv-list列表" note="高性能列表" border></uv-list-item>
+				<uv-list-item title="uv-list缩略图" note="显示缩略图,可调整大小" :border="true" thumb="https://via.placeholder.com/100x100.png/3c9cff/fff"></uv-list-item>
+		    <uv-list-item title="uv-list图标" note="左边图标和右边文字" border show-extra-icon :extra-icon="{icon:'twitte',color:'#3c9cff'}" link right-text="右边文字"></uv-list-item>
+				<uv-list-item title="uv-list跳转" note="配置参数可以直接调整" border link right-text="个人中心" to="/pages/componentsC/cell/cell"></uv-list-item>
+				<uv-list-item title="下面是自定义内容" note="使用默认插槽完全自定义内容" border></uv-list-item>
+				<uv-list-item>
+					<uv-line></uv-line>
+				</uv-list-item>
+				<uv-list-item
+		    	v-for="(item, index) in indexList"
+		    	:key="index"
+		    >
+		    	<uv-cell
+		    		:title="`列表长度-${index + 1}`"
+		    	>
+		    	<template v-slot:icon>
+		    		<uv-avatar
+		    			shape="square"
+		    			size="35"
+		    			:src="item.url"
+		    			customStyle="margin: -3px 5px -3px 0"
+		    		></uv-avatar>
+		    	</template>
+		    	</uv-cell>
+		    </uv-list-item>
 		</uv-list>
 	</view>
 </template>
-
 <script>
 	import { random } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
@@ -47,10 +52,10 @@
 		onLoad() {
 			this.loadmore()
 		},
+		onReachBottom() {
+			this.loadmore();
+		},
 		methods: {
-			scrolltolower() {
-				this.loadmore()
-			},
 			loadmore() {
 				for (let i = 0; i < 30; i++) {
 					this.indexList.push({
@@ -58,12 +63,6 @@
 					})
 				}
 			}
-		},
+		}
 	}
 </script>
-
-<style lang="scss">
-	.uv-page {
-		padding: 0;
-	}
-</style>
