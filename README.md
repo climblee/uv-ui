@@ -1,8 +1,11 @@
+![image](https://mp-a667b617-c5f1-4a2d-9a54-683a67cff588.cdn.bspapp.com/uv-ui/banner.png)
+
 > ## 组件文档：[https://www.uvui.cn](https://www.uvui.cn)
 > ## 演示地址：[https://h5.uvui.cn](https://h5.uvui.cn)
 > ## uv-ui 交流QQ群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">549833913</a>
+> ## 插件列表：<a href="#list">传送门</a>
 
-# 如需下载示例项目，请点击【下载插件并导入HBuilderX】或【使用 HBuilderX 导入示例项目】或【下载示例项目ZIP】，请不要点击【下载插件ZIP】。
+# 如需下载示例项目，请不要使用【下载插件ZIP】按钮。
 
 ## 预览
 
@@ -10,16 +13,13 @@
 
 <img src="https://www.uvui.cn/common/h5_qrcode.png" width="200" height="200" />
 
-
 ## uv-ui产品特点
 
 1. **uv-ui的前世今生**，`uv-ui` 是基于 `uview2.x` 版本改造而来。重命名也是为了避开发布冲突和很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。感谢 `uview-ui` 作者的开源奉献，再次为开源点赞。 同时 `uv-ui` 也是无条件开源。
 
-2. **全端兼容**，`uv-ui`支持App（vue）、App（nvue）、H5、小程序、VUE2、VUE3，支持nvue原生渲染。`uv-ui`的组件都是多端自适应的，底层会抹平很多小程序平台的差异或bug。
+2. **全端兼容**，`uv-ui`支持vue3、vue2、app-vue、app-nvue、h5、小程序等。`uv-ui`的组件都是多端自适应的，底层会抹平很多小程序平台的差异或bug。
 
-3. **集成工具**，`uv-ui`中的`uv-ui-tools`组件集成了强大的网络请求 `HTTP`   及常用的工具函数，无需自己再去寻找，并且直接挂载在`uni`上面，方便使用，只需要在`mian.js`中引入即可，更多工具请参考[文档](https://www.uvui.cn/js/http.html)。使用方式请参考[扩展配置-集成工具的使用](https://www.uvui.cn/components/setting.html)。
-
-4. **主题扩展**，`uv-ui`中的`uv-ui-tools`组件下面的`theme.scss`为主题文件，直接在`uni.scss`中引入主题即可，可以根据自己的需求进行扩展。下面也有说明具体使用方式。使用方法请参考[扩展配置-自定义主题的使用](https://www.uvui.cn/components/setting.html)。
+3. **扩展配置**，`uv-ui`内置的方法默认不再挂载到`uni`对象之上，也就意味着默认情况下不能在项目中直接使用`uni.$uv.xxx`使用内置方法。但是可以通过扩展可以解决，通过如下方式进行配置即可，使用方式请参考[扩展配置](https://www.uvui.cn/components/setting.html)。其中包括[ JS工具库](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-js%E5%B7%A5%E5%85%B7%E5%BA%93)、[ 自定义主题](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98)、[ 基础样式](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F)、[ setconfig](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-setconfig)等。
 
 ## 快速开始
 
@@ -41,12 +41,15 @@
 
 **4. 有开发相关的疑问不要生气，不要抱怨，不要骂人哦！直接加 `uv-ui` 的交流群手把手免费解决问题。**
 
+<div id="list"></div>
+
 ## 通过uni_modules下载入口
 
 下表为 `uv-ui` 的扩展组件清单，点击每个组件**点击下载&安装**即可在详情页面导入组件到项目下，导入后建议重新运行即可直接使用，组件无需import和注册。
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-scroll-list | [横向滚动列表](https://www.uvui.cn/components/scrollList.html) |
 | uv-vtabs | [垂直选项卡](https://www.uvui.cn/components/vtabs.html) |
 | uv-pick-color | [颜色选择器](https://www.uvui.cn/components/pickColor.html) |
 | uv-qrcode | [二维码](https://www.uvui.cn/components/qrcode.html) |
