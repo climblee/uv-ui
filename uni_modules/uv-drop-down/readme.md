@@ -8,7 +8,7 @@
 
 只需要做简单的约定式配置，即可使用该功能，兼容性良好，已经在多端进行了多次测试。
 
-# <a href="https://www.uvui.cn/components/list.html" target="_blank">查看文档</a>
+# <a href="https://www.uvui.cn/components/dropDown.html" target="_blank">查看文档</a>
 
 ## [下载完整示例项目](https://ext.dcloud.net.cn/plugin?name=uv-ui) <small>（请不要 下载插件ZIP）</small>
 
