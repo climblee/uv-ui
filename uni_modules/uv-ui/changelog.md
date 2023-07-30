@@ -1,3 +1,7 @@
+## 1.1.1（2023-07-30）
+1. 新增 uv-drop-down 下拉筛选组件，兼容app-nvue及多端
+2. 优化 uv-textarea 增加confirm-hold参数，方便设置进行换行处理
+3. 优化 其他关于文档的优化等
 ## 1.1.0（2023-07-26）
 1. 重构 uv-list  全面重构，提高性能，放弃使用scroll-view，具体文档参考：uv-list列表
 2. 优化 uv-search 1. 增加prefix和suffix 前置和后置插槽；2. 增加boxStyle参数，方便控制输入框部分的样式

@@ -162,9 +162,9 @@
 					});
 				}
 				this.result = this.result.filter(item => this.defaultValue.indexOf(item.value) == -1);
-				// uni.showModal({
-				// 	content: `筛选的值：${JSON.stringify(this.result)}`
-				// })
+				uni.showModal({
+					content: `筛选的值：${JSON.stringify(this.result)}`
+				})
 			}
 		}
 	}
