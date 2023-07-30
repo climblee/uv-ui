@@ -10,6 +10,13 @@ export default [{
 		// 	isNew: true
 		// },
 		{
+			path: '/pages/componentsB/dropDown/dropDown',
+			icon: 'color',
+			title: 'DropDown 下拉筛选',
+			title_en: 'DropDown',
+			isNew: true
+		},
+		{
 			path: '/pages/componentsD/vtabs/vtabs',
 			icon: 'color',
 			title: 'Vtabs 垂直选项卡',

@@ -175,6 +175,11 @@
 			"style": {
 				"navigationBarTitleText": "PickColor 选择颜色"
 			}
+		}, {
+			"path": "dropDown/dropDown",
+			"style": {
+				"navigationBarTitleText": "DropDown 下拉筛选"
+			}
 		}]
 	}, {
 		"root": "pages/componentsC",
