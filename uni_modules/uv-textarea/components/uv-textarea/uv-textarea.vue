@@ -26,6 +26,7 @@
 			:maxlength="maxlen"
 			:confirmType="confirmType"
 			:ignoreCompositionEvent="ignoreCompositionEvent"
+			:confirm-hold="confirmHold"
 			@focus="onFocus"
 			@blur="onBlur"
 			@linechange="onLinechange"
@@ -71,6 +72,7 @@
 	 * @property {String | Number}		maxlength				最大输入长度，设置为 -1 的时候不限制最大长度（默认 140 ）
 	 * @property {String}				border					边框类型，surround-四周边框，none-无边框，bottom-底部边框（默认 'surround' ）
 	 * @property {Boolean}				ignoreCompositionEvent	是否忽略组件内对文本合成系统事件的处理
+	 * @property {Boolean} confirmHold 点击键盘右下角按钮时是否保持键盘不收起
 	 * @property {Object}	textStyle	文本样式
 	 * @property {Object}	countStyle	统计数字的样式
 	 *

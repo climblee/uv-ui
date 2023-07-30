@@ -118,6 +118,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 是否忽略组件内对文本合成系统事件的处理
+		confirmHold: {
+			type: Boolean,
+			default: false
+		},
 		// 文本样式
 		textStyle: {
 			type: [Object, String],
