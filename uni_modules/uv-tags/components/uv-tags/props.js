@@ -85,6 +85,11 @@ export default {
 			type: String,
 			default: ''
 		},
+		// nvue模式下 是否直接显示，在uv-list等cell下面使用就需要设置
+		cellChild: {
+			type: Boolean,
+			default: false
+		},
 		...uni.$uv?.props?.tags
 	}
 }

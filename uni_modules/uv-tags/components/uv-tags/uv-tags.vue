@@ -2,6 +2,7 @@
 	<uv-transition
 		mode="fade"
 		:show="show"
+		:cell-child="cellChild"
 	>
 		<view class="uv-tags-wrapper">
 			<view
