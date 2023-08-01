@@ -2,6 +2,8 @@
 
 > ## 组件文档：[https://www.uvui.cn](https://www.uvui.cn)
 > ## 演示地址：[https://h5.uvui.cn](https://h5.uvui.cn)
+> ## gitee地址：[https://gitee.com/my_dear_li_pan/uv-ui.git](https://gitee.com/my_dear_li_pan/uv-ui.git)
+> ## github地址：[https://github.com/uLeePan/uv-ui.git](https://github.com/uLeePan/uv-ui.git)
 > ## uv-ui 交流QQ群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">549833913</a>
 > ## 插件列表：<a href="#list">传送门</a>
 
@@ -49,6 +51,7 @@
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-drop-down | [下拉筛选](https://www.uvui.cn/components/dropDown.html) |
 | uv-scroll-list | [横向滚动列表](https://www.uvui.cn/components/scrollList.html) |
 | uv-vtabs | [垂直选项卡](https://www.uvui.cn/components/vtabs.html) |
 | uv-pick-color | [颜色选择器](https://www.uvui.cn/components/pickColor.html) |
