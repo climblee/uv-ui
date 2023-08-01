@@ -8,9 +8,10 @@
 			}"
 		></view>
 		<view :class="[fixed && 'uv-navbar--fixed']">
+			<image class="uv-navbar--bgimg" :src="bgColor" mode="aspectFill" v-if="isImg"></image>
 			<uv-status-bar
 				v-if="safeAreaInsetTop"
-				:bgColor="bgColor"
+				:bgColor="getStatusbgColor"
 			></uv-status-bar>
 			<view
 				class="uv-navbar__content"
@@ -112,11 +113,27 @@
 				if(this.bgColor){
 					if (this.bgColor.indexOf("gradient") > -1) {// 渐变色
 						style.backgroundImage = this.bgColor;
-					}else{
+					}else if(this.isImg){
+						style.background = 'transparent';
+					}else {
 						style.background = this.bgColor;
 					}
 				}
 				return style;
+			},
+			getStatusbgColor() {
+				if(this.bgColor){
+					if(this.isImg){
+						return 'transparent';
+					}else {
+						return this.bgColor;
+					}
+				}
+			},
+			// 判断传入的bgColor属性，是否图片路径，只要带有"/"均认为是图片形式
+			isImg() {
+				const isBase64 = this.bgColor.indexOf('data:') > -1 && this.bgColor.indexOf('base64') > -1;
+				return this.bgColor.indexOf('/') !== -1 || isBase64;
 			}
 		},
 		methods: {
@@ -144,13 +161,25 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	.uv-navbar {
-
+		position: relative;
 		&--fixed {
 			position: fixed;
 			left: 0;
 			right: 0;
 			top: 0;
 			z-index: 11;
+		}
+		
+		&--bgimg {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			/* #ifndef APP-NVUE */
+			width: 100%;
+			height: 100%;
+			/* #endif */
 		}
 
 		&__content {
