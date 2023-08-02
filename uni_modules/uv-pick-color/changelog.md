@@ -1,3 +1,5 @@
+## 1.0.5（2023-08-02）
+1. 更新依赖
 ## 1.0.4（2023-07-02）
 uv-pick-color  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/pickColor.html
 ## 1.0.3（2023-06-12）

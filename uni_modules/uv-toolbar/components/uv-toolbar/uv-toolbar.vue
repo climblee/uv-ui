@@ -34,7 +34,6 @@
 		</view>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -49,13 +48,13 @@
 	 * @property {String}	confirmText		确认按钮的文字（默认 '确认' ）
 	 * @property {String}	cancelColor		取消按钮的颜色（默认 '#909193' ）
 	 * @property {String}	confirmColor	确认按钮的颜色（默认 '#3c9cff' ）
-	 * @property {String}	title			标题文字
+	 * @property {String}	title	标题文字
 	 * @event {Function} 
 	 * @example 
 	 */
 	export default {
 		name: 'uv-toolbar',
-		emits: ['confirm','cancel'],
+		emits: ['confirm', 'cancel'],
 		mixins: [mpMixin, mixin, props],
 		methods: {
 			// 点击取消按钮
@@ -66,22 +65,25 @@
 			confirm() {
 				this.$emit('confirm')
 			}
-		},
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	$show-lines: 1;
 	$show-hover: 1;
+	$show-border: 1;
+	$show-border-bottom: 1;
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
-	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
+	$uv-tips-color: #909193 !default;
+	$uv-main-color: #303133 !default;
+	$uv-primary: #3c9cff !default;
 	.uv-toolbar {
 		height: 42px;
 		@include flex;
 		justify-content: space-between;
 		align-items: center;
-
 		&__wrapper {
 			&__cancel {
 				color: $uv-tips-color;
@@ -89,7 +91,6 @@
 				padding: 0 15px;
 			}
 		}
-
 		&__title {
 			color: $uv-main-color;
 			padding: 0 60rpx;
@@ -97,7 +98,6 @@
 			flex: 1;
 			text-align: center;
 		}
-
 		&__wrapper {
 			&__confirm {
 				color: $uv-primary;

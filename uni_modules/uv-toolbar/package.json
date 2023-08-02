@@ -1,14 +1,14 @@
 {
-  "id": "uv-pick-color",
-  "displayName": "uv-pick-color 颜色选择器 兼容小程序、vue2、vue3等",
-  "version": "1.0.5",
-  "description": "uv-pick-color 该组件为颜色选择器",
+  "id": "uv-toolbar",
+  "displayName": "uv-toolbar 工具条",
+  "version": "1.0.0",
+  "description": "该组价是仅用于uv-ui中一个公共小工具，提供一个取消和确定的样式，可以设置标题，主要用于弹窗顶部的选择确定工具条",
   "keywords": [
-    "uv-pick-color",
+    "uv-toolbar",
     "uvui",
     "uv-ui",
-    "颜色",
-    "color"
+    "工具条",
+    "工具"
 ],
   "repository": "",
   "engines": {
@@ -36,9 +36,7 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools",
-			"uv-popup",
-			"uv-toolbar"
+			"uv-ui-tools"
 		],
     "encrypt": [],
     "platforms": {
@@ -53,7 +51,7 @@
 				},
 				"App": {
 					"app-vue": "y",
-					"app-nvue": "u"
+					"app-nvue": "y"
 				},
 				"H5-mobile": {
 					"Safari": "y",

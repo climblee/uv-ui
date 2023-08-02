@@ -34,6 +34,7 @@ export default {
 		title: {
 			type: String,
 			default: ''
-		}
+		},
+		...uni.$uv?.props?.toolbar
 	}
 }
