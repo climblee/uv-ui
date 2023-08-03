@@ -20,6 +20,7 @@
 				:duration="duration"
 				@close="close"
 				@click="click"
+				@change="change"
 			></uv-column-notice>
 		</template>
 		<template v-else>
@@ -69,7 +70,7 @@
 	 */
 	export default {
 		name: "uv-notice-bar",
-		emits: ['click','close'],
+		emits: ['click','close','change'],
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
@@ -89,6 +90,10 @@
 			close() {
 				this.show = false
 				this.$emit('close')
+			},
+			// 竖向滚动时触发
+			change(index){
+				this.$emit('change',index)
 			}
 		}
 	};

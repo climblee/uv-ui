@@ -78,7 +78,7 @@
 	 * @example 
 	 */
 	export default {
-		emits: ['click','close'],
+		emits: ['click','close','change'],
 		mixins: [mpMixin, mixin, props],
 		watch: {
 			text: {
@@ -121,6 +121,7 @@
 		methods: {
 			noticeChange(e){
 				this.index = e.detail.current
+				this.$emit('change', this.index);
 			},
 			// 点击通告栏
 			clickHandler() {
