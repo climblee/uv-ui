@@ -1,3 +1,9 @@
+## 1.1.2（2023-08-03）
+1. 新增 uv-calendars 新版日历发布
+2. 新增 uv-toolbar 组件独立发布，老用户更新uv-picker，需要手动删除uv-picker目录下的uv-toolbar目录，否则会有冲突提示
+3. 优化 uv-tags 增加cellChild参数
+4. 优化 uv-navbar 兼容背景图片
+5. 优化 uv-notice-bar 竖向滚动时候增加change回调
 ## 1.1.1（2023-07-30）
 1. 新增 uv-drop-down 下拉筛选组件，兼容app-nvue及多端
 2. 优化 uv-textarea 增加confirm-hold参数，方便设置进行换行处理

@@ -121,6 +121,11 @@
 				"navigationBarTitleText": "Calendar 日历"
 			}
 		}, {
+			"path": "calendars/calendars",
+			"style": {
+				"navigationBarTitleText": "Calendars 日历（新）"
+			}
+		}, {
 			"path": "picker/picker",
 			"style": {
 				"navigationBarTitleText": "Picker 选择器"

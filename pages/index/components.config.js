@@ -10,6 +10,13 @@ export default [{
 		// 	isNew: true
 		// },
 		{
+			path: '/pages/componentsB/calendars/calendars',
+			icon: 'calendar',
+			title: 'Calendar 日历（新）',
+			title_en: 'Calendar',
+			isNew: true
+		},
+		{
 			path: '/pages/componentsB/dropDown/dropDown',
 			icon: 'color',
 			title: 'DropDown 下拉筛选',

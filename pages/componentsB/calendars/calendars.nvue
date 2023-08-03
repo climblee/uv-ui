@@ -1,0 +1,128 @@
+<template>
+	<view class="uv-page">
+		<view>
+			<uv-cell-group>
+				<uv-cell
+					@click="showCalendar(index)"
+					:title="item.title"
+					v-for="(item, index) in list"
+					:key="index"
+					:label="values[index]"
+					isLink
+				>
+				<template v-slot:icon>
+					<image
+						class="uv-cell-icon"
+						:src="item.iconUrl"
+						mode="widthFix"
+					></image>
+				</template>
+				</uv-cell>
+			</uv-cell-group>
+			<uv-calendars
+				v-if="show"
+				:insert="true"
+				:lunar="true"
+				start-date="2021-01-01"
+				end-date="2030-01-01"
+			/>
+			<uv-calendars
+				ref="calendar2"
+			/>
+			<uv-calendars
+				ref="calendar3"
+				range
+			/>
+			<uv-calendars
+				ref="calendar4"
+				range
+				date="2023-08-04"
+				color="#f56c6c"
+				confirm-color="#f56c6c"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar5"
+				:selected="selected"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar6"
+				:startDate="startDate"
+				:endDate="endDate"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar7"
+				lunar
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar8"
+				:date="defaultDate"
+				@confirm="confirm"
+			/>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			const d = new Date()
+			const year = d.getFullYear()
+			let month = d.getMonth() + 1
+			month = month < 10 ? `0${month}` : month
+			const date = d.getDate()
+			return {
+				show: false,
+				index: 0,
+				values: ['','','','','','','',''],
+				startDate: `${year}-${month}-02`,
+				endDate: `${year}-${month}-20`,
+				selected: [{date: `${year}-${month}-${date + 1}`, info: '签到'},{date: `${year}-${month}-${date + 2}`, info: '签到'}],
+				defaultDate: `${year}-${month}-15`,
+				list: [{
+						title: '插入模式',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
+					},
+					{
+						title: '单个日期',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/7.png'
+					},
+					{
+						title: '日期范围',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/9.png'
+					},
+					{
+						title: '自定义主题颜色',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/15.png'
+					},{
+						title: '自定义文案',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/14.png'
+					},{
+						title: '日期最大范围',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/13.png'
+					},{
+						title: '显示农历',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/5.png'
+					},{
+						title: '默认日期',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
+					}
+				]
+			}
+		},
+		methods: {
+			showCalendar(index) {
+				this.index = index + 1
+				if(this.index == 1) {
+					return this.show = !this.show;
+				}
+				this.$refs[`calendar${this.index}`].open();
+			},
+			confirm(e) {
+				console.log(e)
+			}
+		}
+	}
+</script>

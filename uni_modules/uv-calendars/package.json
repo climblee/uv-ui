@@ -1,14 +1,14 @@
 {
-  "id": "uv-picker",
-  "displayName": "uv-picker 选择器 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.7",
-  "description": "uv-picker 此选择器用于单列，多列，多列联动的选择场景...",
+  "id": "uv-calendars",
+  "displayName": "uv-calendars",
+  "version": "1.0.0",
+  "description": "该组件提供日历选择查看，灵活配置，开箱即用",
   "keywords": [
-    "uv-picker",
-    "uvui",
     "uv-ui",
-    "picker",
-    "联动选择"
+    "uvui",
+    "日历",
+    "打卡",
+    "日历选择"
 ],
   "repository": "",
   "engines": {
@@ -27,7 +27,7 @@
     "contact": {
       "qq": ""
     },
-    "declaration": {
+    "declaration":{
     	"ads": "无",
     	"data": "插件不采集任何数据",
     	"permissions": "无"
@@ -38,7 +38,6 @@
     "dependencies": [
 			"uv-ui-tools",
 			"uv-popup",
-			"uv-loading-icon",
 			"uv-toolbar"
 		],
     "encrypt": [],

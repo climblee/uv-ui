@@ -1,0 +1,359 @@
+<template>
+	<view class="uv-calendar">
+		<view class="uv-calendar__content" v-if="insert">
+			<uv-calendar-body
+				:date="date"
+				:nowDate="nowDate"
+				:weeks="weeks"
+				:calendar="calendar"
+				:selected="selected"
+				:lunar="lunar"
+				:showMonth="showMonth"
+				:color="color"
+				@bindDateChange="bindDateChange"
+				@pre="pre"
+				@next="next"
+				@backToday="backToday"
+				@choiceDate="choiceDate"
+			></uv-calendar-body>
+		</view>
+		<uv-popup ref="popup" mode="bottom" v-else :round="round" :close-on-click-overlay="closeOnClickOverlay" @maskClick="maskClick">
+			<uv-toolbar
+				:show="true"
+				:cancelColor="cancelColor"
+				:confirmColor="confirmColor"
+				:cancelText="cancelText"
+				:confirmText="confirmText"
+				:title="title"
+				@cancel="close"
+				@confirm="confirm"></uv-toolbar>
+			<view class="line"></view>
+			<uv-calendar-body
+				:nowDate="nowDate"
+				:weeks="weeks"
+				:calendar="calendar"
+				:selected="selected"
+				:lunar="lunar"
+				:showMonth="showMonth"
+				:color="color"
+				@bindDateChange="bindDateChange"
+				@pre="pre"
+				@next="next"
+				@backToday="backToday"
+				@choiceDate="choiceDate"
+			></uv-calendar-body>
+		</uv-popup>
+	</view>
+</template>
+<script>
+	/**
+	 * Calendar 日历
+	 * @description 日历组件可以查看日期，选择任意范围内的日期，打点操作。常用场景如：酒店日期预订、火车机票选择购买日期、上下班打卡等
+	 * @tutorial https://ext.dcloud.net.cn/plugin?name=uv-calendar
+	 * @property {String} date 自定义当前时间，默认为今天
+	 * @property {Boolean} lunar 显示农历
+	 * @property {String} startDate 日期选择范围-开始日期
+	 * @property {String} endDate 日期选择范围-结束日期
+	 * @property {Boolean} range 范围选择
+	 * @property {Boolean} insert = [true|false] 插入模式,默认为false
+	 * 	@value true 弹窗模式
+	 * 	@value false 插入模式
+	 * @property {Boolean} clearDate = [true|false] 弹窗模式是否清空上次选择内容
+	 * @property {Array} selected 打点，期待格式[{date: '2019-06-27', info: '签到', data: { custom: '自定义信息', name: '自定义消息头',xxx:xxx... }}]
+	 * @property {String} cancelColor 取消按钮颜色
+	 * @property {String} confirmColor  确认按钮颜色，默认#3c9cff
+	 * @property {String} title 头部工具条中间的标题文字
+	 * @property {String} color 主题色，默认#3c9cff
+	 * @property {Number} round :insert="false"时的圆角
+	 * @property {Boolean} closeOnClickOverlay 点击遮罩是否关闭
+	 * 
+	 * @event {Function} change 日期改变，`insert :ture` 时生效
+	 * @event {Function} confirm 确认选择`insert :false` 时生效
+	 * @event {Function} monthSwitch 切换月份时触发
+	 * 
+	 * @example <uv-calendar :insert="true":lunar="true" :start-date="'2019-3-2'":end-date="'2019-5-20'"@change="change" />
+	 */
+	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js';
+	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js';
+	
+	import Calendar from './util.js';
+	
+	import uvCalendarBody from './uv-calendar-body.vue';
+	
+	import { initVueI18n } from '@dcloudio/uni-i18n';
+	import i18nMessages from './i18n/index.js';
+	const { t } = initVueI18n(i18nMessages);
+	export default {
+		components: {
+			uvCalendarBody
+		},
+		mixins: [mpMixin, mixin],
+		emits: ['close', 'confirm', 'change', 'monthSwitch'],
+		props: {
+			cancelColor: {
+				type: String,
+				default: ''
+			},
+			confirmColor: {
+				type: String,
+				default: '#3c9cff'
+			},
+			title: {
+				type: String,
+				default: ''
+			},
+			color: {
+				type: String,
+				default: '#3c9cff'
+			},
+			date: {
+				type: String,
+				default: ''
+			},
+			selected: {
+				type: Array,
+				default () {
+					return []
+				}
+			},
+			lunar: {
+				type: Boolean,
+				default: false
+			},
+			startDate: {
+				type: String,
+				default: ''
+			},
+			endDate: {
+				type: String,
+				default: ''
+			},
+			range: {
+				type: Boolean,
+				default: false
+			},
+			insert: {
+				type: Boolean,
+				default: false
+			},
+			showMonth: {
+				type: Boolean,
+				default: true
+			},
+			clearDate: {
+				type: Boolean,
+				default: true
+			},
+			round: {
+				type: Number,
+				default: 10
+			},
+			closeOnClickOverlay: {
+				type: Boolean,
+				default: true
+			}
+		},
+		data(){
+			return {
+				weeks: [],
+				calendar: {},
+				nowDate: ''
+			}
+		},
+		computed:{
+			/**
+			 * for i18n
+			 */
+			confirmText() {
+				return t("uv-calender.ok")
+			},
+			cancelText() {
+				return t("uv-calender.cancel")
+			}
+		},
+		watch: {
+			date(newVal) {
+				this.init(newVal)
+			},
+			startDate(val) {
+				this.cale.resetSatrtDate(val)
+				this.cale.setDate(this.nowDate.fullDate)
+				this.weeks = this.cale.weeks
+			},
+			endDate(val) {
+				this.cale.resetEndDate(val)
+				this.cale.setDate(this.nowDate.fullDate)
+				this.weeks = this.cale.weeks
+			},
+			selected(newVal) {
+				this.cale.setSelectInfo(this.nowDate.fullDate, newVal)
+				this.weeks = this.cale.weeks
+			}
+		},
+		created() {
+			this.cale = new Calendar({
+				selected: this.selected,
+				startDate: this.startDate,
+				endDate: this.endDate,
+				range: this.range,
+			})
+			this.init(this.date)
+		},
+		methods: {
+			async open() {
+				if (this.clearDate && !this.insert) {
+					this.cale.cleanMultipleStatus()
+					this.init(this.date)
+				}
+				if(!this.insert){
+					this.$refs.popup.open();
+				}
+			},
+			close() {
+				this.$refs.popup.close();
+				this.$emit('close');
+			},
+			confirm() {
+				this.setEmit('confirm');
+				this.close()
+			},
+			maskClick() {
+				if(this.closeOnClickOverlay) {
+					this.$emit('close');
+				}
+			},
+			bindDateChange(e) {
+				const value = e.detail.value + '-1'
+				this.setDate(value)
+		
+				const { year, month } = this.cale.getDate(value)
+				this.$emit('monthSwitch', {
+					year,
+					month
+				})
+			},
+			/**
+			 * 初始化日期显示
+			 * @param {Object} date
+			 */
+			init(date) {
+				if(this.range) {
+					// 重置多选状态
+					this.cale.cleanMultipleStatus();
+				}
+				this.cale.setDate(date)
+				this.weeks = this.cale.weeks
+				this.nowDate = this.calendar = this.cale.getInfo(date)
+			},
+			/**
+			 * 变化触发
+			 */
+			change() {
+				if (!this.insert) return
+				this.setEmit('change')
+			},
+			/**
+			 * 选择月份触发
+			 */
+			monthSwitch() {
+				let {
+					year,
+					month
+				} = this.nowDate
+				this.$emit('monthSwitch', {
+					year,
+					month: Number(month)
+				})
+			},
+			/**
+			 * 派发事件
+			 * @param {Object} name
+			 */
+			setEmit(name) {
+				let {
+					year,
+					month,
+					date,
+					fullDate,
+					lunar,
+					extraInfo
+				} = this.calendar
+				this.$emit(name, {
+					range: this.cale.multipleStatus,
+					year,
+					month,
+					date,
+					fulldate: fullDate,
+					lunar,
+					extraInfo: extraInfo || {}
+				})
+			},
+			/**
+			 * 选择天触发
+			 * @param {Object} weeks
+			 */
+			choiceDate(weeks) {
+				if (weeks.disable) return
+				this.calendar = weeks
+				// 设置多选
+				this.cale.setMultiple(this.calendar.fullDate)
+				this.weeks = this.cale.weeks
+				this.change()
+			},
+			/**
+			 * 回到今天
+			 */
+			backToday() {
+				const nowYearMonth = `${this.nowDate.year}-${this.nowDate.month}`
+				const date = this.cale.getDate(new Date())
+				const todayYearMonth = `${date.year}-${date.month}`
+		
+				if (nowYearMonth !== todayYearMonth) {
+					this.monthSwitch()
+				}
+		
+				this.init(date.fullDate)
+				this.change()
+			},
+			/**
+			 * 上个月
+			 */
+			pre() {
+				const preDate = this.cale.getDate(this.nowDate.fullDate, -1, 'month').fullDate
+				this.setDate(preDate)
+				this.monthSwitch()
+		
+			},
+			/**
+			 * 下个月
+			 */
+			next() {
+				const nextDate = this.cale.getDate(this.nowDate.fullDate, +1, 'month').fullDate
+				this.setDate(nextDate)
+				this.monthSwitch()
+			},
+			/**
+			 * 设置日期
+			 * @param {Object} date
+			 */
+			setDate(date) {
+				this.cale.setDate(date)
+				this.weeks = this.cale.weeks
+				this.nowDate = this.cale.getInfo(date)
+			}
+		}
+	}
+</script>
+<style scoped lang="scss">
+	$uv-border-color: #EDEDED !default;
+	.uv-calendar__content {
+		background-color: #fff;
+	}
+	.line {
+		width: 750rpx;
+		height: 1px;
+		border-bottom-color: $uv-border-color;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+</style>
