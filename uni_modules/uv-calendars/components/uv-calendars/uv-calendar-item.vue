@@ -102,10 +102,11 @@
 					style.backgroundColor = this.color;
 					style.color = '#fff';
 				} else if (this.weeks.isDay && this.calendar.fullDate === this.weeks.fullDate) {
+					style.backgroundColor = this.color;
 					style.color = '#fff';
 				} else if (this.weeks.isDay) {
 					style.color = this.color;
-				}
+				} 
 				return style;
 			}
 		},

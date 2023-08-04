@@ -1,8 +1,8 @@
 {
   "id": "uv-calendars",
-  "displayName": "uv-calendars",
-  "version": "1.0.0",
-  "description": "该组件提供日历选择查看，灵活配置，开箱即用",
+  "displayName": "uv-calendars 日历 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.1",
+  "description": "该组件输入优化升级版，提供日历选择查看，简单配置即可使用强大功能，性能友好",
   "keywords": [
     "uv-ui",
     "uvui",
