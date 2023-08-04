@@ -60,20 +60,34 @@ export function rgbToHsb(rgb) {
 		s: 0,
 		b: 0
 	};
+	let h = 0,
+		s = 0,
+		v = 0;
+	let r = rgb.r,
+		g = rgb.g,
+		b = rgb.b;
 	let min = Math.min(rgb.r, rgb.g, rgb.b);
 	let max = Math.max(rgb.r, rgb.g, rgb.b);
-	let delta = max - min;
-	hsb.b = max;
-	hsb.s = max != 0 ? 255 * delta / max : 0;
-	if (hsb.s != 0) {
-		if (rgb.r == max) hsb.h = (rgb.g - rgb.b) / delta;
-		else if (rgb.g == max) hsb.h = 2 + (rgb.b - rgb.r) / delta;
-		else hsb.h = 4 + (rgb.r - rgb.g) / delta;
-	} else hsb.h = -1;
-	hsb.h *= 60;
-	if (hsb.h < 0) hsb.h = 0;
-	hsb.s *= 100 / 255;
-	hsb.b *= 100 / 255;
+	v = max / 255;
+	if (max === 0) {
+		s = 0;
+	} else {
+		s = 1 - (min / max);
+	}
+	if (max === min) {
+		h = 0; //事实上，max===min的时候，h无论为多少都无所谓
+	} else if (max === r && g >= b) {
+		h = 60 * ((g - b) / (max - min)) + 0;
+	} else if (max === r && g < b) {
+		h = 60 * ((g - b) / (max - min)) + 360
+	} else if (max === g) {
+		h = 60 * ((b - r) / (max - min)) + 120
+	} else if (max === b) {
+		h = 60 * ((r - g) / (max - min)) + 240
+	}
+	hsb.h = parseInt(h);
+	hsb.s = parseInt(s * 100);
+	hsb.b = parseInt(v * 100);
 	return hsb;
 }
 /**

@@ -8,7 +8,7 @@
 			}"
 		></view>
 		<view :class="[fixed && 'uv-navbar--fixed']">
-			<image class="uv-navbar--bgimg" :src="bgColor" mode="aspectFill" v-if="isImg"></image>
+			<image class="uv-navbar--bgimg" :src="bgColor" :mode="imgMode" v-if="isImg"></image>
 			<uv-status-bar
 				v-if="safeAreaInsetTop"
 				:bgColor="getStatusbgColor"

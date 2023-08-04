@@ -50,6 +50,10 @@ export default {
 			type: String,
 			default: '#ffffff'
 		},
+		imgMode: {
+			type: String,
+			default: 'aspectFill'
+		},
 		// 标题的宽度
 		titleWidth: {
 			type: [String, Number],

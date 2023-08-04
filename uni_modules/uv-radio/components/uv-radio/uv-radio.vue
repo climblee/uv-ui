@@ -190,7 +190,13 @@
 				}
 				// 设置初始化时，是否默认选中的状态
 				this.$nextTick(()=>{
-					const parentValue = this.parentData.value || this.parentData.modelValue;
+					let parentValue = null;
+					// #ifdef VUE2
+					parentValue = this.parentData.value;
+					// #endif
+					// #ifdef VUE3
+					parentValue = this.parentData.modelValue;
+					// #endif
 					this.checked = this.name === parentValue
 				})
 			},

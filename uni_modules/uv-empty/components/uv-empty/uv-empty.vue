@@ -5,7 +5,7 @@
 	  v-if="show"
 	>
 		<uv-icon
-		  v-if="!isSrc"
+		  v-if="!isImg"
 		  :name="mode === 'message' ? 'chat' : `empty-${mode}`"
 		  :size="iconSize"
 		  :color="iconColor"
@@ -94,8 +94,9 @@
 				return style
 			},
 			// 判断icon是否图片路径
-			isSrc() {
-				return this.icon.indexOf('/') >= 0
+			isImg() {
+				const isBase64 = this.icon.indexOf('data:') > -1 && this.icon.indexOf('base64') > -1;
+				return this.icon.indexOf('/') !== -1 || isBase64;
 			}
 		}
 	}

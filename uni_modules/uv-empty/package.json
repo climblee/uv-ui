@@ -1,7 +1,7 @@
 {
   "id": "uv-empty",
-  "displayName": "uv-empty 内容为空 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.3",
+  "displayName": "uv-empty 内容为空 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.4",
   "description": "该组件用于需要加载内容，但是加载的第一页数据就为空，提示一个 没有内容 的场景， 我们精心挑选了十几个场景的图标，方便您使用。",
   "keywords": [
     "empty",
