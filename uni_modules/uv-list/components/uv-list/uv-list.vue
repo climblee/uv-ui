@@ -23,7 +23,6 @@
 		:scrollable="true" 
 		show-scrollbar 
 		:render-reverse="false" 
-		@scroll="scroll" 
 		class="uv-list" 
 		:class="{ 'uv-list--border': border }"
 		:style="[
@@ -31,7 +30,9 @@
 			$uv.addStyle(customStyle)
 		]"
 		:enableBackToTop="false"
-		loadmoreoffset="15">
+		:loadmoreoffset="15"
+		@scroll="scroll"
+		@loadmore="loadMore">
 		<slot />
 	</list>
 	<!-- #endif -->
