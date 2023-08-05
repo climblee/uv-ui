@@ -131,7 +131,12 @@
 			}
 		},
 		created() {
-			this.innerValue = this.value || this.modelValue;
+			// #ifdef VUE2
+			this.innerValue = this.value;
+			// #endif
+			// #ifdef VUE3
+			this.innerValue = this.modelValue;
+			// #endif
 		},
 		watch: {
 			value(newVal){
