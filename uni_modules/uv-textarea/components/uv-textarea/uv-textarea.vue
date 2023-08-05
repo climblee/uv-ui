@@ -37,7 +37,7 @@
 			:style="[{
         'background-color': disabled ? 'transparent' : '#fff',
       },$uv.addStyle(countStyle)]"
-			v-if="count">{{ innerValue.length }}/{{ maxlen }}</text>
+			v-if="count && maxlen!=-1">{{ getCount }}/{{ maxlen }}</text>
 	</view>
 </template>
 <script>
@@ -98,14 +98,19 @@
 			}
 		},
 		created() {
-			this.innerValue = this.value || this.modelValue;
+			// #ifdef VUE2
+			this.innerValue = String(this.value);
+			// #endif
+			// #ifdef VUE3
+			this.innerValue = String(this.modelValue);
+			// #endif
 		},
 		watch: {
 			value(newVal) {
-				this.innerValue = newVal;
+				this.innerValue = String(newVal);
 			},
 			modelValue(newVal) {
-				this.innerValue = newVal;
+				this.innerValue = String(newVal);
 			}
 		},
 		computed: {
@@ -134,6 +139,9 @@
 			},
 			maxlen() {
 				return this.maxlength < 0 ? this.maxlength < 0 ? -1 : 140 : this.maxlength;
+			},
+			getCount() {
+				return this.innerValue.length > this.maxlen ? this.maxlen: this.innerValue.length;
 			}
 		},
 		methods: {
