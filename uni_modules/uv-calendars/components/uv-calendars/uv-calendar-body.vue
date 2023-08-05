@@ -16,7 +16,7 @@
 			<view v-if="showMonth" class="uv-calendar__box-bg">
 				<text class="uv-calendar__box-bg-text">{{nowDate.month}}</text>
 			</view>
-			<view class="uv-calendar__weeks">
+			<view class="uv-calendar__weeks uv-calendar__weeks-week">
 				<view class="uv-calendar__weeks-day">
 					<text class="uv-calendar__weeks-day-text">{{SUNText}}</text>
 				</view>
@@ -41,7 +41,7 @@
 			</view>
 			<view class="uv-calendar__weeks" v-for="(item,weekIndex) in weeks" :key="weekIndex">
 				<view class="uv-calendar__weeks-item" v-for="(weeks,weeksIndex) in item" :key="weeksIndex">
-					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
+					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :rangeInfoText="rangeInfoText(weeks)" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
 				</view>
 			</view>
 		</view>
@@ -100,6 +100,14 @@
 			color: {
 				type: String,
 				default: '#3c9cff'
+			},
+			startText: {
+				type: String,
+				default: '开始'
+			},
+			endText: {
+				type: String,
+				default: '结束'
 			}
 		},
 		computed: {
@@ -129,6 +137,28 @@
 			},
 			SUNText() {
 				return t("uv-calender.SUN")
+			},
+			rangeInfoText(weeks) {
+				return weeks=> {
+					if(weeks.beforeMultiple) {
+						if(weeks.extraInfo) {
+							weeks.extraInfo.info = this.startText;
+						}else {
+							weeks.extraInfo = {
+								info: this.startText
+							}
+						}
+					}
+					if(weeks.afterMultiple) {
+						if(weeks.extraInfo) {
+							weeks.extraInfo.info = this.endText;
+						}else {
+							weeks.extraInfo = {
+								info: this.endText
+							}
+						}
+					}
+				}
 			}
 		},
 		methods: {
@@ -273,6 +303,9 @@
 	.uv-calendar__weeks {
 		position: relative;
 		@include flex;
+	}
+	.uv-calendar__weeks-week {
+		padding: 0 0 2rpx;
 	}
 	.uv-calendar__weeks-item {
 		flex: 1;

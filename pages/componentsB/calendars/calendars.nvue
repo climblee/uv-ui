@@ -19,19 +19,24 @@
 				</template>
 				</uv-cell>
 			</uv-cell-group>
-			<uv-calendars
-				v-if="show"
-				:insert="true"
-				:lunar="true"
-				start-date="2021-01-01"
-				end-date="2030-01-01"
-			/>
+			<view style="margin: 30rpx -15px;">
+				<uv-calendars
+					v-if="show"
+					:insert="true"
+					:lunar="true"
+					start-date="2021-01-01"
+					end-date="2030-01-01"
+					@change="confirm"
+				/>
+			</view>
 			<uv-calendars
 				ref="calendar2"
+				@confirm="confirm"
 			/>
 			<uv-calendars
 				ref="calendar3"
 				range
+				@confirm="confirm"
 			/>
 			<uv-calendars
 				ref="calendar4"
@@ -43,6 +48,10 @@
 			/>
 			<uv-calendars
 				ref="calendar5"
+				range
+				title="选择日期"
+				start-text="住店"
+				end-text="离店"
 				:selected="selected"
 				@confirm="confirm"
 			/>
@@ -79,7 +88,7 @@
 				values: ['','','','','','','',''],
 				startDate: `${year}-${month}-02`,
 				endDate: `${year}-${month}-20`,
-				selected: [{date: `${year}-${month}-${date + 1}`, info: '签到'},{date: `${year}-${month}-${date + 2}`, info: '签到'}],
+				selected: [{date: `${year}-${month}-02`, info: '签到', badge: true, infoColor: '#ff0000'},{date: `${year}-${month}-06`, info: '余10',infoColor: '#19be6b', topinfo: '￥100', topinfoColor: '#19be6b'}],
 				defaultDate: `${year}-${month}-15`,
 				list: [{
 						title: '插入模式',
@@ -121,7 +130,11 @@
 				this.$refs[`calendar${this.index}`].open();
 			},
 			confirm(e) {
-				console.log(e)
+				const time = e.range.before && e.range.after? `${e.range.before} 至 ${e.range.after}`:e.fulldate;
+				uni.showToast({
+					icon: 'none',
+					title: time
+				})
 			}
 		}
 	}

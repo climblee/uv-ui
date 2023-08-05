@@ -248,6 +248,21 @@ class Calendar {
 			return false
 		}
 	}
+	
+	/**
+	 * 比较after时间是否大于before时间
+	 */
+	dateAfterLgBefore(before, after) {
+		// 计算截止时间
+		before = new Date(before.replace('-', '/').replace('-', '/'))
+		// 计算详细项的截止时间
+		after = new Date(after.replace('-', '/').replace('-', '/'))
+		if (after.getTime() - before.getTime() > 0) {
+			return true
+		} else {
+			return false
+		}
+	}
 
 
 	/**
@@ -293,16 +308,20 @@ class Calendar {
 			before,
 			after
 		} = this.multipleStatus
-
 		if (!this.range) return
 		if (before && after) {
-			this.multipleStatus.before = ''
-			this.multipleStatus.after = ''
-			this.multipleStatus.data = []
+			this.cleanMultipleStatus();
+			this.multipleStatus.before = fullDate
 		} else {
 			if (!before) {
 				this.multipleStatus.before = fullDate
 			} else {
+				if(!this.dateAfterLgBefore(this.multipleStatus.before,fullDate)) {
+					this.cleanMultipleStatus();
+					this.multipleStatus.before = fullDate
+					this._getWeek(fullDate)
+					return;
+				}
 				this.multipleStatus.after = fullDate
 				if (this.dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
 					this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);

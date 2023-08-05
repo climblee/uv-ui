@@ -8,7 +8,12 @@
 		'uv-calendar-item--after-checked':weeks.afterMultiple,
 		}" :style="[itemBoxStyle]" @click="choiceDate(weeks)">
 		<view class="uv-calendar-item__weeks-box-item">
-			<text v-if="selected&&weeks.extraInfo" class="uv-calendar-item__weeks-box-circle"></text>
+			<text v-if="selected&&weeks.extraInfo&&weeks.extraInfo.badge" class="uv-calendar-item__weeks-box-circle"></text>
+			<text 
+				class="uv-calendar-item__weeks-top-text" 
+				v-if="weeks.extraInfo&&weeks.extraInfo.topinfo"
+				:style="[infoStyle('top')]"
+			>{{weeks.extraInfo&&weeks.extraInfo.topinfo}}</text>
 			<text class="uv-calendar-item__weeks-box-text" :class="{
 				'uv-calendar-item--isDay-text': weeks.isDay,
 				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
@@ -35,16 +40,11 @@
 				'uv-calendar-item--after-checked':weeks.afterMultiple,
 				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable),
 				}" :style="[itemBoxStyle]">{{weeks.isDay ? todayText : (weeks.lunar.IDayCn === '初一'?weeks.lunar.IMonthCn:weeks.lunar.IDayCn)}}</text>
-			<text v-if="weeks.extraInfo&&weeks.extraInfo.info" class="uv-calendar-item__weeks-lunar-text" :class="{
-				'uv-calendar-item--extra':weeks.extraInfo.info,
-				'uv-calendar-item--isDay-text':weeks.isDay,
-				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
-				'uv-calendar-item--before-checked':weeks.beforeMultiple,
-				'uv-calendar-item--multiple': weeks.multiple,
-				'uv-calendar-item--after-checked':weeks.afterMultiple,
-				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable),
-				}" :style="[itemBoxStyle]">{{weeks.extraInfo.info}}</text>
+				<text 
+					v-if="weeks.extraInfo&&weeks.extraInfo.info" 
+					class="uv-calendar-item__weeks-lunar-text" 
+					:style="[infoStyle('bottom')]"
+				>{{weeks.extraInfo.info}}</text>
 		</view>
 	</view>
 </template>
@@ -108,6 +108,23 @@
 					style.color = this.color;
 				} 
 				return style;
+			},
+			infoStyle(val) {
+				return val => {
+					const style = {};
+					if (val == 'top') {
+						style.color = this.weeks.extraInfo.topinfoColor ? this.weeks.extraInfo.topinfoColor : '#606266';
+					} else if (val == 'bottom') {
+						style.color = this.weeks.extraInfo.infoColor ? this.weeks.extraInfo.infoColor : '#f56c6c';
+					}
+					if (this.weeks.multiple) {
+						style.color = this.color;
+					}
+					if (this.calendar.fullDate === this.weeks.fullDate || this.weeks.beforeMultiple || this.weeks.afterMultiple) {
+						style.color = '#fff';
+					}
+					return style;
+				}
 			}
 		},
 		methods: {
@@ -128,11 +145,12 @@
 	}
 	$uv-font-size-base: 14px;
 	$uv-text-color: #333;
-	$uv-font-size-sm: 12px;
+	$uv-font-size-sm: 24rpx;
 	$uv-error: #f56c6c !default;
 	$uv-opacity-disabled: 0.3;
 	$uv-text-color-disable: #c0c0c0;
 	$uv-primary: #3c9cff !default;
+	$info-height: 32rpx;
 	.uv-calendar-item__weeks-box {
 		flex: 1;
 		@include flex(column);
@@ -140,11 +158,18 @@
 		align-items: center;
 		border-radius: 4px;
 	}
+	.uv-calendar-item__weeks-top-text {
+		height: $info-height;
+		line-height: $info-height;
+		font-size: $uv-font-size-sm;
+	}
 	.uv-calendar-item__weeks-box-text {
 		font-size: $uv-font-size-base;
 		color: $uv-text-color;
 	}
 	.uv-calendar-item__weeks-lunar-text {
+		height: $info-height;
+		line-height: $info-height;
 		font-size: $uv-font-size-sm;
 		color: $uv-text-color;
 	}
@@ -153,8 +178,8 @@
 		@include flex(column);
 		justify-content: center;
 		align-items: center;
-		width: 100rpx;
-		height: 100rpx;
+		width: 105rpx;
+		height: 105rpx;
 	}
 	.uv-calendar-item__weeks-box-circle {
 		position: absolute;
@@ -175,9 +200,6 @@
 	.uv-calendar-item--isDay {
 		background-color: $uv-primary;
 		color: #fff;
-	}
-	.uv-calendar-item--extra {
-		color: $uv-error;
 	}
 	.uv-calendar-item--checked {
 		background-color: $uv-primary;

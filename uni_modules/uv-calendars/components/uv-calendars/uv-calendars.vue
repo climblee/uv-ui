@@ -10,6 +10,8 @@
 				:lunar="lunar"
 				:showMonth="showMonth"
 				:color="color"
+				:startText="startText"
+				:endText="endText"
 				@bindDateChange="bindDateChange"
 				@pre="pre"
 				@next="next"
@@ -18,30 +20,34 @@
 			></uv-calendar-body>
 		</view>
 		<uv-popup ref="popup" mode="bottom" v-else :round="round" :close-on-click-overlay="closeOnClickOverlay" @maskClick="maskClick">
-			<uv-toolbar
-				:show="true"
-				:cancelColor="cancelColor"
-				:confirmColor="confirmColor"
-				:cancelText="cancelText"
-				:confirmText="confirmText"
-				:title="title"
-				@cancel="close"
-				@confirm="confirm"></uv-toolbar>
-			<view class="line"></view>
-			<uv-calendar-body
-				:nowDate="nowDate"
-				:weeks="weeks"
-				:calendar="calendar"
-				:selected="selected"
-				:lunar="lunar"
-				:showMonth="showMonth"
-				:color="color"
-				@bindDateChange="bindDateChange"
-				@pre="pre"
-				@next="next"
-				@backToday="backToday"
-				@choiceDate="choiceDate"
-			></uv-calendar-body>
+			<view style="min-height: 450px;">
+				<uv-toolbar
+					:show="true"
+					:cancelColor="cancelColor"
+					:confirmColor="getConfirmColor"
+					:cancelText="cancelText"
+					:confirmText="confirmText"
+					:title="title"
+					@cancel="close"
+					@confirm="confirm"></uv-toolbar>
+				<view class="line"></view>
+				<uv-calendar-body
+					:nowDate="nowDate"
+					:weeks="weeks"
+					:calendar="calendar"
+					:selected="selected"
+					:lunar="lunar"
+					:showMonth="showMonth"
+					:color="color"
+					:startText="startText"
+					:endText="endText"
+					@bindDateChange="bindDateChange"
+					@pre="pre"
+					@next="next"
+					@backToday="backToday"
+					@choiceDate="choiceDate"
+				></uv-calendar-body>
+			</view>
 		</uv-popup>
 	</view>
 </template>
@@ -66,6 +72,8 @@
 	 * @property {String} color 主题色，默认#3c9cff
 	 * @property {Number} round :insert="false"时的圆角
 	 * @property {Boolean} closeOnClickOverlay 点击遮罩是否关闭
+	 * @property {String} startText range为true时，第一个日期底部的提示文字
+	 * @property {String} endText range为true时，最后一个日期底部的提示文字
 	 * 
 	 * @event {Function} change 日期改变，`insert :ture` 时生效
 	 * @event {Function} confirm 确认选择`insert :false` 时生效
@@ -146,18 +154,27 @@
 			},
 			round: {
 				type: Number,
-				default: 10
+				default: 8
 			},
 			closeOnClickOverlay: {
 				type: Boolean,
 				default: true
+			},
+			startText: {
+				type: String,
+				default: '开始'
+			},
+			endText: {
+				type: String,
+				default: '结束'
 			}
 		},
 		data(){
 			return {
 				weeks: [],
 				calendar: {},
-				nowDate: ''
+				nowDate: '',
+				allowConfirm: false
 			}
 		},
 		computed:{
@@ -169,6 +186,13 @@
 			},
 			cancelText() {
 				return t("uv-calender.cancel")
+			},
+			getConfirmColor() {
+				if(!this.range) {
+					return this.confirmColor;
+				}else {
+					return this.allowConfirm? this.confirmColor: '#999'
+				}
 			}
 		},
 		watch: {
@@ -214,6 +238,9 @@
 				this.$emit('close');
 			},
 			confirm() {
+				if(this.range && !this.cale.multipleStatus.after) {
+					return;
+				}
 				this.setEmit('confirm');
 				this.close()
 			},
@@ -244,11 +271,17 @@
 				this.cale.setDate(date)
 				this.weeks = this.cale.weeks
 				this.nowDate = this.calendar = this.cale.getInfo(date)
+				if(this.range) {
+					this.choiceDate(this.nowDate);
+				}
 			},
 			/**
 			 * 变化触发
 			 */
 			change() {
+				if (this.range) {
+					this.allowConfirm = this.cale.multipleStatus.after ? true : false;
+				}
 				if (!this.insert) return
 				this.setEmit('change')
 			},
@@ -322,7 +355,6 @@
 				const preDate = this.cale.getDate(this.nowDate.fullDate, -1, 'month').fullDate
 				this.setDate(preDate)
 				this.monthSwitch()
-		
 			},
 			/**
 			 * 下个月
