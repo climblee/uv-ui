@@ -82,7 +82,7 @@
 			}
 		},
 		created() {
-			const value = this.value || this.modelValue;
+			const value = String(this.value) || String(this.modelValue);
 			this.inputValue = String(value).substring(0, this.maxlength);
 		},
 		watch: {
