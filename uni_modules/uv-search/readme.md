@@ -6,7 +6,7 @@
 
 # <a href="https://www.uvui.cn/components/search.html" target="_blank">查看文档</a>
 
-## [下载完整示例项目](https://ext.dcloud.net.cn/plugin?name=uv-ui) <span style="font-size:14px;font-weight:700;">（请不要 下载插件ZIP）</span>
+## [下载完整示例项目](https://ext.dcloud.net.cn/plugin?name=uv-ui) <span>（请不要 下载插件ZIP）</span>
 
 ### [更多插件，请关注uv-ui组件库](https://ext.dcloud.net.cn/plugin?name=uv-ui)
 

@@ -122,7 +122,7 @@
 			};
 		},
 		created() {
-			this.keyword = this.value || this.modelValue;
+			this.keyword = String(this.value) || String(this.modelValue);
 		},
 		watch: {
 			value(nVal){

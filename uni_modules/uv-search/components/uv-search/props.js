@@ -1,11 +1,11 @@
 export default {
 	props: {
 		value: {
-			type: String,
+			type: [String, Number],
 			default: ''
 		},
 		modelValue: {
-			type: String,
+			type: [String, Number],
 			default: ''
 		},
 		// 搜索框形状，round-圆形，square-方形
