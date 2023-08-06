@@ -150,7 +150,7 @@
 	$uv-opacity-disabled: 0.3;
 	$uv-text-color-disable: #c0c0c0;
 	$uv-primary: #3c9cff !default;
-	$info-height: 32rpx;
+	$info-height: 28rpx;
 	.uv-calendar-item__weeks-box {
 		flex: 1;
 		@include flex(column);
