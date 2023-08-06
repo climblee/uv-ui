@@ -1,3 +1,14 @@
+## 1.1.3（2023-08-05）
+1. 优化 uv-calendars 1. 增加startText参数; 2. 增加endText参数; 3. 增加selected中的参数; 4. 优化日历范围选择
+2. 优化 uv-empty icon属性支持base64图片
+3. 优化 uv-navbar 增加背景图片的裁剪模式参数imgMode
+4. 优化 uv-picker-color 颜色值不对的BUG
+5. 优化 优化其他
+6. 修复 uv-radio name为数字0时不能选中的BUG
+7. 修复 uv-textarea 1. v-model设置为数据时的BUG；2. 复制过多内容，计数显示错误的BUG；3. maxlength为-1改成不显示计数
+8. 修复 uv-code-input 在vue2模式下，v-model设置为0时不生效的BUG
+9. 修复 uv-input 在vue2模式下，v-model设置为0时不生效的BUG
+10. 修复 uv-search 在vue2模式下，v-model设置为0时不生效的BUG
 ## 1.1.2（2023-08-03）
 1. 新增 uv-calendars 新版日历发布
 2. 新增 uv-toolbar 组件独立发布，老用户更新uv-picker，需要手动删除uv-picker目录下的uv-toolbar目录，否则会有冲突提示

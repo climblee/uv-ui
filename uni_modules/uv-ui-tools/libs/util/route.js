@@ -2,7 +2,7 @@
  * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
  * 并且带有路由拦截功能
  */
-	import { queryParams, deepMerge,page } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+import { queryParams, deepMerge, page } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 class Router {
 	constructor() {
 		// 原始属性定义
@@ -13,7 +13,8 @@ class Router {
 			params: {}, // 传递的参数
 			animationType: 'pop-in', // 窗口动画,只在APP有效
 			animationDuration: 300, // 窗口动画持续时间,单位毫秒,只在APP有效
-			intercept: false // 是否需要拦截
+			intercept: false ,// 是否需要拦截
+			events: {} // 页面间通信接口，用于监听被打开页面发送到当前页面的数据。hbuilderx 2.8.9+ 开始支持。
 		}
 		// 因为route方法是需要对外赋值给另外的对象使用，同时route内部有使用this，会导致route失去上下文
 		// 这里在构造函数中进行this绑定
@@ -57,22 +58,21 @@ class Router {
 			// 否则正常使用mergeConfig中的url和params进行拼接
 			mergeConfig.url = this.mixinParam(options.url, options.params)
 		}
-
 		// 如果本次跳转的路径和本页面路径一致，不执行跳转，防止用户快速点击跳转按钮，造成多次跳转同一个页面的问题
 		if (mergeConfig.url === page()) return
 
 		if (params.intercept) {
-			this.config.intercept = params.intercept
+			mergeConfig.intercept = params.intercept
 		}
 		// params参数也带给拦截器
 		mergeConfig.params = params
 		// 合并内外部参数
 		mergeConfig = deepMerge(this.config, mergeConfig)
 		// 判断用户是否定义了拦截器
-		if (typeof routeIntercept === 'function') {
+		if (typeof mergeConfig.intercept === 'function') {
 			// 定一个promise，根据用户执行resolve(true)或者resolve(false)来决定是否进行路由跳转
 			const isNext = await new Promise((resolve, reject) => {
-				routeIntercept(mergeConfig, resolve)
+				mergeConfig.intercept(mergeConfig, resolve)
 			})
 			// 如果isNext为true，则执行路由跳转
 			isNext && this.openPage(mergeConfig)
@@ -89,13 +89,15 @@ class Router {
 			type,
 			delta,
 			animationType,
-			animationDuration
+			animationDuration,
+			events
 		} = config
 		if (config.type == 'navigateTo' || config.type == 'to') {
 			uni.navigateTo({
 				url,
 				animationType,
-				animationDuration
+				animationDuration,
+				events
 			})
 		}
 		if (config.type == 'redirectTo' || config.type == 'redirect') {
