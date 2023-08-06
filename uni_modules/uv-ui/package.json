@@ -36,6 +36,7 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-calendars",
 			"uv-scroll-list",
 			"uv-vtabs",
 			"uv-pick-color",
