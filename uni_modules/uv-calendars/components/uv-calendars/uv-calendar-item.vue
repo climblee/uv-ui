@@ -150,7 +150,7 @@
 	$uv-opacity-disabled: 0.3;
 	$uv-text-color-disable: #c0c0c0;
 	$uv-primary: #3c9cff !default;
-	$info-height: 28rpx;
+	$info-height: 32rpx;
 	.uv-calendar-item__weeks-box {
 		flex: 1;
 		@include flex(column);
@@ -178,8 +178,8 @@
 		@include flex(column);
 		justify-content: center;
 		align-items: center;
-		width: 105rpx;
-		height: 105rpx;
+		width: 106rpx;
+		height: 56px;
 	}
 	.uv-calendar-item__weeks-box-circle {
 		position: absolute;
@@ -204,7 +204,7 @@
 	.uv-calendar-item--checked {
 		background-color: $uv-primary;
 		color: #fff;
-		border-radius: 3px;
+		border-radius: 4px;
 	}
 	.uv-calendar-item--multiple {
 		background-color: $uv-primary;
