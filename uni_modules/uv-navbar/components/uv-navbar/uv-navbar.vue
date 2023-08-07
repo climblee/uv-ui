@@ -8,7 +8,7 @@
 			}"
 		></view>
 		<view :class="[fixed && 'uv-navbar--fixed']">
-			<image class="uv-navbar--bgimg" :src="bgColor" :mode="imgMode" v-if="isImg"></image>
+			<image class="uv-navbar--bgimg" :src="bgColor" :mode="imgMode" v-if="isImg" :style="[bgImgStyle]"></image>
 			<uv-status-bar
 				v-if="safeAreaInsetTop"
 				:bgColor="getStatusbgColor"
@@ -134,6 +134,15 @@
 			isImg() {
 				const isBase64 = this.bgColor.indexOf('data:') > -1 && this.bgColor.indexOf('base64') > -1;
 				return this.bgColor.indexOf('/') !== -1 || isBase64;
+			},
+			bgImgStyle() {
+				const style = {};
+				if(this.safeAreaInsetTop) {
+					style.height = this.$uv.addUnit(this.$uv.sys().statusBarHeight + 44, 'px');
+				} else {
+					style.height = '44px';
+				}
+				return style;
 			}
 		},
 		methods: {
@@ -179,6 +188,9 @@
 			/* #ifndef APP-NVUE */
 			width: 100%;
 			height: 100%;
+			/* #endif */
+			/* #ifdef APP-NVUE */
+			width: 750rpx;
 			/* #endif */
 		}
 

@@ -19,7 +19,7 @@
 	<!-- #endif -->
 	<!-- #ifdef APP-NVUE -->
 	<list 
-		:bounce="false" 
+		:bounce="true" 
 		:scrollable="true" 
 		show-scrollbar 
 		:render-reverse="false" 
