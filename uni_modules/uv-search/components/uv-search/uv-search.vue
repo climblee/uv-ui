@@ -122,7 +122,12 @@
 			};
 		},
 		created() {
-			this.keyword = String(this.value) || String(this.modelValue);
+			// #ifndef VUE3
+			this.keyword = this.value;
+			// #endif
+			// #ifdef VUE3
+			this.keyword = this.modelValue;
+			// #endif
 		},
 		watch: {
 			value(nVal){

@@ -98,19 +98,19 @@
 			}
 		},
 		created() {
-			// #ifdef VUE2
-			this.innerValue = String(this.value);
+			// #ifndef VUE3
+			this.innerValue = this.value;
 			// #endif
 			// #ifdef VUE3
-			this.innerValue = String(this.modelValue);
+			this.innerValue = this.modelValue;
 			// #endif
 		},
 		watch: {
 			value(newVal) {
-				this.innerValue = String(newVal);
+				this.innerValue = newVal;
 			},
 			modelValue(newVal) {
-				this.innerValue = String(newVal);
+				this.innerValue = newVal;
 			}
 		},
 		computed: {
