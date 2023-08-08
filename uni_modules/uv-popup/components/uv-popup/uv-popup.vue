@@ -3,6 +3,7 @@
 		v-if="showPopup" 
 		class="uv-popup" 
 		:class="[popupClass, isDesktop ? 'fixforpc-z-index' : '']"
+		:style="[{zIndex: zIndex}]"
 	>
 		<view @touchstart="touchstart">
 			<!-- 遮罩层 -->
