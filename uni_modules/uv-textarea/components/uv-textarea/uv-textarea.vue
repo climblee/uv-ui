@@ -141,7 +141,11 @@
 				return this.maxlength < 0 ? this.maxlength < 0 ? -1 : 140 : this.maxlength;
 			},
 			getCount() {
-				return this.innerValue.length > this.maxlen ? this.maxlen: this.innerValue.length;
+				try{
+					return this.innerValue.length > this.maxlen ? this.maxlen: this.innerValue.length;
+				}catch(e){
+					return 0;
+				}
 			}
 		},
 		methods: {
