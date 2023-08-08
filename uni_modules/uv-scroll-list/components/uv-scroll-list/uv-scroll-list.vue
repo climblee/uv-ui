@@ -148,7 +148,6 @@
 			// #ifndef APP-NVUE || MP-WEIXIN || H5 || APP-VUE || MP-QQ
 			// scroll-view触发滚动事件
 			scrollHandler(e) {
-			console.log(e)
 				this.scrollInfo = e.detail
 			},
 			scrolltoupperHandler() {
