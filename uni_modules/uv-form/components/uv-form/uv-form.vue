@@ -171,8 +171,9 @@
 											errorsRes.push(...errors);
 											childErrors.push(...errors);
 										}
-										child.message =
-											childErrors[0]?.message ? childErrors[0]?.message : null;
+										this.$nextTick(() => {
+											child.message = childErrors[0]?.message ? childErrors[0]?.message : null;
+										})
 									}
 								);
 							}
@@ -197,7 +198,7 @@
 							(item) => item.prop
 						);
 						this.validateField(formItemProps, (errors) => {
-							if(errors.length) {
+							if (errors.length) {
 								// 如果错误提示方式为toast，则进行提示
 								this.errorType === 'toast' && this.$uv.toast(errors[0].message)
 								reject(errors)
