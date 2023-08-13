@@ -134,6 +134,11 @@
 			icon() {
 				// 如果内置的图标中找不到对应的图标，就直接返回name值，因为用户可能传入的是unicode代码
 				const code = icons['uvicon-' + this.name];
+				// #ifdef APP-NVUE
+				if(!code) {
+					return code ? unescape(`%u${code}`) : ['uvicon'].indexOf(this.customPrefix) > -1 ? unescape(`%u${this.name}`) : '';
+				}
+				// #endif
 				return code ? unescape(`%u${code}`) : ['uvicon'].indexOf(this.customPrefix) > -1 ? this.name : '';
 			}
 		},

@@ -19,7 +19,7 @@
 				@choiceDate="choiceDate"
 			></uv-calendar-body>
 		</view>
-		<uv-popup ref="popup" mode="bottom" v-else :round="round" :close-on-click-overlay="closeOnClickOverlay" @maskClick="maskClick">
+		<uv-popup ref="popup" mode="bottom" v-else :round="round" z-index="998" :close-on-click-overlay="closeOnClickOverlay" @maskClick="maskClick">
 			<view style="min-height: 100px;">
 				<uv-toolbar
 					:show="true"
