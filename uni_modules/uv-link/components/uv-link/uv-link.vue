@@ -55,7 +55,7 @@
 					success: () => {
 						uni.hideToast();
 						this.$nextTick(() => {
-							toast(this.mpTips);
+							this.$uv.toast(this.mpTips);
 						})
 					}
 				});

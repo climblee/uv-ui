@@ -1,7 +1,7 @@
 {
   "id": "uv-pick-color",
   "displayName": "uv-pick-color 颜色选择器 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "该组件为颜色选择器，支持预制颜色，初始化颜色，简单配置，开箱即用",
   "keywords": [
     "uv-pick-color",

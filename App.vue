@@ -1,13 +1,21 @@
 <script>
+	import { fetchMenu } from '@/common/api.js';
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			// this.getHttpData();
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods: {
+			async getHttpData() {
+				const res = await fetchMenu();
+				console.log(res)
+			}
 		}
 	}
 </script>

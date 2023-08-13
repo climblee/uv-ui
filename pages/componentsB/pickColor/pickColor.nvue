@@ -1,5 +1,5 @@
 <template>
-	<view class="uv-page" ref="page">
+	<view class="uv-page" ref="page" style="height: 2000px;">
 		<uv-cell-group>
 			<uv-cell
 				@click="showPickColor(index)"
@@ -29,29 +29,34 @@
 		<view>
 			<uv-pick-color 
 				ref="pickColor1"
+				:scrollTop="scrollTop"
 				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor2"
+				:scrollTop="scrollTop"
 				:color="color"
 				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color 
 				ref="pickColor3"
+				:scrollTop="scrollTop"
 				:prefab-color="prefabColor"
 				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor4"
+				:scrollTop="scrollTop"
 				title="颜色选择"
 				@confirm="confirm"
 				@cancel="cancel"
 			></uv-pick-color>
 			<uv-pick-color
 				ref="pickColor5"
+				:scrollTop="scrollTop"
 				:closeOnClickOverlay="false"
 				@confirm="confirm"
 				@cancel="cancel"
@@ -66,6 +71,7 @@
 		data(){
 			return {
 				index: 0,
+				scrollTop: 0,
 				color: { r: 60, g: 156, b: 255, a: 1 },
 				prefabColor: [{
 					r: 60,
@@ -104,6 +110,9 @@
 					}
 				]
 			}
+		},
+		onPageScroll(e) {
+			this.scrollTop = e.scrollTop;
 		},
 		methods: {
 			showPickColor(index) {

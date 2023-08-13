@@ -309,6 +309,7 @@
 			 * 设置位置
 			 */
 			setPosition(x, y, index) {
+				y = y - this.scrollTop;
 				this.index = index;
 				const { top, left, width, height } = this.position[index];
 				// 设置最大最小值

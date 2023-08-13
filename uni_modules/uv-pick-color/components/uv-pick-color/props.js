@@ -41,6 +41,12 @@ export default {
 		confirmColor: {
 			type: String,
 			default: '#3c9cff'
-		}
+		},
+		// 滚动条的位置
+		scrollTop: {
+			type: [String, Number],
+			default: 0
+		},
+		...uni.$uv?.props?.pickColor
 	}
 }
