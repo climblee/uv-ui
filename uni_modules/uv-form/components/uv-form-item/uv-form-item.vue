@@ -9,7 +9,6 @@
 		>
 			<!-- 微信小程序中，将一个参数设置空字符串，结果会变成字符串"true" -->
 			<slot name="label">
-				<!-- {{required}} -->
 				<view
 					class="uv-form-item__body__left"
 					v-if="required || leftIcon || label"
@@ -54,30 +53,27 @@
 				</view>
 			</view>
 		</view>
-		<view class="uv-form-item__body__right__message__box">
-			<slot name="error">
-				<uv-transition 
-				:show="true" 
-				:duration="100" 
-				mode="slide-top" 
-				v-if="!!message && parentData.errorType === 'message'"
-			>
-					<text
-						class="uv-form-item__body__right__message"
-						:style="{
-							marginLeft:  $uv.addUnit(parentData.labelPosition === 'top' ? 0 : (labelWidth || parentData.labelWidth))
-						}"
-					>{{ message }}</text>
-				</uv-transition>
-			</slot>
-		</view>
+		<slot name="error">
+			<uv-transition 
+			:show="true" 
+			:duration="100" 
+			mode="fade" 
+			v-if="!!message && parentData.errorType === 'message'"
+		>
+				<text
+					class="uv-form-item__body__right__message"
+					:style="{
+						marginLeft:  $uv.addUnit(parentData.labelPosition === 'top' ? 0 : (labelWidth || parentData.labelWidth))
+					}"
+				>{{ message }}</text>
+			</uv-transition>
+		</slot>
 		<uv-line
 			v-if="borderBottom"
 			:color="message && parentData.errorType === 'border-bottom' ? '#f56c6c' : '#d6d7d9'"
 		></uv-line>
 	</view>
 </template>
-
 <script>
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
@@ -159,31 +155,25 @@
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-
 	.uv-form-item {
 		@include flex(column);
 		font-size: 14px;
 		color: $uv-main-color;
-
 		&__body {
 			@include flex;
-			padding: 12px 0 0;
-
+			padding: 10px 0;
 			&__left {
 				@include flex;
 				align-items: center;
-
 				&__content {
 					position: relative;
 					@include flex;
 					align-items: center;
 					padding-right: 10rpx;
 					flex: 1;
-
 					&__icon {
 						margin-right: 8rpx;
 					}
-
 					&__required {
 						position: absolute;
 						left: -9px;
@@ -192,7 +182,6 @@
 						font-size: 20px;
 						top: 3px;
 					}
-
 					&__label {
 						@include flex;
 						align-items: center;
@@ -202,15 +191,12 @@
 					}
 				}
 			}
-
 			&__right {
 				flex: 1;
-
 				&__content {
 					@include flex;
 					align-items: center;
 					flex: 1;
-
 					&__slot {
 						flex: 1;
 						/* #ifndef MP */
@@ -218,20 +204,19 @@
 						align-items: center;
 						/* #endif */
 					}
-
 					&__icon {
 						margin-left: 10rpx;
 						color: $uv-light-color;
 						font-size: 30rpx;
 					}
 				}
-				
 				&__message__box {
 					height: 16px;
 					line-height: 16px;
 				}
-
 				&__message {
+					margin-top: -10px;
+					line-height: 24px;
 					font-size: 12px;
 					color: $uv-error;
 				}

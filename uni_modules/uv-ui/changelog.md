@@ -1,3 +1,16 @@
+## 1.1.4（2023-08-13）
+1. 优化 nvue自定义图标 [详细文档-nvue中自定义图标库](https://www.uvui.cn/guide/customIcon.html#nvue%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87%E5%BA%93)
+2. 优化 uv.$uv.http 在APP.vue页面使用报错的BUG： [Api集中管理](https://www.uvui.cn/js/http.html#_3-api%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86)
+3. 修复 uv-navbar app-nvue运行ios存在背景图片错乱的问题
+4. 修复 uv-list app-nvue运行ios存在，分包页面不滚动
+5. 修复 uv-textarea 值为null或undefined时显示错误的bug
+6. 修复 uv-search 值为null或undefined时显示错误的bug
+7. 修复 uv-scroll-list vue2编译报错的BUG
+8. 修复 uv-calendars 选择月份弹窗层级的问题
+9. 修复 uv-form 动画在vue3 setup语法糖中错乱，以及表单其他相关问题解决： [Issues](https://gitee.com/my_dear_li_pan/uv-ui/issues/I7SNTT)
+10. 修复 uv-picker-color 滚动页面无法点击的BUG：增加scrollTop参数，设置滚动条的位置。不设置如果页面出现滚动就需要传该值，会出现颜色面板无法进行选颜色的情况。
+11. 交流反馈 欢迎加入uv-ui官方群1交流反馈： [549833913](https://www.uvui.cn/components/addQQGroup.html)
+12. 交流反馈 欢迎加入uv-ui官方群2交流反馈： [206060892](https://www.uvui.cn/components/addQQGroup.html)
 ## 1.1.3（2023-08-06）
 1. 优化 uv-calendars 1. 增加startText参数; 2. 增加endText参数; 3. 增加selected中的参数; 4. 优化日历范围选择
 2. 优化 uv-empty icon属性支持base64图片
