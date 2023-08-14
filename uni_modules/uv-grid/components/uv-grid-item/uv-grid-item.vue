@@ -54,6 +54,10 @@
 				classes: [], // 类名集合，用于判断是否显示右边和下边框
 			};
 		},
+		created() {
+			// 父组件的实例
+			this.updateParentData()
+		},
 		mounted() {
 			this.init()
 		},
@@ -79,8 +83,6 @@
 				uni.$on('$uvGridItem', () => {
 					this.gridItemClasses()
 				})
-				// 父组件的实例
-				this.updateParentData()
 				// #ifdef APP-NVUE
 				// 获取元素该有的长度，nvue下要延时才准确
 				this.$nextTick(function(){

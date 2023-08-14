@@ -1,7 +1,7 @@
 {
   "id": "uv-safe-bottom",
   "displayName": "uv-safe-bottom 底部安全区  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "这个适配，主要是针对IPhone X等一些底部带指示条的机型，指示条的操作区域与页面底部存在重合，容易导致用户误操作，因此我们需要针对这些机型进行底部安全区适配。",
   "keywords": [
     "uv-safe-bottom",

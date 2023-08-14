@@ -1,8 +1,8 @@
 {
   "id": "uv-loading-icon",
-  "displayName": "uv-loading-icon 加载动画  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
-  "description": "uv-loading-icon 此组件为一个小动画，目前用在uv-ui的loadMore加载更多等组件的正在加载状态场景。",
+  "displayName": "uv-loading-icon 加载动画 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.3",
+  "description": "此组件为一个小动画，目前用在uv-ui的uv-load-more加载更多等组件，还可以运用在项目中正在加载状态场景。",
   "keywords": [
     "uv-loading-icon",
     "uvui",

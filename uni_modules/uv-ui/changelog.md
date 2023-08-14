@@ -1,3 +1,10 @@
+## 1.1.5（2023-08-14）
+1. 优化 uv-pick-color 删除scrollTop参数，内部修改后就不需要了
+2. 优化 uv-loading-icon 增加textStyle参数，可自定义文本样式，比如给上边距
+3. 修复 uv-safe-bottom 百度小程序报错的BUG
+4. 修复 uv-form 设置labelWidth属性时，节点渲染有闪动的BUG
+5. 修复 uv-grid 设置col属性时，节点渲染有闪动的BUG
+6. 修复 uv-parse 阻止a标签跳转文档说明
 ## 1.1.4（2023-08-13）
 1. 优化 nvue自定义图标 [详细文档-nvue中自定义图标库](https://www.uvui.cn/guide/customIcon.html#nvue%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87%E5%BA%93)
 2. 优化 uv.$uv.http 在APP.vue页面使用报错的BUG： [Api集中管理](https://www.uvui.cn/js/http.html#_3-api%E9%9B%86%E4%B8%AD%E7%AE%A1%E7%90%86)

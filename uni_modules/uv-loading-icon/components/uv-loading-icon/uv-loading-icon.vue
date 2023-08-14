@@ -49,10 +49,10 @@
 		<text
 			v-if="text"
 			class="uv-loading-icon__text"
-			:style="{
+			:style="[{
 				fontSize: $uv.addUnit(textSize),
 				color: textColor,
-			}"
+			},$uv.addStyle(textStyle)]"
 		>{{text}}</text>
 	</view>
 </template>
@@ -77,6 +77,7 @@
 	 * @property {String | Number}	size			加载图标的大小，单位px （默认 24 ）
 	 * @property {String | Number}	textSize		文字大小（默认 15 ）
 	 * @property {String | Number}	text			文字内容 
+	 * @property {Object}	textStyle 文字样式
 	 * @property {String}			timingFunction	动画模式 （默认 'ease-in-out' ）
 	 * @property {String | Number}	duration		动画执行周期时间（默认 1200）
 	 * @property {String}			inactiveColor	mode=circle时的暗边颜色 

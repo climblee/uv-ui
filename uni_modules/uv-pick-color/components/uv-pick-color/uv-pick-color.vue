@@ -293,23 +293,22 @@
 				this.mode = !this.mode;
 			},
 			touchstart(e, index) {
-				const { pageX, pageY } = e.touches[0];
-				this.pageX = pageX;
-				this.pageY = pageY;
-				this.setPosition(pageX, pageY, index);
+				const { clientX, clientY } = e.touches[0];
+				this.pageX = clientX;
+				this.pageY = clientY;
+				this.setPosition(clientX, clientY, index);
 			},
 			touchmove(e, index) {
-				const { pageX, pageY } = e.touches[0];
-				this.moveX = pageX;
-				this.moveY = pageY;
-				this.setPosition(pageX, pageY, index);
+				const { clientX, clientY } = e.touches[0];
+				this.moveX = clientX;
+				this.moveY = clientY;
+				this.setPosition(clientX, clientY, index);
 			},
 			touchend(e, index) {},
 			/**
 			 * 设置位置
 			 */
 			setPosition(x, y, index) {
-				y = y - this.scrollTop;
 				this.index = index;
 				const { top, left, width, height } = this.position[index];
 				// 设置最大最小值

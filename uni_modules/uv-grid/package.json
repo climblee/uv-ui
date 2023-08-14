@@ -1,7 +1,7 @@
 {
   "id": "uv-grid",
-  "displayName": "uv-grid 宫格布局  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.5",
+  "displayName": "uv-grid 宫格布局 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.6",
   "description": "uv-grid 宫格组件一般用于同时展示多个同类项目的场景，可以给宫格的项目设置徽标组件(badge)，或者图标等，也可以扩展为左右滑动的轮播形式。",
   "keywords": [
     "uv-grid",

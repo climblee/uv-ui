@@ -35,6 +35,13 @@ export default {
 			type: [String, Number],
 			default: 15
 		},
+		// 文字样式
+		textStyle: {
+			type: Object,
+			default () {
+				return {}
+			}
+		},
 		// 文字内容
 		text: {
 			type: [String, Number],

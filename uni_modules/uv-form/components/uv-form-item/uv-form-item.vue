@@ -115,7 +115,7 @@
 				}
 			}
 		},
-		mounted() {
+		created() {
 			this.init()
 		},
 		methods: {
@@ -215,7 +215,7 @@
 					line-height: 16px;
 				}
 				&__message {
-					margin-top: -10px;
+					margin-top: -6px;
 					line-height: 24px;
 					font-size: 12px;
 					color: $uv-error;

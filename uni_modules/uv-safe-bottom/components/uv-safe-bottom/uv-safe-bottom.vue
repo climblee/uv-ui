@@ -32,9 +32,9 @@
 		computed: {
 			style() {
 				const style = {};
-				// #ifdef APP-NVUE || MP-TOUTIAO || MP-BAIDU
+				// #ifdef APP-NVUE || MP-TOUTIAO
 				// nvue下，高度使用js计算填充
-				style.height = this.$uv.addUnit(this.$uv.sys().safeAreaInsets.bottom, 'px');
+				style.height = this.$uv.addUnit(this.$uv.sys()?.safeAreaInsets?.bottom, 'px');
 				// #endif
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle));
 			},
