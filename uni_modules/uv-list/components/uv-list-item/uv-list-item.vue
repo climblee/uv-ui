@@ -228,6 +228,9 @@
 				}
 			};
 		},
+		created() {
+			this.updateParentData();
+		},
 		mounted() {
 			this.init();
 			this.list = this.getForm()
@@ -241,7 +244,6 @@
 		},
 		methods: {
 			init(){
-				this.updateParentData();
 				if (!this.parent) {
 					this.$uv.error('uv-list-item必须搭配uv-list组件使用');
 				}
@@ -310,7 +312,7 @@
 				}
 			},
 			onSwitchChange(e) {
-				this.$emit('switchChange', e.detail);
+				this.$emit('switchChange', e);
 			},
 			openPage() {
 				if (['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this.link) !== -1) {
