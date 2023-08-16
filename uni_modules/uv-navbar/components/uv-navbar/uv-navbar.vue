@@ -47,6 +47,7 @@
 						class="uv-line-1 uv-navbar__content__title"
 						:style="[{
 							width: $uv.addUnit(titleWidth),
+							flex: '0 1 auto'
 						}, $uv.addStyle(titleStyle)]"
 					>{{ title }}</text>
 				</slot>
