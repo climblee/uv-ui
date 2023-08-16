@@ -105,7 +105,8 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 
 	.uv-checkbox-group {
-
+		flex: 1;
+		
 		&--row {
 			@include flex;
 			flex-wrap: wrap;
