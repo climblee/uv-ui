@@ -10,7 +10,7 @@
         "ui框架",
         "ui库"
     ],
-	"repository": "https://gitee.com/my_dear_li_pan/uv-ui.git",
+	"repository": "https://github.com/Leecreator/uv-ui",
 	"engines": {
 		"HBuilderX": "^3.1.0"
 	},

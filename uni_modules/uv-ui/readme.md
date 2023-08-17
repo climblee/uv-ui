@@ -1,21 +1,21 @@
-![image](https://mp-a667b617-c5f1-4a2d-9a54-683a67cff588.cdn.bspapp.com/uv-ui/banner.png)
+<p align="center">
+    <img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120" style="margin-bottom: 10px;">
+</p>
 
-> ## 组件文档：[https://www.uvui.cn](https://www.uvui.cn)
-> ## 演示地址：[https://h5.uvui.cn](https://h5.uvui.cn)
-> ## gitee地址：[https://gitee.com/my_dear_li_pan/uv-ui.git](https://gitee.com/my_dear_li_pan/uv-ui.git)
-> ## github地址：[https://github.com/uLeePan/uv-ui.git](https://github.com/uLeePan/uv-ui.git)
-> ## uv-ui 交流QQ群：<a href="https://www.uvui.cn/components/addQQGroup.html" target="_blank">549833913</a>
-> ## 插件列表：<a href="#list">传送门</a>
+<h3 align="center" style="margin: 30px 0 30px -10px;font-weight: bold;font-size:40px;">uv-ui</h3>
+<h3 align="center">兼容vue3+2多平台快速开发的UI框架</h3>
 
-# 如需下载示例项目，请不要使用【下载插件ZIP】按钮。
+[![star](https://gitee.com/Leecreator/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
+[![star](https://gitee.com/Leecreator/uv-ui/badge/fork.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
+[![star](https://img.shields.io/github/stars/Leecreator/uv-ui?style=flat-square&logo=GitHub)](https://github.com/Leecreator/uv-ui)
+[![issues](https://img.shields.io/github/issues/Leecreator/uv-ui?style=flat-square&logo=GitHub)](https://github.com/Leecreator/uv-ui/issues)
+[![Website](https://img.shields.io/badge/uvui-up-blue?style=flat-square)](https://www.uvui.cn)
+[![version](https://img.shields.io/badge/version-1.1.5-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
+[![license](https://img.shields.io/github/license/Leecreator/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
-## 预览
+## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
 
-通过微信或浏览器扫码查看演示效果，后续上线小程序端等。
-
-<img src="https://www.uvui.cn/common/h5_qrcode.png" width="200" height="200" />
-
-## uv-ui产品特点
+## uvui特点
 
 1. **uv-ui的前世今生**，`uv-ui` 是基于 `uview2.x` 版本改造而来。重命名也是为了避开发布冲突和很多组件 `u-`在  `nvue` 中不能使用的情况，所以这才诞生了`uv-ui`。感谢 `uview-ui` 作者的开源奉献，再次为开源点赞。 同时 `uv-ui` 也是无条件开源。
 
@@ -23,29 +23,51 @@
 
 3. **扩展配置**，`uv-ui`内置的方法默认不再挂载到`uni`对象之上，也就意味着默认情况下不能在项目中直接使用`uni.$uv.xxx`使用内置方法。但是可以通过扩展可以解决，通过如下方式进行配置即可，使用方式请参考[扩展配置](https://www.uvui.cn/components/setting.html)。其中包括[ JS工具库](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-js%E5%B7%A5%E5%85%B7%E5%BA%93)、[ 自定义主题](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98)、[ 基础样式](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F)、[ setconfig](https://www.uvui.cn/components/setting.html#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE-setconfig)等。
 
+## 预览
+
+通过微信或浏览器扫码查看演示效果。
+
+<img src="https://www.uvui.cn/common/h5_qrcode.png" width="180" height="180" />
+
+## 链接
+
+- [官方文档](https://www.uvui.cn)
+- [演示地址](https://h5.uvui.cn)
+- [更新日志](https://www.uvui.cn/components/changelog.html)
+- [关于我们](https://www.uvui.cn/cooperation/about.html)
+- <a href="#list">组件列表</a>
+
+## 交流反馈
+
+欢迎加入我们的QQ群交流反馈：[点此跳转](https://www.uvui.cn/components/addQQGroup.html)
+
 ## 快速开始
 
-`uv-ui` 目前暂时只支持单独导入个别组件使用方式。后续会根据情况加入其它使用方式，我一直推崇的是，既然开发`uni-app`项目，推荐直接使用`HBuilderX`创建项目和导入组件。
+`uv-ui` 强烈建议通过 `下载插件并导入HbuilderX` 导入组件。或者下载完整 [uv-ui项目](https://ext.dcloud.net.cn/plugin?id=12287) 将 `uni_modules` 复制到自己的项目。道路千万条，选择最适合自己的一条。
 
-**1. 通过uni_modules下载入口，下载插件并导入HbuilderX。**
+请通过[快速上手](https://www.uvui.cn/components/quickstart.html)了解更详细的内容。
 
-**温馨提示：** 导入插件后，建议`HBuilderX`重新运行项目，可能新导入的插件不能实时更新而导致不能运行。
+**注意：导入插件后，建议`HBuilderX`重新运行项目，可能新导入的插件不能实时更新而导致不能运行。**
 
-**2. 直接在项目中使用，无需通过import引入组件。**
+## 使用方法
+
+组件导入 `uni_modules` 后，直接在项目中使用，无需通过import引入组件。
 
 ```html
-<uv-icon name="baidu" size="30" color="#909399" ></uv-icon>
+<template>
+    <uv-icon name="baidu" size="30" color="#909399"></uv-icon>
+</template>
 ```
 
-**3. 使用更强大的扩展功能。**
+## 扩展功能
 
-`uv-ui`内置了强大的工具函数、请求封装、全局配置等，可以根据自身需求进行扩展配置，详情请查看[扩展配置](https://www.uvui.cn/components/setting.html)。**只有扩展配置后才能在自己的项目页面中使用组件库内置方法**。
+`uv-ui` 内置了强大的工具函数、请求封装等，可以根据自身需求进行扩展配置，详情请查看[扩展配置](https://www.uvui.cn/components/setting.html)。
 
-**4. 有开发相关的疑问不要生气，不要抱怨，不要骂人哦！直接加 `uv-ui` 的交流群手把手免费解决问题。**
+**注意：只有[扩展配置](https://www.uvui.cn/components/setting.html)后才能在自己的项目页面中使用组件库内置方法和变量等**。
 
 <div id="list"></div>
 
-## 通过uni_modules下载入口
+## 组件列表
 
 下表为 `uv-ui` 的扩展组件清单，点击每个组件**点击下载&安装**即可在详情页面导入组件到项目下，导入后建议重新运行即可直接使用，组件无需import和注册。
 
@@ -123,7 +145,10 @@
 | uv-gap | [间隔槽](https://www.uvui.cn/components/gap.html) |
 | uv-divider | [分割线](https://www.uvui.cn/components/divider.html) |
 
-## 最后作者想说
+## 版权信息
+uv-ui遵循[MIT](https://en.wikipedia.org/wiki/MIT_License)开源协议，意味着您无需支付任何费用，也无需授权，即可将uv-ui应用到您的产品中。
+
+## 作者想说
 - 开源真的不易，不图大家的钱财，所以希望大家多多鼓励支持，希望不要恶意评论，有问题加群快速解决。
 - 遇到BUG，是一件很正常的事情，是程序肯定就有BUG，所以希望大家能以理解的心态去提出BUG，然后作者才有动力去努力修复。
 - 最后觉得好用的小伙伴，不要吝啬你的双手，给个好评就是给我们最大的鼓励。
