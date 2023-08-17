@@ -38,7 +38,8 @@
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
 		<view class="waterfall-warapper">
-			<waterfall :column-count="columnNum" :show-scrollbar="false" column-width="auto" :column-gap="columnGap" :left-gap="leftGap" :right-gap="rightGap" :always-scrollable-vertical="true" :style="[nvueWaterfallStyle]" @loadmore="scrolltolower">
+			<waterfall :column-count="columnNum" :show-scrollbar="false" column-width="auto" :column-gap="columnGap" :left-gap="leftGap" :right-gap="rightGap" :always-scrollable-vertical="true" :style="[nvueWaterfallStyle]"
+				@loadmore="scrolltolower">
 				<slot></slot>
 			</waterfall>
 		</view>
@@ -198,10 +199,10 @@
 					const minLen = Math.min.apply(Math, newArr.map(item => {
 						return item.len;
 					}))
-					try{
+					try {
 						const { item } = newArr.find(item => item.len == minLen && item.item.height == 0);
 						result = item;
-					}catch(e){
+					} catch (e) {
 						const { item } = newArr.find(item => item.item.height == 0);
 						result = item;
 					}
@@ -210,6 +211,10 @@
 			},
 			// 清空数据列表
 			async clear() {
+				// 清除数据
+				for (let i = 0; i < this.columnCount; i++) {
+					this[`list${i+1}`] = [];
+				}
 				// #ifdef VUE2
 				this.$emit('input', [])
 				// #endif

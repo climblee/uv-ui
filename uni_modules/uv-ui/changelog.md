@@ -1,3 +1,10 @@
+## 1.1.6（2023-08-18）
+1. 优化 优化文档
+2. 修复 uv-list 使用列表右侧显示 switch，switchChange回调中返回数据为undefined的BUG
+3. 修复 uv-checkbox 数据多不换行的BUG
+4. 修复 uv-upload 1. 图片预览位置错误的BUG；2. 视频预览不生效的BUG；3. 改变上传视频宽高不生效的BUG
+5. 修复 uv-navbar 在部分ios高版本机型，返回按钮不好操作的问题
+6. 修复 uv-waterfall 只有一条数据的时候，切换的时候数据会左右显示错误的BUG
 ## 1.1.5（2023-08-14）
 1. 优化 uv-pick-color 删除scrollTop参数，内部修改后就不需要了
 2. 优化 uv-loading-icon 增加textStyle参数，可自定义文本样式，比如给上边距

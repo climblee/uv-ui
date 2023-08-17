@@ -1,86 +1,49 @@
 <template>
 	<view class="uv-upload" :style="[$uv.addStyle(customStyle)]">
-		<view class="uv-upload__wrap" >
+		<view class="uv-upload__wrap">
 			<template v-if="previewImage">
-				<view
-				  class="uv-upload__wrap__preview"
-				  v-for="(item, index) in lists"
-				  :key="index"
-				>
-					<image
-					  v-if="item.isImage || (item.type && item.type === 'image')"
-					  :src="item.thumb || item.url"
-					  :mode="imageMode"
-					  class="uv-upload__wrap__preview__image"
-					  @tap="onPreviewImage(item)"
+				<view class="uv-upload__wrap__preview" v-for="(item, index) in lists" :key="index">
+					<image 
+						v-if="item.isImage || (item.type && item.type === 'image')" 
+						:src="item.thumb || item.url" :mode="imageMode" 
+						class="uv-upload__wrap__preview__image" 
+						@tap="onPreviewImage(item,index)" 
+						:style="[{
+							width: $uv.addUnit(width),
+							height: $uv.addUnit(height)
+						}]" 
+						/>
+					<view 
+						v-else 
+						class="uv-upload__wrap__preview__other" 
+						@tap="onPreviewVideo(item,index)" 
 						:style="[{
 							width: $uv.addUnit(width),
 							height: $uv.addUnit(height)
 						}]"
-					/>
-					<view
-					  v-else
-					  class="uv-upload__wrap__preview__other"
-					>
-						<uv-icon
-						  color="#80CBF9"
-						  size="26"
-						  :name="item.isVideo || (item.type && item.type === 'video') ? 'movie' : 'folder'"
-						></uv-icon>
+						>
+						<uv-icon color="#80CBF9" size="26" :name="item.isVideo || (item.type && item.type === 'video') ? 'movie' : 'folder'"></uv-icon>
 						<text class="uv-upload__wrap__preview__other__text">{{item.isVideo || (item.type && item.type === 'video') ? '视频' : '文件'}}</text>
 					</view>
-					<view
-					  class="uv-upload__status"
-					  v-if="item.status === 'uploading' || item.status === 'failed'"
-					>
+					<view class="uv-upload__status" v-if="item.status === 'uploading' || item.status === 'failed'">
 						<view class="uv-upload__status__icon">
-							<uv-icon
-							  v-if="item.status === 'failed'"
-							  name="close-circle"
-							  color="#ffffff"
-							  size="25"
-							/>
-							<uv-loading-icon
-							  size="22"
-							  mode="circle"
-							  v-else
-							/>
+							<uv-icon v-if="item.status === 'failed'" name="close-circle" color="#ffffff" size="25" />
+							<uv-loading-icon size="22" mode="circle" v-else />
 						</view>
-						<text
-						  v-if="item.message"
-						  class="uv-upload__status__message"
-						>{{ item.message }}</text>
+						<text v-if="item.message" class="uv-upload__status__message">{{ item.message }}</text>
 					</view>
-					<view
-					  class="uv-upload__deletable"
-					  v-if="item.status !== 'uploading' && (deletable || item.deletable)"
-					  @tap.stop="deleteItem(index)"
-					>
+					<view class="uv-upload__deletable" v-if="item.status !== 'uploading' && (deletable || item.deletable)" @tap.stop="deleteItem(index)">
 						<view class="uv-upload__deletable__icon">
-							<uv-icon
-							  name="close"
-							  color="#ffffff"
-							  size="10"
-							></uv-icon>
+							<uv-icon name="close" color="#ffffff" size="10"></uv-icon>
 						</view>
 					</view>
-					<view
-					  class="uv-upload__success"
-					  v-if="item.status === 'success'"
-					>
+					<view class="uv-upload__success" v-if="item.status === 'success'">
 						<!-- #ifdef APP-NVUE -->
-						<image
-						  :src="successIcon"
-						  class="uv-upload__success__icon"
-						></image>
+						<image :src="successIcon" class="uv-upload__success__icon"></image>
 						<!-- #endif -->
 						<!-- #ifndef APP-NVUE -->
 						<view class="uv-upload__success__icon">
-							<uv-icon
-							  name="checkmark"
-							  color="#ffffff"
-							  size="12"
-							></uv-icon>
+							<uv-icon name="checkmark" color="#ffffff" size="12"></uv-icon>
 						</view>
 						<!-- #endif -->
 					</view>
@@ -89,36 +52,23 @@
 			<template v-if="isInCount">
 				<view @tap="chooseFile">
 					<slot>
-						<view
-						  class="uv-upload__button"
-						  :hover-class="!disabled ? 'uv-upload__button--hover' : ''"
-						  hover-stay-time="150"
-						  @tap.stop="chooseFile"
-						  :class="[disabled && 'uv-upload__button--disabled']"
-							:style="[{
+						<view class="uv-upload__button" :hover-class="!disabled ? 'uv-upload__button--hover' : ''" hover-stay-time="150" @tap.stop="chooseFile" :class="[disabled && 'uv-upload__button--disabled']" :style="[{
 								width: $uv.addUnit(width),
 								height: $uv.addUnit(height)
-							}]"
-						>
-							<uv-icon
-							  :name="uploadIcon"
-							  size="26"
-							  :color="uploadIconColor"
-							></uv-icon>
-							<text
-							  v-if="uploadText"
-							  class="uv-upload__button__text"
-							>{{ uploadText }}</text>
+							}]">
+							<uv-icon :name="uploadIcon" size="26" :color="uploadIconColor"></uv-icon>
+							<text v-if="uploadText" class="uv-upload__button__text">{{ uploadText }}</text>
 						</view>
 					</slot>
 				</view>
 			</template>
 		</view>
+		<uv-preview-video ref="previewVideo"></uv-preview-video>
 	</view>
 </template>
 
 <script>
-	import { func, image, video, array, promise  } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
+	import { func, image, video, array, promise } from '@/uni_modules/uv-ui-tools/libs/function/test.js';
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
 	import { chooseFile } from './utils';
@@ -136,7 +86,8 @@
 	 * @property {String}			uploadIcon			上传区域的图标，只能内置图标（默认 'camera-fill' ）
 	 * @property {String}			uploadIconColor		上传区域的图标的字体颜色，只能内置图标（默认 #D3D4D6 ）
 	 * @property {Boolean}			useBeforeRead		是否开启文件读取前事件（默认 false ）
-	 * @property {Boolean}			previewFullImage	是否显示组件自带的图片预览功能（默认 true ）
+	 * @property {Boolean}			previewFullImage	是否开启图片预览功能（默认 true ）
+	 * @property {Boolean}			previewFullVideo	是否开启视频预览功能（默认 true ）
 	 * @property {String | Number}	maxCount			最大上传数量（默认 52 ）
 	 * @property {Boolean}			disabled			是否启用（默认 false ）
 	 * @property {String}			imageMode			预览上传的图片时的裁剪模式，和image组件mode属性一致（默认 'aspectFill' ）
@@ -153,7 +104,7 @@
 	 * @event {Function} afterRead		读取后的处理函数
 	 * @event {Function} beforeRead		读取前的处理函数
 	 * @event {Function} oversize		文件超出大小限制
-	 * @event {Function} clickPreview	点击预览图片
+	 * @event {Function} clickPreview	点击预览时触发
 	 * @event {Function} delete 		删除图片
 	 * @example <uv-upload :action="action" :fileList="fileList" ></uv-upload>
 	 */
@@ -200,7 +151,7 @@
 			},
 			chooseFile() {
 				this.timer && clearTimeout(this.timer);
-				this.timer = setTimeout(()=>{
+				this.timer = setTimeout(() => {
 					const {
 						maxCount,
 						multiple,
@@ -212,7 +163,7 @@
 					let capture;
 					try {
 						capture = array(this.capture) ? this.capture : this.capture.split(',');
-					}catch(e) {
+					} catch (e) {
 						capture = [];
 					}
 					chooseFile(
@@ -234,7 +185,7 @@
 						.catch((error) => {
 							this.$emit('error', error);
 						});
-				},100)
+				}, 100)
 			},
 			// 文件读取之前
 			onBeforeRead(file) {
@@ -307,44 +258,32 @@
 				);
 			},
 			// 预览图片
-			onPreviewImage(item) {
+			onPreviewImage(item, index) {
+				const lists = this.$uv.deepClone(this.lists);
+				lists.map((i,j)=>{
+					if(j == index) {
+						i.current = true;
+					}
+				});
+				const filters = lists.filter(i=>i.isImage);
+				const findIndex = filters.findIndex(i=>i.current);
+				this.onClickPreview(item, index);
 				if (!item.isImage || !this.previewFullImage) return
 				uni.previewImage({
 					// 先filter找出为图片的item，再返回filter结果中的图片url
 					urls: this.lists.filter((item) => this.accept === 'image' || image(item.url || item.thumb)).map((item) => item.url || item.thumb),
-					current: item.url || item.thumb,
+					current: findIndex,
 					fail() {
 						this.$uv.toast('预览图片失败')
 					},
 				});
 			},
-			onPreviewVideo(event) {
-				if (!this.data.previewFullImage) return;
-				const {
-					index
-				} = event.currentTarget.dataset;
-				const {
-					lists
-				} = this.data;
-				wx.previewMedia({
-					sources: lists
-						.filter((item) => isVideoFile(item))
-						.map((item) =>
-							Object.assign(Object.assign({}, item), {
-								type: 'video'
-							})
-						),
-					current: index,
-					fail() {
-						this.$uv.toast('预览视频失败')
-					},
-				});
+			onPreviewVideo(item, index) {
+				this.onClickPreview(item, index);
+				if (!this.previewFullVideo || !item.isVideo) return;
+				this.$refs.previewVideo.open(item.url);
 			},
-			onClickPreview(event) {
-				const {
-					index
-				} = event.currentTarget.dataset;
-				const item = this.data.lists[index];
+			onClickPreview(item, index) {
 				this.$emit(
 					'clickPreview',
 					Object.assign(Object.assign({}, item), this.getDetail(index))
@@ -359,77 +298,72 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
 	$uv-upload-preview-border-radius: 2px !default;
 	$uv-upload-preview-margin: 0 8px 8px 0 !default;
-	$uv-upload-image-width:80px !default;
-	$uv-upload-image-height:$uv-upload-image-width;
+	$uv-upload-image-width: 80px !default;
+	$uv-upload-image-height: $uv-upload-image-width;
 	$uv-upload-other-bgColor: rgb(242, 242, 242) !default;
-	$uv-upload-other-flex:1 !default;
-	$uv-upload-text-font-size:11px !default;
-	$uv-upload-text-color:$uv-tips-color !default;
-	$uv-upload-text-margin-top:2px !default;
-	$uv-upload-deletable-right:0 !default;
-	$uv-upload-deletable-top:0 !default;
-	$uv-upload-deletable-bgColor:rgb(55, 55, 55) !default;
-	$uv-upload-deletable-height:14px !default;
-	$uv-upload-deletable-width:$uv-upload-deletable-height;
-	$uv-upload-deletable-boder-bottom-left-radius:100px !default;
-	$uv-upload-deletable-zIndex:3 !default;
-	$uv-upload-success-bottom:0 !default;
-	$uv-upload-success-right:0 !default;
-	$uv-upload-success-border-style:solid !default;
-	$uv-upload-success-border-top-color:transparent !default;
-	$uv-upload-success-border-left-color:transparent !default;
-	$uv-upload-success-border-bottom-color: $uv-success !default;
-	$uv-upload-success-border-right-color:$uv-upload-success-border-bottom-color;
-	$uv-upload-success-border-width:9px !default;
-	$uv-upload-icon-top:0px !default;
-	$uv-upload-icon-right:0px !default;
-	$uv-upload-icon-h5-top:1px !default;
-	$uv-upload-icon-h5-right:0 !default;
-	$uv-upload-icon-width:16px !default;
-	$uv-upload-icon-height:$uv-upload-icon-width;
-	$uv-upload-success-icon-bottom:-10px !default;
-	$uv-upload-success-icon-right:-10px !default;
-	$uv-upload-status-right:0 !default;
-	$uv-upload-status-left:0 !default;
-	$uv-upload-status-bottom:0 !default;
-	$uv-upload-status-top:0 !default;
-	$uv-upload-status-bgColor:rgba(0, 0, 0, 0.5) !default;
-	$uv-upload-status-icon-Zindex:1 !default;
-	$uv-upload-message-font-size:12px !default;
-	$uv-upload-message-color:#FFFFFF !default;
-	$uv-upload-message-margin-top:5px !default;
-	$uv-upload-button-width:80px !default;
-	$uv-upload-button-height:$uv-upload-button-width;
-	$uv-upload-button-bgColor:rgb(244, 245, 247) !default;
-	$uv-upload-button-border-radius:2px !default;
-	$uv-upload-botton-margin: 0 8px 8px 0 !default;
-	$uv-upload-text-font-size:11px !default;
-	$uv-upload-text-color:$uv-tips-color !default;
+	$uv-upload-other-flex: 1 !default;
+	$uv-upload-text-font-size: 11px !default;
+	$uv-upload-text-color: $uv-tips-color !default;
 	$uv-upload-text-margin-top: 2px !default;
-	$uv-upload-hover-bgColor:rgb(230, 231, 233) !default;
-	$uv-upload-disabled-opacity:.5 !default;
-
+	$uv-upload-deletable-right: 0 !default;
+	$uv-upload-deletable-top: 0 !default;
+	$uv-upload-deletable-bgColor: rgb(55, 55, 55) !default;
+	$uv-upload-deletable-height: 14px !default;
+	$uv-upload-deletable-width: $uv-upload-deletable-height;
+	$uv-upload-deletable-boder-bottom-left-radius: 100px !default;
+	$uv-upload-deletable-zIndex: 3 !default;
+	$uv-upload-success-bottom: 0 !default;
+	$uv-upload-success-right: 0 !default;
+	$uv-upload-success-border-style: solid !default;
+	$uv-upload-success-border-top-color: transparent !default;
+	$uv-upload-success-border-left-color: transparent !default;
+	$uv-upload-success-border-bottom-color: $uv-success !default;
+	$uv-upload-success-border-right-color: $uv-upload-success-border-bottom-color;
+	$uv-upload-success-border-width: 9px !default;
+	$uv-upload-icon-top: 0px !default;
+	$uv-upload-icon-right: 0px !default;
+	$uv-upload-icon-h5-top: 1px !default;
+	$uv-upload-icon-h5-right: 0 !default;
+	$uv-upload-icon-width: 16px !default;
+	$uv-upload-icon-height: $uv-upload-icon-width;
+	$uv-upload-success-icon-bottom: -10px !default;
+	$uv-upload-success-icon-right: -10px !default;
+	$uv-upload-status-right: 0 !default;
+	$uv-upload-status-left: 0 !default;
+	$uv-upload-status-bottom: 0 !default;
+	$uv-upload-status-top: 0 !default;
+	$uv-upload-status-bgColor: rgba(0, 0, 0, 0.5) !default;
+	$uv-upload-status-icon-Zindex: 1 !default;
+	$uv-upload-message-font-size: 12px !default;
+	$uv-upload-message-color: #FFFFFF !default;
+	$uv-upload-message-margin-top: 5px !default;
+	$uv-upload-button-width: 80px !default;
+	$uv-upload-button-height: $uv-upload-button-width;
+	$uv-upload-button-bgColor: rgb(244, 245, 247) !default;
+	$uv-upload-button-border-radius: 2px !default;
+	$uv-upload-botton-margin: 0 8px 8px 0 !default;
+	$uv-upload-text-font-size: 11px !default;
+	$uv-upload-text-color: $uv-tips-color !default;
+	$uv-upload-text-margin-top: 2px !default;
+	$uv-upload-hover-bgColor: rgb(230, 231, 233) !default;
+	$uv-upload-disabled-opacity: .5 !default;
 	.uv-upload {
 		@include flex(column);
 		flex: 1;
-
 		&__wrap {
 			@include flex;
 			flex-wrap: wrap;
 			flex: 1;
-
 			&__preview {
 				border-radius: $uv-upload-preview-border-radius;
 				margin: $uv-upload-preview-margin;
 				position: relative;
 				overflow: hidden;
 				@include flex;
-
 				&__image {
 					width: $uv-upload-image-width;
 					height: $uv-upload-image-height;
 				}
-
 				&__other {
 					width: $uv-upload-image-width;
 					height: $uv-upload-image-height;
@@ -438,7 +372,6 @@
 					@include flex(column);
 					justify-content: center;
 					align-items: center;
-
 					&__text {
 						font-size: $uv-upload-text-font-size;
 						color: $uv-upload-text-color;
@@ -447,7 +380,6 @@
 				}
 			}
 		}
-
 		&__deletable {
 			position: absolute;
 			top: $uv-upload-deletable-top;
@@ -460,7 +392,6 @@
 			align-items: center;
 			justify-content: center;
 			z-index: $uv-upload-deletable-zIndex;
-
 			&__icon {
 				position: absolute;
 				transform: scale(0.7);
@@ -472,7 +403,6 @@
 				/* #endif */
 			}
 		}
-
 		&__success {
 			position: absolute;
 			bottom: $uv-upload-success-bottom;
@@ -490,7 +420,6 @@
 			align-items: center;
 			justify-content: center;
 			/* #endif */
-
 			&__icon {
 				/* #ifndef APP-NVUE */
 				position: absolute;
@@ -504,7 +433,6 @@
 				/* #endif */
 			}
 		}
-
 		&__status {
 			position: absolute;
 			top: $uv-upload-status-top;
@@ -515,19 +443,16 @@
 			@include flex(column);
 			align-items: center;
 			justify-content: center;
-
 			&__icon {
 				position: relative;
 				z-index: $uv-upload-status-icon-Zindex;
 			}
-
 			&__message {
 				font-size: $uv-upload-message-font-size;
 				color: $uv-upload-message-color;
 				margin-top: $uv-upload-message-margin-top;
 			}
 		}
-
 		&__button {
 			@include flex(column);
 			align-items: center;
@@ -540,17 +465,14 @@
 			/* #ifndef APP-NVUE */
 			box-sizing: border-box;
 			/* #endif */
-
 			&__text {
 				font-size: $uv-upload-text-font-size;
 				color: $uv-upload-text-color;
 				margin-top: $uv-upload-text-margin-top;
 			}
-
 			&--hover {
 				background-color: $uv-upload-hover-bgColor;
 			}
-
 			&--disabled {
 				opacity: $uv-upload-disabled-opacity;
 			}

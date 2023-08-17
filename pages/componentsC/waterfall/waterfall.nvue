@@ -1,93 +1,95 @@
 
 <template>
-	<view class="waterfall">
-		<!-- #ifndef APP-NVUE -->
-		<uv-waterfall ref="waterfall"
-			v-model="list"
-			:add-time="80"
-			left-gap="10"
-			right-gap="10"
-			column-gap="8"
-			@changeList="changeList"
-			@clear="clear"
-			@remove="remove">
-			<!-- 第一列数据 -->
-			<template v-slot:list1>
-				<!-- 为了磨平部分平台的BUG，必须套一层view -->
-				<view>
-					<view v-for="(item, index) in list1"
-						:key="item.id"
-						class="waterfall-item"
-						@longpress="longHandle(item)">
-						<view class="waterfall-item__image">
-							<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
-						</view>
-						<view class="waterfall-item__ft">
-							<view class="waterfall-item__ft__title">
-								<text class="value">{{item.title}}</text>
+	<view>
+		<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
+		<view class="waterfall">
+			<!-- #ifndef APP-NVUE -->
+			<uv-waterfall ref="waterfall"
+				v-model="list"
+				:add-time="80"
+				left-gap="10"
+				right-gap="10"
+				column-gap="8"
+				@changeList="changeList"
+				@remove="remove">
+				<!-- 第一列数据 -->
+				<template v-slot:list1>
+					<!-- 为了磨平部分平台的BUG，必须套一层view -->
+					<view>
+						<view v-for="(item, index) in list1"
+							:key="item.id"
+							class="waterfall-item"
+							@longpress="longHandle(item)">
+							<view class="waterfall-item__image">
+								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
-							<view class="waterfall-item__ft__desc uv-line-2">
-								<text class="value">{{item.desc}}</text>
-							</view>
-							<view class="waterfall-item__ft__btn" v-if="index==0">
-								<button type="primary" style="height: 60rpx;line-height: 60rpx;font-size: 28rpx;" @click="edit(item)">异步修改</button>
-							</view>
-						</view>
-					</view>
-				</view>
-			</template>
-			<!-- 第二列数据 -->
-			<template v-slot:list2>
-				<!-- 为了磨平部分平台的BUG，必须套一层view -->
-				<view>
-					<view v-for="(item, index) in list2"
-						:key="item.id"
-						class="waterfall-item">
-						<view class="waterfall-item__image">
-							<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
-						</view>
-						<view class="waterfall-item__ft">
-							<view class="waterfall-item__ft__title">
-								<text class="value">{{item.title}}</text>
-							</view>
-							<view class="waterfall-item__ft__desc uv-line-2">
-								<text class="value">{{item.desc}}</text>
+							<view class="waterfall-item__ft">
+								<view class="waterfall-item__ft__title">
+									<text class="value">{{item.title}}</text>
+								</view>
+								<view class="waterfall-item__ft__desc uv-line-2">
+									<text class="value">{{item.desc}}</text>
+								</view>
+								<view class="waterfall-item__ft__btn" v-if="index==0">
+									<button type="primary" style="height: 60rpx;line-height: 60rpx;font-size: 28rpx;" @click="edit(item)">异步修改</button>
+								</view>
 							</view>
 						</view>
 					</view>
-				</view>
-			</template>
-		</uv-waterfall>
-		<uv-load-more :status="loadStatus"></uv-load-more>
-		<!-- #endif -->
-		<!-- #ifdef APP-NVUE -->
-		<uv-waterfall 
-			column-count="2"
-			left-gap="10"
-			right-gap="10"
-			column-gap="8"
-			@scrolltolower="init">
-				<cell 
-					v-for="(item,index) in list"
-					class="waterfall-item-cell"
-				>
-					<view class="waterfall-item">
-						<view class="waterfall-item__image">
-								<image :src="item.image" mode="widthFix" style="width: 400rpx;"></image>
-						</view>
-						<view class="waterfall-item__ft">
-							<view class="waterfall-item__ft__title">
-								<text class="value">{{item.title}}</text>
+				</template>
+				<!-- 第二列数据 -->
+				<template v-slot:list2>
+					<!-- 为了磨平部分平台的BUG，必须套一层view -->
+					<view>
+						<view v-for="(item, index) in list2"
+							:key="item.id"
+							class="waterfall-item">
+							<view class="waterfall-item__image">
+								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
-							<view class="waterfall-item__ft__desc uv-line-2">
-								<text class="value">{{item.desc}}</text>
+							<view class="waterfall-item__ft">
+								<view class="waterfall-item__ft__title">
+									<text class="value">{{item.title}}</text>
+								</view>
+								<view class="waterfall-item__ft__desc uv-line-2">
+									<text class="value">{{item.desc}}</text>
+								</view>
 							</view>
 						</view>
 					</view>
-					<view style="height: 4px;width: 4px;"></view>
-				</cell>
+				</template>
 			</uv-waterfall>
-		<!-- #endif -->
+			<uv-load-more :status="loadStatus"></uv-load-more>
+			<!-- #endif -->
+			<!-- #ifdef APP-NVUE -->
+			<uv-waterfall 
+				column-count="2"
+				left-gap="10"
+				right-gap="10"
+				column-gap="8"
+				@scrolltolower="init">
+					<cell 
+						v-for="(item,index) in list"
+						class="waterfall-item-cell"
+					>
+						<view class="waterfall-item">
+							<view class="waterfall-item__image">
+									<image :src="item.image" mode="widthFix" style="width: 400rpx;"></image>
+							</view>
+							<view class="waterfall-item__ft">
+								<view class="waterfall-item__ft__title">
+									<text class="value">{{item.title}}</text>
+								</view>
+								<view class="waterfall-item__ft__desc uv-line-2">
+									<text class="value">{{item.desc}}</text>
+								</view>
+							</view>
+						</view>
+						<view style="height: 4px;width: 4px;"></view>
+					</cell>
+				</uv-waterfall>
+			<!-- #endif -->
+		</view>
 	</view>
 </template>
 <script>
@@ -132,6 +134,16 @@
 			}
 		},
 		methods: {
+			// 选项卡切换
+			tabChange(index) {
+				// #ifndef APP-NVUE
+				this.$refs.waterfall.clear();
+				// #endif
+				this.list = [];
+				this.list1 = [];
+				this.list2 = [];
+				this.init();
+			},
 			// 这点非常重要：e.name在这里返回是list1或list2，要手动将数据追加到相应列
 			changeList(e){
 				this[e.name].push(e.value);
@@ -167,9 +179,6 @@
 						this.list2.splice(index,1);
 					}
 				})
-			},
-			clear() {
-				console.log('执行了clear')
 			},
 			// 修改某项数据
 			edit(item) {

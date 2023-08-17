@@ -50,8 +50,13 @@ export default {
 			type: Function,
 			default: null
 		},
-		// 是否显示组件自带的图片预览功能
+		// 是否开启图片预览功能
 		previewFullImage: {
+			type: Boolean,
+			default: true
+		},
+		// 是否开启视频预览功能
+		previewFullVideo: {
 			type: Boolean,
 			default: true
 		},
