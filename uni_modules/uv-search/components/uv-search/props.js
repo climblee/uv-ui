@@ -120,7 +120,7 @@ export default {
 		// 搜索框扩展样式
 		boxStyle: {
 			type: [String, Object],
-			default: ()=>{}
+			default: () => ({})
 		},
 		...uni.$uv?.props?.search
 	}

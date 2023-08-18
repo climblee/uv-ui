@@ -8,11 +8,11 @@
 	>
 		<view
 		  class="uv-search__content"
-		  :style="{
+		  :style="[{
 				backgroundColor: bgColor,
 				borderRadius: shape == 'round' ? '100px' : '4px',
 				borderColor: borderColor,
-			}"
+			},$uv.addStyle(boxStyle)]"
 		>
 			<slot name="prefix">
 				<view class="uv-search__content__icon">
@@ -100,6 +100,7 @@
 	 * @property {String | Number}	maxlength			输入框最大能输入的长度，-1为不限制长度  (默认 '-1' )
 	 * @property {String | Number}	height				输入框高度，单位px（默认 64 ）
 	 * @property {String | Number}	label				搜索框左边显示内容
+	 * @property {Object} boxStyle 自定义内容框样式，设置padding 
 	 * @property {Object}			customStyle			定义需要用到的外部样式
 	 *
 	 * @event {Function} change 输入框内容发生变化时触发
@@ -240,7 +241,7 @@
 		&__content {
 			@include flex;
 			align-items: center;
-			// padding: $uv-search-content-padding;
+			padding: $uv-search-content-padding;
 			flex: 1;
 			justify-content: space-between;
 			border-width: 1px;
