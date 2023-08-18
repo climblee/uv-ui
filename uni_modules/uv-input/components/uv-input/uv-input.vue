@@ -42,7 +42,6 @@
         	  @focus="onFocus"
         	  @confirm="onConfirm"
         	  @keyboardheightchange="onkeyboardheightchange"
-						@click="()=>{}"
         	/>
         </view>
         <view
