@@ -2,7 +2,7 @@
     <img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120" style="margin-bottom: 10px;">
 </p>
 
-<h3 align="center" style="margin: 30px 0 30px -10px;font-weight: bold;font-size:40px;">uv-ui</h3>
+<h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">uv-ui</h3>
 <h3 align="center">兼容vue3+2多平台快速开发的UI框架</h3>
 
 [![star](https://gitee.com/Leecreator/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
@@ -14,6 +14,9 @@
 [![license](https://img.shields.io/github/license/Leecreator/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
+
+### uvui官方群1：549833913
+### uvui官方群2：206060892
 
 ## uvui特点
 

@@ -69,6 +69,10 @@
 					></view>
 				</view>
 			</view>
+			<!-- 避免报错 -->
+			<!-- #ifdef H5 -->
+			<view v-else class="uv-scroll-list__indicator__line__bar"></view>
+			<!-- #endif -->
 	</view>
 </template>
 <script src="./scrollWxs.wxs" module="wxs" lang="wxs"></script>
