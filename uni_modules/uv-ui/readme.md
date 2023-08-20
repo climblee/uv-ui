@@ -1,8 +1,8 @@
 <p align="center">
-    <img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120" style="margin-bottom: 10px;">
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120">
 </p>
 
-<h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">uv-ui</h3>
+<h3 align="center">uv-ui</h3>
 <h3 align="center">兼容vue3+2多平台快速开发的UI框架</h3>
 
 [![star](https://gitee.com/Leecreator/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
