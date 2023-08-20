@@ -1,8 +1,7 @@
 <p align="center">
-    <img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120" style="margin-bottom: 10px;">
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><img alt="logo" src="https://www.uvui.cn/common/logo.png" width="120" height="120">
 </p>
-
-<h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">uv-ui</h3>
+<h3 align="center">uv-ui</h3>
 <h3 align="center">兼容vue3+2多平台快速开发的UI框架</h3>
 
 [![star](https://gitee.com/Leecreator/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
@@ -15,8 +14,8 @@
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
 
-### uvui官方群1：549833913
-### uvui官方群2：206060892
+### uvui官方群1：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=aaoyDvfV7nSee9vzWfzyZM1vKlu3xrNZ&authKey=pdU6HDpyzGUoc1QvQvCmzCbwzsoHgBbToF%2F0ChP4lNjPIPgWHGRE4I99XYGiTcNI&noverify=0&group_code=549833913" target="_blank">549833913</a>
+### uvui官方群2：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=2QbEeKBn6ysCyQ09V4mgst1W8onxFybQ&authKey=aMTGL5zCYwsinG%2FeH0qMlAqXAdyKr5AjXVf2oMnsmj7NCg%2F2HraMU%2FNFxELLIPvp&noverify=0&group_code=206060892" target="_blank">206060892</a>
 
 ## uvui特点
 
