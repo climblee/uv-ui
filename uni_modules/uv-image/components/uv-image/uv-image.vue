@@ -4,6 +4,7 @@
 		mode="fade"
 		:duration="fade ? duration : 0"
 		:cell-child="cellChild"
+		:custom-style="wrapStyle"
 	>
 		<view
 			class="uv-image"
