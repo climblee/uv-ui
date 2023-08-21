@@ -1,8 +1,8 @@
 {
   "id": "uv-modal",
-  "displayName": "uv-modal 模态框  全面兼容小程序、nvue、vue2、vue3等多端",
+  "displayName": "uv-modal 模态框 全面兼容vue3+2、app、h5、小程序等多端",
   "version": "1.0.5",
-  "description": "uv-modal 弹出模态框，常用于消息提示、消息确认、在当前页面内完成特定的交互操作。",
+  "description": "支持自定义内容，与uniapp提供的API uni.showModal类似，但是功能更强大，更加灵活",
   "keywords": [
     "uv-modal",
     "uvui",
