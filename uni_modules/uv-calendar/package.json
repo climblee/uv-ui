@@ -1,8 +1,8 @@
 {
 	"id": "uv-calendar",
-	"displayName": "uv-calendar 日历 全面兼容小程序、nvue、vue2、vue3等多端",
+	"displayName": "uv-calendar 日历 全面兼容vue3+2、app、h5、小程序等多端",
 	"version": "1.0.5",
-	"description": "日历组件用于单个选择日期，范围选择日期等，日历被包裹在底部弹起的容器中，灵活配置，功能齐全，兼容全端。",
+	"description": "日历组件用于单个选择日期，范围选择日期等，日历被包裹在底部弹起的容器中，灵活配置，功能齐全，兼容全端。强烈推荐使用最新版日历组件，在下方跳入。",
 	"keywords": [
         "uv-calendar",
         "uvui",

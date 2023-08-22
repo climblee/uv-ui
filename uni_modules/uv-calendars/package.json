@@ -1,8 +1,8 @@
 {
   "id": "uv-calendars",
-  "displayName": "uv-calendars 日历 全面兼容vue3+2、app、h5、小程序等多端",
+  "displayName": "uv-calendars 最新日历 全面兼容vue3+2、app、h5、小程序等多端",
   "version": "1.0.5",
-  "description": "该组件输入优化升级版，提供日历选择查看，简单配置即可使用强大功能，性能友好",
+  "description": "基于uv-ui插件市场首款多功能日历组件，不仅可以查看、选择日期，还可以选择任意范围内的日期、打点操作、自定义主题颜色、自定义文案、农历显示等。追求的就是完美",
   "keywords": [
     "uv-ui",
     "uvui",
