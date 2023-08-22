@@ -40,7 +40,7 @@
 			},
 			defaultValue: {
 				type: Array,
-				default: () => [0,'0','all']
+				default: () => [0, '0', 'all']
 			},
 			textSize: {
 				type: String,
@@ -85,13 +85,18 @@
 			}
 		},
 		mounted() {
-			this.$nextTick(async () => {
-				await this.$uv.sleep(30);
-				const rect = await this.queryRect();
-				uni.$emit(`${this.sign}_GETRECT`, rect);
-			})
+			this.init();
 		},
 		methods: {
+			init() {
+				uni.$emit(`${this.sign}_CLICKMENU`, {
+					show: false
+				});
+				this.$nextTick(async () => {
+					const rect = await this.queryRect();
+					uni.$emit(`${this.sign}_GETRECT`, rect);
+				})
+			},
 			// 查询内容高度
 			queryRect() {
 				// #ifndef APP-NVUE
@@ -107,6 +112,7 @@
 				// 返回一个promise，让调用此方法的主体能使用then回调
 				return new Promise(resolve => {
 					dom.getComponentRect(this.$refs.dropDownRef, res => {
+						res.size.top = res.size.top <= 0 ? 0 : res.size.top;
 						resolve(res.size)
 					})
 				})
