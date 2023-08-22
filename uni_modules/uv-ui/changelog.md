@@ -1,3 +1,10 @@
+## 1.1.7（2023-08-22）
+1. 优化 uv-drop-down a. 增加@change回调，返回弹窗关闭状态； b. 增加init方法，方便位置改变进行调整
+2. 优化 部分文档优化
+3. 修复 uv-input a. app-nvue-ios端不能输入的BUG；b. 键盘高度等值不返回BUG
+4. 修复 uv-scroll-list 报错导致不能移动指示器的BUG
+5. 修复 uv-search 边距值在上次更新中误改导致不对的BUG
+6. 修复 uv-image 设置width和height为100%不生效的BUG
 ## 1.1.6（2023-08-18）
 1. 优化 优化文档
 2. 修复 uv-list 使用列表右侧显示 switch，switchChange回调中返回数据为undefined的BUG

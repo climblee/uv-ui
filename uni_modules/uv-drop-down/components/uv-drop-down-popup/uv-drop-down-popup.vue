@@ -172,6 +172,7 @@
 				})
 			},
 			close() {
+				if(!this.show) return;
 				this.height = 0;
 				// #ifndef APP-NVUE
 				this.height = 0;

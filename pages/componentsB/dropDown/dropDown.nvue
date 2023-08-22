@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<uv-drop-down 
+			ref="dropDown"
 			sign="dropDown_1" 
 			:text-style="{activeColor:'red'}" 
 			:extra-icon="{name:'arrow-down-fill',color:'#666',size:'26rpx'}" 
@@ -28,16 +29,20 @@
 			</uv-drop-down-item>
 		</uv-drop-down>
 		<uv-drop-down-popup 
-		ref="dfdf"
 			sign="dropDown_1" 
 			:click-overlay-on-close="true"
 			:currentDropItem="currentDropItem" 
 			@clickItem="clickItem"
+			@popupChange="change"
 		></uv-drop-down-popup>
 	</view>
 </template>
 <script>
 	export default {
+		onPageScroll() {
+			// 滚动后及时更新位置
+			this.$refs.dropDown.init();
+		},
 		computed: {
 			dropItem(name) {
 				return (name) => {
@@ -111,6 +116,9 @@
 			}
 		},
 		methods: {
+			change(e) {
+				console.log('弹窗打开状态：',e);
+			},
 			/**
 			 * 点击每个筛选项回调
 			 * @param {Object} e { name, active, type } = e
@@ -140,7 +148,6 @@
 			 * @param {Object} item 选中项 { label,value } = e
 			 */
 			clickItem(e) {
-				// this.$refs.dfdf.close();
 				// 下面有重新赋值，所以用let
 				let { label, value } = e;
 				const findIndex = this.result.findIndex(item => item.name == this.activeName);
