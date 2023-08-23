@@ -4,13 +4,13 @@
 <h3 align="center">uv-ui</h3>
 <h3 align="center">兼容vue3+2多平台快速开发的UI框架</h3>
 
-[![star](https://gitee.com/Leecreator/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
-[![star](https://gitee.com/Leecreator/uv-ui/badge/fork.svg?theme=gvp)](https://gitee.com/Leecreator/uv-ui)
-[![star](https://img.shields.io/github/stars/Leecreator/uv-ui?style=flat-square&logo=GitHub)](https://github.com/Leecreator/uv-ui)
-[![issues](https://img.shields.io/github/issues/Leecreator/uv-ui?style=flat-square&logo=GitHub)](https://github.com/Leecreator/uv-ui/issues)
+[![star](https://gitee.com/climblee/uv-ui/badge/star.svg?theme=gvp)](https://gitee.com/climblee/uv-ui)
+[![star](https://gitee.com/climblee/uv-ui/badge/fork.svg?theme=gvp)](https://gitee.com/climblee/uv-ui)
+[![star](https://img.shields.io/github/stars/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui)
+[![issues](https://img.shields.io/github/issues/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui/issues)
 [![Website](https://img.shields.io/badge/uvui-up-blue?style=flat-square)](https://www.uvui.cn)
 [![version](https://img.shields.io/badge/version-1.1.5-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
-[![license](https://img.shields.io/github/license/Leecreator/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
+[![license](https://img.shields.io/github/license/climblee/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
 

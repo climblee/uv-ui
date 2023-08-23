@@ -10,7 +10,7 @@
         "ui框架",
         "ui库"
     ],
-	"repository": "https://github.com/Leecreator/uv-ui",
+	"repository": "https://github.com/climblee/uv-ui",
 	"engines": {
 		"HBuilderX": "^3.1.0"
 	},
