@@ -120,7 +120,6 @@
 			clickHandler() {
 				if (!this.disabled && !this.loading) {
 					const oldValue = this.isActive ? this.inactiveValue : this.activeValue
-					this.innerValue = oldValue;
 					if (!this.asyncChange) {
 						this.$emit('input', oldValue)
 						this.$emit('update:modelValue', oldValue)

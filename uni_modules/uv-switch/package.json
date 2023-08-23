@@ -1,8 +1,8 @@
 {
   "id": "uv-switch",
-  "displayName": "uv-switch 开关选择器  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.3",
-  "description": "选择开关用于在打开和关闭状态之间进行切换。",
+  "displayName": "uv-switch 开关选择器 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.4",
+  "description": "选择开关用于在打开和关闭状态之间进行切换，支持异步操作。",
   "keywords": [
     "uv-switch",
     "uvui",
