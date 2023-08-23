@@ -1,7 +1,7 @@
 {
   "id": "uv-modal",
   "displayName": "uv-modal 模态框 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "支持自定义内容，与uniapp提供的API uni.showModal类似，但是功能更强大，更加灵活",
   "keywords": [
     "uv-modal",

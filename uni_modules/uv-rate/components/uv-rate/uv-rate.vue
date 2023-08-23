@@ -147,7 +147,7 @@
 					return;
 				}
 				this.preventEvent(e);
-				const x = e.changedTouches[0].pageX;
+				const x = e.changedTouches && e.changedTouches[0].pageX || e.detail && e.detail.pageX;
 				this.getActiveIndex(x);
 			},
 			// 停止滑动
@@ -157,7 +157,7 @@
 					return;
 				}
 				this.preventEvent(e);
-				const x = e.changedTouches[0].pageX;
+				const x = e.changedTouches && e.changedTouches[0].pageX || e.detail && e.detail.pageX;
 				this.getActiveIndex(x);
 			},
 			// 通过点击，直接选中
@@ -170,7 +170,11 @@
 				let x = 0;
 				// 点击时，在nvue上，无法获得点击的坐标，所以无法实现点击半星选择
 				// #ifndef APP-NVUE
-				x = e.changedTouches[0].pageX;
+				try{
+					x = e.changedTouches[0].pageX;
+				}catch(e){
+					x = index * this.rateWidth + this.rateBoxLeft;
+				}
 				// #endif
 				// #ifdef APP-NVUE
 				// nvue下，无法通过点击获得坐标信息，这里通过元素的位置尺寸值模拟坐标

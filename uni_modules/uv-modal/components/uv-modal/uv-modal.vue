@@ -132,13 +132,15 @@
 			},
 			// 点击确定按钮
 			confirmHandler() {
+				if(!this.loading) {
+					this.$emit('confirm');
+				}
 				// 如果配置了异步关闭，将按钮值为loading状态
 				if (this.asyncClose) {
 					this.loading = true;
 				} else {
 					this.close();
 				}
-				this.$emit('confirm');
 			},
 			// 点击取消按钮
 			cancelHandler() {

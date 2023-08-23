@@ -1,8 +1,8 @@
 {
   "id": "uv-rate",
-  "displayName": "uv-rate 评分  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.5",
-  "description": "uv-rate 该组件一般用于满意度调查，星型评分的场景。",
+  "displayName": "uv-rate 评分 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.6",
+  "description": "该组件为星型评分，可用于满意度调查等场景...",
   "keywords": [
     "uv-rate",
     "uvui",
