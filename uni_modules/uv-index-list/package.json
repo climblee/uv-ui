@@ -1,7 +1,7 @@
 {
   "id": "uv-index-list",
   "displayName": "uv-index-list 索引列表 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "该组件用于展示索引列表，右侧带索引的列表，方便快速定位到具体内容，通常用于城市/机场选择等场景。类似于微信通讯录页面",
   "keywords": [
     "uv-index-list",

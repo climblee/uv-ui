@@ -150,7 +150,9 @@
 				sys: '',
 				scrolling: false,
 				scrollIntoView: '',
-				hasHeight: 0
+				hasHeight: 0,
+				timer: 0,
+				disTap: false
 			}
 		},
 		computed: {
@@ -198,7 +200,7 @@
 			touchStart(e) {
 				// 获取触摸点信息
 				const touchStart = e.changedTouches[0]
-				if (!touchStart) return
+				if (!touchStart || this.disTap) return
 				this.touching = true
 				const {
 					pageY
@@ -211,7 +213,7 @@
 			touchMove(e) {
 				// 获取触摸点信息
 				let touchMove = e.changedTouches[0]
-				if (!touchMove) return;
+				if (!touchMove || this.disTap) return;
 
 				// 滑动结束后迅速开始第二次滑动时候 touching 为 false 造成不显示 indicator 问题
 				if (!this.touching) {
@@ -338,6 +340,11 @@
 				if (this.touching || this.scrolling) return
 				// 每过一定时间取样一次，减少资源损耗以及可能带来的卡顿
 				this.scrolling = true
+				this.disTap = true;
+				clearTimeout(this.timer);
+				this.timer = setTimeout(()=>{
+					this.disTap = false;
+				},200)
 				this.$uv.sleep(30).then(() => {
 					this.scrolling = false
 				})
