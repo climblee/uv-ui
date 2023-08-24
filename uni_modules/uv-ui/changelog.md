@@ -1,3 +1,11 @@
+## 1.1.8（2023-08-24）
+1. 优化 uv-popup 弹出不丝滑优化思路：https://www.uvui.cn/components/popup.html#yh
+2. 修复 uv-switch 取消value传值，只能使用v-model传值，避免异步操作不生效的BUG
+3. 修复 uv-index-list ios端滚动过程中+快速点击右侧导航页面出现空白的BUG
+4. 修复 uv-rate 1. 支付宝报错的BUG; 2. 不能选半星的BUG
+5. 修复 uv-model 异步loading时，确认回调还会一直触发的BUG
+6. 修复 uv-swiper 标题文字过多未隐藏掉的BUG
+7. 修复 uv-text app-nvue编译不能自动换行的BUG
 ## 1.1.7（2023-08-22）
 1. 优化 uv-drop-down a. 增加@change回调，返回弹窗关闭状态； b. 增加init方法，方便位置改变进行调整
 2. 优化 部分文档优化
