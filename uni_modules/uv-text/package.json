@@ -1,7 +1,7 @@
 {
   "id": "uv-text",
-  "displayName": "uv-text 文本  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "displayName": "uv-text 文本 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.3",
   "description": "此组件集成了文本类在项目中的常用功能，包括状态，拨打电话，格式化日期，*替换，超链接...等功能。 您大可不必在使用特殊文本时自己定义，text组件涵盖您能使用的大部分场景。",
   "keywords": [
     "uv-text",

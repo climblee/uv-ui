@@ -113,7 +113,7 @@
 				    style="margin-right: 50px;"
 				>
 					<uv-text
-					    prefixIcon="baidu"
+					    prefixIcon="photo"
 					    iconStyle="font-size: 19px"
 					    text="百度一下"
 					></uv-text>
