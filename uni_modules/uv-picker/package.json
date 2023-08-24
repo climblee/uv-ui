@@ -1,7 +1,7 @@
 {
   "id": "uv-picker",
   "displayName": "uv-picker 选择器 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "uv-picker 此选择器用于单列，多列，多列联动的选择场景...",
   "keywords": [
     "uv-picker",

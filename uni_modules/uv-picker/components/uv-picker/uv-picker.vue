@@ -157,11 +157,12 @@ export default {
 		},
 		// 点击工具栏的确定按钮
 		confirm() {
-			this.$emit('confirm', {
+			// 在这里使用deepClone拷贝后，vue3会自动转换成原始对象，这样处理是因为cli项目可能出现不返回值的情况
+			this.$emit('confirm', this.$uv.deepClone({
 				indexs: this.innerIndex,
 				value: this.innerColumns.map((item, index) => item[this.innerIndex[index]]),
 				values: this.innerColumns
-			});
+			}));
 			if(this.closeOnClickConfirm) {
 				this.close();
 			}
