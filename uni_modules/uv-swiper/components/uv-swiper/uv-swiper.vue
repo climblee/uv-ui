@@ -246,7 +246,8 @@
 						left: 0;
 						right: 0;
 						font-size: 28rpx;
-						padding: 12rpx 24rpx;
+						height: 60rpx;
+						line-height: 60rpx;
 						color: #FFFFFF;
 						flex: 1;
 					}

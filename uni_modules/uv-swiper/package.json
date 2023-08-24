@@ -1,8 +1,8 @@
 {
   "id": "uv-swiper",
-  "displayName": "uv-swiper 轮播图  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.4",
-  "description": "该组件一般用于导航轮播，广告展示等场景,可开箱即用。",
+  "displayName": "uv-swiper 轮播图 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.0.5",
+  "description": "该组件为轮播、跑马灯，支持卡片式。一般用于导航轮播，广告展示等场景，开箱即用",
   "keywords": [
     "swiper",
     "uvui",
