@@ -105,7 +105,7 @@
 		},
 		methods: {
 			init() {
-				this.$uv.sleep().then(() => {
+				this.$uv.sleep(200).then(() => {
 					this.getRateItemRect();
 					this.getRateIconWrapRect();
 				})
@@ -170,11 +170,7 @@
 				let x = 0;
 				// 点击时，在nvue上，无法获得点击的坐标，所以无法实现点击半星选择
 				// #ifndef APP-NVUE
-				try{
-					x = e.changedTouches[0].pageX;
-				}catch(e){
-					x = index * this.rateWidth + this.rateBoxLeft;
-				}
+				x = e.changedTouches && e.changedTouches[0].pageX || e.detail && e.detail.pageX;
 				// #endif
 				// #ifdef APP-NVUE
 				// nvue下，无法通过点击获得坐标信息，这里通过元素的位置尺寸值模拟坐标

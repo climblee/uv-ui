@@ -1,7 +1,7 @@
 {
 	"id": "uv-ui",
 	"displayName": "uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端，灵活导入，利剑出击",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"description": "uv-ui 是基于uni-app、部分组件基于uView2.x、全端兼容、支持独立导入、内容丰富的UI框架。破釜沉舟之兼容vue3+2、app、h5、小程序等多端，利剑出击，开箱即用。",
 	"keywords": [
         "uv-ui",
