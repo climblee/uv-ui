@@ -32,7 +32,6 @@ const $uv = {
 	route,
 	config,
 	test,
-	throttle,
 	date: index.timeFormat, // 另名date
 	...index,
 	colorGradient: colorGradient.colorGradient,
