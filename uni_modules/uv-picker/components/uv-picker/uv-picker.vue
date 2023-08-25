@@ -2,6 +2,7 @@
 	<uv-popup
 		ref="pickerPopup"
 		mode="bottom"
+		:round="round"
 		:close-on-click-overlay="closeOnClickOverlay"
 		@change="popupChange"
 	>

@@ -10,6 +10,11 @@ export default {
 			type: String,
 			default: ''
 		},
+		// 弹窗圆角
+		round: {
+			type: [String, Number],
+			default: 0
+		},
 		// 对象数组，设置每一列的数据
 		columns: {
 			type: Array,
