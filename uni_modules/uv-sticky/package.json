@@ -1,7 +1,7 @@
 {
   "id": "uv-sticky",
   "displayName": "uv-sticky 吸顶  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "吸顶组件与CSS中position: sticky属性实现的效果一致，当组件达到预设的到顶部距离时， 就会固定在指定位置，组件位置大于预设的顶部距离时，会重新按照正常的布局排列。",
   "keywords": [
     "uv-sticky",

@@ -28,8 +28,6 @@
 	 * @property {String ｜ Number}	zIndex			吸顶时的z-index值
 	 * @property {String ｜ Number}	index			自定义标识，用于区分是哪一个组件
 	 * @property {Object}			customStyle		组件的样式，对象形式
-	 * @event {Function} fixed		组件吸顶时触发
-	 * @event {Function} unfixed	组件取消吸顶时触发
 	 * @example <uv-sticky offsetTop="200"><view>塞下秋来风景异，衡阳雁去无留意</view></uv-sticky>
 	 */
 	export default {

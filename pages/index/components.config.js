@@ -12,7 +12,7 @@ export default [{
 		{
 			path: '/pages/componentsB/calendars/calendars',
 			icon: 'calendar',
-			title: 'Calendar 日历（新）',
+			title: 'Calendar 新版日历（强烈推荐）',
 			title_en: 'Calendar',
 			isNew: true
 		},

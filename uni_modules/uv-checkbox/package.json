@@ -1,7 +1,7 @@
 {
   "id": "uv-checkbox",
   "displayName": "uv-checkbox 复选框 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "复选框组件一般用于需要多个选择的场景，该组件功能完整，使用方便。",
   "keywords": [
     "uv-checkbox",

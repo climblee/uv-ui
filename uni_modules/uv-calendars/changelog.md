@@ -1,3 +1,7 @@
+## 1.0.7（2023-08-26）
+1. 去除range参数，由mode="range"替换
+2. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围
+3. 与uv-calendar选择日期的功能保持一致
 ## 1.0.6（2023-08-25）
 1. 修复点击返回今天按钮时，monthSwitch方法回调参数返回月份不是当天对应月份：https://github.com/climblee/uv-ui/issues/7
 ## 1.0.5（2023-08-13）

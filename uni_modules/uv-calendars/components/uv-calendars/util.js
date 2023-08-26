@@ -6,7 +6,8 @@ class Calendar {
 		selected,
 		startDate,
 		endDate,
-		range
+		range,
+		multiple
 	} = {}) {
 		// 当前日期
 		this.date = this.getDate(new Date()) // 当前初入日期
@@ -17,7 +18,10 @@ class Calendar {
 		// 范围结束
 		this.endDate = endDate
 		this.range = range
+		this.multiple = multiple
 		// 多选状态
+		this.cleanRangeStatus()
+		// 范围状态
 		this.cleanMultipleStatus()
 		// 每周日期
 		this.weeks = {}
@@ -27,9 +31,53 @@ class Calendar {
 	 * 设置日期
 	 * @param {Object} date
 	 */
-	setDate(date) {
-		this.selectDate = this.getDate(date)
-		this._getWeek(this.selectDate.fullDate)
+	setDate(date,status) {
+		if (this.range && status=='init') {
+			this.cleanRangeStatus();
+			if (Array.isArray(date)) {
+				this.rangeStatus.before = date[0];
+				this.rangeStatus.after = date.length > 1 ? date[date.length - 1] : '';
+				if (this.rangeStatus.after && this.dateCompare(this.rangeStatus.before, this.rangeStatus.after)) {
+					this.rangeStatus.data = this.geDateAll(this.rangeStatus.before, this.rangeStatus.after)
+				}
+				this.selectDate = this.getDate(date[0])
+				this._getWeek(this.selectDate.fullDate)
+			} else {
+				this.selectDate = this.getDate(date)
+				this.rangeStatus.before = this.selectDate.fullDate;
+				this._getWeek(this.selectDate.fullDate)
+			}
+		} else if (this.multiple && status=='init') {
+			this.cleanMultipleStatus();
+			if (Array.isArray(date)) {
+				this.multipleStatus.data = date;
+				this.selectDate = this.getDate(date[0])
+				this._getWeek(this.selectDate.fullDate)
+			} else {
+				this.selectDate = this.getDate(date)
+				this.multipleStatus.data = [this.selectDate.fullDate];
+				this._getWeek(this.selectDate.fullDate)
+			}
+		} else {
+			if (Array.isArray(date)) {
+				this.selectDate = this.getDate(date[0])
+				this._getWeek(this.selectDate.fullDate)
+			} else {
+				this.selectDate = this.getDate(date)
+				this._getWeek(this.selectDate.fullDate)
+			}
+		}
+	}
+
+	/**
+	 * 清理多选状态
+	 */
+	cleanRangeStatus() {
+		this.rangeStatus = {
+			before: '',
+			after: '',
+			data: []
+		}
 	}
 
 	/**
@@ -37,8 +85,6 @@ class Calendar {
 	 */
 	cleanMultipleStatus() {
 		this.multipleStatus = {
-			before: '',
-			after: '',
 			data: []
 		}
 	}
@@ -49,7 +95,6 @@ class Calendar {
 	resetSatrtDate(startDate) {
 		// 范围开始
 		this.startDate = startDate
-
 	}
 
 	/**
@@ -76,19 +121,19 @@ class Calendar {
 				dd.setDate(dd.getDate() + AddDayCount) // 获取AddDayCount天后的日期
 				break
 			case 'month':
-				if (dd.getDate() === 31 && AddDayCount>0) {
+				if (dd.getDate() === 31 && AddDayCount > 0) {
 					dd.setDate(dd.getDate() + AddDayCount)
 				} else {
 					const preMonth = dd.getMonth()
 					dd.setMonth(preMonth + AddDayCount) // 获取AddDayCount天后的日期
 					const nextMonth = dd.getMonth()
 					// 处理 pre 切换月份目标月份为2月没有当前日(30 31) 切换错误问题
-					if(AddDayCount<0 && preMonth!==0 && nextMonth-preMonth>AddDayCount){
-						dd.setMonth(nextMonth+(nextMonth-preMonth+AddDayCount))
+					if (AddDayCount < 0 && preMonth !== 0 && nextMonth - preMonth > AddDayCount) {
+						dd.setMonth(nextMonth + (nextMonth - preMonth + AddDayCount))
 					}
 					// 处理 next 切换月份目标月份为2月没有当前日(30 31) 切换错误问题
-					if(AddDayCount>0 && nextMonth-preMonth>AddDayCount){
-						dd.setMonth(nextMonth-(nextMonth-preMonth-AddDayCount))
+					if (AddDayCount > 0 && nextMonth - preMonth > AddDayCount) {
+						dd.setMonth(nextMonth - (nextMonth - preMonth - AddDayCount))
 					}
 				}
 				break
@@ -158,26 +203,40 @@ class Calendar {
 				// disableAfter = this.dateCompare(nowDate, dateCompAfter ? this.endDate : fullDate)
 				disableAfter = this.dateCompare(nowDate, this.endDate)
 			}
-			let multiples = this.multipleStatus.data
+			let ranges = this.rangeStatus.data
 			let checked = false
-			let multiplesStatus = -1
+			let rangesStatus = -1
 			if (this.range) {
+				if (ranges) {
+					rangesStatus = ranges.findIndex((item) => {
+						return this.dateEqual(item, nowDate)
+					})
+				}
+				if (rangesStatus !== -1) {
+					checked = true
+				}
+			}
+			let multiples = this.multipleStatus.data
+			let checked_multiple = false
+			let multiplesStatus = -1
+			if (this.multiple) {
 				if (multiples) {
 					multiplesStatus = multiples.findIndex((item) => {
 						return this.dateEqual(item, nowDate)
 					})
 				}
 				if (multiplesStatus !== -1) {
-					checked = true
+					checked_multiple = true
 				}
 			}
 			let data = {
 				fullDate: nowDate,
 				year: full.year,
 				date: i,
-				multiple: this.range ? checked : false,
-				beforeMultiple: this.dateEqual(this.multipleStatus.before, nowDate),
-				afterMultiple: this.dateEqual(this.multipleStatus.after, nowDate),
+				range: this.range ? checked : false,
+				multiple: this.multiple ? checked_multiple : false,
+				beforeRange: this.dateEqual(this.rangeStatus.before, nowDate),
+				afterRange: this.dateEqual(this.rangeStatus.after, nowDate),
 				month: full.month,
 				lunar: this.getlunar(full.year, full.month, i),
 				disable: !(disableBefore && disableAfter),
@@ -214,6 +273,8 @@ class Calendar {
 	getInfo(date) {
 		if (!date) {
 			date = new Date()
+		} else if (Array.isArray(date)) {
+			date = date[0]
 		}
 		const dateInfo = this.canlender.find(item => item.fullDate === this.getDate(date).fullDate)
 		return dateInfo
@@ -248,7 +309,7 @@ class Calendar {
 			return false
 		}
 	}
-	
+
 	/**
 	 * 比较after时间是否大于before时间
 	 */
@@ -263,7 +324,6 @@ class Calendar {
 			return false
 		}
 	}
-
 
 	/**
 	 * 获取日期范围内所有日期
@@ -299,34 +359,47 @@ class Calendar {
 		this.selected = value
 		this._getWeek(data)
 	}
-
 	/**
-	 *  获取多选状态
+	 * 获取多选状态
 	 */
 	setMultiple(fullDate) {
+		if (!this.multiple) return
+		let multiples = this.multipleStatus.data;
+		const findIndex = multiples.findIndex(item => this.dateEqual(fullDate, item));
+		if (findIndex < 0) {
+			this.multipleStatus.data = this.multipleStatus.data.concat([fullDate]);
+		} else {
+			this.multipleStatus.data.splice(findIndex, 1);
+		}
+		this._getWeek(fullDate)
+	}
+	/**
+	 *  获取范围状态
+	 */
+	setRange(fullDate) {
 		let {
 			before,
 			after
-		} = this.multipleStatus
+		} = this.rangeStatus
 		if (!this.range) return
 		if (before && after) {
-			this.cleanMultipleStatus();
-			this.multipleStatus.before = fullDate
+			this.cleanRangeStatus();
+			this.rangeStatus.before = fullDate
 		} else {
 			if (!before) {
-				this.multipleStatus.before = fullDate
+				this.rangeStatus.before = fullDate
 			} else {
-				if(!this.dateAfterLgBefore(this.multipleStatus.before,fullDate)) {
-					this.cleanMultipleStatus();
-					this.multipleStatus.before = fullDate
+				if (!this.dateAfterLgBefore(this.rangeStatus.before, fullDate)) {
+					this.cleanRangeStatus();
+					this.rangeStatus.before = fullDate
 					this._getWeek(fullDate)
 					return;
 				}
-				this.multipleStatus.after = fullDate
-				if (this.dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
-					this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+				this.rangeStatus.after = fullDate
+				if (this.dateCompare(this.rangeStatus.before, this.rangeStatus.after)) {
+					this.rangeStatus.data = this.geDateAll(this.rangeStatus.before, this.rangeStatus.after);
 				} else {
-					this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+					this.rangeStatus.data = this.geDateAll(this.rangeStatus.after, this.rangeStatus.before);
 				}
 			}
 		}

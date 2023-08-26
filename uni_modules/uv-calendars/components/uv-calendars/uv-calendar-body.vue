@@ -4,7 +4,7 @@
 			<view class="uv-calendar__header-btn-box" @click.stop="pre">
 				<view class="uv-calendar__header-btn uv-calendar--left"></view>
 			</view>
-			<picker mode="date" :value="date" fields="month" @change="bindDateChange">
+			<picker mode="date" :value="getDate" fields="month" @change="bindDateChange">
 				<text class="uv-calendar__header-text">{{ (nowDate.year||'') +' / '+( nowDate.month||'')}}</text>
 			</picker>
 			<view class="uv-calendar__header-btn-box" @click.stop="next">
@@ -41,7 +41,7 @@
 			</view>
 			<view class="uv-calendar__weeks" v-for="(item,weekIndex) in weeks" :key="weekIndex">
 				<view class="uv-calendar__weeks-item" v-for="(weeks,weeksIndex) in item" :key="weeksIndex">
-					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :rangeInfoText="rangeInfoText(weeks)" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
+					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :rangeInfoText="rangeInfoText(weeks)" :multiple="multiple" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
 				</view>
 			</view>
 		</view>
@@ -64,7 +64,7 @@
 		},
 		props: {
 			date: {
-				type: String,
+				type: [String,Array],
 				default: ''
 			},
 			nowDate: {
@@ -108,9 +108,16 @@
 			endText: {
 				type: String,
 				default: '结束'
+			},
+			multiple: {
+				type: Boolean,
+				default: false
 			}
 		},
 		computed: {
+			getDate() {
+				return Array.isArray(this.date) ? this.date[0] : this.date;
+			},
 			/**
 			 * for i18n
 			 */
@@ -140,7 +147,7 @@
 			},
 			rangeInfoText(weeks) {
 				return weeks=> {
-					if(weeks.beforeMultiple) {
+					if(weeks.beforeRange) {
 						if(weeks.extraInfo) {
 							weeks.extraInfo.info = this.startText;
 						}else {
@@ -149,7 +156,7 @@
 							}
 						}
 					}
-					if(weeks.afterMultiple) {
+					if(weeks.afterRange) {
 						if(weeks.extraInfo) {
 							weeks.extraInfo.info = this.endText;
 						}else {

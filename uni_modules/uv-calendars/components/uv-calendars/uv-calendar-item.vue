@@ -1,11 +1,12 @@
 <template>
 	<view class="uv-calendar-item__weeks-box" :class="{
 		'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable),
-		'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-		'uv-calendar-item--checked':(calendar.fullDate === weeks.fullDate && !weeks.isDay) ,
-		'uv-calendar-item--before-checked':weeks.beforeMultiple,
-		'uv-calendar-item--multiple': weeks.multiple,
-		'uv-calendar-item--after-checked':weeks.afterMultiple,
+		'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay && !multiple,
+		'uv-calendar-item--checked':(calendar.fullDate === weeks.fullDate && !weeks.isDay && !multiple) ,
+		'uv-calendar-item--before-checked':weeks.beforeRange,
+		'uv-calendar-item--range': weeks.range,
+		'uv-calendar-item--after-checked':weeks.afterRange,
+		'uv-calendar-item--multiple':weeks.multiple
 		}" :style="[itemBoxStyle]" @click="choiceDate(weeks)">
 		<view class="uv-calendar-item__weeks-box-item">
 			<text v-if="selected&&weeks.extraInfo&&weeks.extraInfo.badge" class="uv-calendar-item__weeks-box-circle"></text>
@@ -16,29 +17,32 @@
 			>{{weeks.extraInfo&&weeks.extraInfo.topinfo}}</text>
 			<text class="uv-calendar-item__weeks-box-text" :class="{
 				'uv-calendar-item--isDay-text': weeks.isDay,
-				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
-				'uv-calendar-item--before-checked':weeks.beforeMultiple,
-				'uv-calendar-item--multiple': weeks.multiple,
-				'uv-calendar-item--after-checked':weeks.afterMultiple,
-				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable),
+				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay && !multiple,
+				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay && !multiple,
+				'uv-calendar-item--before-checked':weeks.beforeRange,
+				'uv-calendar-item--range': weeks.range,
+				'uv-calendar-item--after-checked':weeks.afterRange,
+				'uv-calendar-item--multiple':weeks.multiple,
+				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable)
 				}" :style="[itemBoxStyle]">{{weeks.date}}</text>
 			<text v-if="!lunar&&!weeks.extraInfo && weeks.isDay" class="uv-calendar-item__weeks-lunar-text" :class="{
 				'uv-calendar-item--isDay-text':weeks.isDay,
-				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
-				'uv-calendar-item--before-checked':weeks.beforeMultiple,
-				'uv-calendar-item--multiple': weeks.multiple,
-				'uv-calendar-item--after-checked':weeks.afterMultiple,
+				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay && !multiple,
+				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay && !multiple,
+				'uv-calendar-item--before-checked':weeks.beforeRange,
+				'uv-calendar-item--range': weeks.range,
+				'uv-calendar-item--after-checked':weeks.afterRange,
+				'uv-calendar-item--multiple':weeks.multiple
 				}" :style="[itemBoxStyle]">{{todayText}}</text>
 			<text v-if="lunar&&!weeks.extraInfo" class="uv-calendar-item__weeks-lunar-text" :class="{
 				'uv-calendar-item--isDay-text':weeks.isDay,
-				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
-				'uv-calendar-item--before-checked':weeks.beforeMultiple,
-				'uv-calendar-item--multiple': weeks.multiple,
-				'uv-calendar-item--after-checked':weeks.afterMultiple,
-				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable),
+				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay && !multiple,
+				'uv-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay && !multiple,
+				'uv-calendar-item--before-checked':weeks.beforeRange,
+				'uv-calendar-item--range': weeks.range,
+				'uv-calendar-item--after-checked':weeks.afterRange,
+				'uv-calendar-item--multiple':weeks.multiple,
+				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable)
 				}" :style="[itemBoxStyle]">{{weeks.isDay ? todayText : (weeks.lunar.IDayCn === '初一'?weeks.lunar.IMonthCn:weeks.lunar.IDayCn)}}</text>
 				<text 
 					v-if="weeks.extraInfo&&weeks.extraInfo.info" 
@@ -83,6 +87,10 @@
 			color: {
 				type: String,
 				default: '#3c9cff'
+			},
+			multiple: {
+				type: Boolean,
+				default: false
 			}
 		},
 		computed: {
@@ -91,22 +99,27 @@
 			},
 			itemBoxStyle() {
 				const style = {};
-				if (this.weeks.beforeMultiple || this.weeks.afterMultiple) {
+				if (this.weeks.beforeRange || this.weeks.afterRange) {
 					style.backgroundColor = this.color;
-				} else if (this.weeks.multiple) {
+				} else if (this.weeks.range) {
 					style.backgroundColor = colorGradient(this.color, '#ffffff', 100)[90]
 					style.color = this.color;
 					style.opacity = 0.8;
 					style.borderRadius = 0;
-				} else if (this.calendar.fullDate === this.weeks.fullDate && !this.weeks.isDay) {
+				} else if (this.calendar.fullDate === this.weeks.fullDate && !this.weeks.isDay && !this.multiple) {
 					style.backgroundColor = this.color;
 					style.color = '#fff';
-				} else if (this.weeks.isDay && this.calendar.fullDate === this.weeks.fullDate) {
+				} else if (this.weeks.isDay && this.calendar.fullDate === this.weeks.fullDate && !this.multiple) {
 					style.backgroundColor = this.color;
 					style.color = '#fff';
-				} else if (this.weeks.isDay) {
+				} else if (this.weeks.isDay && !this.multiple) {
 					style.color = this.color;
-				} 
+				} else if (this.multiple && this.weeks.multiple){
+					style.backgroundColor = this.color;
+					style.color = '#fff';
+				} else if (this.weeks.isDay && this.multiple) {
+					style.color = this.color;
+				}
 				return style;
 			},
 			infoStyle(val) {
@@ -117,10 +130,10 @@
 					} else if (val == 'bottom') {
 						style.color = this.weeks.extraInfo.infoColor ? this.weeks.extraInfo.infoColor : '#f56c6c';
 					}
-					if (this.weeks.multiple) {
+					if (this.weeks.range) {
 						style.color = this.color;
 					}
-					if (this.calendar.fullDate === this.weeks.fullDate || this.weeks.beforeMultiple || this.weeks.afterMultiple) {
+					if (this.calendar.fullDate === this.weeks.fullDate || this.weeks.beforeRange || this.weeks.afterRange) {
 						style.color = '#fff';
 					}
 					return style;
@@ -206,7 +219,7 @@
 		color: #fff;
 		border-radius: 4px;
 	}
-	.uv-calendar-item--multiple {
+	.uv-calendar-item--range {
 		background-color: $uv-primary;
 		color: #fff;
 	}
@@ -214,6 +227,10 @@
 		color: #fff;
 	}
 	.uv-calendar-item--after-checked {
+		color: #fff;
+	}
+	.uv-calendar-item--multiple {
+		background-color: $uv-primary;
 		color: #fff;
 	}
 </style>

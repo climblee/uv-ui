@@ -1,7 +1,7 @@
 {
   "id": "uv-radio",
   "displayName": "uv-radio 单选框 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "uv-radio 单选框用于有一个选择，用户只能选择其中一个的场景。",
   "keywords": [
     "uv-radio",

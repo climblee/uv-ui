@@ -75,7 +75,7 @@
 
 | 组件名 | 组件说明 |
 | --- | --- |
-| uv-calendars | [日历（新版）](https://www.uvui.cn/components/calendars.html) |
+| uv-calendars | [新版日历（推荐）](https://www.uvui.cn/components/calendars.html) |
 | uv-drop-down | [下拉筛选](https://www.uvui.cn/components/dropDown.html) |
 | uv-scroll-list | [横向滚动列表](https://www.uvui.cn/components/scrollList.html) |
 | uv-vtabs | [垂直选项卡](https://www.uvui.cn/components/vtabs.html) |

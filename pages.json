@@ -123,7 +123,7 @@
 		}, {
 			"path": "calendars/calendars",
 			"style": {
-				"navigationBarTitleText": "Calendars 日历（新）"
+				"navigationBarTitleText": "Calendars 新版日历（推荐）"
 			}
 		}, {
 			"path": "picker/picker",

@@ -70,6 +70,7 @@
 				// 故只能使用如此方法
 				parentData: {
 					iconSize: 12,
+					labelSize: 14,
 					labelDisabled: null,
 					disabled: null,
 					shape: null,

@@ -12,6 +12,7 @@
 				:color="color"
 				:startText="startText"
 				:endText="endText"
+				:multiple="multiple"
 				@bindDateChange="bindDateChange"
 				@pre="pre"
 				@next="next"
@@ -41,6 +42,7 @@
 					:color="color"
 					:startText="startText"
 					:endText="endText"
+					:multiple="multiple"
 					@bindDateChange="bindDateChange"
 					@pre="pre"
 					@next="next"
@@ -60,7 +62,7 @@
 	 * @property {Boolean} lunar 显示农历
 	 * @property {String} startDate 日期选择范围-开始日期
 	 * @property {String} endDate 日期选择范围-结束日期
-	 * @property {Boolean} range 范围选择
+	 * @property {String} mode = [不传 | multiple | range ]  多个日期 | 选择日期范围 默认单日期
 	 * @property {Boolean} insert = [true|false] 插入模式,默认为false
 	 * 	@value true 弹窗模式
 	 * 	@value false 插入模式
@@ -115,7 +117,7 @@
 				default: '#3c9cff'
 			},
 			date: {
-				type: String,
+				type: [String,Array],
 				default: ''
 			},
 			selected: {
@@ -136,9 +138,10 @@
 				type: String,
 				default: ''
 			},
-			range: {
-				type: Boolean,
-				default: false
+			// multiple - 选择多日期  range - 选择日期范围
+			mode: {
+				type: String,
+				default: ''
 			},
 			insert: {
 				type: Boolean,
@@ -153,7 +156,7 @@
 				default: true
 			},
 			round: {
-				type: Number,
+				type: [Number,String],
 				default: 8
 			},
 			closeOnClickOverlay: {
@@ -174,7 +177,9 @@
 				weeks: [],
 				calendar: {},
 				nowDate: '',
-				allowConfirm: false
+				allowConfirm: false,
+				multiple: false,
+				range: false
 			}
 		},
 		computed:{
@@ -188,10 +193,10 @@
 				return t("uv-calender.cancel")
 			},
 			getConfirmColor() {
-				if(!this.range) {
-					return this.confirmColor;
-				}else {
+				if(this.range || this.multiple) {
 					return this.allowConfirm? this.confirmColor: '#999'
+				}else {
+					return this.confirmColor;
 				}
 			}
 		},
@@ -215,18 +220,31 @@
 			}
 		},
 		created() {
+			this.setMode();
 			this.cale = new Calendar({
 				selected: this.selected,
 				startDate: this.startDate,
 				endDate: this.endDate,
 				range: this.range,
+				multiple: this.multiple
 			})
 			this.init(this.date)
 		},
 		methods: {
+			setMode() {
+				switch (this.mode){
+					case 'range':
+						this.range = true;
+						break;
+					case 'multiple':
+						this.multiple = true;
+					default:
+						break;
+				}
+			},
 			async open() {
 				if (this.clearDate && !this.insert) {
-					this.cale.cleanMultipleStatus()
+					this.cale.cleanRangeStatus()
 					this.init(this.date)
 				}
 				if(!this.insert){
@@ -238,7 +256,9 @@
 				this.$emit('close');
 			},
 			confirm() {
-				if(this.range && !this.cale.multipleStatus.after) {
+				if(this.range && !this.cale.rangeStatus.after) {
+					return;
+				} else if(this.multiple && this.cale.multipleStatus.data.length == 0){
 					return;
 				}
 				this.setEmit('confirm');
@@ -265,25 +285,31 @@
 			 */
 			init(date) {
 				if(this.range) {
+					// 重置范围选择状态
+					this.cale.cleanRangeStatus();
+				}else if(this.multiple){
 					// 重置多选状态
 					this.cale.cleanMultipleStatus();
 				}
-				this.cale.setDate(date)
+				this.cale.setDate(date,'init')
 				this.weeks = this.cale.weeks
 				this.nowDate = this.calendar = this.cale.getInfo(date)
-				if(this.range) {
-					this.choiceDate(this.nowDate);
-				}
+				this.changeConfirmStatus();
 			},
 			/**
 			 * 变化触发
 			 */
 			change() {
-				if (this.range) {
-					this.allowConfirm = this.cale.multipleStatus.after ? true : false;
-				}
+				this.changeConfirmStatus();
 				if (!this.insert) return
 				this.setEmit('change')
+			},
+			changeConfirmStatus() {
+				if (this.range) {
+					this.allowConfirm = this.cale.rangeStatus.after ? true : false;
+				} else if(this.multiple) {
+					this.allowConfirm = this.cale.multipleStatus.data.length > 0 ? true : false;
+				}
 			},
 			/**
 			 * 选择月份触发
@@ -312,7 +338,8 @@
 					extraInfo
 				} = this.calendar
 				this.$emit(name, {
-					range: this.cale.multipleStatus,
+					range: this.cale.rangeStatus,
+					multiple: this.cale.multipleStatus,
 					year,
 					month,
 					date,
@@ -328,8 +355,10 @@
 			choiceDate(weeks) {
 				if (weeks.disable) return
 				this.calendar = weeks
+				// 设置范围选择
+				this.cale.setRange(this.calendar.fullDate)
 				// 设置多选
-				this.cale.setMultiple(this.calendar.fullDate)
+				this.cale.setMultiple(this.calendar.fullDate);
 				this.weeks = this.cale.weeks
 				this.change()
 			},

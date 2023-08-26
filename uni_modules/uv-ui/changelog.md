@@ -1,3 +1,9 @@
+## 1.1.9（2023-08-27）
+1. 优化 uv-calendars 1. 去除range参数，由mode="range"替换；2. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围；3. 与uv-calendar选择日期的功能保持一致
+2. 优化 uv-picker 增加round属性，设置圆角
+3. 修复 uv-calendars 点击返回今天按钮时，monthSwitch方法回调参数返回月份不是当天对应月份
+4. 修复 uv-radio 1. 设置 labelSize 属性设置无效的问题：https://gitee.com/climblee/uv-ui/issues/I7W6UN；2. v-model 绑定布尔值控制台报警：https://gitee.com/climblee/uv-ui/issues/I7W714
+5. 修复 uv-checkbox 1. 设置 label 属性为布尔值不生效的BUG
 ## 1.1.8（2023-08-24）
 1. 优化 uv-popup 弹出不丝滑优化思路：https://www.uvui.cn/components/popup.html#yh
 2. 修复 uv-switch 取消value传值，只能使用v-model传值，避免异步操作不生效的BUG

@@ -35,20 +35,25 @@
 			/>
 			<uv-calendars
 				ref="calendar3"
-				range
+				mode="multiple"
 				@confirm="confirm"
 			/>
 			<uv-calendars
 				ref="calendar4"
-				range
-				date="2023-08-04"
+				mode="range"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar5"
+				mode="range"
+				:date="date5"
 				color="#f56c6c"
 				confirm-color="#f56c6c"
 				@confirm="confirm"
 			/>
 			<uv-calendars
-				ref="calendar5"
-				range
+				ref="calendar6"
+				mode="range"
 				title="选择日期"
 				start-text="住店"
 				end-text="离店"
@@ -56,19 +61,31 @@
 				@confirm="confirm"
 			/>
 			<uv-calendars
-				ref="calendar6"
+				ref="calendar7"
 				:startDate="startDate"
 				:endDate="endDate"
 				@confirm="confirm"
 			/>
 			<uv-calendars
-				ref="calendar7"
+				ref="calendar8"
 				lunar
 				@confirm="confirm"
 			/>
 			<uv-calendars
-				ref="calendar8"
+				ref="calendar9"
 				:date="defaultDate"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar10"
+				mode="multiple"
+				:date="date10"
+				@confirm="confirm"
+			/>
+			<uv-calendars
+				ref="calendar11"
+				mode="range"
+				:date="date11"
 				@confirm="confirm"
 			/>
 		</view>
@@ -90,6 +107,9 @@
 				endDate: `${year}-${month}-20`,
 				selected: [{date: `${year}-${month}-02`, info: '签到', badge: true, infoColor: '#ff0000'},{date: `${year}-${month}-06`, info: '余10',infoColor: '#19be6b', topinfo: '￥100', topinfoColor: '#19be6b'}],
 				defaultDate: `${year}-${month}-15`,
+				date5: [`${year}-${month}-08`,`${year}-${month}-20`],
+				date10: [`${year}-${month}-08`,`${year}-${month}-16`,`${year}-${month}-24`],
+				date11: [`${year}-${month}-08`,`${year}-${month}-20`],
 				list: [{
 						title: '插入模式',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
@@ -97,6 +117,10 @@
 					{
 						title: '单个日期',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/7.png'
+					},
+					{
+						title: '多个日期',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/8.png'
 					},
 					{
 						title: '日期范围',
@@ -109,13 +133,19 @@
 						title: '自定义文案',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/14.png'
 					},{
-						title: '日期最大范围',
+						title: '限制日期选择范围',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/13.png'
 					},{
 						title: '显示农历',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/5.png'
 					},{
-						title: '默认日期',
+						title: '默认单个日期',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
+					},{
+						title: '默认多个日期',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
+					},{
+						title: '默认日期范围',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/calendar/10.png'
 					}
 				]
@@ -130,7 +160,14 @@
 				this.$refs[`calendar${this.index}`].open();
 			},
 			confirm(e) {
-				const time = e.range.before && e.range.after? `${e.range.before} 至 ${e.range.after}`:e.fulldate;
+				let time = null;
+				if(e.range.before && e.range.after) {
+					time = `${e.range.before} 至 ${e.range.after}`;
+				} else if(e.multiple.data.length) {
+					time = e.multiple.data.length>1?`${e.multiple.data[0]}等多个日期`:e.multiple.data[0];
+				} else {
+					time = e.fulldate;
+				}
 				uni.showToast({
 					icon: 'none',
 					title: time
