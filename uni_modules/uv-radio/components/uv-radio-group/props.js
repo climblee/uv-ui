@@ -6,7 +6,7 @@ export default {
 			default: ''
 		},
 		modelValue: {
-			type: [String, Number],
+			type: [String, Number, Boolean],
 			default: ''
 		},
 		// 是否禁用全部radio
