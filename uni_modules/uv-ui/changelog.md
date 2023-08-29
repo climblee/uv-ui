@@ -1,3 +1,14 @@
+## 1.1.10（2023-08-30）
+1. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913
+2. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892
+3. 优化 uv-calendars 1. 去除range参数，由mode="range"替换；2. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围；3. 与uv-calendar选择日期的功能保持一致
+4. 新增 uv-album 新增相册组件及相关文档
+5. 优化 其他优化
+6. 修复 uv-text app-nvue设置align不生效的BUG
+7. 修复 uv-drop-down 自定义内容，点击自定义内容时会自动关闭弹窗的问题
+8. 修复 uv-image 异步修改宽高不生效的问题，问题来源：https://gitee.com/climblee/uv-ui/issues/I7WUQ3
+9. 修复 uv-calendars 通过setConfig修改属性不生效的问题，出自评论区：https://ext.dcloud.net.cn/plugin?id=12287
+10. 修复 uv-list 设置边框不生效的BUG
 ## 1.1.9（2023-08-27）
 1. 优化 uv-calendars 1. 去除range参数，由mode="range"替换；2. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围；3. 与uv-calendar选择日期的功能保持一致
 2. 优化 uv-picker 增加round属性，设置圆角

@@ -85,11 +85,8 @@
 	 */
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js';
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js';
-	
 	import Calendar from './util.js';
-	
 	import uvCalendarBody from './uv-calendar-body.vue';
-	
 	import { initVueI18n } from '@dcloudio/uni-i18n';
 	import i18nMessages from './i18n/index.js';
 	const { t } = initVueI18n(i18nMessages);
@@ -100,40 +97,49 @@
 		mixins: [mpMixin, mixin],
 		emits: ['close', 'confirm', 'change', 'monthSwitch'],
 		props: {
+			// 取消按钮颜色
 			cancelColor: {
 				type: String,
 				default: ''
 			},
+			// 确认按钮颜色，range模式下未选全显示灰色
 			confirmColor: {
 				type: String,
 				default: '#3c9cff'
 			},
+			// 标题
 			title: {
 				type: String,
 				default: ''
 			},
+			// 主题色
 			color: {
 				type: String,
 				default: '#3c9cff'
 			},
+			// 默认显示日期
 			date: {
 				type: [String,Array],
 				default: ''
 			},
+			// 打点等设置
 			selected: {
 				type: Array,
 				default () {
 					return []
 				}
 			},
+			// 是否显示农历
 			lunar: {
 				type: Boolean,
 				default: false
 			},
+			// 可选择的起始日期
 			startDate: {
 				type: String,
 				default: ''
 			},
+			// 可选择的结束日期
 			endDate: {
 				type: String,
 				default: ''
@@ -143,34 +149,42 @@
 				type: String,
 				default: ''
 			},
+			// 是否插入模式
 			insert: {
 				type: Boolean,
 				default: false
 			},
+			// 是否显示月份为背景
 			showMonth: {
 				type: Boolean,
 				default: true
 			},
+			// 弹窗模式是否清空上次选择内容
 			clearDate: {
 				type: Boolean,
 				default: true
 			},
+			// 弹窗圆角
 			round: {
 				type: [Number,String],
 				default: 8
 			},
+			// 点击遮罩是否关闭弹窗
 			closeOnClickOverlay: {
 				type: Boolean,
 				default: true
 			},
+			// range为true时，第一个日期底部的提示文字
 			startText: {
 				type: String,
 				default: '开始'
 			},
+			// range为true时，最后一个日期底部的提示文字
 			endText: {
 				type: String,
 				default: '结束'
-			}
+			},
+			...uni.$uv?.props?.calendars
 		},
 		data(){
 			return {

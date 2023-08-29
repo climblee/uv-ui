@@ -128,6 +128,12 @@
 						this.loading = true;
 					}
 				}
+			},
+			width(newVal){
+				this.imgWidth = newVal;
+			},
+			height(newVal){
+				this.imgHeight = newVal;
 			}
 		},
 		computed: {

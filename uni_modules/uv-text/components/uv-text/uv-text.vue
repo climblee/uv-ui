@@ -121,7 +121,10 @@
 				};
 				!this.type && (style.color = this.color);
 				this.isNvue && this.lines && (style.lines = this.lines);
-				this.isNvue && this.mode != 'price' && !this.prefixIcon && !this.suffixIcon && (style.flex = 1);
+				if(this.isNvue && this.mode != 'price' && !this.prefixIcon && !this.suffixIcon) {
+					 style.flex = 1;
+					 style.textAlign = this.align === 'left' ? 'flex-start' : this.align === 'center' ? 'center' : 'right';
+				}
 				this.lineHeight && (style.lineHeight = this.$uv.addUnit(this.lineHeight));
 				!this.isNvue && this.block && (style.display = 'block');
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle));

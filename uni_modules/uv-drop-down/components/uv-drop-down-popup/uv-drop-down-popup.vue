@@ -1,7 +1,7 @@
 <template>
 	<view class="uv-drop-down-popup">
 		<uv-transition :show="show" mode="fade" :duration="300" :custom-style="overlayStyle" @click="clickOverlay">
-			<view class="uv-dp__container" ref="uvDPContainer" :style="{height: `${height}px`}">
+			<view class="uv-dp__container" ref="uvDPContainer" :style="{height: `${height}px`}" @click.stop="blockClick">
 				<view class="uv-dp__container__list" ref="uvDPList">
 					<slot>
 						<view class="uv-dp__container__list--item" v-for="(item,index) in list" :key="index" @click="clickHandler(item,index)" :style="[itemCustomStyle(index)]">
@@ -137,9 +137,11 @@
 			this.init();
 		},
 		methods: {
+			blockClick() {},
 			clickHandler(item, index) {
 				this.currentDropItem.activeIndex = index;
 				this.$emit('clickItem', item);
+				this.close();
 			},
 			init() {
 				uni.$off(`${this.sign}_GETRECT`);

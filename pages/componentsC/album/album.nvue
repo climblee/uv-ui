@@ -1,0 +1,141 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础使用</text>
+			<view class="uv-demo-block__content">
+				<view class="album">
+					<view class="album__avatar">
+						<image src="/static/uvui/common/logo.png" mode="" style="width: 32px;height: 32px;"></image>
+					</view>
+					<view class="album__content">
+						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
+						<uv-text margin="0 0 8px 0" text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。"></uv-text>
+						<uv-album :urls="urls1" keyName="src2"></uv-album>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">多图模式</text>
+			<view class="uv-demo-block__content">
+				<view class="album">
+					<view class="album__avatar">
+						<image src="/static/uvui/common/logo.png" mode="" style="width: 32px;height: 32px;"></image>
+					</view>
+					<view class="album__content">
+						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
+						<uv-text margin="0 0 8px 0" text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。"></uv-text>
+						<uv-album :urls="urls2"></uv-album>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">图文对齐</text>
+			<view class="uv-demo-block__content">
+				<view class="album">
+					<view class="album__avatar">
+						<image src="/static/uvui/common/logo.png" mode="" style="width: 32px;height: 32px;"></image>
+					</view>
+					<view class="album__content">
+						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
+						<view :style="{
+							marginBottom: '8px',
+							width: albumWidth + 'px'
+						}">
+							<uv-text text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。" :customStyle="{
+									width: albumWidth + 'px'
+								}"></uv-text>
+						</view>
+						<uv-album :urls="urls2" @albumWidth="width => albumWidth = width" multipleSize="68"></uv-album>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">更改裁剪模式</text>
+			<view class="uv-demo-block__content">
+				<view class="album">
+					<view class="album__avatar">
+						<image src="/static/uvui/common/logo.png" mode="" style="width: 32px;height: 32px;"></image>
+					</view>
+					<view class="album__content">
+						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
+						<uv-text margin="0 0 8px 0" text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。"></uv-text>
+						<uv-album :urls="urls3" rowCount="2" maxCount="4" multipleMode="scaleToFill"></uv-album>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">更改图片大小</text>
+			<view class="uv-demo-block__content">
+				<view class="album">
+					<view class="album__avatar">
+						<image src="/static/uvui/common/logo.png" mode="" style="width: 32px;height: 32px;"></image>
+					</view>
+					<view class="album__content">
+						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
+						<uv-text margin="0 0 8px 0" text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。"></uv-text>
+						<uv-album :urls="urls4" rowCount="2" maxCount="4" multipleSize="50"></uv-album>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				albumWidth: 0,
+				urls1: [{
+					src2: 'https://via.placeholder.com/400x200.png/3c9cff/fff',
+				}],
+				urls2: [
+					'https://via.placeholder.com/100x200.png/3c9cff/fff',
+					'https://via.placeholder.com/200x200.png/3c9cff/fff',
+					'https://via.placeholder.com/300x200.png/3c9cff/fff',
+					'https://via.placeholder.com/280x200.png/3c9cff/fff',
+					'https://via.placeholder.com/240x200.png/3c9cff/fff',
+					'https://via.placeholder.com/180x200.png/3c9cff/fff',
+					'https://via.placeholder.com/140x200.png/3c9cff/fff',
+					'https://via.placeholder.com/150x200.png/3c9cff/fff',
+					'https://via.placeholder.com/90x200.png/3c9cff/fff',
+					'https://via.placeholder.com/220x200.png/3c9cff/fff',
+				],
+				urls3: [
+					'https://via.placeholder.com/100x200.png/3c9cff/fff',
+					'https://via.placeholder.com/200x200.png/3c9cff/fff',
+					'https://via.placeholder.com/300x200.png/3c9cff/fff',
+					'https://via.placeholder.com/250x200.png/3c9cff/fff',
+				],
+				urls4: [
+					'https://via.placeholder.com/100x200.png/3c9cff/fff',
+					'https://via.placeholder.com/200x200.png/3c9cff/fff',
+					'https://via.placeholder.com/300x200.png/3c9cff/fff',
+					'https://via.placeholder.com/250x200.png/3c9cff/fff',
+				]
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	$uv-bg-color: #f3f4f6 !default;
+	@import '@/common/demo.scss';
+	.album {
+		@include flex;
+		align-items: flex-start;
+		&__avatar {
+			background-color: $uv-bg-color;
+			padding: 5px;
+			border-radius: 3px;
+		}
+		&__content {
+			margin-left: 10px;
+			flex: 1;
+		}
+	}
+</style>

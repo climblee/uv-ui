@@ -12,7 +12,7 @@ export default [{
 		{
 			path: '/pages/componentsB/calendars/calendars',
 			icon: 'calendar',
-			title: 'Calendar 新版日历（强烈推荐）',
+			title: 'Calendar 新版日历（推荐）',
 			title_en: 'Calendar',
 			isNew: true
 		},
@@ -328,6 +328,11 @@ export default [{
 		icon: 'grid',
 		title: 'Grid 宫格布局',
 		title_en: 'Grid'
+	}, {
+		path: '/pages/componentsC/album/album',
+		icon: 'album',
+		title: 'Album 相册',
+		title_en: 'Album'
 	}]
 }, {
 	groupName: '导航组件',

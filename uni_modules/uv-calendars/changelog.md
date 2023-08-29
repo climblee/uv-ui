@@ -1,3 +1,5 @@
+## 1.0.8（2023-08-29）
+1. 修复mainjs中设置setConfig修改属性不生效的问题，出自评论区：https://ext.dcloud.net.cn/plugin?id=12287
 ## 1.0.7（2023-08-26）
 1. 去除range参数，由mode="range"替换
 2. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围

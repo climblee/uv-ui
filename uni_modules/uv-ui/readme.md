@@ -131,6 +131,7 @@
 | uv-swiper | [轮播图](https://www.uvui.cn/components/swiper.html) |
 | uv-collapse | [折叠面板](https://www.uvui.cn/components/collapse.html) |
 | uv-grid | [宫格布局](https://www.uvui.cn/components/grid.html) |
+| uv-album | [相册](https://www.uvui.cn/components/album.html) |
 | uv-tabbar | [底部导航栏](https://www.uvui.cn/components/tabbar.html) |
 | uv-back-top | [返回顶部](https://www.uvui.cn/components/backTop.html) |
 | uv-navbar | [自定义导航栏](https://www.uvui.cn/components/navbar.html) |

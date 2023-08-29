@@ -288,6 +288,11 @@
 				"style": {
 					"navigationBarTitleText": "ScrollList 横向滚动列表"
 				}
+			}, {
+				"path": "album/album",
+				"style": {
+					"navigationBarTitleText": "Album 相册"
+				}
 			}
 		]
 	}, {
