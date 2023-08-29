@@ -1,7 +1,7 @@
 <template>
 	<!-- #ifndef APP-NVUE -->
 	<view 
-		class="uv-list uv-border-top-bottom"
+		class="uv-list"
 		:style="[$uv.addStyle(customStyle)]"
 	>
 		<view 
