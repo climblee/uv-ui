@@ -31,7 +31,16 @@
 				}"
 			>
 				<slot>
-					<text class="uv-modal__content__text">{{ content }}</text>
+					<text 
+						class="uv-modal__content__text"
+						:style="[
+							{
+								textAlign: align
+							},
+							nvueStyle,
+							$uv.addStyle(textStyle)
+						]"
+					>{{ content }}</text>
 				</slot>
 			</view>
 			<slot name="confirmButton">
@@ -106,6 +115,8 @@
 	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭该组件 （默认 true ）
 	 * @property {String | Number}	negativeTop			往上偏移的值，给一个负的margin-top，往上偏移，避免和键盘重合的情况，单位任意，数值则默认为px单位 （默认 0 ）
 	 * @property {String | Number}	width				modal宽度，不支持百分比，可以数值，px，rpx单位 （默认 '650rpx' ）
+	 * @property {String} align 文本对齐方式 （默认'left'） 
+	 * @property {String | Object} textStyle 文本扩展样式
 	 * @event {Function} confirm	点击确认按钮时触发
 	 * @event {Function} cancel		点击取消按钮时触发
 	 * @event {Function} close		点击遮罩关闭出发，closeOnClickOverlay为true有效
@@ -117,6 +128,16 @@
 		data() {
 			return {
 				loading: false
+			}
+		},
+		computed: {
+			nvueStyle() {
+				const style = {};
+				// 避免nvue中不能换行的问题
+				// #ifdef APP-NVUE
+				style.width = this.$uv.addUnit(this.$uv.getPx(this.width) - 50,'px');
+				// #endif
+				return style;
 			}
 		},
 		methods: {
@@ -178,6 +199,7 @@
 			justify-content: center;
 
 			&__text {
+				line-height: 48rpx;
 				font-size: 15px;
 				color: $uv-content-color;
 				flex: 1;

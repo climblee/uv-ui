@@ -75,6 +75,16 @@ export default {
 			type: [String, Number],
 			default: '650rpx'
 		},
+		// 文本对齐方式，默认left
+		align: {
+			type: String,
+			default: 'left'
+		},
+		// 文本自定义样式
+		textStyle: {
+			type: Object,
+			default: ()=>{}
+		},
 		...uni.$uv?.props?.modal
 	}
 }
