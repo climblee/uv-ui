@@ -36,6 +36,7 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-album",
 			"uv-drop-down",
 			"uv-calendars",
 			"uv-scroll-list",
