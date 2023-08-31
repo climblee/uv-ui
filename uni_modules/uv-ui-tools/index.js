@@ -48,7 +48,10 @@ const $uv = {
 uni.$uv = $uv;
 const install = (Vue,options={}) => {
 		// #ifndef APP-NVUE
-		Vue.mixin(mixin);
+		const cloneMixin = index.deepClone(mixin);
+		delete cloneMixin?.props?.customClass;
+		delete cloneMixin?.props?.customStyle;
+		Vue.mixin(cloneMixin);
 		// #ifdef MP
 		if(options.mpShare){
 			Vue.mixin(mpShare);
