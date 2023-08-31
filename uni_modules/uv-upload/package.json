@@ -38,7 +38,8 @@
     "dependencies": [
 			"uv-ui-tools",
 			"uv-icon",
-			"uv-loading-icon"
+			"uv-loading-icon",
+			"uv-popup"
 		],
     "encrypt": [],
     "platforms": {
