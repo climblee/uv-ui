@@ -1,5 +1,6 @@
 <template>
 	<uv-transition
+		v-if="show"
 		:show="show"
 		mode="fade"
 		:duration="fade ? duration : 0"
@@ -130,9 +131,19 @@
 				}
 			},
 			width(newVal){
+				// 这样做的目的是避免在更新时候，某些平台动画会恢复关闭状态
+				this.show = false;
+				this.$uv.sleep(2).then(res=>{
+					this.show = true;
+				});
 				this.imgWidth = newVal;
 			},
 			height(newVal){
+				// 这样做的目的是避免在更新时候，某些平台动画会恢复关闭状态
+				this.show = false;
+				this.$uv.sleep(2).then(res=>{
+					this.show = true;
+				});
 				this.imgHeight = newVal;
 			}
 		},
@@ -140,8 +151,12 @@
 			wrapStyle() {
 				let style = {};
 				// 通过调用addUnit()方法，如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上rpx单位
-				style.width = this.$uv.addUnit(this.imgWidth);
-				style.height = this.$uv.addUnit(this.imgHeight);
+				if(this.mode !== 'heightFix') {
+					style.width = this.$uv.addUnit(this.imgWidth);
+				}
+				if(this.mode !== 'widthFix') {
+					style.height = this.$uv.addUnit(this.imgHeight);
+				}
 				// 如果是显示圆形，设置一个很多的半径值即可
 				style.borderRadius = this.shape == 'circle' ? '10000px' : this.$uv.addUnit(this.radius)
 				// 如果设置圆角，必须要有hidden，否则可能圆角无效
