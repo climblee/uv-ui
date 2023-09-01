@@ -420,11 +420,5 @@
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
 	},
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uv-(.*)": "uni_modules/uv-$1/components/uv-$1/uv-$1.vue"
-		}
-	},
 	"uniIdRouter": {}
 }
