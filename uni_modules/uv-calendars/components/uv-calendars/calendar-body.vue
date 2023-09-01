@@ -52,7 +52,7 @@
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js';
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js';
 
-	import CalendarItem from './uv-calendar-item.vue';
+	import CalendarItem from './calendar-item.vue';
 
 	import { initVueI18n } from '@dcloudio/uni-i18n';
 	import i18nMessages from './i18n/index.js';

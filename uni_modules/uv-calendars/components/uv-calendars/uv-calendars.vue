@@ -1,7 +1,7 @@
 <template>
 	<view class="uv-calendar">
 		<view class="uv-calendar__content" v-if="insert">
-			<uv-calendar-body
+			<calendar-body
 				:date="date"
 				:nowDate="nowDate"
 				:weeks="weeks"
@@ -18,7 +18,7 @@
 				@next="next"
 				@backToday="backToday"
 				@choiceDate="choiceDate"
-			></uv-calendar-body>
+			></calendar-body>
 		</view>
 		<uv-popup ref="popup" mode="bottom" v-else :round="round" z-index="998" :close-on-click-overlay="closeOnClickOverlay" @maskClick="maskClick">
 			<view style="min-height: 100px;">
@@ -32,7 +32,7 @@
 					@cancel="close"
 					@confirm="confirm"></uv-toolbar>
 				<view class="line"></view>
-				<uv-calendar-body
+				<calendar-body
 					:nowDate="nowDate"
 					:weeks="weeks"
 					:calendar="calendar"
@@ -48,7 +48,7 @@
 					@next="next"
 					@backToday="backToday"
 					@choiceDate="choiceDate"
-				></uv-calendar-body>
+				></calendar-body>
 			</view>
 		</uv-popup>
 	</view>
@@ -86,13 +86,13 @@
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js';
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js';
 	import Calendar from './util.js';
-	import uvCalendarBody from './uv-calendar-body.vue';
+	import calendarBody from './calendar-body.vue';
 	import { initVueI18n } from '@dcloudio/uni-i18n';
 	import i18nMessages from './i18n/index.js';
 	const { t } = initVueI18n(i18nMessages);
 	export default {
 		components: {
-			uvCalendarBody
+			calendarBody
 		},
 		mixins: [mpMixin, mixin],
 		emits: ['close', 'confirm', 'change', 'monthSwitch'],

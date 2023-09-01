@@ -352,6 +352,7 @@
 				const len = this.children.length
 				let children = this.children
 				const anchors = this.anchors
+				const customNavHeight = this.$uv.getPx(this.customNavHeight);
 				// #ifdef APP-NVUE
 				// nvue下获取的滚动条偏移为负数，需要转为正数
 				scrollTop = Math.abs(e.contentOffset.y)
@@ -380,7 +381,7 @@
 					const item = children[i],
 						nextItem = children[i + 1]
 					// 如果滚动条高度小于第一个item的top值，此时无需设置任意字母为高亮
-					if (scrollTop <= children[0].top || scrollTop >= children[len - 1].top + children[len -
+					if (scrollTop + customNavHeight <= children[0].top || scrollTop >= children[len - 1].top + children[len -
 							1].height) {
 						this.activeIndex = -1
 						break
@@ -388,7 +389,7 @@
 						// 当不存在下一个item时，意味着历遍到了最后一个
 						this.activeIndex = len - 1
 						break
-					} else if (scrollTop > item.top && scrollTop < nextItem.top) {
+					} else if (scrollTop + customNavHeight > item.top && scrollTop + customNavHeight < nextItem.top) {
 						this.activeIndex = i
 						break
 					}

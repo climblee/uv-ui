@@ -1,3 +1,5 @@
+## 1.0.9（2023-09-01）
+1. 修复在pages.json中设置easycom会报错的BUG
 ## 1.0.8（2023-08-29）
 1. 修复mainjs中设置setConfig修改属性不生效的问题，出自评论区：https://ext.dcloud.net.cn/plugin?id=12287
 ## 1.0.7（2023-08-26）
