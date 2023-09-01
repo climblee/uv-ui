@@ -155,8 +155,8 @@
 						title: '星星'
 					},
 					{
-						name: 'hourglass',
-						title: '沙漏'
+						name: 'map',
+						title: '地图'
 					},
 					{
 						name: 'home',
@@ -167,7 +167,7 @@
 						title: '音量'
 					},
 				],
-				swiperList: ['integral', 'kefu-ermai', 'coupon', 'gift', 'scan', 'pause-circle', 'wifi', 'email', 'list'],
+				swiperList: ['integral', 'kefu-ermai', 'coupon', 'gift', 'scan', 'pause-circle', 'volume-off', 'email', 'list'],
 			}
 		},
 		methods: {
