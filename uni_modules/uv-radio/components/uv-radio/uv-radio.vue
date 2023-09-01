@@ -20,17 +20,19 @@
 				/>
 			</slot>
 		</view>
-		<slot>
-			<text
-				class="uv-radio__text"
-				@tap.stop="labelClickHandler"
-				:style="{
-					color: elDisabled ? elInactiveColor : elLabelColor,
-					fontSize: elLabelSize,
-					lineHeight: elLabelSize
-				}"
-			>{{label}}</text>
-		</slot>
+		<view
+			class="uv-radio__label-wrap" 
+			@tap.stop="labelClickHandler">
+			<slot>
+				<text
+					:style="{
+						color: elDisabled ? elInactiveColor : elLabelColor,
+						fontSize: elLabelSize,
+						lineHeight: elLabelSize
+					}"
+				>{{label}}</text>
+			</slot>
+		</view>
 	</view>
 </template>
 <script>
@@ -253,7 +255,7 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-	$uv-radio-wrap-margin-right: 6px !default;
+	$uv-radio-label-wrap-padding-right: 6px !default;
 	$uv-radio-wrap-font-size: 20px !default;
 	$uv-radio-wrap-border-width: 1px !default;
 	$uv-radio-wrap-border-color: #c8c9cc !default;
@@ -297,7 +299,6 @@
 			justify-content: center;
 			color: transparent;
 			text-align: center;
-			margin-right: $uv-radio-wrap-margin-right;
 			font-size: $uv-radio-wrap-font-size;
 			border-width: $uv-radio-wrap-border-width;
 			border-color: $uv-radio-wrap-border-color;
@@ -337,6 +338,9 @@
 			&--disabled {
 				color: $uv-radio-label-disabled-color;
 			}
+		}
+		&__label-wrap {
+			padding-left: $uv-radio-label-wrap-padding-right;
 		}
 	}
 </style>

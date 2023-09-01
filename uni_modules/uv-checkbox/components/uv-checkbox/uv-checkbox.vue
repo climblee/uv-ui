@@ -20,16 +20,20 @@
 				/>
 			</slot>
 		</view>
-		<slot>
-			<text
-			  @tap.stop="labelClickHandler"
-			  :style="{
-					color: elDisabled ? elInactiveColor : elLabelColor,
-					fontSize: elLabelSize,
-					lineHeight: elLabelSize
-				}"
-			>{{label}}</text>
-		</slot>
+		<view 
+			class="uv-checkbox__label-wrap" 
+			@tap.stop="labelClickHandler">
+			<slot>
+				<text
+				  :style="{
+						color: elDisabled ? elInactiveColor : elLabelColor,
+						fontSize: elLabelSize,
+						lineHeight: elLabelSize
+					}"
+				>{{label}}</text>
+			</slot>
+		</view>
+		
 	</view>
 </template>
 
@@ -260,7 +264,7 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-	$uv-checkbox-icon-wrap-margin-right:6px !default;
+	$uv-checkbox-label-wrap-padding-right:6px !default;
 	$uv-checkbox-icon-wrap-font-size:6px !default;
 	$uv-checkbox-icon-wrap-border-width:1px !default;
 	$uv-checkbox-icon-wrap-border-color:#c8c9cc !default;
@@ -308,8 +312,6 @@
 			justify-content: center;
 			color: transparent;
 			text-align: center;
-			margin-right: $uv-checkbox-icon-wrap-margin-right;
-
 			font-size: $uv-checkbox-icon-wrap-font-size;
 			border-width: $uv-checkbox-icon-wrap-border-width;
 			border-color: $uv-checkbox-icon-wrap-border-color;
@@ -358,6 +360,10 @@
 			&--disabled {
 				color: $uv-checkbox-label-disabled-color;
 			}
+		}
+		
+		&__label-wrap {
+			padding-left: $uv-checkbox-label-wrap-padding-right;
 		}
 	}
 </style>
