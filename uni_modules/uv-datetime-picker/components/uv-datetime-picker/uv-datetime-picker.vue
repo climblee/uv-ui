@@ -120,8 +120,10 @@
 					value: this.innerValue,
 					mode: this.mode
 				})
-				this.$emit('input', this.innerValue)
-				this.$emit('update:modelValue', this.innerValue)
+				if(!this.clearDate) {
+					this.$emit('input', this.innerValue)
+					this.$emit('update:modelValue', this.innerValue)
+				}
 			},
 			//用正则截取输出值,当出现多组数字时,抛出错误
 			intercept(e, type) {

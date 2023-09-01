@@ -115,6 +115,11 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		// 是否清空上次选择内容
+		clearDate: {
+			type: Boolean,
+			default: false
+		},
 		...uni.$uv?.props?.datetimePicker
 	}
 }
