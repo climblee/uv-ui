@@ -1,3 +1,13 @@
+## 1.1.11（2023-09-02）
+1. 优化 uv-calendars a. 去除range参数，由mode="range"替换；b. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围；c. 与uv-calendar选择日期的功能保持一致
+2. 优化 uv-modal a. 增加align参数，设置文本对齐方式；b. 增加textStyle参数，扩展文本样式
+3. 优化 uv-datetime-picker a. 增加mode="year"模式，方便只选择年；b. 增加clearDate参数，是否清除上次选择
+4. 修复 uv-ui-tools 设置customstyle同名计算属性报错：The computed property "customStyle" is already defined as a prop
+5. 修复 uv-image a. 设置widthFix时出现显示不全的BUG；b. 修复抖音等平台在width和height属性改变时出现不显示的BUG
+6. 修复 uv-checkbox 点击空隙处或label插槽内容不会选中的问题
+7. 修复 uv-radio 点击空隙处或label插槽内容不会选中的问题
+8. 修复 uv-calendars 在pages.json中设置easycom会报错的BUG
+9. 修复 uv-index-list 设置customNavHeight导致定位不准确的BUG
 ## 1.1.10（2023-08-30）
 1. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913
 2. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892

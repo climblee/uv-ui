@@ -25,7 +25,7 @@
 					<view class="album__content">
 						<uv-text text="uvui" type="primary" bold size="17"></uv-text>
 						<uv-text margin="0 0 8px 0" text="uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。"></uv-text>
-						<uv-album :urls="urls2"></uv-album>
+						<uv-album :urls="urls2" :multipleSize="62"></uv-album>
 					</view>
 				</view>
 			</view>
