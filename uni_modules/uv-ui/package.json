@@ -32,7 +32,7 @@
 			"data": "无",
 			"permissions": "无"
 		},
-		"npmurl": ""
+		"npmurl": "https://www.npmjs.com/package/@climblee/uv-ui"
 	},
 	"uni_modules": {
 		"dependencies": [

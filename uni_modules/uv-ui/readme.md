@@ -9,7 +9,7 @@
 [![star](https://img.shields.io/github/stars/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui)
 [![issues](https://img.shields.io/github/issues/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui/issues)
 [![Website](https://img.shields.io/badge/uvui-up-blue?style=flat-square)](https://www.uvui.cn)
-[![version](https://img.shields.io/badge/version-1.1.10-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
+[![version](https://img.shields.io/badge/version-1.1.11-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
 [![license](https://img.shields.io/github/license/climblee/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
@@ -45,7 +45,11 @@
 
 ## 快速开始
 
-`uv-ui` 强烈建议通过 `下载插件并导入HbuilderX` 导入组件。或者下载完整 [uv-ui项目](https://ext.dcloud.net.cn/plugin?id=12287) 将 `uni_modules` 复制到自己的项目。道路千万条，选择最适合自己的一条。
+方式一：`uv-ui` 强烈建议通过 `下载插件并导入HbuilderX` 导入组件。
+
+方式二：下载完整 [uv-ui项目](https://ext.dcloud.net.cn/plugin?id=12287) 将 `uni_modules` 复制到自己的项目。
+
+方式三：通过 `npm i @climblee/uv-ui` 下载，此方法需要配置 easycom，配置详情可查看[安装](https://www.uvui.cn/components/install.html)。
 
 请通过[快速上手](https://www.uvui.cn/components/quickstart.html)了解更详细的内容。
 
