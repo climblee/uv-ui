@@ -55,6 +55,7 @@
 	 */
 	export default {
 		mixins: [mpMixin, mixin, props],
+		emits: ['backspace','change'],
 		data() {
 			return {
 				backspace: 'backspace', // 退格键内容

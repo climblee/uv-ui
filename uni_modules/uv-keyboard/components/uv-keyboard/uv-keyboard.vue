@@ -44,21 +44,21 @@
 				</view>
 			</view>
 			<template v-if="mode == 'number' || mode == 'card'">
-				<uv-number-keyboard
+				<uv-keyboard-number
 				  :random="random"
 				  @backspace="backspace"
 				  @change="change"
 				  :mode="mode"
 				  :dotDisabled="dotDisabled"
-				></uv-number-keyboard>
+				></uv-keyboard-number>
 			</template>
 			<template v-else>
-				<uv-car-keyboard
+				<uv-keyboard-car
 				  :random="random"
 					:autoChange="autoChange"
 				  @backspace="backspace"
 				  @change="change"
-				></uv-car-keyboard>
+				></uv-keyboard-car>
 			</template>
 		</view>
 	</uv-popup>
@@ -97,6 +97,7 @@
 	export default {
 		name: "uv-keyboard",
 		mixins: [mpMixin, mixin, props],
+		emits: ['close','change','confirm','cancel','backspace'],
 		methods: {
 			open() {
 				this.$refs.keyboardPopup.open();

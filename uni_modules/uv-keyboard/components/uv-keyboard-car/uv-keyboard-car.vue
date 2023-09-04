@@ -83,6 +83,7 @@
 	export default {
 		name: "uv-keyboard",
 		mixins: [mpMixin, mixin, props],
+		emits: ['backspace','change'],
 		data() {
 			return {
 				// 车牌输入时，abc=true为输入车牌号码，bac=false为输入省份中文简称
