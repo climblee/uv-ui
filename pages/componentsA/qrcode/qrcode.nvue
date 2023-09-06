@@ -5,6 +5,7 @@
 			<view class="uv-demo-block__content">
 				<view class="uv-page__button-item">
 					<uv-qrcode ref="uvqrcode"
+						:options="options1"
 						value="https://h5.uvui.cn"></uv-qrcode>
 				</view>
 			</view>
@@ -45,6 +46,9 @@
 	export default {
 		data() {
 			return {
+				options1: {
+					foregroundImageSrc: 'https://www.uvui.cn/common/logo.png'
+				},
 				options2: {
 					data: 'https://www.uvui.cn',
 					size: 300,
@@ -55,7 +59,8 @@
 					backgroundColor: "#3c9cff"
 				},
 				options3: {
-					style: 'round'
+					style: 'round',
+					foregroundImageSrc: 'https://www.uvui.cn/common/logo.png'
 				}
 			}
 		},
