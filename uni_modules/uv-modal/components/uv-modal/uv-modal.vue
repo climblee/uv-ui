@@ -208,11 +208,7 @@
 
 		&__button-group {
 			@include flex;
-
-			&--confirm-button {
-				flex-direction: column;
-				padding: 0px 25px 15px 25px;
-			}
+			height: 48px;
 
 			&__wrapper {
 				flex: 1;

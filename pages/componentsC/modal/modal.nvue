@@ -87,13 +87,16 @@
 				showCancelButton
 				@close="close"
 			>
-				<uv-button
-					slot="confirmButton"
-					text="确定"
-					type="success"
-					shape="circle"
-					@click="confirmClickHandler"
-				></uv-button>
+				<template v-slot:confirmButton>
+					<view style="padding: 0px 25px 15px 25px;">
+						<uv-button
+							text="确定"
+							type="success"
+							shape="circle"
+							@click="confirmClickHandler"
+						></uv-button>
+					</view>
+				</template>
 			</uv-modal>
 			<uv-modal
 				ref="modal9"
