@@ -52,6 +52,16 @@
 				}
 			},
 		},
+		onLoad() {
+			// #ifdef APP-NVUE
+			uni.showModal({
+				title: '温馨提示',
+				content: '图片等资源由于防盗链暂时无法在APP访问，所以您可能将要看到的图片都无法正常显示。大部分组件与H5效果一致，您也可以查看H5演示。',
+				showCancel: false,
+				confirmText: '我知道了'
+			})
+			// #endif
+		},
 		onPageScroll(e) {
 			this.scrollTop = e.scrollTop;
 			// #ifdef APP-NVUE

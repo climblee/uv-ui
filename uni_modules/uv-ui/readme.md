@@ -9,7 +9,7 @@
 [![star](https://img.shields.io/github/stars/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui)
 [![issues](https://img.shields.io/github/issues/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui/issues)
 [![Website](https://img.shields.io/badge/uvui-up-blue?style=flat-square)](https://www.uvui.cn)
-[![version](https://img.shields.io/badge/version-1.1.11-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
+[![version](https://img.shields.io/badge/version-1.1.12-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
 [![license](https://img.shields.io/github/license/climblee/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
@@ -27,9 +27,9 @@
 
 ## 预览
 
-通过微信或浏览器扫码查看演示效果。
+通过微信或浏览器扫码查看演示效果。二维码依次是：H5、APP-NVUE、微信小程序。
 
-<img src="https://www.uvui.cn/common/h5_qrcode.png" width="180" height="180" />
+<img src="https://www.uvui.cn/common/h5_qrcode.png" width="160" height="160" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://mp-10ee0fed-b83c-4409-ad24-f7e49ff65c55.cdn.bspapp.com/apk/uvui.jpg" width="160" height="160" />
 
 ## 链接
 
