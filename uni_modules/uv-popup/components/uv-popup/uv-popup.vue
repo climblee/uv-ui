@@ -115,7 +115,12 @@
 			// 层级
 			zIndex: {
 				type: [String, Number],
+				// #ifdef H5
+				default: 997
+				// #endif
+				// #ifndef H5
 				default: 10075
+				// #endif
 			},
 			bgColor: {
 				type: String,
@@ -173,7 +178,8 @@
 			round: {
 				type: [Number, String],
 				default: 0
-			}
+			},
+			...uni.$uv?.props?.popup
 		},
 		watch: {
 			/**

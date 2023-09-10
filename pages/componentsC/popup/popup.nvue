@@ -149,7 +149,7 @@
 				this.timer && clearTimeout(this.timer);
 				this.timer = setTimeout(()=>{
 					this.$refs.popup.open();
-				},200)
+				},10)
 			},
 			close() {
 				this.$refs.popup.close();
@@ -167,7 +167,6 @@
 <style lang="scss">
 	@import '@/common/demo.scss';
 	.uv-popup-slot {
-		width: 200px;
 		height: 150px;
 		@include flex;
 		justify-content: center;
