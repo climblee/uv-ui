@@ -42,7 +42,7 @@
 			return {
 				scrollTop: 0,
 				list: list,
-				desc: 'uv-ui 破釜沉舟之兼容vue3+2、app、h5、小程序等多端基于uni-app的生态框架，支持单独导入，开箱即用，利剑出击。',
+				desc: 'uv-ui 破釜沉舟之兼容vue3+2、nvue、app、h5、小程序等多端基于uni-app的生态框架，支持单独导入，开箱即用，利剑出击。',
 			}
 		},
 		computed: {
