@@ -1,8 +1,7 @@
 <template>
 	<view class="nav-wrap">
 		<view class="nav-title">
-			<uv-image :showLoading="true" src="/static/uvui/common/logo.png?v=1" width="70px"
-				height="70px" />
+			<uv-image :showLoading="true" src="/static/uvui/common/logo.png" width="70px" height="70px" />
 			<view class="nav-info">
 				<view class="nav-info__title" @tap="jumpToWx">
 					<text class="nav-info__title__text">uv-ui {{version}}</text>
