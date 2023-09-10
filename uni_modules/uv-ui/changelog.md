@@ -1,3 +1,9 @@
+## 1.1.12（2023-09-10）
+1. 修复 uv-popup a. h5初始zIndex错误的问题；b. 修复全局设置prop无效的问题
+2. 修复 uv-button 修复多个按钮由view包裹，显示在一行宽度不正常的BUG
+3. 修复 uv-modal a. 修复两个按钮之间竖线不显示的问题；b. uv-ui项目自定义按钮示例修复
+4. 修复 uv-calendars 修复国际化失效的BUG
+5. 修复 uv-keyboard 修复键盘change回调事件产生冲突的BUG
 ## 1.1.11（2023-09-02）
 1. 优化 uv-calendars a. 去除range参数，由mode="range"替换；b. 新增mode参数，不传 / multiple / range，分别为单日期， 多个日期，选择日期范围；c. 与uv-calendar选择日期的功能保持一致
 2. 优化 uv-modal a. 增加align参数，设置文本对齐方式；b. 增加textStyle参数，扩展文本样式
