@@ -1,15 +1,17 @@
 
 <template>
-	<view>
-		<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
+	<view class="waterfall">
+		<view style="height: 100rpx;background-color: #fff;">
+			<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
+		</view>
 		<view class="waterfall">
 			<!-- #ifndef APP-NVUE -->
 			<uv-waterfall ref="waterfall"
 				v-model="list"
-				:add-time="80"
-				left-gap="10"
-				right-gap="10"
-				column-gap="8"
+				:add-time="10"
+				:left-gap="leftGap"
+				:right-gap="rightGap"
+				:column-gap="columnGap"
 				@changeList="changeList"
 				@remove="remove">
 				<!-- 第一列数据 -->
@@ -20,7 +22,7 @@
 							:key="item.id"
 							class="waterfall-item"
 							@longpress="longHandle(item)">
-							<view class="waterfall-item__image">
+							<view class="waterfall-item__image" :style="imageStyle(item)">
 								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
 							<view class="waterfall-item__ft">
@@ -44,7 +46,7 @@
 						<view v-for="(item, index) in list2"
 							:key="item.id"
 							class="waterfall-item">
-							<view class="waterfall-item__image">
+							<view class="waterfall-item__image" :style="imageStyle(item)">
 								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
 							<view class="waterfall-item__ft">
@@ -67,6 +69,7 @@
 				left-gap="10"
 				right-gap="10"
 				column-gap="8"
+				:height="waterfallHeight"
 				@scrolltolower="init">
 					<cell 
 						v-for="(item,index) in list"
@@ -74,7 +77,7 @@
 					>
 						<view class="waterfall-item">
 							<view class="waterfall-item__image">
-									<image :src="item.image" mode="widthFix" style="width: 400rpx;"></image>
+									<image class="img" :src="item.image" mode="widthFix" style="border-radius: 20rpx;"></image>
 							</view>
 							<view class="waterfall-item__ft">
 								<view class="waterfall-item__ft__title">
@@ -93,14 +96,34 @@
 	</view>
 </template>
 <script>
-	import { guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { guid } from '@climblee/uv-ui/libs/function/index.js'
 	export default {
 		data() {
 			return {
 				list: [],// 瀑布流全部数据
 				list1: [],// 瀑布流第一列数据
 				list2: [],// 瀑布流第二列数据
-				loadStatus: 'loadmore'
+				loadStatus: 'loadmore',
+				leftGap: 10,
+				rightGap: 10,
+				columnGap: 10
+			}
+		},
+		computed: {
+			waterfallHeight() {
+				return uni.$uv.sys().windowHeight - uni.$uv.getPx('100rpx');
+			},
+			imageStyle(item) {
+				return item=>{
+					const v = uni.upx2px(750) - this.leftGap - this.rightGap - this.columnGap;
+					const w = v/2;
+					const rate = w / item.w;
+					const h = rate* item.h;
+					return {
+						width: w + 'px',
+						height: h + 'px'
+					}
+				}
 			}
 		},
 		async onLoad() {
@@ -195,16 +218,18 @@
 			getData() {
 				return new Promise((resolve)=>{
 					const imgs = [
-						'https://cdn.uviewui.com/uview/album/1.jpg',
-						'https://cdn.uviewui.com/uview/album/2.jpg',
-						'https://cdn.uviewui.com/uview/album/3.jpg',
-						'https://cdn.uviewui.com/uview/album/4.jpg',
-						'https://cdn.uviewui.com/uview/album/5.jpg',
-						'https://cdn.uviewui.com/uview/album/6.jpg',
-						'https://cdn.uviewui.com/uview/album/7.jpg',
-						'https://cdn.uviewui.com/uview/album/8.jpg',
-						'https://cdn.uviewui.com/uview/album/9.jpg',
-						'https://cdn.uviewui.com/uview/album/10.jpg',
+						{url: 'https://via.placeholder.com/100x110.png/3c9cff/fff',width: 100, height: 110},
+						{url: 'https://via.placeholder.com/200x220.png/f9ae3d/fff',width: 200, height: 220},
+						{url: 'https://via.placeholder.com/300x340.png/5ac725/fff',width: 300, height: 340},
+						{url: 'https://via.placeholder.com/400x400.png/f56c6c/fff',width: 400, height: 400},
+						{url: 'https://via.placeholder.com/500x510.png/909399/fff',width: 500, height: 510},
+						{url: 'https://via.placeholder.com/600x606.png/3c9cff/fff',width: 600, height: 606},
+						{url: 'https://via.placeholder.com/310x422.png/f1a532/fff',width: 310, height: 422},
+						{url: 'https://via.placeholder.com/320x430.png/3c9cff/fff',width: 320, height: 430},
+						{url: 'https://via.placeholder.com/330x424.png/f9ae3d/fff',width: 330, height: 424},
+						{url: 'https://via.placeholder.com/340x435.png/5ac725/fff',width: 340, height: 435},
+						{url: 'https://via.placeholder.com/350x440.png/f56c6c/fff',width: 350, height: 440},
+						{url: 'https://via.placeholder.com/380x470.png/909399/fff',width: 380, height: 470}
 					];
 					let list = [];
 					const doFn = (i)=>{
@@ -212,7 +237,9 @@
 						return {
 							id: guid(),
 							allowEdit: i==0,
-							image: imgs[randomIndex],
+							image: imgs[randomIndex].url,
+							w: imgs[randomIndex].width,
+							h: imgs[randomIndex].height,
 							title: i % 2 == 0 ? `(${this.list.length + i + 1})体验uv-ui框架`: `(${this.list.length + i +1})uv-ui支持多平台`,
 							desc: i % 2 == 0 ? `(${this.list.length + i + 1})欢迎使用uv-ui，uni-app生态专用的UI框架` : 
 							`(${this.list.length + i})开发者编写一套代码， 可发布到iOS、Android、H5、以及各种小程序`
@@ -239,7 +266,10 @@
 </style>
 <style scoped lang="scss">
 	$show-lines: 1;
-	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
+	@import '@climblee/uv-ui/libs/css/variable.scss';
+	.waterfall {
+		background-color: #f1f1f1;
+	}
 	.waterfall-item {
 		overflow: hidden;
 		margin-top: 10px;
