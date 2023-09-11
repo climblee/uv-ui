@@ -138,6 +138,11 @@ export default {
 			type: String,
 			default: ''
 		},
+		// 按钮图标大小
+		iconSize: {
+			type: [String, Number],
+			default: ''
+		},
 		// 按钮图标颜色
 		iconColor: {
 			type: String,

@@ -78,7 +78,7 @@
           v-if="icon"
           :name="icon"
           :color="iconColorCom"
-          :size="textSize * 1.35"
+          :size="getIconSize"
           :customStyle="{ marginRight: '2px' }"
         ></uv-icon>
         <slot>
@@ -126,7 +126,7 @@
           v-if="icon"
           :name="icon"
           :color="iconColorCom"
-          :size="textSize * 1.35"
+          :size="getIconSize"
         ></uv-icon>
         <text
           class="uv-button__text"
@@ -292,6 +292,11 @@ export default {
 				if (size === "mini") fontSize = 10;
 				return fontSize;
 			},
+			// 设置图标大小
+			getIconSize() {
+				const size = this.iconSize ? this.iconSize : this.textSize * 1.35;
+				return this.$uv.addUnit(size);
+			}
 		},
 		methods: {
 			clickHandler() {
