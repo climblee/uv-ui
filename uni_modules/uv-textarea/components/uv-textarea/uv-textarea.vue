@@ -5,7 +5,7 @@
 		<textarea class="uv-textarea__field"
 			:value="innerValue"
 			:style="[
-				{height: $uv.addUnit(height)},
+				{height: autoHeight ? 'auto' :$uv.addUnit(height)},
 				$uv.addStyle(textStyle)
 			]"
 			:placeholder="placeholder"
