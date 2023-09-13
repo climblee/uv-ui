@@ -171,8 +171,12 @@
 				let lineOffsetLeft = this.list
 					.slice(0, this.innerCurrent)
 					.reduce((total, curr) => total + curr.rect.width, 0);
-                // 获取下划线的数值px表示法
-				const lineWidth = this.$uv.getPx(this.lineWidth);
+        // 获取下划线的数值px表示法
+				let lineWidth = this.$uv.getPx(this.lineWidth);
+				// 如果传的值未带单位+设置了全局单位，则带上单位计算，这样才没有误差
+				if (this.$uv.test.number(this.lineWidth) && this.$uv.unit) {
+					lineWidth = this.$uv.getPx(`${this.lineWidth}${this.$uv.unit}`);
+				}
 				this.lineOffsetLeft = lineOffsetLeft + (tabItem.rect.width - lineWidth) / 2
 				// #ifdef APP-NVUE
 				// 第一次移动滑块，无需过渡时间

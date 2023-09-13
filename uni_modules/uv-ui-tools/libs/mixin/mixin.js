@@ -38,7 +38,8 @@ export default {
 		$uv() {
 			return {
 				...index,
-				test
+				test,
+				unit: uni?.$uv?.config?.unit
 			}
 		},
 		/**
