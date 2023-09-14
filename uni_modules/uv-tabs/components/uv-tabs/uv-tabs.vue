@@ -52,29 +52,29 @@
 							class="uv-tabs__wrapper__nav__line"
 							ref="uv-tabs__wrapper__nav__line"
 							:style="[{
+								width: $uv.addUnit(lineWidth),
+								height: firstTime?0:$uv.addUnit(lineHeight),
+								background: lineColor,
+								backgroundSize: lineBgSize
+							}]"
+						>
+						<!-- #endif -->
+						<!-- #ifndef APP-NVUE -->
+						<view
+							class="uv-tabs__wrapper__nav__line"
+							ref="uv-tabs__wrapper__nav__line"
+							:style="[{
 									width: $uv.addUnit(lineWidth),
-									height: $uv.addUnit(lineHeight),
+									transform: `translate(${lineOffsetLeft}px)`,
+									transitionDuration: `${firstTime ? 0 : duration}ms`,
+									height: firstTime?0:$uv.addUnit(lineHeight),
 									background: lineColor,
 									backgroundSize: lineBgSize,
 								}]"
 						>
-							<!-- #endif -->
-							<!-- #ifndef APP-NVUE -->
-							<view
-								class="uv-tabs__wrapper__nav__line"
-								ref="uv-tabs__wrapper__nav__line"
-								:style="[{
-										width: $uv.addUnit(lineWidth),
-										transform: `translate(${lineOffsetLeft}px)`,
-										transitionDuration: `${firstTime ? 0 : duration}ms`,
-										height: $uv.addUnit(lineHeight),
-										background: lineColor,
-										backgroundSize: lineBgSize,
-									}]"
-							>
-								<!-- #endif -->
-							</view>
+						<!-- #endif -->
 						</view>
+					</view>
 				</scroll-view>
 			</view>
 			<slot name="right" />
@@ -188,7 +188,7 @@
 				if (this.firstTime) {
 					setTimeout(() => {
 						this.firstTime = false
-					}, 10);
+					}, 20);
 				}
 			},
 			// nvue下设置滑块的位置
