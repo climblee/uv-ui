@@ -191,6 +191,11 @@
 					fontSize: this.$uv.addUnit(this.fontSize),
 					textAlign: this.inputAlign
 				};
+				// #ifndef APP-NVUE
+				if(this.disabled || this.readonly) {
+					style['pointer-events'] = 'none';
+				}
+				// #endif
 				return style;
 			}
 		},
