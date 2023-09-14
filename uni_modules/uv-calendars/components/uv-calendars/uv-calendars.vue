@@ -13,6 +13,7 @@
 				:startText="startText"
 				:endText="endText"
 				:multiple="multiple"
+				:allowSameDay="allowSameDay"
 				@bindDateChange="bindDateChange"
 				@pre="pre"
 				@next="next"
@@ -43,6 +44,7 @@
 					:startText="startText"
 					:endText="endText"
 					:multiple="multiple"
+					:allowSameDay="allowSameDay"
 					@bindDateChange="bindDateChange"
 					@pre="pre"
 					@next="next"
@@ -184,6 +186,11 @@
 				type: String,
 				default: '结束'
 			},
+			// 是否允许日期范围的起止时间为同一天，mode = range时有效
+			allowSameDay: {
+				type: Boolean,
+				default: false
+			},
 			...uni.$uv?.props?.calendars
 		},
 		data(){
@@ -240,7 +247,8 @@
 				startDate: this.startDate,
 				endDate: this.endDate,
 				range: this.range,
-				multiple: this.multiple
+				multiple: this.multiple,
+				allowSameDay: this.allowSameDay
 			})
 			this.init(this.date)
 		},

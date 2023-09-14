@@ -1,5 +1,4 @@
 import CALENDAR from './calendar.js'
-
 class Calendar {
 	constructor({
 		date,
@@ -7,7 +6,8 @@ class Calendar {
 		startDate,
 		endDate,
 		range,
-		multiple
+		multiple,
+		allowSameDay
 	} = {}) {
 		// 当前日期
 		this.date = this.getDate(new Date()) // 当前初入日期
@@ -19,6 +19,7 @@ class Calendar {
 		this.endDate = endDate
 		this.range = range
 		this.multiple = multiple
+		this.allowSameDay = allowSameDay
 		// 多选状态
 		this.cleanRangeStatus()
 		// 范围状态
@@ -31,8 +32,8 @@ class Calendar {
 	 * 设置日期
 	 * @param {Object} date
 	 */
-	setDate(date,status) {
-		if (this.range && status=='init') {
+	setDate(date, status) {
+		if (this.range && status == 'init') {
 			this.cleanRangeStatus();
 			if (Array.isArray(date)) {
 				this.rangeStatus.before = date[0];
@@ -47,7 +48,7 @@ class Calendar {
 				this.rangeStatus.before = this.selectDate.fullDate;
 				this._getWeek(this.selectDate.fullDate)
 			}
-		} else if (this.multiple && status=='init') {
+		} else if (this.multiple && status == 'init') {
 			this.cleanMultipleStatus();
 			if (Array.isArray(date)) {
 				this.multipleStatus.data = date;
@@ -68,7 +69,6 @@ class Calendar {
 			}
 		}
 	}
-
 	/**
 	 * 清理多选状态
 	 */
@@ -79,7 +79,6 @@ class Calendar {
 			data: []
 		}
 	}
-
 	/**
 	 * 清理多选状态
 	 */
@@ -88,7 +87,6 @@ class Calendar {
 			data: []
 		}
 	}
-
 	/**
 	 * 重置开始日期
 	 */
@@ -96,7 +94,6 @@ class Calendar {
 		// 范围开始
 		this.startDate = startDate
 	}
-
 	/**
 	 * 重置结束日期
 	 */
@@ -104,7 +101,6 @@ class Calendar {
 		// 范围结束
 		this.endDate = endDate
 	}
-
 	/**
 	 * 获取任意时间
 	 */
@@ -152,8 +148,6 @@ class Calendar {
 			day: dd.getDay()
 		}
 	}
-
-
 	/**
 	 * 获取上月剩余天数
 	 */
@@ -177,9 +171,7 @@ class Calendar {
 		let dateArr = []
 		let fullDate = this.date.fullDate
 		for (let i = 1; i <= dateData; i++) {
-			let nowDate = full.year + '-' + (full.month < 10 ?
-				full.month : full.month) + '-' + (i < 10 ?
-				'0' + i : i)
+			let nowDate = full.year + '-' + (full.month < 10 ? full.month : full.month) + '-' + (i < 10 ? '0' + i : i)
 			// 是否今天
 			let isDay = fullDate === nowDate
 			// 获取打点信息
@@ -188,7 +180,6 @@ class Calendar {
 					return item
 				}
 			})
-
 			// 日期禁用
 			let disableBefore = true
 			let disableAfter = true
@@ -197,7 +188,6 @@ class Calendar {
 				// disableBefore = this.dateCompare(dateCompBefore ? this.startDate : fullDate, nowDate)
 				disableBefore = this.dateCompare(this.startDate, nowDate)
 			}
-
 			if (this.endDate) {
 				// let dateCompAfter = this.dateCompare(fullDate, this.endDate)
 				// disableAfter = this.dateCompare(nowDate, dateCompAfter ? this.endDate : fullDate)
@@ -237,6 +227,7 @@ class Calendar {
 				multiple: this.multiple ? checked_multiple : false,
 				beforeRange: this.dateEqual(this.rangeStatus.before, nowDate),
 				afterRange: this.dateEqual(this.rangeStatus.after, nowDate),
+				dateEqual: this.range && checked && this.dateEqual(this.rangeStatus.before, this.rangeStatus.after),
 				month: full.month,
 				lunar: this.getlunar(full.year, full.month, i),
 				disable: !(disableBefore && disableAfter),
@@ -245,7 +236,6 @@ class Calendar {
 			if (info) {
 				data.extraInfo = info
 			}
-
 			dateArr.push(data)
 		}
 		return dateArr
@@ -265,7 +255,6 @@ class Calendar {
 		}
 		return dateArr
 	}
-
 	/**
 	 * 获取当前日期详情
 	 * @param {Object} date
@@ -279,7 +268,6 @@ class Calendar {
 		const dateInfo = this.canlender.find(item => item.fullDate === this.getDate(date).fullDate)
 		return dateInfo
 	}
-
 	/**
 	 * 比较时间大小
 	 */
@@ -294,7 +282,6 @@ class Calendar {
 			return false
 		}
 	}
-
 	/**
 	 * 比较时间是否相等
 	 */
@@ -309,7 +296,6 @@ class Calendar {
 			return false
 		}
 	}
-
 	/**
 	 * 比较after时间是否大于before时间
 	 */
@@ -324,7 +310,6 @@ class Calendar {
 			return false
 		}
 	}
-
 	/**
 	 * 获取日期范围内所有日期
 	 * @param {Object} begin
@@ -389,7 +374,9 @@ class Calendar {
 			if (!before) {
 				this.rangeStatus.before = fullDate
 			} else {
-				if (!this.dateAfterLgBefore(this.rangeStatus.before, fullDate)) {
+				if (this.allowSameDay && this.dateEqual(before, fullDate)) {
+					this.rangeStatus.after = fullDate
+				} else if (!this.dateAfterLgBefore(this.rangeStatus.before, fullDate)) {
 					this.cleanRangeStatus();
 					this.rangeStatus.before = fullDate
 					this._getWeek(fullDate)
@@ -405,7 +392,6 @@ class Calendar {
 		}
 		this._getWeek(fullDate)
 	}
-
 	/**
 	 * 获取每周数据
 	 * @param {Object} dateData
@@ -438,7 +424,6 @@ class Calendar {
 		this.canlender = canlender
 		this.weeks = weeks
 	}
-
 	//静态方法
 	// static init(date) {
 	// 	if (!this.instance) {
@@ -447,6 +432,4 @@ class Calendar {
 	// 	return this.instance;
 	// }
 }
-
-
 export default Calendar

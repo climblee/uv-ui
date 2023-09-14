@@ -52,7 +52,7 @@
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js';
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js';
 
-	import CalendarItem from './calendar-item.vue';
+	import CalendarItem from './uv-calendar-item.vue';
 
 	import { initVueI18n } from '@dcloudio/uni-i18n';
 	import i18nMessages from './i18n/index.js';
@@ -112,11 +112,6 @@
 			multiple: {
 				type: Boolean,
 				default: false
-			},
-			// 是否允许日期范围的起止时间为同一天，mode = range时有效
-			allowSameDay: {
-				type: Boolean,
-				default: false
 			}
 		},
 		computed: {
@@ -152,16 +147,6 @@
 			},
 			rangeInfoText(weeks) {
 				return weeks=> {
-					if(this.allowSameDay && weeks.beforeRange && weeks.afterRange && weeks.dateEqual) {
-						if(weeks.extraInfo) {
-							weeks.extraInfo.info = `${this.startText}/${this.endText}`;
-						}else {
-							weeks.extraInfo = {
-								info: `${this.startText}/${this.endText}`
-							}
-						}
-						return;
-					} 
 					if(weeks.beforeRange) {
 						if(weeks.extraInfo) {
 							weeks.extraInfo.info = this.startText;

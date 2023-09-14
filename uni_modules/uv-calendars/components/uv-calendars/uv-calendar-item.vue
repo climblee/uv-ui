@@ -47,9 +47,6 @@
 				<text 
 					v-if="weeks.extraInfo&&weeks.extraInfo.info" 
 					class="uv-calendar-item__weeks-lunar-text" 
-					:class="{
-						'uv-calendar-item__weeks-lunar-text--equal': weeks.dateEqual
-					}"
 					:style="[infoStyle('bottom')]"
 				>{{weeks.extraInfo.info}}</text>
 		</view>
@@ -189,15 +186,6 @@
 		font-size: $uv-font-size-sm;
 		color: $uv-text-color;
 	}
-	.uv-calendar-item__weeks-lunar-text--equal {
-		/* #ifdef H5 */
-		white-space: nowrap;
-		transform: scale(.8);
-		/* #endif */
-		/* #ifndef H5 */
-		font-size: 20rpx;
-		/* #endif */
-	}
 	.uv-calendar-item__weeks-box-item {
 		position: relative;
 		@include flex(column);
@@ -231,10 +219,10 @@
 		color: #fff;
 		border-radius: 4px;
 	}
-	// .uv-calendar-item--range {
-	// 	background-color: $uv-primary;
-	// 	color: #fff;
-	// }
+	.uv-calendar-item--range {
+		background-color: $uv-primary;
+		color: #fff;
+	}
 	.uv-calendar-item--before-checked {
 		color: #fff;
 	}
