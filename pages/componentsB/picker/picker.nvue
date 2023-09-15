@@ -40,8 +40,9 @@
 			@confirm="confirm"
 			@change="changeHandler1"
 		></uv-picker>
+		<regionsPicker ref="picker4"></regionsPicker>
 		<uv-picker
-			ref="picker4"
+			ref="picker5"
 			:columns="columns4"
 			@cancel="cancel"
 			@confirm="confirm"
@@ -49,7 +50,7 @@
 			@change="changeHandler2"
 		></uv-picker>
 		<uv-picker
-			ref="picker5"
+			ref="picker6"
 			:columns="columns5"
 			title="标题太长就会显示省略号"
 			@cancel="cancel"
@@ -57,7 +58,7 @@
 			@change="change"
 		></uv-picker>
 		<uv-picker
-			ref="picker6"
+			ref="picker7"
 			:columns="columns6"
 			:closeOnClickOverlay="false"
 			@cancel="cancel"
@@ -70,7 +71,9 @@
 </template>
 
 <script>
+	import regionsPicker from './components/regions.vue';
 	export default {
+		components: {regionsPicker},
 		data() {
 			return {
 				loading: false,
@@ -106,6 +109,9 @@
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/5.png'
 					}, {
 						title: '多列联动',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/1.png'
+					},{
+						title: '省市区三级联动',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/picker/1.png'
 					}, {
 						title: '加载中状态(切换第一列)',
