@@ -25,6 +25,9 @@ export default {
         onChooseavatar(event) {
             this.$emit('chooseavatar', event.detail)
         },
+        onAgreeprivacyauthorization(event) {
+            this.$emit('agreeprivacyauthorization', event.detail)
+        },
         onAddgroupapp(event) {
             this.$emit('addgroupapp', event.detail)
         },

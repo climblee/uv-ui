@@ -25,6 +25,7 @@
 		  @launchapp="onLaunchApp"
 			@contact="onContact"
 			@chooseavatar="onChooseavatar"
+			@agreeprivacyauthorization="onAgreeprivacyauthorization"
 			@addgroupapp="onAddgroupapp"
 			@chooseaddress="onChooseaddress"
 			@subscribe="onSubscribe"
