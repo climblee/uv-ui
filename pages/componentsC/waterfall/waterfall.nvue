@@ -96,7 +96,7 @@
 	</view>
 </template>
 <script>
-	import { guid } from '@climblee/uv-ui/libs/function/index.js'
+	import { guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -266,7 +266,7 @@
 </style>
 <style scoped lang="scss">
 	$show-lines: 1;
-	@import '@climblee/uv-ui/libs/css/variable.scss';
+	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	.waterfall {
 		background-color: #f1f1f1;
 	}
