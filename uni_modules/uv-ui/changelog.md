@@ -1,3 +1,14 @@
+## 1.1.13（2023-09-15）
+1. 优化 uv-button a. 增加参数iconSize，用于控制图标的大小；b. 增加open-type="agreePrivacyAuthorization"类型，用户同意隐私协议事件回调
+2. 优化 uv-picker 三级联动的案例：[https://www.uvui.cn/components/picker.html#省市区三级联动](https://www.uvui.cn/components/picker.html#省市区三级联动)
+3. 修复 uv-read-more 全局设置rpx时，导致展开高度不对的BUG
+4. 修复 uv-tabs a. 设置lineWidth未带单位产生的误差BUG；b. 首次加载时，处理下划线会有左到右的过渡效果
+5. 修复 uv-textaera 设置autoHeight后出现高度异常的BUG
+6. 修复 uv-input H5等情况设置禁用或可读情况下，点击事件无效的问题，nvue需要特殊处理
+7. 修复 uv-calendars a. 在vue2+小程序渲染时闪烁的问题；b. 增加allowSameDay参数，是否允许日期范围的起止时间为同一天，mode=range时有效
+8. 修复 uv-safe-bottom 兼容飞书小程序
+9. 修复 uv-album 添加依赖，避免导入运行有误
+10. 修复 uv-ui-tools 优化组件用到的相关
 ## 1.1.12（2023-09-10）
 1. 修复 uv-popup a. h5初始zIndex错误的问题；b. 修复全局设置prop无效的问题
 2. 修复 uv-button 修复多个按钮由view包裹，显示在一行宽度不正常的BUG

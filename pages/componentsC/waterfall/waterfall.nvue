@@ -1,9 +1,11 @@
 
 <template>
 	<view class="waterfall">
-		<view style="height: 100rpx;background-color: #fff;">
-			<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
-		</view>
+		<uv-sticky>
+			<view style="padding: 10rpx 0;background-color: #fff;">
+				<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
+			</view>
+		</uv-sticky>
 		<view class="waterfall">
 			<!-- #ifndef APP-NVUE -->
 			<uv-waterfall ref="waterfall"

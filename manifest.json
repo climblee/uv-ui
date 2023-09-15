@@ -18,8 +18,8 @@
         },
         /* 模块配置 */
         "modules" : {
-					"Canvas" : "nvue canvas"
-				},
+            "Canvas" : "nvue canvas"
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
