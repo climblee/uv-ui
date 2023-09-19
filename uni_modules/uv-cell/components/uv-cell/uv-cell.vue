@@ -2,7 +2,10 @@
 	<view class="uv-cell" :class="[customClass]" :style="[$uv.addStyle(customStyle)]"
 		:hover-class="(!disabled && (clickable || isLink)) ? 'uv-cell--clickable' : ''" :hover-stay-time="250"
 		@click="clickHandler">
-		<view class="uv-cell__body" :class="[ center && 'uv-cell--center', size === 'large' && 'uv-cell__body--large']">
+		<view class="uv-cell__body" 
+			:class="[ center && 'uv-cell--center', size === 'large' && 'uv-cell__body--large']"
+			:style="[cellStyle]"
+		>
 			<view class="uv-cell__body__content">
 				<view class="uv-cell__left-icon-wrap">
 					<slot name="icon">
@@ -64,6 +67,7 @@
 	 * @property {Object | String}			iconStyle		左侧图标样式
 	 * @property {String}			size			单位元的大小，可选值为 large，normal，mini 
 	 * @property {Boolean}			stop			点击cell是否阻止事件传播 (默认 true )
+	 * @property {Object | String}  cellStyle 单元格自定义样式
 	 * @property {Object}			customStyle		定义需要用到的外部样式
 	 * 
 	 * @event {Function}			click			点击cell列表时触发

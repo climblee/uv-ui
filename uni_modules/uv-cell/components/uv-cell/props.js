@@ -106,6 +106,11 @@ export default {
 			type: [Number, String],
 			default: ''
 		},
+		// 单元格自定义样式
+		cellStyle: {
+			type: [Object, String],
+			default: () => {}
+		},
 		...uni.$uv?.props?.cell
 	}
 }

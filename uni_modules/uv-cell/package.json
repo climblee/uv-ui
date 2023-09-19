@@ -1,7 +1,7 @@
 {
   "id": "uv-cell",
   "displayName": "uv-cell 单元格 全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "cell单元格一般用于一组列表的情况，比如个人中心页，设置页等。",
   "keywords": [
     "uv-cell",
