@@ -10,11 +10,7 @@
 		}" :style="[itemBoxStyle]" @click="choiceDate(weeks)">
 		<view class="uv-calendar-item__weeks-box-item">
 			<text v-if="selected&&weeks.extraInfo&&weeks.extraInfo.badge" class="uv-calendar-item__weeks-box-circle"></text>
-			<text 
-				class="uv-calendar-item__weeks-top-text" 
-				v-if="weeks.extraInfo&&weeks.extraInfo.topinfo"
-				:style="[infoStyle('top')]"
-			>{{weeks.extraInfo&&weeks.extraInfo.topinfo}}</text>
+			<text class="uv-calendar-item__weeks-top-text" v-if="weeks.extraInfo&&weeks.extraInfo.topinfo" :style="[infoStyle('top')]">{{weeks.extraInfo&&weeks.extraInfo.topinfo}}</text>
 			<text class="uv-calendar-item__weeks-box-text" :class="{
 				'uv-calendar-item--isDay-text': weeks.isDay,
 				'uv-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay && !multiple,
@@ -44,21 +40,14 @@
 				'uv-calendar-item--multiple':weeks.multiple,
 				'uv-calendar-item--disable':weeks.disable || (weeks.extraInfo&&weeks.extraInfo.disable)
 				}" :style="[itemBoxStyle]">{{weeks.isDay ? todayText : (weeks.lunar.IDayCn === '初一'?weeks.lunar.IMonthCn:weeks.lunar.IDayCn)}}</text>
-				<text 
-					v-if="weeks.extraInfo&&weeks.extraInfo.info" 
-					class="uv-calendar-item__weeks-lunar-text" 
-					:class="{
+			<text v-if="weeks.extraInfo&&weeks.extraInfo.info" class="uv-calendar-item__weeks-lunar-text" :class="{
 						'uv-calendar-item__weeks-lunar-text--equal': weeks.dateEqual
-					}"
-					:style="[infoStyle('bottom')]"
-				>{{weeks.extraInfo.info}}</text>
+					}" :style="[infoStyle('bottom')]">{{weeks.extraInfo.info}}</text>
 		</view>
 	</view>
 </template>
-
 <script>
 	import { colorGradient } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js';
-
 	import { initVueI18n } from '@dcloudio/uni-i18n'
 	import i18nMessages from './i18n/index.js'
 	const { t } = initVueI18n(i18nMessages)
@@ -91,6 +80,10 @@
 				type: String,
 				default: '#3c9cff'
 			},
+			range: {
+				type: Boolean,
+				default: false
+			},
 			multiple: {
 				type: Boolean,
 				default: false
@@ -102,41 +95,49 @@
 			},
 			itemBoxStyle() {
 				const style = {};
-				if (this.weeks.beforeRange || this.weeks.afterRange) {
-					style.backgroundColor = this.color;
-				} else if (this.weeks.range) {
-					style.backgroundColor = colorGradient(this.color, '#ffffff', 100)[90]
-					style.color = this.color;
-					style.opacity = 0.8;
-					style.borderRadius = 0;
-				} else if (this.calendar.fullDate === this.weeks.fullDate && !this.weeks.isDay && !this.multiple) {
-					style.backgroundColor = this.color;
-					style.color = '#fff';
-				} else if (this.weeks.isDay && this.calendar.fullDate === this.weeks.fullDate && !this.multiple) {
-					style.backgroundColor = this.color;
-					style.color = '#fff';
-				} else if (this.weeks.isDay && !this.multiple) {
-					style.color = this.color;
-				} else if (this.multiple && this.weeks.multiple){
-					style.backgroundColor = this.color;
-					style.color = '#fff';
-				} else if (this.weeks.isDay && this.multiple) {
-					style.color = this.color;
+				if (this.multiple) { // 多选状态
+					if (this.weeks.multiple) {
+						style.backgroundColor = this.color;
+						style.color = '#fff';
+					} else if (this.weeks.isDay) {
+						style.color = this.color;
+					}
+				} else if (this.range) { // 范围选择
+					if (this.weeks.beforeRange || this.weeks.afterRange) {
+						style.backgroundColor = this.color;
+					} else if (this.weeks.range) {
+						style.backgroundColor = colorGradient(this.color, '#ffffff', 100)[90]
+						style.color = this.color;
+						style.opacity = 0.8;
+						style.borderRadius = 0;
+					}
+				} else {
+					if (this.weeks.isDay) {
+						style.color = this.color;
+					}
+					if (this.calendar.fullDate === this.weeks.fullDate) {
+						style.backgroundColor = this.color;
+						style.color = '#fff';
+					}
 				}
 				return style;
 			},
 			infoStyle(val) {
 				return val => {
 					const style = {};
-					if (val == 'top') {
-						style.color = this.weeks.extraInfo.topinfoColor ? this.weeks.extraInfo.topinfoColor : '#606266';
-					} else if (val == 'bottom') {
-						style.color = this.weeks.extraInfo.infoColor ? this.weeks.extraInfo.infoColor : '#f56c6c';
-					}
-					if (this.weeks.range) {
-						style.color = this.color;
-					}
-					if (this.calendar.fullDate === this.weeks.fullDate || this.weeks.beforeRange || this.weeks.afterRange) {
+					if (!this.weeks.multiple) {
+						if (val == 'top') {
+							style.color = this.weeks.extraInfo.topinfoColor ? this.weeks.extraInfo.topinfoColor : '#606266';
+						} else if (val == 'bottom') {
+							style.color = this.weeks.extraInfo.infoColor ? this.weeks.extraInfo.infoColor : '#f56c6c';
+						}
+						if (this.weeks.range) {
+							style.color = this.color;
+						}
+						if (this.calendar.fullDate === this.weeks.fullDate || this.weeks.beforeRange || this.weeks.afterRange) {
+							style.color = this.multiple ? style.color : '#fff';
+						}
+					} else {
 						style.color = '#fff';
 					}
 					return style;
@@ -151,7 +152,6 @@
 		}
 	}
 </script>
-
 <style lang="scss" scoped>
 	@mixin flex($direction: row) {
 		/* #ifndef APP-NVUE */

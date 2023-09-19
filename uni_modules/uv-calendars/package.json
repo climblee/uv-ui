@@ -1,7 +1,7 @@
 {
   "id": "uv-calendars",
   "displayName": "uv-calendars 最新日历 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "新版本uv-calendars，不仅拥有老版本的所有功能，还增加了更加适用的插入页面等强大功能，且更加简洁。查看日期、选择单个或多个或任意范围日期，打点操作，自定义文案，自定义主题等强大功能。",
   "keywords": [
     "uv-ui",

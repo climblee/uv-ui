@@ -41,7 +41,7 @@
 			</view>
 			<view class="uv-calendar__weeks" v-for="(item,weekIndex) in weeks" :key="weekIndex">
 				<view class="uv-calendar__weeks-item" v-for="(weeks,weeksIndex) in item" :key="weeksIndex">
-					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :rangeInfoText="rangeInfoText(weeks)" :multiple="multiple" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
+					<calendar-item class="uv-calendar-item--hook" :weeks="weeks" :rangeInfoText="rangeInfoText(weeks)" :multiple="multiple" :range="range" :calendar="calendar" :selected="selected" :lunar="lunar" :color="color" @change="choiceDate"></calendar-item>
 				</view>
 			</view>
 		</view>
@@ -109,6 +109,10 @@
 				type: String,
 				default: '结束'
 			},
+			range: {
+				type: Boolean,
+				default: false
+			},
 			multiple: {
 				type: Boolean,
 				default: false
@@ -153,37 +157,36 @@
 			rangeInfoText(weeks) {
 				return weeks=> {
 					if(this.allowSameDay && weeks.beforeRange && weeks.afterRange && weeks.dateEqual) {
-						if(weeks.extraInfo) {
-							weeks.extraInfo.info = `${this.startText}/${this.endText}`;
-						}else {
-							weeks.extraInfo = {
-								info: `${this.startText}/${this.endText}`
-							}
-						}
-						return;
+						return this.setInfo(weeks,`${this.startText}/${this.endText}`);
 					} 
 					if(weeks.beforeRange) {
-						if(weeks.extraInfo) {
-							weeks.extraInfo.info = this.startText;
-						}else {
-							weeks.extraInfo = {
-								info: this.startText
-							}
-						}
+						return this.setInfo(weeks,this.startText);
 					}
 					if(weeks.afterRange) {
-						if(weeks.extraInfo) {
-							weeks.extraInfo.info = this.endText;
-						}else {
-							weeks.extraInfo = {
-								info: this.endText
-							}
-						}
+						return this.setInfo(weeks,this.endText);
+					}
+					if(weeks.extraInfo?.info_old) {
+						weeks.extraInfo.info = weeks.extraInfo.info_old;
 					}
 				}
 			}
 		},
 		methods: {
+			setInfo(weeks,text) {
+				this.setInfoOld(weeks);
+				if(weeks.extraInfo) {
+					weeks.extraInfo.info = text;
+				}else {
+					weeks.extraInfo = {
+						info: text
+					}
+				}
+			},
+			setInfoOld(weeks) {
+				if(weeks.extraInfo) {
+					weeks.extraInfo.info_old = weeks.extraInfo.info_old || weeks.extraInfo.info;
+				}
+			},
 			bindDateChange(e) {
 				this.$emit('bindDateChange', e);
 			},
