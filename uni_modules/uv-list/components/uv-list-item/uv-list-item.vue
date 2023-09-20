@@ -2,7 +2,9 @@
 	<!-- #ifdef APP-NVUE -->
 	<cell :keep-scroll-position="keepScrollPosition">
 		<!-- #endif -->
-		<view :class="{ 'uv-list-item--disabled': disabled }" :style="{'background-color':customStyle.backgroundColor?customStyle.backgroundColor:'#fff'}"
+		<view 
+			:class="{ 'uv-list-item--disabled': disabled }" 
+			:style="[$uv.addStyle(customStyle),{'background-color':customStyle.backgroundColor?customStyle.backgroundColor:'#fff'}]"
 			:hover-class="(!clickable && !link) || disabled || showSwitch ? '' : 'uv-list-item--hover'"
 			class="uv-list-item" @click="onClick">
 			<view v-if="!isFirstChild" class="border--left" :class="{ 'uv-list--border': border }"></view>
@@ -208,7 +210,7 @@
 		watch: {
 			'customStyle.padding': {
 				handler(padding) {
-					this.setPadding(padding);
+					if(padding) this.setPadding(padding);
 				},
 				immediate: true
 			}

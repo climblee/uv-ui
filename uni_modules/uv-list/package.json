@@ -1,7 +1,7 @@
 {
   "id": "uv-list",
   "displayName": "uv-list 列表 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "uv-list 多功能高性能列表组件",
   "keywords": [
     "uv-list",
