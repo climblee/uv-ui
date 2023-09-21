@@ -98,7 +98,7 @@
 	</view>
 </template>
 <script>
-	import { guid } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
+	import { guid, sys, getPx } from '@/uni_modules/uv-ui-tools/libs/function/index.js'
 	export default {
 		data() {
 			return {
@@ -113,7 +113,7 @@
 		},
 		computed: {
 			waterfallHeight() {
-				return uni.$uv.sys().windowHeight - uni.$uv.getPx('100rpx');
+				return sys().windowHeight - getPx('100rpx');
 			},
 			imageStyle(item) {
 				return item=>{
