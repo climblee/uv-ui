@@ -1,5 +1,8 @@
 <template>
-	<view class="uv-button-wrapper">
+	<view 
+		class="uv-button-wrapper"
+		:style="[btnWrapperStyle]"
+	>
     <!-- #ifndef APP-NVUE -->
 		<!-- #ifdef MP -->
 		<!-- 为了解决微信小程序动态设置hover-class点击态不消失的BUG -->
@@ -297,6 +300,13 @@ export default {
 			getIconSize() {
 				const size = this.iconSize ? this.iconSize : this.textSize * 1.35;
 				return this.$uv.addUnit(size);
+			},
+			// 设置外层盒子的宽度，其他样式不需要
+			btnWrapperStyle() {
+				const style = {};
+				const customStyle = this.$uv.addStyle(this.customStyle);
+				if(customStyle.width) style.width = customStyle.width;
+				return style;
 			}
 		},
 		methods: {
