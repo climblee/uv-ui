@@ -59,18 +59,28 @@
 			}
 		},
 		watch: {
-			value(newVal) {
-				if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
-					return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+			// #ifdef VUE2
+			value: {
+				immediate: true,
+				handler(newVal) {
+					if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
+						return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+					}
+					this.innerValue = newVal;
 				}
-				this.innerValue = newVal;
 			},
-			modelValue(newVal) {
-				if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
-					return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+			// #endif
+			// #ifndef VUE2
+			modelValue: {
+				immediate: true,
+				handler(newVal) {
+					if (newVal !== this.inactiveValue && newVal !== this.activeValue) {
+						return this.$uv.error('v-model绑定的值必须为inactiveValue、activeValue二者之一')
+					}
+					this.innerValue = newVal;
 				}
-				this.innerValue = newVal;
 			}
+			// #endif
 		},
 		created() {
 			this.innerValue = this.value || this.modelValue;
