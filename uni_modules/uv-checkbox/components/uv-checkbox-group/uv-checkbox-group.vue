@@ -86,8 +86,6 @@
 						values.push(child.name)
 					}
 				})
-				// 发出事件
-				this.$emit('change', values)
 				// 修改通过v-model绑定的值
 				// #ifdef VUE2
 				this.$emit('input', values)
@@ -95,7 +93,9 @@
 				// #ifdef VUE3
 				this.$emit('update:modelValue',values)
 				// #endif
-			},
+				// 发出事件
+				this.$emit('change', values)
+			}
 		}
 	}
 </script>
