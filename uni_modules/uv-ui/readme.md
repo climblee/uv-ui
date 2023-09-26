@@ -27,9 +27,9 @@
 
 ## 预览
 
-通过微信或浏览器扫码查看演示效果。二维码依次是：H5、APP-NVUE、微信小程序。
+通过微信（APP下载不支持微信扫码）或浏览器扫码查看演示效果。
 
-<img src="https://www.uvui.cn/common/h5_qrcode.png" width="160" height="160" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://mp-10ee0fed-b83c-4409-ad24-f7e49ff65c55.cdn.bspapp.com/apk/uvui.jpg" width="160" height="160" />
+<img src="https://mp-31ed6237-7b7b-4597-8448-a53d6d6031cf.cdn.bspapp.com/uvui/download-wx.png" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://mp-31ed6237-7b7b-4597-8448-a53d6d6031cf.cdn.bspapp.com/uvui/download-app.png" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://mp-31ed6237-7b7b-4597-8448-a53d6d6031cf.cdn.bspapp.com/uvui/download-h5.png" width="200" />
 
 ## 链接
 
