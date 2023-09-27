@@ -1,3 +1,11 @@
+## 1.1.14（2023-09-27）
+1. 优化 uv-list-item 可使用customStyle变量进行样式控制
+2. 优化 uv-cell 增加cellStyle参数，方便自定义单元格的样式
+3. 优化 uv-switch 优化细节
+4. 优化 不断优化[文档](https://www.uvui.cn/)
+5. 修复 uv-button 通过customStyle修改按钮宽度，组件中最外层节点不改变的问题
+6. 修复 uv-calendars a. 修复range模式下，selected设置了info后选中后，导致文本不恢复的问题；b. 修复multiple模式下，selected自定义信息的颜色没变，依然是白色
+7. 修复 uv-checkbox uv-checkbox-group之change回调中v-model值不更新的BUG
 ## 1.1.13（2023-09-15）
 1. 优化 uv-button a. 增加参数iconSize，用于控制图标的大小；b. 增加open-type="agreePrivacyAuthorization"类型，用户同意隐私协议事件回调
 2. 优化 uv-picker 三级联动的案例：[https://www.uvui.cn/components/picker.html#省市区三级联动](https://www.uvui.cn/components/picker.html#省市区三级联动)
