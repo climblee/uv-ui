@@ -6,7 +6,7 @@
 				<uv-tabs :list="[{ name: '美食' }, { name: '文化' }, { name: '科技' }]" @click="tabChange"></uv-tabs>
 			</view>
 		</uv-sticky>
-		<view class="waterfall">
+		<view>
 			<!-- #ifndef APP-NVUE -->
 			<uv-waterfall ref="waterfall"
 				v-model="list"
@@ -113,7 +113,7 @@
 		},
 		computed: {
 			waterfallHeight() {
-				return sys().windowHeight - getPx('100rpx');
+				return sys().windowHeight - getPx('120rpx');
 			},
 			imageStyle(item) {
 				return item=>{
