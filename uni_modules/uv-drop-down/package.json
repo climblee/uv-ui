@@ -1,7 +1,7 @@
 {
 	"id": "uv-drop-down",
 	"displayName": "uv-drop-down 下拉筛选 全面兼容vue3+2、app、h5、小程序等多端",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "该组件主要提供筛选下拉筛选框，内置基础筛选功能，可以根据自己的需求自定义筛选项",
 	"keywords": [
         "uv-drop-down",
@@ -39,7 +39,8 @@
 			"uv-ui-tools",
 			"uv-icon",
 			"uv-text",
-			"uv-transition"
+			"uv-transition",
+			"uv-sticky"
 		],
 		"encrypt": [],
 		"platforms": {
