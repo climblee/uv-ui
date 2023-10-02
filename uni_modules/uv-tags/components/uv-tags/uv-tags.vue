@@ -12,7 +12,7 @@
 				:style="[{
 					marginRight: closable&& closePlace=='right-top' ? '10px' : 0,
 					marginTop: closable && closePlace=='right-top' ? '10px' : 0,
-				}, style]"
+				}, style, $uv.addStyle(customStyle)]"
 			>
 				<slot name="icon">
 					<view
@@ -100,19 +100,7 @@
 		name: 'uv-tags',
 		emits: ['click','close'],
 		mixins: [mpMixin, mixin, props],
-		data() {
-			return {
-
-			}
-		},
 		computed: {
-			$uv(){
-				return {
-					test: {
-						image
-					}
-				}
-			},
 			style() {
 				const style = {}
 				if (this.bgColor) {

@@ -1,7 +1,7 @@
 {
   "id": "uv-tags",
   "displayName": "uv-tags 标签  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tag组件一般用于标记和选择，我们提供了更加丰富的表现形式，能够较全面的涵盖您的使用场景。",
   "keywords": [
     "uv-tags",
