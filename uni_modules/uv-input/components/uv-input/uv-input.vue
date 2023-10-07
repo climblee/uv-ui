@@ -244,6 +244,7 @@
 			},
 			// 内容发生变化，进行处理
 			valueChange() {
+				if(this.isClear) this.innerValue = '';
 				const value = this.innerValue;
 				this.$nextTick(() => {
 					this.$emit("input", value);
@@ -256,6 +257,10 @@
 			// 点击清除控件
 			onClear() {
 				this.innerValue = "";
+				this.isClear = true;
+				this.$uv.sleep(100).then(res=>{
+					this.isClear = false;
+				})
 				this.$nextTick(() => {
 					this.$emit("clear");
 					this.valueChange();
