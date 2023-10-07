@@ -258,7 +258,7 @@
 			onClear() {
 				this.innerValue = "";
 				this.isClear = true;
-				this.$uv.sleep(100).then(res=>{
+				this.$uv.sleep(200).then(res=>{
 					this.isClear = false;
 				})
 				this.$nextTick(() => {
