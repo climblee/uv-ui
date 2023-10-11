@@ -1,3 +1,5 @@
+## 1.0.13（2023-10-11）
+1. 优化同类问题：https://gitee.com/climblee/uv-ui/issues/I872VD
 ## 1.0.12（2023-09-22）
 1. 修复change回调中v-model值不更新的BUG
 ## 1.0.11（2023-09-01）

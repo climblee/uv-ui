@@ -182,7 +182,7 @@
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
-		mounted() {
+		created() {
 			this.init()
 		},
 		methods: {

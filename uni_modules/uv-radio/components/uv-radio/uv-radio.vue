@@ -171,7 +171,7 @@
 			radioStyle() {
 				const style = {}
 				if (this.parentData.borderBottom && this.parentData.placement === 'row') {
-					error('检测到您将borderBottom设置为true，需要同时将uv-radio-group的placement设置为column才有效')
+					this.$uv.error('检测到您将borderBottom设置为true，需要同时将uv-radio-group的placement设置为column才有效')
 				}
 				// 当父组件设置了显示下边框并且排列形式为纵向时，给内容和边框之间加上一定间隔
 				if (this.parentData.borderBottom && this.parentData.placement === 'column') {
@@ -181,7 +181,7 @@
 				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			}
 		},
-		mounted() {
+		created() {
 			this.init()
 		},
 		methods: {
@@ -189,7 +189,7 @@
 				// 支付宝小程序不支持provide/inject，所以使用这个方法获取整个父组件，在created定义，避免循环引用
 				this.updateParentData()
 				if (!this.parent) {
-					error('uv-radio必须搭配uv-radio-group组件使用')
+					this.$uv.error('uv-radio必须搭配uv-radio-group组件使用')
 				}
 				// 设置初始化时，是否默认选中的状态
 				this.$nextTick(()=>{
