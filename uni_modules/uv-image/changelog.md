@@ -1,3 +1,5 @@
+## 1.0.12（2023-10-11）
+1. 修复懒加载报错：https://gitee.com/climblee/uv-ui/issues/I869JS
 ## 1.0.11（2023-08-31）
 1. 修复设置widthFix时出现显示不全的BUG
 2. 修复抖音等平台在width和height属性改变时出现不显示的BUG
