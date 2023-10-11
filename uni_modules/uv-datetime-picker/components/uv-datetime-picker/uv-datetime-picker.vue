@@ -219,7 +219,11 @@
 					// 通过取大值，可以保证不会出现找不到索引的-1情况
 					return Math.max(0, column.findIndex(item => item === values[index]))
 				})
-				this.innerDefaultIndex = indexs
+				this.$nextTick(()=>{
+					this.$uv.sleep(100).then(res=>{
+						this.$refs.picker.setIndexs(indexs,true);
+					})
+				})
 			},
 			// 更新各列的值
 			updateColumns() {
