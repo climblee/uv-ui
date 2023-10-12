@@ -165,9 +165,11 @@
 					if(weeks.afterRange) {
 						return this.setInfo(weeks,this.endText);
 					}
-					if(weeks.extraInfo?.info_old) {
+					if(weeks.extraInfo?.info_old == ' ') {
+						weeks.extraInfo.info = null;
+					}else if(weeks.extraInfo?.info_old) {
 						weeks.extraInfo.info = weeks.extraInfo.info_old;
-					}
+					} 
 				}
 			}
 		},
@@ -184,7 +186,7 @@
 			},
 			setInfoOld(weeks) {
 				if(weeks.extraInfo) {
-					weeks.extraInfo.info_old = weeks.extraInfo.info_old || weeks.extraInfo.info;
+					weeks.extraInfo.info_old = weeks.extraInfo.info ? weeks.extraInfo.info_old || weeks.extraInfo.info : ' ';
 				}
 			},
 			bindDateChange(e) {

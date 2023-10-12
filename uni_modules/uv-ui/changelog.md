@@ -1,3 +1,13 @@
+## 1.1.15（2023-10-12）
+1. 优化 uv-keyboard a. 增加disKeys参数，mode = "car"下，被禁用的键，如：['I','O']； b. 增加customabc参数，mode = "car"下，是否启用自定义中英文切换内容模式，为了兼容支付宝等小程序不兼容嵌套插槽，导致同时显示自定义内容和原始内容； c. 增加ref方法changeCarMode，mode = "car"下， 调用此方法可以切换中英文模式； d. 增加@changeCarInputMode，mode = "car"下，调用此方法可以进行切换中英文； e. 增加插槽abc，mode = "car"下，自定义中英文切换内容
+2. 优化 uv-checkbox uv-radio 优化：https://gitee.com/climblee/uv-ui/issues/I872VD
+3. 优化 uv-picker 将immediate-change默认值改为true，该值在于change回调的及时性，微信小程序生效
+4. 优化 uv-tags 兼容customStyle参数等优化
+5. 修复 uv-transition 部分情况，修改某属性自动关闭的BUG
+6. 修复 uv-calendars 懒加载报错：https://gitee.com/climblee/uv-ui/issues/I869JS
+7. 修复 uv-datetime-picker 设置minDate出现选择错乱的BUG
+8. 修复 uv-input 搜狗输入法下存在不可清空的情况
+9. 修复 uv-calendars selected没有设置了info或者info设置为空字符串后，文本则无法恢复BUG
 ## 1.1.14（2023-09-27）
 1. 优化 uv-list-item 可使用customStyle变量进行样式控制
 2. 优化 uv-cell 增加cellStyle参数，方便自定义单元格的样式
