@@ -20,15 +20,19 @@
 					:hover-stay-time="200"
 					@tap="changeCarInputMode"
 				>
-					<text
-						class="uv-keyboard__button__inner-wrapper__left__lang"
-						:class="[!abc && 'uv-keyboard__button__inner-wrapper__left__lang--active']"
-					>中</text>
-					<text class="uv-keyboard__button__inner-wrapper__left__line">/</text>
-					<text
-						class="uv-keyboard__button__inner-wrapper__left__lang"
-						:class="[abc && 'uv-keyboard__button__inner-wrapper__left__lang--active']"
-					>英</text>
+					<slot>
+						<template v-if="!customabc">
+							<text
+								class="uv-keyboard__button__inner-wrapper__left__lang"
+								:class="[!abc && 'uv-keyboard__button__inner-wrapper__left__lang--active']"
+							>中</text>
+							<text class="uv-keyboard__button__inner-wrapper__left__line">/</text>
+							<text
+								class="uv-keyboard__button__inner-wrapper__left__lang"
+								:class="[abc && 'uv-keyboard__button__inner-wrapper__left__lang--active']"
+							>英</text>
+						</template>
+					</slot>
 				</view>
 			</view>
 			<view
@@ -37,13 +41,14 @@
 				:key="j"
 			>
 				<view
-					class="uv-keyboard__button__inner-wrapper__inner"
+					:class="['uv-keyboard__button__inner-wrapper__inner',{'uv-keyboard__button__inner-wrapper__inner--disabled': isDisabled(i,j)}]"
 					:hover-stay-time="200"
 					@tap="carInputClick(i, j)"
-					hover-class="uv-hover-class"
+					:hover-class="isDisabled(i,j)?'none':'uv-hover-class'"
 				>
 					<text class="uv-keyboard__button__inner-wrapper__inner__text">{{ item }}</text>
 				</view>
+				<view class="uv-keyboard__button__inner-wrapper__disabled--mask" v-if="isDisabled(i,j)"></view>
 			</view>
 			<view
 				v-if="i === 3"
@@ -83,7 +88,7 @@
 	export default {
 		name: "uv-keyboard",
 		mixins: [mpMixin, mixin, props],
-		emits: ['backspace','change'],
+		emits: ['backspace','change','changeCarInputMode'],
 		data() {
 			return {
 				// 车牌输入时，abc=true为输入车牌号码，bac=false为输入省份中文简称
@@ -186,11 +191,20 @@
 				tmp[2] = data.slice(20, 30);
 				tmp[3] = data.slice(30, 36);
 				return tmp;
+			},
+			isDisabled(i,j) {
+				return (i,j)=>{
+					let value = '';
+					if (this.abc) value = this.engKeyBoardList[i][j];
+					else value = this.areaList[i][j];
+					return this.disKeys.indexOf(value) > -1;
+				}
 			}
 		},
 		methods: {
 			// 点击键盘按钮
 			carInputClick(i, j) {
+				if(this.isDisabled(i,j)) return;
 				let value = '';
 				// 不同模式，获取不同数组的值
 				if (this.abc) value = this.engKeyBoardList[i][j];
@@ -202,6 +216,7 @@
 			// 修改汽车牌键盘的输入模式，中文|英文
 			changeCarInputMode() {
 				this.abc = !this.abc;
+				this.$emit('changeCarInputMode',this.abc);
 			},
 			// 点击退格键
 			backspaceClick() {
@@ -260,9 +275,20 @@
 			/* #endif */
 
 			&__inner-wrapper {
+				position: relative;
 				box-shadow: $uv-car-keyboard-button-inner-box-shadow;
 				margin: $uv-car-keyboard-button-inner-margin;
 				border-radius: $uv-car-keyboard-button-border-radius;
+				
+				&__disabled--mask {
+					position: absolute;
+					left: 0;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					width: $uv-car-keyboard-button-inner-width;
+					height: $uv-car-keyboard-button-height;
+				}
 
 				&__inner {
 					@include flex;
@@ -272,6 +298,10 @@
 					background-color: $uv-car-keyboard-button-inner-background-color;
 					height: $uv-car-keyboard-button-height;
 					border-radius: $uv-car-keyboard-button-border-radius;
+					
+					&--disabled {
+						opacity: 0.5;
+					}
 
 					&__text {
 						font-size: $uv-car-keyboard-button-text-font-size;

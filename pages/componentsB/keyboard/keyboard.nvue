@@ -29,6 +29,19 @@
 			@change="change"
 			@backspace="backspace"
 		></uv-keyboard>
+		<uv-keyboard 
+			ref="keyboardRefCar" 
+			mode="car" 
+			customabc 
+			:disKeys="['京',2,'Q','X']" 
+			@change="change" 
+			@confirm="confirm" 
+			@changeCarInputMode="changeCarInputMode">
+			<template v-slot:abc>
+				<text v-if="isABC">省份</text>
+				<text v-else>ABC</text>
+			</template>
+		</uv-keyboard>
 	</view>
 </template>
 
@@ -47,6 +60,10 @@
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/keyboard/car.png'
 					},
 					{
+						title: '车牌号键盘切换键自定义+禁用按键',
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/keyboard/car.png'
+					},
+					{
 						title: '数字键盘',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/keyboard/number.png'
 					},
@@ -62,7 +79,8 @@
 						title: '打乱键盘按键的顺序',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/keyboard/order.png'
 					}
-				]
+				],
+				isABC: false
 			}
 		},
 		methods: {
@@ -79,13 +97,15 @@
 				if (index == 0) {
 					this.keyData.mode = ''
 				} else if (index == 1) {
-					this.keyData.mode = 'number'
+					return this.$refs.keyboardRefCar.open();
 				} else if (index == 2) {
-					this.keyData.mode = 'card'
+					this.keyData.mode = 'number'
 				} else if (index == 3) {
+					this.keyData.mode = 'card'
+				} else if (index == 4) {
 					this.keyData.mode = 'number'
 					this.keyData.dotDisabled = true
-				} else if (index == 4) {
+				} else if (index == 5) {
 					this.keyData.mode = 'number'
 					this.keyData.random = true
 				}
@@ -107,6 +127,9 @@
 			},
 			backspace() {
 				this.input = this.input.slice(0, -1)
+			},
+			changeCarInputMode(e) {
+				this.isABC = e;
 			}
 		}
 	}

@@ -54,11 +54,17 @@
 			</template>
 			<template v-else>
 				<uv-keyboard-car
+					ref="uvKeyboardCarRef"
 				  :random="random"
 					:autoChange="autoChange"
+					:disKeys="disKeys"
+					:customabc="customabc"
 				  @backspace="backspace"
 				  @change="change"
-				></uv-keyboard-car>
+					@changeCarInputMode="changeCarInputMode"
+				>
+					<slot name="abc"></slot>
+				</uv-keyboard-car>
 			</template>
 		</view>
 	</uv-popup>
@@ -97,7 +103,7 @@
 	export default {
 		name: "uv-keyboard",
 		mixins: [mpMixin, mixin, props],
-		emits: ['close','change','confirm','cancel','backspace'],
+		emits: ['close','change','confirm','cancel','backspace','changeCarInputMode'],
 		methods: {
 			open() {
 				this.$refs.keyboardPopup.open();
@@ -124,6 +130,13 @@
 			// 退格键
 			backspace() {
 				this.$emit('backspace');
+			},
+			// car模式切换中文|英文方法
+			changeCarInputMode(e) {
+				this.$emit('changeCarInputMode',e);
+			},
+			changeCarMode() {
+				this.$refs.uvKeyboardCarRef && this.$refs.uvKeyboardCarRef.changeCarInputMode();
 			}
 		}
 	}

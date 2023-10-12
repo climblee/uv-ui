@@ -210,6 +210,7 @@
 						this.$emit('change', {
 							detail: this.isShow
 						})
+						this.transform = '';
 					}, 20);
 				})
 			},

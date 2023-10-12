@@ -80,6 +80,16 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		// 被禁用的键
+		disKeys: {
+			type: Array,
+			default: ()=>[]
+		},
+		// 是否自定义abc
+		customabc: {
+			type: Boolean,
+			default: false
+		},
 		...uni.$uv?.props?.keyboard
 	}
 }
