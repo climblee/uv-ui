@@ -212,6 +212,12 @@
 				})
 				// 如果disabled状态，返回
 				if (item.disabled) return
+				if(this.innerCurrent != index) {
+					this.$emit('change', {
+						...item,
+						index
+					})
+				}
 				this.innerCurrent = index
 				// #ifndef APP-NVUE
 				this.$nextTick(()=>{
@@ -226,10 +232,6 @@
 					});
 				})
 				// #endif
-				this.$emit('change', {
-					...item,
-					index
-				})
 			},
 			init() {
 				this.$uv.sleep().then(() => {
