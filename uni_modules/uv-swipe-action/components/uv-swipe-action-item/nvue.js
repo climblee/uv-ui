@@ -167,9 +167,16 @@ export default {
 		// 获取元素ref
 		getContentRef() {
 			return this.$refs['uv-swipe-action-item__content'].ref
-		},
-		beforeDestroy() {
-			this.unbindBindingX()
 		}
+	},
+	// #ifdef VUE2
+	beforeDestroy() {
+		this.unbindBindingX()
+	},
+	// #endif
+	// #ifdef VUE3
+	unmounted() {
+		this.unbindBindingX()
 	}
+	// #endif
 }

@@ -149,5 +149,18 @@ export default {
 				}
 			})
 		}
+	},
+	// 兼容vue3
+	unmounted() {
+		if (this.parent && test.array(this.parent.children)) {
+			// 组件销毁时，移除父组件中的children数组中对应的实例
+			const childrenList = this.parent.children
+			childrenList.map((child, index) => {
+				// 如果相等，则移除
+				if (child === this) {
+					childrenList.splice(index, 1)
+				}
+			})
+		}
 	}
 }

@@ -141,9 +141,16 @@
 				this.timer = null
 			}
 		},
+		// #ifdef VUE2
 		beforeDestroy() {
 			this.clearTimeout()
+		},
+		// #endif
+		// #ifdef VUE3
+		unmounted() {
+			this.clearTimeout()
 		}
+		// #endif
 	}
 </script>
 <style lang="scss" scoped>

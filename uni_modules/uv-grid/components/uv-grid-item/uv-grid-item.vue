@@ -159,10 +159,18 @@
 				}
 			}
 		},
+		// #ifdef VUE2
 		beforeDestroy() {
 			// 移除事件监听，释放性能
 			uni.$off('$uvGridItem')
+		},
+		// #endif
+		// #ifdef VUE3
+		unmounted() {
+			// 移除事件监听，释放性能
+			uni.$off('$uvGridItem')
 		}
+		// #endif
 	};
 </script>
 

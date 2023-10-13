@@ -1,7 +1,7 @@
 {
   "id": "uv-notify",
   "displayName": "uv-notify 消息提示  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "uv-notify 该组件一般用于页面顶部向下滑出一个提示，后自动收起的场景。",
   "keywords": [
     "uv-notify",

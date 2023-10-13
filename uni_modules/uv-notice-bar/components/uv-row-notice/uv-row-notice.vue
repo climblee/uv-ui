@@ -273,9 +273,16 @@
 			}
 		},
 		// #ifdef APP-NVUE
+		// #ifdef VUE2
 		beforeDestroy() {
 			this.stopAnimation = true
 		},
+		// #endif
+		// #ifdef VUE3
+		unmounted() {
+			this.stopAnimation = true
+		}
+		// #endif
 		// #endif
 	};
 </script>

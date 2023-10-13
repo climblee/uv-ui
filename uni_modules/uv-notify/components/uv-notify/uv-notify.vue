@@ -162,9 +162,16 @@
 				this.timer = null
 			}
 		},
+		// #ifdef VUE2
 		beforeDestroy() {
 			this.clearTimer()
+		},
+		// #endif
+		// #ifdef VUE3
+		unmounted() {
+			this.clearTimer()
 		}
+		// #endif
 	}
 </script>
 

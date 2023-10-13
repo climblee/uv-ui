@@ -199,9 +199,16 @@
 				// #endif
 			}
 		},
+		// #ifdef VUE2
 		beforeDestroy() {
 			this.disconnectObserver('contentObserver')
+		},
+		// #endif
+		// #ifdef VUE3
+		unmounted() {
+			this.disconnectObserver('contentObserver')
 		}
+		// #endif
 	}
 </script>
 
