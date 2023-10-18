@@ -210,7 +210,11 @@
 						this.$emit('change', {
 							detail: this.isShow
 						})
+						// #ifdef H5
+						// #ifdef VUE3
 						this.transform = '';
+						// #endif
+						// #endif
 					}, 20);
 				})
 			},
