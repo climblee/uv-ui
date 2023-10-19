@@ -94,6 +94,7 @@
 						]"
             >{{ text }}</text>
         </slot>
+				<slot name="suffix"></slot>
       </template>
     </button>
     <!-- #endif -->
@@ -143,6 +144,7 @@
           ]"
           :class="[plain && `uv-button__text--plain--${type}`]"
           >{{ text }}</text>
+				<slot name="suffix"></slot>
       </template>
     </view>
     <!-- #endif -->
