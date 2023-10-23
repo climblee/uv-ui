@@ -42,7 +42,7 @@
           <uv-text
             :text="`+${urls.length - maxCount}`"
             color="#fff"
-            :size="$uv.getPx(this.multipleSize) * 0.3"
+            :size="$uv.getPx(multipleSize) * 0.3"
             align="center"
             customStyle="justify-content: center"
           ></uv-text>
