@@ -1,7 +1,7 @@
 {
   "id": "uv-album",
   "displayName": "uv-album 相册 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "本组件提供一个类似相册的功能，让开发者开发起来更加得心应手，功能齐全，灵活配置可以，开箱即用。减少重复的模板代码",
   "keywords": [
     "album",

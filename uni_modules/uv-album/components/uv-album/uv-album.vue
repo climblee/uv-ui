@@ -42,7 +42,7 @@
           <uv-text
             :text="`+${urls.length - maxCount}`"
             color="#fff"
-            :size="multipleSize * 0.3"
+            :size="$uv.getPx(this.multipleSize) * 0.3"
             align="center"
             customStyle="justify-content: center"
           ></uv-text>
@@ -217,8 +217,8 @@
 					width = this.singleWidth
 				} else {
 					width =
-						this.showUrls[0].length * this.multipleSize +
-						this.space * (this.showUrls[0].length - 1)
+						this.showUrls[0].length * this.$uv.getPx(this.multipleSize) +
+						this.$uv.getPx(this.space) * (this.showUrls[0].length - 1)
 				}
 				this.$emit('albumWidth', width)
 				return width
@@ -253,7 +253,7 @@
 						const isHorizotal = res.width >= res.height
 						this.singleWidth = isHorizotal ?
 							this.singleSize :
-							(res.width / res.height) * this.singleSize
+							(res.width / res.height) * this.$uv.getPx(this.singleSize)
 						this.singleHeight = !isHorizotal ?
 							this.singleSize :
 							(res.height / res.width) * this.singleWidth
