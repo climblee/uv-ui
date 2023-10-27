@@ -1,0 +1,106 @@
+<template>
+	<view class="uv-page">
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否开启动画</text>
+			<view class="uv-demo-block__content">
+				<uv-switch v-model="animate" @change="change"></uv-switch>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">切换状态</text>
+			<view class="uv-demo-block__content">
+				<uv-switch v-model="loading" @change="changeLoading"></uv-switch>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">基础使用</text>
+			<view class="uv-demo-block__content">
+				<uv-skeletons :loading="loading" :skeleton="skeleton1" :animate="animate">
+					<uv-text text="uv-ui 破釜沉舟之兼容vue3+2" color="#222" size="30rpx" bold></uv-text>
+					<uv-text text="基于uni-app和uView2.x的生态框架" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+					<uv-text text="开箱即用，利剑出击" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+				</uv-skeletons>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义样式</text>
+			<view class="uv-demo-block__content">
+				<uv-skeletons :loading="loading" :skeleton="skeleton3" :animate="animate"></uv-skeletons>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">横向并列布局</text>
+			<view class="uv-demo-block__content">
+				<uv-skeletons :loading="loading" :skeleton="skeleton4" :animate="animate"></uv-skeletons>
+			</view>
+		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">混合布局+自定义样式</text>
+			<view class="uv-demo-block__content">
+				<uv-skeletons :loading="loading" :skeleton="skeleton5" :animate="animate"></uv-skeletons>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				loading: true,
+				animate: true,
+				skeleton1: [{
+					type: 'line',
+					num: 3,
+					gap: '20rpx'
+				}],
+				skeleton3: [{
+					type: 'line',
+					num: 3,
+					gap: '20rpx',
+					style: ['width: 200rpx;marginBottom: 50rpx;', 'height: 100rpx;', 'width: 500rpx;']
+				}],
+				skeleton4: [{
+					type: 'flex',
+					num: 1,
+					children: [{
+						type: 'avatar',
+						num: 1,
+						style: 'marginRight: 10rpx;'
+					}, {
+						type: 'line',
+						num: 3,
+						gap: '30rpx',
+						style: ['width: 200rpx;', null, 'width:400rpx;']
+					}]
+				}],
+				skeleton5: [{
+					type: 'flex',
+					num: 2,
+					children: [{
+						type: 'custom',
+						num: 1,
+						style: 'width:200rpx;height:200rpx;'
+					}, {
+						type: 'custom',
+						num: 1,
+						style: 'width:200rpx;height:200rpx;borderRadius:100rpx;'
+					}, {
+						type: 'custom',
+						num: 3,
+						style: 'width:200rpx;height:50rpx;',
+						gap: '20rpx'
+					}],
+					gap: '30rpx'
+				}]
+			}
+		},
+		methods: {
+			change(e) {
+				this.animate = e;
+			},
+			changeLoading(e) {
+				this.loading = e;
+			}
+		}
+	}
+</script>

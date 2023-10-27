@@ -348,6 +348,11 @@
 				"navigationBarTitleText": "Skeleton 骨架屏"
 			}
 		}, {
+			"path": "skeletons/skeletons",
+			"style": {
+				"navigationBarTitleText": "Skeletons 新版骨架屏"
+			}
+		}, {
 			"path": "indexList/indexList",
 			"style": {
 				"navigationBarTitleText": "IndexList 索引列表"
