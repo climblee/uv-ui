@@ -25,7 +25,9 @@
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">自定义样式</text>
 			<view class="uv-demo-block__content">
-				<uv-skeletons :loading="loading" :skeleton="skeleton3" :animate="animate"></uv-skeletons>
+				<uv-skeletons :loading="loading" :skeleton="skeleton3" :animate="animate">
+					<uv-text text="uv-ui" color="#222" size="30rpx" bold></uv-text>
+				</uv-skeletons>
 			</view>
 		</view>
 		<view class="uv-demo-block">
@@ -55,9 +57,9 @@
 				}],
 				skeleton3: [{
 					type: 'line',
-					num: 3,
+					num: 4,
 					gap: '20rpx',
-					style: ['width: 200rpx;marginBottom: 50rpx;', 'height: 100rpx;', 'width: 500rpx;']
+					style: ['width: 200rpx;height:50rpx;marginBottom: 20rpx;', null, null, 'width: 500rpx;']
 				}],
 				skeleton4: [{
 					type: 'flex',
