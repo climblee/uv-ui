@@ -63,7 +63,7 @@ export default {
 		// 图片的mode
 		imgMode: {
 			type: String,
-			default: ''
+			default: 'aspectFit'
 		},
 		// 用于显示图片小图标时，图片的宽度
 		width: {
