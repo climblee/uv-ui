@@ -33,7 +33,7 @@
 				<uv-notice-bar
 				    :text="text3"
 					mode="link"
-					url="/pages/componentsB/tag/tag"
+					url="/pages/componentsD/tag/tag"
 				></uv-notice-bar>
 			</view>
 		</view>

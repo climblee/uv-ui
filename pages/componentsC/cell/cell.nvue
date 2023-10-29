@@ -73,12 +73,12 @@
 				<uv-cell
 				    title="打开标签页"
 				    isLink
-				    url="/pages/componentsB/tag/tag"
+				    url="/pages/componentsD/tag/tag"
 				></uv-cell>
 				<uv-cell
 				    title="打开徽标页"
 				    isLink
-				    url="/pages/componentsB/badge/badge"
+				    url="/pages/componentsD/badge/badge"
 				></uv-cell>
 			</uv-cell-group>
 		</view>

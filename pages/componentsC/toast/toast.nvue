@@ -61,7 +61,7 @@
 						type: 'default',
 						title: '结束后跳转标签页',
 						message: "此情可待成追忆",
-						url: '/pages/componentsB/tag/tag',
+						url: '/pages/componentsD/tag/tag',
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/jump.png'
 					}
 				],
