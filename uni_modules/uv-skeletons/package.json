@@ -1,8 +1,8 @@
 {
   "id": "uv-skeletons",
-  "displayName": "uv-skeletons 骨架屏  全面兼容小程序、nvue、vue2、vue3等多端",
+  "displayName": "uv-skeletons 骨架屏 全面兼容小程序、nvue、vue2、vue3等多端",
   "version": "1.0.0",
-  "description": "全新升级骨架屏，体验更加，使用更加灵活，一般用于页面在请求远程数据尚未完成时，在内容加载出来前展示与内容布局结构一致的灰白块，提升用户视觉体验。",
+  "description": "全新升级骨架屏，更加灵活，体验更加，强烈推荐使用新版骨架屏。一般用于页面在请求远程数据尚未完成时，在内容加载出来前展示与内容布局结构一致的灰白块，提升用户视觉体验。",
   "keywords": [
     "uv-skeletons",
     "uvui",
@@ -36,7 +36,8 @@
   },
   "uni_modules": {
     "dependencies": [
-			"uv-ui-tools"
+			"uv-ui-tools",
+			"uv-text"
 		],
     "encrypt": [],
     "platforms": {

@@ -10,6 +10,13 @@ export default [{
 		// 	isNew: true
 		// },
 		{
+			path: '/pages/componentsD/skeletons/skeletons',
+			icon: 'skeleton',
+			title: 'Skeletons 新版骨架屏（推荐）',
+			title_en: 'skeleton',
+			isNew: true
+		},
+		{
 			path: '/pages/componentsB/calendars/calendars',
 			icon: 'calendar',
 			title: 'Calendar 新版日历（推荐）',

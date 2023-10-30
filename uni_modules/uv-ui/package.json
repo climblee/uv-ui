@@ -36,6 +36,7 @@
 	},
 	"uni_modules": {
 		"dependencies": [
+			"uv-skeletons",
 			"uv-album",
 			"uv-drop-down",
 			"uv-calendars",

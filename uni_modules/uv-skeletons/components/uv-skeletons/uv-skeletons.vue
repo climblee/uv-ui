@@ -77,9 +77,6 @@
 			style(item) {
 				return item => {
 					const style = {};
-					if (typeof item.gap != 'undefined') {
-						// style.marginBottom = `${this.$uv.getPx(item.gap)}px`;
-					}
 					return this.$uv.deepMerge(style, this.$uv.addStyle(item.style));
 				}
 			}
@@ -129,7 +126,7 @@
 					const child = el.children ?? [];
 					for (let i = 0; i < child.length; i++) {
 						children[i] = {
-							clas: child[i].type.indexOf('avatar') > -1 ? '' : 'uv-skeleton__group__sub',
+							clas: child[i].type.indexOf('avatar') > -1 || child[i].type.indexOf('custom') > -1 ? '' : 'uv-skeleton__group__sub',
 							elements: this.getElCounts(child[i])
 						};
 					}

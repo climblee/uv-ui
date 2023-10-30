@@ -1,45 +1,91 @@
 <template>
 	<view class="uv-page">
 		<view class="uv-demo-block">
-			<text class="uv-demo-block__title">是否开启动画</text>
-			<view class="uv-demo-block__content">
-				<uv-switch v-model="animate" @change="change"></uv-switch>
-			</view>
-		</view>
-		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">切换状态</text>
 			<view class="uv-demo-block__content">
 				<uv-switch v-model="loading" @change="changeLoading"></uv-switch>
 			</view>
 		</view>
 		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">是否开启动画</text>
+			<view class="uv-demo-block__content">
+				<uv-switch v-model="animate" @change="change"></uv-switch>
+			</view>
+		</view>
+		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">基础使用</text>
 			<view class="uv-demo-block__content">
 				<uv-skeletons :loading="loading" :skeleton="skeleton1" :animate="animate">
-					<uv-text text="uv-ui 破釜沉舟之兼容vue3+2" color="#222" size="30rpx" bold></uv-text>
-					<uv-text text="基于uni-app和uView2.x的生态框架" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
-					<uv-text text="开箱即用，利剑出击" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+					<uv-text text="uv-ui破釜沉舟之兼容vue3+2、nvue、app、h5、多端小程序的uni-app生态框架" color="#222" size="30rpx" bold lines="1"></uv-text>
+					<uv-text text="大部分组件基于uView2.x，在经过改进后全面支持vue3，部分组件做了进一步的优化，支持单独导入，方便开发者选择导入需要的组件。" lines="1" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+					<uv-text text="uv-ui来源于社区，也回归到社区，正是有一群热爱uni-app生态的同学推着它前行，而我们也一如既往的承诺，uv-ui永久开源，永远免费。我们会在部分组件下载时配置广告抵消一部分成本，希望大家理解。" lines="1" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
 				</uv-skeletons>
 			</view>
 		</view>
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">自定义样式</text>
 			<view class="uv-demo-block__content">
-				<uv-skeletons :loading="loading" :skeleton="skeleton3" :animate="animate">
+				<uv-skeletons :loading="loading" :skeleton="skeleton2" :animate="animate">
 					<uv-text text="uv-ui" color="#222" size="30rpx" bold></uv-text>
+					<uv-text text="uv-ui破釜沉舟之兼容vue3+2、nvue、app、h5" color="#222" size="30rpx" lines="1" margin="30rpx 0 0"></uv-text>
+					<uv-text text="多端小程序的uni-app生态框架。大部分组件基于uView2.x，在经过改进后全面支持vue3，部分组件做了进一步的优化，支持单独导入，方便开发者选择导入需要的组件。" color="#222" size="30rpx" lines="1" margin="18rpx 0 0"></uv-text>
+					<uv-text text="欢迎大家使用，也希望大家积极参与" lines="1" color="#222" size="30rpx" margin="18rpx 0 0"></uv-text>
 				</uv-skeletons>
 			</view>
 		</view>
 		<view class="uv-demo-block">
 			<text class="uv-demo-block__title">横向并列布局</text>
 			<view class="uv-demo-block__content">
-				<uv-skeletons :loading="loading" :skeleton="skeleton4" :animate="animate"></uv-skeletons>
+				<uv-skeletons :loading="loading" :skeleton="skeleton3" :animate="animate">
+					<view class="uv-block__flex">
+						<view class="avatar">
+							<uv-avatar src="https://www.uvui.cn/common/logo.png" size="100rpx"></uv-avatar>
+						</view>
+						<view class="lines">
+							<uv-text text="uv-ui" color="#222" size="30rpx" bold></uv-text>
+							<uv-text text="uv-ui破釜沉舟之兼容vue3+2、nvue、app、h5" color="#222" size="30rpx" lines="1" margin="18rpx 0 0"></uv-text>
+							<uv-text text="欢迎大家使用..." lines="1" color="#222" size="30rpx" margin="18rpx 0 0"></uv-text>
+						</view>
+					</view>
+				</uv-skeletons>
 			</view>
 		</view>
 		<view class="uv-demo-block">
-			<text class="uv-demo-block__title">混合布局+自定义样式</text>
+			<text class="uv-demo-block__title">混合布局</text>
 			<view class="uv-demo-block__content">
-				<uv-skeletons :loading="loading" :skeleton="skeleton5" :animate="animate"></uv-skeletons>
+				<uv-skeletons :loading="loading" :skeleton="skeleton4" :animate="animate">
+					<uv-skeletons :loading="loading" :skeleton="skeleton4" :animate="animate">
+						<view class="uv-skeletons__row uv-skeletons__row1">
+							<view class="uv-skeletons__row1--left">
+								<image class="img" src="https://via.placeholder.com/200x200.png/3c9cff"></image>
+							</view>
+							<view class="uv-skeletons__row1--right">
+								<uv-text text="uv-ui破釜沉舟之兼容vue3+2、nvue、app、h5" color="#222" size="30rpx" lines="1"></uv-text>
+								<uv-text text="在经过改进后全面支持vue3" color="#222" size="30rpx" lines="1" margin="6rpx 0 0"></uv-text>
+								<uv-text text="欢迎大家使用" lines="1" color="#222" size="30rpx" margin="6rpx 0 0"></uv-text>
+							</view>
+						</view>
+						<view style="height: 30rpx;"></view>
+						<view class="uv-skeletons__row uv-skeletons__row2">
+							<image class="img" src="https://via.placeholder.com/200x200.png/3c9cff"></image>
+							<image class="img" src="https://via.placeholder.com/200x200.png/f9ae3d"></image>
+							<image class="img" src="https://via.placeholder.com/200x200.png/5ac725"></image>
+							<image class="img" src="https://via.placeholder.com/200x200.png/f56c6c"></image>
+							<image class="img" src="https://via.placeholder.com/200x200.png/909399"></image>
+						</view>
+						<view style="height: 30rpx;"></view>
+						<view class="uv-skeletons__row uv-skeletons__row3">
+							<view class="uv-skeletons__row3--left">
+								<uv-text text="uv-ui破釜沉舟之兼容vue3+2、nvue、app、h5、多端小程序的uni-app生态框架" color="#222" size="30rpx" bold lines="1"></uv-text>
+								<uv-text text="大部分组件基于uView2.x，在经过改进后全面支持vue3，部分组件做了进一步的优化，支持单独导入，方便开发者选择导入需要的组件。" lines="1" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+								<uv-text text="uv-ui来源于社区，也回归到社区，正是有一群热爱uni-app生态的同学推着它前行，而我们也一如既往的承诺，uv-ui永久开源，永远免费。我们会在部分组件下载时配置广告抵消一部分成本，希望大家理解。" lines="1" color="#222" size="30rpx" margin="8rpx 0 0"></uv-text>
+							</view>
+							<view class="uv-skeletons__row3--right">
+								<image class="img" src="https://via.placeholder.com/200x200.png/3c9cff"></image>
+							</view>
+						</view>
+					</uv-skeletons>
+				</uv-skeletons>
 			</view>
 		</view>
 	</view>
@@ -55,13 +101,13 @@
 					num: 3,
 					gap: '20rpx'
 				}],
-				skeleton3: [{
+				skeleton2: [{
 					type: 'line',
 					num: 4,
 					gap: '20rpx',
 					style: ['width: 200rpx;height:50rpx;marginBottom: 20rpx;', null, null, 'width: 500rpx;']
 				}],
-				skeleton4: [{
+				skeleton3: [{
 					type: 'flex',
 					num: 1,
 					children: [{
@@ -75,25 +121,50 @@
 						style: ['width: 200rpx;', null, 'width:400rpx;']
 					}]
 				}],
-				skeleton5: [{
-					type: 'flex',
-					num: 2,
-					children: [{
-						type: 'custom',
+				skeleton4: [{
+						type: 'flex',
 						num: 1,
-						style: 'width:200rpx;height:200rpx;'
-					}, {
-						type: 'custom',
-						num: 1,
-						style: 'width:200rpx;height:200rpx;borderRadius:100rpx;'
-					}, {
-						type: 'custom',
-						num: 3,
-						style: 'width:200rpx;height:50rpx;',
-						gap: '20rpx'
-					}],
-					gap: '30rpx'
-				}]
+						children: [{
+							type: 'custom',
+							num: 1,
+							style: 'width:136rpx;height:136rpx;marginRight: 30rpx;'
+						}, {
+							type: 'line',
+							num: 3,
+							style: [null, 'width:360rpx;', 'width:200rpx;']
+						}]
+					},
+					30, {
+						type: 'flex',
+						children: [{
+							type: 'custom',
+							style: 'width:98rpx;height:160rpx;'
+						}, {
+							type: 'custom',
+							style: 'width:98rpx;height:160rpx;marginLeft:50rpx;'
+						}, {
+							type: 'custom',
+							style: 'width:98rpx;height:160rpx;marginLeft:50rpx;'
+						}, {
+							type: 'custom',
+							style: 'width:98rpx;height:160rpx;marginLeft:50rpx;'
+						}, {
+							type: 'custom',
+							style: 'width:98rpx;height:160rpx;marginLeft:50rpx;'
+						}]
+					},
+					30, {
+						type: 'flex',
+						children: [{
+							type: 'line',
+							num: 3,
+							gap: '30rpx'
+						}, {
+							type: 'custom',
+							style: 'width:160rpx;height:160rpx;marginLeft: 30rpx;'
+						}]
+					}
+				]
 			}
 		},
 		methods: {
@@ -106,3 +177,53 @@
 		}
 	}
 </script>
+<style lang="scss" scoped>
+	.uv-page {
+		padding: 15px 30rpx 40px;
+	}
+	.uv-block__flex {
+		flex-direction: row;
+		.lines {
+			margin-left: 10rpx;
+			width: 560rpx;
+		}
+	}
+	.uv-skeletons__row {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: row;
+	}
+	.uv-skeletons__row1 {
+		&--left {
+			width: 136rpx;
+			height: 136rpx;
+			margin-right: 30rpx;
+			.img {
+				width: 136rpx;
+				height: 136rpx;
+			}
+		}
+		&--right {
+			flex: 1;
+		}
+	}
+	.uv-skeletons__row2 {
+		justify-content: space-between;
+		.img {
+			width: 98rpx;
+			height: 160rpx;
+		}
+	}
+	.uv-skeletons__row3 {
+		&--left {
+			flex: 1;
+		}
+		&--right {
+			.img {
+				width: 160rpx;
+				height: 160rpx;
+			}
+		}
+	}
+</style>
