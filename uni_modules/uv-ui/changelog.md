@@ -1,3 +1,16 @@
+## 1.1.16（2023-10-30）
+1. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913（940+/1000）
+2. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892
+3. 新增 uv-skeletons 骨架屏，全新升级骨架屏，更加灵活，体验更加，强烈推荐使用新版骨架屏。一般用于页面在请求远程数据尚未完成时，在内容加载出来前展示与内容布局结构一致的灰白块，提升用户视觉体验。
+4. 优化 uv-button 增加后置插槽suffix，方便在按钮文字后面增加图标等
+5. 优化 uv-popup vue模式内容有背景色，设置圆角被遮挡的情况
+6. 优化 uv-tabs 点击一个选项，change事件重复派发的问题
+7. 优化 持续优化文档及其他
+8. 修复 uv-album 设置singleSize、multipleSize、space等值带单位，存在不显示的BUG
+9. 修复 uv-picker 省市级示例设置defaultValue，再次选择第二列错乱的BUG
+10. 修复 uv-icon imgMode默认值改成aspectFit，否则会导致支付宝平台name设置为本地图片显示不全的BUG
+11. 修复 uv-transition 在APP-IOS上不能正常显示的BUG
+12. 修复 uv-toast、uv-swipe-action、uv-sticky、uv-notify、uv-notice-bar、uv-grid、uv-count-down、uv-code等组件，unmounted兼容vue3
 ## 1.1.15（2023-10-12）
 1. 优化 uv-keyboard a. 增加disKeys参数，mode = "car"下，被禁用的键，如：['I','O']； b. 增加customabc参数，mode = "car"下，是否启用自定义中英文切换内容模式，为了兼容支付宝等小程序不兼容嵌套插槽，导致同时显示自定义内容和原始内容； c. 增加ref方法changeCarMode，mode = "car"下， 调用此方法可以切换中英文模式； d. 增加@changeCarInputMode，mode = "car"下，调用此方法可以进行切换中英文； e. 增加插槽abc，mode = "car"下，自定义中英文切换内容
 2. 优化 uv-checkbox uv-radio 优化：https://gitee.com/climblee/uv-ui/issues/I872VD
