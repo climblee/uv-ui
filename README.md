@@ -9,7 +9,7 @@
 [![star](https://img.shields.io/github/stars/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui)
 [![issues](https://img.shields.io/github/issues/climblee/uv-ui?style=flat-square&logo=GitHub)](https://github.com/climblee/uv-ui/issues)
 [![Website](https://img.shields.io/badge/uvui-up-blue?style=flat-square)](https://www.uvui.cn)
-[![version](https://img.shields.io/badge/version-1.1.15-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
+[![version](https://img.shields.io/badge/version-1.1.16-brightgreen.svg)](https://www.uvui.cn/components/changelog.html)
 [![license](https://img.shields.io/github/license/climblee/uv-ui?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
@@ -79,6 +79,7 @@
 
 | 组件名 | 组件说明 |
 | --- | --- |
+| uv-skeletons | [新版骨架屏（推荐）](https://www.uvui.cn/components/skeletons.html) |
 | uv-calendars | [新版日历（推荐）](https://www.uvui.cn/components/calendars.html) |
 | uv-drop-down | [下拉筛选](https://www.uvui.cn/components/dropDown.html) |
 | uv-scroll-list | [横向滚动列表](https://www.uvui.cn/components/scrollList.html) |
