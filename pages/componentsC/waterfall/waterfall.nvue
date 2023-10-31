@@ -24,7 +24,7 @@
 							:key="item.id"
 							class="waterfall-item"
 							@longpress="longHandle(item)">
-							<view class="waterfall-item__image" :style="imageStyle(item)">
+							<view class="waterfall-item__image" :style="[imageStyle(item)]">
 								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
 							<view class="waterfall-item__ft">
@@ -48,7 +48,7 @@
 						<view v-for="(item, index) in list2"
 							:key="item.id"
 							class="waterfall-item">
-							<view class="waterfall-item__image" :style="imageStyle(item)">
+							<view class="waterfall-item__image" :style="[imageStyle(item)]">
 								<image :src="item.image" mode="widthFix" :style="{width:item.width+'px'}"></image>
 							</view>
 							<view class="waterfall-item__ft">
