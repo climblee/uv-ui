@@ -1,3 +1,5 @@
+## 1.0.6（2023-11-03）
+1. **该版本不再维护**，推荐使用新版本[https://ext.dcloud.net.cn/plugin?name=uv-calendars](https://ext.dcloud.net.cn/plugin?name=uv-calendars)
 ## 1.0.5（2023-07-02）
 uv-calendar  由于弹出层uv-popup的修改，打开和关闭方法更改，详情参考文档：https://www.uvui.cn/components/calendar.html
 ## 1.0.4（2023-06-15）
