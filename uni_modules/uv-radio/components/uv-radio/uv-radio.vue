@@ -340,6 +340,7 @@
 			}
 		}
 		&__label-wrap {
+			flex: 1;
 			padding-left: $uv-radio-label-wrap-padding-right;
 		}
 	}
