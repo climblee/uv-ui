@@ -14,6 +14,7 @@
 				borderColor: borderColor,
 			},$uv.addStyle(boxStyle)]"
 		>
+			<view class="uv-search__content__disabled" v-if="disabled"></view>
 			<slot name="prefix">
 				<view class="uv-search__content__icon">
 					<uv-icon
@@ -239,6 +240,7 @@
 		align-items: center;
 		flex: 1;
 		&__content {
+			position: relative;	
 			@include flex;
 			align-items: center;
 			padding: $uv-search-content-padding;
@@ -279,6 +281,14 @@
 				&--placeholder {
 					color: $uv-search-input-placeholder-color;
 				}
+			}
+			&__disabled {
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 2;
 			}
 		}
 		&__action {
