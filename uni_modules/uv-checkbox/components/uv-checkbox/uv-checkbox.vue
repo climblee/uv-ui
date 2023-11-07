@@ -363,6 +363,7 @@
 		}
 		
 		&__label-wrap {
+			flex: 1;
 			padding-left: $uv-checkbox-label-wrap-padding-right;
 		}
 	}
