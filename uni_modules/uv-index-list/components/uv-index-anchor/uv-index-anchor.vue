@@ -3,16 +3,16 @@
 	<header>
 	<!-- #endif -->
 	<view
-	    class="uv-index-anchor"
+	  :class="['uv-index-anchor',{'uv-index-anchor-sticky': parentData.sticky}]"
 		:ref="`uv-index-anchor-${text}`"
-	    :style="{
+	  :style="{
 			height: $uv.addUnit(height),
 			backgroundColor: bgColor
 		}"
 	>
 		<text
-		    class="uv-index-anchor__text"
-		    :style="{
+		  class="uv-index-anchor__text"
+		  :style="{
 				fontSize: $uv.addUnit(size),
 				color: color
 			}"
@@ -46,9 +46,12 @@
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
+				parentData: {
+					sticky: true
+				}
 			}
 		},
-		mounted() {
+		created() {
 			this.init()
 		},
 		methods: {
@@ -58,6 +61,7 @@
 				if (!indexList) { 
 					return this.$uv.error('uv-index-anchor必须要搭配uv-index-list组件使用')
 				}
+				this.parentData.sticky = indexList.sticky;
 				// 将当前实例放入到uv-index-list中
 				indexList.anchors.push(this)
 				const indexListItem = this.$uv.$parent.call(this, 'uv-index-item')
@@ -78,13 +82,14 @@
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 
 	.uv-index-anchor {
-		position: sticky;
-		top: 0;
 		@include flex;
 		align-items: center;
 		padding-left: 15px;
 		z-index: 1;
-
+		&-sticky {
+			position: sticky;
+			top: 0;
+		}
 		&__text {
 			@include flex;
 			align-items: center;
