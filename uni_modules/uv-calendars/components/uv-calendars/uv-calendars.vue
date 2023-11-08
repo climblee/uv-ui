@@ -80,6 +80,7 @@
 	 * @property {Boolean} closeOnClickOverlay 点击遮罩是否关闭
 	 * @property {String} startText range为true时，第一个日期底部的提示文字
 	 * @property {String} endText range为true时，最后一个日期底部的提示文字
+	 * @property {String} readonly 是否为只读状态，只读状态下禁止选择日期，默认false
 	 * 
 	 * @event {Function} change 日期改变，`insert :ture` 时生效
 	 * @event {Function} confirm 确认选择`insert :false` 时生效
@@ -193,6 +194,11 @@
 				type: Boolean,
 				default: false
 			},
+			// 是否禁用
+			readonly: {
+				type: Boolean,
+				default: false
+			},
 			...uni.$uv?.props?.calendars
 		},
 		data(){
@@ -216,7 +222,7 @@
 				return t("uv-calender.cancel")
 			},
 			getConfirmColor() {
-				if(this.range || this.multiple) {
+				if(this.range || this.multiple || this.readonly) {
 					return this.allowConfirm? this.confirmColor: '#999'
 				}else {
 					return this.confirmColor;
@@ -280,7 +286,9 @@
 				this.$emit('close');
 			},
 			confirm() {
-				if(this.range && !this.cale.rangeStatus.after) {
+				if(this.readonly) {
+					return;
+				} else if(this.range && !this.cale.rangeStatus.after) {
 					return;
 				} else if(this.multiple && this.cale.multipleStatus.data.length == 0){
 					return;
@@ -329,7 +337,9 @@
 				this.setEmit('change')
 			},
 			changeConfirmStatus() {
-				if (this.range) {
+				if(this.readonly) {
+					this.allowConfirm = false;
+				} else if (this.range) {
 					this.allowConfirm = this.cale.rangeStatus.after ? true : false;
 				} else if(this.multiple) {
 					this.allowConfirm = this.cale.multipleStatus.data.length > 0 ? true : false;
@@ -377,7 +387,7 @@
 			 * @param {Object} weeks
 			 */
 			choiceDate(weeks) {
-				if (weeks.disable) return
+				if (weeks.disable || this.readonly) return
 				this.calendar = weeks
 				// 设置范围选择
 				this.cale.setRange(this.calendar.fullDate)
