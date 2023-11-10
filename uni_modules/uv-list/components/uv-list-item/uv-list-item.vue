@@ -27,7 +27,7 @@
 							<view class="uv-list-item__content"
 								:class="{ 'uv-list-item__content--center': thumb || showExtraIcon || showBadge || showSwitch }">
 								<text v-if="title" class="uv-list-item__content-title"
-									:class="[ellipsis !== 0 && ellipsis <= 2 ? 'uv-ellipsis-' + ellipsis : '']">{{ title }}</text>
+									:class="[ellipsis && `uv-line-${ellipsis}`]">{{ title }}</text>
 								<text v-if="note" class="uv-list-item__content-note">{{ note }}</text>
 							</view>
 						</slot>
@@ -359,6 +359,8 @@
 </script>
 
 <style lang="scss" scoped>
+	$show-lines: 1;
+	@import '@/uni_modules/uv-ui-tools/libs/css/variable.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	$uv-font-size-sm:12px;
 	$uv-font-size-base:14px;
@@ -529,31 +531,5 @@
 	.uv-list-item__extra-text {
 		color: $uv-text-color-grey;
 		font-size: $uv-font-size-sm;
-	}
-
-	.uv-ellipsis-1 {
-		/* #ifndef APP-NVUE */
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		/* #endif */
-		/* #ifdef APP-NVUE */
-		lines: 1;
-		text-overflow: ellipsis;
-		/* #endif */
-	}
-
-	.uv-ellipsis-2 {
-		/* #ifndef APP-NVUE */
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		/* #endif */
-		/* #ifdef APP-NVUE */
-		lines: 2;
-		text-overflow: ellipsis;
-		/* #endif */
 	}
 </style>
