@@ -221,7 +221,7 @@
 	$uv-search-close-bgColor: #C6C7CB !default;
 	$uv-search-close-transform: scale(0.82) !default;
 	$uv-search-input-font-size: 14px !default;
-	$uv-search-input-margin: 0 5px !default;
+	$uv-search-input-margin: 0 15px 0 5px !default;
 	$uv-search-input-color: $uv-main-color !default;
 	$uv-search-input-placeholder-color: $uv-tips-color !default;
 	$uv-search-action-font-size: 14px !default;

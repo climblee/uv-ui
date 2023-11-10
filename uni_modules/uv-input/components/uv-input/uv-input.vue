@@ -335,7 +335,7 @@
 				align-items: center;
 				justify-content: center;
 				transform: scale(0.82);
-				margin-left: 4px;
+				margin-left: 15px;
 			}
 			&__subfix-icon {
 				margin-left: 4px;
