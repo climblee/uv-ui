@@ -39,7 +39,7 @@ function scrolltoupper(event, ownerInstance) {
 
 function setBarStyle(ownerInstance, x) {
 	ownerInstance.selectComponent('.uv-scroll-list__indicator__line__bar') && ownerInstance.selectComponent('.uv-scroll-list__indicator__line__bar').setStyle({
-		transform: 'translateX(' + x + 'px)'
+		transform: uni?.$uv?.config?.unit == 'rpx' ? 'translateX(' + x + 'rpx)' : 'translateX(' + x + 'px)'
 	})
 }
 

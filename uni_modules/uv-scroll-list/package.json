@@ -1,7 +1,7 @@
 {
 	"id": "uv-scroll-list",
 	"displayName": "uv-scroll-list 横向滚动列表 全面兼容vue3+2、app、h5、小程序等多端",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "该组件一般用于同时展示多个商品、分类的场景，也可以完成左右滑动的列表，往往数量不确定，数量较多支持左右滚动。灵活配置，开箱即用。",
 	"keywords": [
         "uv-scroll-list",
