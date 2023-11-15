@@ -118,12 +118,12 @@
 					});
 					return elements;
 				} else {
-					const type = el.type ?? 'line';
-					const num = el.num ?? 1;
-					const style = el.style ?? {};
+					const type = el.type ? el.type : 'line';
+					const num = el.num ? el.num : 1;
+					const style = el.style ? el.style : {};
 					const styleIsArray = this.$uv.test.array(style);
-					const gap = el.gap ?? '20rpx';
-					const child = el.children ?? [];
+					const gap = el.gap ? el.gap : '20rpx';
+					const child = el.children ? el.children : [];
 					for (let i = 0; i < child.length; i++) {
 						children[i] = {
 							clas: child[i].type.indexOf('avatar') > -1 || child[i].type.indexOf('custom') > -1 ? '' : 'uv-skeleton__group__sub',
