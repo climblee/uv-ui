@@ -33,6 +33,7 @@
 			:show-scrollbar="false"
 			:upper-threshold="0"
 			:lower-threshold="0"
+			:data-unit="$uv.unit"
 		>
 			<!-- #endif -->
 			<!-- #ifndef APP-NVUE || MP-WEIXIN || H5 || APP-VUE || MP-QQ -->
@@ -126,7 +127,7 @@
 				const scrollLeft = this.scrollInfo.scrollLeft,
 					scrollWidth = this.scrollInfo.scrollWidth,
 					barAllMoveWidth = this.indicatorWidth - this.indicatorBarWidth
-				const x = scrollLeft / (scrollWidth - this.scrollWidth) * barAllMoveWidth
+				const x = scrollLeft / (scrollWidth - this.scrollWidth) * this.$uv.getPx(this.$uv.addUnit(barAllMoveWidth))
 				style.transform = `translateX(${ x }px)`
 				// #endif
 				// 设置滑块的宽度和背景色，是每个平台都需要的

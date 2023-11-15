@@ -13,7 +13,7 @@ export default {
 				const barAllMoveWidth = this.indicatorWidth - this.indicatorBarWidth
 				// 在安卓和iOS上，需要除的倍数不一样，iOS需要除以2
 				const actionNum = this.$uv.os() === 'ios' ? 2 : 1
-				const expression = `(x / ${actionNum}) / ${contentSize - scrollWidth} * ${barAllMoveWidth}`
+				const expression = `(x / ${actionNum}) / ${contentSize - scrollWidth} * ${this.$uv.getPx(this.$uv.addUnit(barAllMoveWidth))}`
 				BindingX.bind({
 					anchor,
 					eventType: 'scroll',

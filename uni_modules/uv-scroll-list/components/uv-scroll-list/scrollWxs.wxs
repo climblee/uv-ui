@@ -14,7 +14,7 @@ function scroll(event, ownerInstance) {
 	// 此处的计算理由为：scroll-view的滚动距离与目标滚动距离(scroll-view的实际宽度减去包裹元素的宽度)之比，等于滑块当前移动距离与总需
 	// 滑动距离(指示器的总宽度减去滑块宽度)的比值
 	var x = scrollLeft / (scrollWidth - scrollComponentWidth) * (indicatorWidth - barWidth)
-	setBarStyle(ownerInstance, x)
+	setBarStyle(ownerInstance, x, dataset.unit)
 }
 
 // 由于webview的无能，无法保证scroll-view在滑动过程中，一直触发scroll事件，会导致
@@ -28,18 +28,19 @@ function scrolltolower(event, ownerInstance) {
 	var indicatorWidth = dataset.indicatorWidth || dataset.indicatorwidth || 0
 	var barWidth = dataset.barWidth || dataset.barwidth || 0
 	// scroll-view滚动到右边终点时，将滑块也设置为到右边的终点，它所需移动的距离为：指示器宽度 - 滑块宽度
-	setBarStyle(ownerInstance, indicatorWidth - barWidth)
+	setBarStyle(ownerInstance, indicatorWidth - barWidth, dataset.unit)
 }
 
 function scrolltoupper(event, ownerInstance) {
+	var dataset = event.currentTarget.dataset
 	ownerInstance.callMethod('scrollEvent', 'left')
 	// 滚动到左边时，将滑块设置为0的偏移距离，回到起点
-	setBarStyle(ownerInstance, 0)
+	setBarStyle(ownerInstance, 0, dataset.unit)
 }
 
-function setBarStyle(ownerInstance, x) {
+function setBarStyle(ownerInstance, x, unit) {
 	ownerInstance.selectComponent('.uv-scroll-list__indicator__line__bar') && ownerInstance.selectComponent('.uv-scroll-list__indicator__line__bar').setStyle({
-		transform: uni?.$uv?.config?.unit == 'rpx' ? 'translateX(' + x + 'rpx)' : 'translateX(' + x + 'px)'
+		transform: unit == 'rpx' ? 'translateX(' + x + 'rpx)' : 'translateX(' + x + 'px)'
 	})
 }
 
