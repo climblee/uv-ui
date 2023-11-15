@@ -23,6 +23,7 @@
 				:lazy-load="lazyLoad"
 				class="uv-image__image"
 				:style="[imageStyle]"
+				:webp="webp"
 			></image>
 			<view
 				v-if="showLoading && loading"
