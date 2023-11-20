@@ -1,3 +1,5 @@
+## 1.0.12（2023-11-20）
+1. 修复issues反馈的问题uv-picker在组合式API的自定义组件中，columns动态赋值无法显示选项：https://gitee.com/climblee/uv-ui/issues/I8H0GQ
 ## 1.0.11（2023-10-11）
 1. 将immediate-change默认值改为true，该值在于change回调的及时性，微信小程序生效
 ## 1.0.10（2023-08-25）

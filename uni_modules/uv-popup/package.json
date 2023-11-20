@@ -1,7 +1,7 @@
 {
   "id": "uv-popup",
   "displayName": "uv-popup 弹出层 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "uv-popup 弹出层容器，用于展示弹窗、信息提示等内容，支持上、下、左、右和中部弹出。组件只提供容器，内部内容由用户自定义。",
   "keywords": [
     "uv-popup",

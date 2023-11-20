@@ -231,7 +231,8 @@
 				},
 				maskShow: true,
 				mkclick: true,
-				popupClass: this.isDesktop ? 'fixforpc-top' : 'top'
+				popupClass: this.isDesktop ? 'fixforpc-top' : 'top',
+				direction: ''
 			}
 		},
 		computed: {
@@ -251,14 +252,15 @@
 				}
 				if(this.round) {
 					const value = this.$uv.addUnit(this.round)
+					const mode = this.direction?this.direction:this.mode
 					style.backgroundColor = this.bgColor
-					if(this.mode === 'top') {
+					if(mode === 'top') {
 						style.borderBottomLeftRadius = value
 						style.borderBottomRightRadius = value
-					} else if(this.mode === 'bottom') {
+					} else if(mode === 'bottom') {
 						style.borderTopLeftRadius = value
 						style.borderTopRightRadius = value
-					} else if(this.mode === 'center') {
+					} else if(mode === 'center') {
 						style.borderRadius = value
 					} 
 				}
@@ -312,6 +314,8 @@
 				let innerType = ['top', 'center', 'bottom', 'left', 'right', 'message', 'dialog', 'share']
 				if (!(direction && innerType.indexOf(direction) !== -1)) {
 					direction = this.mode
+				}else {
+					this.direction = direction;
 				}
 				if (!this.config[direction]) {
 					return this.$uv.error(`缺少类型：${direction}`);

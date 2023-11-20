@@ -127,6 +127,7 @@ export default {
 		},
 		// 监听columns参数的变化
 		columns: {
+			deep: true,
 			immediate: true,
 			handler(n) {
 				this.setColumns(n)
