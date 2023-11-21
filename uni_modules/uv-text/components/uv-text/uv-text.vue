@@ -99,7 +99,7 @@ import props from './props.js'
  * @property {String | Number} 			lineHeight	文本行高
  * @property {String} 					align		文本对齐方式，可选值left|center|right（默认 'left' ）
  * @property {String} 					wordWrap	文字换行，可选值break-word|normal|anywhere（默认 'normal' ）
- * @property {String} 					currency	货币符号，默认为￥
+ * @property {String} 					currency	货币符号 （默认 '￥' ）
  * @event {Function} click  点击触发事件
  * @example <uv-text text="我用十年青春,赴你最后之约"></uv-text>
  */
