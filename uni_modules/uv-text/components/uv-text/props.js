@@ -106,7 +106,7 @@ export default {
 		// 文字换行，可选值break-word|normal|anywhere
 		wordWrap: {
 			type: String,
-			default: "normal"
+			default: 'normal'
 		},
     // 货币符号，默认为￥
     currency: {
