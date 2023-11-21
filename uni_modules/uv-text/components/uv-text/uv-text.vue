@@ -54,9 +54,9 @@
       class="uv-text__value"
       :style="[valueStyle]"
       :class="[
-          type && `uv-text__value--${type}`,
-          lines && `uv-line-${lines}`
-        ]"
+        type && `uv-text__value--${type}`,
+        lines && `uv-line-${lines}`
+      ]"
       >{{ value }}</text
     >
     <view class="uv-text__suffix-icon" v-if="suffixIcon">
@@ -123,8 +123,8 @@ export default {
       !this.type && (style.color = this.color);
       this.isNvue && this.lines && (style.lines = this.lines);
       if(this.isNvue && this.mode != 'price' && !this.prefixIcon && !this.suffixIcon) {
-        style.flex = 1;
-        style.textAlign = this.align === 'left' ? 'flex-start' : this.align === 'center' ? 'center' : 'right';
+         style.flex = 1;
+         style.textAlign = this.align === 'left' ? 'flex-start' : this.align === 'center' ? 'center' : 'right';
       }
       this.lineHeight && (style.lineHeight = this.$uv.addUnit(this.lineHeight));
       !this.isNvue && this.block && (style.display = 'block');
@@ -143,7 +143,7 @@ export default {
       mp = true
       // #endif
       return mp
-			}
+    }
   },
   data() {
     return {}
@@ -157,9 +157,9 @@ export default {
         })
       }
       this.$emit('click')
-			}
-		}
-	}
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 $show-lines: 1;
