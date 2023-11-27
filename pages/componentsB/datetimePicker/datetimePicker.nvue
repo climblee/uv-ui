@@ -26,6 +26,7 @@
 			@cancel="cancel"
 			@change="change"
 			@close="close"
+			round="20"
 		></uv-datetime-picker>
 		<uv-datetime-picker
 			ref="datetimePicker2"

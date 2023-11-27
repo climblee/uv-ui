@@ -120,6 +120,11 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		// 圆角
+		round: {
+			type: [String, Number],
+			default: 0
+		},
 		...uni.$uv?.props?.datetimePicker
 	}
 }

@@ -13,6 +13,7 @@
 		:confirmText="confirmText"
 		:cancelColor="cancelColor"
 		:confirmColor="confirmColor"
+		:round="round"
 		@close="close"
 		@cancel="cancel"
 		@confirm="confirm"
@@ -57,6 +58,7 @@
 	 * @property {String}			confirmColor		确认按钮的颜色  ( 默认 '#3c9cff' )
 	 * @property {String | Number}	visibleItemCount	每列中可见选项的数量  ( 默认 5 )
 	 * @property {Boolean}			closeOnClickOverlay	是否允许点击遮罩关闭选择器  ( 默认 true )
+	 * @property {String | Number}	round	圆角  ( 默认 0 )
 	 * @event {Function} close 关闭选择器时触发
 	 * @event {Function} confirm 点击确定按钮，返回当前选择的值
 	 * @event {Function} change 当选择值变化时触发
