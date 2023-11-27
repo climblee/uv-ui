@@ -1,39 +1,37 @@
 <template>
-	<view class="uv-subsection"
+	<view 
+		class="uv-subsection"
 		ref="uv-subsection"
 		:class="[`uv-subsection--${mode}`]"
 		:style="[$uv.addStyle(customStyle), wrapperStyle]">
-		<view class="uv-subsection__bar"
+		<view 
+			class="uv-subsection__bar"
 			ref="uv-subsection__bar"
 			:style="[barStyle]"
 			:class="[
-                mode === 'button' && 'uv-subsection--button__bar',
-                current === 0 &&
-                    mode === 'subsection' &&
-                    'uv-subsection__bar--first',
-                current > 0 &&
-                    current < list.length - 1 &&
-                    mode === 'subsection' &&
-                    'uv-subsection__bar--center',
-                current === list.length - 1 &&
-                    mode === 'subsection' &&
-                    'uv-subsection__bar--last',
-            ]"></view>
+        mode === 'button' && 'uv-subsection--button__bar',
+        current === 0 && mode === 'subsection' && 'uv-subsection__bar--first',
+        current > 0 && current < list.length - 1 && mode === 'subsection' && 'uv-subsection__bar--center',
+        current === list.length - 1 && mode === 'subsection' && 'uv-subsection__bar--last'
+      ]"
+		></view>
 		<view class="uv-subsection__item"
 			:class="[
-                `uv-subsection__item--${index}`,
-                index < list.length - 1 &&
-                    'uv-subsection__item--no-border-right',
-                index === 0 && 'uv-subsection__item--first',
-                index === list.length - 1 && 'uv-subsection__item--last',
-            ]"
+        `uv-subsection__item--${index}`,
+        index < list.length - 1 && 'uv-subsection__item--no-border-right',
+        index === 0 && 'uv-subsection__item--first',
+        index === list.length - 1 && 'uv-subsection__item--last'
+      ]"
 			:ref="`uv-subsection__item--${index}`"
 			:style="[itemStyle(index)]"
 			@tap="clickHandler(index)"
 			v-for="(item, index) in list"
-			:key="index">
-			<text class="uv-subsection__item__text"
-				:style="[textStyle(index)]">{{ getText(item) }}</text>
+			:key="index"
+		>
+			<text 
+				class="uv-subsection__item__text"
+				:style="[textStyle(index)]">{{ getText(item) }}
+			</text>
 		</view>
 	</view>
 </template>
@@ -73,12 +71,15 @@
 				itemRect: {
 					width: 0,
 					height: 0,
-				},
-			};
+				}
+			}
 		},
 		watch: {
-			list(newValue, oldValue) {
-				this.init();
+			list: {
+				deep: true,
+				handler(){
+					this.init();
+				}
 			},
 			current: {
 				immediate: true,
@@ -88,20 +89,18 @@
 					// 故用animation模块进行位移
 					const ref = this.$refs?.["uv-subsection__bar"]?.ref;
 					// 不存在ref的时候(理解为第一次初始化时，需要渲染dom，进行一定延时再获取ref)，这里的100ms是经过测试得出的结果(某些安卓需要延时久一点)，勿随意修改
-					this.$uv.sleep(ref ? 0 : 100).then(() => {
+					this.$uv.sleep(ref ? 0 : 150).then(() => {
 						animation.transition(this.$refs["uv-subsection__bar"].ref, {
 							styles: {
-								transform: `translateX(${
-                                n * this.itemRect.width
-                            }px)`,
-								transformOrigin: "center center",
+								transform: `translateX(${ n * this.itemRect.width }px)`,
+								transformOrigin: "center center"
 							},
 							duration: 300,
 						});
 					});
 					// #endif
-				},
-			},
+				}
+			}
 		},
 		computed: {
 			wrapperStyle() {
@@ -119,15 +118,13 @@
 				style.height = `${this.itemRect.height}px`;
 				// 通过translateX移动滑块，其移动的距离为索引*item的宽度
 				// #ifndef APP-NVUE
-				style.transform = `translateX(${
-                this.current * this.itemRect.width
-            }px)`;
+				style.transform = `translateX(${ this.current * this.itemRect.width }px)`;
 				// #endif
 				if (this.mode === "subsection") {
 					// 在subsection模式下，需要动态设置滑块的圆角，因为移动滑块使用的是translateX，无法通过父元素设置overflow: hidden隐藏滑块的直角
 					style.backgroundColor = this.activeColor;
 				}
-				return style;
+				return this.$uv.deepMerge(this.$uv.addStyle(this.customItemStyle),style);
 			},
 			// 分段器item的样式
 			itemStyle(index) {
@@ -146,19 +143,14 @@
 			textStyle(index) {
 				return (index) => {
 					const style = {};
-					style.fontWeight =
-						this.bold && this.current === index ? "bold" : "normal";
+					style.fontWeight = this.bold && this.current === index ? "bold" : "normal";
 					style.fontSize = this.$uv.addUnit(this.fontSize);
 					// subsection模式下，激活时默认为白色的文字
 					if (this.mode === "subsection") {
-						style.color =
-							this.current === index ? "#fff" : this.inactiveColor;
+						style.color = this.current === index ? "#fff" : this.inactiveColor;
 					} else {
 						// button模式下，激活时文字颜色默认为activeColor
-						style.color =
-							this.current === index ?
-							this.activeColor :
-							this.inactiveColor;
+						style.color = this.current === index ? this.activeColor : this.inactiveColor;
 					}
 					return style;
 				};
@@ -185,17 +177,16 @@
 
 				// #ifdef APP-NVUE
 				const ref = this.$refs["uv-subsection__item--0"][0];
-				ref &&
-					dom.getComponentRect(ref, (res) => {
-						this.itemRect = res.size;
-					});
+				ref && dom.getComponentRect(ref, (res) => {
+					this.itemRect = res.size;
+				});
 				// #endif
 			},
 			clickHandler(index) {
 				this.$emit("change", index);
-			},
-		},
-	};
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -216,7 +207,6 @@
 			align-items: stretch;
 			&__bar {
 				background-color: #ffffff;
-				border-radius: 3px !important;
 			}
 		}
 		&--subsection {

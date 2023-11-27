@@ -45,6 +45,10 @@ export default {
 			type: String,
 			default: 'name'
 		},
+		customItemStyle: {
+			type: [String, Object],
+			default: () => {}
+		},
 		...uni.$uv?.props?.subsection
 	}
 }
