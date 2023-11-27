@@ -46,6 +46,20 @@
 				></uv-subsection>
 			</view>
 		</view>
+		<view class="uv-demo-block">
+			<text class="uv-demo-block__title">自定义样式</text>
+			<view class="uv-demo-block__content">
+				<uv-subsection
+					:list="list"
+					mode="button"
+					:current="current5"
+					activeColor="#f9ae3d"
+					custom-style="height: 60rpx;border-radius: 30rpx;"
+					custom-item-style="border-radius: 30rpx;"
+					@change="change5"
+				></uv-subsection>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -57,6 +71,7 @@
 				current2: 0,
 				current3: 0,
 				current4: 1,
+				current5: 1,
 				list: ['未付款', '待评价', '已付款'],
 				// 或者如下，也可以配置keyName参数修改对象键值
 				// list: [{name: '未付款'}, {name: '待评价'}, {name: '已付款'}],
@@ -75,6 +90,9 @@
 			},
 			change4(index) {
 				this.current4 = index
+			},
+			change5(index) {
+				this.current5 = index
 			}
 		},
 	}
