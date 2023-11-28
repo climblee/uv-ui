@@ -46,6 +46,7 @@
 			<slot name="confirmButton">
 				<uv-line></uv-line>
 				<view
+					v-if="showConfirmButton || showCancelButton"
 					class="uv-modal__button-group"
 					:style="{
 						flexDirection: buttonReverse ? 'row-reverse' : 'row'
