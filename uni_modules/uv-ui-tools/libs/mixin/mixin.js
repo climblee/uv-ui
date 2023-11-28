@@ -1,5 +1,8 @@
 import * as index from '../function/index.js';
 import * as test from '../function/test.js';
+import route from '../util/route.js';
+import debounce from '../function/debounce.js';
+import throttle from '../function/throttle.js';
 export default {
 	// 定义每个组件都可能需要用到的外部样式以及类名
 	props: {
@@ -39,6 +42,9 @@ export default {
 			return {
 				...index,
 				test,
+				route,
+				debounce,
+				throttle,
 				unit: uni?.$uv?.config?.unit
 			}
 		},

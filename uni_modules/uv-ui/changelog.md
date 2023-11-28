@@ -1,13 +1,21 @@
+## 1.1.18（2023-11-28）
+1. 优化 uv-datetime-picker 增加round属性，设置弹窗圆角
+2. 优化 uv-subsection 增加customItemStyle属性，方便修改bar样式，比如设置圆角
+3. 修复 uv-picker issues反馈的问题uv-picker在组合式API的自定义组件中，columns动态赋值无法显示选项：[https://gitee.com/climblee/uv-ui/issues/I8H0GQ](https://gitee.com/climblee/uv-ui/issues/I8H0GQ)
+4. 修复 uv-popup issues问题：[https://gitee.com/climblee/uv-ui/issues/I8HDLO](https://gitee.com/climblee/uv-ui/issues/I8HDLO)
+5. 修复 uv-skeletons 支付宝小程序报错的BUG
+6. 修复 uv-image webp之前未使用的BUG & 微信报错的BUG
+7. 修复 uv-modal 上版本引出的确认和取消按钮均不显示，还有高度的BUG
 ## 1.1.17（2023-11-10）
-1. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913（1000+）
-2. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892
-3. 新增 新增其他小组件下载入口：其他小组件
-4. 优化 uv-calendars 增加readonly属性，是否为只读状态，只读状态下禁止选择日期
-5. 修复 uv-search 禁用时，不能触发click的BUG
-6. 修复 uv-checkbox and uv-radio label文字过长，不换行的相关说明及处理
-7. 修复 uv-input and uv-search 点击clear按钮在微信小程序不好触发的BUG
-8. 修复 uv-list 修复设置ellipsis不生效的BUG
-9. 修复 uv-index-list 修复sticky属性不生效的BUG
+0. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913（1000+）
+1. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892
+2. 新增 新增其他小组件下载入口：其他小组件
+3. 优化 uv-calendars 增加readonly属性，是否为只读状态，只读状态下禁止选择日期
+4. 修复 uv-search 禁用时，不能触发click的BUG
+5. 修复 uv-checkbox and uv-radio label文字过长，不换行的相关说明及处理
+6. 修复 uv-input and uv-search 点击clear按钮在微信小程序不好触发的BUG
+7. 修复 uv-list 修复设置ellipsis不生效的BUG
+8. 修复 uv-index-list 修复sticky属性不生效的BUG
 ## 1.1.16（2023-10-30）
 1. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913（940+/1000）
 2. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892
