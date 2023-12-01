@@ -95,9 +95,21 @@
 	 * Tabs 标签
 	 * @description tabs标签组件，在标签多的时候，可以配置为左右滑动，标签少的时候，可以禁止滑动。 该组件的一个特点是配置为滚动模式时，激活的tab会自动移动到组件的中间位置。
 	 * @tutorial https://www.uvui.cn/components/tabs.html
+	 * @property {Array}	list	标签数组，元素为对象，如[{name: '推荐'}]
 	 * @property {String | Number}	duration			滑块移动一次所需的时间，单位秒（默认 200 ）
+	 * @property {String | Object} activeStyle	菜单选择中时的样式（默认{ color: '#303133' }）
+	 * @property {String | Object} inactiveStyle	菜单非选择中时的样式（默认{ color: '#606266' }）
+	 * @property {String | Number} lineWidth	滑块长度（默认 20）
+	 * @property {String | Number} lineHeight	滑块高度（默认 3）
+	 * @property {String}	lineColor	滑块颜色（默认：'#3c9cff'）
+	 * @property {String} lineBgSize	滑块背景显示大小，当滑块背景设置为图片时使用（默认 cover）
+	 * @property {String | Number} itemStyle	菜单item的样式（默认 { height: '44px' }）
+	 * @property {String}	scrollable	菜单是否可滚动，选项很少的时候设置为false整个tabs自动居中显示（默认：true）
+	 * @property {String | Number}	current	当前选中标签的索引（默认 0 ）
+	 * @property {String}	keyName	从list元素对象中读取的键名（默认 'name' ）
 	 * @property {String | Number}	swierWidth			swiper的宽度（默认 '750rpx' ）
-	 * @property {String}	keyName	 从`list`元素对象中读取的键名（默认 'name' ）
+	 * @property {String | Object}	customStyle	 自定义外部样式
+	 * 
 	 * @event {Function(index)} change 标签改变时触发 index: 点击了第几个tab，索引从0开始
 	 * @event {Function(index)} click 点击标签时触发 index: 点击了第几个tab，索引从0开始
 	 * @example <uv-tabs :list="list" :is-scroll="false" :current="current" @change="change"></uv-tabs>
@@ -144,7 +156,7 @@
 				return index => {
 					const style = {}
 					// 取当期是否激活的样式
-					const customeStyle = index === this.innerCurrent ? this.$uv.addStyle(this.activeStyle) : this.$uv
+					const customeStyle = index == this.innerCurrent ? this.$uv.addStyle(this.activeStyle) : this.$uv
 						.addStyle(
 							this.inactiveStyle)
 					// 如果当前菜单被禁用，则加上对应颜色，需要在此做处理，是因为nvue下，无法在style样式中通过!import覆盖标签的内联样式
