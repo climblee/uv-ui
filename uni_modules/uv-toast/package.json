@@ -1,7 +1,7 @@
 {
   "id": "uv-toast",
   "displayName": "uv-toast 消息提示  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Toast 组件主要用于消息通知、加载提示、操作结果提示等醒目提示效果，我们为其提供了多种丰富的API。",
   "keywords": [
     "uv-toast",

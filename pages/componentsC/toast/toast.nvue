@@ -34,9 +34,10 @@
 					{
 						type: 'error',
 						icon: false,
-						title: '失败主题',
+						title: '失败主题-可穿透',
 						message: "一弦一柱思华年",
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png',
+						overlay: false
 					},
 					{
 						type: 'success',

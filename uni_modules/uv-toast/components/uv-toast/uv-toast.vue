@@ -1,11 +1,10 @@
 <template>
 	<view class="uv-toast">
-		<uv-overlay
-			:show="isShow"
-			:custom-style="overlayStyle"
-		>
+		<uv-overlay :show="isShow && tmpConfig.overlay" :custom-style="overlayStyle"></uv-overlay>
+		<uv-transition :show="isShow" mode="fade" :custom-style="aniStyle">
 			<view
 				class="uv-toast__content"
+				ref="uvToastContent"
 				:style="[contentStyle]"
 				:class="['uv-type-' + tmpConfig.type, (tmpConfig.type === 'loading' || tmpConfig.loading) ?  'uv-toast__content--loading' : '']"
 			>
@@ -34,35 +33,33 @@
 					style="max-width: 400rpx;"
 				>{{ tmpConfig.message }}</text>
 			</view>
-		</uv-overlay>
+		</uv-transition>
 	</view>
 </template>
-
 <script>
 	import { hexToRgb } from '@/uni_modules/uv-ui-tools/libs/function/colorGradient.js'
 	import mpMixin from '@/uni_modules/uv-ui-tools/libs/mixin/mpMixin.js'
 	import mixin from '@/uni_modules/uv-ui-tools/libs/mixin/mixin.js'
+	// #ifdef APP-NVUE
+	const dom = uni.requireNativePlugin('dom')
+	// #endif
 	/**
 	 * toast 消息提示
 	 * @description 此组件表现形式类似uni的uni.showToastAPI，但也有不同的地方。
 	 * @tutorial https://www.uvui.cn/components/toast.html
-	 * @property {String | Number}	zIndex		toast展示时的zIndex值 (默认 10090 )
-	 * @property {Boolean}			loading		是否加载中 （默认 false ）
+	 * @property {Boolean}	loading		是否加载中 （默认 false ）
+	 * @property {String | Number}	zIndex	toast展示时的zIndex值 (默认 10090 )
 	 * @property {String | Number}	message		显示的文字内容
-	 * @property {String}			icon		图标，或者绝对路径的图片
-	 * @property {String}			type		主题类型 （默认 default）
-	 * @property {Boolean}			show		是否显示该组件 （默认 false）
-	 * @property {Boolean}			overlay		是否显示透明遮罩，防止点击穿透 （默认 false ）
-	 * @property {String}			position	位置 （默认 'center' ）
-	 * @property {Object}			params		跳转的参数 
+	 * @property {String} icon 图标，或者绝对路径的图片
+	 * @property {String} type 主题类型 （默认 default）
+	 * @property {Boolean} overlay 是否显示透明遮罩，防止点击穿透 （默认 false ）
+	 * @property {String} position 位置 （默认 'center' ）
+	 * @property {Object} params 跳转的参数 
 	 * @property {String | Number}  duration	展示时间，单位ms （默认 2000 ）
-	 * @property {Boolean}			isTab		是否返回的为tab页面 （默认 false ）
-	 * @property {String}			url			toast消失后是否跳转页面，有则跳转，优先级高于back参数 
-	 * @property {Function}			complete	执行完后的回调函数 
-	 * @property {Boolean}			back		结束toast是否自动返回上一页 （默认 false ）
-	 * @property {Object}			customStyle	组件的样式，对象形式
+	 * @property {Function} complete 执行完后的回调函数 
+	 * 
 	 * @event {Function} show 显示toast，如需一进入页面就显示toast，请在onReady生命周期调用
-	 * @example <uv-toast ref="uToast" />
+	 * @example <uv-toast ref="uvToastRef" />
 	 */
 	export default {
 		name: 'uv-toast',
@@ -78,16 +75,19 @@
 					icon: true, // 显示的图标
 					position: 'center', // toast出现的位置
 					complete: null, // 执行完后的回调函数
-					overlay: false, // 是否防止触摸穿透
-					loading: false, // 是否加载中状态
+					overlay: true, // 是否防止触摸穿透
+					loading: false ,// 是否加载中状态
+					zIndex: 10090 //弹出的层级
 				},
 				tmpConfig: {}, // 将用户配置和内置配置合并后的临时配置变量
+				rect: {},
+				opacity: 0
 			}
 		},
 		computed: {
 			iconName() {
 				// 只有不为none，并且type为error|warning|succes|info时候，才显示图标
-				if(!this.tmpConfig.icon || this.tmpConfig.icon == 'none') {
+				if (!this.tmpConfig.icon || this.tmpConfig.icon == 'none') {
 					return '';
 				}
 				if (['error', 'warning', 'success', 'primary'].includes(this.tmpConfig.type)) {
@@ -100,7 +100,8 @@
 				const style = {
 					justifyContent: 'center',
 					alignItems: 'center',
-					display: 'flex'
+					display: 'flex',
+					zIndex: this.tmpConfig.zIndex
 				}
 				// 将遮罩设置为100%透明度，避免出现灰色背景
 				style.backgroundColor = 'rgba(0, 0, 0, 0)'
@@ -118,17 +119,49 @@
 				// #endif
 				return style
 			},
+			aniStyle() {
+				const style = {
+					position: 'fixed',
+					zIndex: this.tmpConfig.zIndex
+				}
+				return style
+			},
 			// 内容盒子的样式
 			contentStyle() {
-				const windowHeight = this.$uv.sys().windowHeight, style = {}
+				const { windowWidth, windowHeight } = this.$uv.sys();
+				const style = {
+					position: 'fixed',
+					top: '50%',
+					left: '50%',
+					// #ifdef APP-NVUE
+					opacity: this.opacity
+					// #endif
+				};
 				let value = 0
+				// #ifndef APP-NVUE
 				// 根据top和bottom，对Y轴进行窗体高度的百分比偏移
-				if(this.tmpConfig.position === 'top') {
-					value = - windowHeight * 0.25
-				} else if(this.tmpConfig.position === 'bottom') {
-					value = windowHeight * 0.25
+				if (this.tmpConfig.position === 'top') {
+					style.top = '25%'
+				} else if (this.tmpConfig.position === 'bottom') {
+					style.top = '75%'
+				} else {
+					value = '-50%'
 				}
-				style.transform = `translateY(${value}px)`
+				style.transform = `translate(-50%,${value})`
+				// #endif
+				// #ifdef APP-NVUE
+				const { width = 0, height = 0 } = this.rect ? this.rect : {};
+				if (width && height) {
+					style.left = `${windowWidth*0.5 - width/2}px`
+					if (this.tmpConfig.position === 'top') {
+						style.top = `${windowHeight*0.5- height/2 - windowHeight*0.25}px`
+					} else if (this.tmpConfig.position === 'bottom') {
+						style.top = `${windowHeight*0.5- height/2 + windowHeight*0.25}px`
+					} else {
+						style.top = `${windowHeight*0.5- height/2}px`
+					}
+				}
+				// #endif
 				return style
 			}
 		},
@@ -149,6 +182,16 @@
 				// 清除定时器
 				this.clearTimer()
 				this.isShow = true
+				//#ifdef APP-NVUE
+				this.$nextTick(() => {
+					this.$uv.sleep(100).then(async res => {
+						this.rect = await this.queryRect();
+						this.$nextTick(() => {
+							this.opacity = 1;
+						})
+					})
+				})
+				// #endif
 				this.timer = setTimeout(() => {
 					// 倒计时结束，清除定时器，隐藏toast组件
 					this.clearTimer()
@@ -156,11 +199,23 @@
 					typeof(this.tmpConfig.complete) === 'function' && this.tmpConfig.complete()
 				}, this.tmpConfig.duration)
 			},
+			// 查询内容高度
+			queryRect() {
+				return new Promise(resolve => {
+					const ref = this.$refs['uvToastContent'];
+					dom.getComponentRect(ref, res => {
+						resolve(res.size)
+					})
+				})
+			},
 			// 隐藏toast组件，由父组件通过this.$refs.xxx.hide()形式调用
 			hide() {
 				this.clearTimer()
 			},
 			clearTimer() {
+				// #ifdef APP-NVUE
+				this.opacity = 0;
+				// #endif
 				this.isShow = false
 				// 清除定时器
 				clearTimeout(this.timer)
@@ -179,38 +234,36 @@
 		// #endif
 	}
 </script>
-
 <style lang="scss" scoped>
 	@import '@/uni_modules/uv-ui-tools/libs/css/components.scss';
 	@import '@/uni_modules/uv-ui-tools/libs/css/color.scss';
-	$uv-toast-color:#fff !default;
-	$uv-toast-border-radius:4px !default;
-	$uv-toast-border-background-color:#585858 !default;
-	$uv-toast-border-font-size:14px !default;
-	$uv-toast-border-padding:12px 20px !default;
+	$uv-toast-color: #fff !default;
+	$uv-toast-border-radius: 4px !default;
+	$uv-toast-border-background-color: #585858 !default;
+	$uv-toast-border-font-size: 14px !default;
+	$uv-toast-border-padding: 12px 20px !default;
 	$uv-toast-loading-border-padding: 20px 20px !default;
-	$uv-toast-content-text-color:#fff !default;
-	$uv-toast-content-text-font-size:15px !default;
-	$uv-toast-uv-icon:10rpx !default;
-	$uv-toast-uv-type-primary-color:$uv-primary !default;
-	$uv-toast-uv-type-primary-background-color:#ecf5ff !default;
-	$uv-toast-uv-type-primary-border-color:rgb(215, 234, 254) !default;
-	$uv-toast-uv-type-primary-border-width:1px !default;
+	$uv-toast-content-text-color: #fff !default;
+	$uv-toast-content-text-font-size: 15px !default;
+	$uv-toast-uv-icon: 10rpx !default;
+	$uv-toast-uv-type-primary-color: $uv-primary !default;
+	$uv-toast-uv-type-primary-background-color: #ecf5ff !default;
+	$uv-toast-uv-type-primary-border-color: rgb(215, 234, 254) !default;
+	$uv-toast-uv-type-primary-border-width: 1px !default;
 	$uv-toast-uv-type-success-color: $uv-success !default;
 	$uv-toast-uv-type-success-background-color: #dbf1e1 !default;
 	$uv-toast-uv-type-success-border-color: #BEF5C8 !default;
 	$uv-toast-uv-type-success-border-width: 1px !default;
-	$uv-toast-uv-type-error-color:$uv-error !default;
-	$uv-toast-uv-type-error-background-color:#fef0f0 !default;
-	$uv-toast-uv-type-error-border-color:#fde2e2 !default;
+	$uv-toast-uv-type-error-color: $uv-error !default;
+	$uv-toast-uv-type-error-background-color: #fef0f0 !default;
+	$uv-toast-uv-type-error-border-color: #fde2e2 !default;
 	$uv-toast-uv-type-error-border-width: 1px !default;
-	$uv-toast-uv-type-warning-color:$uv-warning !default;
-	$uv-toast-uv-type-warning-background-color:#fdf6ec !default;
-	$uv-toast-uv-type-warning-border-color:#faecd8 !default;
+	$uv-toast-uv-type-warning-color: $uv-warning !default;
+	$uv-toast-uv-type-warning-background-color: #fdf6ec !default;
+	$uv-toast-uv-type-warning-border-color: #faecd8 !default;
 	$uv-toast-uv-type-warning-border-width: 1px !default;
-	$uv-toast-uv-type-default-color:#fff !default;
-	$uv-toast-uv-type-default-background-color:#585858 !default;
-
+	$uv-toast-uv-type-default-color: #fff !default;
+	$uv-toast-uv-type-default-background-color: #585858 !default;
 	.uv-toast {
 		&__content {
 			@include flex;
@@ -223,68 +276,56 @@
 			max-width: 600rpx;
 			/* #endif */
 			position: relative;
-
 			&--loading {
 				flex-direction: column;
 				padding: $uv-toast-loading-border-padding;
 			}
-
 			&__text {
 				color: $uv-toast-content-text-color;
 				font-size: $uv-toast-content-text-font-size;
 				line-height: $uv-toast-content-text-font-size;
-
 				&--default {
 					color: $uv-toast-content-text-color;
 				}
-
 				&--error {
 					color: $uv-error;
 				}
-
 				&--primary {
 					color: $uv-primary;
 				}
-
 				&--success {
 					color: $uv-success;
 				}
-
 				&--warning {
 					color: $uv-warning;
 				}
 			}
 		}
 	}
-
 	.uv-type-primary {
 		color: $uv-toast-uv-type-primary-color;
 		background-color: $uv-toast-uv-type-primary-background-color;
 		border-color: $uv-toast-uv-type-primary-border-color;
 		border-width: $uv-toast-uv-type-primary-border-width;
 	}
-
 	.uv-type-success {
 		color: $uv-toast-uv-type-success-color;
 		background-color: $uv-toast-uv-type-success-background-color;
 		border-color: $uv-toast-uv-type-success-border-color;
 		border-width: 1px;
 	}
-
 	.uv-type-error {
 		color: $uv-toast-uv-type-error-color;
 		background-color: $uv-toast-uv-type-error-background-color;
 		border-color: $uv-toast-uv-type-error-border-color;
 		border-width: $uv-toast-uv-type-error-border-width;
 	}
-
 	.uv-type-warning {
 		color: $uv-toast-uv-type-warning-color;
 		background-color: $uv-toast-uv-type-warning-background-color;
 		border-color: $uv-toast-uv-type-warning-border-color;
 		border-width: 1px;
 	}
-
 	.uv-type-default {
 		color: $uv-toast-uv-type-default-color;
 		background-color: $uv-toast-uv-type-default-background-color;
