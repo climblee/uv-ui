@@ -1,7 +1,7 @@
 {
 	"id": "uv-avatar",
 	"displayName": "uv-avatar 头像 全面兼容小程序、nvue、vue2、vue3等多端",
-	"version": "1.0.1",
+	"version": "1.0.5",
 	"description": "uv-avatar 本组件一般用于展示头像的地方，如个人中心，或者评论列表页的用户头像展示等场所。",
 	"keywords": [
         "uv-avatar",

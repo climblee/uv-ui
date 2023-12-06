@@ -1,11 +1,17 @@
 <template>
-	<uv-parse @linktap="linkTap" content='<p><a href="#">跳转到顶部</a><br><a href="#1">跳转到顶部</a></p>'></uv-parse>
+	<view>
+		<uv-calendar ref="calendar" @confirm="confirm" closeOnClickOverlay></uv-calendar>
+		<button @click="open">打开</button>
+	</view>
 </template>
 <script>
 	export default {
 		methods: {
-			linkTap(e){
-				console.log(e)
+			open() {
+				this.$refs.calendar.open();
+			},
+			confirm(e) {
+				console.log('日历选择：',e)
 			}
 		}
 	}

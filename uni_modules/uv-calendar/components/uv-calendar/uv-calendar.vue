@@ -46,7 +46,7 @@
 				></uvMonth>
 			</scroll-view>
 			<slot name="footer" v-if="showConfirm">
-				<view class="uv-calendar__confirm">
+				<view class="uv-calendar__confirm" @click="dddd">
 					<uv-button
 						shape="circle"
 						:text="buttonDisabled ? confirmDisabledText : confirmText"
@@ -183,6 +183,9 @@ export default {
 		this.init()
 	},
 	methods: {
+		dddd() {
+			console.log('===')
+		},
 		// 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
 		setFormatter(e) {
 			this.innerFormatter = e
