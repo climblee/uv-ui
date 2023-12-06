@@ -1,7 +1,6 @@
 <template>
 	<view>
-		<uv-calendar ref="calendar" @confirm="confirm" closeOnClickOverlay></uv-calendar>
-		<button @click="open">打开</button>
+		<uv-image src="" width="50px" mode="widthFix"></uv-image>
 	</view>
 </template>
 <script>

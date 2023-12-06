@@ -28,12 +28,12 @@
 					:class="[disabled && 'uv-cell--disabled', size === 'large' && 'uv-cell__value--large']"
 					v-if="!$uv.test.empty(value)">{{ value }}</text>
 			</slot>
-			<view class="uv-cell__right-icon-wrap" v-if="$slots['right-icon'] || isLink"
+			<view class="uv-cell__right-icon-wrap"
 				:class="[`uv-cell__right-icon-wrap--${arrowDirection}`]">
-				<slot name="right-icon" v-if="$slots['right-icon']">
+				<slot name="right-icon">
+					<uv-icon v-if="isLink" :name="rightIcon" :custom-style="rightIconStyle" :color="disabled ? '#c8c9cc' : 'info'"
+						:size="size === 'large' ? 18 : 16"></uv-icon>
 				</slot>
-				<uv-icon v-else :name="rightIcon" :custom-style="rightIconStyle" :color="disabled ? '#c8c9cc' : 'info'"
-					:size="size === 'large' ? 18 : 16"></uv-icon>
 			</view>
 		</view>
 		<uv-line v-if="border"></uv-line>
