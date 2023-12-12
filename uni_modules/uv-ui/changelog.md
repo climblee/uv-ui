@@ -1,11 +1,18 @@
+## 1.1.19（2023-12-12）
+1. 优化 uv-toast部分重构，支持取消遮罩不影响点击其他元素 a. 增加z-index参数；b. 增加overlay参数
+2. 优化 关于组件如何阻止事件冒泡，增加相关说明：[组件怎么阻止事件冒泡](https://www.uvui.cn/components/feature.html#组件怎么阻止事件冒泡)
+3. 优化 持续优化文档
+4. 修复 uv-tabs current为字符串activeStyle不生效的BUG
+5. 修复 uv-vtabs 在change回调中设置current，快速点击菜单，导致死循环的BUG
+6. 修复 uv-cell right-icon插槽编译到APP端不显示的BUG，问题来源：[https://gitee.com/climblee/uv-ui/issues/I8LXZI](https://gitee.com/climblee/uv-ui/issues/I8LXZI)
 ## 1.1.18（2023-11-28）
-1. 优化 uv-datetime-picker 增加round属性，设置弹窗圆角
-2. 优化 uv-subsection 增加customItemStyle属性，方便修改bar样式，比如设置圆角
-3. 修复 uv-picker issues反馈的问题uv-picker在组合式API的自定义组件中，columns动态赋值无法显示选项：[https://gitee.com/climblee/uv-ui/issues/I8H0GQ](https://gitee.com/climblee/uv-ui/issues/I8H0GQ)
-4. 修复 uv-popup issues问题：[https://gitee.com/climblee/uv-ui/issues/I8HDLO](https://gitee.com/climblee/uv-ui/issues/I8HDLO)
-5. 修复 uv-skeletons 支付宝小程序报错的BUG
-6. 修复 uv-image webp之前未使用的BUG & 微信报错的BUG
-7. 修复 uv-modal 上版本引出的确认和取消按钮均不显示，还有高度的BUG
+0. 优化 uv-datetime-picker 增加round属性，设置弹窗圆角
+1. 优化 uv-subsection 增加customItemStyle属性，方便修改bar样式，比如设置圆角
+2. 修复 uv-picker issues反馈的问题uv-picker在组合式API的自定义组件中，columns动态赋值无法显示选项：[https://gitee.com/climblee/uv-ui/issues/I8H0GQ](https://gitee.com/climblee/uv-ui/issues/I8H0GQ)
+3. 修复 uv-popup issues问题：[https://gitee.com/climblee/uv-ui/issues/I8HDLO](https://gitee.com/climblee/uv-ui/issues/I8HDLO)
+4. 修复 uv-skeletons 支付宝小程序报错的BUG
+5. 修复 uv-image webp之前未使用的BUG & 微信报错的BUG
+6. 修复 uv-modal 上版本引出的确认和取消按钮均不显示，还有高度的BUG
 ## 1.1.17（2023-11-10）
 0. 交流反馈 欢迎加入uv-ui官方群1交流反馈： 549833913（1000+）
 1. 交流反馈 欢迎加入uv-ui官方群2交流反馈： 206060892

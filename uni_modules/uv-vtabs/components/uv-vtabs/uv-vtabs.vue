@@ -126,6 +126,11 @@
 		created() {
 			this.children = []
 		},
+		mounted() {
+			this.$nextTick(()=>{
+				this.init(this.current);
+			})
+		},
 		data() {
 			return {
 				activeIndex: 0,
@@ -139,7 +144,8 @@
 				hasHeight: 0,
 				scrollViewHeight: 0,
 				barScrollTop: 0,
-				barScrollToView: ''
+				barScrollToView: '',
+				timer2: 0
 			}
 		},
 		computed: {
@@ -195,12 +201,11 @@
 			}
 		},
 		watch: {
-			current: {
-				deep: true,
-				immediate: true,
-				handler(newVal){
-					this.init(newVal?newVal:0);
-				}
+			current(newVal){
+				if(!this.touching) 
+					this.$nextTick(()=>{
+						this.init(newVal?newVal:0);
+					})
 			},
 			list(newVal) {
 				if (newVal.length) {
@@ -219,7 +224,7 @@
 		methods: {
 			init(index){
 				let num = 0;
-				this.timer2 && clearInterval(this.timer2);
+				clearInterval(this.timer2);
 				this.timer2 = setInterval(async ()=>{
 					num++;
 					if(num>50) clearInterval(this.timer2);
