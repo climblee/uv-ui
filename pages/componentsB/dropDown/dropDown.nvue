@@ -3,9 +3,9 @@
 		<uv-drop-down 
 			ref="dropDown"
 			sign="dropDown_1" 
-			:text-style="{activeColor:'red'}" 
+			text-active-color="#3c9cff"
 			:extra-icon="{name:'arrow-down-fill',color:'#666',size:'26rpx'}" 
-			:extra-active-icon="{name:'arrow-up-fill',color:'#2878ff',size:'26rpx'}"
+			:extra-active-icon="{name:'arrow-up-fill',color:'#3c9cff',size:'26rpx'}"
 			:defaultValue="defaultValue" 
 			:custom-style="{padding: '0 30rpx'}" 
 			@click="selectMenu"
