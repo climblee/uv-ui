@@ -170,7 +170,9 @@
 				this.close();
 			},
 			closeLoading() {
-				this.loading = false;
+				this.$nextTick(()=>{
+					this.loading = false;
+				})
 			}
 		}
 	}

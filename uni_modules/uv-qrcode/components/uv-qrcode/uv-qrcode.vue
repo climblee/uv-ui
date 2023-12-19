@@ -258,7 +258,9 @@
         this.templateOptions.canvasHeight})`;
 			}
 			if (this.start) {
-				this.make();
+				this.$nextTick(()=>{
+					this.make();
+				})
 			}
 		},
 		methods: {

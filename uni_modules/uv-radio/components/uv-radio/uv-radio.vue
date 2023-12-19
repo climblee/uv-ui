@@ -73,6 +73,7 @@
 				parentData: {
 					iconSize: 12,
 					labelSize: 14,
+					labelColor: '#303133',
 					labelDisabled: null,
 					disabled: null,
 					shape: null,
