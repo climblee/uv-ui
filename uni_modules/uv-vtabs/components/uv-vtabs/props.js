@@ -47,33 +47,33 @@ export default {
 		},
 		// 左边列表的自定义样式
 		barStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		// 左边列表项的自定义样式
 		barItemStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		// 左边选择项激活时的自定义样式
 		barItemActiveStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		// 左边选择项激活时的左边线条自定义样式
 		barItemActiveLineStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		// 菜单项中的徽标自定义样式，比如定位位置
 		barItemBadgeStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		// 右边区域自定义样式
 		contentStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		}
 	}
 }

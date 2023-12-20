@@ -1,7 +1,7 @@
 {
   "id": "uv-vtabs",
   "displayName": "uv-vtabs 垂直选项卡 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "uv-vtabs 垂直分类组件主要用于分类选择，简单配置即可使用，左右自动进行联动，不用自己再去做复杂的计算，组件内部已经完成相关计算。支持联动和不联动，商品分类，灵活配置，多端兼容开箱即用。",
   "keywords": [
     "uv-vtabs",

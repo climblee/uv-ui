@@ -65,7 +65,7 @@
 					// #endif
 				}
 				style.backgroundColor = this.bgColor
-				return this.$uv.deepMerge(this.$uv.addStyle(this.customStyle), style)
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customStyle))
 			},
 			// 吸顶内容的样式
 			stickyContent() {

@@ -128,8 +128,8 @@ export default {
 		},
 		// 显示的标题样式
 		titleStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		...uni.$uv?.props?.swiper
 	}

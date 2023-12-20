@@ -180,7 +180,7 @@
 					if (this.list[index].disabled) {
 						style.color = '#c8c9cc'
 					}
-					return this.$uv.deepMerge(customeStyle, style);
+					return this.$uv.deepMerge(style, customeStyle);
 				} 
 			},
 			// nvue设置字体样式必须要text标签上进行

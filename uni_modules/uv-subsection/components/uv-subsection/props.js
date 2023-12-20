@@ -47,7 +47,7 @@ export default {
 		},
 		customItemStyle: {
 			type: [String, Object],
-			default: () => {}
+			default: ''
 		},
 		...uni.$uv?.props?.subsection
 	}

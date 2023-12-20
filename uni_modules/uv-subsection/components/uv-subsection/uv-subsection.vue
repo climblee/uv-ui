@@ -124,7 +124,7 @@
 					// 在subsection模式下，需要动态设置滑块的圆角，因为移动滑块使用的是translateX，无法通过父元素设置overflow: hidden隐藏滑块的直角
 					style.backgroundColor = this.activeColor;
 				}
-				return this.$uv.deepMerge(this.$uv.addStyle(this.customItemStyle),style);
+				return this.$uv.deepMerge(style, this.$uv.addStyle(this.customItemStyle));
 			},
 			// 分段器item的样式
 			itemStyle(index) {

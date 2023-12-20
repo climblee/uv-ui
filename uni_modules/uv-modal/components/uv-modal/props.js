@@ -82,8 +82,8 @@ export default {
 		},
 		// 文本自定义样式
 		textStyle: {
-			type: Object,
-			default: ()=>{}
+			type: [Object, String],
+			default: ''
 		},
 		...uni.$uv?.props?.modal
 	}

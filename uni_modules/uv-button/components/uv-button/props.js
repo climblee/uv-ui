@@ -156,7 +156,7 @@ export default {
 		// 自定义按钮文本样式
 		customTextStyle: {
 			type: [Object,String],
-			default: ()=>{}
+			default: ''
 		},
 		...uni.$uv?.props?.button
 	}
