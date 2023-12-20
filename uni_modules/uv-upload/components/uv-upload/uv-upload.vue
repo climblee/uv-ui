@@ -132,6 +132,13 @@
 					this.formatFileList()
 				}
 			},
+			deletable(newVal) {
+				if(!newVal) {
+					this.lists.map(item=>{
+						item.deletable = this.deletable;
+					})
+				}
+			}
 		},
 		methods: {
 			formatFileList() {
