@@ -1,13 +1,14 @@
 <template>
 	<view>
-		<uv-image src="" width="50px" mode="widthFix"></uv-image>
+		<uv-button text="请求数据" @click="getData"></uv-button>
 	</view>
 </template>
 <script>
+	import { fetchMenu } from '@/common/api.js'
 	export default {
 		methods: {
-			open() {
-				this.$refs.calendar.open();
+			getData() {
+				fetchMenu()
 			},
 			confirm(e) {
 				console.log('日历选择：',e)

@@ -1,7 +1,7 @@
 {
   "id": "uv-image",
   "displayName": "uv-image 图片 全面兼容vue3+2、app、h5、小程序等多端",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "uv-image 此组件为uni-app的image组件的加强版，在继承了原有功能外，增加observer懒加载功能，还支持淡入动画、加载中、加载失败提示、圆角值和形状等。",
   "keywords": [
     "uv-image",

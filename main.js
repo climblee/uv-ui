@@ -1,6 +1,6 @@
 import App from './App'
-// import uvUI from '@/uni_modules/uv-ui-tools'
-// import { Request } from '@/util/request/index'
+import uvUI from '@/uni_modules/uv-ui-tools'
+import { Request } from '@/util/request/index'
 // uni.$uv.setConfig({
 // 	config: {
 // 			// 修改默认单位为rpx，相当于执行 uni.$uv.config.unit = 'rpx'
@@ -53,7 +53,7 @@ import { createSSRApp } from 'vue'
 export function createApp() {
 	const app = createSSRApp(App)
 	// 引入请求封装
-	// Request(app)
+	Request(app)
 	// app.use(uvUI,{mpShare:true})
 	return {
 		app

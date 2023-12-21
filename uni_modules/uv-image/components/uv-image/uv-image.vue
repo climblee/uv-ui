@@ -19,7 +19,7 @@
 				:mode="mode"
 				@error="onErrorHandler"
 				@load="onLoadHandler"
-				:show-menuv-by-longpress="showMenuByLongpress"
+				:show-menu-by-longpress="showMenuByLongpress"
 				:lazy-load="lazyLoad"
 				class="uv-image__image"
 				:style="[imageStyle]"
