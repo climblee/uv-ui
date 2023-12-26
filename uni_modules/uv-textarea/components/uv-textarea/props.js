@@ -31,7 +31,7 @@ export default {
 		// 设置键盘右下角按钮的文字，仅微信小程序，App-vue和H5有效
 		confirmType: {
 			type: String,
-			default: 'done'
+			default: 'return'
 		},
 		// 是否禁用
 		disabled: {

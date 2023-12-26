@@ -1,3 +1,5 @@
+## 1.0.13（2023-12-26）
+1. 修复抖音小程序滚到底不触发change的BUG
 ## 1.0.12（2023-11-20）
 1. 修复issues反馈的问题uv-picker在组合式API的自定义组件中，columns动态赋值无法显示选项：https://gitee.com/climblee/uv-ui/issues/I8H0GQ
 ## 1.0.11（2023-10-11）
