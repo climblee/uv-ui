@@ -54,7 +54,7 @@
 				<view
 					class="uv-navbar__content__right"
           :style="[{
-					paddingRight: $uv.addUnit(menuButtonWidth)
+					paddingRight: $uv.addUnit(menuButtonWidth + 13)
 				}]"
 					@tap="rightClick"
 				>
