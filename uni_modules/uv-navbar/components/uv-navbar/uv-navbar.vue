@@ -53,6 +53,9 @@
 				</slot>
 				<view
 					class="uv-navbar__content__right"
+          :style="[{
+					paddingRight: $uv.addUnit(menuButtonWidth)
+				}]"
 					@tap="rightClick"
 				>
 					<slot name="right">
@@ -105,9 +108,12 @@
 		mixins: [mpMixin, mixin, props],
 		data() {
 			return {
-
+        menuButtonWidth: 0,
 			}
 		},
+    created() {
+      this.setMenuButtonWidth();
+    },
 		computed: {
 			getBgColor(){
 				const style = {};
@@ -158,7 +164,17 @@
 			// 点击右侧区域
 			rightClick() {
 				this.$emit('rightClick')
-			}
+			},
+      setMenuButtonWidth() {
+        /* #ifdef MP-WEIXIN */
+        if (this.avoidMenuButton) {
+          const res = wx.getMenuButtonBoundingClientRect();
+          if (res) {
+            this.menuButtonWidth = res.width;
+          }
+        }
+        /* #endif */
+      }
 		}
 	}
 </script>
@@ -179,7 +195,7 @@
 			top: 0;
 			z-index: 11;
 		}
-		
+
 		&--bgimg {
 			position: absolute;
 			left: 0;
@@ -215,7 +231,7 @@
 
 			&__left {
 				left: 0;
-				
+
 				&--hover {
 					opacity: 0.7;
 				}
