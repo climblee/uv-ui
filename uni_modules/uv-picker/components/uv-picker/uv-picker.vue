@@ -17,6 +17,19 @@
 				@cancel="cancel"
 				@confirm="confirm"
 			></uv-toolbar>
+			<!-- #ifdef MP-TOUTIAO -->
+			<picker-view
+				class="uv-picker__view"
+				:indicatorStyle="`height: ${$uv.addUnit(itemHeight)}`"
+				:value="innerIndex"
+				:immediateChange="immediateChange"
+				:style="{
+					height: `${$uv.addUnit(visibleItemCount * itemHeight)}`
+				}"
+				@pickend="changeHandler"
+			>
+			<!-- #endif -->
+			<!-- #ifndef MP-TOUTIAO -->
 			<picker-view
 				class="uv-picker__view"
 				:indicatorStyle="`height: ${$uv.addUnit(itemHeight)}`"
@@ -26,8 +39,8 @@
 					height: `${$uv.addUnit(visibleItemCount * itemHeight)}`
 				}"
 				@change="changeHandler"
-				@pickend="changeHandler"
 			>
+			<!-- #endif -->
 			<!-- @pickend在这里为了解决抖音等滚到底不触发change兼容性问题 -->
 				<picker-view-column
 					v-for="(item, index) in innerColumns"
