@@ -73,7 +73,9 @@
 			},
 			value: {
 				handler(newVal) {
-					this.active = this.parentData.defaultValue.indexOf(newVal) == -1;
+					this.$nextTick(()=>{
+						this.active = this.parentData.defaultValue.indexOf(newVal) == -1;
+					})
 				},
 				immediate: true
 			}
