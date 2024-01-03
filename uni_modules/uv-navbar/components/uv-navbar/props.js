@@ -84,6 +84,11 @@ export default {
 			type: [String, Object],
 			default: ''
 		},
+		// 是否避开右侧微信小程序胶囊
+		avoidMenuButton: {
+			type: Boolean,
+			default: true
+		},
 		...uni.$uv?.props?.navbar
 	}
 }
