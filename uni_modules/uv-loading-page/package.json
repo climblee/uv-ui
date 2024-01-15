@@ -1,7 +1,7 @@
 {
   "id": "uv-loading-page",
   "displayName": "uv-loading-page 加载页  全面兼容小程序、nvue、vue2、vue3等多端",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "uv-loading-page 该组件是一个页面级的加载效果，可以在页面初始化数据等场景使用，与骨架屏有相似之处。",
   "keywords": [
     "uv-loading-page",

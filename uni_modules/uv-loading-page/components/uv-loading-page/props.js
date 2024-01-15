@@ -33,17 +33,22 @@ export default {
 		// 文字大小
 		fontSize: {
 			type: [String, Number],
-			default: 18
+			default: 16
 		},
 		// 图标大小
 		iconSize: {
 			type: [String, Number],
-			default: 28
+			default: 26
 		},
 		// 加载中图标的颜色，只能rgb或者十六进制颜色值
 		loadingColor: {
 			type: String,
 			default: '#C8C8C8'
+		},
+		// 过渡时间
+		duration: {
+			type: [String, Number],
+			default: 300
 		},
 		...uni.$uv?.props?.loadingPage
 	}
