@@ -50,6 +50,7 @@
 				handler(newVal) {
 					if (newVal) {
 						this.showLoading = true;
+						this.opacity = 1;
 					} else {
 						this.opacity = 0;
 						this.$nextTick(() => {

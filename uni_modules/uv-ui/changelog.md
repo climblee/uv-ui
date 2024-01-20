@@ -1,3 +1,11 @@
+## 1.1.20（2024-01-20）
+1. 优化 uv-loading-page重构，避免初始加载的时候先显示页面的问题，小程序平台由于性能问题，可能还是会短暂出现，请注意优化处理
+2. 优化 uv-textarea confirmType默认值改成return，支持换行
+3. 优化 uv-ui-tools luch-request更新
+4. 修复 uv-drop-down parentData不变的BUG
+5. 修复 uv-picker 上个版本引出的BUG
+6. 修复 uv-image 设置show-menu-by-longpress不生效的BUG
+7. 修复 uv-upload 动态设置deletable为false不生效的BUG
 ## 1.1.19（2023-12-12）
 1. 优化 uv-toast部分重构，支持取消遮罩不影响点击其他元素 a. 增加z-index参数；b. 增加overlay参数
 2. 优化 关于组件如何阻止事件冒泡，增加相关说明：[组件怎么阻止事件冒泡](https://www.uvui.cn/components/feature.html#组件怎么阻止事件冒泡)
