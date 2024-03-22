@@ -106,8 +106,11 @@
 			},
 			open() {
 				this.$refs.picker.open();
-				this.getValue();
-				this.updateColumnValue(this.innerValue);
+				// 解决打开的前一次和当前日期错乱的BUG
+				setTimeout(()=>{
+					this.getValue();
+					this.updateColumnValue(this.innerValue);
+				},10)
 			},
 			close() {
 				this.$emit('close');
