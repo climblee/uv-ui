@@ -86,7 +86,6 @@
 	 * @property {String}			prop			绑定的值
 	 * @property {String | Boolean}	borderBottom	是否显示表单域的下划线边框
 	 * @property {String | Number}	labelWidth		label的宽度，单位px
-	 * @property {String}			rightIcon		右侧图标
 	 * @property {String}			leftIcon		左侧图标
 	 * @property {String | Object} leftIconStyle 左侧图标的样式
 	 * @property {Boolean}			required		是否显示左边的必填星号，只作显示用，具体校验必填的逻辑，请在rules中配置 (默认 false )
