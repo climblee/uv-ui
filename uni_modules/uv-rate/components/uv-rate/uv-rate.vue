@@ -14,7 +14,7 @@
 				:class="[elClass]">
 				<view class="uv-rate__content__item__icon-wrap"
 					ref="uv-rate__content__item__icon-wrap"
-					@tap.stop="clickHandler($event, index + 1)">
+					@tap="clickHandler($event, index + 1)">
 					<uv-icon 
 						:name="Math.floor(activeIndex) > index? activeIcon : inactiveIcon"
 						:color="disabled ? '#c8c9cc' : Math.floor(activeIndex) > index ? activeColor : inactiveColor"
