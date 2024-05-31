@@ -78,7 +78,9 @@
 		},
 		watch: {
 			propsChange() {
-				this.init()
+				uni.$uv.sleep(100).then(res=>{
+					this.init()
+				})
 			}
 		},
 		computed: {
