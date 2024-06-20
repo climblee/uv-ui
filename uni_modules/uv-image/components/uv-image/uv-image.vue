@@ -40,6 +40,7 @@
 						:name="loadingIcon"
 						:width="width"
 						:height="height"
+						:imgMode="mode"
 					></uv-icon>
 				</slot>
 			</view>
@@ -57,6 +58,7 @@
 						:name="errorIcon"
 						:width="width"
 						:height="height"
+						:imgMode="mode"
 					></uv-icon>
 				</slot>
 			</view>
