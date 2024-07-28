@@ -14,8 +14,9 @@
 
 ## 温馨提示：如需下载uv-ui示例项目，请不要使用【下载插件ZIP】按钮。
 
-### uvui官方群1：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=aaoyDvfV7nSee9vzWfzyZM1vKlu3xrNZ&authKey=pdU6HDpyzGUoc1QvQvCmzCbwzsoHgBbToF%2F0ChP4lNjPIPgWHGRE4I99XYGiTcNI&noverify=0&group_code=549833913" target="_blank">549833913</a>
+### uvui官方群1：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=aaoyDvfV7nSee9vzWfzyZM1vKlu3xrNZ&authKey=pdU6HDpyzGUoc1QvQvCmzCbwzsoHgBbToF%2F0ChP4lNjPIPgWHGRE4I99XYGiTcNI&noverify=0&group_code=549833913" target="_blank">549833913（已满）</a>
 ### uvui官方群2：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=2QbEeKBn6ysCyQ09V4mgst1W8onxFybQ&authKey=aMTGL5zCYwsinG%2FeH0qMlAqXAdyKr5AjXVf2oMnsmj7NCg%2F2HraMU%2FNFxELLIPvp&noverify=0&group_code=206060892" target="_blank">206060892</a>
+### uvui官方群2：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=2QbEeKBn6ysCyQ09V4mgst1W8onxFybQ&authKey=aMTGL5zCYwsinG%2FeH0qMlAqXAdyKr5AjXVf2oMnsmj7NCg%2F2HraMU%2FNFxELLIPvp&noverify=0&group_code=957571809" target="_blank">957571809</a>
 
 ## uvui特点
 
