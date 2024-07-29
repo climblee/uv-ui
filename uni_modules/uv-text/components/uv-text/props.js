@@ -108,6 +108,11 @@ export default {
 			type: String,
 			default: 'normal'
 		},
+    // 货币符号，默认为￥
+    currency: {
+			type: String,
+			default: '￥'
+		},
 		...uni.$uv?.props?.text
 	}
 }
