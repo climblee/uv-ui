@@ -42,6 +42,7 @@
         	  @focus="onFocus"
         	  @confirm="onConfirm"
         	  @keyboardheightchange="onkeyboardheightchange"
+			  @nicknamereview="onNickNameReview"
         	/>
         </view>
         <view
@@ -241,6 +242,10 @@
 			// 兼容性：微信小程序2.7.0+、App 3.1.0+
 			onkeyboardheightchange(e) {
 				this.$emit("keyboardheightchange",e);
+			},
+			// 用户昵称审核完毕后触发
+			onNickNameReview(e) {
+				this.$emit("nicknamereview", e);
 			},
 			// 内容发生变化，进行处理
 			valueChange() {
