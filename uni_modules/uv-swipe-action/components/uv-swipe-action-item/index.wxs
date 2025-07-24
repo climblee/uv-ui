@@ -18,7 +18,6 @@ function touchstart(event, ownerInstance) {
 	// 记录触摸开始点的坐标值
 	state.startX = touches[0].pageX
 	state.startY = touches[0].pageY
-	
 	ownerInstance.callMethod('closeOther')
 }
 
@@ -153,7 +152,7 @@ function openSwipeAction(instance, ownerInstance) {
 function setStatus(status, instance, ownerInstance) {
 	var state = instance.getState()
 	state.status = status
-	ownerInstance.callMethod('setState', status)
+	ownerInstance.callMethod('statusChangeHandler', status)
 }
 
 // 一次性收起滑动菜单

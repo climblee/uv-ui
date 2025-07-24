@@ -20,7 +20,10 @@
 		name: 'uv-swipe-action',
 		mixins: [mpMixin, mixin, props],
 		data() {
-			return {}
+			return {
+        openedCellItem: [],
+        itemsCanClick: true
+      }
 		},
 		provide() {
 			return {
@@ -50,16 +53,44 @@
 			this.children = []
 		},
 		methods: {
-			closeOther(child) {
-				if (this.autoClose) {
-					// 历遍所有的单元格，找出非当前操作中的单元格，进行关闭
-					this.children.map((item, index) => {
-						if (child !== item) {
-							item.closeHandler()
-						}
-					})
-				}
-			}
+      closeOther(child) {
+        this.itemsCanClick = this.computeClickStatus()
+        if (this.autoClose) {
+          // 历遍所有的单元格，找出非当前操作中的单元格，进行关闭
+          this.openedCellItem.map((item, index) => {
+            if (item !== child)
+              item.statusChangeHandler('close')
+          })
+        }
+      },
+      computeClickStatus(name) {
+        let openedCellIds = this.openedCells()
+        // autoClose为true，只会有一个cell处于打开状态
+        if (this.openedCellItem.length !== 0 && !openedCellIds.includes(name)) return false
+        if (this.openedCellItem.length !== 0 && openedCellIds.includes(name)) {
+          // 关闭这个打开的cell
+          this.closeByName(name)
+          return false
+        }
+        return true
+      },
+      itemsClickStatus() {
+        return this.itemsCanClick
+      },
+      openedCells() {
+        let openedCellList = []
+        this.openedCellItem.forEach(item => openedCellList.push(item.name))
+        return openedCellList
+      },
+      handleOpenedCells(child, status, name) {
+        // open添加，close移除，如果有的话
+        let childIndex = this.openedCellItem.indexOf(child)
+        if (status === 'open' && childIndex === -1) {
+          this.openedCellItem.push(child)
+        } else if (status === 'close' && childIndex !== -1) {
+          this.openedCellItem.splice(childIndex, 1)
+        }
+      }
 		}
 	}
 </script>
