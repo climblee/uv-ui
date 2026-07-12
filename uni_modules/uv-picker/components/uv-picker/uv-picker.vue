@@ -20,11 +20,11 @@
 			<!-- #ifdef MP-TOUTIAO -->
 			<picker-view
 				class="uv-picker__view"
-				:indicatorStyle="`height: ${$uv.addUnit(itemHeight)}`"
+				:indicatorStyle="indicatorStyle"
 				:value="innerIndex"
 				:immediateChange="immediateChange"
 				:style="{
-					height: `${$uv.addUnit(visibleItemCount * itemHeight)}`
+					height: `${Math.round(itemHeightPx * Number(visibleItemCount))}px`
 				}"
 				@pickend="changeHandler"
 			>
@@ -32,11 +32,11 @@
 			<!-- #ifndef MP-TOUTIAO -->
 			<picker-view
 				class="uv-picker__view"
-				:indicatorStyle="`height: ${$uv.addUnit(itemHeight)}`"
+				:indicatorStyle="indicatorStyle"
 				:value="innerIndex"
 				:immediateChange="immediateChange"
 				:style="{
-					height: `${$uv.addUnit(visibleItemCount * itemHeight)}`
+					height: `${Math.round(itemHeightPx * Number(visibleItemCount))}px`
 				}"
 				@change="changeHandler"
 			>
@@ -103,6 +103,15 @@ export default {
 	emits: ['confirm','cancel','close','change'],
 	mixins: [mpMixin, mixin, props],
 	computed: {
+		// 单格像素高度:把 itemHeight 按全局 addUnit 单位(默认 px / 可配 rpx)归一化为 px 数值后取整,
+		// 避免 rpx→px 换算带来小数累计误差,以及"44rpx" * N 这类 JS 隐式转换问题
+		itemHeightPx() {
+			return Math.round(this.$uv.getPx(this.$uv.addUnit(this.itemHeight), false))
+		},
+		// picker-view 单格 indicatorStyle,绑定同一变量,自动与总高比例严格一致
+		indicatorStyle() {
+			return `height: ${this.itemHeightPx}px`
+		},
 		// 为了解决支付宝不生效
 		textStyle(){
 			return (index,index1) => {
